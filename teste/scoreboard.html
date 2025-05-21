@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <style>
+
+            table {
+                border: 2px solid black;
+                border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            td, th {
+                border: 2px solid black;
+                font-size: 30px;
+            }
+
+            button {
+                font-size: 30px;
+            }
+            
+            .time1 {
+                background-color: lightblue;
+            }
+            .time2 {
+                background-color: lightcoral;
+            }
+
+            #score1, #score2 {
+                background-color: aquamarine;
+            }
+
+            #feedback {
+                text-align: center;
+            }
+
+            input {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 225px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>Placar</header>
+        <h1 style="text-align: center;">Time 1 vs. Time 2</h1>
+        <input type="number" placeholder="Numero limite para encerrrar o jogo" autcomplete="off" autofocus id="limite">
+        <br>
+        <table>
+            <tr>
+                <th class="time1">Time 1</th>
+                <th class="time2">Time 2</th>
+            </tr>
+            <tr>
+                <td id="score1">0</td>
+                <td id="score2">0</td>
+            </tr>
+            <tr>
+                <td><button id="add1">+1</button><button id="minus1">-1</button></td>
+                <td><button id="add2">+1<button id="minus2">-1</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button id="zerar">Recomeçar</button></td>
+            </tr>
+        </table>
+
+        <p id="feedback"></p>
+
+        <script>
+
+            let time1 = 0;
+            let time2 = 0;
+            let limite = document.querySelector('#limite');
+
+            // botoes de soma e subtracao do time1
+           document.querySelector('#add1').onclick = () => {
+            time1++;
+            document.querySelector('#score1').innerHTML = time1;
+            // background azul quando time1 = limite
+            if (time1 == limite.value && limite.value > 0) {
+                document.querySelector('#feedback').innerHTML = "O Time 1 (azul) Ganhou!"
+                document.querySelector('body').style.backgroundColor = "lightblue";
+            }
+           }
+           document.querySelector('#minus1').onclick = () => {
+            time1--;
+            document.querySelector('#score1').innerHTML = time1;
+           }
+
+           // botoes de soma e subtracao do time2
+           document.querySelector('#add2').onclick = () => {
+            time2++;
+            // // background vermelho quando time1 = limite
+            document.querySelector('#score2').innerHTML = time2;
+            if (time2 == limite.value && limite.value > 0) {
+                document.querySelector('#feedback').innerHTML = "O Time 2 (vermelho) Ganhou!"
+                document.querySelector('body').style.backgroundColor = "lightcoral";
+            }
+           }
+           document.querySelector('#minus2').onclick = () => {
+            time2--;
+            document.querySelector('#score2').innerHTML = time2;
+           }
+
+           // botao zerar 
+           document.querySelector('#zerar').onclick = () => {
+           window.location.reload();
+           }
+
+        </script>
+    </body>
+</html>

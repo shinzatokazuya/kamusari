@@ -1,0 +1,6 @@
+{
+    "dataworkspace.excludedProjects": [
+        "sa/sa.sqlproj",
+        "Dados_brasileirao_2003_2023/Dados_brasileirao_2003_2023.sqlproj"
+    ]
+}

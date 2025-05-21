@@ -1,0 +1,63 @@
+<!-- Acessando o DOM -->
+<p id="meu-paragrafo">Isto é um texto.</p>
+
+<script>
+    var meuParagrafo = document.getElementById('meu-paragrafo');
+    console.log(meuParagrafo);
+</script>
+
+<!-- Usando jQuery -->
+ <p id="meu-paragrafo"></p>
+
+ <script>
+    $("#meu-paragrafo").text("Isto é um novo texto.");
+ </script>
+
+<!-- Manipulando elementos no DOM -->
+<!-- Alterando o texto de um elemento; innerHTML -->
+<p id="my-paragraph">This is some text.</p>
+
+<script>
+  var myParagraph = document.getElementById("my-paragraph");
+  myParagraph.innerHTML = "This is some new text.";
+</script>
+
+<!-- Alterando o estilo de um elemento; style -->
+<p id="my-paragraph">This is some text.</p>
+
+<script>
+  var myParagraph = document.getElementById("my-paragraph");
+  myParagraph.style.color = "red";
+</script>
+
+<!-- adicionando um elemento; createElement() e appendChild() -->
+<div id="my-div">
+    <p id="my-paragraph">Isto é um texto</p>
+</div>
+
+<script>
+    var myDiv = document.getElementById('my-div');
+    var newParagraph = document.createElement("p");
+    newParagraph.innerHTML = 'Isto é um novo paragrafo';
+    myDiv.appendChild(newParagraph);
+</script>
+
+<!-- Removendo um elemento; removeChild() -->
+<div id="my-div">
+    <p id="my-paragraph">This is some text.</p>
+</div>
+  
+<script>
+    var myDiv = document.getElementById("my-div");
+    var myParagraph = document.getElementById("my-paragraph");
+    myDiv.removeChild(myParagraph);
+</script>
+
+<!-- Eventos -->
+<button id="my-button">Click Me</button>
+<script>
+    var myButton = document.getElementById("my-button");
+    myButton.addEventListener("click", () => {
+      alert("Button was clicked!");
+    });
+</script>

@@ -1,0 +1,47 @@
+git init
+echo "Hello World" > nome_arquivo.txt // essa linha é para alterar dentro do arquivo 
+git add .
+git commit -m "Comentário"
+git branch -M main
+git remote add origin https://github.com/shinzatokazuya/nome_do_codespace.git
+git push -u origin main
+
+
+
+Para copiar arquivos de um repositório existente para um novo repositório pelo terminal, siga os passos abaixo:
+
+1. Clone o repositório existente
+No terminal, clone o repositório original para sua máquina local:
+
+bash
+git clone https://github.com/usuario/repositorio-existente.git
+cd repositorio-existente
+2. Crie o novo repositório no GitHub
+No GitHub, crie um novo repositório (vazio) onde deseja copiar os arquivos.
+
+3. Configure o novo repositório como remoto
+No terminal, remova o remoto antigo e adicione o novo remoto:
+
+bash
+git remote remove origin
+git remote add origin https://github.com/usuario/novo-repositorio.git
+4. (Opcional) Remova arquivos ou pastas indesejados
+Se quiser copiar apenas alguns arquivos, remova os que não deseja antes de prosseguir:
+
+bash
+rm -rf caminho/do/arquivo-ou-pasta
+5. Faça o commit das alterações
+Certifique-se de que todas as alterações estão prontas para serem enviadas:
+
+bash
+git add .
+git commit -m "Migrando arquivos para o novo repositório"
+6. Envie os arquivos para o novo repositório
+Envie os arquivos para o novo repositório no GitHub:
+
+bash
+git push -u origin main
+Observação
+Substitua usuario e os nomes dos repositórios pelos valores reais.
+Certifique-se de que está utilizando a branch correta (exemplo: main, master, etc.).
+Caso precise de ajuda para criar um novo repositório no GitHub, posso orientar!

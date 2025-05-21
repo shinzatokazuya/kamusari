@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Solar com Rastros</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        .container {
+            font-size: 10px;
+            width: 40em;
+            height: 40em;
+            position: relative;
+        }
+
+        .sun {
+            position: absolute;
+            top: 15em;
+            left: 15em;
+            width: 10em;
+            height: 10em;
+            background-color: #ffea00;
+            border-radius: 50%;
+            box-shadow: 0 0 10em #fff;
+        }
+
+        .earth, .moon {
+            position: absolute;
+            border-style: solid;
+            border-color: #5b76ee transparent transparent transparent;
+            border-width: 0.1em 0.1em 0 0;
+            border-radius: 50%;
+        }
+
+        .earth-orbit {
+            position: absolute;
+            top: 0em;
+            left: 0em;
+            width: 40em;
+            height: 40em;
+            animation: orbit-earth 36.5s linear infinite;
+        }
+
+        .earth {
+            top: 2.5em;
+            left: 2.5em;
+            width: 5em;
+            height: 5em;
+            background-color: #5b76ee;
+            border-radius: 50%;
+            box-shadow: 0 0 1em #888;
+        }
+
+        .moon-orbit {
+            position: absolute;
+            top: -3em;
+            left: -3em;
+            width: 12em;
+            height: 12em;
+            border-radius: 50%;
+            animation: orbit-moon 2.7s linear infinite;
+        }
+
+        .moon {
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            width: 2em;
+            height: 2em;
+            background-color: #c0c0c0;
+            border-radius: 50%;
+            box-shadow: 0 0 0.5em #eee;
+        }
+
+        /* Animação da órbita da Terra */
+        @keyframes orbit-earth {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Animação da órbita da Lua */
+        @keyframes orbit-moon {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sun"></div>
+        <div class="earth-orbit">
+            <div class="earth">
+                <div class="moon-orbit">
+                    <div class="moon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

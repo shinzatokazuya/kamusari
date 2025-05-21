@@ -1,0 +1,11 @@
+{
+    "nome": "Sara Vasquez",
+    "idade": 20,
+    "empregado": false,
+    "endereco": {
+        "rua": "Rio Preto",
+        "cidade": "Santo André",
+        "estado": "SP"
+    },
+    "habilidades": ["Português", "Russo", "Espanhol"]
+}

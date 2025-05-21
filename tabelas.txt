@@ -1,0 +1,77 @@
+-- tabela de classificação por ano (codigo)
+WITH placares_anuais AS (
+  SELECT
+    SUBSTR(data,7, 4) AS ano,
+    mandante AS clube,
+    SUM(CASE WHEN mandante_Placar > visitante_Placar THEN 3 WHEN mandante_Placar = visitante_Placar THEN 1 ELSE 0 END) AS pontos,
+    SUM(CASE WHEN mandante_Placar > visitante_Placar THEN 1 ELSE 0 END) AS vitorias,
+    SUM(CASE WHEN mandante_Placar = visitante_Placar THEN 1 ELSE 0 END) AS empates,
+    SUM(CASE WHEN mandante_Placar < visitante_Placar THEN 1 ELSE 0 END) AS derrotas,
+    SUM(mandante_Placar) AS gols_marcados,
+    SUM(visitante_Placar) AS gols_sofridos
+  FROM jogos
+  GROUP BY SUBSTR(data, 7, 4), mandante
+  UNION ALL
+  SELECT
+    SUBSTR(data, 7, 4) AS ano,
+    visitante AS clube,
+    SUM(CASE WHEN visitante_Placar > mandante_Placar THEN 3 WHEN visitante_Placar = mandante_Placar THEN 1 ELSE 0 END) AS pontos,
+    SUM(CASE WHEN visitante_Placar > mandante_Placar THEN 1 ELSE 0 END) AS vitorias,
+    SUM(CASE WHEN visitante_Placar = mandante_Placar THEN 1 ELSE 0 END) AS empates,
+    SUM(CASE WHEN visitante_Placar < mandante_Placar THEN 1 ELSE 0 END) AS derrotas,
+    SUM(visitante_Placar) AS gols_marcados,
+    SUM(mandante_Placar) AS gols_sofridos
+  FROM jogos
+  GROUP BY SUBSTR(data, 7, 4), visitante
+)
+SELECT
+  ano,
+  clube,
+  SUM(pontos) AS pontos,
+  SUM(vitorias) AS vitorias,
+  SUM(empates) AS empates,
+  SUM(derrotas) AS derrotas,
+  SUM(gols_marcados) AS gols_marcados,
+  SUM(gols_sofridos) AS gols_sofridos,
+  (SUM(gols_marcados) - SUM(gols_sofridos)) AS saldo_de_gols
+FROM placares_anuais
+GROUP BY ano, clube
+ORDER BY ano DESC, pontos DESC, saldo_de_gols DESC, gols_marcados DESC;
+
+-- tabela de classificação ranking geral
+WITH placares AS (
+  SELECT
+    mandante AS clube,
+    SUM(CASE WHEN mandante_Placar > visitante_Placar THEN 3 WHEN mandante_Placar = visitante_Placar THEN 1 ELSE 0 END) AS pontos,
+    SUM(CASE WHEN mandante_Placar > visitante_Placar THEN 1 ELSE 0 END) AS vitorias,
+    SUM(CASE WHEN mandante_Placar = visitante_Placar THEN 1 ELSE 0 END) AS empates,
+    SUM(CASE WHEN mandante_Placar < visitante_Placar THEN 1 ELSE 0 END) AS derrotas,
+    SUM(mandante_Placar) AS gm,
+    SUM(visitante_Placar) AS gc
+  FROM jogos
+  GROUP BY mandante
+  UNION ALL
+  SELECT
+    visitante AS clube,
+    SUM(CASE WHEN clube)
+    SUM(CASE WHEN visitante_Placar > mandante_Placar THEN 3 WHEN visitante_Placar = mandante_Placar THEN 1 ELSE 0 END) AS pontos,
+    SUM(CASE WHEN visitante_Placar > mandante_Placar THEN 1 ELSE 0 END) AS vitorias,
+    SUM(CASE WHEN visitante_Placar = mandante_Placar THEN 1 ELSE 0 END) AS empates,
+    SUM(CASE WHEN visitante_Placar < mandante_Placar THEN 1 ELSE 0 END) AS derrotas,
+    SUM(visitante_Placar) AS gm,
+    SUM(mandante_Placar) AS gc
+  FROM jogos
+  GROUP BY visitante
+)
+SELECT
+  clube,
+  SUM(pontos) AS pontos,
+  SUM(vitorias) AS vitorias,
+  SUM(empates) AS empates,
+  SUM(derrotas) AS derrotas,
+  SUM(gm) AS gm,
+  SUM(gc) AS gc,
+  (SUM(gm) - SUM(gc)) AS sg
+FROM placares
+GROUP BY clube
+ORDER BY pontos DESC, sg DESC, gm DESC;

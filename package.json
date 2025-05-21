@@ -1,0 +1,19 @@
+{
+  "name": "kamusari",
+  "version": "1.0.0",
+  "description": "Pastas e arquivos com alguns testes.",
+  "main": "index.js",
+  "activationEvents": [
+    
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "vscode": "^1.80.0"
+  }
+}
