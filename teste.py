@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import sqlite3
+import re
 
 # 1. Definir a URL do site que você quer analisar
-url = 'https://www.ogol.com.br/edicao/copa-brasil-1976/4002/calendario?equipa=0&estado=1&filtro=&op=calendario&page=5'
+url = 'https://www.ogol.com.br/edicao/copa-brasil-1978/3903/calendario?equipa=0&estado=1&filtro=&op=calendario&page=3'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
 }
@@ -66,7 +67,14 @@ try:
                         print(f"Placar inválido: {placar}, pulando partida")
                         continue
                     try:
-                        mandante_placar, visitante_placar = map(int, placar.strip().split('-'))
+                        placar_limpo = re.search(r'(\d+)\s*-\s*(\d+)', placar)
+                        if placar_limpo:
+                            mandante_placar = int(placar_limpo.group(1))
+                            visitante_placar = int(placar_limpo.group(2))
+                        else:
+                            print(f"Placar mal formatado: {placar}, pulando partida")
+                            continue
+
                     except ValueError:
                         print(f"Erro ao converter placar: {placar}, pulando partida")
                         continue

@@ -75,3 +75,14 @@ SELECT
 FROM placares
 GROUP BY clube
 ORDER BY pontos DESC, sg DESC, gm DESC;
+
+-- Total jogos em casa e fora por clubes
+SELECT
+    c.clube,
+    SUM(CASE WHEN p.id_mandante = c.ID THEN 1 ELSE 0 END) AS jogos_casa,
+    SUM(CASE WHEN p.id_visitante = c.ID THEN 1 ELSE 0 END) AS jogos_fora
+FROM clubes c
+LEFT JOIN partidas p ON p.id_mandante = c.ID OR p.id_visitante = c.ID
+GROUP BY c.ID
+ORDER BY jogos_casa DESC;
+
