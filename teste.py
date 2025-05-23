@@ -68,21 +68,22 @@ try:
                     if "WO" in placar_raw or "W.O." in placar_raw:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = 3, 0
-                    else '-' not in placar:
-                        print(f"Placar inválido: {placar}, pulando partida")
-                        continue
-                    try:
-                        placar_limpo = re.search(r'(\d+)\s*-\s*(\d+)', placar)
-                        if placar_limpo:
-                            mandante_placar = int(placar_limpo.group(1))
-                            visitante_placar = int(placar_limpo.group(2))
-                        else:
-                            print(f"Placar mal formatado: {placar}, pulando partida")
+                    else:
+                        if '-' not in placar:
+                            print(f"Placar inválido: {placar}, pulando partida")
                             continue
+                        try:
+                            placar_limpo = re.search(r'(\d+)\s*-\s*(\d+)', placar)
+                            if placar_limpo:
+                                mandante_placar = int(placar_limpo.group(1))
+                                visitante_placar = int(placar_limpo.group(2))
+                            else:
+                                print(f"Placar mal formatado: {placar}, pulando partida")
+                                continue
 
-                    except ValueError:
-                        print(f"Erro ao converter placar: {placar}, pulando partida")
-                        continue
+                        except ValueError:
+                            print(f"Erro ao converter placar: {placar}, pulando partida")
+                            continue
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
