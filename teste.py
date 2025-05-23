@@ -65,9 +65,9 @@ try:
                 if id_mandante and id_visitante:
                     placar_raw = celulas[5].text.strip().upper()
 
-                    if "WO" in placar_raw or "W.O." in placar_raw:
+                    if "WO" in placar_raw or "ANU" in placar_raw:
                         # Define regra: mandante vence por 3x0
-                        mandante_placar, visitante_placar = 3, 0
+                        mandante_placar, visitante_placar = '-', '-'
                     else:
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
