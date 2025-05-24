@@ -71,7 +71,15 @@ try:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = '-', '-'
                     else:
+                        placar_raw = celulas[5].text.strip().lower()
+                        penalti_mandante = penalti_visitante = None  # valores padrão
 
+                        # Verifica se há pênaltis no placar (ex: "1-1 (4-3 pen.)")
+                        match_penaltis = re.search(r'\((\d+)-(\d+)\s*pen', placar_raw)
+                        if match_penaltis:
+                            penalti_mandante = int(match_penaltis.group(1))
+                            penalti_visitante = int(match_penaltis.group(2))
+                            
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
                             continue
