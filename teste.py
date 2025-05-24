@@ -71,6 +71,8 @@ try:
                     if "WO" in placar_raw or "ANU" in placar_raw:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = 0, 3
+                        # Se teve prorrogação
+                        prorrogacao = 0
                     else:
                         placar_raw = celulas[5].text.strip().lower()
                         penalti_mandante = penalti_visitante = None  # valores padrão
@@ -82,7 +84,7 @@ try:
                             penalti_visitante = int(match_penaltis.group(2))
 
                         if 'pro.' in placar_raw:
-                            
+                            prorrogacao = 1
 
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
