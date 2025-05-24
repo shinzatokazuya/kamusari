@@ -24,7 +24,8 @@ cursor.execute('''
         visitante_placar INTEGER,
         id_visitante INTEGER,
         fase TEXT,
-        penalidades TEXT,
+        penalti_mandante INTEGER,
+        penalti_visitante INTERGER,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
         FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
     )
@@ -70,7 +71,7 @@ try:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = '-', '-'
                     else:
-                        
+
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
                             continue
@@ -89,9 +90,9 @@ try:
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
-                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)
-                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase))
+                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante))
                     conn.commit()
                     print(
                         f"Partida: {mandante} {mandante_placar} x {visitante_placar} {visitante} inserida no banco de dados.")
