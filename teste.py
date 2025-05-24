@@ -71,11 +71,11 @@ try:
                     if "WO" in placar_raw or "ANU" in placar_raw:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = 0, 3
-                        # Se teve prorrogação
-                        prorrogacao = 0
                     else:
                         placar_raw = celulas[5].text.strip().lower()
                         penalti_mandante = penalti_visitante = None  # valores padrão
+                        # Se teve prorrogação
+                        prorrogacao = 0
 
                         # Verifica se há pênaltis no placar (ex: "1-1 (4-3 pen.)")
                         match_penaltis = re.search(r'\((\d+)-(\d+)\s*pen', placar_raw)
