@@ -26,6 +26,7 @@ cursor.execute('''
         fase TEXT,
         penalti_mandante INTEGER,
         penalti_visitante INTERGER,
+        prorrogacao INTEGER DEFAULT 0,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
         FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
     )
@@ -80,6 +81,8 @@ try:
                             penalti_mandante = int(match_penaltis.group(1))
                             penalti_visitante = int(match_penaltis.group(2))
 
+                        
+
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
                             continue
@@ -98,9 +101,9 @@ try:
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
-                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante))
+                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao))
                     conn.commit()
                     print(
                         f"Partida: {mandante} {mandante_placar} x {visitante_placar} {visitante} inserida no banco de dados.")
