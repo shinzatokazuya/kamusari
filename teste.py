@@ -81,7 +81,8 @@ try:
                             penalti_mandante = int(match_penaltis.group(1))
                             penalti_visitante = int(match_penaltis.group(2))
 
-                        
+                        if 'pro.' in placar_raw:
+                            
 
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
