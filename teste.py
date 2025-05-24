@@ -24,6 +24,8 @@ cursor.execute('''
         visitante_placar INTEGER,
         id_visitante INTEGER,
         fase TEXT,
+        penalti_mandante INTEGER,
+        penalti_visitante INTERGER,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
         FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
     )
