@@ -24,8 +24,6 @@ cursor.execute('''
         visitante_placar INTEGER,
         id_visitante INTEGER,
         fase TEXT,
-        penalti_mandante INTEGER,
-        penalti_visitante INTERGER,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
         FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
     )
@@ -79,7 +77,7 @@ try:
                         if match_penaltis:
                             penalti_mandante = int(match_penaltis.group(1))
                             penalti_visitante = int(match_penaltis.group(2))
-                            
+
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
                             continue
