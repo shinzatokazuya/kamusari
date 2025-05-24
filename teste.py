@@ -70,6 +70,7 @@ try:
                         # Define regra: mandante vence por 3x0
                         mandante_placar, visitante_placar = '-', '-'
                     else:
+                        
                         if '-' not in placar:
                             print(f"Placar inválido: {placar}, pulando partida")
                             continue
