@@ -27,10 +27,8 @@ cursor.execute('''
         penalti_mandante INTEGER,
         penalti_visitante INTERGER,
         prorrogacao INTEGER DEFAULT 0,
-        id_campeonato,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
-        FOREIGN KEY (id_visitante) REFERENCES clubes(ID),
-        FOREIGN KEY (id_campeonato) REFERENCES campeonatos(ID)
+        FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
     )
 ''')
 conn.commit()
@@ -63,7 +61,6 @@ try:
                 placar = celulas[5].text.strip()
                 visitante = celulas[7].text.strip()
                 fase = celulas[8].text.strip()
-                campeonato = 1
 
                 id_mandante = buscar_id_clube(cursor, mandante)
                 id_visitante = buscar_id_clube(cursor, visitante)
@@ -107,9 +104,9 @@ try:
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
-                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, id_campeonato)
+                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, campeonato))
+                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao))
                     conn.commit()
                     print(
                         f"Partida: {mandante} {mandante_placar} x {visitante_placar} {visitante} inserida no banco de dados.")
