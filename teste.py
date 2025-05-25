@@ -4,7 +4,7 @@ import sqlite3
 import re
 
 # 1. Definir a URL do site que você quer analisar
-url = 'https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-1993/2649/calendario?equipa=0&estado=1&filtro=&op=calendario&page=5'
+url = 'https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-1993/2649/calendario?equipa=0&estado=1&filtro=&op=calendario&page=6'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3 Edg/124.0.2478.80'
 }
@@ -27,8 +27,10 @@ cursor.execute('''
         penalti_mandante INTEGER,
         penalti_visitante INTERGER,
         prorrogacao INTEGER DEFAULT 0,
+        id_campeonato,
         FOREIGN KEY (id_mandante) REFERENCES clubes(ID),
-        FOREIGN KEY (id_visitante) REFERENCES clubes(ID)
+        FOREIGN KEY (id_visitante) REFERENCES clubes(ID),
+        FOREIGN KEY (id_campeonato) REFERENCES campeonatos(ID)
     )
 ''')
 conn.commit()
@@ -61,6 +63,7 @@ try:
                 placar = celulas[5].text.strip()
                 visitante = celulas[7].text.strip()
                 fase = celulas[8].text.strip()
+                campeonato = 1
 
                 id_mandante = buscar_id_clube(cursor, mandante)
                 id_visitante = buscar_id_clube(cursor, visitante)
@@ -104,9 +107,9 @@ try:
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
-                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao))
+                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, id_campeonato)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, campeonato))
                     conn.commit()
                     print(
                         f"Partida: {mandante} {mandante_placar} x {visitante_placar} {visitante} inserida no banco de dados.")
