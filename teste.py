@@ -63,6 +63,7 @@ try:
                 placar = celulas[5].text.strip()
                 visitante = celulas[7].text.strip()
                 fase = celulas[8].text.strip()
+                campeonato = 1
 
                 id_mandante = buscar_id_clube(cursor, mandante)
                 id_visitante = buscar_id_clube(cursor, visitante)
@@ -106,9 +107,9 @@ try:
 
                     # Inserir os dados no banco de dados
                     cursor.execute('''
-                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao)
+                        INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, id_campeonato)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao))
+                    ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao, campeonato))
                     conn.commit()
                     print(
                         f"Partida: {mandante} {mandante_placar} x {visitante_placar} {visitante} inserida no banco de dados.")
