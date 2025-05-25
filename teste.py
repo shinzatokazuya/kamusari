@@ -105,7 +105,7 @@ try:
                     # Inserir os dados no banco de dados
                     cursor.execute('''
                         INSERT INTO partidas (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (data, hora, id_mandante, mandante_placar, visitante_placar, id_visitante, fase, penalti_mandante, penalti_visitante, prorrogacao))
                     conn.commit()
                     print(
