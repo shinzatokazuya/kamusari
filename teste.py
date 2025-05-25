@@ -132,4 +132,6 @@ finally:
         conn.close()
 
 print("Fim do processo.")
+print(soup.prettify())
+
 
