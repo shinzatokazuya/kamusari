@@ -68,9 +68,9 @@ try:
                 if id_mandante and id_visitante:
                     placar_raw = celulas[5].text.strip().upper()
 
-                    if "WO" in placar_raw or "ANU" in placar_raw:
+                    if "WO" in placar_raw or "ANU" in placar_raw or "IC" in placar_raw:
                         # Define regra: mandante vence por 3x0
-                        mandante_placar, visitante_placar = 0, 3
+                        mandante_placar, visitante_placar = 1, 0
                     else:
                         placar_raw = celulas[5].text.strip().lower()
                         penalti_mandante = penalti_visitante = None  # valores padrão
