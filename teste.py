@@ -132,9 +132,3 @@ finally:
         conn.close()
 
 print("Fim do processo.")
-
-with open("pagina.html", "w", encoding="utf-8") as f:
-    f.write(soup.prettify())
-
-
-
