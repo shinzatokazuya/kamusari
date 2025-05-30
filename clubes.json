@@ -221,7 +221,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Clube_Náutico_Capibaribe_logo.svg"
     },
     {
-        "id": 21,
+        "ID": 21,
         "nome": "Guarani",
         "cidade": "Campinas",
         "estado": "SP",
@@ -232,7 +232,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Guarani_FC_logo.svg/1200px-Guarani_FC_logo.svg.png"
     },
     {
-        "id": 22,
+        "ID": 22,
         "nome": "Ceará",
         "cidade": "Fortaleza",
         "estado": "CE",
@@ -243,7 +243,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Cear%C3%A1_SC_Logo.svg/1200px-Cear%C3%A1_SC_Logo.svg.png"
     },
     {
-        "id": 23,
+        "ID": 23,
         "nome": "Paysandu",
         "cidade": "Belém",
         "estado": "PA",
@@ -254,7 +254,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Paysandu_Sport_Club_logo.svg/1200px-Paysandu_Sport_Club_logo.svg.png"
     },
     {
-        "id": 24,
+        "ID": 24,
         "nome": "Fortaleza",
         "cidade": "Fortaleza",
         "estado": "CE",
@@ -265,7 +265,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Fortaleza_EC_Logo.svg/1200px-Fortaleza_EC_Logo.svg.png"
     },
     {
-        "id": 25,
+        "ID": 25,
         "nome": "Ponte Preta",
         "cidade": "Campinas",
         "estado": "SP",
@@ -276,7 +276,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/AAPP_logo.svg/1200px-AAPP_logo.svg.png"
     },
     {
-        "id": 26,
+        "ID": 26,
         "nome": "Santa Cruz",
         "cidade": "Recife",
         "estado": "PE",
@@ -287,7 +287,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Santa_Cruz_FC_Logo.svg/1200px-Santa_Cruz_FC_Logo.svg.png"
     },
     {
-        "id": 27,
+        "ID": 27,
         "nome": "Juventude",
         "cidade": "Caxias do Sul",
         "estado": "RS",
@@ -298,7 +298,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/EC_Juventude_logo.svg/1200px-EC_Juventude_logo.svg.png"
     },
     {
-        "id": 28,
+        "ID": 28,
         "nome": "América Mineiro",
         "cidade": "Belo Horizonte",
         "estado": "MG",
@@ -309,7 +309,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/América_MG_Logo.svg/1200px-América_MG_Logo.svg.png"
     },
     {
-        "id": 29,
+        "ID": 29,
         "nome": "CSA",
         "cidade": "Maceió",
         "estado": "AL",
@@ -320,7 +320,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/CSA_Logo.svg/1200px-CSA_Logo.svg.png"
     },
     {
-        "id": 30,
+        "ID": 30,
         "nome": "America-RJ",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -331,7 +331,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/America_RJ_logo.svg/1200px-America_RJ_logo.svg.png"
     },
     {
-        "id": 31,
+        "ID": 31,
         "nome": "Figueirense",
         "cidade": "Florianópolis",
         "estado": "SC",
@@ -342,7 +342,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Figueirense_FC_logo.svg/1200px-Figueirense_FC_logo.svg.png"
     },
     {
-        "id": 32,
+        "ID": 32,
         "nome": "Remo",
         "cidade": "Belém",
         "estado": "PA",
@@ -353,7 +353,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Remo_logo.svg/1200px-Remo_logo.svg.png"
     },
     {
-        "id": 33,
+        "ID": 33,
         "nome": "Paraná",
         "cidade": "Curitiba",
         "estado": "PR",
@@ -364,7 +364,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Parana_Clube_Logo.svg/1200px-Parana_Clube_Logo.svg.png"
     },
     {
-        "id": 34,
+        "ID": 34,
         "nome": "Nacional-AM",
         "cidade": "Manaus",
         "estado": "AM",
@@ -375,7 +375,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Nacional_FC_logo.svg/1200px-Nacional_FC_logo.svg.png"
     },
     {
-        "id": 35,
+        "ID": 35,
         "nome": "América-RN",
         "cidade": "Natal",
         "estado": "RN",
@@ -386,7 +386,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/America_RN_Logo.svg/1200px-America_RN_Logo.svg.png"
     },
     {
-        "id": 36,
+        "ID": 36,
         "nome": "Red Bull Bragantino",
         "cidade": "Bragança Paulista",
         "estado": "SP",
@@ -397,7 +397,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Red_Bull_Bragantino_logo.svg/1200px-Red_Bull_Bragantino_logo.svg.png"
     },
     {
-        "id": 37,
+        "ID": 37,
         "nome": "Desportiva Capixaba",
         "cidade": "Cariacica",
         "estado": "ES",
@@ -408,7 +408,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Desportiva_Ferroviaria_Logo.svg/1200px-Desportiva_Ferroviaria_Logo.svg.png"
     },
     {
-        "id": 38,
+        "ID": 38,
         "nome": "Criciúma",
         "cidade": "Criciúma",
         "estado": "SC",
@@ -419,7 +419,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Criciuma_Esporte_Clube_logo.svg/1200px-Criciuma_Esporte_Clube_logo.svg.png"
     },
     {
-        "id": 39,
+        "ID": 39,
         "nome": "ABC",
         "cidade": "Natal",
         "estado": "RN",
@@ -430,7 +430,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/ABC_FC_logo.svg/1200px-ABC_FC_logo.svg.png"
     },
     {
-        "id": 40,
+        "ID": 40,
         "nome": "Atlético Goianiense",
         "cidade": "Goiânia",
         "estado": "GO",
@@ -441,7 +441,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Atletico_Go_logo.svg/1200px-Atletico_Go_logo.svg.png"
     },
     {
-        "id": 41,
+        "ID": 41,
         "nome": "Rio Branco-ES",
         "cidade": "Vitória",
         "estado": "ES",
@@ -452,7 +452,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Rio_Branco_ES_logo.svg/1200px-Rio_Branco_ES_logo.svg.png"
     },
     {
-        "id": 42,
+        "ID": 42,
         "nome": "Sampaio Corrêa",
         "cidade": "São Luís",
         "estado": "MA",
@@ -463,7 +463,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Sampaio_Corr%C3%AAa_logo.svg/1200px-Sampaio_Corr%C3%AAa_logo.svg.png"
     },
     {
-        "id": 43,
+        "ID": 43,
         "nome": "Joinville",
         "cidade": "Joinville",
         "estado": "SC",
@@ -474,7 +474,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Joinville_EC_logo.svg/1200px-Joinville_EC_logo.svg.png"
     },
     {
-        "id": 44,
+        "ID": 44,
         "nome": "Sergipe",
         "cidade": "Aracaju",
         "estado": "SE",
@@ -485,7 +485,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CS_Sergipe_logo.svg/1200px-CS_Sergipe_logo.svg.png"
     },
     {
-        "id": 45,
+        "ID": 45,
         "nome": "CRB",
         "cidade": "Maceió",
         "estado": "AL",
@@ -496,7 +496,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/CRB_logo.svg/1200px-CRB_logo.svg.png"
     },
     {
-        "id": 46,
+        "ID": 46,
         "nome": "Avaí",
         "cidade": "Florianópolis",
         "estado": "SC",
@@ -507,7 +507,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ava%C3%AD_FC_logo.svg/1200px-Ava%C3%AD_FC_logo.svg.png"
     },
     {
-        "id": 47,
+        "ID": 47,
         "nome": "Moto Club",
         "cidade": "São Luís",
         "estado": "MA",
@@ -518,7 +518,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Moto_Club_logo.svg/1200px-Moto_Club_logo.svg.png"
     },
     {
-        "id": 48,
+        "ID": 48,
         "nome": "Bangu",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -529,7 +529,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Bangu_Atl%C3%A9tico_Clube_logo.svg/1200px-Bangu_Atl%C3%A9tico_Clube_logo.svg.png"
     },
     {
-        "id": 49,
+        "ID": 49,
         "nome": "Campinense",
         "cidade": "Campina Grande",
         "estado": "PB",
@@ -540,7 +540,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Campinense_logo.svg/1200px-Campinense_logo.svg.png"
     },
     {
-        "id": 50,
+        "ID": 50,
         "nome": "Operário-MS",
         "cidade": "Campo Grande",
         "estado": "MS",
@@ -551,7 +551,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
     },
     {
-    "id": 51,
+    "ID": 51,
     "nome": "Vila Nova",
     "nome_completo": "Vila Nova Futebol Clube",
     "data_fundacao": "1943-07-29",
@@ -562,7 +562,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Vila_Nova_Futebol_Clube_logo.svg"
   },
   {
-    "id": 52,
+    "ID": 52,
     "nome": "Treze",
     "nome_completo": "Treze Futebol Clube",
     "fundacao": "1925-09-07",
@@ -573,7 +573,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Treze_Futebol_Clube_logo.svg"
   },
   {
-    "id": 53,
+    "ID": 53,
     "nome": "Chapecoense",
     "nome_completo": "Associação Chapecoense de Futebol",
     "data_fundacao": "1973-05-10",
@@ -584,7 +584,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol_logo.svg"
   },
   {
-    "id": 54,
+    "ID": 54,
     "nome": "Americano",
     "nome_completo": "Americano Futebol Clube",
     "fundacao": "1914-06-01",
@@ -595,7 +595,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Americano_Futebol_Clube_logo.svg"
   },
   {
-    "id": 55,
+    "ID": 55,
     "nome": "Confiança",
     "nome_completo": "Associação Desportiva Confiança",
     "data_fundacao": "1936-05-01",
@@ -606,7 +606,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_Confian%C3%A7a_logo.svg"
   },
   {
-    "id": 56,
+    "ID": 56,
     "nome": "River-PI",
     "nome_completo": "River Atlético Clube",
     "fundacao": "1946-03-01",
@@ -617,7 +617,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/River_Atl%C3%A9tico_Clube_logo.svg"
   },
   {
-    "id": 57,
+    "ID": 57,
     "nome": "Mixto",
     "nome_completo": "Mixto Esporte Clube",
     "data_fundacao": "1934-05-20",
@@ -628,7 +628,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Mixto_Esporte_Clube_logo.svg"
   },
   {
-    "id": 58,
+    "ID": 58,
     "nome": "Londrina",
     "nome_completo": "Londrina Esporte Clube",
     "data_fundacao": "1956-04-05",
@@ -639,7 +639,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Londrina_Esporte_Clube_logo.svg"
   },
   {
-    "id": 59,
+    "ID": 59,
     "nome": "São Caetano",
     "nome_completo": "Associação Desportiva São Caetano",
     "data_fundacao": "1989-12-04",
@@ -650,7 +650,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_S%C3%A3o_Caetano_logo.svg"
   },
   {
-    "id": 60,
+    "ID": 60,
     "nome": "Rio Negro-AM",
     "nome_completo": "Atlético Rio Negro Clube",
     "data_fundacao": "1913-11-13",
@@ -661,7 +661,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Atl%C3%A9tico_Rio_Negro_Clube_logo.svg"
   },
     {
-    "id": 61,
+    "ID": 61,
     "nome": "Botafogo-PB",
     "nome_completo": "Botafogo Futebol Clube",
     "data_fundacao": "1931-09-28",
@@ -672,7 +672,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_PB_logo.svg"
   },
   {
-    "id": 62,
+    "ID": 62,
     "nome": "Inter de Limeira",
     "nome_completo": "Associação Atlética Internacional de Limeira",
     "data_fundacao": "1913-10-05",
@@ -683,7 +683,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Inter_de_Limeira_logo.svg"
   },
   {
-    "id": 63,
+    "ID": 63,
     "nome": "Flamengo-PI",
     "nome_completo": "Esporte Clube Flamengo",
     "data_fundacao": "1937-08-12",
@@ -694,7 +694,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Flamengo_PI_logo.svg"
   },
   {
-    "id": 64,
+    "ID": 64,
     "nome": "Brasília",
     "nome_completo": "Brasília Futebol Clube",
     "data_fundacao": "1975-06-02",
@@ -705,7 +705,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Brasília_Futebol_Clube_logo.svg"
   },
   {
-    "id": 65,
+    "ID": 65,
     "nome": "Botafogo-SP",
     "nome_completo": "Botafogo Futebol Clube",
     "data_fundacao": "1918-10-12",
@@ -716,7 +716,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_SP_logo.svg"
   },
   {
-    "id": 66,
+    "ID": 66,
     "nome": "Gama",
     "nome_completo": "Sociedade Esportiva do Gama",
     "data_fundacao": "1975-11-15",
@@ -727,7 +727,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Gama_logo.svg"
   },
   {
-    "id": 67,
+    "ID": 67,
     "nome": "Ferroviário",
     "nome_completo": "Ferroviário Atlético Clube",
     "data_fundacao": "1933-05-09",
@@ -738,7 +738,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ferroviario_CE_logo.svg"
   },
   {
-    "id": 68,
+    "ID": 68,
     "nome": "Grêmio Maringá",
     "nome_completo": "Grêmio Esportivo Maringá",
     "data_fundacao": "1961-09-08",
@@ -749,7 +749,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Grêmio_Maringá_logo.svg"
   },
   {
-    "id": 69,
+    "ID": 69,
     "nome": "Uberaba",
     "nome_completo": "Uberaba Sport Club",
     "data_fundacao": "1917-07-15",
@@ -760,7 +760,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Uberaba_SC_logo.svg"
   },
   {
-    "id": 70,
+    "ID": 70,
     "nome": "Goytacaz",
     "nome_completo": "Goytacaz Futebol Clube",
     "data_fundacao": "1912-08-20",
