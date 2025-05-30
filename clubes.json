@@ -231,599 +231,326 @@
         "cores": "Verde e Branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Guarani_FC_logo.svg/1200px-Guarani_FC_logo.svg.png"
     },
-  {
-    "id": 22,
-    "nome": "Ceará",
-    "cidade": "Fortaleza",
-    "estado": "CE",
-    "regiao": "Nordeste",
-    "nome_completo": "Ceará Sporting Club",
-    "data_fundacao": "1914-06-02",
-    "cores": "Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Cear%C3%A1_SC_Logo.svg/1200px-Cear%C3%A1_SC_Logo.svg.png"
-  },
-  {
-    "id": 23,
-    "nome": "Paysandu",
-    "cidade": "Belém",
-    "estado": "PA",
-    "regiao": "Norte",
-    "nome_completo": "Paysandu Sport Club",
-    "data_fundacao": "1914-02-02",
-    "cores": "Azul e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Paysandu_Sport_Club_logo.svg/1200px-Paysandu_Sport_Club_logo.svg.png"
-  },
-  {
-    "id": 24,
-    "nome": "Fortaleza",
-    "cidade": "Fortaleza",
-    "estado": "CE",
-    "regiao": "Nordeste",
-    "nome_completo": "Fortaleza Esporte Clube",
-    "data_fundacao": "1918-10-18",
-    "cores": "Azul, Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Fortaleza_EC_Logo.svg/1200px-Fortaleza_EC_Logo.svg.png"
-  },
-  {
-    "id": 25,
-    "nome": "Ponte Preta",
-    "cidade": "Campinas",
-    "estado": "SP",
-    "regiao": "Sudeste",
-    "nome_completo": "Associação Atlética Ponte Preta",
-    "data_fundacao": "1900-08-11",
-    "cores": "Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/AAPP_logo.svg/1200px-AAPP_logo.svg.png"
-  },
-  {
-    "id": 26,
-    "nome": "Santa Cruz",
-    "cidade": "Recife",
-    "estado": "PE",
-    "regiao": "Nordeste",
-    "nome_completo": "Santa Cruz Futebol Clube",
-    "data_fundacao": "1914-02-03",
-    "cores": "Vermelho, Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Santa_Cruz_FC_Logo.svg/1200px-Santa_Cruz_FC_Logo.svg.png"
-  },
-  {
-    "id": 27,
-    "nome": "Juventude",
-    "cidade": "Caxias do Sul",
-    "estado": "RS",
-    "regiao": "Sul",
-    "nome_completo": "Esporte Clube Juventude",
-    "data_fundacao": "1913-06-29",
-    "cores": "Verde e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/EC_Juventude_logo.svg/1200px-EC_Juventude_logo.svg.png"
-  },
-  {
-    "id": 28,
-    "nome": "América Mineiro",
-    "cidade": "Belo Horizonte",
-    "estado": "MG",
-    "regiao": "Sudeste",
-    "nome_completo": "América Futebol Clube",
-    "data_fundacao": "1912-04-30",
-    "cores": "Verde e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/América_MG_Logo.svg/1200px-América_MG_Logo.svg.png"
-  },
-  {
-    "id": 29,
-    "nome": "CSA",
-    "cidade": "Maceió",
-    "estado": "AL",
-    "regiao": "Nordeste",
-    "nome_completo": "Centro Sportivo Alagoano",
-    "data_fundacao": "1912-06-07",
-    "cores": "Azul e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/CSA_Logo.svg/1200px-CSA_Logo.svg.png"
-  },
-  {
-    "id": 30,
-    "nome": "America-RJ",
-    "cidade": "Rio de Janeiro",
-    "estado": "RJ",
-    "regiao": "Sudeste",
-    "nome_completo": "America Football Club",
-    "data_fundacao": "1904-09-18",
-    "cores": "Vermelho",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/America_RJ_logo.svg/1200px-America_RJ_logo.svg.png"
-  },
-  {
-    "id": 31,
-    "nome": "Figueirense",
-    "cidade": "Florianópolis",
-    "estado": "SC",
-    "regiao": "Sul",
-    "nome_completo": "Figueirense Futebol Clube",
-    "data_fundacao": "1921-06-12",
-    "cores": "Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Figueirense_FC_logo.svg/1200px-Figueirense_FC_logo.svg.png"
-  },
-  {
-    "id": 32,
-    "nome": "Remo",
-    "cidade": "Belém",
-    "estado": "PA",
-    "regiao": "Norte",
-    "nome_completo": "Clube do Remo",
-    "data_fundacao": "1905-02-05",
-    "cores": "Azul e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Remo_logo.svg/1200px-Remo_logo.svg.png"
-  },
-  {
-    "id": 33,
-    "nome": "Paraná",
-    "cidade": "Curitiba",
-    "estado": "PR",
-    "regiao": "Sul",
-    "nome_completo": "Paraná Clube",
-    "data_fundacao": "1989-12-19",
-    "cores": "Vermelho, Branco e Azul",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Parana_Clube_Logo.svg/1200px-Parana_Clube_Logo.svg.png"
-  },
-  {
-    "id": 34,
-    "nome": "Nacional-AM",
-    "cidade": "Manaus",
-    "estado": "AM",
-    "regiao": "Norte",
-    "nome_completo": "Nacional Futebol Clube",
-    "data_fundacao": "1913-01-13",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Nacional_FC_logo.svg/1200px-Nacional_FC_logo.svg.png"
-  },
-  {
-    "id": 35,
-    "nome": "América-RN",
-    "cidade": "Natal",
-    "estado": "RN",
-    "regiao": "Nordeste",
-    "nome_completo": "América Futebol Clube",
-    "data_fundacao": "1915-06-05",
-    "cores": "Verde, Branco e Vermelho",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/America_RN_Logo.svg/1200px-America_RN_Logo.svg.png"
-  },
-  {
-    "id": 36,
-    "nome": "Red Bull Bragantino",
-    "cidade": "Bragança Paulista",
-    "estado": "SP",
-    "regiao": "Sudeste",
-    "nome_completo": "Red Bull Bragantino",
-    "data_fundacao": "1928-01-06",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Red_Bull_Bragantino_logo.svg/1200px-Red_Bull_Bragantino_logo.svg.png"
-  },
-  {
-    "id": 37,
-    "nome": "Desportiva Capixaba",
-    "cidade": "Cariacica",
-    "estado": "ES",
-    "regiao": "Sudeste",
-    "nome_completo": "Desportiva Ferroviária",
-    "data_fundacao": "1963-01-21",
-    "cores": "Vermelho e Preto",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Desportiva_Ferroviaria_Logo.svg/1200px-Desportiva_Ferroviaria_Logo.svg.png"
-  },
-  {
-    "id": 38,
-    "nome": "Criciúma",
-    "cidade": "Criciúma",
-    "estado": "SC",
-    "regiao": "Sul",
-    "nome_completo": "Criciúma Esporte Clube",
-    "data_fundacao": "1947-05-13",
-    "cores": "Amarelo, Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Criciuma_Esporte_Clube_logo.svg/1200px-Criciuma_Esporte_Clube_logo.svg.png"
-  },
-  {
-    "id": 39,
-    "nome": "ABC",
-    "cidade": "Natal",
-    "estado": "RN",
-    "regiao": "Nordeste",
-    "nome_completo": "ABC Futebol Clube",
-    "data_fundacao": "1915-06-29",
-    "cores": "Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/ABC_FC_logo.svg/1200px-ABC_FC_logo.svg.png"
-  },
-  {
-    "id": 40,
-    "nome": "Atlético Goianiense",
-    "cidade": "Goiânia",
-    "estado": "GO",
-    "regiao": "Centro-Oeste",
-    "nome_completo": "Atlético Clube Goianiense",
-    "data_fundacao": "1937-04-02",
-    "cores": "Vermelho e Preto",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Atletico_Go_logo.svg/1200px-Atletico_Go_logo.svg.png"
-  },
-  {
-    "id": 41,
-    "nome": "Rio Branco-ES",
-    "cidade": "Vitória",
-    "estado": "ES",
-    "regiao": "Sudeste",
-    "nome_completo": "Rio Branco Atlético Clube",
-    "data_fundacao": "1913-01-21",
-    "cores": "Branco e Vermelho",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Rio_Branco_ES_logo.svg/1200px-Rio_Branco_ES_logo.svg.png"
-  },
-  {
-    "id": 42,
-    "nome": "Sampaio Corrêa",
-    "cidade": "São Luís",
-    "estado": "MA",
-    "regiao": "Nordeste",
-    "nome_completo": "Sampaio Corrêa Futebol Clube",
-    "data_fundacao": "1923-09-25",
-    "cores": "Amarelo, Verde e Vermelho",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Sampaio_Corr%C3%AAa_logo.svg/1200px-Sampaio_Corr%C3%AAa_logo.svg.png"
-  },
-  {
-    "id": 43,
-    "nome": "Joinville",
-    "cidade": "Joinville",
-    "estado": "SC",
-    "regiao": "Sul",
-    "nome_completo": "Joinville Esporte Clube",
-    "data_fundacao": "1976-01-29",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Joinville_EC_logo.svg/1200px-Joinville_EC_logo.svg.png"
-  },
-  {
-    "id": 44,
-    "nome": "Sergipe",
-    "cidade": "Aracaju",
-    "estado": "SE",
-    "regiao": "Nordeste",
-    "nome_completo": "Club Sportivo Sergipe",
-    "data_fundacao": "1909-10-17",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CS_Sergipe_logo.svg/1200px-CS_Sergipe_logo.svg.png"
-  },
-  {
-    "id": 45,
-    "nome": "CRB",
-    "cidade": "Maceió",
-    "estado": "AL",
-    "regiao": "Nordeste",
-    "nome_completo": "Clube de Regatas Brasil",
-    "data_fundacao": "1912-09-20",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/CRB_logo.svg/1200px-CRB_logo.svg.png"
-  },
-  {
-    "id": 46,
-    "nome": "Avaí",
-    "cidade": "Florianópolis",
-    "estado": "SC",
-    "regiao": "Sul",
-    "nome_completo": "Avaí Futebol Clube",
-    "data_fundacao": "1923-09-01",
-    "cores": "Azul e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ava%C3%AD_FC_logo.svg/1200px-Ava%C3%AD_FC_logo.svg.png"
-  },
-  {
-    "id": 47,
-    "nome": "Moto Club",
-    "cidade": "São Luís",
-    "estado": "MA",
-    "regiao": "Nordeste",
-    "nome_completo": "Moto Club de São Luís",
-    "data_fundacao": "1937-09-13",
-    "cores": "Vermelho e Preto",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Moto_Club_logo.svg/1200px-Moto_Club_logo.svg.png"
-  },
-  {
-    "id": 48,
-    "nome": "Bangu",
-    "cidade": "Rio de Janeiro",
-    "estado": "RJ",
-    "regiao": "Sudeste",
-    "nome_completo": "Bangu Atlético Clube",
-    "data_fundacao": "1904-04-17",
-    "cores": "Vermelho e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Bangu_Atl%C3%A9tico_Clube_logo.svg/1200px-Bangu_Atl%C3%A9tico_Clube_logo.svg.png"
-  },
-  {
-    "id": 49,
-    "nome": "Campinense",
-    "cidade": "Campina Grande",
-    "estado": "PB",
-    "regiao": "Nordeste",
-    "nome_completo": "Campinense Clube",
-    "data_fundacao": "1915-04-12",
-    "cores": "Vermelho e Preto",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Campinense_logo.svg/1200px-Campinense_logo.svg.png"
-  },
-  {
-    "id": 50,
-    "nome": "Operário-MS",
-    "cidade": "Campo Grande",
-    "estado": "MS",
-    "regiao": "Centro-Oeste",
-    "nome_completo": "Operário Futebol Clube",
-    "data_fundacao": "1938-08-10",
-    "cores": "Preto e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
-  },
-  {
-  "51": {
-    "nome": "Vila Nova",
-    "nome_completo": "Vila Nova Futebol Clube",
-    "ano_fundacao": 1943,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Goiânia",
-    "estado": "GO",
-    "regiao": "Centro-Oeste"
-  },
-  "52": {
-    "nome": "Treze",
-    "nome_completo": "Treze Futebol Clube",
-    "ano_fundacao": 1925,
-    "cores": ["preto", "branco"],
-    "cidade": "Campina Grande",
-    "estado": "PB",
-    "regiao": "Nordeste"
-  },
-  "53": {
-    "nome": "Chapecoense",
-    "nome_completo": "Associação Chapecoense de Futebol",
-    "ano_fundacao": 1973,
-    "cores": ["verde", "branco"],
-    "cidade": "Chapecó",
-    "estado": "SC",
-    "regiao": "Sul"
-  },
-  "54": {
-    "nome": "Americano",
-    "nome_completo": "Americano Futebol Clube",
-    "ano_fundacao": 1914,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Campos dos Goytacazes",
-    "estado": "RJ",
-    "regiao": "Sudeste"
-  },
-  "55": {
-    "nome": "Confiança",
-    "nome_completo": "Associação Desportiva Confiança",
-    "ano_fundacao": 1936,
-    "cores": ["azul", "branco"],
-    "cidade": "Aracaju",
-    "estado": "SE",
-    "regiao": "Nordeste"
-  },
-  "56": {
-    "nome": "River-PI",
-    "nome_completo": "River Atlético Clube",
-    "ano_fundacao": 1946,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Teresina",
-    "estado": "PI",
-    "regiao": "Nordeste"
-  },
-  "57": {
-    "nome": "Mixto",
-    "nome_completo": "Mixto Esporte Clube",
-    "ano_fundacao": 1934,
-    "cores": ["amarelo", "preto"],
-    "cidade": "Cuiabá",
-    "estado": "MT",
-    "regiao": "Centro-Oeste"
-  },
-  "58": {
-    "nome": "Londrina",
-    "nome_completo": "Londrina Esporte Clube",
-    "ano_fundacao": 1956,
-    "cores": ["azul", "branco"],
-    "cidade": "Londrina",
-    "estado": "PR",
-    "regiao": "Sul"
-  },
-  "59": {
-    "nome": "São Caetano",
-    "nome_completo": "Associação Desportiva São Caetano",
-    "ano_fundacao": 1989,
-    "cores": ["azul", "branco"],
-    "cidade": "São Caetano do Sul",
-    "estado": "SP",
-    "regiao": "Sudeste"
-  },
-  "60": {
-    "nome": "Rio Negro-AM",
-    "nome_completo": "Atlético Rio Negro Clube",
-    "ano_fundacao": 1913,
-    "cores": ["preto", "amarelo"],
-    "cidade": "Manaus",
-    "estado": "AM",
-    "regiao": "Norte"
-  },
-  "61": {
-    "nome": "Botafogo-PB",
-    "nome_completo": "Botafogo Futebol Clube (PB)",
-    "ano_fundacao": 1931,
-    "cores": ["preto", "branco"],
-    "cidade": "João Pessoa",
-    "estado": "PB",
-    "regiao": "Nordeste"
-  },
-  "62": {
-    "nome": "Inter de Limeira",
-    "nome_completo": "Associação Atlética Internacional (Limeira)",
-    "ano_fundacao": 1913,
-    "cores": ["preto", "branco"],
-    "cidade": "Limeira",
-    "estado": "SP",
-    "regiao": "Sudeste"
-  },
-  "63": {
-    "nome": "Flamengo-PI",
-    "nome_completo": "Esporte Clube Flamengo (PI)",
-    "ano_fundacao": 1947,
-    "cores": ["vermelho", "preto"],
-    "cidade": "Teresina",
-    "estado": "PI",
-    "regiao": "Nordeste"
-  },
-  "64": {
-    "nome": "Brasília",
-    "nome_completo": "Brasília Futebol Clube",
-    "ano_fundacao": 1975,
-    "cores": ["azul", "branco"],
-    "cidade": "Brasília",
-    "estado": "DF",
-    "regiao": "Centro-Oeste"
-  },
-  "65": {
-    "nome": "Botafogo-SP",
-    "nome_completo": "Botafogo Futebol Clube (SP)",
-    "ano_fundacao": 1918,
-    "cores": ["preto", "branco"],
-    "cidade": "Ribeirão Preto",
-    "estado": "SP",
-    "regiao": "Sudeste"
-  },
-  "66": {
-    "nome": "Gama",
-    "nome_completo": "Sociedade Esportiva do Gama",
-    "ano_fundacao": 1975,
-    "cores": ["verde", "branco"],
-    "cidade": "Gama",
-    "estado": "DF",
-    "regiao": "Centro-Oeste"
-  },
-  "67": {
-    "nome": "Ferroviário",
-    "nome_completo": "Ferroviário Atlético Clube (CE)",
-    "ano_fundacao": 1933,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Fortaleza",
-    "estado": "CE",
-    "regiao": "Nordeste"
-  },
-  "68": {
-    "nome": "Grêmio Maringá",
-    "nome_completo": "Grêmio de Esportes Maringá",
-    "ano_fundacao": 1976,
-    "cores": ["preto", "branco"],
-    "cidade": "Maringá",
-    "estado": "PR",
-    "regiao": "Sul"
-  },
-  "69": {
-    "nome": "Uberaba",
-    "nome_completo": "Uberaba Sport Club",
-    "ano_fundacao": 1917,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Uberaba",
-    "estado": "MG",
-    "regiao": "Sudeste"
-  },
-  "70": {
-    "nome": "Goytacaz",
-    "nome_completo": "Goytacaz Futebol Clube",
-    "ano_fundacao": 1912,
-    "cores": ["azul", "branco"],
-    "cidade": "Campos dos Goytacazes",
-    "estado": "RJ",
-    "regiao": "Sudeste"
-  },
-  "71": {
-    "nome": "Comercial-MS",
-    "nome_completo": "Comercial Futebol Clube (MS)",
-    "ano_fundacao": 1943,
-    "cores": ["verde", "branco"],
-    "cidade": "Campo Grande",
-    "estado": "MS",
-    "regiao": "Centro-Oeste"
-  },
-  "72": {
-    "nome": "Itabaiana",
-    "nome_completo": "Associação Olímpica de Itabaiana",
-    "ano_fundacao": 1938,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Itabaiana",
-    "estado": "SE",
-    "regiao": "Nordeste"
-  },
-  "73": {
-    "nome": "Tiradentes-PI",
-    "nome_completo": "Tiradentes Atlético Clube",
-    "ano_fundacao": 1959,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Teresina",
-    "estado": "PI",
-    "regiao": "Nordeste"
-  },
-  "74": {
-    "nome": "Colorado",
-    "nome_completo": "Colorado Esporte Clube",
-    "ano_fundacao": 1971,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Curitiba",
-    "estado": "PR",
-    "regiao": "Sul"
-  },
-  "75": {
-    "nome": "Metropol",
-    "nome_completo": "Clube Atlético Metropol",
-    "ano_fundacao": 1945,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Criciúma",
-    "estado": "SC",
-    "regiao": "Sul"
-  },
-  "76": {
-    "nome": "Tuna Luso",
-    "nome_completo": "Tuna Luso Brasileira",
-    "ano_fundacao": 1903,
-    "cores": ["azul", "branco", "vermelho"],
-    "cidade": "Belém",
-    "estado": "PA",
-    "regiao": "Norte"
-  },
-  "77": {
-    "nome": "Anapolina",
-    "nome_completo": "Associação Atlética Anapolina",
-    "ano_fundacao": 1948,
-    "cores": ["vermelho", "branco"],
-    "cidade": "Anápolis",
-    "estado": "GO",
-    "regiao": "Centro-Oeste"
-  },
-  "78": {
-    "nome": "Caxias",
-    "nome_completo": "Sociedade Esportiva e Recreativa Caxias do Sul",
-    "ano_fundacao": 1935,
-    "cores": ["vermelho", "preto", "branco"],
-    "cidade": "Caxias do Sul",
-    "estado": "RS",
-    "regiao": "Sul"
-  },
-  "79": {
-    "nome": "GE Brasil",
-    "nome_completo": "Grêmio Esportivo Brasil",
-    "ano_fundacao": 1911,
-    "cores": ["azul", "branco"],
-    "cidade": "Pelotas",
-    "estado": "RS",
-    "regiao": "Sul"
-  },
-  "80": {
-    "nome": "União São João",
-    "nome_completo": "União São João Esporte Clube",
-    "ano_fundacao": 1981,
-    "cores": ["verde", "branco"],
-    "cidade": "Araras",
-    "estado": "SP",
-    "regiao": "Sudeste"
-    }
-  },
-
-
+    {
+        "id": 22,
+        "nome": "Ceará",
+        "cidade": "Fortaleza",
+        "estado": "CE",
+        "regiao": "Nordeste",
+        "nome_completo": "Ceará Sporting Club",
+        "data_fundacao": "1914-06-02",
+        "cores": "Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Cear%C3%A1_SC_Logo.svg/1200px-Cear%C3%A1_SC_Logo.svg.png"
+    },
+    {
+        "id": 23,
+        "nome": "Paysandu",
+        "cidade": "Belém",
+        "estado": "PA",
+        "regiao": "Norte",
+        "nome_completo": "Paysandu Sport Club",
+        "data_fundacao": "1914-02-02",
+        "cores": "Azul e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Paysandu_Sport_Club_logo.svg/1200px-Paysandu_Sport_Club_logo.svg.png"
+    },
+    {
+        "id": 24,
+        "nome": "Fortaleza",
+        "cidade": "Fortaleza",
+        "estado": "CE",
+        "regiao": "Nordeste",
+        "nome_completo": "Fortaleza Esporte Clube",
+        "data_fundacao": "1918-10-18",
+        "cores": "Azul, Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Fortaleza_EC_Logo.svg/1200px-Fortaleza_EC_Logo.svg.png"
+    },
+    {
+        "id": 25,
+        "nome": "Ponte Preta",
+        "cidade": "Campinas",
+        "estado": "SP",
+        "regiao": "Sudeste",
+        "nome_completo": "Associação Atlética Ponte Preta",
+        "data_fundacao": "1900-08-11",
+        "cores": "Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/AAPP_logo.svg/1200px-AAPP_logo.svg.png"
+    },
+    {
+        "id": 26,
+        "nome": "Santa Cruz",
+        "cidade": "Recife",
+        "estado": "PE",
+        "regiao": "Nordeste",
+        "nome_completo": "Santa Cruz Futebol Clube",
+        "data_fundacao": "1914-02-03",
+        "cores": "Vermelho, Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Santa_Cruz_FC_Logo.svg/1200px-Santa_Cruz_FC_Logo.svg.png"
+    },
+    {
+        "id": 27,
+        "nome": "Juventude",
+        "cidade": "Caxias do Sul",
+        "estado": "RS",
+        "regiao": "Sul",
+        "nome_completo": "Esporte Clube Juventude",
+        "data_fundacao": "1913-06-29",
+        "cores": "Verde e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/EC_Juventude_logo.svg/1200px-EC_Juventude_logo.svg.png"
+    },
+    {
+        "id": 28,
+        "nome": "América Mineiro",
+        "cidade": "Belo Horizonte",
+        "estado": "MG",
+        "regiao": "Sudeste",
+        "nome_completo": "América Futebol Clube",
+        "data_fundacao": "1912-04-30",
+        "cores": "Verde e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/América_MG_Logo.svg/1200px-América_MG_Logo.svg.png"
+    },
+    {
+        "id": 29,
+        "nome": "CSA",
+        "cidade": "Maceió",
+        "estado": "AL",
+        "regiao": "Nordeste",
+        "nome_completo": "Centro Sportivo Alagoano",
+        "data_fundacao": "1912-06-07",
+        "cores": "Azul e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/CSA_Logo.svg/1200px-CSA_Logo.svg.png"
+    },
+    {
+        "id": 30,
+        "nome": "America-RJ",
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ",
+        "regiao": "Sudeste",
+        "nome_completo": "America Football Club",
+        "data_fundacao": "1904-09-18",
+        "cores": "Vermelho",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/America_RJ_logo.svg/1200px-America_RJ_logo.svg.png"
+    },
+    {
+        "id": 31,
+        "nome": "Figueirense",
+        "cidade": "Florianópolis",
+        "estado": "SC",
+        "regiao": "Sul",
+        "nome_completo": "Figueirense Futebol Clube",
+        "data_fundacao": "1921-06-12",
+        "cores": "Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Figueirense_FC_logo.svg/1200px-Figueirense_FC_logo.svg.png"
+    },
+    {
+        "id": 32,
+        "nome": "Remo",
+        "cidade": "Belém",
+        "estado": "PA",
+        "regiao": "Norte",
+        "nome_completo": "Clube do Remo",
+        "data_fundacao": "1905-02-05",
+        "cores": "Azul e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Remo_logo.svg/1200px-Remo_logo.svg.png"
+    },
+    {
+        "id": 33,
+        "nome": "Paraná",
+        "cidade": "Curitiba",
+        "estado": "PR",
+        "regiao": "Sul",
+        "nome_completo": "Paraná Clube",
+        "data_fundacao": "1989-12-19",
+        "cores": "Vermelho, Branco e Azul",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Parana_Clube_Logo.svg/1200px-Parana_Clube_Logo.svg.png"
+    },
+    {
+        "id": 34,
+        "nome": "Nacional-AM",
+        "cidade": "Manaus",
+        "estado": "AM",
+        "regiao": "Norte",
+        "nome_completo": "Nacional Futebol Clube",
+        "data_fundacao": "1913-01-13",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Nacional_FC_logo.svg/1200px-Nacional_FC_logo.svg.png"
+    },
+    {
+        "id": 35,
+        "nome": "América-RN",
+        "cidade": "Natal",
+        "estado": "RN",
+        "regiao": "Nordeste",
+        "nome_completo": "América Futebol Clube",
+        "data_fundacao": "1915-06-05",
+        "cores": "Verde, Branco e Vermelho",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/America_RN_Logo.svg/1200px-America_RN_Logo.svg.png"
+    },
+    {
+        "id": 36,
+        "nome": "Red Bull Bragantino",
+        "cidade": "Bragança Paulista",
+        "estado": "SP",
+        "regiao": "Sudeste",
+        "nome_completo": "Red Bull Bragantino",
+        "data_fundacao": "1928-01-06",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Red_Bull_Bragantino_logo.svg/1200px-Red_Bull_Bragantino_logo.svg.png"
+    },
+    {
+        "id": 37,
+        "nome": "Desportiva Capixaba",
+        "cidade": "Cariacica",
+        "estado": "ES",
+        "regiao": "Sudeste",
+        "nome_completo": "Desportiva Ferroviária",
+        "data_fundacao": "1963-01-21",
+        "cores": "Vermelho e Preto",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Desportiva_Ferroviaria_Logo.svg/1200px-Desportiva_Ferroviaria_Logo.svg.png"
+    },
+    {
+        "id": 38,
+        "nome": "Criciúma",
+        "cidade": "Criciúma",
+        "estado": "SC",
+        "regiao": "Sul",
+        "nome_completo": "Criciúma Esporte Clube",
+        "data_fundacao": "1947-05-13",
+        "cores": "Amarelo, Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Criciuma_Esporte_Clube_logo.svg/1200px-Criciuma_Esporte_Clube_logo.svg.png"
+    },
+    {
+        "id": 39,
+        "nome": "ABC",
+        "cidade": "Natal",
+        "estado": "RN",
+        "regiao": "Nordeste",
+        "nome_completo": "ABC Futebol Clube",
+        "data_fundacao": "1915-06-29",
+        "cores": "Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/ABC_FC_logo.svg/1200px-ABC_FC_logo.svg.png"
+    },
+    {
+        "id": 40,
+        "nome": "Atlético Goianiense",
+        "cidade": "Goiânia",
+        "estado": "GO",
+        "regiao": "Centro-Oeste",
+        "nome_completo": "Atlético Clube Goianiense",
+        "data_fundacao": "1937-04-02",
+        "cores": "Vermelho e Preto",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Atletico_Go_logo.svg/1200px-Atletico_Go_logo.svg.png"
+    },
+    {
+        "id": 41,
+        "nome": "Rio Branco-ES",
+        "cidade": "Vitória",
+        "estado": "ES",
+        "regiao": "Sudeste",
+        "nome_completo": "Rio Branco Atlético Clube",
+        "data_fundacao": "1913-01-21",
+        "cores": "Branco e Vermelho",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Rio_Branco_ES_logo.svg/1200px-Rio_Branco_ES_logo.svg.png"
+    },
+    {
+        "id": 42,
+        "nome": "Sampaio Corrêa",
+        "cidade": "São Luís",
+        "estado": "MA",
+        "regiao": "Nordeste",
+        "nome_completo": "Sampaio Corrêa Futebol Clube",
+        "data_fundacao": "1923-09-25",
+        "cores": "Amarelo, Verde e Vermelho",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Sampaio_Corr%C3%AAa_logo.svg/1200px-Sampaio_Corr%C3%AAa_logo.svg.png"
+    },
+    {
+        "id": 43,
+        "nome": "Joinville",
+        "cidade": "Joinville",
+        "estado": "SC",
+        "regiao": "Sul",
+        "nome_completo": "Joinville Esporte Clube",
+        "data_fundacao": "1976-01-29",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Joinville_EC_logo.svg/1200px-Joinville_EC_logo.svg.png"
+    },
+    {
+        "id": 44,
+        "nome": "Sergipe",
+        "cidade": "Aracaju",
+        "estado": "SE",
+        "regiao": "Nordeste",
+        "nome_completo": "Club Sportivo Sergipe",
+        "data_fundacao": "1909-10-17",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CS_Sergipe_logo.svg/1200px-CS_Sergipe_logo.svg.png"
+    },
+    {
+        "id": 45,
+        "nome": "CRB",
+        "cidade": "Maceió",
+        "estado": "AL",
+        "regiao": "Nordeste",
+        "nome_completo": "Clube de Regatas Brasil",
+        "data_fundacao": "1912-09-20",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/CRB_logo.svg/1200px-CRB_logo.svg.png"
+    },
+    {
+        "id": 46,
+        "nome": "Avaí",
+        "cidade": "Florianópolis",
+        "estado": "SC",
+        "regiao": "Sul",
+        "nome_completo": "Avaí Futebol Clube",
+        "data_fundacao": "1923-09-01",
+        "cores": "Azul e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ava%C3%AD_FC_logo.svg/1200px-Ava%C3%AD_FC_logo.svg.png"
+    },
+    {
+        "id": 47,
+        "nome": "Moto Club",
+        "cidade": "São Luís",
+        "estado": "MA",
+        "regiao": "Nordeste",
+        "nome_completo": "Moto Club de São Luís",
+        "data_fundacao": "1937-09-13",
+        "cores": "Vermelho e Preto",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Moto_Club_logo.svg/1200px-Moto_Club_logo.svg.png"
+    },
+    {
+        "id": 48,
+        "nome": "Bangu",
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ",
+        "regiao": "Sudeste",
+        "nome_completo": "Bangu Atlético Clube",
+        "data_fundacao": "1904-04-17",
+        "cores": "Vermelho e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Bangu_Atl%C3%A9tico_Clube_logo.svg/1200px-Bangu_Atl%C3%A9tico_Clube_logo.svg.png"
+    },
+    {
+        "id": 49,
+        "nome": "Campinense",
+        "cidade": "Campina Grande",
+        "estado": "PB",
+        "regiao": "Nordeste",
+        "nome_completo": "Campinense Clube",
+        "data_fundacao": "1915-04-12",
+        "cores": "Vermelho e Preto",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Campinense_logo.svg/1200px-Campinense_logo.svg.png"
+    },
+    {
+        "id": 50,
+        "nome": "Operário-MS",
+        "cidade": "Campo Grande",
+        "estado": "MS",
+        "regiao": "Centro-Oeste",
+        "nome_completo": "Operário Futebol Clube",
+        "data_fundacao": "1938-08-10",
+        "cores": "Preto e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
+    },
+    
   ],
   "estadios": [
     {
