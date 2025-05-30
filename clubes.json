@@ -1,0 +1,326 @@
+{
+  "clubes": [
+    {
+      "id": 1,
+      "nome": "Grêmio",
+      "cidade": "Porto Alegre",
+      "estado": "RS",
+      "regiao": "Sul",
+      "nome_completo": "Grêmio Foot-Ball Porto Alegrense",
+      "ano_fundacao": 1903,
+      "cores": ["azul", "preto", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/0/09/Grêmio_FBPA.svg"
+    },
+    {
+      "id": 2,
+      "nome": "Santos",
+      "cidade": "Santos",
+      "estado": "SP",
+      "regiao": "Sudeste",
+      "nome_completo": "Santos Futebol Clube",
+      "ano_fundacao": 1912,
+      "cores": ["branco", "preto"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Santos_FC.svg"
+    },
+    {
+      "id": 3,
+      "nome": "Atlético Mineiro",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "regiao": "Sudeste",
+      "nome_completo": "Clube Atlético Mineiro",
+      "ano_fundacao": 1908,
+      "cores": ["preto", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/6/64/Clube_Atl%C3%A9tico_Mineiro_logo.svg"
+    },
+    {
+      "id": 4,
+      "nome": "Palmeiras",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "regiao": "Sudeste",
+      "nome_completo": "Sociedade Esportiva Palmeiras",
+      "ano_fundacao": 1914,
+      "cores": ["verde", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Palmeiras_logo.svg"
+    },
+    {
+      "id": 5,
+      "nome": "Cruzeiro",
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "regiao": "Sudeste",
+      "nome_completo": "Cruzeiro Esporte Clube",
+      "ano_fundacao": 1921,
+      "cores": ["azul", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Cruzeiro_Esporte_Clube_logo.svg"
+    },
+    {
+      "id": 6,
+      "nome": "Botafogo",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "regiao": "Sudeste",
+      "nome_completo": "Botafogo de Futebol e Regatas",
+      "ano_fundacao": 1894,
+      "cores": ["preto", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/1/14/Botafogo_de_Futebol_e_Regatas_Logo.svg"
+    },
+    {
+      "id": 7,
+      "nome": "Fluminense",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "regiao": "Sudeste",
+      "nome_completo": "Fluminense Football Club",
+      "ano_fundacao": 1902,
+      "cores": ["verde", "grená", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Fluminense_FC_logo.svg"
+    },
+    {
+      "id": 8,
+      "nome": "Flamengo",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "regiao": "Sudeste",
+      "nome_completo": "Clube de Regatas do Flamengo",
+      "ano_fundacao": 1895,
+      "cores": ["vermelho", "preto"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/33/CR_Flamengo_logo.svg"
+    },
+    {
+      "id": 9,
+      "nome": "Internacional",
+      "cidade": "Porto Alegre",
+      "estado": "RS",
+      "regiao": "Sul",
+      "nome_completo": "Sport Club Internacional",
+      "ano_fundacao": 1909,
+      "cores": ["vermelho", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/9/91/Sport_Club_Internacional_logo.svg"
+    },
+    {
+      "id": 10,
+      "nome": "São Paulo",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "regiao": "Sudeste",
+      "nome_completo": "São Paulo Futebol Clube",
+      "ano_fundacao": 1930,
+      "cores": ["preto", "branco", "vermelho"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/f/fb/S%C3%A3o_Paulo_FC_logo.svg"
+    },
+    {
+      "id": 11,
+      "nome": "Corinthians",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "regiao": "Sudeste",
+      "nome_completo": "Sport Club Corinthians Paulista",
+      "ano_fundacao": 1910,
+      "cores": ["preto", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/SC_Corinthians_Logo.svg"
+    },
+    {
+      "id": 12,
+      "nome": "Vasco da Gama",
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "regiao": "Sudeste",
+      "nome_completo": "Club de Regatas Vasco da Gama",
+      "ano_fundacao": 1898,
+      "cores": ["preto", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/5/5f/CR_Vasco_da_Gama_logo.svg"
+    },
+    {
+      "id": 13,
+      "nome": "Bahia",
+      "cidade": "Salvador",
+      "estado": "BA",
+      "regiao": "Nordeste",
+      "nome_completo": "Esporte Clube Bahia",
+      "ano_fundacao": 1931,
+      "cores": ["azul", "vermelho", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Esporte_Clube_Bahia_logo.svg"
+    },
+    {
+      "id": 14,
+      "nome": "Atlético Paranaense",
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "regiao": "Sul",
+      "nome_completo": "Club Athletico Paranaense",
+      "ano_fundacao": 1924,
+      "cores": ["vermelho", "preto"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/44/Club_Athletico_Paranaense_logo.svg"
+    },
+    {
+      "id": 15,
+      "nome": "Sport",
+      "cidade": "Recife",
+      "estado": "PE",
+      "regiao": "Nordeste",
+      "nome_completo": "Sport Club do Recife",
+      "ano_fundacao": 1905,
+      "cores": ["vermelho", "preto"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/30/Sport_Club_do_Recife_logo.svg"
+    },
+    {
+      "id": 16,
+      "nome": "Goiás",
+      "cidade": "Goiânia",
+      "estado": "GO",
+      "regiao": "Centro-Oeste",
+      "nome_completo": "Goiás Esporte Clube",
+      "ano_fundacao": 1943,
+      "cores": ["verde", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Goi%C3%A1s_Esporte_Clube_logo.svg"
+    },
+    {
+      "id": 17,
+      "nome": "Coritiba",
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "regiao": "Sul",
+      "nome_completo": "Coritiba Foot Ball Club",
+      "ano_fundacao": 1909,
+      "cores": ["verde", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/32/Coritiba_Foot_Ball_Club_logo.svg"
+    },
+    {
+      "id": 18,
+      "nome": "Vitória",
+      "cidade": "Salvador",
+      "estado": "BA",
+      "regiao": "Nordeste",
+      "nome_completo": "Esporte Clube Vitória",
+      "ano_fundacao": 1899,
+      "cores": ["vermelho", "preto"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Esporte_Clube_Vit%C3%B3ria_logo.svg"
+    },
+    {
+      "id": 19,
+      "nome": "Portuguesa",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "regiao": "Sudeste",
+      "nome_completo": "Associação Portuguesa de Desportos",
+      "ano_fundacao": 1920,
+      "cores": ["vermelho", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/0/01/Associa%C3%A7%C3%A3o_Portuguesa_de_Desportos_logo.svg"
+    },
+    {
+      "id": 20,
+      "nome": "Náutico",
+      "cidade": "Recife",
+      "estado": "PE",
+      "regiao": "Nordeste",
+      "nome_completo": "Clube Náutico Capibaribe",
+      "ano_fundacao": 1901,
+      "cores": ["vermelho", "branco"],
+      "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Clube_N%C3%A1utico_Capibaribe_logo.svg"
+    }
+  ],
+  "estadios": [
+    {
+      "clube_id": 1,
+      "nome": "Arena do Grêmio",
+      "cidade": "Porto Alegre"
+    },
+    {
+      "clube_id": 2,
+      "nome": "Estádio Urbano Caldeira (Vila Belmiro)",
+      "cidade": "Santos"
+    },
+    {
+      "clube_id": 3,
+      "nome": "Estádio Mineirão",
+      "cidade": "Belo Horizonte"
+    },
+    {
+      "clube_id": 4,
+      "nome": "Allianz Parque",
+      "cidade": "São Paulo"
+    },
+    {
+      "clube_id": 5,
+      "nome": "Mineirão",
+      "cidade": "Belo Horizonte"
+    },
+    {
+      "clube_id": 6,
+      "nome": "Estádio Nilton Santos (Engenhão)",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "clube_id": 7,
+      "nome": "Estádio do Maracanã",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "clube_id": 8,
+      "nome": "Estádio do Maracanã",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "clube_id": 9,
+      "nome": "Estádio Beira-Rio",
+      "cidade": "Porto Alegre"
+    },
+    {
+      "clube_id": 10,
+      "nome": "Estádio do Morumbi",
+      "cidade": "São Paulo"
+    },
+    {
+      "clube_id": 11,
+      "nome": "Arena Corinthians",
+      "cidade": "São Paulo"
+    },
+    {
+      "clube_id": 12,
+      "nome": "Estádio São Januário",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "clube_id": 13,
+      "nome": "Arena Fonte Nova",
+      "cidade": "Salvador"
+    },
+    {
+      "clube_id": 14,
+      "nome": "Estádio Joaquim Américo (Arena da Baixada)",
+      "cidade": "Curitiba"
+    },
+    {
+      "clube_id": 15,
+      "nome": "Estádio Ilha do Retiro",
+      "cidade": "Recife"
+    },
+    {
+      "clube_id": 16,
+      "nome": "Estádio da Serrinha",
+      "cidade": "Goiânia"
+    },
+    {
+      "clube_id": 17,
+      "nome": "Estádio Couto Pereira",
+      "cidade": "Curitiba"
+    },
+    {
+      "clube_id": 18,
+      "nome": "Estádio Barradão",
+      "cidade": "Salvador"
+    },
+    {
+      "clube_id": 19,
+      "nome": "Estádio do Canindé",
+      "cidade": "São Paulo"
+    },
+    {
+      "clube_id": 20,
+      "nome": "Estádio dos Aflitos",
+      "cidade": "Recife"
+    }
+  ]
+}
