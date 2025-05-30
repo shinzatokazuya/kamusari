@@ -549,6 +549,277 @@
     "data_fundacao": "1938-08-10",
     "cores": "Preto e Branco",
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
+  },
+  {
+  "51": {
+    "nome": "Vila Nova",
+    "nome_completo": "Vila Nova Futebol Clube",
+    "ano_fundacao": 1943,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Centro-Oeste"
+  },
+  "52": {
+    "nome": "Treze",
+    "nome_completo": "Treze Futebol Clube",
+    "ano_fundacao": 1925,
+    "cores": ["preto", "branco"],
+    "cidade": "Campina Grande",
+    "estado": "PB",
+    "regiao": "Nordeste"
+  },
+  "53": {
+    "nome": "Chapecoense",
+    "nome_completo": "Associação Chapecoense de Futebol",
+    "ano_fundacao": 1973,
+    "cores": ["verde", "branco"],
+    "cidade": "Chapecó",
+    "estado": "SC",
+    "regiao": "Sul"
+  },
+  "54": {
+    "nome": "Americano",
+    "nome_completo": "Americano Futebol Clube",
+    "ano_fundacao": 1914,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Campos dos Goytacazes",
+    "estado": "RJ",
+    "regiao": "Sudeste"
+  },
+  "55": {
+    "nome": "Confiança",
+    "nome_completo": "Associação Desportiva Confiança",
+    "ano_fundacao": 1936,
+    "cores": ["azul", "branco"],
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste"
+  },
+  "56": {
+    "nome": "River-PI",
+    "nome_completo": "River Atlético Clube",
+    "ano_fundacao": 1946,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste"
+  },
+  "57": {
+    "nome": "Mixto",
+    "nome_completo": "Mixto Esporte Clube",
+    "ano_fundacao": 1934,
+    "cores": ["amarelo", "preto"],
+    "cidade": "Cuiabá",
+    "estado": "MT",
+    "regiao": "Centro-Oeste"
+  },
+  "58": {
+    "nome": "Londrina",
+    "nome_completo": "Londrina Esporte Clube",
+    "ano_fundacao": 1956,
+    "cores": ["azul", "branco"],
+    "cidade": "Londrina",
+    "estado": "PR",
+    "regiao": "Sul"
+  },
+  "59": {
+    "nome": "São Caetano",
+    "nome_completo": "Associação Desportiva São Caetano",
+    "ano_fundacao": 1989,
+    "cores": ["azul", "branco"],
+    "cidade": "São Caetano do Sul",
+    "estado": "SP",
+    "regiao": "Sudeste"
+  },
+  "60": {
+    "nome": "Rio Negro-AM",
+    "nome_completo": "Atlético Rio Negro Clube",
+    "ano_fundacao": 1913,
+    "cores": ["preto", "amarelo"],
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte"
+  },
+  "61": {
+    "nome": "Botafogo-PB",
+    "nome_completo": "Botafogo Futebol Clube (PB)",
+    "ano_fundacao": 1931,
+    "cores": ["preto", "branco"],
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste"
+  },
+  "62": {
+    "nome": "Inter de Limeira",
+    "nome_completo": "Associação Atlética Internacional (Limeira)",
+    "ano_fundacao": 1913,
+    "cores": ["preto", "branco"],
+    "cidade": "Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste"
+  },
+  "63": {
+    "nome": "Flamengo-PI",
+    "nome_completo": "Esporte Clube Flamengo (PI)",
+    "ano_fundacao": 1947,
+    "cores": ["vermelho", "preto"],
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste"
+  },
+  "64": {
+    "nome": "Brasília",
+    "nome_completo": "Brasília Futebol Clube",
+    "ano_fundacao": 1975,
+    "cores": ["azul", "branco"],
+    "cidade": "Brasília",
+    "estado": "DF",
+    "regiao": "Centro-Oeste"
+  },
+  "65": {
+    "nome": "Botafogo-SP",
+    "nome_completo": "Botafogo Futebol Clube (SP)",
+    "ano_fundacao": 1918,
+    "cores": ["preto", "branco"],
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste"
+  },
+  "66": {
+    "nome": "Gama",
+    "nome_completo": "Sociedade Esportiva do Gama",
+    "ano_fundacao": 1975,
+    "cores": ["verde", "branco"],
+    "cidade": "Gama",
+    "estado": "DF",
+    "regiao": "Centro-Oeste"
+  },
+  "67": {
+    "nome": "Ferroviário",
+    "nome_completo": "Ferroviário Atlético Clube (CE)",
+    "ano_fundacao": 1933,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste"
+  },
+  "68": {
+    "nome": "Grêmio Maringá",
+    "nome_completo": "Grêmio de Esportes Maringá",
+    "ano_fundacao": 1976,
+    "cores": ["preto", "branco"],
+    "cidade": "Maringá",
+    "estado": "PR",
+    "regiao": "Sul"
+  },
+  "69": {
+    "nome": "Uberaba",
+    "nome_completo": "Uberaba Sport Club",
+    "ano_fundacao": 1917,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste"
+  },
+  "70": {
+    "nome": "Goytacaz",
+    "nome_completo": "Goytacaz Futebol Clube",
+    "ano_fundacao": 1912,
+    "cores": ["azul", "branco"],
+    "cidade": "Campos dos Goytacazes",
+    "estado": "RJ",
+    "regiao": "Sudeste"
+  },
+  "71": {
+    "nome": "Comercial-MS",
+    "nome_completo": "Comercial Futebol Clube (MS)",
+    "ano_fundacao": 1943,
+    "cores": ["verde", "branco"],
+    "cidade": "Campo Grande",
+    "estado": "MS",
+    "regiao": "Centro-Oeste"
+  },
+  "72": {
+    "nome": "Itabaiana",
+    "nome_completo": "Associação Olímpica de Itabaiana",
+    "ano_fundacao": 1938,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Itabaiana",
+    "estado": "SE",
+    "regiao": "Nordeste"
+  },
+  "73": {
+    "nome": "Tiradentes-PI",
+    "nome_completo": "Tiradentes Atlético Clube",
+    "ano_fundacao": 1959,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste"
+  },
+  "74": {
+    "nome": "Colorado",
+    "nome_completo": "Colorado Esporte Clube",
+    "ano_fundacao": 1971,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "regiao": "Sul"
+  },
+  "75": {
+    "nome": "Metropol",
+    "nome_completo": "Clube Atlético Metropol",
+    "ano_fundacao": 1945,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Criciúma",
+    "estado": "SC",
+    "regiao": "Sul"
+  },
+  "76": {
+    "nome": "Tuna Luso",
+    "nome_completo": "Tuna Luso Brasileira",
+    "ano_fundacao": 1903,
+    "cores": ["azul", "branco", "vermelho"],
+    "cidade": "Belém",
+    "estado": "PA",
+    "regiao": "Norte"
+  },
+  "77": {
+    "nome": "Anapolina",
+    "nome_completo": "Associação Atlética Anapolina",
+    "ano_fundacao": 1948,
+    "cores": ["vermelho", "branco"],
+    "cidade": "Anápolis",
+    "estado": "GO",
+    "regiao": "Centro-Oeste"
+  },
+  "78": {
+    "nome": "Caxias",
+    "nome_completo": "Sociedade Esportiva e Recreativa Caxias do Sul",
+    "ano_fundacao": 1935,
+    "cores": ["vermelho", "preto", "branco"],
+    "cidade": "Caxias do Sul",
+    "estado": "RS",
+    "regiao": "Sul"
+  },
+  "79": {
+    "nome": "GE Brasil",
+    "nome_completo": "Grêmio Esportivo Brasil",
+    "ano_fundacao": 1911,
+    "cores": ["azul", "branco"],
+    "cidade": "Pelotas",
+    "estado": "RS",
+    "regiao": "Sul"
+  },
+  "80": {
+    "nome": "União São João",
+    "nome_completo": "União São João Esporte Clube",
+    "ano_fundacao": 1981,
+    "cores": ["verde", "branco"],
+    "cidade": "Araras",
+    "estado": "SP",
+    "regiao": "Sudeste"
   }
 
   ],
