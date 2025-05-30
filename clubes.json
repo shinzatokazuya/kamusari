@@ -1,4 +1,5 @@
-[
+{
+    "clubes": [
     {
         "id": 1,
         "nome": "Grêmio",
@@ -219,10 +220,8 @@
         "cores": "vermelho e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Clube_Náutico_Capibaribe_logo.svg"
     }
-]
 
-[
-
+  ],
   "estadios": [
     {
       "clube_id": 1,
@@ -325,4 +324,4 @@
       "cidade": "Recife"
     }
   ]
-]
+}

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS clubes (
   estado TEXT,
   regiao TEXT,
   nome_completo TEXT,
-  fundacao TEXT,
+  data_fundacao TEXT,
   cores TEXT,
   escudo TEXT
 )
@@ -40,10 +40,10 @@ for clube in data['clubes']:
     cores_json = json.dumps(clube['cores'], ensure_ascii=False)
 
     cur.execute('''
-        INSERT OR REPLACE INTO clubes (nome, cidade, estado, regiao, nome_completo, fundacao, cores, escudo)
+        INSERT OR REPLACE INTO clubes (nome, cidade, estado, regiao, nome_completo, data_fundacao, cores, escudo)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (clube['id'], clube['nome'], clube['cidade'], clube['estado'], clube['regiao'],
-          clube['nome_completo'], clube['ano_fundacao'], cores_json, clube['escudo']))
+    ''', (clube['ID'], clube['nome'], clube['cidade'], clube['estado'], clube['regiao'],
+          clube['nome_completo'], clube['data_fundacao'], cores_json, clube['escudo']))
 
 # Inserir estádios
 for estadio in data['estadios']:
