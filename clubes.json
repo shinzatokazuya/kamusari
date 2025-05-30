@@ -551,6 +551,7 @@
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
   },
   {
+    {
   "51": {
     "nome": "Vila Nova",
     "nome_completo": "Vila Nova Futebol Clube",
@@ -820,7 +821,9 @@
     "cidade": "Araras",
     "estado": "SP",
     "regiao": "Sudeste"
-  }
+    }
+  },
+  
 
   ],
   "estadios": [
