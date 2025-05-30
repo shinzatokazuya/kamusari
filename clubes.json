@@ -546,7 +546,7 @@
         "estado": "MS",
         "regiao": "Centro-Oeste",
         "nome_completo": "Operário Futebol Clube",
-        "data_fundacao": "1938-08-10",
+        "data_fundacao": "1938-08-21",
         "cores": "Preto e Branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
     },
@@ -672,6 +672,16 @@
     { "clube_id": 37, "estadio": "Engenheiro Alencar Araripe" },
     { "clube_id": 38, "estadio": "Heriberto Hülse" },
     { "clube_id": 39, "estadio": "Frasqueirão" },
-    { "clube_id": 40, "estadio": "Antônio Accioly" }
+    { "clube_id": 40, "estadio": "Antônio Accioly" },
+    { "clube_id": 41, "estadio": "Kleber Andrade" },
+    { "clube_id": 42, "estadio": "Castelão" },
+    { "clube_id": 43, "estadio": "Arena Joinville" },
+    { "clube_id": 44, "estadio": "Batistão" },
+    { "clube_id": 45, "estadio": "Rei Pelé" },
+    { "clube_id": 46, "estadio": "Ressacada" },
+    { "clube_id": 47, "estadio": "Nhozinho Santos" },
+    { "clube_id": 48, "estadio": "Moça Bonita" },
+    { "clube_id": 49, "estadio": "Amigão" },
+    { "clube_id": 50, "estadio": "Morenão" }
   ]
 }
