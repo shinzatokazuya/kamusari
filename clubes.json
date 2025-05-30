@@ -550,6 +550,116 @@
         "cores": "Preto e Branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
     },
+    {
+    "id": 51,
+    "nome": "Vila Nova",
+    "nome_completo": "Vila Nova Futebol Clube",
+    "fundacao": "1943-07-29",
+    "cores": ["vermelho", "branco"],
+    "cidade": "Goiânia",
+    "estado": "GO",
+    "regiao": "Centro-Oeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Vila_Nova_Futebol_Clube_logo.svg"
+  },
+  {
+    "id": 52,
+    "nome": "Treze",
+    "nome_completo": "Treze Futebol Clube",
+    "fundacao": "1925-09-07",
+    "cores": ["preto", "branco"],
+    "cidade": "Campina Grande",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Treze_Futebol_Clube_logo.svg"
+  },
+  {
+    "id": 53,
+    "nome": "Chapecoense",
+    "nome_completo": "Associação Chapecoense de Futebol",
+    "fundacao": "1973-05-10",
+    "cores": ["verde", "branco"],
+    "cidade": "Chapecó",
+    "estado": "SC",
+    "regiao": "Sul",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol_logo.svg"
+  },
+  {
+    "id": 54,
+    "nome": "Americano",
+    "nome_completo": "Americano Futebol Clube",
+    "fundacao": "1914-06-01",
+    "cores": ["preto", "branco"],
+    "cidade": "Campos dos Goytacazes",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Americano_Futebol_Clube_logo.svg"
+  },
+  {
+    "id": 55,
+    "nome": "Confiança",
+    "nome_completo": "Associação Desportiva Confiança",
+    "fundacao": "1936-05-01",
+    "cores": ["azul", "branco"],
+    "cidade": "Aracaju",
+    "estado": "SE",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_Confian%C3%A7a_logo.svg"
+  },
+  {
+    "id": 56,
+    "nome": "River-PI",
+    "nome_completo": "River Atlético Clube",
+    "fundacao": "1946-03-01",
+    "cores": ["vermelho", "preto", "branco"],
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/River_Atl%C3%A9tico_Clube_logo.svg"
+  },
+  {
+    "id": 57,
+    "nome": "Mixto",
+    "nome_completo": "Mixto Esporte Clube",
+    "fundacao": "1934-05-20",
+    "cores": ["preto", "branco"],
+    "cidade": "Cuiabá",
+    "estado": "MT",
+    "regiao": "Centro-Oeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Mixto_Esporte_Clube_logo.svg"
+  },
+  {
+    "id": 58,
+    "nome": "Londrina",
+    "nome_completo": "Londrina Esporte Clube",
+    "fundacao": "1956-04-05",
+    "cores": ["azul", "branco"],
+    "cidade": "Londrina",
+    "estado": "PR",
+    "regiao": "Sul",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Londrina_Esporte_Clube_logo.svg"
+  },
+  {
+    "id": 59,
+    "nome": "São Caetano",
+    "nome_completo": "Associação Desportiva São Caetano",
+    "fundacao": "1989-12-04",
+    "cores": ["azul", "vermelho"],
+    "cidade": "São Caetano do Sul",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_S%C3%A3o_Caetano_logo.svg"
+  },
+  {
+    "id": 60,
+    "nome": "Rio Negro-AM",
+    "nome_completo": "Atlético Rio Negro Clube",
+    "fundacao": "1913-11-13",
+    "cores": ["preto", "branco"],
+    "cidade": "Manaus",
+    "estado": "AM",
+    "regiao": "Norte",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Atl%C3%A9tico_Rio_Negro_Clube_logo.svg"
+  },
 
   ],
   "estadios": [
@@ -682,6 +792,16 @@
     { "clube_id": 47, "estadio": "Nhozinho Santos" },
     { "clube_id": 48, "estadio": "Moça Bonita" },
     { "clube_id": 49, "estadio": "Amigão" },
-    { "clube_id": 50, "estadio": "Morenão" }
+    { "clube_id": 50, "estadio": "Morenão" },
+    { "clube_id": 51, "estadio": "Onésio Brasileiro Alvarenga" },
+    { "clube_id": 52, "estadio": "Presidente Vargas" },
+    { "clube_id": 53, "estadio": "Arena Condá" },
+    { "clube_id": 54, "estadio": "Godofredo Cruz" },
+    { "clube_id": 55, "estadio": "Batistão" },
+    { "clube_id": 56, "estadio": "Lindolfo Monteiro" },
+    { "clube_id": 57, "estadio": "Verdão" },
+    { "clube_id": 58, "estadio": "Estádio do Café" },
+    { "clube_id": 59, "estadio": "Anacleto Campanella" },
+    { "clube_id": 60, "estadio": "Vivaldo Lima" }
   ]
 }
