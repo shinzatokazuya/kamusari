@@ -550,7 +550,7 @@
         "cores": "Preto e Branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Oper%C3%A1rio_FC_logo.svg/1200px-Oper%C3%A1rio_FC_logo.svg.png"
     },
-    
+
   ],
   "estadios": [
     {
@@ -652,6 +652,16 @@
       "clube_id": 20,
       "nome": "Estádio dos Aflitos",
       "cidade": "Recife"
-    }
+    },
+    { "clube_id": 21, "estadio": "Brinco de Ouro", "cidade": "Campinas" },
+    { "clube_id": 22, "estadio": "Castelão", "cidade": "Fortaleza" },
+    { "clube_id": 23, "estadio": "Curuzu" },
+    { "clube_id": 24, "estadio": "Castelão", "cidade": "Fortaleza" },
+    { "clube_id": 25, "estadio": "Moisés Lucarelli", "cidade": "Campinas" },
+    { "clube_id": 26, "estadio": "Arruda" },
+    { "clube_id": 27, "estadio": "Alfredo Jaconi" },
+    { "clube_id": 28, "estadio": "Independência" },
+    { "clube_id": 29, "estadio": "Rei Pelé" },
+    { "clube_id": 30, "estadio": "Giulite Coutinho" }
   ]
 }
