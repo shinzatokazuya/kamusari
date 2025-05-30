@@ -662,6 +662,16 @@
     { "clube_id": 27, "estadio": "Alfredo Jaconi" },
     { "clube_id": 28, "estadio": "Independência" },
     { "clube_id": 29, "estadio": "Rei Pelé" },
-    { "clube_id": 30, "estadio": "Giulite Coutinho" }
+    { "clube_id": 30, "estadio": "Giulite Coutinho" },
+    { "clube_id": 31, "estadio": "Orlando Scarpelli" },
+    { "clube_id": 32, "estadio": "Baenão" },
+    { "clube_id": 33, "estadio": "Vila Capanema" },
+    { "clube_id": 34, "estadio": "Arena da Amazônia" },
+    { "clube_id": 35, "estadio": "Arena das Dunas" },
+    { "clube_id": 36, "estadio": "Nabi Abi Chedid" },
+    { "clube_id": 37, "estadio": "Engenheiro Alencar Araripe" },
+    { "clube_id": 38, "estadio": "Heriberto Hülse" },
+    { "clube_id": 39, "estadio": "Frasqueirão" },
+    { "clube_id": 40, "estadio": "Antônio Accioly" }
   ]
 }
