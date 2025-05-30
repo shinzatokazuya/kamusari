@@ -41,8 +41,8 @@ for clube in data['clubes']:
 
     cur.execute('''
         INSERT OR REPLACE INTO clubes (nome, cidade, estado, regiao, nome_completo, data_fundacao, cores, escudo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (clube['ID'], clube['nome'], clube['cidade'], clube['estado'], clube['regiao'],
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (clube['nome'], clube['cidade'], clube['estado'], clube['regiao'],
           clube['nome_completo'], clube['data_fundacao'], cores_json, clube['escudo']))
 
 # Inserir estádios

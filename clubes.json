@@ -1,7 +1,7 @@
 {
     "clubes": [
     {
-        "id": 1,
+        "ID": 1,
         "nome": "Grêmio",
         "cidade": "Porto Alegre",
         "estado": "RS",
@@ -12,7 +12,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/0/04/Grêmio_FBPA_logo.svg"
     },
     {
-        "id": 2,
+        "ID": 2,
         "nome": "Santos",
         "cidade": "Santos",
         "estado": "SP",
@@ -23,7 +23,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Santos_logo.svg"
     },
     {
-        "id": 3,
+        "ID": 3,
         "nome": "Atlético Mineiro",
         "cidade": "Belo Horizonte",
         "estado": "MG",
@@ -34,7 +34,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/9/92/Clube_Atlético_Mineiro_logo.svg"
     },
     {
-        "id": 4,
+        "ID": 4,
         "nome": "Palmeiras",
         "cidade": "São Paulo",
         "estado": "SP",
@@ -45,7 +45,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/f/f1/SE_Palmeiras_logo.svg"
     },
     {
-        "id": 5,
+        "ID": 5,
         "nome": "Cruzeiro",
         "cidade": "Belo Horizonte",
         "estado": "MG",
@@ -56,7 +56,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/41/Cruzeiro_Esporte_Clube_logo.svg"
     },
     {
-        "id": 6,
+        "ID": 6,
         "nome": "Botafogo",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -67,7 +67,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/43/Botafogo_de_Futebol_e_Regatas_logo.svg"
     },
     {
-        "id": 7,
+        "ID": 7,
         "nome": "Fluminense",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -78,7 +78,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/2/26/Fluminense_FC_logo.svg"
     },
     {
-        "id": 8,
+        "ID": 8,
         "nome": "Flamengo",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -89,7 +89,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/0/01/CR_Flamengo_RJ_escudo.svg"
     },
     {
-        "id": 9,
+        "ID": 9,
         "nome": "Internacional",
         "cidade": "Porto Alegre",
         "estado": "RS",
@@ -100,7 +100,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/30/Sport_Club_Internacional_logo.svg"
     },
     {
-        "id": 10,
+        "ID": 10,
         "nome": "São Paulo",
         "cidade": "São Paulo",
         "estado": "SP",
@@ -111,7 +111,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/2/23/S%C3%A3o_Paulo_FC_logo.svg"
     },
     {
-        "id": 11,
+        "ID": 11,
         "nome": "Corinthians",
         "cidade": "São Paulo",
         "estado": "SP",
@@ -122,7 +122,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Corinthians_logo.svg"
     },
     {
-        "id": 12,
+        "ID": 12,
         "nome": "Vasco da Gama",
         "cidade": "Rio de Janeiro",
         "estado": "RJ",
@@ -133,7 +133,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/6/6d/CR_Vasco_da_Gama.svg"
     },
     {
-        "id": 13,
+        "ID": 13,
         "nome": "Bahia",
         "cidade": "Salvador",
         "estado": "BA",
@@ -144,7 +144,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Esporte_Clube_Bahia_logo.svg"
     },
     {
-        "id": 14,
+        "ID": 14,
         "nome": "Atlético Paranaense",
         "cidade": "Curitiba",
         "estado": "PR",
@@ -155,7 +155,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/5/54/Club_Athletico_Paranaense_logo.svg"
     },
     {
-        "id": 15,
+        "ID": 15,
         "nome": "Sport",
         "cidade": "Recife",
         "estado": "PE",
@@ -166,7 +166,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/8/84/Sport_Club_do_Recife_logo.svg"
     },
     {
-        "id": 16,
+        "ID": 16,
         "nome": "Goiás",
         "cidade": "Goiânia",
         "estado": "GO",
@@ -177,7 +177,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Goiás_Esporte_Clube_logo.svg"
     },
     {
-        "id": 17,
+        "ID": 17,
         "nome": "Coritiba",
         "cidade": "Curitiba",
         "estado": "PR",
@@ -188,7 +188,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Coritiba_FC_logo.svg"
     },
     {
-        "id": 18,
+        "ID": 18,
         "nome": "Vitória",
         "cidade": "Salvador",
         "estado": "BA",
@@ -199,7 +199,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Esporte_Clube_Vitória_logo.svg"
     },
     {
-        "id": 19,
+        "ID": 19,
         "nome": "Portuguesa",
         "cidade": "São Paulo",
         "estado": "SP",
@@ -210,7 +210,7 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Associa%C3%A7%C3%A3o_Portuguesa_de_Desportos_logo.svg"
     },
     {
-        "id": 20,
+        "ID": 20,
         "nome": "Náutico",
         "cidade": "Recife",
         "estado": "PE",
