@@ -221,16 +221,16 @@
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Clube_Náutico_Capibaribe_logo.svg"
     },
     {
-    "id": 21,
-    "nome": "Guarani",
-    "cidade": "Campinas",
-    "estado": "SP",
-    "regiao": "Sudeste",
-    "nome_completo": "Guarani Futebol Clube",
-    "data_fundacao": "1911-04-12",
-    "cores": "Verde e Branco",
-    "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Guarani_FC_logo.svg/1200px-Guarani_FC_logo.svg.png"
-  },
+        "id": 21,
+        "nome": "Guarani",
+        "cidade": "Campinas",
+        "estado": "SP",
+        "regiao": "Sudeste",
+        "nome_completo": "Guarani Futebol Clube",
+        "data_fundacao": "1911-04-12",
+        "cores": "Verde e Branco",
+        "escudo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Guarani_FC_logo.svg/1200px-Guarani_FC_logo.svg.png"
+    },
   {
     "id": 22,
     "nome": "Ceará",
