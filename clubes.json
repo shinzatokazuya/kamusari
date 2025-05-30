@@ -660,6 +660,116 @@
     "regiao": "Norte",
     "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Atl%C3%A9tico_Rio_Negro_Clube_logo.svg"
   },
+    {
+    "id": 61,
+    "nome": "Botafogo-PB",
+    "nome_completo": "Botafogo Futebol Clube",
+    "fundacao": "1931-09-28",
+    "cores": ["preto", "branco", "vermelho"],
+    "cidade": "João Pessoa",
+    "estado": "PB",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_PB_logo.svg"
+  },
+  {
+    "id": 62,
+    "nome": "Inter de Limeira",
+    "nome_completo": "Associação Atlética Internacional de Limeira",
+    "fundacao": "1913-10-05",
+    "cores": ["preto", "branco"],
+    "cidade": "Limeira",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Inter_de_Limeira_logo.svg"
+  },
+  {
+    "id": 63,
+    "nome": "Flamengo-PI",
+    "nome_completo": "Esporte Clube Flamengo",
+    "fundacao": "1937-08-12",
+    "cores": ["vermelho", "preto"],
+    "cidade": "Teresina",
+    "estado": "PI",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Flamengo_PI_logo.svg"
+  },
+  {
+    "id": 64,
+    "nome": "Brasília",
+    "nome_completo": "Brasília Futebol Clube",
+    "fundacao": "1975-06-02",
+    "cores": ["vermelho", "branco"],
+    "cidade": "Brasília",
+    "estado": "DF",
+    "regiao": "Centro-Oeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Brasília_Futebol_Clube_logo.svg"
+  },
+  {
+    "id": 65,
+    "nome": "Botafogo-SP",
+    "nome_completo": "Botafogo Futebol Clube",
+    "fundacao": "1918-10-12",
+    "cores": ["vermelho", "preto", "branco"],
+    "cidade": "Ribeirão Preto",
+    "estado": "SP",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_SP_logo.svg"
+  },
+  {
+    "id": 66,
+    "nome": "Gama",
+    "nome_completo": "Sociedade Esportiva do Gama",
+    "fundacao": "1975-11-15",
+    "cores": ["verde", "branco"],
+    "cidade": "Gama",
+    "estado": "DF",
+    "regiao": "Centro-Oeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Gama_logo.svg"
+  },
+  {
+    "id": 67,
+    "nome": "Ferroviário",
+    "nome_completo": "Ferroviário Atlético Clube",
+    "fundacao": "1933-05-09",
+    "cores": ["vermelho", "branco"],
+    "cidade": "Fortaleza",
+    "estado": "CE",
+    "regiao": "Nordeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ferroviario_CE_logo.svg"
+  },
+  {
+    "id": 68,
+    "nome": "Grêmio Maringá",
+    "nome_completo": "Grêmio Esportivo Maringá",
+    "fundacao": "1961-09-08",
+    "cores": ["preto", "branco"],
+    "cidade": "Maringá",
+    "estado": "PR",
+    "regiao": "Sul",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Grêmio_Maringá_logo.svg"
+  },
+  {
+    "id": 69,
+    "nome": "Uberaba",
+    "nome_completo": "Uberaba Sport Club",
+    "fundacao": "1917-07-15",
+    "cores": ["vermelho", "branco"],
+    "cidade": "Uberaba",
+    "estado": "MG",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Uberaba_SC_logo.svg"
+  },
+  {
+    "id": 70,
+    "nome": "Goytacaz",
+    "nome_completo": "Goytacaz Futebol Clube",
+    "fundacao": "1912-08-20",
+    "cores": ["azul", "branco"],
+    "cidade": "Campos dos Goytacazes",
+    "estado": "RJ",
+    "regiao": "Sudeste",
+    "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Goytacaz_FC_logo.svg"
+  }
 
   ],
   "estadios": [
@@ -802,6 +912,16 @@
     { "clube_id": 57, "estadio": "Verdão" },
     { "clube_id": 58, "estadio": "Estádio do Café" },
     { "clube_id": 59, "estadio": "Anacleto Campanella" },
-    { "clube_id": 60, "estadio": "Vivaldo Lima" }
+    { "clube_id": 60, "estadio": "Vivaldo Lima" },
+    { "clube_id": 61, "estadio": "Almeidão" },
+    { "clube_id": 62, "estadio": "Limeirão" },
+    { "clube_id": 63, "estadio": "Lindolfo Monteiro" },
+    { "clube_id": 64, "estadio": "Estádio Nacional Mané Garrincha" },
+    { "clube_id": 65, "estadio": "Estádio Santa Cruz" },
+    { "clube_id": 66, "estadio": "Estádio Bezerrão" },
+    { "clube_id": 67, "estadio": "Estádio Elzir Cabral" },
+    { "clube_id": 68, "estadio": "Estádio Willie Davids" },
+    { "clube_id": 69, "estadio": "Estádio Uberabão" },
+    { "clube_id": 70, "estadio": "Estádio Ary de Oliveira e Souza" }
   ]
 }
