@@ -558,7 +558,7 @@
         "regiao": "Centro-Oeste",
         "nome_completo": "Vila Nova Futebol Clube",
         "data_fundacao": "1943-07-29",
-        "cores": ["vermelho", "branco"],
+        "cores": "vermelho e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Vila_Nova_Futebol_Clube_logo.svg"
     },
     {
@@ -569,7 +569,7 @@
         "regiao": "Nordeste",
         "nome_completo": "Treze Futebol Clube",
         "data_fundacao": "1925-09-07",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Treze_Futebol_Clube_logo.svg"
     },
     {
@@ -580,7 +580,7 @@
         "regiao": "Sul",
         "nome_completo": "Associação Chapecoense de Futebol",
         "data_fundacao": "1973-05-10",
-        "cores": ["verde", "branco"],
+        "cores": "verde e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Chapecoense_de_Futebol_logo.svg"
     },
     {
@@ -591,7 +591,7 @@
         "regiao": "Sudeste",
         "nome_completo": "Americano Futebol Clube",
         "data_fundacao": "1914-06-01",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Americano_Futebol_Clube_logo.svg"
     },
     {
@@ -602,7 +602,7 @@
         "regiao": "Nordeste",
         "nome_completo": "Associação Desportiva Confiança",
         "data_fundacao": "1936-05-01",
-        "cores": ["azul", "branco"],
+        "cores": "azul e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_Confian%C3%A7a_logo.svg"
     },
     {
@@ -613,7 +613,7 @@
         "nome": "River-PI",
         "nome_completo": "River Atlético Clube",
         "data_fundacao": "1946-03-01",
-        "cores": ["vermelho", "preto", "branco"],
+        "cores": "vermelho, preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/River_Atl%C3%A9tico_Clube_logo.svg"
     },
     {
@@ -624,7 +624,7 @@
         "regiao": "Centro-Oeste",
         "nome_completo": "Mixto Esporte Clube",
         "data_fundacao": "1934-05-20",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Mixto_Esporte_Clube_logo.svg"
     },
     {
@@ -635,7 +635,7 @@
         "nome": "Londrina",
         "nome_completo": "Londrina Esporte Clube",
         "data_fundacao": "1956-04-05",
-        "cores": ["azul", "branco"],
+        "cores": "azul e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Londrina_Esporte_Clube_logo.svg"
     },
     {
@@ -646,7 +646,7 @@
         "nome": "São Caetano",
         "nome_completo": "Associação Desportiva São Caetano",
         "data_fundacao": "1989-12-04",
-        "cores": ["azul", "vermelho"],
+        "cores": "azul e vermelho",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Associa%C3%A7%C3%A3o_Desportiva_S%C3%A3o_Caetano_logo.svg"
     },
     {
@@ -657,7 +657,7 @@
         "regiao": "Norte",
         "nome_completo": "Atlético Rio Negro Clube",
         "data_fundacao": "1913-11-13",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Atl%C3%A9tico_Rio_Negro_Clube_logo.svg"
     },
         {
@@ -668,7 +668,7 @@
         "nome": "Botafogo-PB",
         "nome_completo": "Botafogo Futebol Clube",
         "data_fundacao": "1931-09-28",
-        "cores": ["preto", "branco", "vermelho"],
+        "cores": "preto, branco e vermelho",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_PB_logo.svg"
     },
     {
@@ -679,7 +679,7 @@
         "nome": "Inter de Limeira",
         "nome_completo": "Associação Atlética Internacional de Limeira",
         "data_fundacao": "1913-10-05",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Inter_de_Limeira_logo.svg"
     },
     {
@@ -690,7 +690,7 @@
         "regiao": "Nordeste",
         "nome_completo": "Esporte Clube Flamengo",
         "data_fundacao": "1937-08-12",
-        "cores": ["vermelho", "preto"],
+        "cores": "vermelho e preto",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Flamengo_PI_logo.svg"
     },
     {
@@ -701,7 +701,7 @@
         "regiao": "Centro-Oeste",
         "nome_completo": "Brasília Futebol Clube",
         "data_fundacao": "1975-06-02",
-        "cores": ["vermelho", "branco"],
+        "cores": "vermelho e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Brasília_Futebol_Clube_logo.svg"
     },
     {
@@ -712,7 +712,7 @@
         "regiao": "Sudeste",
         "nome_completo": "Botafogo Futebol Clube",
         "data_fundacao": "1918-10-12",
-        "cores": ["vermelho", "preto", "branco"],
+        "cores": "vermelho, preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Botafogo_SP_logo.svg"
     },
     {
@@ -723,7 +723,7 @@
         "regiao": "Centro-Oeste",
         "nome_completo": "Sociedade Esportiva do Gama",
         "data_fundacao": "1975-11-15",
-        "cores": ["verde", "branco"],
+        "cores": "verde e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Gama_logo.svg"
     },
     {
@@ -734,7 +734,7 @@
         "regiao": "Nordeste",
         "nome_completo": "Ferroviário Atlético Clube",
         "data_fundacao": "1933-05-09",
-        "cores": ["vermelho", "branco"],
+        "cores": "vermelho e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ferroviario_CE_logo.svg"
     },
     {
@@ -745,7 +745,7 @@
         "regiao": "Sul",
         "nome_completo": "Grêmio Esportivo Maringá",
         "data_fundacao": "1961-09-08",
-        "cores": ["preto", "branco"],
+        "cores": "preto e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Grêmio_Maringá_logo.svg"
     },
     {
@@ -756,7 +756,7 @@
         "regiao": "Sudeste",
         "nome_completo": "Uberaba Sport Club",
         "data_fundacao": "1917-07-15",
-        "cores": ["vermelho", "branco"],
+        "cores": "vermelho e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Uberaba_SC_logo.svg"
     },
     {
@@ -767,7 +767,7 @@
         "regiao": "Sudeste",
         "nome_completo": "Goytacaz Futebol Clube",
         "data_fundacao": "1912-08-20",
-        "cores": ["azul", "branco"],
+        "cores": "azul e branco",
         "escudo": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Goytacaz_FC_logo.svg"
     }
 
