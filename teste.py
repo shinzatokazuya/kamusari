@@ -4,7 +4,7 @@ import sqlite3
 import re
 
 # 1. Definir a URL do site que você quer analisar
-url = 'https://www.ogol.com.br/edicao/campeonato-brasileiro-2014/67145/calendario?fase_in=67335&equipa=0&estado=1&filtro=&page=1&op=calendario'
+url = 'https://www.ogol.com.br/edicao/brasileirao-serie-a-2025/194851/calendario?equipa=0&estado=1&filtro=&op=calendario&page=3'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3 Edg/124.0.2478.80'
 }
@@ -73,7 +73,7 @@ try:
 
                     if "WO" in placar_raw or "ANU" in placar_raw or "IC" in placar_raw:
                         # Define regra: mandante vence por 3x0
-                        mandante_placar, visitante_placar = 1, 0
+                        mandante_placar, visitante_placar = '-', '-'
                     else:
                         placar_raw = celulas[5].text.strip().lower()
                         penalti_mandante = penalti_visitante = None  # valores padrão
