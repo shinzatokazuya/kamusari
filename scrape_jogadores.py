@@ -47,21 +47,13 @@ def scrape_pagina(url):
             # Extrai a posição
             posicao = colunas[3].text.strip() if colunas[3] else 'N/A'
 
-            # Extrai o ID do jogador do link de detalhes
-            link_detalhes = colunas[9].find('a', href=True)
-            jogador_id = 'N/A'
-            if link_detalhes and 'jogador_id=' in link_detalhes['href']:
-                match = re.search(r'jogador_id=(\d+)', link_detalhes['href'])
-                jogador_id = match.group(1) if match else 'N/A'
-
             # Monta a URL da página individual do jogador
-            jogador_url = f"https://www.ogol.com.br{link_detalhes['href'].replace('/xray.php', '/jogador.php')}" if link_detalhes else None
+            jogador_url = f"https://www.ogol.com.br/jogador/{nome}" if link_detalhes else None
 
             # Obtém o nome completo
             nome_completo = get_nome_completo(jogador_url) if jogador_url else 'N/A'
 
             jogadores.append({
-                'ID_Jogador': jogador_id,
                 'Nome Completo': nome_completo,
                 'Nome': nome,
                 'Posição': posicao
