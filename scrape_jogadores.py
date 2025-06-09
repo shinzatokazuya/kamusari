@@ -67,8 +67,8 @@ def scrape_pagina(url):
 # Função principal
 def main():
     # URL base para a lista de jogadores do Santos
-    base_url = "https://www.ogol.com.br/equipe/santos/jogadores?pais=0&pos=0&active=99&o=j&page="
-    max_paginas = 20  # Ajuste conforme necessário (1003 jogadores / ~50 por página = ~20 páginas)
+    base_url = "https://www.ogol.com.br/equipe/santos/jogadores"
+    max_paginas = 21  # Ajuste conforme necessário (1003 jogadores / ~50 por página = ~20 páginas)
     urls = [f"{base_url}{i}" for i in range(1, max_paginas + 1)]
 
     jogadores = []
