@@ -5,6 +5,21 @@ import pandas as pd
 import time
 import re
 
+# Função para extrair nome completo de uma página individual de jogador
+def get_nome_completo(jogador_url):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    try:
+        response = requests.get(jogador_url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        # Tenta encontrar o nome completo (ajuste conforme o HTML real)
+        nome_completo = soup.find('h1', class_='player_name') or soup.find('div', class_='name')
+        return nome_completo.text.strip() if nome_completo else 'N/A'
+    except Exception as e:
+        print(f"Erro ao acessar {jogador_url}: {e}")
+        return 'N/A'
+
 # Função para extrair dados de uma página de jogadores
 def scrape_pagina(url):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
@@ -14,41 +29,43 @@ def scrape_pagina(url):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         jogadores = []
-        # Encontra a tabela ou lista de jogadores (ajuste o seletor conforme o HTML do Ogol)
-        tabela = soup.find('table', class_='zztable') or soup.find('div', class_='players_list')
+        # Encontra a tabela de jogadores
+        tabela = soup.find('table', class_='zztable stats zz-table')
         if not tabela:
+            print(f"Tabela não encontrada em {url}")
             return jogadores
 
         for linha in tabela.find_all('tr')[1:]:  # Pula o cabeçalho
             colunas = linha.find_all('td')
-            if len(colunas) >= 2:
-                link_jogador = colunas[1].find('a', href=True)
-                if not link_jogador:
-                    continue
-                jogador_url = 'https://www.ogol.com.br' + link_jogador['href']
-                jogador_id = re.search(r'id=(\d+)', jogador_url).group(1) if re.search(r'id=(\d+)', jogador_url) else 'N/A'
+            if len(colunas) < 10:
+                continue  # Ignora linhas inválidas (ex.: total ou anúncios)
 
-                # Acessa a página individual do jogador
-                try:
-                    jogador_response = requests.get(jogador_url, headers=headers, timeout=10)
-                    jogador_soup = BeautifulSoup(jogador_response.text, 'html.parser')
+            # Extrai o nome normalmente utilizado
+            nome_elem = colunas[2].find('a', href=re.compile(r'/jogador/'))
+            nome = nome_elem.text.strip() if nome_elem else 'N/A'
 
-                    # Extrai dados (ajuste os seletores conforme o HTML real do Ogol)
-                    nome_completo = jogador_soup.find('h1', class_='player_name') or jogador_soup.find('div', class_='name')
-                    apelido = jogador_soup.find('span', class_='nickname') or nome_completo
-                    data_nascimento = jogador_soup.find('span', class_='birth_date') or jogador_soup.find('div', class_='info_birth')
-                    data_falecimento = jogador_soup.find('span', class_='death_date') or jogador_soup.find('div', class_='info_death')
+            # Extrai a posição
+            posicao = colunas[3].text.strip() if colunas[3] else 'N/A'
 
-                    jogadores.append({
-                        'ID_Jogador': jogador_id,
-                        'Nome Completo': nome_completo.text.strip() if nome_completo else 'N/A',
-                        'Apelido': apelido.text.strip() if apelido else nome_completo.text.strip() if nome_completo else 'N/A',
-                        'Data de Nascimento': data_nascimento.text.strip() if data_nascimento else 'N/A',
-                        'Data de Falecimento': data_falecimento.text.strip() if data_falecimento else 'N/A'
-                    })
-                except Exception as e:
-                    print(f"Erro ao acessar jogador {jogador_url}: {e}")
-                    continue
+            # Extrai o ID do jogador do link de detalhes
+            link_detalhes = colunas[9].find('a', href=True)
+            jogador_id = 'N/A'
+            if link_detalhes and 'jogador_id=' in link_detalhes['href']:
+                match = re.search(r'jogador_id=(\d+)', link_detalhes['href'])
+                jogador_id = match.group(1) if match else 'N/A'
+
+            # Monta a URL da página individual do jogador
+            jogador_url = f"https://www.ogol.com.br{link_detalhes['href'].replace('/xray.php', '/jogador.php')}" if link_detalhes else None
+
+            # Obtém o nome completo
+            nome_completo = get_nome_completo(jogador_url) if jogador_url else 'N/A'
+
+            jogadores.append({
+                'ID_Jogador': jogador_id,
+                'Nome Completo': nome_completo,
+                'Nome': nome,
+                'Posição': posicao
+            })
 
         return jogadores
     except Exception as e:
@@ -57,23 +74,23 @@ def scrape_pagina(url):
 
 # Função principal
 def main():
-    # URL base para a lista de jogadores de um clube (exemplo: Flamengo)
-    base_url = "https://www.ogol.com.br/club/players.php?id=614&page="  # ID 614 é do Flamengo
-    max_paginas = 100  # Ajuste conforme necessário (ex.: 100 páginas)
+    # URL base para a lista de jogadores do Santos
+    base_url = "https://www.ogol.com.br/equipe/santos/jogadores?pais=0&pos=0&active=99&o=j&page="
+    max_paginas = 20  # Ajuste conforme necessário (1003 jogadores / ~50 por página = ~20 páginas)
     urls = [f"{base_url}{i}" for i in range(1, max_paginas + 1)]
 
     jogadores = []
     # Scraping paralelo com ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=5) as executor:  # Ajuste max_workers para evitar bloqueios
+    with ThreadPoolExecutor(max_workers=3) as executor:  # Reduzido para evitar bloqueios
         resultados = executor.map(scrape_pagina, urls)
         for resultado in resultados:
             jogadores.extend(resultado)
-            time.sleep(1)  # Delay para evitar bloqueios
+            time.sleep(2)  # Delay para evitar bloqueios
 
     # Salva em CSV
     df = pd.DataFrame(jogadores)
-    df.to_csv('jogadores_flamengo.csv', index=False, encoding='utf-8')
-    print(f"Dados salvos em 'jogadores_flamengo.csv' com {len(df)} jogadores")
+    df.to_csv('jogadores_santos.csv', index=False, encoding='utf-8')
+    print(f"Dados salvos em 'jogadores_santos.csv' com {len(df)} jogadores")
     print(df.head())
 
 if __name__ == "__main__":
