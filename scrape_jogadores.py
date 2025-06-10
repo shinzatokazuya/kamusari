@@ -14,7 +14,7 @@ def get_nome_completo(jogador_url):
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Tenta encontrar o nome completo (ajuste conforme o HTML real)
-        nome_completo = soup.find('h1', class_='player_name') or soup.find('div', class_='name')
+        nome_completo = soup.find('div', class_='bio')
         return nome_completo.text.strip() if nome_completo else 'N/A'
     except Exception as e:
         print(f"Erro ao acessar {jogador_url}: {e}")
