@@ -88,16 +88,25 @@ def get_clube_data(clube_id, nome, cidade, estado, regiao):
 
 # Função principal
 def main():
-    # Conecta ao SQLite
-    try:
-        conn = sqlite3.connect('../banco_de_dados/teste.db')
-        clubes_df = pd.read_sql_query("SELECT ID, Nome, Cidade, Estado, Regiao FROM clubes", conn)
-        conn.close()
-    except Exception as e:
-        print(f"Erro ao ler teste.db: {e}")
+    # Tenta conectar ao SQLite em diferentes caminhos
+    db_paths = ['brasileirao_desde_1971.db', 'banco_de_dados/teste.db']
+    conn = None
+    for path in db_paths:
+        try:
+            conn = sqlite3.connect(path)
+            clubes_df = pd.read_sql_query("SELECT ID, Nome, Cidade, Estado, Regiao FROM clubes", conn)
+            print(f"Conectado com sucesso a {path}")
+            break
+        except sqlite3.OperationalError:
+            print(f"Não encontrou {path}. Tentando próximo...")
+        except Exception as e:
+            print(f"Erro ao conectar a {path}: {e}")
+    if conn is None:
+        print("Nenhum arquivo de banco de dados encontrado. Verifique o caminho ou o nome do arquivo.")
         return
+    conn.close()
 
-    print(f"Lidos {len(clubes_df)} clubes do teste.db")
+    print(f"Lidos {len(clubes_df)} clubes do banco de dados")
     print(clubes_df.head())
 
     clubes_completos = []
