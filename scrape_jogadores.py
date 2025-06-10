@@ -5,8 +5,8 @@ import pandas as pd
 import time
 import re
 
-# Função para extrair nome completo de uma página individual de jogador
-def get_nome_completo(jogador_url):
+# Função para extrair dados da página de biografia de um jogador
+def get_bio_data(jogador_url, jogador_id, nome):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     try:
         response = requests.get(jogador_url, headers=headers, timeout=10)
@@ -73,20 +73,20 @@ def scrape_pagina(url):
             nome_elem = colunas[2].find('a', href=re.compile(r'/jogador/'))
             nome = nome_elem.text.strip() if nome_elem else 'N/A'
 
-            # Extrai a posição
-            posicao = colunas[3].text.strip() if colunas[3] else 'N/A'
+            # Extrai o ID do jogador do link de detalhes
+            link_detalhes = colunas[9].find('a', href=re.compile(r'xray\.php'))
+            jogador_id = 'N/A'
+            if link_detalhes:
+                match = re.search(r'jogador_id=(\d+)', link_detalhes['href'])
+                jogador_id = match.group(1) if match else 'N/A'
 
-            # Monta a URL da página individual do jogador
-            jogador_url = f"https://www.ogol.com.br/jogador/{nome}"
+            # Monta a URL da página de biografia
+            jogador_url = f"https://www.ogol.com.br/jogador/{nome.lower().replace(' ', '-')}/{jogador_id}"
 
-            # Obtém o nome completo
-            nome_completo = get_nome_completo(jogador_url) if jogador_url else 'N/A'
-
-            jogadores.append({
-                'Nome Completo': nome_completo,
-                'Nome': nome,
-                'Posição': posicao
-            })
+            # Extrai dados da biografia
+            bio_data = get_bio_data(jogador_url, jogador_id, nome)
+            if bio_data:
+                jogadores.append(bio_data)
 
         return jogadores
     except Exception as e:
@@ -97,7 +97,7 @@ def scrape_pagina(url):
 def main():
     # URL base para a lista de jogadores do Santos
     base_url = "https://www.ogol.com.br/equipe/santos/jogadores?pais=0&epoca_stats_id=0&pos=0&o=&active=99&page="
-    max_paginas = 21  # Ajuste conforme necessário (1003 jogadores / ~50 por página = ~20 páginas)
+    max_paginas = 21  # Ajustado para 1003 jogadores (~50 por página)
     urls = [f"{base_url}{i}" for i in range(1, max_paginas + 1)]
 
     jogadores = []
@@ -110,8 +110,8 @@ def main():
 
     # Salva em CSV
     df = pd.DataFrame(jogadores)
-    df.to_csv('jogadores_santos.csv', index=False, encoding='utf-8')
-    print(f"Dados salvos em 'jogadores_santos.csv' com {len(df)} jogadores")
+    df.to_csv('jogadores_santos_bio.csv', index=False, encoding='utf-8')
+    print(f"Dados salvos em 'jogadores_santos_bio.csv' com {len(df)} jogadores")
     print(df.head())
 
 if __name__ == "__main__":
