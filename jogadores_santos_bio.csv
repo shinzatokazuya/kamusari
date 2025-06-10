@@ -698,54 +698,307 @@ ID_Jogador,Nome Completo,Data de Nascimento,Data de Falecimento,Nacionalidade
 476093,Heriberto Longuinho da Cunha,1960-04-07,N/A,Brasil
 553688,Carlos Alberto Borges,1960-12-14,N/A,Brasil
 582940,Aluisio Elias Paulino,1952-06-25,N/A,Brasil
-497983,ogol.com.br,N/A,N/A,N/A
+497983,Jair Félix da Silva,1943-05-10,2022-12-27,Brasil
 95612,João Pedro Geraldino dos Santos Galvão,1992-03-09,N/A,Itália
-87757,ogol.com.br,N/A,N/A,N/A
-488010,ogol.com.br,N/A,N/A,N/A
-5744,ogol.com.br,N/A,N/A,N/A
-5164,ogol.com.br,N/A,N/A,N/A
-38967,ogol.com.br,N/A,N/A,N/A
-71064,ogol.com.br,N/A,N/A,N/A
-53942,ogol.com.br,N/A,N/A,N/A
-5634,ogol.com.br,N/A,N/A,N/A
-27159,ogol.com.br,N/A,N/A,N/A
-287051,ogol.com.br,N/A,N/A,N/A
-458021,ogol.com.br,N/A,N/A,N/A
-467697,ogol.com.br,N/A,N/A,N/A
-442751,ogol.com.br,N/A,N/A,N/A
-63996,ogol.com.br,N/A,N/A,N/A
-11952,ogol.com.br,N/A,N/A,N/A
-582784,ogol.com.br,N/A,N/A,N/A
-764234,ogol.com.br,N/A,N/A,N/A
-795330,ogol.com.br,N/A,N/A,N/A
-443034,ogol.com.br,N/A,N/A,N/A
-756240,ogol.com.br,N/A,N/A,N/A
-392636,ogol.com.br,N/A,N/A,N/A
-5606,ogol.com.br,N/A,N/A,N/A
-34539,ogol.com.br,N/A,N/A,N/A
-536225,ogol.com.br,N/A,N/A,N/A
-87162,ogol.com.br,N/A,N/A,N/A
-94245,ogol.com.br,N/A,N/A,N/A
-635259,ogol.com.br,N/A,N/A,N/A
-5633,ogol.com.br,N/A,N/A,N/A
-12458,ogol.com.br,N/A,N/A,N/A
-37821,ogol.com.br,N/A,N/A,N/A
-87799,ogol.com.br,N/A,N/A,N/A
-696567,ogol.com.br,N/A,N/A,N/A
-467712,ogol.com.br,N/A,N/A,N/A
-318199,ogol.com.br,N/A,N/A,N/A
-467574,ogol.com.br,N/A,N/A,N/A
-559061,ogol.com.br,N/A,N/A,N/A
-631373,ogol.com.br,N/A,N/A,N/A
-787024,ogol.com.br,N/A,N/A,N/A
-630028,ogol.com.br,N/A,N/A,N/A
-687783,ogol.com.br,N/A,N/A,N/A
-504,ogol.com.br,N/A,N/A,N/A
-32446,ogol.com.br,N/A,N/A,N/A
-265823,ogol.com.br,N/A,N/A,N/A
-721030,ogol.com.br,N/A,N/A,N/A
-549305,ogol.com.br,N/A,N/A,N/A
-1235742,ogol.com.br,N/A,N/A,N/A
-96808,ogol.com.br,N/A,N/A,N/A
-53943,ogol.com.br,N/A,N/A,N/A
-84786,ogol.com.br,N/A,N/A,N/A
+87757,Rafael de Andrade Bittencourt Pinheiro,1982-03-03,N/A,Brasil
+488010,Carlos Gomes da Cruz,1962-01-23,N/A,Brasil
+5744,Antônio de Oliveira Filho,1960-10-05,N/A,Brasil
+5164,Carlos Renato de Abreu,1978-06-09,N/A,Brasil
+38967,Roger Roberto dos Santos,1986-03-30,N/A,Brasil
+71064,Luis Alberto Bolaños León,1985-03-27,N/A,Equador
+53942,Anderson Aparecido Salles,1988-02-16,N/A,Brasil
+5634,José Antônio Martins Galvão,1982-07-08,N/A,Brasil
+27159,Alfredo Mostarda Filho,1946-10-18,2025-03-28,Brasil
+287051,Marcelo Tolomeotti,1978-11-10,N/A,Brasil
+458021,Getúlio Santos da Silva,1931-07-07,2008-09-15,Brasil
+467697,Euclides de Castro Soares,1968-08-06,N/A,Brasil
+442751,Edilson Borba de Aquino,1995-05-24,N/A,Brasil
+63996,Bechara Jalkh Leonardo Oliveira,1976-02-25,N/A,Brasil
+11952,Luiz Bonfim Marcos,1966-06-15,N/A,Brasil
+582784,Almir Ernani de Souza,1962-03-07,N/A,Brasil
+764234,José Carlos do Nascimento,1958-03-22,N/A,Brasil
+795330,Fausto Luiz Pereira Filho,1957-05-15,N/A,Brasil
+443034,Rodolfo Carlos de Lima,1954-02-04,N/A,Brasil
+756240,Marcos Antônio da Luz,1955-04-24,N/A,Brasil
+392636,Willian Marlon Ferreira Moraes,1995-12-14,N/A,Brasil
+5606,Evaldo Silva dos Santos,1983-01-04,N/A,Brasil
+34539,Márcio Ferreira,1978-07-28,N/A,Brasil
+536225,Carlos Cidreira,1943-09-26,N/A,Brasil
+87162,Kennedy Nagoli,1973-05-24,N/A,Zimbabwe
+94245,Sebastião Carlos Luciano,1965-10-13,N/A,Brasil
+635259,Gabriel Veron Fonseca de Souza,2002-09-03,N/A,Brasil
+5633,Leandro Machado Nascimento,1976-03-22,N/A,Brasil
+12458,Osvaldo Felix Sousa,1981-04-07,N/A,Brasil
+37821,Carlos Esteban Frontini,1981-08-19,N/A,Argentina
+87799,Válber Roel de Oliveira,1967-05-31,N/A,Brasil
+696567,Eduardo Souza Tasso,1976-03-12,N/A,Brasil
+467712,Edelvan Nascimento de Menezes,1963-02-23,N/A,Brasil
+318199,Lucas Henrique Ferreira Venuto,1995-01-14,N/A,Brasil
+467574,Silas Carrere,1956-04-13,N/A,Brasil
+559061,Renyer Luan de Oliveira Damasceno,2003-07-12,N/A,Brasil
+631373,Euclides Almeida da Silva,1952-01-07,N/A,Brasil
+787024,Mário Walter Bezerra,1955-09-23,N/A,Brasil
+630028,Paulo Sérgio Ramos de Souza,1950-12-15,N/A,Brasil
+687783,Allan Victor Oliveira Mota,2000-04-04,N/A,Brasil
+504,Evando Spinassé Camillato,1977-03-07,N/A,Brasil
+32446,Edimílson dos Santos Carmo Júnior,1987-10-15,N/A,Brasil
+265823,Luan Guilherme de Jesus Vieira,1993-03-27,N/A,Brasil
+721030,Hélio de Oliveira Souto,1965-05-12,N/A,Brasil
+549305,Luan Dias da Silva,1997-07-31,N/A,Brasil
+1235742,Alexandre Azambuja Chaves,1970-10-14,N/A,Brasil
+96808,Rychely Cantanhede de Oliveira,1987-08-06,N/A,Brasil
+53943,Filipi de Sousa Barros,1987-07-27,N/A,Brasil
+84786,Marco da Silva Ignácio,1989-06-15,N/A,Brasil
+472604,Laírton José Giovanella,1948-01-20,N/A,Brasil
+130563,Altair Santana da Silva,1982-03-09,N/A,Brasil
+125893,Carlos Alberto Rodrigues Gavião,1980-02-02,N/A,Brasil
+78633,José Leandro Vieira da Silva,1985-01-30,N/A,Brasil
+61357,Leandro de Oliveira da Luz,1983-03-01,N/A,Brasil
+54572,Sebastian Andrés Pinto Peruena,1986-02-15,N/A,Chile
+98471,Vagner Marcelino,1974-07-14,N/A,Brasil
+398631,Francisco Ferreira de Aguiar,1930-11-11,2012-05-22,Brasil
+162894,Carlos Augusto de Oliveira,1963-04-20,N/A,Brasil
+720097,João de França de Oliveira,1970-02-17,N/A,Brasil
+162849,Jussiê Nô Seara,1963-08-10,N/A,Brasil
+765921,Rodney Roz,1953-11-11,N/A,Brasil
+653164,Nelson Luiz Faria Pimenta de Mello,1957-05-08,N/A,Brasil
+801075,Haroldo Silva Nepomuceno,1946-02-20,N/A,Brasil
+721034,Leandro Moyses Magalhães,1965-07-04,N/A,Brasil
+173384,Valdinei Cunha,1971-10-01,N/A,Brasil
+39468,Luciano Nunes de Souza,1972-08-21,N/A,Brasil
+1315157,Renato de Jesus Carvalho Filho,1976-07-28,N/A,Brasil
+11010,Marcos Venâncio de Albuquerque,1980-06-18,N/A,Brasil
+142024,Eder Lima dos Santos,1986-02-05,N/A,Brasil
+134128,Moisés Ferreira Gomes,1989-05-15,N/A,Brasil
+1930,Emerson Ferreira da Rosa,1976-04-04,N/A,Brasil
+5291,Jean Carlos da Silva Ferreira,1982-03-03,N/A,Brasil
+32567,Wagner Diniz Gomes de Araújo,1983-09-21,N/A,Brasil
+34548,Hudson Rodrigues dos Santos,1988-01-30,N/A,Brasil
+5665,Roger José de Noronha Silva,1972-07-23,N/A,Brasil
+5042,Alcides Eduardo Mendes de Araújo Alves,1985-03-13,N/A,Brasil
+5719,Gilmar Silva Santos,1984-03-09,N/A,Brasil
+458020,Urubatão Calvo Nunes,1931-03-31,2010-09-24,Brasil
+4663,Luiz Carlos Bombonato Goulart,1975-11-14,N/A,Brasil
+471487,Matheus Nolasco de Oliveira Silva,1995-04-21,N/A,Brasil
+30,Orestes Júnior Alves,1981-03-24,N/A,Brasil
+647353,José Augusto Zimmermann,1967-10-14,N/A,Brasil
+467728,Mauricio dos Santos Costa,1966-02-03,N/A,Brasil
+719455,Gilmar Fontana,1966-12-16,N/A,Brasil
+289103,Ernani Sales,1953-10-07,N/A,Brasil
+200793,Ronaldo Gonçalves Drummond,1946-08-21,2020-06-09,Brasil
+559226,João Helio Pereira Pires,1947-03-22,N/A,Brasil
+802002,Ronaldo Barsotti de Freitas,1949-03-06,N/A,Brasil
+1315210,Antonio Marcos Ferreira da Silva,1972-09-11,N/A,Brasil
+725137,Luis Fellipe Campos Doria,2003-09-09,N/A,Brasil
+35089,Charles Fernando Basílio da Silva,1985-02-14,N/A,Brasil
+167710,Fernando Diniz Silva,1974-03-27,N/A,Brasil
+84465,Rafael Caldeira Pires,1991-02-11,N/A,Brasil
+236361,Roberto Orlando Affonso Júnior,1983-05-28,N/A,Hong Kong
+11533,Antonio de Nigris Guajardo,1978-04-01,2009-11-16,México
+435295,João Modesto,1939-06-17,2020-04-30,Brasil
+370811,Maximiliano Brian Rolón,1995-01-19,2022-05-14,Argentina
+87769,Masakiyo Maezono,1973-10-29,N/A,Japão
+469115,Antônio Fernando Remiro Barroso,1974-04-12,N/A,Brasil
+425941,Gilson Cebalho Mendes,1965-12-14,N/A,Brasil
+239802,Arimatéia Silva do Nascimento,1964-09-18,N/A,Brasil
+231227,João Jorge Ferreira Couto,1962-01-13,2023-04-29,Brasil
+798991,Alceu José Sanches Rocha,1957-06-16,N/A,Brasil
+172859,Luís Antônio Fernandes,1957-11-06,N/A,Brasil
+570107,Sandro Martins Perpetuo Junior,2001-06-29,N/A,Brasil
+120987,Gilberto Tavares da Silva,1984-06-05,N/A,Brasil
+272937,Everton da Silva Oliveira,1983-03-10,N/A,Brasil
+138085,Paulo Henrique Soares Pereira,1993-01-30,N/A,Brasil
+541772,Arlen Ávila Gomes,1947-09-15,N/A,Brasil
+97936,Uilson de Souza Paula Júnior,1989-04-27,N/A,Brasil
+5673,Fábio Santos Romeu,1985-09-16,N/A,Brasil
+210523,Miguel Luis Müller,1961-02-14,N/A,Brasil
+736946,Marcelo José de Lima Filho,2002-12-11,N/A,Brasil
+167706,Dorismar Felipe de Souza,1975-06-25,N/A,Brasil
+1042221,Mateus Xavier de Sousa,2007-06-29,N/A,Brasil
+275300,José Rafael Vivian,1993-06-16,N/A,Brasil
+359124,Luiz Antonio Miranda,1954-06-30,N/A,Brasil
+214885,José Henrique da Silva Dourado,1989-09-15,N/A,Brasil
+88928,Leandro da Silva,1988-09-22,N/A,Brasil
+97972,Paulo Ricardo Alves da Silva,1987-08-17,N/A,Brasil
+2354,Cristian Daniel Ledesma,1982-09-24,N/A,Itália
+78215,Rivaldo Barbosa de Souza,1985-08-25,N/A,Brasil
+87581,Matheus Ferraz Pereira,1985-02-12,N/A,Brasil
+488009,Fernando Medeiros da Silva,1996-02-10,N/A,Brasil
+467,Bruno dos Santos Moraes,1984-07-07,N/A,Brasil
+32550,André Felippe Seixas Dias,1981-03-11,N/A,Brasil
+87778,Tomo Sugawara,1976-07-03,N/A,Japão
+510393,Agenor Gomes,1929-05-26,2004-02-29,Brasil
+244104,Gilson de Sousa,1959-10-07,N/A,Brasil
+475552,Mauro Patrício Atanes,1960-05-04,N/A,Brasil
+505517,Edson Luiz Valente Correa,1965-01-01,N/A,Brasil
+19041,Tiago Henrique Bernardini Consoni,1979-12-02,N/A,Brasil
+681752,Marco Antônio Pereira,1955-04-26,N/A,Brasil
+438027,Aílton da Silva Santos,1953-11-29,N/A,Brasil
+758271,Jurandir Monteiro Luz,1951-03-20,2011-03-11,Brasil
+487526,Wilson Ferreira de Campos,1950-02-17,N/A,Brasil
+479967,Thiago de Souza Ferreira Costa,1980-07-31,N/A,Brasil
+547757,Francisco Anderson de Jesus dos Santos,1999-05-21,N/A,Brasil
+703532,Wellington Gonzaga de Assis Filho,2001-06-05,N/A,Brasil
+685854,Jhonnathan Espedito Coco Wagner,2001-03-04,N/A,Brasil
+21683,Jair da Rosa Pinto,1921-03-21,2005-07-28,Brasil
+55983,José Carlos Tofolo Júnior,1989-03-02,N/A,Brasil
+18193,André Luciano da Silva,1981-04-27,N/A,Brasil
+87789,Arthur Zwane,1973-09-20,N/A,África do Sul
+231659,Antônio Luis Sartoretto,1962-02-14,N/A,Brasil
+401750,Nailson Fernando Medeiros,1994-02-24,N/A,Brasil
+349467,Luiz Carlos José da Silva,1951-03-11,N/A,Brasil
+138088,Wesley Douglas Teixeira Dias de Oliveira,1993-06-23,N/A,Brasil
+32220,José Arthur de Melo Júnior,1987-03-07,N/A,Brasil
+32218,Vinícius Rodrigues Tomaz da Silva Almeida,1983-06-26,N/A,Brasil
+32217,Fábio Leonardo de Souza,1983-07-11,N/A,Brasil
+214884,Luis Carlos Fernandes,1985-07-25,N/A,Brasil
+553442,Gabriel Calabres Nunes,1998-03-08,N/A,Brasil
+710653,Arlindo Bento da Rocha Júnior,1968-05-14,N/A,Brasil
+689373,Joaquim Moysés de Lima Neto,1966-12-12,N/A,Brasil
+719442,Francisco Antônio Gonçalves Mendonça,1963-09-11,N/A,Brasil
+338305,Édson Ataliba Cândido,1956-07-09,N/A,Brasil
+621984,Ailton Luiz Bertan,1958-06-22,N/A,Brasil
+584021,Evilásio Pessoa dos Santos,1953-03-26,N/A,Brasil
+714948,Paulo Leme,1965-03-30,N/A,Brasil
+894119,João Carlos Garrote Paiva,1941-10-31,N/A,Brasil
+805162,Henrique Roberto Barreto da Rocha,1965-01-09,2018-12-04,Brasil
+88879,Alex Willian Costa e Silva,1988-03-18,N/A,Brasil
+95129,Carlos Eduardo Rosa de Oliveira,1986-07-14,N/A,Brasil
+1231679,Manoel Silva Ferreira,1960-10-11,N/A,Brasil
+246922,Róbson de Oliveira Agondi,1971-01-29,N/A,Brasil
+1355507,Cássio Rodrigues de Castro Filho,1969-12-01,N/A,Brasil
+941516,Vinicius Rodrigues Lira,2007-10-12,N/A,Brasil
+99906,Givanilton Martins Ferreira,1991-04-13,N/A,Brasil
+130066,Wesley Tavares do Santos,1991-01-21,N/A,Brasil
+895085,Benedito Batista,1939-10-12,N/A,Brasil
+468003,Osvaldo Rossi,1937-10-05,N/A,Brasil
+483918,Welder Bastos de Assis,1986-03-03,N/A,Brasil
+5622,Jaílson Zatta,1984-02-03,N/A,Brasil
+167385,Luiz Fabiano de Souza,1975-03-18,N/A,Brasil
+395701,Walterson Silva,1994-12-28,N/A,Brasil
+790623,Hyan Carvalho Machado Silva,2004-03-24,N/A,Brasil
+5470,Nilmar Honorato da Silva,1984-07-14,N/A,Brasil
+156716,Romário Guilherme dos Santos,1992-03-13,N/A,Brasil
+398630,Hélvio Peçanha Moreira,1923-01-20,1984-05-24,Brasil
+511072,Igor Vinícius de Souza,1997-04-01,N/A,Brasil
+378401,Otavio Augusto Braga,1973-07-29,N/A,Brasil
+246476,Carlos Roberto Morais dos Santos,1967-11-11,N/A,Brasil
+720217,Dilermando Amaral Gonçalves,1963-08-11,N/A,Brasil
+721750,Júlio César Pereyra Silveira,1962-07-08,N/A,Uruguai
+726026,Amaury dos Santos Carvalho,1965-02-26,N/A,Brasil
+746844,José Anderson da Silva Martins,1957-10-01,N/A,Brasil
+180897,Ricardo Gallo Ramalho,1962-03-27,N/A,Brasil
+27442,Leopoldo Jacinto Luque,1949-05-03,2021-02-15,Argentina
+756790,Édson Silva,1962-06-27,N/A,Brasil
+769746,Cláudio Juarez Vasques Reginatto,1954-03-07,N/A,Brasil
+789104,Flávio Edmundo Martins Lima,1955-09-20,N/A,Brasil
+798195,Admundo Oliveira do Nascimento,1955-01-23,N/A,Brasil
+799646,Carlos Bauer do Amaral,1953-04-26,N/A,Brasil
+620884,Adolfo José Lima Neves,1951-04-11,N/A,Brasil
+801999,Nílton Santana Múrias,1950-07-17,N/A,Brasil
+635261,Derick Fernando da Silva,2002-05-16,N/A,Brasil
+549605,Fernando Moraes Pileggi,1999-07-06,N/A,Brasil
+631367,Paulo Alberto Fonseca,1955-04-20,N/A,Brasil
+398633,Marcos Cortez,1929-01-04,2006-05-07,Brasil
+869304,Manoel da Rocha Mourão,1933-10-09,N/A,Brasil
+398779,Luiz Gonzaga Figueiró,1934-08-22,2005-04-09,Brasil
+547955,Luiz Henrique Augustin Schlocobier,1999-05-03,N/A,Brasil
+885610,Helmiton Cardoso Freitas,1938-02-17,N/A,Brasil
+642190,Matías Rafael Lacava González,2002-10-24,N/A,Venezuela
+4489,Rodrigo Barbosa Rodrigues Costa,1975-07-30,N/A,Brasil
+232822,Édson Ferreira da Silva,1959-05-12,N/A,Brasil
+127144,Luiz Henrique de Oliveira,1985-09-03,N/A,Brasil
+119714,Osni Lopes,1952-07-13,N/A,Brasil
+769253,José Maria Bernardo da Silva,1954-02-02,2020-08-16,Brasil
+570115,Carlos Eduardo Bertolassi da Silva,2002-02-21,N/A,Brasil
+5459,Élder da Silva Granja dos Santos,1982-07-02,N/A,Brasil
+780914,Claudemir da Silva Acácio Peixoto,1972-06-10,N/A,Brasil
+232858,Alarico Cedival Agostini Neto,1970-02-01,N/A,Brasil
+500199,Billy Vladimir Arce Mina,1998-07-12,N/A,Equador
+200298,Walace de Sousa Novais,1993-05-25,N/A,Brasil
+134171,Renan Carvalho Mota,1991-10-01,N/A,Brasil
+121133,Jefferson Luiz do Nascimento de Souza,1989-05-27,N/A,Brasil
+125249,Luciano Castán da Silva,1989-09-13,N/A,Brasil
+53956,Patrik César dos Santos Duzi,1988-03-12,N/A,Brasil
+34542,Rodrigo Araújo Gomes Costa,1988-05-12,N/A,Brasil
+32212,Roni Visnoveski Turola,1987-07-07,N/A,Brasil
+179401,Marcos da Costa Oliveira,1981-02-24,N/A,Brasil
+443037,Luiz Augusto de Aguiar,1952-07-11,N/A,Brasil
+137413,Silvio Roberto Bido,1983-03-09,N/A,Brasil
+468468,Ary Patusca,1892-00-00,1924-12-04,Brasil
+68537,Nadson José Ferreira,1984-10-18,N/A,Brasil
+33763,Alexandre Afonso da Silva,1983-08-15,N/A,Brasil
+497950,José Carlos Silvério,1938-05-25,N/A,Brasil
+210154,Carlos Roberto Ferreira Cabral,1945-01-02,N/A,Brasil
+297195,Gregore de Magalhães da Silva,1994-03-02,N/A,Brasil
+606614,Aníbal de Andrade Torres,1900-00-00,1984-05-24,Brasil
+553906,Emerson Barbosa Rodrigues dos Santos,1998-08-18,N/A,Brasil
+6022,Rogério Márcio Botelho,1979-09-28,N/A,Brasil
+166402,Fricson Vinicio George Tenorio,1974-09-16,N/A,Equador
+533392,João Batista Carlos Dias,1935-11-02,1997-06-22,Brasil
+542329,Afonso Vidal,1935-05-27,2011-03-28,Brasil
+554445,Victor Yan Souza Santos,2001-04-09,N/A,Brasil
+183196,Albeiro Usuriaga López,1966-06-12,N/A,Colômbia
+709745,Carlos Pierin,1930-08-28,N/A,Brasil
+709753,Mário da Paixão Mendes,1936-09-02,N/A,Brasil
+180634,Antônio José Gomes de Matos,1965-10-25,N/A,Brasil
+716164,Antônio Marques Pinho,1968-09-24,N/A,Brasil
+717457,Ademir Domingos Violin,1969-07-07,N/A,Brasil
+472915,Marcos Francisco Dias,1969-10-10,N/A,Brasil
+57660,Desmond Kevin Armstrong,1964-11-02,N/A,Estados Unidos
+721251,Éder José Sanches,1963-04-06,N/A,Brasil
+21465,Euclydes Barbosa,1909-12-17,1988-02-26,Brasil
+338290,Cláudio Christovam de Pinho,1922-07-18,2000-05-01,Brasil
+398391,Francisco Ferreira de Sousa,1908-06-15,1987-06-12,Brasil
+559668,Uriel Fernandes,1913-11-12,2000-07-22,Brasil
+724140,Juan Carlos Soler,1914-04-28,N/A,Argentina
+724141,Joãozinho,-,N/A,Brasil
+724142,Ary Antônio da Silva,1917-04-17,N/A,Brasil
+724145,Albertinho,-,N/A,Brasil
+724146,Antônio Fierro Siccardi,1916-07-09,1995-04-09,Uruguai
+724148,Eunápio Gouveia de Queiroz,1919-08-22,1991-00-00,Brasil
+724149,Ruy Gomide de Oliveira,1918-04-12,1968-09-16,Brasil
+746504,Paulo Roberto Arraias de Alencar Thomé,1966-11-23,N/A,Brasil
+615342,Antonio Claretti Pinto,1957-11-10,N/A,Brasil
+753085,Luiz Claudio de Souza,1964-05-27,N/A,Brasil
+765539,Marcelo Requena,1963-03-16,N/A,Brasil
+768450,José Luiz Gonçalves Oca,1962-03-15,N/A,Brasil
+795331,Édson Santos de Moraes,-,N/A,Brasil
+795393,Paulo Sergio Kuslevicius,1959-01-05,N/A,Brasil
+175126,José Severino da Silva,1955-10-05,N/A,Brasil
+409209,Antonio Carlos Veiga Casanova,1952-07-15,N/A,Brasil
+799679,José Antônio Guaraldo,1950-10-31,N/A,Brasil
+438261,Altivo de Souza Filho,1948-04-26,N/A,Brasil
+801995,Edevar Sérgio Nicoletti,1945-12-15,N/A,Brasil
+831871,Lico,-,N/A,Brasil
+487886,José Sabino Chagas Monteiro,1996-10-25,N/A,Brasil
+173373,Sérgio Freire Bello,1960-04-02,N/A,Brasil
+314451,Cosme da Silva Campos,1952-12-21,N/A,Brasil
+387120,Fernando Ferretti,1949-04-26,2011-08-29,Brasil
+861294,Gilberto Marques,1948-02-19,N/A,Brasil
+179352,Claudio Olinto de Carvalho,1942-02-01,2016-09-03,Brasil
+861304,Alexandre de Carvalho Kaneco,1946-10-06,N/A,Brasil
+869309,Aguinaldo Secco,1937-09-22,N/A,Brasil
+757983,Nelson Vaz Feijó,1928-03-20,2010-04-22,Brasil
+453240,Silas Ferreira de Souza,1934-09-12,N/A,Brasil
+398632,Walter Vasconcelos Fernandes,1930-05-25,1983-01-22,Brasil
+889762,Nicacio Mário Rodrigues,1926-02-13,N/A,Brasil
+889764,Hugo dos Santos,1922-01-04,N/A,Brasil
+155937,Jandrei Chitolina Carniel,1993-03-01,N/A,Brasil
+685900,Fernando Paiva Correa,2003-03-20,N/A,Brasil
+407946,Luvanor Donizete Borges,1962-02-15,N/A,Brasil
+206829,Geraldo Francisco dos Santos,1962-06-11,2021-07-29,Brasil
+688471,Marcos Pizelli,1957-09-05,N/A,Brasil
+48018,Reginaldo José de Araújo,1982-02-04,N/A,Brasil
+1037833,Jair Estevão da Silva,1947-08-11,N/A,Brasil
+1049661,Alcemir Gomes de Morais,1970-04-19,N/A,Brasil
+1332139,Alejandro Villarreal Zuluaga,2005-07-28,N/A,Colômbia
+1251771,Luiz Guilherme Werneck,1948-03-12,N/A,Brasil
+486226,Fábio Trocate da Cruz,1982-02-08,N/A,Brasil
+1284020,Fernando Garcia Leão Moreno,1977-06-10,N/A,Brasil
+1313581,Léo,1977-00-00,N/A,Brasil
+1315165,Luis Carlos,1975-00-00,N/A,Brasil
+1368678,Leonardo Miranda Rodrigues,1972-02-25,N/A,Brasil
+1368685,Cristiano,1970-00-00,N/A,Brasil
+999774,Enzo Eduardo Monteiro de Castro Becerra,2004-05-27,N/A,Bolívia
+679227,Diógenes Vinicius da Silva,2001-01-06,N/A,Brasil
