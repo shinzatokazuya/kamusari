@@ -48,30 +48,38 @@ def get_bio_data(jogador_url, jogador_id, nome):
                 'Nacionalidade': 'N/A'
             }
 
+        # Depuração: salva o HTML da primeira biografia com falha
+        if not hasattr(get_bio_data, 'debug_saved'):
+            with open('debug_bio.html', 'w', encoding='utf-8') as f:
+                f.write(bio_div.prettify())
+            get_bio_data.debug_saved = True
+            print(f"HTML da biografia salvo em 'debug_bio.html' para {jogador_url}")
+
         # Nome completo
-        nome_completo_elem = bio_div.find('div', class_='bio')
         nome_completo = 'N/A'
-        if nome_completo_elem and 'Nome' in nome_completo_elem.text:
-            nome_completo = nome_completo_elem.text.replace('Nome', '').strip()
+        for div in bio_div.find_all('div', class_='bio'):
+            if 'Nome' in div.text:
+                nome_completo = div.text.replace('Nome', '').strip()
+                break
 
         # Data de nascimento
-        nascimento_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Data de Nascimento', re.I))
         data_nascimento = 'N/A'
+        nascimento_elem = bio_div.find('span', string=re.compile(r'Data de Nascimento', re.I))
         if nascimento_elem:
-            data_nascimento = nascimento_elem.find('span').next_sibling.strip()
+            data_nascimento = nascimento_elem.next_sibling.strip() if nascimento_elem.next_sibling else 'N/A'
 
         # Data de falecimento
-        situacao_elem = bio_div.find('div', class_='bio', string=re.compile(r'Situação', re.I))
         data_falecimento = 'N/A'
-        if situacao_elem and 'Falecido' in situacao_elem.text:
-            match = re.search(r'Falecido - (\d{4}-\d{2}-\d{2})', situacao_elem.text)
+        situacao_elem = bio_div.find('span', string=re.compile(r'Situação', re.I))
+        if situacao_elem and 'Falecido' in situacao_elem.find_parent().text:
+            match = re.search(r'Falecido - (\d{4}-\d{2}-\d{2})', situacao_elem.find_parent().text)
             data_falecimento = match.group(1) if match else 'N/A'
 
         # Nacionalidade
-        nacionalidade_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Nacionalidade', re.I))
         nacionalidade = 'N/A'
+        nacionalidade_elem = bio_div.find('span', string=re.compile(r'Nacionalidade', re.I))
         if nacionalidade_elem:
-            text_elem = nacionalidade_elem.find('div', class_='text')
+            text_elem = nacionalidade_elem.find_parent().find('div', class_='text')
             nacionalidade = text_elem.text.strip() if text_elem else 'N/A'
 
         return {
