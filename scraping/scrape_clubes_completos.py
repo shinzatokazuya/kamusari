@@ -94,7 +94,7 @@ def main():
     for path in db_paths:
         try:
             conn = sqlite3.connect(path)
-            clubes_df = pd.read_sql_query("SELECT ID, Nome, Cidade, Estado, Regiao FROM clubes", conn)
+            clubes_df = pd.read_sql_query("SELECT ID, clube, cidade, UF, regiao FROM clubes", conn)
             print(f"Conectado com sucesso a {path}")
             break
         except sqlite3.OperationalError:
