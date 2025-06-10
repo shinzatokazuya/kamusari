@@ -13,12 +13,41 @@ def get_nome_completo(jogador_url):
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Tenta encontrar o nome completo (ajuste conforme o HTML real)
-        nome_completo = soup.find('div', class_='bio')
-        return nome_completo.text.strip() if nome_completo else 'N/A'
+        # Encontra a seção de biografia
+        bio_div = soup.find('div', id='entity_bio')
+        if not bio_div:
+            print(f"Seção de biografia não encontrada em {jogador_url}")
+            return None
+
+        # Nome completo
+        nome_completo_elem = bio_div.find('div', class_='bio', string=re.compile(r'Nome'))
+        nome_completo = nome_completo_elem.text.replace('Nome', '').strip() if nome_completo_elem else 'N/A'
+
+        # Data de nascimento
+        nascimento_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Data de Nascimento'))
+        data_nascimento = nascimento_elem.find('span').next_sibling.strip() if nascimento_elem else 'N/A'
+
+        # Data de falecimento
+        situacao_elem = bio_div.find('div', class_='bio', string=re.compile(r'Situação'))
+        data_falecimento = 'N/A'
+        if situacao_elem and 'Falecido' in situacao_elem.text:
+            match = re.search(r'Falecido - (\d{4}-\d{2}-\d{2})', situacao_elem.text)
+            data_falecimento = match.group(1) if match else 'N/A'
+
+        # Nacionalidade
+        nacionalidade_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Nacionalidade'))
+        nacionalidade = nacionalidade_elem.find('div', class_='text').text.strip() if nacionalidade_elem else 'N/A'
+
+        return {
+            'ID_Jogador': jogador_id,
+            'Nome Completo': nome_completo,
+            'Data de Nascimento': data_nascimento,
+            'Data de Falecimento': data_falecimento,
+            'Nacionalidade': nacionalidade
+        }
     except Exception as e:
         print(f"Erro ao acessar {jogador_url}: {e}")
-        return 'N/A'
+        return None
 
 # Função para extrair dados de uma página de jogadores
 def scrape_pagina(url):
