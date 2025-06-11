@@ -64,6 +64,8 @@ def main():
     # 5. Encontrar a tabela diretamente pela classe
     tabela_desejada = soup.find('table', class_='wikitable')
 
+    link = ''
+
     if tabela_desejada:
         # 6. Extrair e inserir os dados da tabela
         for linha in tabela_desejada.find_all('tr'):
