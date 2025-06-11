@@ -1,4 +1,3 @@
-import sqlite3
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -6,8 +5,8 @@ import time
 
 def get_club_infobox(url):
     headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+    }
     try:
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
@@ -39,7 +38,8 @@ def get_club_infobox(url):
                     data['Estádio'] = value_text
                 elif label_text == 'Capacidade':
                     capacidades = value_text.split('<br>')
-                    data['Capacidade'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
+                    data['Capacidade_Engenharia'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
+                    data['Capacidade_Bombeiros'] = capacidades[1].split('(')[0].strip() if len(capacidades) > 1 else 'N/A'
                 elif label_text == 'Localização':
                     data['Localização'] = value_text
 
@@ -48,66 +48,63 @@ def get_club_infobox(url):
         print(f"Erro ao processar {url}: {e}")
         return None
 
-def main():
-    # Conectar com o link https://pt.wikipedia.org/wiki/Participações_dos_clubes_no_Campeonato_Brasileiro_de_Futebol
+def get_club_links():
     url = 'https://pt.wikipedia.org/wiki/Participações_dos_clubes_no_Campeonato_Brasileiro_de_Futebol'
     headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-}
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+    }
     try:
-    # 4. Fazer a requisição HTTP e analisar o HTML
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    html_content = response.text
-    soup = BeautifulSoup(html_content, 'html.parser')
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
 
-    # 5. Encontrar a tabela diretamente pela classe
-    tabela_desejada = soup.find('table', class_='wikitable')
+        tabela = soup.find('table', class_='wikitable')
+        if not tabela:
+            print("Tabela não encontrada")
+            return []
 
-    if tabela_desejada:
-        # 6. Extrair e inserir os dados da tabela
-        for linha in tabela_desejada.find_all('tr'):
-            celulas = linha.find_all('td')
-            if len(celulas) >= 3:  # Verifica se a linha tem pelo menos 3 células
-                link = celulas[2].find('a', href=re.compile(r''))
-    else:
-        print("Tabela desejada não encontrada.")
+        links = []
+        for row in tabela.find_all('tr'):
+            cells = row.find_all('td')
+            if len(cells) > 1:  # Verifica se há pelo menos 2 células
+                link_tag = cells[1].find('a', href=True)
+                if link_tag and not link_tag['href'].startswith('#'):  # Ignora links internos
+                    full_url = 'https://pt.wikipedia.org' + link_tag['href']
+                    links.append(full_url)
 
-except requests.exceptions.RequestException as e:
-    print(f"Erro ao acessar a URL: {e}")
-except AttributeError as e:
-    print(f"Erro ao encontrar o elemento: {e}")
-except sqlite3.Error as e:
-    print(f"Erro ao acessar o banco de dados: {e}")
+        return list(dict.fromkeys(links))  # Remove duplicatas
+    except Exception as e:
+        print(f"Erro ao extrair links: {e}")
+        return []
+
+def main():
+    # Obter todos os links da segunda coluna
+    club_urls = get_club_links()
+    print(f"Encontrados {len(club_urls)} links de clubes")
 
     club_data_list = []
     stadium_data_list = []
 
-    base_url = 'https://pt.wikipedia.org'
-
-    for link in rows:
-        if link:  # Verifica se o link existe
-            full_url = base_url + link
-            print(f"Processando: {full_url}")
-            data = get_club_infobox(full_url)
-            if data:
-                club_data = {
-                    'Nome': data.get('Nome', 'N/A'),
-                    'Primeira_Alcunha': data.get('Primeira_Alcunha', 'N/A'),
-                    'Mascote': data.get('Mascote', 'N/A'),
-                    'Fundação': data.get('Fundação', 'N/A')
-                }
-                stadium_data = {
-                    'Estádio': data.get('Estádio', 'N/A'),
-                    'Capacidade_Engenharia': data.get('Capacidade_Engenharia', 'N/A'),
-                    'Capacidade_Bombeiros': data.get('Capacidade_Bombeiros', 'N/A'),
-                    'Localização': data.get('Localização', 'N/A')
-                }
-                club_data_list.append(club_data)
-                stadium_data_list.append(stadium_data)
-            time.sleep(2)  # Delay de 2 segundos para evitar bloqueio
-
-    conn.close()
+    # Processar cada URL
+    for url in club_urls:
+        print(f"Processando: {url}")
+        data = get_club_infobox(url)
+        if data:
+            club_data = {
+                'Nome': data.get('Nome', 'N/A'),
+                'Primeira_Alcunha': data.get('Primeira_Alcunha', 'N/A'),
+                'Mascote': data.get('Mascote', 'N/A'),
+                'Fundação': data.get('Fundação', 'N/A')
+            }
+            stadium_data = {
+                'Estádio': data.get('Estádio', 'N/A'),
+                'Capacidade_Engenharia': data.get('Capacidade_Engenharia', 'N/A'),
+                'Capacidade_Bombeiros': data.get('Capacidade_Bombeiros', 'N/A'),
+                'Localização': data.get('Localização', 'N/A')
+            }
+            club_data_list.append(club_data)
+            stadium_data_list.append(stadium_data)
+        time.sleep(2)  # Delay de 2 segundos para evitar bloqueio
 
     # Gerar CSV para clubes
     clubes_df = pd.DataFrame(club_data_list)
