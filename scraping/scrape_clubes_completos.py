@@ -69,7 +69,7 @@ def main():
         for linha in tabela_desejada.find_all('tr'):
             celulas = linha.find_all('td')
             if len(celulas) >= 3:  # Verifica se a linha tem pelo menos 3 células
-                link = celulas[2].find('a', href=re.compile(r'/jogador/'))
+                link = celulas[2].find('a', href=re.compile(r''))
     else:
         print("Tabela desejada não encontrada.")
 
