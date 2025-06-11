@@ -38,8 +38,7 @@ def get_club_infobox(url):
                     data['Estádio'] = value_text
                 elif label_text == 'Capacidade':
                     capacidades = value_text.split('<br>')
-                    data['Capacidade_Engenharia'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
-                    data['Capacidade_Bombeiros'] = capacidades[1].split('(')[0].strip() if len(capacidades) > 1 else 'N/A'
+                    data['Capacidade'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
                 elif label_text == 'Localização':
                     data['Localização'] = value_text
 
@@ -85,6 +84,9 @@ def main():
     club_data_list = []
     stadium_data_list = []
 
+    # Limitar para teste (remova ou ajuste conforme necessário)
+    club_urls = club_urls[:5]  # Processa apenas os 5 primeiros para depuração
+
     # Processar cada URL
     for url in club_urls:
         print(f"Processando: {url}")
@@ -98,23 +100,30 @@ def main():
             }
             stadium_data = {
                 'Estádio': data.get('Estádio', 'N/A'),
-                'Capacidade_Engenharia': data.get('Capacidade_Engenharia', 'N/A'),
-                'Capacidade_Bombeiros': data.get('Capacidade_Bombeiros', 'N/A'),
+                'Capacidade': data.get('Capacidade', 'N/A'),
                 'Localização': data.get('Localização', 'N/A')
             }
             club_data_list.append(club_data)
             stadium_data_list.append(stadium_data)
+            print(f"Dados coletados para {url}: {club_data}")  # Depuração
         time.sleep(2)  # Delay de 2 segundos para evitar bloqueio
 
-    # Gerar CSV para clubes
-    clubes_df = pd.DataFrame(club_data_list)
-    clubes_df.to_csv('clubes_infobox_all.csv', index=False, encoding='utf-8')
-    print("Dados dos clubes salvos em 'clubes_infobox_all.csv'")
+    # Verificar se há dados antes de salvar
+    if club_data_list:
+        # Gerar CSV para clubes
+        clubes_df = pd.DataFrame(club_data_list)
+        clubes_df.to_csv('clubes_infobox_all.csv', index=False, encoding='utf-8')
+        print("Dados dos clubes salvos em 'clubes_infobox_all.csv'")
+    else:
+        print("Nenhum dado de clube foi coletado para salvar.")
 
-    # Gerar CSV para estádios
-    estadios_df = pd.DataFrame(stadium_data_list)
-    estadios_df.to_csv('estadios_infobox_all.csv', index=False, encoding='utf-8')
-    print("Dados dos estádios salvos em 'estadios_infobox_all.csv'")
+    if stadium_data_list:
+        # Gerar CSV para estádios
+        estadios_df = pd.DataFrame(stadium_data_list)
+        estadios_df.to_csv('estadios_infobox_all.csv', index=False, encoding='utf-8')
+        print("Dados dos estádios salvos em 'estadios_infobox_all.csv'")
+    else:
+        print("Nenhum dado de estádio foi coletado para salvar.")
 
 if __name__ == "__main__":
     main()
