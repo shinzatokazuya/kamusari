@@ -64,14 +64,12 @@ def main():
     # 5. Encontrar a tabela diretamente pela classe
     tabela_desejada = soup.find('table', class_='wikitable')
 
-    link = ''
-
     if tabela_desejada:
         # 6. Extrair e inserir os dados da tabela
         for linha in tabela_desejada.find_all('tr'):
             celulas = linha.find_all('td')
             if len(celulas) >= 3:  # Verifica se a linha tem pelo menos 3 células
-                link = celulas[1]
+                link = celulas[2].find('a', href=re.compile(r'/jogador/'))
     else:
         print("Tabela desejada não encontrada.")
 
