@@ -17,16 +17,16 @@ def create_session():
     return session
 
 # Normaliza nome para URL
-def normalize_name(nome):
-    nome = unicodedata.normalize('NFKD', str(nome)).encode('utf-8', 'ignore').decode('utf-8')
-    nome = re.sub(r'\s+', '-', nome.lower()).strip('-')
-    return nome
+def normalize_name(clube):
+    clube = unicodedata.normalize('NFKD', str(clube)).encode('utf-8', 'ignore').decode('utf-8')
+    clube = re.sub(r'\s+', '-', clube.lower()).strip('-')
+    return clube
 
 # Extrai dados do clube
 def get_clube_data(clube_id, clube, cidade, estado, regiao):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     session = create_session()
-    normalized_nome = normalize_name(nome)
+    normalized_nome = normalize_name(clube)
     clube_url = f"https://www.ogol.com.br/equipe/{normalized_nome}/"
     try:
         response = session.get(clube_url, headers=headers, timeout=15)
@@ -62,12 +62,12 @@ def get_clube_data(clube_id, clube, cidade, estado, regiao):
         return {
             'ID': clube_id,
             'clube': clube,
-            'Nome_Completo': nome_completo,
-            'Cidade': cidade,
-            'Estado': estado,
-            'Região': regiao,
-            'Ano_Fundação': fundacao,
-            'Cores': cores,
+            'nome_completo': nome_completo,
+            'cidade': cidade,
+            'UF': estado,
+            'região': regiao,
+            'ano_fundação': fundacao,
+            'cores': cores,
             'ID_Ogol': id_ogol
         }
     except Exception as e:
@@ -77,12 +77,12 @@ def get_clube_data(clube_id, clube, cidade, estado, regiao):
         return {
             'ID': clube_id,
             'clube': clube,
-            'Nome_Completo': nome,
-            'Cidade': cidade,
-            'Estado': estado,
-            'Região': regiao,
-            'Ano_Fundação': 'N/A',
-            'Cores': 'N/A',
+            'nome_completo': nome,
+            'cidade': cidade,
+            'UF': estado,
+            'região': regiao,
+            'ano_fundação': 'N/A',
+            'cores': 'N/A',
             'ID_Ogol': 'N/A'
         }
 
@@ -111,9 +111,9 @@ def main():
 
     clubes_completos = []
     for i, row in enumerate(clubes_df.iterrows(), 1):
-        clube_data = get_clube_data(row[1]['ID'], row[1]['Nome'], row[1]['Cidade'], row[1]['Estado'], row[1]['Regiao'])
+        clube_data = get_clube_data(row[1]['ID'], row[1]['clube'], row[1]['cidade'], row[1]['UF'], row[1]['regiao'])
         clubes_completos.append(clube_data)
-        print(f"Processado clube {i}/{len(clubes_df)}: {row[1]['Nome']}")
+        print(f"Processado clube {i}/{len(clubes_df)}: {row[1]['clube']}")
         time.sleep(5)
 
     # Salva em CSV
