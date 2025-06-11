@@ -17,6 +17,7 @@ def get_club_infobox(url):
             print(f"Infobox não encontrada em {url}")
             return None
 
+        print(f"Infobox encontrada em {url}. Analisando linhas...")
         data = {}
         for row in infobox.find_all('tr'):
             label = row.find('th')
@@ -24,6 +25,7 @@ def get_club_infobox(url):
             if label and value:
                 label_text = label.get_text(strip=True)
                 value_text = value.get_text(strip=True)
+                print(f"Rótulo: {label_text}, Valor: {value_text}")  # Depuração
                 if label_text == 'Nome':
                     data['Nome'] = value_text
                 elif label_text == 'Alcunhas':
@@ -42,6 +44,8 @@ def get_club_infobox(url):
                 elif label_text == 'Localização':
                     data['Localização'] = value_text
 
+        if not data:
+            print(f"Nenhum campo extraído de {url}")
         return data
     except Exception as e:
         print(f"Erro ao processar {url}: {e}")
@@ -65,19 +69,18 @@ def get_club_links():
         links = []
         for row in tabela.find_all('tr'):
             cells = row.find_all('td')
-            if len(cells) > 1:  # Verifica se há pelo menos 2 células
+            if len(cells) > 1:
                 link_tag = cells[1].find('a', href=True)
-                if link_tag and not link_tag['href'].startswith('#'):  # Ignora links internos
+                if link_tag and not link_tag['href'].startswith('#'):
                     full_url = 'https://pt.wikipedia.org' + link_tag['href']
                     links.append(full_url)
 
-        return list(dict.fromkeys(links))  # Remove duplicatas
+        return list(dict.fromkeys(links))
     except Exception as e:
         print(f"Erro ao extrair links: {e}")
         return []
 
 def main():
-    # Obter todos os links da segunda coluna
     club_urls = get_club_links()
     print(f"Encontrados {len(club_urls)} links de clubes")
 
@@ -85,9 +88,8 @@ def main():
     stadium_data_list = []
 
     # Limitar para teste (remova ou ajuste conforme necessário)
-    club_urls = club_urls[:5]  # Processa apenas os 5 primeiros para depuração
+    club_urls = club_urls[:5]  # Processa apenas os 5 primeiros
 
-    # Processar cada URL
     for url in club_urls:
         print(f"Processando: {url}")
         data = get_club_infobox(url)
@@ -105,12 +107,10 @@ def main():
             }
             club_data_list.append(club_data)
             stadium_data_list.append(stadium_data)
-            print(f"Dados coletados para {url}: {club_data}")  # Depuração
-        time.sleep(2)  # Delay de 2 segundos para evitar bloqueio
+            print(f"Dados coletados para {url}: {club_data}")
+        time.sleep(2)
 
-    # Verificar se há dados antes de salvar
     if club_data_list:
-        # Gerar CSV para clubes
         clubes_df = pd.DataFrame(club_data_list)
         clubes_df.to_csv('clubes_infobox_all.csv', index=False, encoding='utf-8')
         print("Dados dos clubes salvos em 'clubes_infobox_all.csv'")
@@ -118,7 +118,6 @@ def main():
         print("Nenhum dado de clube foi coletado para salvar.")
 
     if stadium_data_list:
-        # Gerar CSV para estádios
         estadios_df = pd.DataFrame(stadium_data_list)
         estadios_df.to_csv('estadios_infobox_all.csv', index=False, encoding='utf-8')
         print("Dados dos estádios salvos em 'estadios_infobox_all.csv'")
