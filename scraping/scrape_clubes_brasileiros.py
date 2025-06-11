@@ -22,7 +22,7 @@ cursor.execute('''
         UF TEXT
     )
 ''')
-conn.commit()
+conn.commit() 
 
 try:
     # 4. Fazer a requisição HTTP e analisar o HTML
