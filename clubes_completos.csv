@@ -1,0 +1,558 @@
+ID,clube,nome_completo,cidade,UF,região,ano_fundação,cores,ID_Ogol
+1,Grêmio,Clubes,Porto Alegre,RS,Sul,N/A,N/A,N/A
+2,Santos,Santos,Santos,SP,Sudeste,1912,N/A,N/A
+3,Atlético Mineiro,Clubes,Belo Horizonte,MG,Sudeste,N/A,N/A,N/A
+4,Palmeiras,Palmeiras,São Paulo,SP,Sudeste,1914,N/A,N/A
+5,Cruzeiro,Cruzeiro,Belo Horizonte,MG,Sudeste,1921,"CruzeiroO Cruzeiro foi fundado no dia 02 de janeiro de 1921 pela colônia italiana em Belo Horizonte como Societá Sportiva Palestra Itália. As cores do clube eram as mesmas da bandeira italiana: verde, vermelho e branco.",N/A
+6,Botafogo,Botafogo,Rio de Janeiro,RJ,Sudeste,1904,N/A,N/A
+7,Fluminense,Fluminense,Rio de Janeiro,RJ,Sudeste,1902,N/A,N/A
+8,Flamengo,Flamengo,Rio de Janeiro,RJ,Sudeste,1895,N/A,N/A
+9,Internacional,Internacional,Porto Alegre,RS,Sul,1909,N/A,N/A
+10,São Paulo,Clubes,São Paulo,SP,Sudeste,N/A,N/A,N/A
+11,Corinthians,Corinthians,São Paulo,SP,Sudeste,1910,N/A,N/A
+12,Vasco da Gama,Clubes,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+13,Bahia,Clubes,Salvador,BA,Nordeste,N/A,N/A,N/A
+14,Athletico Paranaense,Athletico Paranaense,Curitiba,PR,Sul,1924,N/A,N/A
+15,Sport,Clubes,Recife,PE,Nordeste,N/A,N/A,N/A
+16,Goiás,Clubes,Goiânia,GO,Centro-Oeste,N/A,N/A,N/A
+17,Coritiba,Clubes,Curitiba,PR,Sul,N/A,N/A,N/A
+18,Vitória,Clubes,Salvador,BA,Nordeste,N/A,N/A,N/A
+19,Portuguesa,Clubes,São Paulo,SP,Sudeste,N/A,N/A,N/A
+20,Náutico,Clubes,Recife,PE,Nordeste,N/A,N/A,N/A
+21,Guarani,Guarani,Campinas,SP,Sudeste,1911,N/A,N/A
+22,Ceará,Clubes,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+23,Paysandu,Clubes,Belém,PA,Norte,N/A,N/A,N/A
+24,Fortaleza,Fortaleza,Fortaleza,CE,Nordeste,1918,N/A,N/A
+25,Ponte Preta,Clubes,Campinas,SP,Sudeste,N/A,N/A,N/A
+26,Santa Cruz,Clubes,Recife,PE,Nordeste,N/A,N/A,N/A
+27,Juventude,Clubes,Caxias do Sul,RS,Sul,N/A,N/A,N/A
+28,América Mineiro,Clubes,Belo Horizonte,MG,Sudeste,N/A,N/A,N/A
+29,CSA,ogol.com.br,Maceió,AL,Nordeste,N/A,N/A,N/A
+30,America-RJ,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+31,Figueirense,ogol.com.br,Florianópolis,SC,Sul,N/A,N/A,N/A
+32,Remo,ogol.com.br,Belém,PA,Norte,N/A,N/A,N/A
+33,Paraná,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+34,Nacional-AM,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+35,América-RN,ogol.com.br,Natal,RN,Nordeste,N/A,N/A,N/A
+36,Red Bull Bragantino [RBB],ogol.com.br,Bragança Paulista,SP,Sudeste,N/A,N/A,N/A
+37,Desportiva Capixaba,ogol.com.br,Cariacica,ES,Sudeste,N/A,N/A,N/A
+38,Criciúma,ogol.com.br,Criciúma,SC,Sul,N/A,N/A,N/A
+39,ABC,ogol.com.br,Natal,RN,Nordeste,N/A,N/A,N/A
+40,Atlético Goianiense,ogol.com.br,Goiânia,GO,Centro-Oeste,N/A,N/A,N/A
+41,Rio Branco-ES,ogol.com.br,Vitória,ES,Sudeste,N/A,N/A,N/A
+42,Sampaio Corrêa,ogol.com.br,São Luís,MA,Nordeste,N/A,N/A,N/A
+43,Joinville,ogol.com.br,Joinville,SC,Sul,N/A,N/A,N/A
+44,Sergipe,ogol.com.br,Aracaju,SE,Nordeste,N/A,N/A,N/A
+45,CRB,ogol.com.br,Maceió,AL,Nordeste,N/A,N/A,N/A
+46,Avaí,ogol.com.br,Florianópolis,SC,Sul,N/A,N/A,N/A
+47,Moto Club,ogol.com.br,São Luís,MA,Nordeste,N/A,N/A,N/A
+48,Bangu,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+49,Campinense [CAM],ogol.com.br,Campina Grande,PB,Nordeste,N/A,N/A,N/A
+50,Operário-MS,ogol.com.br,Campo Grande,MS,Centro-Oeste,N/A,N/A,N/A
+51,Vila Nova,ogol.com.br,Goiânia,GO,Centro-Oeste,N/A,N/A,N/A
+52,Treze [TRE],ogol.com.br,Campina Grande,PB,Nordeste,N/A,N/A,N/A
+53,Chapecoense,ogol.com.br,Chapecó,SC,Sul,N/A,N/A,N/A
+54,Americano,ogol.com.br,Campos dos Goytacazes,RJ,Sudeste,N/A,N/A,N/A
+55,Confiança,ogol.com.br,Aracaju,SE,Nordeste,N/A,N/A,N/A
+56,River-PI,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+57,Mixto,ogol.com.br,Cuiabá,MT,Centro-Oeste,N/A,N/A,N/A
+58,Londrina,ogol.com.br,Londrina,PR,Sul,N/A,N/A,N/A
+59,São Caetano,ogol.com.br,São Caetano do Sul,SP,Sudeste,N/A,N/A,N/A
+60,Rio Negro-AM,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+61,Botafogo-PB,ogol.com.br,João Pessoa,PB,Nordeste,N/A,N/A,N/A
+62,Inter de Limeira,ogol.com.br,Limeira,SP,Sudeste,N/A,N/A,N/A
+63,Flamengo-PI,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+64,Brasília,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+65,Botafogo-SP,ogol.com.br,Ribeirão Preto,SP,Sudeste,N/A,N/A,N/A
+66,Gama,ogol.com.br,Gama,DF,Centro-Oeste,N/A,N/A,N/A
+67,Ferroviário,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+68,Grêmio Maringá,ogol.com.br,Maringá,PR,Sul,N/A,N/A,N/A
+69,Uberaba,ogol.com.br,Uberaba,MG,Sudeste,N/A,N/A,N/A
+70,Goytacaz,ogol.com.br,Campos dos Goytacazes,RJ,Sudeste,N/A,N/A,N/A
+71,Comercial-MS,ogol.com.br,Campo Grande,MS,Centro-Oeste,N/A,N/A,N/A
+72,Itabaiana,ogol.com.br,Itabaiana,SE,Nordeste,N/A,N/A,N/A
+73,Tiradentes-PI,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+74,Colorado †,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+75,Metropol †,ogol.com.br,Criciúma,SC,Sul,N/A,N/A,N/A
+76,Tuna Luso,ogol.com.br,Belém,PA,Norte,N/A,N/A,N/A
+77,Anapolina,ogol.com.br,Anápolis,GO,Centro-Oeste,N/A,N/A,N/A
+78,Caxias,ogol.com.br,Caxias do Sul,RS,Sul,N/A,N/A,N/A
+79,GE Brasil,ogol.com.br,Pelotas,RS,Sul,N/A,N/A,N/A
+80,União São João,ogol.com.br,Araras,SP,Sudeste,N/A,N/A,N/A
+81,Uberlândia,ogol.com.br,Uberlândia,MG,Sudeste,N/A,N/A,N/A
+82,Fluminense de Feira,ogol.com.br,Feira de Santana,BA,Nordeste,N/A,N/A,N/A
+83,Operário-MT,ogol.com.br,Várzea Grande,MT,Centro-Oeste,N/A,N/A,N/A
+84,Goiânia,ogol.com.br,Goiânia,GO,Centro-Oeste,N/A,N/A,N/A
+85,Cuiabá,ogol.com.br,Cuiabá,MT,Centro-Oeste,N/A,N/A,N/A
+86,Piauí,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+87,XV de Piracicaba,ogol.com.br,Piracicaba,SP,Sudeste,N/A,N/A,N/A
+88,Volta Redonda,ogol.com.br,Volta Redonda,RJ,Sudeste,N/A,N/A,N/A
+89,Maranhão,ogol.com.br,São Luís,MA,Nordeste,N/A,N/A,N/A
+90,Leônico [LEO],ogol.com.br,Simões Filho,BA,Nordeste,N/A,N/A,N/A
+91,Villa Nova-MG,ogol.com.br,Nova Lima,MG,Sudeste,N/A,N/A,N/A
+92,Fast Clube,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+93,Alecrim,ogol.com.br,Natal,RN,Nordeste,N/A,N/A,N/A
+94,São Paulo-RS,ogol.com.br,Rio Grande,RS,Sul,N/A,N/A,N/A
+95,Dom Bosco,ogol.com.br,Cuiabá,MT,Centro-Oeste,N/A,N/A,N/A
+96,CEUB †,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+97,Ferroviário-PR †,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+98,Fonseca †,ogol.com.br,Niterói,RJ,Sudeste,N/A,N/A,N/A
+99,Rabello †,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+100,Central,ogol.com.br,Caruaru,PE,Nordeste,N/A,N/A,N/A
+101,Santo André,ogol.com.br,Santo André,SP,Sudeste,N/A,N/A,N/A
+102,América-SP,ogol.com.br,São José do Rio Preto,SP,Sudeste,N/A,N/A,N/A
+103,Campo Grande-RJ,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+104,Grêmio Barueri [GBA],ogol.com.br,Barueri,SP,Sudeste,N/A,N/A,N/A
+105,Pinheiros-PR,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+106,São José-SP,ogol.com.br,São José dos Campos,SP,Sudeste,N/A,N/A,N/A
+107,Itabuna,ogol.com.br,Itabuna,BA,Nordeste,N/A,N/A,N/A
+108,Comercial,ogol.com.br,Ribeirão Preto,SP,Sudeste,N/A,N/A,N/A
+109,Galícia,ogol.com.br,Salvador,BA,Nordeste,N/A,N/A,N/A
+110,Capelense,ogol.com.br,Capela,AL,Nordeste,N/A,N/A,N/A
+111,Olaria,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+112,XV de Jaú,ogol.com.br,Jaú,SP,Sudeste,N/A,N/A,N/A
+113,Santa Cruz-SE †,ogol.com.br,Estância,SE,Nordeste,N/A,N/A,N/A
+114,Santo Antônio †,ogol.com.br,Vitória,ES,Sudeste,N/A,N/A,N/A
+115,Juventus-SP,ogol.com.br,São Paulo,SP,Sudeste,N/A,N/A,N/A
+116,Operário Ferroviário,ogol.com.br,Ponta Grossa,PR,Sul,N/A,N/A,N/A
+117,Catuense,ogol.com.br,Catu,BA,Nordeste,N/A,N/A,N/A
+118,Novo Hamburgo,ogol.com.br,Novo Hamburgo,RS,Sul,N/A,N/A,N/A
+119,ASA,ogol.com.br,Arapiraca,AL,Nordeste,N/A,N/A,N/A
+120,Brasiliense,ogol.com.br,Taguatinga,DF,Centro-Oeste,N/A,N/A,N/A
+121,Itumbiara,ogol.com.br,Itumbiara,GO,Centro-Oeste,N/A,N/A,N/A
+122,Bandeirante-DF,ogol.com.br,Taguatinga,DF,Centro-Oeste,N/A,N/A,N/A
+123,Ipatinga [IPA],ogol.com.br,Ipatinga,MG,Sudeste,N/A,N/A,N/A
+124,Noroeste,ogol.com.br,Bauru,SP,Sudeste,N/A,N/A,N/A
+125,Ferroviária,ogol.com.br,Araraquara,SP,Sudeste,N/A,N/A,N/A
+126,São Bento,ogol.com.br,Sorocaba,SP,Sudeste,N/A,N/A,N/A
+127,Anápolis,ogol.com.br,Anápolis,GO,Centro-Oeste,N/A,N/A,N/A
+128,Vitória-ES,ogol.com.br,Vitória,ES,Sudeste,N/A,N/A,N/A
+129,AA Colatina †,ogol.com.br,Colatina,ES,Sudeste,N/A,N/A,N/A
+130,CR Guará,ogol.com.br,Guará,DF,Centro-Oeste,N/A,N/A,N/A
+131,Sobradinho,ogol.com.br,Sobradinho,DF,Centro-Oeste,N/A,N/A,N/A
+132,Mirassol,ogol.com.br,Mirassol,SP,Sudeste,N/A,N/A,N/A
+133,Inter SM,ogol.com.br,Santa Maria,RS,Sul,N/A,N/A,N/A
+134,Auto Esporte-PB,ogol.com.br,João Pessoa,PB,Nordeste,N/A,N/A,N/A
+135,Malutrom,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+136,Caldense,ogol.com.br,Poços de Caldas,MG,Sudeste,N/A,N/A,N/A
+137,Corumbaense,ogol.com.br,Corumbá,MS,Centro-Oeste,N/A,N/A,N/A
+138,Auto Esporte-PI †,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+139,Ferroviário-MA †,ogol.com.br,São Luís,MA,Nordeste,N/A,N/A,N/A
+140,Potiguar de Mossoró,ogol.com.br,Mossoró,RN,Nordeste,N/A,N/A,N/A
+141,Francana,ogol.com.br,Franca,SP,Sudeste,N/A,N/A,N/A
+142,América de Propriá,ogol.com.br,Propriá,SE,Nordeste,N/A,N/A,N/A
+143,Rio Branco-RJ †,ogol.com.br,Campos dos Goytacazes,RJ,Sudeste,N/A,N/A,N/A
+144,Inter de Lages,ogol.com.br,Lages,SC,Sul,N/A,N/A,N/A
+145,Hercílio Luz,ogol.com.br,Tubarão,SC,Sul,N/A,N/A,N/A
+146,Água Verde †,ogol.com.br,Curitiba,PR,Sul,N/A,N/A,N/A
+147,América-CE,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+148,Comercial-PR †,ogol.com.br,Cornélio Procópio,PR,Sul,N/A,N/A,N/A
+149,Cruzeiro do Sul †,ogol.com.br,Cruzeiro,DF,Centro-Oeste,N/A,N/A,N/A
+150,Defelê †,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+151,Estrela do Mar †,ogol.com.br,João Pessoa,PB,Nordeste,N/A,N/A,N/A
+152,Guanabara-DF †,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+153,Manufatora †,ogol.com.br,Niterói,RJ,Sudeste,N/A,N/A,N/A
+154,Olímpico-AM †,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+155,Olímpico-SC †,ogol.com.br,Blumenau,SC,Sul,N/A,N/A,N/A
+156,Paula Ramos †,ogol.com.br,Florianópolis,SC,Sul,N/A,N/A,N/A
+157,Perdigão †,ogol.com.br,Videira,SC,Sul,N/A,N/A,N/A
+158,Siderúrgica,ogol.com.br,Sabará,MG,Sudeste,N/A,N/A,N/A
+159,Aliança †,ogol.com.br,Campos dos Goytacazes,RJ,Sudeste,N/A,N/A,N/A
+160,Liga da Marinha †,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+161,Mogi Mirim,ogol.com.br,Mogi Mirim,SP,Sudeste,N/A,N/A,N/A
+162,Oeste [OES],ogol.com.br,Barueri,SP,Sudeste,N/A,N/A,N/A
+163,Ituano,ogol.com.br,Itu,SP,Sudeste,N/A,N/A,N/A
+164,Boa Esporte [BOA],ogol.com.br,Varginha,MG,Sudeste,N/A,N/A,N/A
+165,Marília,ogol.com.br,Marília,SP,Sudeste,N/A,N/A,N/A
+166,São Raimundo-AM,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+167,Paulista,ogol.com.br,Jundiaí,SP,Sudeste,N/A,N/A,N/A
+168,Guarany de Sobral,ogol.com.br,Sobral,CE,Nordeste,N/A,N/A,N/A
+169,União Rondonópolis,ogol.com.br,Rondonópolis,MT,Centro-Oeste,N/A,N/A,N/A
+170,Goiatuba,ogol.com.br,Goiatuba,GO,Centro-Oeste,N/A,N/A,N/A
+171,Luverdense,ogol.com.br,Lucas do Rio Verde,MT,Centro-Oeste,N/A,N/A,N/A
+172,Icasa,ogol.com.br,Juazeiro do Norte,CE,Nordeste,N/A,N/A,N/A
+173,Guaratinguetá [GTA] †,ogol.com.br,Guaratinguetá,SP,Sudeste,N/A,N/A,N/A
+174,Brusque,ogol.com.br,Brusque,SC,Sul,N/A,N/A,N/A
+175,Itaperuna [ITA],ogol.com.br,Itaperuna,RJ,Sudeste,N/A,N/A,N/A
+176,América-PE,ogol.com.br,Recife,PE,Nordeste,N/A,N/A,N/A
+177,Novorizontino,ogol.com.br,Novo Horizonte,SP,Sudeste,N/A,N/A,N/A
+178,Tupi,ogol.com.br,Juiz de Fora,MG,Sudeste,N/A,N/A,N/A
+179,Rio Branco-AC,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+180,Marcílio Dias,ogol.com.br,Itajaí,SC,Sul,N/A,N/A,N/A
+181,Baraúnas,ogol.com.br,Mossoró,RN,Nordeste,N/A,N/A,N/A
+182,Blumenau,ogol.com.br,Blumenau,SC,Sul,N/A,N/A,N/A
+183,Duque de Caxias,ogol.com.br,Duque de Caxias,RJ,Sudeste,N/A,N/A,N/A
+184,Esportivo,ogol.com.br,Bento Gonçalves,RS,Sul,N/A,N/A,N/A
+185,Ubiratan-MS,ogol.com.br,Dourados,MS,Centro-Oeste,N/A,N/A,N/A
+186,Cascavel EC †,ogol.com.br,Cascavel,PR,Sul,N/A,N/A,N/A
+187,GE Novorizontino †,ogol.com.br,Novo Horizonte,SP,Sudeste,N/A,N/A,N/A
+188,Tombense,ogol.com.br,Tombos,MG,Sudeste,N/A,N/A,N/A
+189,Atlético de Alagoinhas,ogol.com.br,Alagoinhas,BA,Nordeste,N/A,N/A,N/A
+190,Pelotas,ogol.com.br,Pelotas,RS,Sul,N/A,N/A,N/A
+191,Serra,ogol.com.br,Serra,ES,Sudeste,N/A,N/A,N/A
+192,Esportivo de Passos †,ogol.com.br,Passos,MG,Sudeste,N/A,N/A,N/A
+193,Rio Branco-MG †,ogol.com.br,Andradas,MG,Sudeste,N/A,N/A,N/A
+194,Tiradentes-DF †,ogol.com.br,Ceilândia,DF,Centro-Oeste,N/A,N/A,N/A
+195,Valeriodoce,ogol.com.br,Itabira,MG,Sudeste,N/A,N/A,N/A
+196,Amazonas,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+197,Democrata GV,ogol.com.br,Governador Valadares,MG,Sudeste,N/A,N/A,N/A
+198,Barra do Garças †,ogol.com.br,Barra do Garças,MT,Centro-Oeste,N/A,N/A,N/A
+199,Bonsucesso,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+200,Ferroviário do Recife †,ogol.com.br,Recife,PE,Nordeste,N/A,N/A,N/A
+201,Santa Cruz-RS,ogol.com.br,Santa Cruz do Sul,RS,Sul,N/A,N/A,N/A
+202,Serrano-RJ,ogol.com.br,Petrópolis,RJ,Sudeste,N/A,N/A,N/A
+203,Sport Belém,ogol.com.br,Belém,PA,Norte,N/A,N/A,N/A
+204,União Bandeirante †,ogol.com.br,Bandeirantes,PR,Sul,N/A,N/A,N/A
+205,Salgueiro,ogol.com.br,Salgueiro,PE,Nordeste,N/A,N/A,N/A
+206,Macaé,ogol.com.br,Macaé,RJ,Sudeste,N/A,N/A,N/A
+207,Imperatriz [IMP],ogol.com.br,Imperatriz,MA,Nordeste,N/A,N/A,N/A
+208,Estrela do Norte,ogol.com.br,Cachoeiro de Itapemirim,ES,Sudeste,N/A,N/A,N/A
+209,Picos,ogol.com.br,Picos,PI,Nordeste,N/A,N/A,N/A
+210,Ceilândia,ogol.com.br,Ceilândia,DF,Centro-Oeste,N/A,N/A,N/A
+211,União Barbarense,ogol.com.br,Santa Bárbara d'Oeste,SP,Sudeste,N/A,N/A,N/A
+212,Icasa EC †,ogol.com.br,Juazeiro do Norte,CE,Nordeste,N/A,N/A,N/A
+213,Parnahyba,ogol.com.br,Parnaíba,PI,Nordeste,N/A,N/A,N/A
+214,Nacional de Patos,ogol.com.br,Patos,PB,Nordeste,N/A,N/A,N/A
+215,Independência,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+216,Lagarto EC †,ogol.com.br,Lagarto,SE,Nordeste,N/A,N/A,N/A
+217,4 de Julho,ogol.com.br,Piripiri,PI,Nordeste,N/A,N/A,N/A
+218,Athletic,ogol.com.br,São João del-Rei,MG,Sudeste,N/A,N/A,N/A
+219,Democrata-SL,ogol.com.br,Sete Lagoas,MG,Sudeste,N/A,N/A,N/A
+220,AA Cabofriense †,ogol.com.br,Cabo Frio,RJ,Sudeste,N/A,N/A,N/A
+221,Douradense †,ogol.com.br,Dourados,MS,Centro-Oeste,N/A,N/A,N/A
+222,Estudantes †,ogol.com.br,Timbaúba,PE,Nordeste,N/A,N/A,N/A
+223,Glória,ogol.com.br,Vacaria,RS,Sul,N/A,N/A,N/A
+224,Princesa do Solimões,ogol.com.br,Manacapuru,AM,Norte,N/A,N/A,N/A
+225,Serrano-BA,ogol.com.br,Porto Seguro,BA,Nordeste,N/A,N/A,N/A
+226,Tiradentes-CE,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+227,América de Joinville †,ogol.com.br,Joinville,SC,Sul,N/A,N/A,N/A
+228,Atlético Taguatinga [CBA] †,ogol.com.br,Taguatinga,DF,Centro-Oeste,N/A,N/A,N/A
+229,Botafogo-BA [BSC],ogol.com.br,Senhor do Bonfim,BA,Nordeste,N/A,N/A,N/A
+230,Calouros do Ar,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+231,GE Catanduvense †,ogol.com.br,Catanduva,SP,Sudeste,N/A,N/A,N/A
+232,Central-RJ †,ogol.com.br,Barra do Piraí,RJ,Sudeste,N/A,N/A,N/A
+233,Guarapari,ogol.com.br,Guarapari,ES,Sudeste,N/A,N/A,N/A
+234,Maguari †,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+235,Foz do Iguaçu EC †,ogol.com.br,Foz do Iguaçu,PR,Sul,N/A,N/A,N/A
+236,Nacional de Itumbiara †,ogol.com.br,Itumbiara,GO,Centro-Oeste,N/A,N/A,N/A
+237,Rodoviária †,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+238,São Domingos,ogol.com.br,Marechal Deodoro,AL,Nordeste,N/A,N/A,N/A
+239,Madureira,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+240,Rio Branco-SP,ogol.com.br,Americana,SP,Sudeste,N/A,N/A,N/A
+241,Ypiranga de Erechim,ogol.com.br,Erechim,RS,Sul,N/A,N/A,N/A
+242,São José-RS,ogol.com.br,Porto Alegre,RS,Sul,N/A,N/A,N/A
+243,Águia de Marabá,ogol.com.br,Marabá,PA,Norte,N/A,N/A,N/A
+244,Atlético Sorocaba †,ogol.com.br,Sorocaba,SP,Sudeste,N/A,N/A,N/A
+245,Porto-PE,ogol.com.br,Caruaru,PE,Nordeste,N/A,N/A,N/A
+246,Ji-Paraná,ogol.com.br,Ji-Paraná,RO,Norte,N/A,N/A,N/A
+247,Tocantinópolis,ogol.com.br,Tocantinópolis,TO,Norte,N/A,N/A,N/A
+248,CENE †,ogol.com.br,Campo Grande,MS,Centro-Oeste,N/A,N/A,N/A
+249,Friburguense,ogol.com.br,Nova Friburgo,RJ,Sudeste,N/A,N/A,N/A
+250,Juazeiro,ogol.com.br,Juazeiro,BA,Nordeste,N/A,N/A,N/A
+251,Palmas †,ogol.com.br,Palmas,TO,Norte,N/A,N/A,N/A
+252,Ypiranga-AP,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+253,Atlético Roraima,ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+254,Baré,ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+255,Floresta,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+256,Iraty †,ogol.com.br,Irati,PR,Sul,N/A,N/A,N/A
+257,Rio Branco-PR,ogol.com.br,Paranaguá,PR,Sul,N/A,N/A,N/A
+258,Vitória-PE [VIT],ogol.com.br,Vitória de Santo Antão,PE,Nordeste,N/A,N/A,N/A
+259,Canoas [CAN] †,ogol.com.br,Canoas,RS,Sul,N/A,N/A,N/A
+260,Corinthians-AL †,ogol.com.br,Maceió,AL,Nordeste,N/A,N/A,N/A
+261,Matsubara †,ogol.com.br,Cambará,PR,Sul,N/A,N/A,N/A
+262,Portuguesa Santista,ogol.com.br,Santos,SP,Sudeste,N/A,N/A,N/A
+263,Tubarão FC †,ogol.com.br,Tubarão,SC,Sul,N/A,N/A,N/A
+264,Atlético Acreano,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+265,Coruripe,ogol.com.br,Coruripe,AL,Nordeste,N/A,N/A,N/A
+266,CRAC,ogol.com.br,Catalão,GO,Centro-Oeste,N/A,N/A,N/A
+267,Manaus,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+268,Aparecidense,ogol.com.br,Aparecida de Goiânia,GO,Centro-Oeste,N/A,N/A,N/A
+269,São Raimundo-RR,ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+270,Sousa,ogol.com.br,Sousa,PB,Nordeste,N/A,N/A,N/A
+271,Altos,ogol.com.br,Altos,PI,Nordeste,N/A,N/A,N/A
+272,Araguaína,ogol.com.br,Araguaína,TO,Norte,N/A,N/A,N/A
+273,Cabofriense,ogol.com.br,Cabo Frio,RJ,Sudeste,N/A,N/A,N/A
+274,Gurupi,ogol.com.br,Gurupi,TO,Norte,N/A,N/A,N/A
+275,São Bernardo,ogol.com.br,São Bernardo do Campo,SP,Sudeste,N/A,N/A,N/A
+276,Atlético Cajazeirense,ogol.com.br,Cajazeiras,PB,Nordeste,N/A,N/A,N/A
+277,Colo Colo,ogol.com.br,Ilhéus,BA,Nordeste,N/A,N/A,N/A
+278,Dom Pedro,ogol.com.br,Núcleo Bandeirante,DF,Centro-Oeste,N/A,N/A,N/A
+279,Andirá,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+280,CFZ-DF,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+281,Corisabbá,ogol.com.br,Floriano,PI,Nordeste,N/A,N/A,N/A
+282,Nacional-SP,ogol.com.br,São Paulo,SP,Sudeste,N/A,N/A,N/A
+283,Paranavaí,ogol.com.br,Paranavaí,PR,Sul,N/A,N/A,N/A
+284,Cianorte,ogol.com.br,Cianorte,PR,Sul,N/A,N/A,N/A
+285,Globo,ogol.com.br,Ceará-Mirim,RN,Nordeste,N/A,N/A,N/A
+286,Portuguesa-RJ,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+287,Jacuipense,ogol.com.br,Riachão do Jacuípe,BA,Nordeste,N/A,N/A,N/A
+288,São Raimundo-PA,ogol.com.br,Santarém,PA,Norte,N/A,N/A,N/A
+289,Genus [GEN],ogol.com.br,Porto Velho,RO,Norte,N/A,N/A,N/A
+290,Águia Negra,ogol.com.br,Rio Brilhante,MS,Centro-Oeste,N/A,N/A,N/A
+291,Juventus de Jaraguá,ogol.com.br,Jaraguá do Sul,SC,Sul,N/A,N/A,N/A
+292,Ypiranga-PE,ogol.com.br,Santa Cruz do Capibaribe,PE,Nordeste,N/A,N/A,N/A
+293,Castanhal,ogol.com.br,Castanhal,PA,Norte,N/A,N/A,N/A
+294,Grêmio Anápolis [GRA],ogol.com.br,Anápolis,GO,Centro-Oeste,N/A,N/A,N/A
+295,União Araguainense,ogol.com.br,Araguaína,TO,Norte,N/A,N/A,N/A
+296,15 de Novembro †,ogol.com.br,Campo Bom,RS,Sul,N/A,N/A,N/A
+297,ADAP/Galo Maringá †,ogol.com.br,Maringá,PR,Sul,N/A,N/A,N/A
+298,Amapá,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+299,Ananindeua,ogol.com.br,Ananindeua,PA,Norte,N/A,N/A,N/A
+300,Atlético de Ibirama,ogol.com.br,Ibirama,SC,Sul,N/A,N/A,N/A
+301,Bacabal,ogol.com.br,Bacabal,MA,Nordeste,N/A,N/A,N/A
+302,Barras †,ogol.com.br,Barras,PI,Nordeste,N/A,N/A,N/A
+303,Batel,ogol.com.br,Guarapuava,PR,Sul,N/A,N/A,N/A
+304,Caxiense †,ogol.com.br,Caxias,MA,Nordeste,N/A,N/A,N/A
+305,Ceilandense,ogol.com.br,Ceilândia,DF,Centro-Oeste,N/A,N/A,N/A
+306,Corintians de Caicó,ogol.com.br,Caicó,RN,Nordeste,N/A,N/A,N/A
+307,Grêmio Coariense,ogol.com.br,Coari,AM,Norte,N/A,N/A,N/A
+308,Grêmio Jaciara,ogol.com.br,Jaciara,MT,Centro-Oeste,N/A,N/A,N/A
+309,Ipitanga,ogol.com.br,Lauro de Freitas,BA,Nordeste,N/A,N/A,N/A
+310,Itapipoca,ogol.com.br,Itapipoca,CE,Nordeste,N/A,N/A,N/A
+311,Izabelense,ogol.com.br,Santa Izabel do Pará,PA,Norte,N/A,N/A,N/A
+312,Jataiense,ogol.com.br,Jataí,GO,Centro-Oeste,N/A,N/A,N/A
+313,Kaburé,ogol.com.br,Colinas do Tocantins,TO,Norte,N/A,N/A,N/A
+314,Linhares,ogol.com.br,Linhares,ES,Sudeste,N/A,N/A,N/A
+315,Maruinense,ogol.com.br,Maruim,SE,Nordeste,N/A,N/A,N/A
+316,Matonense,ogol.com.br,Matão,SP,Sudeste,N/A,N/A,N/A
+317,Palmeiras do Nordeste †,ogol.com.br,Feira de Santana,BA,Nordeste,N/A,N/A,N/A
+318,Planaltina,ogol.com.br,Planaltina,DF,Centro-Oeste,N/A,N/A,N/A
+319,Ponta Grossa †,ogol.com.br,Ponta Grossa,PR,Sul,N/A,N/A,N/A
+320,Progresso,ogol.com.br,Mucajaí,RR,Norte,N/A,N/A,N/A
+321,Santa Inês †,ogol.com.br,Santa Inês,MA,Nordeste,N/A,N/A,N/A
+322,São Gonçalo-RN †,ogol.com.br,São Gonçalo do Amarante,RN,Nordeste,N/A,N/A,N/A
+323,Sertãozinho,ogol.com.br,Sertãozinho,SP,Sudeste,N/A,N/A,N/A
+324,Taveirópolis,ogol.com.br,Campo Grande,MS,Centro-Oeste,N/A,N/A,N/A
+325,Vasco-AC,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+326,Viana,ogol.com.br,Viana,MA,Nordeste,N/A,N/A,N/A
+327,Juazeirense,ogol.com.br,Juazeiro,BA,Nordeste,N/A,N/A,N/A
+328,Metropolitano,ogol.com.br,Blumenau,SC,Sul,N/A,N/A,N/A
+329,Santos-AP,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+330,Trem,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+331,Boavista-RJ,ogol.com.br,Saquarema,RJ,Sudeste,N/A,N/A,N/A
+332,Maringá,ogol.com.br,Maringá,PR,Sul,N/A,N/A,N/A
+333,Vitória da Conquista,ogol.com.br,Vitória da Conquista,BA,Nordeste,N/A,N/A,N/A
+334,Atlético Cearense,ogol.com.br,Fortaleza,CE,Nordeste,N/A,N/A,N/A
+335,URT,ogol.com.br,Patos de Minas,MG,Sudeste,N/A,N/A,N/A
+336,Retrô,ogol.com.br,Camaragibe,PE,Nordeste,N/A,N/A,N/A
+337,Luziânia,ogol.com.br,Luziânia,DF,Centro-Oeste,N/A,N/A,N/A
+338,Pouso Alegre,ogol.com.br,Pouso Alegre,MG,Sudeste,N/A,N/A,N/A
+339,São Luiz,ogol.com.br,Ijuí,RS,Sul,N/A,N/A,N/A
+340,Cristal,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+341,GAS [GAS],ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+342,Horizonte,ogol.com.br,Horizonte,CE,Nordeste,N/A,N/A,N/A
+343,Linense,ogol.com.br,Lins,SP,Sudeste,N/A,N/A,N/A
+344,Petrolina,ogol.com.br,Petrolina,PE,Nordeste,N/A,N/A,N/A
+345,São Francisco-PA,ogol.com.br,Santarém,PA,Norte,N/A,N/A,N/A
+346,Vila Aurora,ogol.com.br,Rondonópolis,MT,Centro-Oeste,N/A,N/A,N/A
+347,América-AM †,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+348,Botafogo-DF [BOT],ogol.com.br,Guará,DF,Centro-Oeste,N/A,N/A,N/A
+349,Camaçari,ogol.com.br,Camaçari,BA,Nordeste,N/A,N/A,N/A
+350,Flamengo de Arcoverde,ogol.com.br,Arcoverde,PE,Nordeste,N/A,N/A,N/A
+351,Gaúcho,ogol.com.br,Passo Fundo,RS,Sul,N/A,N/A,N/A
+352,Guarani-MG,ogol.com.br,Divinópolis,MG,Sudeste,N/A,N/A,N/A
+353,Macapá,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+354,Nacional-PR,ogol.com.br,Rolândia,PR,Sul,N/A,N/A,N/A
+355,Santa Cruz-RN,ogol.com.br,Santa Cruz,RN,Nordeste,N/A,N/A,N/A
+356,São Mateus,ogol.com.br,São Mateus,ES,Sudeste,N/A,N/A,N/A
+357,Toledo,ogol.com.br,Toledo,PR,Sul,N/A,N/A,N/A
+358,Abaeté †,ogol.com.br,Abaetetuba,PA,Norte,N/A,N/A,N/A
+359,ADAP †,ogol.com.br,Campo Mourão,PR,Sul,N/A,N/A,N/A
+360,ADESG,ogol.com.br,Senador Guiomard,AC,Norte,N/A,N/A,N/A
+361,Alvorada,ogol.com.br,Alvorada,TO,Norte,N/A,N/A,N/A
+362,América de Esperança †,ogol.com.br,Esperança,PB,Nordeste,N/A,N/A,N/A
+363,Araçatuba,ogol.com.br,Araçatuba,SP,Sudeste,N/A,N/A,N/A
+364,SE Ariquemes †,ogol.com.br,Ariquemes,RO,Norte,N/A,N/A,N/A
+365,Atlético Três Corações,ogol.com.br,Três Corações,MG,Sudeste,N/A,N/A,N/A
+366,Barra de Teresópolis †,ogol.com.br,Teresópolis,RJ,Sudeste,N/A,N/A,N/A
+367,Barra Mansa,ogol.com.br,Barra Mansa,RJ,Sudeste,N/A,N/A,N/A
+368,Batalhense †,ogol.com.br,Belém,AL,Nordeste,N/A,N/A,N/A
+369,Bayer †,ogol.com.br,Belford Roxo,RJ,Sudeste,N/A,N/A,N/A
+370,Caçadorense †,ogol.com.br,Caçador,SC,Sul,N/A,N/A,N/A
+371,Cacerense,ogol.com.br,Cáceres,MT,Centro-Oeste,N/A,N/A,N/A
+372,Cachoeiro,ogol.com.br,Cachoeiro de Itapemirim,ES,Sudeste,N/A,N/A,N/A
+373,Caldas,ogol.com.br,Caldas Novas,GO,Centro-Oeste,N/A,N/A,N/A
+374,Caxias-SC,ogol.com.br,Joinville,SC,Sul,N/A,N/A,N/A
+375,Centro Limoeirense,ogol.com.br,Limoeiro,PE,Nordeste,N/A,N/A,N/A
+376,CFA †,ogol.com.br,Porto Velho,RO,Norte,N/A,N/A,N/A
+377,CFZ-RJ †,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+378,Chapadão,ogol.com.br,Chapadão do Sul,MS,Centro-Oeste,N/A,N/A,N/A
+379,Chapadinha,ogol.com.br,Chapadinha,MA,Nordeste,N/A,N/A,N/A
+380,Corinthians-PP †,ogol.com.br,Presidente Prudente,SP,Sudeste,N/A,N/A,N/A
+381,Coroatá †,ogol.com.br,Coroatá,MA,Nordeste,N/A,N/A,N/A
+382,Coxim,ogol.com.br,Coxim,MS,Centro-Oeste,N/A,N/A,N/A
+383,Duque de Caxias-MA †,ogol.com.br,Caxias,MA,Nordeste,N/A,N/A,N/A
+384,Engenheiro Beltrão †,ogol.com.br,Engenheiro Beltrão,PR,Sul,N/A,N/A,N/A
+385,EC Limoeiro,ogol.com.br,Limoeiro do Norte,CE,Nordeste,N/A,N/A,N/A
+386,Fabril,ogol.com.br,Lavras,MG,Sudeste,N/A,N/A,N/A
+387,Guarabira,ogol.com.br,Guarabira,PB,Nordeste,N/A,N/A,N/A
+388,Guarany de Cruz Alta †,ogol.com.br,Cruz Alta,RS,Sul,N/A,N/A,N/A
+389,Holanda,ogol.com.br,Rio Preto da Eva,AM,Norte,N/A,N/A,N/A
+390,Iguaçu,ogol.com.br,União da Vitória,PR,Sul,N/A,N/A,N/A
+391,Itacuruba †,ogol.com.br,Itacuruba,PE,Nordeste,N/A,N/A,N/A
+392,Jaguaré,ogol.com.br,Jaguaré,ES,Sudeste,N/A,N/A,N/A
+393,Jaruense †,ogol.com.br,Jaru,RO,Norte,N/A,N/A,N/A
+394,Joaçaba †,ogol.com.br,Joaçaba,SC,Sul,N/A,N/A,N/A
+395,Juventude-MT †,ogol.com.br,Primavera do Leste,MT,Centro-Oeste,N/A,N/A,N/A
+396,Lagartense,ogol.com.br,Lagarto,SE,Nordeste,N/A,N/A,N/A
+397,Lages †,ogol.com.br,Lages,SC,Sul,N/A,N/A,N/A
+398,Legião,ogol.com.br,Brasília,DF,Centro-Oeste,N/A,N/A,N/A
+399,AD Limoeiro,ogol.com.br,Limoeiro do Norte,CE,Nordeste,N/A,N/A,N/A
+400,Linhares EC †,ogol.com.br,Linhares,ES,Sudeste,N/A,N/A,N/A
+401,Mamoré,ogol.com.br,Patos de Minas,MG,Sudeste,N/A,N/A,N/A
+402,Manchete †[MAN],ogol.com.br,Recife,PE,Nordeste,N/A,N/A,N/A
+403,Mineiros,ogol.com.br,Mineiros,GO,Centro-Oeste,N/A,N/A,N/A
+404,Montes Claros,ogol.com.br,Montes Claros,MG,Sudeste,N/A,N/A,N/A
+405,Novo Horizonte,ogol.com.br,Ipameri,GO,Centro-Oeste,N/A,N/A,N/A
+406,Olímpia,ogol.com.br,Olímpia,SP,Sudeste,N/A,N/A,N/A
+407,Operário FC,ogol.com.br,Várzea Grande,MT,Centro-Oeste,N/A,N/A,N/A
+408,EC Operário †,ogol.com.br,Várzea Grande,MT,Centro-Oeste,N/A,N/A,N/A
+409,Paraíso [PAR],ogol.com.br,Paraíso do Tocantins,TO,Norte,N/A,N/A,N/A
+410,Paranoá,ogol.com.br,Paranoá,DF,Centro-Oeste,N/A,N/A,N/A
+411,Passo Fundo,ogol.com.br,Passo Fundo,RS,Sul,N/A,N/A,N/A
+412,Pauferrense †,ogol.com.br,Pau dos Ferros,RN,Nordeste,N/A,N/A,N/A
+413,Paulistano †,ogol.com.br,Paulista,PE,Nordeste,N/A,N/A,N/A
+414,Pedrabranca [PED],ogol.com.br,Alvorada,RS,Sul,N/A,N/A,N/A
+415,Pirambu,ogol.com.br,Pirambu,SE,Nordeste,N/A,N/A,N/A
+416,Poções,ogol.com.br,Poções,BA,Nordeste,N/A,N/A,N/A
+417,Quixadá,ogol.com.br,Quixadá,CE,Nordeste,N/A,N/A,N/A
+418,Real Clube †,ogol.com.br,Itumbiara,GO,Centro-Oeste,N/A,N/A,N/A
+419,Rio Claro,ogol.com.br,Rio Claro,SP,Sudeste,N/A,N/A,N/A
+420,Rio Negro-RR,ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+421,Rio Pardo †,ogol.com.br,Iúna,ES,Sudeste,N/A,N/A,N/A
+422,Rio Verde,ogol.com.br,Rio Verde,GO,Centro-Oeste,N/A,N/A,N/A
+423,Rioverdense,ogol.com.br,Rio Verde,GO,Centro-Oeste,N/A,N/A,N/A
+424,Roma Apucarana †,ogol.com.br,Apucarana,PR,Sul,N/A,N/A,N/A
+425,Santa Cruz,ogol.com.br,Santa Rita,PB,Nordeste,N/A,N/A,N/A
+426,Santa Rosa,ogol.com.br,Belém,PA,Norte,N/A,N/A,N/A
+427,São Borja [SBO],ogol.com.br,São Borja,RS,Sul,N/A,N/A,N/A
+428,Sãocarlense,ogol.com.br,São Carlos,SP,Sudeste,N/A,N/A,N/A
+429,São Cristóvão,ogol.com.br,Rio de Janeiro,RJ,Sudeste,N/A,N/A,N/A
+430,São Gabriel FC †,ogol.com.br,São Gabriel,RS,Sul,N/A,N/A,N/A
+431,São José-AP,ogol.com.br,Macapá,AP,Norte,N/A,N/A,N/A
+432,Serrano-PE,ogol.com.br,Serra Talhada,PE,Nordeste,N/A,N/A,N/A
+433,Sete de Setembro-AL,ogol.com.br,Maceió,AL,Nordeste,N/A,N/A,N/A
+434,Social,ogol.com.br,Coronel Fabriciano,MG,Sudeste,N/A,N/A,N/A
+435,Tiradentes-PA,ogol.com.br,Belém,PA,Norte,N/A,N/A,N/A
+436,Tocantins-MA †,ogol.com.br,Imperatriz,MA,Nordeste,N/A,N/A,N/A
+437,Ulbra-RO †,ogol.com.br,Ji-Paraná,RO,Norte,N/A,N/A,N/A
+438,Unibol †,ogol.com.br,Paulista,PE,Nordeste,N/A,N/A,N/A
+439,Vênus,ogol.com.br,Abaetetuba,PA,Norte,N/A,N/A,N/A
+440,Vera Cruz,ogol.com.br,Vitória de Santo Antão,PE,Nordeste,N/A,N/A,N/A
+441,Goianésia,ogol.com.br,Goianésia,GO,Centro-Oeste,N/A,N/A,N/A
+442,Bahia de Feira,ogol.com.br,Feira de Santana,BA,Nordeste,N/A,N/A,N/A
+443,FC Cascavel,ogol.com.br,Cascavel,PR,Sul,N/A,N/A,N/A
+444,Nova Iguaçu,ogol.com.br,Nova Iguaçu,RJ,Sudeste,N/A,N/A,N/A
+445,Guarani de Juazeiro,ogol.com.br,Juazeiro do Norte,CE,Nordeste,N/A,N/A,N/A
+446,Iporá,ogol.com.br,Iporá,GO,Centro-Oeste,N/A,N/A,N/A
+447,Náutico-RR [NAU],ogol.com.br,Boa Vista,RR,Norte,N/A,N/A,N/A
+448,Sinop,ogol.com.br,Sinop,MT,Centro-Oeste,N/A,N/A,N/A
+449,Real Ariquemes,ogol.com.br,Ariquemes,RO,Norte,N/A,N/A,N/A
+450,Humaitá,ogol.com.br,Porto Acre,AC,Norte,N/A,N/A,N/A
+451,Interporto,ogol.com.br,Porto Nacional,TO,Norte,N/A,N/A,N/A
+452,Murici,ogol.com.br,Murici,AL,Nordeste,N/A,N/A,N/A
+453,Patrocinense,ogol.com.br,Patrocínio,MG,Sudeste,N/A,N/A,N/A
+454,Porto Velho,ogol.com.br,Porto Velho,RO,Norte,N/A,N/A,N/A
+455,Real Noroeste,ogol.com.br,Águia Branca,ES,Sudeste,N/A,N/A,N/A
+456,Aimoré,ogol.com.br,São Leopoldo,RS,Sul,N/A,N/A,N/A
+457,Concórdia,ogol.com.br,Concórdia,SC,Sul,N/A,N/A,N/A
+458,Cordino,ogol.com.br,Barra do Corda,MA,Nordeste,N/A,N/A,N/A
+459,Espírito Santo,ogol.com.br,Vitória,ES,Sudeste,N/A,N/A,N/A
+460,Fluminense-PI,ogol.com.br,Teresina,PI,Nordeste,N/A,N/A,N/A
+461,Foz do Iguaçu,ogol.com.br,Foz do Iguaçu,PR,Sul,N/A,N/A,N/A
+462,Galvez,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+463,Iguatu,ogol.com.br,Iguatu,CE,Nordeste,N/A,N/A,N/A
+464,Independente-PA,ogol.com.br,Tucuruí,PA,Norte,N/A,N/A,N/A
+465,Juventude Samas,ogol.com.br,São Mateus do Maranhão,MA,Nordeste,N/A,N/A,N/A
+466,Penarol,ogol.com.br,Itacoatiara,AM,Norte,N/A,N/A,N/A
+467,Plácido de Castro,ogol.com.br,Plácido de Castro,AC,Norte,N/A,N/A,N/A
+468,Resende,ogol.com.br,Resende,RJ,Sudeste,N/A,N/A,N/A
+469,Santa Cruz de Natal,ogol.com.br,Natal,RN,Nordeste,N/A,N/A,N/A
+470,Atlético Tubarão,ogol.com.br,Tubarão,SC,Sul,N/A,N/A,N/A
+471,Vilhena,ogol.com.br,Vilhena,RO,Norte,N/A,N/A,N/A
+472,Afogados,ogol.com.br,Afogados da Ingazeira,PE,Nordeste,N/A,N/A,N/A
+473,Água Santa,ogol.com.br,Diadema,SP,Sudeste,N/A,N/A,N/A
+474,Aquidauanense,ogol.com.br,Aquidauana,MS,Centro-Oeste,N/A,N/A,N/A
+475,Aracruz,ogol.com.br,Aracruz,ES,Sudeste,N/A,N/A,N/A
+476,Audax,ogol.com.br,Osasco,SP,Sudeste,N/A,N/A,N/A
+477,Audax Rio,ogol.com.br,São João de Meriti,RJ,Sudeste,N/A,N/A,N/A
+478,Avenida,ogol.com.br,Santa Cruz do Sul,RS,Sul,N/A,N/A,N/A
+479,Azuriz,ogol.com.br,Pato Branco,PR,Sul,N/A,N/A,N/A
+480,Barcelona-RO,ogol.com.br,Vilhena,RO,Norte,N/A,N/A,N/A
+481,Barra-SC,ogol.com.br,Balneário Camboriú,SC,Sul,N/A,N/A,N/A
+482,Bragantino-PA,ogol.com.br,Bragança,PA,Norte,N/A,N/A,N/A
+483,Cametá,ogol.com.br,Cametá,PA,Norte,N/A,N/A,N/A
+484,Caucaia,ogol.com.br,Caucaia,CE,Nordeste,N/A,N/A,N/A
+485,Cerâmica,ogol.com.br,Gravataí,RS,Sul,N/A,N/A,N/A
+486,Comercial-PI,ogol.com.br,Campo Maior,PI,Nordeste,N/A,N/A,N/A
+487,Costa Rica,ogol.com.br,Costa Rica,MS,Centro-Oeste,N/A,N/A,N/A
+488,CSE,ogol.com.br,Palmeira dos Índios,AL,Nordeste,N/A,N/A,N/A
+489,Lagarto,ogol.com.br,Lagarto,SE,Nordeste,N/A,N/A,N/A
+490,Lajeadense,ogol.com.br,Lajeado,RS,Sul,N/A,N/A,N/A
+491,Manauara,ogol.com.br,Manaus,AM,Norte,N/A,N/A,N/A
+492,Maracanã-CE,ogol.com.br,Maracanaú,CE,Nordeste,N/A,N/A,N/A
+493,Pacajus,ogol.com.br,Pacajus,CE,Nordeste,N/A,N/A,N/A
+494,Paragominas,ogol.com.br,Paragominas,PA,Norte,N/A,N/A,N/A
+495,Penapolense,ogol.com.br,Penápolis,SP,Sudeste,N/A,N/A,N/A
+496,PSTC,ogol.com.br,Cornélio Procópio,PR,Sul,N/A,N/A,N/A
+497,Red Bull Brasil,ogol.com.br,Campinas,SP,Sudeste,N/A,N/A,N/A
+498,River Plate-SE†,ogol.com.br,Carmópolis,SE,Nordeste,N/A,N/A,N/A
+499,Serra Talhada,ogol.com.br,Serra Talhada,PE,Nordeste,N/A,N/A,N/A
+500,Sete de Dourados,ogol.com.br,Dourados,MS,Centro-Oeste,N/A,N/A,N/A
+501,Ação,ogol.com.br,Santo Antônio de Leverger,MT,Centro-Oeste,N/A,N/A,N/A
+502,AA Araguaia,ogol.com.br,Barra do Garças,MT,Centro-Oeste,N/A,N/A,N/A
+503,Araguaia AC,ogol.com.br,Alto Araguaia,MT,Centro-Oeste,N/A,N/A,N/A
+504,Arapongas,ogol.com.br,Arapongas,PR,Sul,N/A,N/A,N/A
+505,Araxá,ogol.com.br,Araxá,MG,Sudeste,N/A,N/A,N/A
+506,ASSU,ogol.com.br,Assú,RN,Nordeste,N/A,N/A,N/A
+507,Atlético Itapemirim,ogol.com.br,Itapemirim,ES,Sudeste,N/A,N/A,N/A
+508,Atlético Pernambucano,ogol.com.br,Carpina,PE,Nordeste,N/A,N/A,N/A
+509,Barcelona de Ilhéus,ogol.com.br,Ilhéus,BA,Nordeste,N/A,N/A,N/A
+510,Belo Jardim,ogol.com.br,Belo Jardim,PE,Nordeste,N/A,N/A,N/A
+511,Camboriú,ogol.com.br,Camboriú,SC,Sul,N/A,N/A,N/A
+512,Capital-DF,ogol.com.br,Paranoá,DF,Centro-Oeste,N/A,N/A,N/A
+513,Capital-TO,ogol.com.br,Palmas,TO,Norte,N/A,N/A,N/A
+514,Crato,ogol.com.br,Crato,CE,Nordeste,N/A,N/A,N/A
+515,Cruzeiro de Arapiraca,ogol.com.br,Arapiraca,AL,Nordeste,N/A,N/A,N/A
+516,Cruzeiro-RS,ogol.com.br,Cachoeirinha,RS,Sul,N/A,N/A,N/A
+517,Estanciano,ogol.com.br,Estância,SE,Nordeste,N/A,N/A,N/A
+518,Falcon,ogol.com.br,Barra dos Coqueiros,SE,Nordeste,N/A,N/A,N/A
+519,Feirense,ogol.com.br,Feira de Santana,BA,Nordeste,N/A,N/A,N/A
+520,Formosa,ogol.com.br,Formosa,DF,Centro-Oeste,N/A,N/A,N/A
+521,Freipaulistano,ogol.com.br,Frei Paulo,SE,Nordeste,N/A,N/A,N/A
+522,Guarani de Palhoça,ogol.com.br,Palhoça,SC,Sul,N/A,N/A,N/A
+523,Guarany de Bagé,ogol.com.br,Bagé,RS,Sul,N/A,N/A,N/A
+524,Itabirito,ogol.com.br,Itabirito,MG,Sudeste,N/A,N/A,N/A
+525,Itaboraí,ogol.com.br,Itaboraí,RJ,Sudeste,N/A,N/A,N/A
+526,Itaporã,ogol.com.br,Itaporã,MS,Centro-Oeste,N/A,N/A,N/A
+527,Jaraguá,ogol.com.br,Jaraguá,GO,Centro-Oeste,N/A,N/A,N/A
+528,Jacyobá,ogol.com.br,Pão de Açúcar,AL,Nordeste,N/A,N/A,N/A
+529,Jacobina,ogol.com.br,Jacobina,BA,Nordeste,N/A,N/A,N/A
+530,Jequié,ogol.com.br,Jequié,BA,Nordeste,N/A,N/A,N/A
+531,JV Lideral,ogol.com.br,Imperatriz,MA,Nordeste,N/A,N/A,N/A
+532,Maricá,ogol.com.br,Maricá,RJ,Sudeste,N/A,N/A,N/A
+533,Monte Azul,ogol.com.br,Monte Azul Paulista,SP,Sudeste,N/A,N/A,N/A
+534,Nacional-MG [NAC],ogol.com.br,Esmeraldas,MG,Sudeste,N/A,N/A,N/A
+535,Náuas,ogol.com.br,Cruzeiro do Sul,AC,Norte,N/A,N/A,N/A
+536,Naviraiense,ogol.com.br,Naviraí,MS,Centro-Oeste,N/A,N/A,N/A
+537,Nova Mutum,ogol.com.br,Nova Mutum,MT,Centro-Oeste,N/A,N/A,N/A
+538,Nova Venécia,ogol.com.br,Nova Venécia,ES,Sudeste,N/A,N/A,N/A
+539,Novo,ogol.com.br,Campo Grande,MS,Centro-Oeste,N/A,N/A,N/A
+540,Penedense,ogol.com.br,Penedo,AL,Nordeste,N/A,N/A,N/A
+541,Pérolas Negras,ogol.com.br,Resende,RJ,Sudeste,N/A,N/A,N/A
+542,Porto Vitória,ogol.com.br,Vitória,ES,Sudeste,N/A,N/A,N/A
+543,Próspera,ogol.com.br,Criciúma,SC,Sul,N/A,N/A,N/A
+544,Prudentópolis,ogol.com.br,Prudentópolis,PR,Sul,N/A,N/A,N/A
+545,Rio Branco VN,ogol.com.br,Venda Nova do Imigrante,ES,Sudeste,N/A,N/A,N/A
+546,Rondoniense,ogol.com.br,Porto Velho,RO,Norte,N/A,N/A,N/A
+547,Santa Rita,ogol.com.br,Boca da Mata,AL,Nordeste,N/A,N/A,N/A
+548,Santana,ogol.com.br,Santana,AP,Norte,N/A,N/A,N/A
+549,São Francisco-AC,ogol.com.br,Rio Branco,AC,Norte,N/A,N/A,N/A
+550,São Joseense,ogol.com.br,São José dos Pinhais,PR,Sul,N/A,N/A,N/A
+551,São Paulo Crystal,ogol.com.br,Cruz do Espírito Santo,PB,Nordeste,N/A,N/A,N/A
+552,Serrano-PB,ogol.com.br,Campina Grande,PB,Nordeste,N/A,N/A,N/A
+553,Sparta,ogol.com.br,Araguaína,TO,Norte,N/A,N/A,N/A
+554,Tocantins de Miracema,ogol.com.br,Miracema do Tocantins,TO,Norte,N/A,N/A,N/A
+555,Tocantins de Palmas †,ogol.com.br,Palmas,TO,Norte,N/A,N/A,N/A
+556,Tupynambás,ogol.com.br,Juiz de Fora,MG,Sudeste,N/A,N/A,N/A
+557,Vilhenense,ogol.com.br,Vilhena,RO,Norte,N/A,N/A,N/A
