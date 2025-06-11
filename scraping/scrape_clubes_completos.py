@@ -33,6 +33,8 @@ def get_clube_data(clube_id, clube, cidade, estado, regiao):
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
+        # MUDAR O CÓDIGO ABAIXO!!!!!!!!!!!!!
+
         # Extrai ID_Ogol
         jogadores_link = soup.find('a', href=re.compile(r'/jogadores'))
         id_ogol = 'N/A'
