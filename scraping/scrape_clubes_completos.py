@@ -23,7 +23,7 @@ def normalize_name(nome):
     return nome
 
 # Extrai dados do clube
-def get_clube_data(clube_id, nome, cidade, estado, regiao):
+def get_clube_data(clube_id, clube, cidade, estado, regiao):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     session = create_session()
     normalized_nome = normalize_name(nome)
@@ -61,7 +61,7 @@ def get_clube_data(clube_id, nome, cidade, estado, regiao):
 
         return {
             'ID': clube_id,
-            'Nome': nome,
+            'clube': clube,
             'Nome_Completo': nome_completo,
             'Cidade': cidade,
             'Estado': estado,
@@ -76,7 +76,7 @@ def get_clube_data(clube_id, nome, cidade, estado, regiao):
             f.write(f"Erro no clube: {clube_url} - {str(e)}\n")
         return {
             'ID': clube_id,
-            'Nome': nome,
+            'clube': clube,
             'Nome_Completo': nome,
             'Cidade': cidade,
             'Estado': estado,
