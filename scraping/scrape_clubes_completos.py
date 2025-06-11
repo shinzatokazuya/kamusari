@@ -1,128 +1,123 @@
-import requests
-import pandas as pd
 import sqlite3
+import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 import time
-import re
-import unicodedata
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
-# Configura sessão com retries
-def create_session():
-    session = requests.Session()
-    retries = Retry(total=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
-    adapter = HTTPAdapter(max_retries=retries)
-    session.mount('https://', adapter)
-    return session
-
-# Normaliza nome para URL
-def normalize_name(clube):
-    clube = unicodedata.normalize('NFKD', str(clube)).encode('utf-8', 'ignore').decode('utf-8')
-    clube = re.sub(r'\s+', '-', clube.lower()).strip('-')
-    return clube
-
-# Extrai dados do clube
-def get_clube_data(clube_id, clube, cidade, estado, regiao):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-    session = create_session()
-    normalized_nome = normalize_name(clube)
-    clube_url = f"https://www.ogol.com.br/equipe/{normalized_nome}/"
+def get_club_infobox(url):
+    headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+}
     try:
-        response = session.get(clube_url, headers=headers, timeout=15)
+        response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # MUDAR O CÓDIGO ABAIXO!!!!!!!!!!!!!
+        infobox = soup.find('table', class_='infobox vcard vevent')
+        if not infobox:
+            print(f"Infobox não encontrada em {url}")
+            return None
 
-        # Extrai ID_Ogol
-        jogadores_link = soup.find('a', href=re.compile(r'/jogadores'))
-        id_ogol = 'N/A'
-        if jogadores_link:
-            match = re.search(r'equipe/[^/]+/(\d+)/jogadores', jogadores_link['href'])
-            id_ogol = match.group(1) if match else 'N/A'
+        data = {}
+        for row in infobox.find_all('tr'):
+            label = row.find('th')
+            value = row.find('td')
+            if label and value:
+                label_text = label.get_text(strip=True)
+                value_text = value.get_text(strip=True)
+                if label_text == 'Nome':
+                    data['Nome'] = value_text
+                elif label_text == 'Alcunhas':
+                    alcunhas = value_text.split('<br>')
+                    data['Primeira_Alcunha'] = alcunhas[0].strip() if alcunhas else 'N/A'
+                elif label_text == 'Mascote':
+                    data['Mascote'] = value_text
+                elif label_text == 'Fundação':
+                    fundacao = value_text.split(';')[0].strip()
+                    data['Fundação'] = fundacao
+                elif label_text == 'Estádio':
+                    data['Estádio'] = value_text
+                elif label_text == 'Capacidade':
+                    capacidades = value_text.split('<br>')
+                    data['Capacidade'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
+                elif label_text == 'Localização':
+                    data['Localização'] = value_text
 
-        # Nome completo
-        nome_completo_elem = soup.find('h1')
-        nome_completo = nome_completo_elem.text.strip() if nome_completo_elem else nome
-
-        # Ano de fundação
-        fundacao = 'N/A'
-        fundacao_elem = soup.find('span', string=re.compile(r'Fundação', re.I))
-        if fundacao_elem:
-            fundacao_text = fundacao_elem.find_parent('div').text
-            match = re.search(r'\d{4}', fundacao_text)
-            fundacao = match.group(0) if match else 'N/A'
-
-        # Cores
-        cores = 'N/A'
-        cores_elem = soup.find('span', string=re.compile(r'Cores', re.I))
-        if cores_elem:
-            cores_text = cores_elem.find_parent('div').text
-            cores = cores_text.replace('Cores:', '').strip() if cores_text else 'N/A'
-
-        return {
-            'ID': clube_id,
-            'clube': clube,
-            'nome_completo': nome_completo,
-            'cidade': cidade,
-            'UF': estado,
-            'região': regiao,
-            'ano_fundação': fundacao,
-            'cores': cores,
-            'ID_Ogol': id_ogol
-        }
+        return data
     except Exception as e:
-        print(f"Erro ao acessar {clube_url}: {e}")
-        with open('failed_urls.txt', 'a', encoding='utf-8') as f:
-            f.write(f"Erro no clube: {clube_url} - {str(e)}\n")
-        return {
-            'ID': clube_id,
-            'clube': clube,
-            'nome_completo': nome,
-            'cidade': cidade,
-            'UF': estado,
-            'região': regiao,
-            'ano_fundação': 'N/A',
-            'cores': 'N/A',
-            'ID_Ogol': 'N/A'
-        }
+        print(f"Erro ao processar {url}: {e}")
+        return None
 
-# Função principal
 def main():
-    # Tenta conectar ao SQLite em diferentes caminhos
-    db_paths = ['brasileirao_desde_1971.db', 'banco_de_dados/teste.db']
-    conn = None
-    for path in db_paths:
-        try:
-            conn = sqlite3.connect(path)
-            clubes_df = pd.read_sql_query("SELECT ID, clube, cidade, UF, regiao FROM clubes", conn)
-            print(f"Conectado com sucesso a {path}")
-            break
-        except sqlite3.OperationalError:
-            print(f"Não encontrou {path}. Tentando próximo...")
-        except Exception as e:
-            print(f"Erro ao conectar a {path}: {e}")
-    if conn is None:
-        print("Nenhum arquivo de banco de dados encontrado. Verifique o caminho ou o nome do arquivo.")
-        return
+    # Conectar com o link https://pt.wikipedia.org/wiki/Participações_dos_clubes_no_Campeonato_Brasileiro_de_Futebol
+    url = 'https://pt.wikipedia.org/wiki/Participações_dos_clubes_no_Campeonato_Brasileiro_de_Futebol'
+    headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+}
+    try:
+    # 4. Fazer a requisição HTTP e analisar o HTML
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    html_content = response.text
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    # 5. Encontrar a tabela diretamente pela classe
+    tabela_desejada = soup.find('table', class_='wikitable')
+
+    if tabela_desejada:
+        # 6. Extrair e inserir os dados da tabela
+        for linha in tabela_desejada.find_all('tr'):
+            celulas = linha.find_all('td')
+            if len(celulas) >= 3:  # Verifica se a linha tem pelo menos 3 células
+                link = celulas[1]
+    else:
+        print("Tabela desejada não encontrada.")
+
+except requests.exceptions.RequestException as e:
+    print(f"Erro ao acessar a URL: {e}")
+except AttributeError as e:
+    print(f"Erro ao encontrar o elemento: {e}")
+except sqlite3.Error as e:
+    print(f"Erro ao acessar o banco de dados: {e}")
+
+    club_data_list = []
+    stadium_data_list = []
+
+    base_url = 'https://pt.wikipedia.org'
+
+    for link in rows:
+        if link:  # Verifica se o link existe
+            full_url = base_url + link
+            print(f"Processando: {full_url}")
+            data = get_club_infobox(full_url)
+            if data:
+                club_data = {
+                    'Nome': data.get('Nome', 'N/A'),
+                    'Primeira_Alcunha': data.get('Primeira_Alcunha', 'N/A'),
+                    'Mascote': data.get('Mascote', 'N/A'),
+                    'Fundação': data.get('Fundação', 'N/A')
+                }
+                stadium_data = {
+                    'Estádio': data.get('Estádio', 'N/A'),
+                    'Capacidade_Engenharia': data.get('Capacidade_Engenharia', 'N/A'),
+                    'Capacidade_Bombeiros': data.get('Capacidade_Bombeiros', 'N/A'),
+                    'Localização': data.get('Localização', 'N/A')
+                }
+                club_data_list.append(club_data)
+                stadium_data_list.append(stadium_data)
+            time.sleep(2)  # Delay de 2 segundos para evitar bloqueio
+
     conn.close()
 
-    print(f"Lidos {len(clubes_df)} clubes do banco de dados")
-    print(clubes_df.head())
+    # Gerar CSV para clubes
+    clubes_df = pd.DataFrame(club_data_list)
+    clubes_df.to_csv('clubes_infobox_all.csv', index=False, encoding='utf-8')
+    print("Dados dos clubes salvos em 'clubes_infobox_all.csv'")
 
-    clubes_completos = []
-    for i, row in enumerate(clubes_df.iterrows(), 1):
-        clube_data = get_clube_data(row[1]['ID'], row[1]['clube'], row[1]['cidade'], row[1]['UF'], row[1]['regiao'])
-        clubes_completos.append(clube_data)
-        print(f"Processado clube {i}/{len(clubes_df)}: {row[1]['clube']}")
-        time.sleep(5)
-
-    # Salva em CSV
-    df = pd.DataFrame(clubes_completos)
-    df.to_csv('clubes_completos.csv', index=False, encoding='utf-8')
-    print(f"Dados salvos em 'clubes_completos.csv' com {len(df)} clubes")
-    print(df.head())
+    # Gerar CSV para estádios
+    estadios_df = pd.DataFrame(stadium_data_list)
+    estadios_df.to_csv('estadios_infobox_all.csv', index=False, encoding='utf-8')
+    print("Dados dos estádios salvos em 'estadios_infobox_all.csv'")
 
 if __name__ == "__main__":
     main()
