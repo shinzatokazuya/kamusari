@@ -22,30 +22,38 @@ def get_club_infobox(url):
         data = {}
         for row in infobox.find_all('tr'):
             cells = row.find_all('td')
-            if len(cells) >= 2:  # Verifica se há pelo menos dois <td>
+            if len(cells) >= 2:
                 label = cells[0].get_text(strip=True)
-                value = cells[1].get_text(strip=True)
-                print(f"Rótulo: {label}, Valor: {value}")  # Depuração
+                value = cells[1]
+                print(f"Rótulo: {label}, Valor bruto: {value}")  # Depuração com conteúdo bruto
                 if label == 'Nome':
-                    data['Nome'] = value
+                    data['Nome'] = value.get_text(strip=True)
                 elif label == 'Alcunhas':
-                    alcunhas = value.split('<br>', '<i>', '<sup>')  # Divide por espaços
-                    data['Primeira_Alcunha'] = alcunhas[0].strip() if alcunhas else 'N/A'
+                    # Pega o primeiro texto antes de separadores como <br>, <i>, ou <sup>
+                    primeiro_texto = value.find(text=True, recursive=False)
+                    if primeiro_texto:
+                        data['Primeira_Alcunha'] = primeiro_texto.strip()
+                    else:
+                        data['Primeira_Alcunha'] = 'N/A'
                 elif label == 'Mascote':
-                    data['Mascote'] = value
+                    data['Mascote'] = value.get_text(strip=True)
                 elif label == 'Fundação':
-                    fundacao = value.split(';', ',')[0].strip()
+                    fundacao = value.get_text(strip=True).split(';')[0].strip()
                     data['Fundação'] = fundacao
                 elif label == 'Estádio':
-                    estadios = value.split('<br>', '<sup>')
+                    estadios = value.get_text(strip=True).split('<br>')
                     data['Estádio'] = estadios[0].strip() if estadios else 'N/A'
                 elif label == 'Capacidade':
-                    capacidades = value.split('<br>')
-                    capacidade_texto = capacidades[0].strip()
-                    # Extrai apenas os números, mantendo pontos
-                    data['Capacidade'] = re.sub(r'[^\d.]', '', capacidade_texto) if capacidade_texto else 'N/A'
+                    capacidade_texto = value.get_text(strip=True).strip()
+                    # Trata "mil" convertendo para "000"
+                    if 'mil' in capacidade_texto.lower():
+                        numero = re.search(r'(\d{1,3}(?:\.\d{3})?|\d+)', capacidade_texto).group()
+                        data['Capacidade'] = str(int(float(numero.replace('.', ''))) * 1000)
+                    else:
+                        # Mantém pontos para outros casos
+                        data['Capacidade'] = re.sub(r'[^\d.]', '', capacidade_texto) if capacidade_texto else 'N/A'
                 elif label == 'Localização':
-                    data['Localização'] = value
+                    data['Localização'] = value.get_text(strip=True)
 
         if not data:
             print(f"Nenhum campo extraído de {url}")
