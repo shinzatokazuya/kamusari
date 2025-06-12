@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+import re
 
 def get_club_infobox(url):
     headers = {
@@ -28,19 +29,21 @@ def get_club_infobox(url):
                 if label == 'Nome':
                     data['Nome'] = value
                 elif label == 'Alcunhas':
-                    alcunhas = value.split('<br>')
+                    alcunhas = value.split()  # Divide por espaços
                     data['Primeira_Alcunha'] = alcunhas[0].strip() if alcunhas else 'N/A'
                 elif label == 'Mascote':
                     data['Mascote'] = value
                 elif label == 'Fundação':
-                    fundacao = value.split(';')[0].strip()
+                    fundacao = value.split(';', ',')[0].strip()
                     data['Fundação'] = fundacao
                 elif label == 'Estádio':
                     estadios = value.split('<br>')
                     data['Estádio'] = estadios[0].strip() if estadios else 'N/A'
                 elif label == 'Capacidade':
                     capacidades = value.split('<br>')
-                    data['Capacidade'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
+                    capacidade_texto = capacidades[0].strip()
+                    # Extrai apenas os números, mantendo pontos
+                    data['Capacidade'] = re.sub(r'[^\d.]', '', capacidade_texto) if capacidade_texto else 'N/A'
                 elif label == 'Localização':
                     data['Localização'] = value
 
