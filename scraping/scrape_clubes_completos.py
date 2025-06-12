@@ -20,29 +20,29 @@ def get_club_infobox(url):
         print(f"Infobox encontrada em {url}. Analisando linhas...")
         data = {}
         for row in infobox.find_all('tr'):
-            label = row.find('th')
-            value = row.find('td')
-            if label and value:
-                label_text = label.get_text(strip=True)
-                value_text = value.get_text(strip=True)
-                print(f"Rótulo: {label_text}, Valor: {value_text}")  # Depuração
-                if label_text == 'Nome':
-                    data['Nome'] = value_text
-                elif label_text == 'Alcunhas':
-                    alcunhas = value_text.split('<br>')
+            cells = row.find_all('td')
+            if len(cells) >= 2:  # Verifica se há pelo menos dois <td>
+                label = cells[0].get_text(strip=True)
+                value = cells[1].get_text(strip=True)
+                print(f"Rótulo: {label}, Valor: {value}")  # Depuração
+                if label == 'Nome':
+                    data['Nome'] = value
+                elif label == 'Alcunhas':
+                    alcunhas = value.split('<br>')
                     data['Primeira_Alcunha'] = alcunhas[0].strip() if alcunhas else 'N/A'
-                elif label_text == 'Mascote':
-                    data['Mascote'] = value_text
-                elif label_text == 'Fundação':
-                    fundacao = value_text.split(';')[0].strip()
+                elif label == 'Mascote':
+                    data['Mascote'] = value
+                elif label == 'Fundação':
+                    fundacao = value.split(';')[0].strip()
                     data['Fundação'] = fundacao
-                elif label_text == 'Estádio':
-                    data['Estádio'] = value_text
-                elif label_text == 'Capacidade':
-                    capacidades = value_text.split('<br>')
+                elif label == 'Estádio':
+                    estadios = value.split('<br>')
+                    data['Estádio'] = estadios[0].strip() if estadios else 'N/A'
+                elif label == 'Capacidade':
+                    capacidades = value.split('<br>')
                     data['Capacidade'] = capacidades[0].split('(')[0].strip() if capacidades else 'N/A'
-                elif label_text == 'Localização':
-                    data['Localização'] = value_text
+                elif label == 'Localização':
+                    data['Localização'] = value
 
         if not data:
             print(f"Nenhum campo extraído de {url}")
@@ -107,7 +107,7 @@ def main():
             }
             club_data_list.append(club_data)
             stadium_data_list.append(stadium_data)
-            print(f"Dados coletados para {url}: {club_data}")
+            print(f"Dados coletados para {url}: {stadium_data}")  # Foco nos dados do estádio
         time.sleep(2)
 
     if club_data_list:
