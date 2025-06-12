@@ -99,7 +99,7 @@ def main():
     stadium_data_list = []
 
     # Limitar para teste (remova ou ajuste conforme necessário)
-    club_urls = club_urls[:5]  # Processa apenas os 5 primeiros
+    #club_urls = club_urls[:5]  # Processa apenas os 5 primeiros
 
     for url in club_urls:
         print(f"Processando: {url}")
