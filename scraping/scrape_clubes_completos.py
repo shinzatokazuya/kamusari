@@ -29,7 +29,7 @@ def get_club_infobox(url):
                 if label == 'Nome':
                     data['Nome'] = value
                 elif label == 'Alcunhas':
-                    alcunhas = value.split()  # Divide por espaços
+                    alcunhas = value.split('<br>', '<i>', '<sup>')  # Divide por espaços
                     data['Primeira_Alcunha'] = alcunhas[0].strip() if alcunhas else 'N/A'
                 elif label == 'Mascote':
                     data['Mascote'] = value
@@ -37,7 +37,7 @@ def get_club_infobox(url):
                     fundacao = value.split(';', ',')[0].strip()
                     data['Fundação'] = fundacao
                 elif label == 'Estádio':
-                    estadios = value.split('<br>')
+                    estadios = value.split('<br>', '<sup>')
                     data['Estádio'] = estadios[0].strip() if estadios else 'N/A'
                 elif label == 'Capacidade':
                     capacidades = value.split('<br>')
