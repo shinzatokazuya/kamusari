@@ -4,39 +4,75 @@ from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 import time
 import re
+import unicodedata
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+# Configura sessão com retries
+def create_session():
+    session = requests.Session()
+    retries = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount('https://', adapter)
+    return session
+
+# Função para normalizar nome para URL
+def normalize_name(nome):
+    # Remove acentos e converte para minúsculas
+    nome = unicodedata.normalize('NFKD', nome).encode('ASCII', 'ignore').decode('utf-8')
+    # Substitui espaços por hífens
+    nome = re.sub(r'\s+', '-', nome.lower()).strip('-')
+    return nome
 
 # Função para extrair dados da página de biografia de um jogador
 def get_bio_data(jogador_url, jogador_id, nome):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    session = create_session()
     try:
-        response = requests.get(jogador_url, headers=headers, timeout=10)
+        response = session.get(jogador_url, headers=headers, timeout=15)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Encontra a seção de biografia
+        # Tenta encontrar a seção de biografia
         bio_div = soup.find('div', id='entity_bio')
         if not bio_div:
-            print(f"Seção de biografia não encontrada em {jogador_url}")
-            return None
+            print(f"Seção de biografia não encontrada em {jogador_url}. Tentando extrair dados alternativos.")
+            # Fallback: tenta extrair nome completo do título ou h1
+            nome_completo = soup.find('h1') or soup.find('title')
+            nome_completo = nome_completo.text.strip() if nome_completo else nome
+            return {
+                'ID_Jogador': jogador_id,
+                'Nome Completo': nome_completo,
+                'Data de Nascimento': 'N/A',
+                'Data de Falecimento': 'N/A',
+                'Nacionalidade': 'N/A'
+            }
 
         # Nome completo
-        nome_completo_elem = bio_div.find('div', class_='bio', string=re.compile(r'Nome'))
-        nome_completo = nome_completo_elem.text.replace('Nome', '').strip() if nome_completo_elem else 'N/A'
+        nome_completo_elem = bio_div.find('div', class_='bio')
+        nome_completo = 'N/A'
+        if nome_completo_elem and 'Nome' in nome_completo_elem.text:
+            nome_completo = nome_completo_elem.text.replace('Nome', '').strip()
 
         # Data de nascimento
-        nascimento_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Data de Nascimento'))
-        data_nascimento = nascimento_elem.find('span').next_sibling.strip() if nascimento_elem else 'N/A'
+        nascimento_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Data de Nascimento', re.I))
+        data_nascimento = 'N/A'
+        if nascimento_elem:
+            data_nascimento = nascimento_elem.find('span').next_sibling.strip()
 
         # Data de falecimento
-        situacao_elem = bio_div.find('div', class_='bio', string=re.compile(r'Situação'))
+        situacao_elem = bio_div.find('div', class_='bio', string=re.compile(r'Situação', re.I))
         data_falecimento = 'N/A'
         if situacao_elem and 'Falecido' in situacao_elem.text:
             match = re.search(r'Falecido - (\d{4}-\d{2}-\d{2})', situacao_elem.text)
             data_falecimento = match.group(1) if match else 'N/A'
 
         # Nacionalidade
-        nacionalidade_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Nacionalidade'))
-        nacionalidade = nacionalidade_elem.find('div', class_='text').text.strip() if nacionalidade_elem else 'N/A'
+        nacionalidade_elem = bio_div.find('div', class_='bio_half', string=re.compile(r'Nacionalidade', re.I))
+        nacionalidade = 'N/A'
+        if nacionalidade_elem:
+            text_elem = nacionalidade_elem.find('div', class_='text')
+            nacionalidade = text_elem.text.strip() if text_elem else 'N/A'
 
         return {
             'ID_Jogador': jogador_id,
@@ -47,13 +83,20 @@ def get_bio_data(jogador_url, jogador_id, nome):
         }
     except Exception as e:
         print(f"Erro ao acessar {jogador_url}: {e}")
-        return None
+        return {
+            'ID_Jogador': jogador_id,
+            'Nome Completo': nome,
+            'Data de Nascimento': 'N/A',
+            'Data de Falecimento': 'N/A',
+            'Nacionalidade': 'N/A'
+        }
 
 # Função para extrair dados de uma página de jogadores
 def scrape_pagina(url):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    session = create_session()
     try:
-        response = requests.get(url, headers=headers, timeout=10)
+        response = session.get(url, headers=headers, timeout=15)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -81,7 +124,8 @@ def scrape_pagina(url):
                 jogador_id = match.group(1) if match else 'N/A'
 
             # Monta a URL da página de biografia
-            jogador_url = f"https://www.ogol.com.br/jogador/{nome.lower().replace(' ', '-')}/{jogador_id}"
+            normalized_nome = normalize_name(nome)
+            jogador_url = f"https://www.ogol.com.br/jogador/{normalized_nome}/{jogador_id}"
 
             # Extrai dados da biografia
             bio_data = get_bio_data(jogador_url, jogador_id, nome)
@@ -102,11 +146,11 @@ def main():
 
     jogadores = []
     # Scraping paralelo com ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=3) as executor:  # Reduzido para evitar bloqueios
+    with ThreadPoolExecutor(max_workers=2) as executor:  # Reduzido para evitar bloqueios
         resultados = executor.map(scrape_pagina, urls)
         for resultado in resultados:
             jogadores.extend(resultado)
-            time.sleep(2)  # Delay para evitar bloqueios
+            time.sleep(3)  # Aumentado para evitar bloqueios
 
     # Salva em CSV
     df = pd.DataFrame(jogadores)
