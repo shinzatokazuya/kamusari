@@ -237,7 +237,7 @@ CREATE TABLE transferencias (
     jogador_id INTEGER NOT NULL,
     clube_origem_id INTEGER,
     clube_destino_id INTEGER NOT NULL,
-    data_transferencia DATE NOT NULL,
+    data_transferencia TEXT NOT NULL,
     valor REAL, -- Valor da transferência
     tipo TEXT, -- 'Compra', 'Empréstimo', 'Livre', 'Troca'
     duracao_meses INTEGER, -- Para empréstimos
