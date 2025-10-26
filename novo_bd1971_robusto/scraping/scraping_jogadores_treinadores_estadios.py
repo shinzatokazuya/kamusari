@@ -281,5 +281,31 @@ class OGolScraperAvancado:
                             nacionalidade = cls.spilt(':')[1]
                             break
 
+                # Busca dados detalhados do jogador
+                dados_detalahados = self.extrair_dados_jogador_detalhado(
+                    url_jogador,
+                    nome_jogador
+                )
+
+                # Verifica se foi substituido
+                events_div = jogador_div.find('div', class_='events')
+                foi_substituido = bool(events_div and events_div.find('span', class_='icn_zerozero'))
+
+                # Monta registro completo
+                registro = {
+                    'jogador_id': self.proximo_jogador_id,
+                    'nome': nome_jogador,
+                    'nacionalidade': nacionalidade,
+                    'clube': nome_time,
+                    'clube_id': clube_id,
+                    'tipo_time': tipo_time,
+                    'titular': True,
+                    'foi_substituido': foi_substituido,
+                    'url': url_jogador
+                }
+
+                # Adiciona dados detalhados se disponíveis
+                if dados_detalhados
+
 
 
