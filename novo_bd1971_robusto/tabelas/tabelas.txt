@@ -1,0 +1,461 @@
+-- ============================================================================
+-- SCHEMA COMPLETO - BANCO DE DADOS BRASILEIRÃO
+-- ============================================================================
+-- Este schema inclui todas as melhorias discutidas e suporta dados históricos
+-- completos de partidas, jogadores, treinadores e estatísticas.
+-- ============================================================================
+
+-- ============================================================================
+-- TABELAS BASE (Locais e Estrutura)
+-- ============================================================================
+
+CREATE TABLE locais (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    cidade TEXT NOT NULL,
+    UF TEXT NOT NULL,
+    regiao TEXT NOT NULL,
+    pais TEXT DEFAULT 'Brasil',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE estadios (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    capacidade INTEGER,
+    local_id INTEGER NOT NULL,
+    inauguracao DATE,
+    ativo BOOLEAN DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (local_id) REFERENCES locais(ID)
+);
+
+-- Índice para buscas por nome de estádio
+CREATE INDEX idx_estadios_nome ON estadios(nome);
+
+-- ============================================================================
+-- CLUBES
+-- ============================================================================
+
+CREATE TABLE clubes (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    local_id INTEGER NOT NULL,
+    fundacao DATE,
+    estadio_principal_id INTEGER,
+    ativo BOOLEAN DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (local_id) REFERENCES locais(ID),
+    FOREIGN KEY (estadio_principal_id) REFERENCES estadios(ID)
+);
+
+CREATE INDEX idx_clubes_nome ON clubes(nome);
+
+-- ============================================================================
+-- COMPETIÇÕES
+-- ============================================================================
+
+CREATE TABLE campeonatos (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    pais TEXT NOT NULL,
+    entidade TEXT, -- CBF, CONMEBOL, FIFA, etc.
+    tipo TEXT, -- 'nacional', 'estadual', 'internacional'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE edicoes (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    campeonato_id INTEGER NOT NULL,
+    ano INTEGER NOT NULL,
+    data_inicio DATE,
+    data_fim DATE,
+    campeao_id INTEGER, -- clube vencedor
+    vice_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (campeonato_id) REFERENCES campeonatos(ID),
+    FOREIGN KEY (campeao_id) REFERENCES clubes(ID),
+    FOREIGN KEY (vice_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_edicoes_ano ON edicoes(ano);
+CREATE INDEX idx_edicoes_campeonato ON edicoes(campeonato_id);
+
+-- ============================================================================
+-- PARTIDAS
+-- ============================================================================
+
+CREATE TABLE partidas (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    edicao_id INTEGER NOT NULL,
+    estadio_id INTEGER,
+    data DATE NOT NULL,
+    hora TIME,
+    fase TEXT, -- 'Primeira Fase', 'Oitavas', 'Quartas', 'Semi', 'Final', etc.
+    rodada INTEGER,
+    mandante_id INTEGER NOT NULL,
+    visitante_id INTEGER NOT NULL,
+    mandante_placar INTEGER,
+    visitante_placar INTEGER,
+    mandante_penalti INTEGER,
+    visitante_penalti INTEGER,
+    prorrogacao BOOLEAN DEFAULT 0,
+    publico INTEGER,
+    renda REAL,
+    arbitro TEXT,
+    arbitro_assistente1 TEXT,
+    arbitro_assistente2 TEXT,
+    url_fonte TEXT, -- URL da fonte dos dados (ex: ogol.com.br)
+    observacoes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (edicao_id) REFERENCES edicoes(ID),
+    FOREIGN KEY (estadio_id) REFERENCES estadios(ID),
+    FOREIGN KEY (mandante_id) REFERENCES clubes(ID),
+    FOREIGN KEY (visitante_id) REFERENCES clubes(ID),
+    CHECK (mandante_id != visitante_id) -- Garante que time não joga contra si mesmo
+);
+
+CREATE INDEX idx_partidas_data ON partidas(data);
+CREATE INDEX idx_partidas_mandante ON partidas(mandante_id);
+CREATE INDEX idx_partidas_visitante ON partidas(visitante_id);
+CREATE INDEX idx_partidas_edicao ON partidas(edicao_id);
+
+-- ============================================================================
+-- JOGADORES
+-- ============================================================================
+
+CREATE TABLE jogadores (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    nome_completo TEXT,
+    nascimento DATE,
+    falecimento DATE, -- Para jogadores históricos já falecidos
+    nacionalidade TEXT,
+    altura INTEGER, -- em centímetros
+    peso INTEGER, -- em quilogramas
+    posicao TEXT, -- 'Goleiro', 'Zagueiro', 'Lateral', 'Meia', 'Atacante'
+    posicao_detalhada TEXT, -- 'Zagueiro Central', 'Ponta Esquerda', etc.
+    pe_preferido TEXT, -- 'Direito', 'Esquerdo', 'Ambidestro'
+    clube_atual_id INTEGER,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    url_fonte TEXT, -- URL da fonte dos dados
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_jogadores_nome ON jogadores(nome);
+CREATE INDEX idx_jogadores_posicao ON jogadores(posicao);
+
+-- ============================================================================
+-- JOGADORES EM PARTIDAS (Participações e Estatísticas)
+-- ============================================================================
+
+CREATE TABLE jogadores_em_partida (
+    partida_id INTEGER NOT NULL,
+    jogador_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL, -- clube pelo qual jogou nesta partida
+    titular BOOLEAN NOT NULL DEFAULT 1,
+    posicao_jogada TEXT, -- Posição específica nesta partida
+    numero_camisa INTEGER,
+    minutos_jogados INTEGER,
+    minuto_entrada INTEGER, -- Para reservas que entraram
+    minuto_saida INTEGER, -- Para jogadores substituídos
+    gols INTEGER DEFAULT 0,
+    assistencias INTEGER DEFAULT 0,
+    cartao_amarelo INTEGER DEFAULT 0,
+    cartao_vermelho INTEGER DEFAULT 0,
+    gol_contra INTEGER DEFAULT 0,
+    penalti_cometido INTEGER DEFAULT 0,
+    penalti_sofrido INTEGER DEFAULT 0,
+    defesas INTEGER DEFAULT 0, -- Para goleiros
+    faltas_cometidas INTEGER DEFAULT 0,
+    faltas_sofridas INTEGER DEFAULT 0,
+    impedimentos INTEGER DEFAULT 0,
+    chutes_gol INTEGER DEFAULT 0,
+    chutes_fora INTEGER DEFAULT 0,
+    passes_completos INTEGER DEFAULT 0,
+    passes_errados INTEGER DEFAULT 0,
+    desarmes INTEGER DEFAULT 0,
+    nota_avaliacao REAL, -- Nota de 0 a 10
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    PRIMARY KEY (partida_id, jogador_id),
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_jogadores_partida_clube ON jogadores_em_partida(clube_id);
+CREATE INDEX idx_jogadores_partida_jogador ON jogadores_em_partida(jogador_id);
+
+-- ============================================================================
+-- TREINADORES
+-- ============================================================================
+
+CREATE TABLE treinadores (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    nome_completo TEXT,
+    nascimento DATE,
+    falecimento DATE,
+    nacionalidade TEXT,
+    clube_atual_id INTEGER,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    url_fonte TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP,
+    FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_treinadores_nome ON treinadores(nome);
+
+-- ============================================================================
+-- TREINADORES EM PARTIDAS
+-- ============================================================================
+
+CREATE TABLE treinadores_em_partida (
+    partida_id INTEGER NOT NULL,
+    treinador_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL,
+    tipo TEXT DEFAULT 'Titular', -- 'Titular', 'Assistente', 'Interino'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (partida_id, treinador_id, clube_id),
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (treinador_id) REFERENCES treinadores(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_treinadores_partida_clube ON treinadores_em_partida(clube_id);
+
+-- ============================================================================
+-- HISTÓRICO DE TRANSFERÊNCIAS (Adicional - útil para análises)
+-- ============================================================================
+
+CREATE TABLE transferencias (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    jogador_id INTEGER NOT NULL,
+    clube_origem_id INTEGER,
+    clube_destino_id INTEGER NOT NULL,
+    data_transferencia DATE NOT NULL,
+    valor REAL, -- Valor da transferência
+    tipo TEXT, -- 'Compra', 'Empréstimo', 'Livre', 'Troca'
+    duracao_meses INTEGER, -- Para empréstimos
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID),
+    FOREIGN KEY (clube_origem_id) REFERENCES clubes(ID),
+    FOREIGN KEY (clube_destino_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_transferencias_jogador ON transferencias(jogador_id);
+CREATE INDEX idx_transferencias_data ON transferencias(data_transferencia);
+
+-- ============================================================================
+-- EVENTOS DE PARTIDA (Adicional - para detalhamento)
+-- ============================================================================
+
+CREATE TABLE eventos_partida (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    partida_id INTEGER NOT NULL,
+    minuto INTEGER NOT NULL,
+    tipo_evento TEXT NOT NULL, -- 'gol', 'cartao_amarelo', 'cartao_vermelho', 'substituicao', 'penalti'
+    jogador_principal_id INTEGER NOT NULL,
+    jogador_secundario_id INTEGER, -- Para assistências ou jogador que entrou na substituição
+    clube_id INTEGER NOT NULL,
+    descricao TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_principal_id) REFERENCES jogadores(ID),
+    FOREIGN KEY (jogador_secundario_id) REFERENCES jogadores(ID),
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID)
+);
+
+CREATE INDEX idx_eventos_partida ON eventos_partida(partida_id);
+CREATE INDEX idx_eventos_tipo ON eventos_partida(tipo_evento);
+
+-- ============================================================================
+-- VIEWS ÚTEIS PARA CONSULTAS
+-- ============================================================================
+
+-- View: Estatísticas de jogadores por temporada
+CREATE VIEW vw_jogadores_stats_temporada AS
+SELECT
+    j.ID as jogador_id,
+    j.nome as jogador_nome,
+    e.ano as temporada,
+    c.nome as clube,
+    COUNT(DISTINCT jp.partida_id) as jogos,
+    SUM(jp.titular) as jogos_titular,
+    SUM(CASE WHEN jp.titular = 0 THEN 1 ELSE 0 END) as jogos_reserva,
+    SUM(jp.minutos_jogados) as minutos_totais,
+    SUM(jp.gols) as gols,
+    SUM(jp.assistencias) as assistencias,
+    SUM(jp.cartao_amarelo) as cartoes_amarelos,
+    SUM(jp.cartao_vermelho) as cartoes_vermelhos,
+    ROUND(AVG(jp.nota_avaliacao), 2) as nota_media
+FROM jogadores j
+JOIN jogadores_em_partida jp ON j.ID = jp.jogador_id
+JOIN partidas p ON jp.partida_id = p.ID
+JOIN edicoes e ON p.edicao_id = e.ID
+JOIN clubes c ON jp.clube_id = c.ID
+GROUP BY j.ID, e.ano, c.ID;
+
+-- View: Estatísticas de treinadores por temporada
+CREATE VIEW vw_treinadores_stats_temporada AS
+SELECT
+    t.ID as treinador_id,
+    t.nome as treinador_nome,
+    e.ano as temporada,
+    c.nome as clube,
+    COUNT(DISTINCT tp.partida_id) as jogos,
+    SUM(CASE WHEN p.mandante_id = c.ID THEN
+        CASE
+            WHEN p.mandante_placar > p.visitante_placar THEN 1
+            ELSE 0
+        END
+        ELSE
+        CASE
+            WHEN p.visitante_placar > p.mandante_placar THEN 1
+            ELSE 0
+        END
+    END) as vitorias,
+    SUM(CASE WHEN p.mandante_placar = p.visitante_placar THEN 1 ELSE 0 END) as empates,
+    SUM(CASE WHEN p.mandante_id = c.ID THEN
+        CASE
+            WHEN p.mandante_placar < p.visitante_placar THEN 1
+            ELSE 0
+        END
+        ELSE
+        CASE
+            WHEN p.visitante_placar < p.mandante_placar THEN 1
+            ELSE 0
+        END
+    END) as derrotas
+FROM treinadores t
+JOIN treinadores_em_partida tp ON t.ID = tp.treinador_id
+JOIN partidas p ON tp.partida_id = p.ID
+JOIN edicoes e ON p.edicao_id = e.ID
+JOIN clubes c ON tp.clube_id = c.ID
+GROUP BY t.ID, e.ano, c.ID;
+
+-- View: Confrontos diretos entre clubes
+CREATE VIEW vw_confrontos_historicos AS
+SELECT
+    c1.nome as clube1,
+    c2.nome as clube2,
+    COUNT(*) as total_jogos,
+    SUM(CASE WHEN p.mandante_placar > p.visitante_placar THEN 1 ELSE 0 END) as vitorias_clube1,
+    SUM(CASE WHEN p.mandante_placar < p.visitante_placar THEN 1 ELSE 0 END) as vitorias_clube2,
+    SUM(CASE WHEN p.mandante_placar = p.visitante_placar THEN 1 ELSE 0 END) as empates,
+    SUM(p.mandante_placar) as gols_clube1,
+    SUM(p.visitante_placar) as gols_clube2
+FROM partidas p
+JOIN clubes c1 ON p.mandante_id = c1.ID
+JOIN clubes c2 ON p.visitante_id = c2.ID
+GROUP BY c1.ID, c2.ID;
+
+-- View: Artilheiros por edição
+CREATE VIEW vw_artilheiros_edicao AS
+SELECT
+    e.ID as edicao_id,
+    ca.nome as campeonato,
+    e.ano,
+    j.nome as jogador,
+    c.nome as clube,
+    SUM(jp.gols) as total_gols,
+    COUNT(DISTINCT jp.partida_id) as jogos
+FROM jogadores j
+JOIN jogadores_em_partida jp ON j.ID = jp.jogador_id
+JOIN partidas p ON jp.partida_id = p.ID
+JOIN edicoes e ON p.edicao_id = e.ID
+JOIN campeonatos ca ON e.campeonato_id = ca.ID
+JOIN clubes c ON jp.clube_id = c.ID
+WHERE jp.gols > 0
+GROUP BY e.ID, j.ID
+ORDER BY e.ano DESC, total_gols DESC;
+
+-- ============================================================================
+-- TRIGGERS PARA MANTER DADOS CONSISTENTES
+-- ============================================================================
+
+-- Atualiza updated_at automaticamente
+CREATE TRIGGER update_jogadores_timestamp
+AFTER UPDATE ON jogadores
+BEGIN
+    UPDATE jogadores SET updated_at = CURRENT_TIMESTAMP WHERE ID = NEW.ID;
+END;
+
+CREATE TRIGGER update_treinadores_timestamp
+AFTER UPDATE ON treinadores
+BEGIN
+    UPDATE treinadores SET updated_at = CURRENT_TIMESTAMP WHERE ID = NEW.ID;
+END;
+
+CREATE TRIGGER update_partidas_timestamp
+AFTER UPDATE ON partidas
+BEGIN
+    UPDATE partidas SET updated_at = CURRENT_TIMESTAMP WHERE ID = NEW.ID;
+END;
+
+-- ============================================================================
+-- ÍNDICES ADICIONAIS PARA PERFORMANCE
+-- ============================================================================
+
+-- Índices compostos para consultas comuns
+CREATE INDEX idx_jogadores_partida_stats ON jogadores_em_partida(jogador_id, partida_id, gols, assistencias);
+CREATE INDEX idx_partidas_completo ON partidas(edicao_id, data, mandante_id, visitante_id);
+CREATE INDEX idx_eventos_completo ON eventos_partida(partida_id, minuto, tipo_evento);
+
+-- ============================================================================
+-- COMENTÁRIOS E DOCUMENTAÇÃO
+-- ============================================================================
+
+/*
+NOTAS SOBRE O USO:
+
+1. INTEGRIDADE DOS DADOS:
+   - Use FOREIGN KEYS para manter consistência
+   - Valide dados antes de inserir (ex: placar não pode ser negativo)
+   - Use transações para operações que modificam múltiplas tabelas
+
+2. PERFORMANCE:
+   - Os índices criados otimizam as consultas mais comuns
+   - Para grandes volumes, considere particionar por ano
+   - Use EXPLAIN QUERY PLAN para otimizar consultas lentas
+
+3. IMPORTAÇÃO DE DADOS DO SCRAPER:
+   - Ordem de importação recomendada:
+     a) locais
+     b) estadios
+     c) clubes
+     d) campeonatos
+     e) edicoes
+     f) partidas
+     g) jogadores
+     h) treinadores
+     i) jogadores_em_partida
+     j) treinadores_em_partida
+     k) eventos_partida (se disponível)
+
+4. CAMPOS OPCIONAIS:
+   - Muitos campos podem ser NULL inicialmente
+   - Atualize incrementalmente conforme obtém mais dados
+   - Use UPDATE para enriquecer registros existentes
+
+5. VIEWS:
+   - As views fornecidas são exemplos
+   - Crie views personalizadas para suas análises específicas
+   - Views não ocupam espaço adicional, são apenas consultas salvas
+
+6. BACKUP:
+   - Faça backup regular do banco de dados
+   - Use PRAGMA para verificar integridade: PRAGMA integrity_check;
+*/
+
+-- ============================================================================
+-- FIM DO SCHEMA
+-- ============================================================================
