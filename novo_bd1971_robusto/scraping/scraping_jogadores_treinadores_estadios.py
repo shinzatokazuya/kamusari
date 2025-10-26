@@ -261,7 +261,25 @@ class OGolScraperAvancado:
 
             print(f"\n 🔵 Time: {nome_time} (ID: {clube_id}) - {tipo_time}")
 
-            jogadores = coluna_time.find_all('div', class_=)
+            jogadores = coluna_time.find_all('div', class_='player')
+
+            for jogador_div in jogadores:
+                link_jogador = jogador_div.find('a', href=re.compile(r'/jogador/'))
+                if not link_jogador:
+                    continue
+
+                nome_jogador = link_jogador.text.strip()
+                url_jogador = link_jogador.get('href', '')
+
+                # Extrai nacionalidade
+                flag_span = jogador_div.find('span', class_=re.compile(r'flag:'))
+                nacionalidade = None
+                if flag_span:
+                    classes = flag_span.get('class', [])
+                    for cls in classes:
+                        if cls.startswith('flag:'):
+                            nacionalidade = cls.spilt(':')[1]
+                            break
 
 
 
