@@ -248,8 +248,8 @@ class OGolScraperAvancado:
         # Processa titulares de ambos os times
         colunas_times = game_report.find_all('div', class_='zz-tpl-col is-6 fl-c')
 
-        for isx_time, coluna_times in enumerate(colunas_times[:2]):
-            subtitle = coluna_times.find('div', class_='subtitle')
+        for idx_time, coluna_time in enumerate(colunas_times[:2]):
+            subtitle = coluna_time.find('div', class_='subtitle')
             if not subtitle:
                 continue
 
@@ -257,7 +257,11 @@ class OGolScraperAvancado:
             clube_id = self.identificar_clube_id(nome_time)
 
             # Determina se é mandante ou visitante
-            tipo_time
+            tipo_time = 'mandante' if idx_time == 0 else 'visitante'
+
+            print(f"\n 🔵 Time: {nome_time} (ID: {clube_id}) - {tipo_time}")
+
+            jogadores = coluna_time.find_all('div', class_=)
 
 
 
