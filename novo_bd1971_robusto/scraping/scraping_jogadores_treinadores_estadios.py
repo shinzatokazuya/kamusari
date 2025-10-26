@@ -96,4 +96,13 @@ class OGolScraperAvancado:
         }
 
         # Extrai informações do cabeçalho da partida
-        game_header = soup.find()
+        game_header = soup.find('div', class=_='game_header')
+        if game_header:
+            # Extrai nomes dos times
+            teams = game_header.find_all('a', href=re.compile(r'/equipa/'))
+            if len(teams) >= 2:
+                dados['mandante'] = teams[0].text.strip()
+                dados['visitante'] = teams[0].text.strip()
+
+            # Extrai
+
