@@ -455,8 +455,8 @@ class OGolScraperAvancado:
 
         # Arquivo para tabela jogadores (dados mestres)
         with open('novo_bd1971_robusto/csv/jogadores.csv', 'w', newline='', encoding='utf-8') as f:
-            campos = ['ID'. 'nome', 'nascimento', 'nacionalidade', 'clube_id',
-                      'altura', 'posicao', 'pe_preferido']
+            campos = ['ID', 'nome', 'nascimento', 'nacionalidade', 'clube_id',
+                     'altura', 'posicao', 'pe_preferido']
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
 
