@@ -60,3 +60,40 @@ class OGolScraperAvancado:
             clubes = clubes_source
 
         return clubes
+
+    def _fazer_requisicao(self, url):
+        """
+        Faz requisição HTTP com tratamento de erros e rate limiting.
+        """
+        try:
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            }
+
+            time.sleep(self.delay_requisicao)
+
+            response = requests.get(url, headers=headers, timeout=10)
+            response.raise_for_status()
+
+            return BeautifulSoup(response.content, 'html.parser')
+
+        except requests.RequestException as e:
+            print(f" ⚠ ERRO ao acessar {url}: {e}")
+            return None
+
+    def extrair_dados_partida(self, soup):
+        """
+        Extrai informações gerais da partida incluindo estádio, placar e data.
+        """
+        dados = {
+            'estadio': None,
+            'cidade': None,
+            'data': None,
+            'mandante': None,
+            'visitante': None,
+            'placar_mandante': None,
+            'placar_visitante': None
+        }
+
+        # Extrai informações do cabeçalho da partida
+        
