@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 import json
 import os
-from ogol_scraper_avancado import OGolScraperAvancado
+from scraping_jogadores_treinadores_estadios import OGolScraperAvancado
 
 class ProcessadorPartidas:
     """
