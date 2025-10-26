@@ -14,7 +14,7 @@ CREATE TABLE locais (
     cidade TEXT NOT NULL,
     UF TEXT NOT NULL,
     regiao TEXT NOT NULL,
-    pais TEXT DEFAULT 'Brasil',
+    pais TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -23,7 +23,7 @@ CREATE TABLE estadios (
     nome TEXT NOT NULL,
     capacidade INTEGER,
     local_id INTEGER NOT NULL,
-    inauguracao DATE,
+    inauguracao TEXT,
     ativo BOOLEAN DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP,
@@ -41,7 +41,7 @@ CREATE TABLE clubes (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     local_id INTEGER NOT NULL,
-    fundacao DATE,
+    fundacao TEXT,
     estadio_principal_id INTEGER,
     ativo BOOLEAN DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -69,8 +69,8 @@ CREATE TABLE edicoes (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     campeonato_id INTEGER NOT NULL,
     ano INTEGER NOT NULL,
-    data_inicio DATE,
-    data_fim DATE,
+    data_inicio TEXT,
+    data_fim TEXT,
     campeao_id INTEGER, -- clube vencedor
     vice_id INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -90,8 +90,8 @@ CREATE TABLE partidas (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     edicao_id INTEGER NOT NULL,
     estadio_id INTEGER,
-    data DATE NOT NULL,
-    hora TIME,
+    data TEXT NOT NULL,
+    hora TEXT,
     fase TEXT, -- 'Primeira Fase', 'Oitavas', 'Quartas', 'Semi', 'Final', etc.
     rodada INTEGER,
     mandante_id INTEGER NOT NULL,
