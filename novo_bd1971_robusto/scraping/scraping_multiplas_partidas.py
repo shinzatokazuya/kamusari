@@ -422,33 +422,6 @@ class ProcessadorPartidas:
 
 
 # ===== EXEMPLOS DE USO =====
-
-def exemplo_partida_unica():
-    """Exemplo: processar uma única partida"""
-    processador = ProcessadorPartidas('csv_br_1971/clubes.csv')
-
-    partida = processador.criar_partida_manual(
-        partida_id=1,
-        url_ogol='https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100'
-    )
-
-    processador.executar_lote([partida])
-
-
-def exemplo_multiplas_partidas():
-    """Exemplo: processar várias partidas de uma vez"""
-    processador = ProcessadorPartidas('csv_br_1971/clubes.csv')
-
-    # Lista de partidas a processar
-    partidas = [
-        processador.criar_partida_manual(1, 'https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100'),
-        processador.criar_partida_manual(2, 'https://www.ogol.com.br/jogo/...'),  # adicione mais URLs
-        processador.criar_partida_manual(3, 'https://www.ogol.com.br/jogo/...'),
-    ]
-
-    processador.executar_lote(partidas)
-
-
 def exemplo_com_arquivo_csv():
     """
     Exemplo: processar partidas listadas em um CSV
