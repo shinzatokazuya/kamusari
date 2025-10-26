@@ -172,5 +172,89 @@ class OGolScraperAvancado:
         # Procura pela seção de informações do jogador
         player_info = soup.find('div', class_='player_info')
         if player_info:
-            info_items = player_info.find_all()
+            info_items = player_info.find_all('div', class_='info_item')
+
+            for item in info_items:
+                label = item.find('div', class_='label')
+                value = item.find('div', class_='value')
+
+                if label and value:
+                    label_text = label.text.strip().lower()
+                    value_text = value.text.strip()
+
+                    if 'nascimento' in label_text or 'data de nascimento' in label_text:
+                        # Tenta extrair data de nascimento
+                        data_match = re.search(r'(\d{2}/\d{2}/\d{4})', value_text)
+                        if data_match:
+                            dados['nascimento'] = data_match.group(1)
+
+                    elif 'altura' in label_text:
+                        altura_match = re.search(r'(\d+)', value_text)
+                        if altura_match:
+                            dados['altura'] = int(altura_match.group(1))
+
+                    elif 'posição' in label_text or 'position' in label_text:
+                        dados['posicao'] = value_text
+
+                    elif 'pé' in label_text or 'foot' in label_text:
+                        dados['pe_preferido'] = value_text
+
+        # Armazena no cache
+        self.cache_jogadores[url_jogador] = dados
+
+        return dados
+
+    def identificador_clube_id(self, nome_clube):
+        """
+        Identifica o ID do clube no banco de dados baseado no nome.
+        Tenta várias variações para aumentar taxa de sucesso.
+        """
+        if not nome_clube:
+            return None
+
+        # Tenta correspondência exata primeiro
+        if nome_clube in self.clubes_db:
+            return int(self.clubes_db[nome_clube]['ID'])
+
+        # Tenta versão normalizada (minúsculas)
+        if nome_clube.lower() in self.clubes_db:
+            return int(self.clubes_db[nome_clube.lower()]['ID'])
+
+        # Tenta correspondência parcial
+        nome_normalizado = nome_clube.lower().strip()
+        for clube_nome, clube_dados in self.clubes_db.items():
+            if nome_normalizado in clube_nome.lower():
+                return int(clube_dados['ID'])
+
+        print(f"  ⚠ Clube '{nome_clube}' não encontrado no banco de dados")
+        return None
+
+    def extrair_jogadores_completo(self, soup):
+        """
+        Extrai informações completas dos jogadores, incluindo dados detalhados
+        navegando pelas páginas individuais.
+        """
+        print("\n📋 Extraindo dados dos jogadores titulares...")
+        jogadores_dados = []
+
+        game_report = soup.find('div', id='game_report')
+        if not game_report:
+            print("  ⚠ Seção de relatório não encontrada")
+            return []
+
+        # Extrai dados da partida para o contexto
+        dados_partida = self.extrair_dados_partida(soup)
+
+        # Processa titulares de ambos os times
+        colunas_times = game_report.find_all('div', class_='zz-tpl-col is-6 fl-c')
+
+        for isx_time, coluna_times in enumerate(colunas_times[:2]):
+            subtitle = coluna_times.find('div', class_='subtitle')
+            if not subtitle:
+                continue
+
+            nome_time - subtitle.text.strip()
+            clube_id = self.identificador_clube_id
+
+
 
