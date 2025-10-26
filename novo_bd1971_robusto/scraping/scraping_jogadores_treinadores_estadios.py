@@ -204,7 +204,7 @@ class OGolScraperAvancado:
 
         return dados
 
-    def identificador_clube_id(self, nome_clube):
+    def identificar_clube_id(self, nome_clube):
         """
         Identifica o ID do clube no banco de dados baseado no nome.
         Tenta várias variações para aumentar taxa de sucesso.
@@ -254,7 +254,10 @@ class OGolScraperAvancado:
                 continue
 
             nome_time - subtitle.text.strip()
-            clube_id = self.identificador_clube_id
+            clube_id = self.identificar_clube_id(nome_time)
+
+            # Determina se é mandante ou visitante
+            tipo_time
 
 
 
