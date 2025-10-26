@@ -473,10 +473,75 @@ class OGolScraperAvancado:
         Args:
             partida_id: ID da partida no seu banco de dados
         """
-        
+        print("="*70)
+        print(f"🔍 INICIANDO SCRAPING AVANÇADO")
+        print("="*70)
+        print(f"URL: {self.url_partida}")
+        print(f"Partida ID (seu banco): {partida_id}")
+        print(f"Delay entre requisições: {self.delay_requisicao}s")
+        print("="*70)
+
+        # Busca página principal
+        soup = self._fazer_requisicao(self.url_partida)
+        if not soup:
+            print("\n❌ Erro: Não foi possível acessar a página da partida")
+            return None
+
+        # Extrai dados gerais da partida
+        print("\n📊 Extraindo informações gerais da partida...")
+        dados_partida = self.extrair_dados_partida(soup)
+
+        print(f"\n  Mandante: {dados_partida['mandante']}")
+        print(f"  Visitante: {dados_partida['visitante']}")
+        print(f"  Placar: {dados_partida['placar_mandante']} x {dados_partida['placar_visitante']}")
+        print(f"  Estádio: {dados_partida['estadio']}")
+        print(f"  Cidade: {dados_partida['cidade']}")
+        print(f"  Data: {dados_partida['data']}")
+
+        # Extrai todos os dados
+        jogadores = self.extrair_jogadores_completo(soup)
+        reservas = self.extrair_reservas_completo(soup)
+        treinadores = self.extrair_treinadores(soup)
+
+        # Exporta tudo
+        self.exportar_para_csv(dados_partida, jogadores, reservas, treinadores, partida_id)
+
+        print("\n" + "="*70)
+        print("✅ SCRAPING CONCLUÍDO COM SUCESSO!")
+        print("="*70)
+        print(f"\nResumo:")
+        print(f"  • Jogadores titulares: {len(jogadores)}")
+        print(f"  • Reservas: {len(reservas)}")
+        print(f"  • Treinadores: {len(treinadores)}")
+        print(f"  • Requisições realizadas: {len(self.cache_jogadores) + 1}")
+        print("="*70)
+
+        return {
+            'partida': dados_partida,
+            'jogadores': jogadores,
+            'reservas': reservas,
+            'treinadores': treinadores
+        }
 
 
+# ===== EXEMPLO DE USO =====
 
+if __name__ == "__main__":
+    # URL da partida que você quer extrair
+    url_partida = "https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100"
 
+    # Caminho para o CSV de clubes
+    caminho_clubes = "novo_bd1971_robusto/csv/clubes.csv"
 
+    # ID da partida no seu banco de dados
+    # Você deve buscar isso do seu banco antes de rodar o scraper
+    partida_id = 1  # Exemplo - substitua pelo ID real
 
+    # Cria e executa o scraper
+    scraper = OGolScraperAvancado(url_partida, caminho_clubes)
+
+    # Executa o scraping
+    resultado = scraper.executar(partida_id)
+
+    if resultado:
+        print("\n🎯 Dados prontos para importação no banco de dados!")
