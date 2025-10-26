@@ -96,4 +96,4 @@ class OGolScraperAvancado:
         }
 
         # Extrai informações do cabeçalho da partida
-        
+        game_header = soup.find()
