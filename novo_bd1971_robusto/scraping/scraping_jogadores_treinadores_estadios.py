@@ -454,7 +454,7 @@ class OGolScraperAvancado:
         print("\n💾 Exportando dados para CSV...")
 
         # Arquivo para tabela jogadores (dados mestres)
-        with open('novo_bd1971_robusto/csv/jogadores.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('csv_extraidos/jogadores.csv', 'w', newline='', encoding='utf-8') as f:
             campos = ['ID', 'nome', 'nascimento', 'nacionalidade', 'clube_id',
                      'altura', 'posicao', 'pe_preferido']
             writer = csv.DictWriter(f, fieldnames=campos)
@@ -476,7 +476,7 @@ class OGolScraperAvancado:
         print(f"  ✓ jogadores.csv criado com {len(todos_jogadores)} registros")
 
         # Arquivo para tabela jogadores_em_partida
-        with open('novo_bd1971_robusto/csv/jogadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('csv_extraidos/jogadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
             campos = ['partida_id', 'jogador_id', 'titular', 'minutos_jogados',
                      'gols', 'assistencias']
             writer = csv.DictWriter(f, fieldnames=campos)
@@ -497,7 +497,7 @@ class OGolScraperAvancado:
         print(f"  ✓ jogadores_em_partida.csv criado para partida {partida_id}")
 
         # Arquivo para tabela treinadores
-        with open('novo_bd1971_robusto/csv/treinadores.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('csv_extraidos/treinadores.csv', 'w', newline='', encoding='utf-8') as f:
             campos = ['ID', 'nome', 'nascimento', 'nacionalidade']
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
@@ -513,7 +513,7 @@ class OGolScraperAvancado:
         print(f"  ✓ treinadores.csv criado com {len(treinadores)} registros")
 
         # Arquivo para relacionamento treinadores_em_partida
-        with open('novo_bd1971_robusto/csv/treinadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('csv_extraidos/treinadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
             campos = ['partida_id', 'treinador_id', 'clube_id']
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
@@ -528,7 +528,7 @@ class OGolScraperAvancado:
         print(f"  ✓ treinadores_em_partida.csv criado")
 
         # Arquivo com dados complementares da partida (estádio, etc)
-        with open('novo_bd1971_robusto/csv/partida_detalhes.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('csv_extraidos/partida_detalhes.csv', 'w', newline='', encoding='utf-8') as f:
             campos = ['partida_id', 'estadio', 'cidade', 'data', 'placar_mandante',
                      'placar_visitante']
             writer = csv.DictWriter(f, fieldnames=campos)
@@ -610,7 +610,7 @@ if __name__ == "__main__":
     url_partida = "https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100"
 
     # Caminho para o CSV de clubes
-    caminho_clubes = "csv/clubes.csv"
+    caminho_clubes = "csv_bd/clubes.csv"
 
     # ID da partida no seu banco de dados
     # Você deve buscar isso do seu banco antes de rodar o scraper
