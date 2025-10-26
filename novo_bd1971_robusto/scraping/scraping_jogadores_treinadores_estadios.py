@@ -23,3 +23,40 @@ class OGolScraperAvancado:
             clubes_db: Dicionário ou CSV com dados dos clubes {nome: {id, cidade, etc}}
             partidas_db: Dicionário opcional com dados da partida no seu banco
         """
+        self.url_partida = url_partida
+        self.base_url = "https://www.ogol.com.br"
+        self.clubes_db = self._carregar_clubes(clubes_db)
+        self.partidas_db = partidas_db or {}
+
+        # Cache para evitar requisições duplicadas
+        self.cache_jogadores = {}
+
+        # Contadores para IDs quando necessário criar novos registros
+        self.proximo_jogador_id = 1
+        self.proximo_treinador_id = 1
+
+        # Delay entre requisições para não sobrecarregar o servidor
+        self.delay_requisicao = 5 # segundos
+
+    def _carregar_clubes(self, clubes_source):
+        """
+        Carrega dados dos clubes do CSV fornecido.
+        Retorna dicionário {nome_clube: dados_completos}
+        """
+        clubes = {}
+
+        if isinstance(clubes_source, str):
+            # Assume que é o caminho de arquivo CSV
+            with open(clubes_source, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Normaliza o nome para facilitar correspondência
+                    nome = row['clube'].strip()
+                    clubes[nome] = row
+
+                    # Adiciona variações comuns do nome
+                    clubes[nome.lower()] = row
+        else:
+            clubes = clubes_source
+
+        return clubes
