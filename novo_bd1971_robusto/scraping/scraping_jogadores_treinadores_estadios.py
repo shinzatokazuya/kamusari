@@ -28,7 +28,7 @@ class OGolScraperAvancado:
         self.clubes_db = self._carregar_clubes(clubes_db)
         self.partidas_db = partidas_db or {}
 
-        # Cache para evitar requisições duplicadas
+        # Cache para evitar requisições repetidas
         self.cache_jogadores = {}
 
         # Contadores para IDs quando necessário criar novos registros
@@ -36,7 +36,7 @@ class OGolScraperAvancado:
         self.proximo_treinador_id = 1
 
         # Delay entre requisições para não sobrecarregar o servidor
-        self.delay_requisicao = 5 # segundos
+        self.delay_requisicao = 2  # segundos
 
     def _carregar_clubes(self, clubes_source):
         """
@@ -46,7 +46,7 @@ class OGolScraperAvancado:
         clubes = {}
 
         if isinstance(clubes_source, str):
-            # Assume que é o caminho de arquivo CSV
+            # Assume que é um caminho de arquivo CSV
             with open(clubes_source, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
@@ -70,7 +70,7 @@ class OGolScraperAvancado:
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
 
-            time.sleep(self.delay_requisicao)
+            time.sleep(self.delay_requisicao)  # Respeita rate limit
 
             response = requests.get(url, headers=headers, timeout=10)
             response.raise_for_status()
@@ -78,7 +78,7 @@ class OGolScraperAvancado:
             return BeautifulSoup(response.content, 'html.parser')
 
         except requests.RequestException as e:
-            print(f" ⚠ ERRO ao acessar {url}: {e}")
+            print(f"  ⚠ Erro ao acessar {url}: {e}")
             return None
 
     def extrair_dados_partida(self, soup):
@@ -96,7 +96,7 @@ class OGolScraperAvancado:
         }
 
         # Extrai informações do cabeçalho da partida
-        game_header = soup.find('div', class=_='game_header')
+        game_header = soup.find('div', class_='game_header')
         if game_header:
             # Extrai nomes dos times
             teams = game_header.find_all('a', href=re.compile(r'/equipa/'))
@@ -123,7 +123,7 @@ class OGolScraperAvancado:
 
                 # Estádio
                 if 'Estádio' in text or 'Stadium' in text:
-                    estadio_match = re.search(r'[Ee]stádio[:\s]+([^, \n]+)', text)
+                    estadio_match = re.search(r'[Ee]stádio[:\s]+([^,\n]+)', text)
                     if estadio_match:
                         dados['estadio'] = estadio_match.group(1).strip()
 
@@ -142,7 +142,7 @@ class OGolScraperAvancado:
 
         return dados
 
-    def extrair_dados_jogador_detalhado(self, url_jogador, nome_jogador);
+    def extrair_dados_jogador_detalhado(self, url_jogador, nome_jogador):
         """
         Navega até a página do jogador e extrai dados detalhados.
         Usa cache para evitar requisições repetidas.
@@ -161,13 +161,13 @@ class OGolScraperAvancado:
         if not soup:
             return None
 
-        dados = [
-            'nome_completo': nome_jodador,
+        dados = {
+            'nome_completo': nome_jogador,
             'nascimento': None,
             'altura': None,
             'posicao': None,
             'pe_preferido': None
-        ]
+        }
 
         # Procura pela seção de informações do jogador
         player_info = soup.find('div', class_='player_info')
@@ -242,7 +242,7 @@ class OGolScraperAvancado:
             print("  ⚠ Seção de relatório não encontrada")
             return []
 
-        # Extrai dados da partida para o contexto
+        # Extrai dados da partida para contexto
         dados_partida = self.extrair_dados_partida(soup)
 
         # Processa titulares de ambos os times
@@ -253,13 +253,13 @@ class OGolScraperAvancado:
             if not subtitle:
                 continue
 
-            nome_time - subtitle.text.strip()
+            nome_time = subtitle.text.strip()
             clube_id = self.identificar_clube_id(nome_time)
 
             # Determina se é mandante ou visitante
             tipo_time = 'mandante' if idx_time == 0 else 'visitante'
 
-            print(f"\n 🔵 Time: {nome_time} (ID: {clube_id}) - {tipo_time}")
+            print(f"\n  🔵 Time: {nome_time} (ID: {clube_id}) - {tipo_time}")
 
             jogadores = coluna_time.find_all('div', class_='player')
 
@@ -278,7 +278,7 @@ class OGolScraperAvancado:
                     classes = flag_span.get('class', [])
                     for cls in classes:
                         if cls.startswith('flag:'):
-                            nacionalidade = cls.spilt(':')[1]
+                            nacionalidade = cls.split(':')[1]
                             break
 
                 # Busca dados detalhados do jogador
@@ -287,7 +287,7 @@ class OGolScraperAvancado:
                     nome_jogador
                 )
 
-                # Verifica se foi substituido
+                # Verifica se foi substituído
                 events_div = jogador_div.find('div', class_='events')
                 foi_substituido = bool(events_div and events_div.find('span', class_='icn_zerozero'))
 
@@ -318,6 +318,85 @@ class OGolScraperAvancado:
 
         print(f"\n  ✓ Total de jogadores titulares extraídos: {len(jogadores_dados)}")
         return jogadores_dados
+
+    def extrair_reservas_completo(self, soup):
+        """
+        Extrai informações completas dos reservas que entraram no jogo.
+        """
+        print("\n📋 Extraindo dados dos reservas...")
+        reservas_dados = []
+
+        game_report = soup.find('div', id='game_report')
+        if not game_report:
+            return []
+
+        rows = game_report.find_all('div', class_='zz-tpl-row game_report')
+
+        for row in rows:
+            subtitle = row.find('div', class_='subtitle')
+            if subtitle and 'Reservas' in subtitle.text:
+                colunas = row.find_all('div', class_='zz-tpl-col is-6 fl-c')
+
+                for idx_time, coluna in enumerate(colunas):
+                    # Identifica o time baseado na ordem
+                    dados_partida = self.extrair_dados_partida(soup)
+                    nome_time = dados_partida['mandante'] if idx_time == 0 else dados_partida['visitante']
+                    clube_id = self.identificar_clube_id(nome_time)
+
+                    jogadores = coluna.find_all('div', class_='player')
+
+                    for jogador_div in jogadores:
+                        link_jogador = jogador_div.find('a', href=re.compile(r'/jogador/'))
+                        if not link_jogador:
+                            continue
+
+                        nome_jogador = link_jogador.text.strip()
+                        url_jogador = link_jogador.get('href', '')
+
+                        # Extrai nacionalidade
+                        flag_span = jogador_div.find('span', class_=re.compile(r'flag:'))
+                        nacionalidade = None
+                        if flag_span:
+                            classes = flag_span.get('class', [])
+                            for cls in classes:
+                                if cls.startswith('flag:'):
+                                    nacionalidade = cls.split(':')[1]
+                                    break
+
+                        # Verifica se entrou no jogo
+                        events_div = jogador_div.find('div', class_='events')
+                        entrou_jogo = bool(events_div and events_div.find('span', title='Entrou'))
+
+                        # Busca dados detalhados
+                        dados_detalhados = self.extrair_dados_jogador_detalhado(
+                            url_jogador,
+                            nome_jogador
+                        )
+
+                        registro = {
+                            'jogador_id': self.proximo_jogador_id,
+                            'nome': nome_jogador,
+                            'nacionalidade': nacionalidade,
+                            'clube': nome_time,
+                            'clube_id': clube_id,
+                            'titular': False,
+                            'entrou_jogo': entrou_jogo,
+                            'url': url_jogador
+                        }
+
+                        if dados_detalhados:
+                            registro.update({
+                                'nascimento': dados_detalhados.get('nascimento'),
+                                'altura': dados_detalhados.get('altura'),
+                                'posicao': dados_detalhados.get('posicao'),
+                                'pe_preferido': dados_detalhados.get('pe_preferido')
+                            })
+
+                        reservas_dados.append(registro)
+                        self.proximo_jogador_id += 1
+
+        print(f"  ✓ Total de reservas extraídos: {len(reservas_dados)}")
+        return reservas_dados
 
     def extrair_treinadores(self, soup):
         """
@@ -368,7 +447,7 @@ class OGolScraperAvancado:
         print(f"  ✓ Total de treinadores extraídos: {len(treinadores_dados)}")
         return treinadores_dados
 
-    def exportar_para_csv(self, dados_partidas, jogadores, reservas, treinadores, partida_id):
+    def exportar_para_csv(self, dados_partida, jogadores, reservas, treinadores, partida_id):
         """
         Exporta todos os dados para arquivos CSV organizados.
         """
