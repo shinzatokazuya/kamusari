@@ -610,7 +610,7 @@ if __name__ == "__main__":
     url_partida = "https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100"
 
     # Caminho para o CSV de clubes
-    caminho_clubes = "novo_bd1971_robusto/csv/clubes.csv"
+    caminho_clubes = "csv/clubes.csv"
 
     # ID da partida no seu banco de dados
     # Você deve buscar isso do seu banco antes de rodar o scraper
