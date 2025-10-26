@@ -106,8 +106,6 @@ CREATE TABLE partidas (
     arbitro TEXT,
     arbitro_assistente1 TEXT,
     arbitro_assistente2 TEXT,
-    url_fonte TEXT, -- URL da fonte dos dados (ex: ogol.com.br)
-    observacoes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP,
     FOREIGN KEY (edicao_id) REFERENCES edicoes(ID),
@@ -130,8 +128,8 @@ CREATE TABLE jogadores (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     nome_completo TEXT,
-    nascimento DATE,
-    falecimento DATE, -- Para jogadores históricos já falecidos
+    nascimento TEXT,
+    falecimento TEXT, -- Para jogadores históricos já falecidos
     nacionalidade TEXT,
     altura INTEGER, -- em centímetros
     peso INTEGER, -- em quilogramas
@@ -141,7 +139,6 @@ CREATE TABLE jogadores (
     clube_atual_id INTEGER,
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
-    url_fonte TEXT, -- URL da fonte dos dados
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP,
     FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
