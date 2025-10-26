@@ -282,7 +282,7 @@ class OGolScraperAvancado:
                             break
 
                 # Busca dados detalhados do jogador
-                dados_detalahados = self.extrair_dados_jogador_detalhado(
+                dados_detalhados = self.extrair_dados_jogador_detalhado(
                     url_jogador,
                     nome_jogador
                 )
@@ -305,7 +305,80 @@ class OGolScraperAvancado:
                 }
 
                 # Adiciona dados detalhados se disponíveis
-                if dados_detalhados
+                if dados_detalhados:
+                    registro.update({
+                        'nascimento': dados_detalhados.get('nascimento'),
+                        'altura': dados_detalhados.get('altura'),
+                        'posicao': dados_detalhados.get('posicao'),
+                        'pe_preferido': dados_detalhados.get('pe_preferido')
+                    })
+
+                jogadores_dados.append(registro)
+                self.proximo_jogador_id += 1
+
+        print(f"\n  ✓ Total de jogadores titulares extraídos: {len(jogadores_dados)}")
+        return jogadores_dados
+
+    def extrair_treinadores(self, soup):
+        """
+        Extrai informações dos treinadores.
+        """
+        print("\n📋 Extraindo dados dos treinadores...")
+        treinadores_dados = []
+
+        game_report = soup.find('div', id='game_report')
+        if not game_report:
+            return []
+
+        dados_partida = self.extrair_dados_partida(soup)
+        rows = game_report.find_all('div', class_='zz-tpl-row game_report')
+
+        for row in rows:
+            subtitle = row.find('div', class_='subtitle')
+            if subtitle and 'Treinadores' in subtitle.text:
+                colunas = row.find_all('div', class_='zz-tpl-col is-6 fl-c')
+
+                for idx_time, coluna in enumerate(colunas):
+                    nome_time = dados_partida['mandante'] if idx_time == 0 else dados_partida['visitante']
+                    clube_id = self.identificar_clube_id(nome_time)
+
+                    link_treinador = coluna.find('a', href=re.compile(r'/treinador/'))
+                    if link_treinador:
+                        nome_treinador = link_treinador.text.strip()
+
+                        flag_span = coluna.find('span', class_=re.compile(r'flag:'))
+                        nacionalidade = None
+                        if flag_span:
+                            classes = flag_span.get('class', [])
+                            for cls in classes:
+                                if cls.startswith('flag:'):
+                                    nacionalidade = cls.split(':')[1]
+                                    break
+
+                        treinadores_dados.append({
+                            'treinador_id': self.proximo_treinador_id,
+                            'nome': nome_treinador,
+                            'nacionalidade': nacionalidade,
+                            'clube': nome_time,
+                            'clube_id': clube_id
+                        })
+
+                        self.proximo_treinador_id += 1
+
+        print(f"  ✓ Total de treinadores extraídos: {len(treinadores_dados)}")
+        return treinadores_dados
+
+    def exportar_para_csv(self, dados_partidas, jogadores, reservas, treinadores, partida_id):
+        """
+        Exporta todos os dados para arquivos CSV organizados.
+        """
+        print("\n💾 Exportando dados para CSV...")
+
+        # Arquivo para tabela jogadores (dados mestres)
+        with open('jogadores.csv')
+
+
+
 
 
 
