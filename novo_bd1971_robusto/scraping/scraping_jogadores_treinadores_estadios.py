@@ -102,7 +102,75 @@ class OGolScraperAvancado:
             teams = game_header.find_all('a', href=re.compile(r'/equipa/'))
             if len(teams) >= 2:
                 dados['mandante'] = teams[0].text.strip()
-                dados['visitante'] = teams[0].text.strip()
+                dados['visitante'] = teams[1].text.strip()
 
-            # Extrai
+            # Extrai placar
+            score = game_header.find('div', class_='score')
+            if score:
+                placar_text = score.text.strip()
+                match = re.search(r'(\d+)\s*-\s*(\d+)', placar_text)
+                if match:
+                    dados['placar_mandante'] = int(match.group(1))
+                    dados['placar_visitante'] = int(match.group(2))
+
+        # Extrai informações do estádio e local
+        game_info = soup.find('div', class_='game_info')
+        if game_info:
+            # Procura por informações de estádio
+            info_lines = game_info.find_all('div', class_='info_line')
+            for line in info_lines:
+                text = line.text.strip()
+
+                # Estádio
+                if 'Estádio' in text or 'Stadium' in text:
+                    estadio_match = re.search(r'[Ee]stádio[:\s]+([^, \n]+)', text)
+                    if estadio_match:
+                        dados['estadio'] = estadio_match.group(1).strip()
+
+                # Cidade
+                if any(palavra in text for palavra in ['Cidade', 'City', ',']):
+                    # Tenta extrair cidade após vírgula ou palavra-chave
+                    cidade_match = re.search(r'(?:Cidade[:\s]+|,\s*)([^,\n]+)', text)
+                    if cidade_match:
+                        dados['cidade'] = cidade_match.group(1).strip()
+
+                # Data
+                if any(c.isdigit() for c in text) and '/' in text:
+                    data_match = re.search(r'(\d{2}/\d{2}/\d{4})', text)
+                    if data_match:
+                        dados['data'] = data_match.group(1)
+
+        return dados
+
+    def extrair_dados_jogador_detalhado(self, url_jogador, nome_jogador);
+        """
+        Navega até a página do jogador e extrai dados detalhados.
+        Usa cache para evitar requisições repetidas.
+        """
+        # Verifica cache primeiro
+        if url_jogador in self.cache_jogadores:
+            print(f"    ✓ Dados de {nome_jogador} recuperados do cache")
+            return self.cache_jogadores[url_jogador]
+
+        print(f"    → Buscando dados detalhados de {nome_jogador}...")
+
+        # Constrói URL completa
+        url_completa = urljoin(self.base_url, url_jogador)
+
+        soup = self._fazer_requisicao(url_completa)
+        if not soup:
+            return None
+
+        dados = [
+            'nome_completo': nome_jodador,
+            'nascimento': None,
+            'altura': None,
+            'posicao': None,
+            'pe_preferido': None
+        ]
+
+        # Procura pela seção de informações do jogador
+        player_info = soup.find('div', class_='player_info')
+        if player_info:
+            info_items = player_info.find_all()
 
