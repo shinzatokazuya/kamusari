@@ -20,7 +20,7 @@ CREATE TABLE locais (
 
 CREATE TABLE estadios (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    estadio TEXT NOT NULL,
     capacidade INTEGER,
     local_id INTEGER NOT NULL,
     inauguracao TEXT,
@@ -39,7 +39,7 @@ CREATE INDEX idx_estadios_nome ON estadios(nome);
 
 CREATE TABLE clubes (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    clube TEXT NOT NULL,
     local_id INTEGER NOT NULL,
     fundacao TEXT,
     estadio_principal_id INTEGER,
@@ -58,7 +58,7 @@ CREATE INDEX idx_clubes_nome ON clubes(nome);
 
 CREATE TABLE campeonatos (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    campeonato TEXT NOT NULL,
     pais TEXT NOT NULL,
     entidade TEXT, -- CBF, CONMEBOL, FIFA, etc.
     tipo TEXT, -- 'nacional', 'estadual', 'internacional'
