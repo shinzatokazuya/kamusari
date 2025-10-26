@@ -375,7 +375,105 @@ class OGolScraperAvancado:
         print("\n💾 Exportando dados para CSV...")
 
         # Arquivo para tabela jogadores (dados mestres)
-        with open('jogadores.csv')
+        with open('novo_bd1971_robusto/csv/jogadores.csv', 'w', newline='', encoding='utf-8') as f:
+            campos = ['ID'. 'nome', 'nascimento', 'nacionalidade', 'clube_id',
+                      'altura', 'posicao', 'pe_preferido']
+            writer = csv.DictWriter(f, fieldnames=campos)
+            writer.writeheader()
+
+            todos_jogadores = jogadores + reservas
+            for jog in todos_jogadores:
+                writer.writerow({
+                    'ID': jog['jogador_id'],
+                    'nome': jog['nome'],
+                    'nascimento': jog.get('nascimento', ''),
+                    'nacionalidade': jog.get('nacionalidade', ''),
+                    'clube_id': jog.get('clube_id', ''),
+                    'altura': jog.get('altura', ''),
+                    'posicao': jog.get('posicao', ''),
+                    'pe_preferido': jog.get('pe_preferido', '')
+                })
+
+        print(f"  ✓ jogadores.csv criado com {len(todos_jogadores)} registros")
+
+        # Arquivo para tabela jogadores_em_partida
+        with open('novo_bd1971_robusto/csv/jogadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
+            campos = ['partida_id', 'jogador_id', 'titular', 'minutos_jogados',
+                     'gols', 'assistencias']
+            writer = csv.DictWriter(f, fieldnames=campos)
+            writer.writeheader()
+
+            for jog in todos_jogadores:
+                # Só inclui se foi titular ou se entrou no jogo
+                if jog['titular'] or jog.get('entrou_jogo', False):
+                    writer.writerow({
+                        'partida_id': partida_id,
+                        'jogador_id': jog['jogador_id'],
+                        'titular': 1 if jog['titular'] else 0,
+                        'minutos_jogados': '',  # Não disponível na página
+                        'gols': '',
+                        'assistencias': ''
+                    })
+
+        print(f"  ✓ jogadores_em_partida.csv criado para partida {partida_id}")
+
+        # Arquivo para tabela treinadores
+        with open('novo_bd1971_robusto/csv/treinadores.csv', 'w', newline='', encoding='utf-8') as f:
+            campos = ['ID', 'nome', 'nascimento', 'nacionalidade']
+            writer = csv.DictWriter(f, fieldnames=campos)
+            writer.writeheader()
+
+            for trein in treinadores:
+                writer.writerow({
+                    'ID': trein['treinador_id'],
+                    'nome': trein['nome'],
+                    'nascimento': '',  # Não disponível nesta página
+                    'nacionalidade': trein.get('nacionalidade', '')
+                })
+
+        print(f"  ✓ treinadores.csv criado com {len(treinadores)} registros")
+
+        # Arquivo para relacionamento treinadores_em_partida
+        with open('novo_bd1971_robusto/csv/treinadores_em_partida.csv', 'w', newline='', encoding='utf-8') as f:
+            campos = ['partida_id', 'treinador_id', 'clube_id']
+            writer = csv.DictWriter(f, fieldnames=campos)
+            writer.writeheader()
+
+            for trein in treinadores:
+                writer.writerow({
+                    'partida_id': partida_id,
+                    'treinador_id': trein['treinador_id'],
+                    'clube_id': trein.get('clube_id', '')
+                })
+
+        print(f"  ✓ treinadores_em_partida.csv criado")
+
+        # Arquivo com dados complementares da partida (estádio, etc)
+        with open('novo_bd1971_robusto/csv/partida_detalhes.csv', 'w', newline='', encoding='utf-8') as f:
+            campos = ['partida_id', 'estadio', 'cidade', 'data', 'placar_mandante',
+                     'placar_visitante']
+            writer = csv.DictWriter(f, fieldnames=campos)
+            writer.writeheader()
+
+            writer.writerow({
+                'partida_id': partida_id,
+                'estadio': dados_partida.get('estadio', ''),
+                'cidade': dados_partida.get('cidade', ''),
+                'data': dados_partida.get('data', ''),
+                'placar_mandante': dados_partida.get('placar_mandante', ''),
+                'placar_visitante': dados_partida.get('placar_visitante', '')
+            })
+
+        print(f"  ✓ partida_detalhes.csv criado")
+
+    def executar(self, partida_id):
+        """
+        Executa o scraping completo da partida.
+
+        Args:
+            partida_id: ID da partida no seu banco de dados
+        """
+        
 
 
 
