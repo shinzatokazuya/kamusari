@@ -2,6 +2,7 @@ CREATE TABLE locais (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     cidade TEXT,
     estado TEXT,
+    UF TEXT,
     regiao TEXT,
     pais TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
