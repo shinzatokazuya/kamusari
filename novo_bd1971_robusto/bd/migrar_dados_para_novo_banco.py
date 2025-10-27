@@ -38,12 +38,6 @@ def migrar_dados():
     locais = cur_antigo.fetchall()
     cur_novo.executemany("INSERT INTO locais (cidade, UF, regiao, pais) VALUES (?, ?, ?, ?)", locais)
 
-    # --- ESTÁDIOS ---
-    print("➡️ Migrando estadios...")
-    cur_antigo.execute("SELECT estadio, capacidade, local_id FROM estadios;")
-    estadios = cur_antigo.fetchall()
-    cur_novo.executemany("INSERT INTO estadios (estadio, capacidade, local_id) VALUES (?, ?, ?)", estadios)
-
     # --- CLUBES ---
     print("➡️ Migrando clubes...")
     cur_antigo.execute("SELECT clube, local_id FROM clubes;")
