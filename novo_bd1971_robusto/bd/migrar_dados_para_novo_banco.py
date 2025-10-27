@@ -71,3 +71,20 @@ def migrar_dados():
         )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, partidas)
+
+    conn_novo.commit()
+
+    # --- CHECAGEM FINAL ---
+    cur_novo.execute("PRAGMA foreign_key_check;")
+    inconsistencias = cur_novo.fetchall()
+    if inconsistencias:
+        print("⚠️ Inconsistências detectadas:", inconsistencias)
+    else:
+        print("✅ Migração concluída sem erros de integridade!")
+
+    conn_antigo.close()
+    conn_novo.close()
+
+if __name__ == "__main__":
+    criar_banco_novo()
+    migrar_dados()
