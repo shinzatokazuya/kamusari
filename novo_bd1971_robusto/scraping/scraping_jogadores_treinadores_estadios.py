@@ -87,7 +87,7 @@ class OGolScraperModular:
             print("   ➤ Div principal encontrada. Agora procurando divs internas...")
 
             # Exemplo: buscar todas as divs internas (filhas)
-            divs_internas = div_principal.find_all("div", class_="")
+            divs_internas = div_principal.find_all("div", class_="rbbox nofooter")
             for i, div in enumerate(divs_internas, start=1):
                 texto = div.get_text(strip=True)
                 if texto:
