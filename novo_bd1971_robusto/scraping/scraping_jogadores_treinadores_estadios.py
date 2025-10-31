@@ -97,7 +97,7 @@ class OGolScraperModular:
         soup = self._get_soup(url_partida)
 
         # ⬇️ Exemplo: substitua 'class-da-div' pela classe real onde estão os dados desejados
-        div_detalhes = soup.find("div", class_="class-da-div")
+        div_detalhes = soup.find("div", class_="info")
         if div_detalhes:
             print("   ➤ Dados encontrados dentro da div da partida!")
             print("   ", div_detalhes.get_text(strip=True))
