@@ -144,7 +144,7 @@ class OGolScraperModular:
             print("   ⚠ Div pai não encontrada no visitante.")
             return None
 
-        div_especifica = div_pai.find("div", class_="data")
+        div_especifica = div_pai.find("div", id="entity_bio")
         if not div_especifica:
             print("   ⚠ Div específica (filha) não encontrada no visitante.")
             return None
