@@ -150,7 +150,7 @@ class OGolScraperModular:
             return None
 
         dados = {}
-        spans = div_especifica.find_all("span")
+        spans = div_especifica.find_all("div")
         for span in spans:
             texto = span.get_text(strip=True)
             if "Fundado" in texto:
