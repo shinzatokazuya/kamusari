@@ -213,9 +213,9 @@ class OGolScraperModular:
                     visitantes_csv.append({"visitante": p["visitante"], **dados_visitante})
 
         # Salvar cada um em um CSV separado
-        self.salvar_csv("partidas.csv", partidas_csv)
-        self.salvar_csv("mandantes.csv", mandantes_csv)
-        self.salvar_csv("visitantes.csv", visitantes_csv)
+        self.salvar_csv("novo_bd1971_robusto/csv_extraidos/partidas.csv", partidas_csv)
+        self.salvar_csv("novo_bd1971_robusto/csv_extraidos/mandantes.csv", mandantes_csv)
+        self.salvar_csv("novo_bd1971_robusto/csv_extraidos/visitantes.csv", visitantes_csv)
 
 
 # =====================================================
