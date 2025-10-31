@@ -114,7 +114,7 @@ class OGolScraperModular:
             dados[f"partida_info_{idx}"] = texto_div
 
             # Exemplo 2: dentro dessa div, buscar outras divs filhas específicas
-            divs_filhas = div.find_all("div", recursive=True)
+            divs_filhas = div.find_all("div", class_="header")
             for j, filha in enumerate(divs_filhas, start=1):
                 texto_filha = filha.get_text(strip=True)
                 if texto_filha:
