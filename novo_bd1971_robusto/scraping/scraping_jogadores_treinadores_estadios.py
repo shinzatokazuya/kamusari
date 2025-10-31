@@ -120,14 +120,14 @@ class OGolScraperModular:
             return None
 
         # Dentro dela, pega uma div específica (por exemplo 'zzgameinfo')
-        div_especifica = div_pai.find("div", class_="zzgameinfo")
+        div_especifica = div_pai.find("div", class_="header")
         if not div_especifica:
             print("   ⚠ Div específica (filha) da partida não encontrada.")
             return None
 
         # Extrair dados pontuais (ex: estádio, árbitro, público)
         dados = {}
-        for linha in div_especifica.find_all("li"):
+        for linha in div_especifica.find_all("a"):
             texto = linha.get_text(strip=True)
             if "Estádio" in texto:
                 dados["estadio"] = texto.replace("Estádio:", "").strip()
