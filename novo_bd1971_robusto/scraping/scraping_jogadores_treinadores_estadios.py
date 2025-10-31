@@ -205,12 +205,12 @@ class OGolScraperModular:
 
         # salvar csvs
         self.salvar_csv(
-            "clubes.csv",
+            "novo_bd1971_robusto/csv_extraidos/clubes.csv",
             self.lista_clubes,
             ["tipo", "nome", "apelido", "fundacao", "cidade", "estado", "pais"]
         )
         self.salvar_csv(
-            "novoestadios.csv",
+            "novo_bd1971_robusto/csv_extraidos/estadios.csv",
             self.lista_estadios,
             ["nome", "pais", "cidade", "fundacao", "capacidade"]
         )
