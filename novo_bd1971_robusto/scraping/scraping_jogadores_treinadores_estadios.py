@@ -14,9 +14,9 @@ class OGolScraperModular:
         }
         self.delay = 2
 
-    # ==========================
+    # =====================================================
     # FUNÇÕES BASE
-    # ==========================
+    # =====================================================
     def _get_soup(self, url):
         """Faz requisição e retorna BeautifulSoup"""
         time.sleep(self.delay)
@@ -31,14 +31,12 @@ class OGolScraperModular:
         link = urljoin(self.base_url, tag["href"]) if tag and "href" in tag.attrs else None
         return texto, link
 
-    # ==========================
-    # EXTRAÇÃO PRINCIPAL
-    # ==========================
+    # =====================================================
+    # LEITURA DA LISTA PRINCIPAL
+    # =====================================================
     def ler_lista_partidas(self):
-        """Lê a tabela principal e retorna uma lista de partidas com os links"""
         print(f"🔍 Lendo tabela de partidas: {self.url_lista}")
         soup = self._get_soup(self.url_lista)
-
         tabela = soup.find("table", class_="zztable stats")
         if not tabela:
             print("❌ Tabela não encontrada.")
@@ -72,120 +70,146 @@ class OGolScraperModular:
         print(f"✅ {len(partidas)} partidas encontradas.")
         return partidas
 
-    # ==========================
-    # FUNÇÕES MODULARES DE LINK
-    # ==========================
+    # =====================================================
+    # LEITURA DE LINKS ESPECÍFICOS
+    # =====================================================
     def ler_link_mandante(self, url_mandante):
-        """Lê o link do mandante e extrai informações específicas"""
+        """Extrai informações específicas do mandante"""
         print(f"🏠 Lendo mandante: {url_mandante}")
         soup = self._get_soup(url_mandante)
 
-        div_principal = soup.find("div", class_="zz-tpl-rb")
+        # Exemplo: encontra uma div específica
+        div_pai = soup.find("div", class_="zz-tpl-rb")
+        if not div_pai:
+            print("   ⚠ Div pai não encontrada no mandante.")
+            return None
+
+        # Agora busca UMA div específica dentro dessa div pai
+        div_especifica = div_pai.find("div", class_="data")  # Exemplo de div filha
+        if not div_especifica:
+            print("   ⚠ Div específica (filha) não encontrada no mandante.")
+            return None
+
+        # Extrai dados específicos dentro dessa div (exemplo: nome, fundação, estádio)
         dados = {}
+        spans = div_especifica.find_all("span")
+        for span in spans:
+            texto = span.get_text(strip=True)
+            if "Fundado" in texto:
+                dados["fundacao"] = texto.replace("Fundado:", "").strip()
+            if "Estádio" in texto:
+                dados["estadio"] = texto.replace("Estádio:", "").strip()
 
-        if div_principal:
-            print("   ➤ Div principal encontrada. Agora procurando divs internas...")
-
-            # Exemplo: buscar todas as divs internas (filhas)
-            divs_internas = div_principal.find_all("div", class_="rbbox nofooter")
-            if divs_internas:
-                div_interna = divs_internas.find_all("div", id_="entity_bio")
-                for i, div in enumerate(div_interna, start=1):
-                    texto = div.get_text(strip=True)
-                    if texto:
-                        dados[f"mandante_div_{i}"] = texto
-
-        else:
-            print("   ⚠ Nenhuma div principal encontrada no mandante.")
-
+        print(f"   ➤ {len(dados)} dados extraídos do mandante.")
         return dados
 
     def ler_link_partida(self, url_partida):
-        """Lê o link da partida (placar) e extrai múltiplas divs e suas filhas"""
-        print(f"⚽ Lendo detalhes da partida: {url_partida}")
+        """Extrai informações específicas da partida"""
+        print(f"⚽ Lendo partida: {url_partida}")
         soup = self._get_soup(url_partida)
 
+        # Localiza a div pai
+        div_pai = soup.find("div", class_="info")  # div principal da partida
+        if not div_pai:
+            print("   ⚠ Div pai da partida não encontrada.")
+            return None
+
+        # Dentro dela, pega uma div específica (por exemplo 'zzgameinfo')
+        div_especifica = div_pai.find("div", class_="zzgameinfo")
+        if not div_especifica:
+            print("   ⚠ Div específica (filha) da partida não encontrada.")
+            return None
+
+        # Extrair dados pontuais (ex: estádio, árbitro, público)
         dados = {}
+        for linha in div_especifica.find_all("li"):
+            texto = linha.get_text(strip=True)
+            if "Estádio" in texto:
+                dados["estadio"] = texto.replace("Estádio:", "").strip()
+            elif "Público" in texto:
+                dados["publico"] = texto.replace("Público:", "").strip()
+            elif "Árbitro" in texto:
+                dados["arbitro"] = texto.replace("Árbitro:", "").strip()
 
-        # Exemplo 1: buscar várias divs com uma classe específica
-        divs_info = soup.find_all("div", class_="info")
-        for idx, div in enumerate(divs_info, start=1):
-            texto_div = div.get_text(strip=True)
-            dados[f"partida_info_{idx}"] = texto_div
-
-            # Exemplo 2: dentro dessa div, buscar outras divs filhas específicas
-            divs_filhas = div.find_all("div", class_="header")
-            for j, filha in enumerate(divs_filhas, start=1):
-                texto_filha = filha.get_text(strip=True)
-                if texto_filha:
-                    dados[f"partida_div_{idx}_filha_{j}"] = texto_filha
-
-        if not dados:
-            print("   ⚠ Nenhuma div encontrada no link da partida.")
-        else:
-            print(f"   ➤ {len(dados)} itens de div extraídos do link da partida.")
-
+        print(f"   ➤ {len(dados)} dados extraídos da partida.")
         return dados
 
     def ler_link_visitante(self, url_visitante):
-        """Lê o link do visitante e extrai informações específicas"""
+        """Extrai informações específicas do visitante"""
         print(f"🛫 Lendo visitante: {url_visitante}")
         soup = self._get_soup(url_visitante)
 
-        div_principal = soup.find("div", class_="zz-tpl-rb")
+        div_pai = soup.find("div", class_="zz-tpl-rb")
+        if not div_pai:
+            print("   ⚠ Div pai não encontrada no visitante.")
+            return None
+
+        div_especifica = div_pai.find("div", class_="data")
+        if not div_especifica:
+            print("   ⚠ Div específica (filha) não encontrada no visitante.")
+            return None
+
         dados = {}
+        spans = div_especifica.find_all("span")
+        for span in spans:
+            texto = span.get_text(strip=True)
+            if "Fundado" in texto:
+                dados["fundacao"] = texto.replace("Fundado:", "").strip()
+            if "Estádio" in texto:
+                dados["estadio"] = texto.replace("Estádio:", "").strip()
 
-        if div_principal:
-            print("   ➤ Div principal encontrada no visitante. Buscando internas...")
-
-            # Exemplo: buscar todas as divs internas (filhas)
-            divs_internas = div_principal.find_all("div", class_="rbbox nofooter")
-            if divs_internas:
-                div_interna = divs_internas.find_all("div", id_="entity_bio")
-                for i, div in enumerate(div_interna, start=1):
-                    texto = div.get_text(strip=True)
-                    if texto:
-                        dados[f"mandante_div_{i}"] = texto
-        else:
-            print("   ⚠ Nenhuma div principal encontrada no visitante.")
-
+        print(f"   ➤ {len(dados)} dados extraídos do visitante.")
         return dados
 
-    # ==========================
-    # EXECUÇÃO GERAL
-    # ==========================
-    def executar(self):
-        partidas = self.ler_lista_partidas()
-        resultados = []
-
-        for p in partidas:
-            resultado = p.copy()
-
-            if p["link_mandante"]:
-                resultado.update(self.ler_link_mandante(p["link_mandante"]))
-            if p["link_partida"]:
-                resultado.update(self.ler_link_partida(p["link_partida"]))
-            if p["link_visitante"]:
-                resultado.update(self.ler_link_visitante(p["link_visitante"]))
-
-            resultados.append(resultado)
-
-        self.salvar_csv(resultados)
-
-    def salvar_csv(self, dados):
-        if not dados:
+    # =====================================================
+    # EXPORTAÇÃO PARA CSV
+    # =====================================================
+    def salvar_csv(self, nome, dados_lista):
+        if not dados_lista:
+            print(f"⚠ Nenhum dado para salvar em {nome}.")
             return
-        campos = sorted({k for d in dados for k in d})
-        with open("resultado_links_detalhado.csv", "w", newline="", encoding="utf-8") as f:
+        campos = sorted({k for d in dados_lista for k in d})
+        with open(nome, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
-            writer.writerows(dados)
-        print("💾 CSV salvo: resultado_links_detalhado.csv")
+            writer.writerows(dados_lista)
+        print(f"💾 CSV salvo: {nome}")
+
+    # =====================================================
+    # EXECUÇÃO PRINCIPAL
+    # =====================================================
+    def executar(self):
+        partidas = self.ler_lista_partidas()
+        partidas_csv, mandantes_csv, visitantes_csv = [], [], []
+
+        for p in partidas:
+            # Detalhes da partida
+            if p["link_partida"]:
+                dados_partida = self.ler_link_partida(p["link_partida"])
+                if dados_partida:
+                    partidas_csv.append({"partida": p["placar"], **dados_partida})
+
+            # Mandante
+            if p["link_mandante"]:
+                dados_mandante = self.ler_link_mandante(p["link_mandante"])
+                if dados_mandante:
+                    mandantes_csv.append({"mandante": p["mandante"], **dados_mandante})
+
+            # Visitante
+            if p["link_visitante"]:
+                dados_visitante = self.ler_link_visitante(p["link_visitante"])
+                if dados_visitante:
+                    visitantes_csv.append({"visitante": p["visitante"], **dados_visitante})
+
+        # Salvar cada um em um CSV separado
+        self.salvar_csv("partidas.csv", partidas_csv)
+        self.salvar_csv("mandantes.csv", mandantes_csv)
+        self.salvar_csv("visitantes.csv", visitantes_csv)
 
 
-# ==========================
+# =====================================================
 # USO
-# ==========================
+# =====================================================
 if __name__ == "__main__":
     url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario"
     scraper = OGolScraperModular(url)
