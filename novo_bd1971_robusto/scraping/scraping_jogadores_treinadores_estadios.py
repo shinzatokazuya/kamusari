@@ -82,7 +82,7 @@ class OGolScraperModular:
 
         # ⬇️ Aqui você coloca as divs específicas que quiser ler
         # Exemplo (substitua 'nome-da-div' pela classe real do site):
-        div_info = soup.find("div", class_="rbbox nofooter")
+        div_info = soup.find("div", class_="zz-tpl-rb")
         if div_info:
             print("   ➤ Conteúdo encontrado dentro da div específica do mandante!")
             print("   ", div_info.get_text(strip=True))
@@ -112,7 +112,7 @@ class OGolScraperModular:
         soup = self._get_soup(url_visitante)
 
         # ⬇️ Substitua aqui pela div/classe real
-        div_info = soup.find("div", class_="nome-da-div")
+        div_info = soup.find("div", class_="zz-tpl-rb")
         if div_info:
             print("   ➤ Conteúdo encontrado dentro da div específica do visitante!")
             print("   ", div_info.get_text(strip=True))
