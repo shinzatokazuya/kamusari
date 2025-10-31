@@ -80,46 +80,69 @@ class OGolScraperModular:
         print(f"🏠 Lendo mandante: {url_mandante}")
         soup = self._get_soup(url_mandante)
 
-        # ⬇️ Aqui você coloca as divs específicas que quiser ler
-        # Exemplo (substitua 'nome-da-div' pela classe real do site):
-        div_info = soup.find("div", class_="zz-tpl-rb")
-        if div_info:
-            print("   ➤ Conteúdo encontrado dentro da div específica do mandante!")
-            print("   ", div_info.get_text(strip=True))
-        else:
-            print("   ⚠ Div específica não encontrada no mandante.")
+        div_principal = soup.find("div", class_="zz-tpl-rb")
+        dados = {}
 
-        return {"mandante_info": div_info.get_text(strip=True) if div_info else None}
+        if div_principal:
+            print("   ➤ Div principal encontrada. Agora procurando divs internas...")
+
+            # Exemplo: buscar todas as divs internas (filhas)
+            divs_internas = div_principal.find_all("div", class_="")
+            for i, div in enumerate(divs_internas, start=1):
+                texto = div.get_text(strip=True)
+                if texto:
+                    dados[f"mandante_div_{i}"] = texto
+
+        else:
+            print("   ⚠ Nenhuma div principal encontrada no mandante.")
+
+        return dados
 
     def ler_link_partida(self, url_partida):
-        """Lê o link da partida (placar) e extrai informações específicas"""
+        """Lê o link da partida (placar) e extrai múltiplas divs e suas filhas"""
         print(f"⚽ Lendo detalhes da partida: {url_partida}")
         soup = self._get_soup(url_partida)
 
-        # ⬇️ Exemplo: substitua 'class-da-div' pela classe real onde estão os dados desejados
-        div_detalhes = soup.find("div", class_="info")
-        if div_detalhes:
-            print("   ➤ Dados encontrados dentro da div da partida!")
-            print("   ", div_detalhes.get_text(strip=True))
-        else:
-            print("   ⚠ Div específica da partida não encontrada.")
+        dados = {}
 
-        return {"partida_info": div_detalhes.get_text(strip=True) if div_detalhes else None}
+        # Exemplo 1: buscar várias divs com uma classe específica
+        divs_info = soup.find_all("div", class_="info")
+        for idx, div in enumerate(divs_info, start=1):
+            texto_div = div.get_text(strip=True)
+            dados[f"partida_info_{idx}"] = texto_div
+
+            # Exemplo 2: dentro dessa div, buscar outras divs filhas específicas
+            divs_filhas = div.find_all("div", recursive=True)
+            for j, filha in enumerate(divs_filhas, start=1):
+                texto_filha = filha.get_text(strip=True)
+                if texto_filha:
+                    dados[f"partida_div_{idx}_filha_{j}"] = texto_filha
+
+        if not dados:
+            print("   ⚠ Nenhuma div encontrada no link da partida.")
+        else:
+            print(f"   ➤ {len(dados)} itens de div extraídos do link da partida.")
+
+        return dados
 
     def ler_link_visitante(self, url_visitante):
         """Lê o link do visitante e extrai informações específicas"""
         print(f"🛫 Lendo visitante: {url_visitante}")
         soup = self._get_soup(url_visitante)
 
-        # ⬇️ Substitua aqui pela div/classe real
-        div_info = soup.find("div", class_="zz-tpl-rb")
-        if div_info:
-            print("   ➤ Conteúdo encontrado dentro da div específica do visitante!")
-            print("   ", div_info.get_text(strip=True))
-        else:
-            print("   ⚠ Div específica não encontrada no visitante.")
+        div_principal = soup.find("div", class_="zz-tpl-rb")
+        dados = {}
 
-        return {"visitante_info": div_info.get_text(strip=True) if div_info else None}
+        if div_principal:
+            print("   ➤ Div principal encontrada no visitante. Buscando internas...")
+            for i, div in enumerate(div_principal.find_all("div", recursive=True), start=1):
+                texto = div.get_text(strip=True)
+                if texto:
+                    dados[f"visitante_div_{i}"] = texto
+        else:
+            print("   ⚠ Nenhuma div principal encontrada no visitante.")
+
+        return dados
 
     # ==========================
     # EXECUÇÃO GERAL
@@ -130,6 +153,7 @@ class OGolScraperModular:
 
         for p in partidas:
             resultado = p.copy()
+
             if p["link_mandante"]:
                 resultado.update(self.ler_link_mandante(p["link_mandante"]))
             if p["link_partida"]:
@@ -145,11 +169,11 @@ class OGolScraperModular:
         if not dados:
             return
         campos = sorted({k for d in dados for k in d})
-        with open("resultado_links.csv", "w", newline="", encoding="utf-8") as f:
+        with open("resultado_links_detalhado.csv", "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
             writer.writerows(dados)
-        print("💾 CSV salvo: resultado_links.csv")
+        print("💾 CSV salvo: resultado_links_detalhado.csv")
 
 
 # ==========================
