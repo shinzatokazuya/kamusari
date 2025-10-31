@@ -825,7 +825,7 @@ class OGolScraperRobusto:
 # ===== EXEMPLO DE USO =====
 if __name__ == "__main__":
     url_partida = "https://www.ogol.com.br/jogo/1971-08-07-bahia-santos/500100"
-    caminho_clubes = "csv_bd/clubes.csv"
+    caminho_clubes = "C:/Users/enryk/Documents/Estudos/kamusari/novo_bd1971_robusto/csv_bd/clubes.csv"
     partida_id = 1
 
     scraper = OGolScraperRobusto(url_partida, caminho_clubes)
