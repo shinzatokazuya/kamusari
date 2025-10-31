@@ -88,10 +88,12 @@ class OGolScraperModular:
 
             # Exemplo: buscar todas as divs internas (filhas)
             divs_internas = div_principal.find_all("div", class_="rbbox nofooter")
-            for i, div in enumerate(divs_internas, start=1):
-                texto = div.get_text(strip=True)
-                if texto:
-                    dados[f"mandante_div_{i}"] = texto
+            if divs_internas:
+                div_interna = divs_internas.find_all("div", id_="entity_bio")
+                for i, div in enumerate(div_interna, start=1):
+                    texto = div.get_text(strip=True)
+                    if texto:
+                        dados[f"mandante_div_{i}"] = texto
 
         else:
             print("   ⚠ Nenhuma div principal encontrada no mandante.")
