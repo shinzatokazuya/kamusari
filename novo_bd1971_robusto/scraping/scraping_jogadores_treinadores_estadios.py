@@ -78,29 +78,34 @@ class OGolScraperModular:
         print(f"🏠 Lendo mandante: {url_mandante}")
         soup = self._get_soup(url_mandante)
 
-        # Exemplo: encontra uma div específica
         div_pai = soup.find("div", class_="zz-tpl-rb")
         if not div_pai:
-            print("   ⚠ Div pai não encontrada no mandante.")
+            print("   ⚠ Div pai não encontrada no visitante.")
             return None
 
-        # Agora busca UMA div específica dentro dessa div pai
-        div_especifica = div_pai.find("div", class_="data")  # Exemplo de div filha
+        div_especifica = div_pai.find("div", id="entity_bio")
         if not div_especifica:
-            print("   ⚠ Div específica (filha) não encontrada no mandante.")
+            print("   ⚠ Div específica (filha) não encontrada no visitante.")
             return None
 
-        # Extrai dados específicos dentro dessa div (exemplo: nome, fundação, estádio)
         dados = {}
         spans = div_especifica.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
-            if "Fundado" in texto:
-                dados["fundacao"] = texto.replace("Fundado:", "").strip()
-            if "Estádio" in texto:
-                dados["estadio"] = texto.replace("Estádio:", "").strip()
+            if "Nome" in texto:
+                dados["nome"] = texto
+            if "Apelidos" in texto:
+                dados["apelido"] = texto
+            if "Ano de Fundação" in texto:
+                dados["fundacao"] = texto.replace("-", "/").strip()
+            if "Cidade" in texto:
+                dados["cidade"] = texto
+            if "País" in texto:
+                dados["pais"] = texto
+            if "Estado" in texto:
+                dados["estado"] = texto
 
-        print(f"   ➤ {len(dados)} dados extraídos do mandante.")
+        print(f"   ➤ {len(dados)} dados extraídos do visitante.")
         return dados
 
     def ler_link_partida(self, url_partida):
