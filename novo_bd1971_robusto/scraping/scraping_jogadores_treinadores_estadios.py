@@ -321,7 +321,7 @@ class OGolScraperRobusto:
         }
 
         # Extrai foto
-        foto_img = soup.find('img', class_=re.compile(r'(player|jogador|foto)', re.I))
+        foto_img = soup.find('div', class_=re.compile(r'(zz-enthdr-media)', re.I))
         if foto_img and foto_img.get('src'):
             dados['foto_url'] = urljoin(self.base_url, foto_img['src'])
 
