@@ -131,9 +131,7 @@ class OGolScraperModular:
             texto = linha.get_text(strip=True)
             if "Estádio" in texto:
                 dados["estadio"] = texto.replace("Estádio:", "").strip()
-            elif "Público" in texto:
-                dados["publico"] = texto.replace("Público:", "").strip()
-            elif "Árbitro" in texto:
+            if "Árbitro" in texto:
                 dados["arbitro"] = texto.replace("Árbitro:", "").strip()
 
         print(f"   ➤ {len(dados)} dados extraídos da partida.")
