@@ -121,7 +121,7 @@ class OGolScraperModular:
         soup = self._get_soup(url_partida)
 
         # Div 1 — Links de estádio e árbitro
-        div_estadio_arbitro = soup.find("div", class_="gameinfo")
+        div_estadio_arbitro = soup.find("div", class_="header")
         if div_estadio_arbitro:
             for a_tag in div_estadio_arbitro.find_all("a", href=True):
                 link = urljoin(self.base_url, a_tag["href"])
