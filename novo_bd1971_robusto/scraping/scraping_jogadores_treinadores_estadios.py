@@ -150,13 +150,21 @@ class OGolScraperModular:
             return None
 
         dados = {}
-        spans = div_especifica.find_all("div")
+        spans = div_especifica.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
-            if "Fundado" in texto:
-                dados["fundacao"] = texto.replace("Fundado:", "").strip()
-            if "Estádio" in texto:
-                dados["estadio"] = texto.replace("Estádio:", "").strip()
+            if "Nome" in texto:
+                dados["nome"] = texto
+            if "Apelidos" in texto:
+                dados["apelido"] = texto
+            if "Ano de Fundação" in texto:
+                dados["fundacao"] = texto.replace("-", "/").strip()
+            if "Cidade" in texto:
+                dados["cidade"] = texto
+            if "País" in texto:
+                dados["pais"] = texto
+            if "Estado" in texto:
+                dados["estado"] = texto
 
         print(f"   ➤ {len(dados)} dados extraídos do visitante.")
         return dados
