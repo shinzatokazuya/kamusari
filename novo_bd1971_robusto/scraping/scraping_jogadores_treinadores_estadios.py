@@ -132,7 +132,7 @@ class OGolScraperModular:
                     self.ler_link_estadio(link)
 
         # Div 2 — Links de jogadores (ainda não usados nesta fase)
-        div_jogadores = soup.find("div", class_="match_squads")
+        div_jogadores = soup.find("div", class_="zz-tpl-main")
         if div_jogadores:
             print("   ➤ Div de jogadores encontrada (guardando para futura extração).")
 
@@ -210,7 +210,7 @@ class OGolScraperModular:
             ["tipo", "nome", "apelido", "fundacao", "cidade", "estado", "pais"]
         )
         self.salvar_csv(
-            "estadios.csv",
+            "novoestadios.csv",
             self.lista_estadios,
             ["nome", "pais", "cidade", "fundacao", "capacidade"]
         )
