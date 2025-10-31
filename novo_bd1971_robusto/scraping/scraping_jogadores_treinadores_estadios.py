@@ -82,7 +82,7 @@ class OGolScraperModular:
 
         # ⬇️ Aqui você coloca as divs específicas que quiser ler
         # Exemplo (substitua 'nome-da-div' pela classe real do site):
-        div_info = soup.find("div", class_="nome-da-div")
+        div_info = soup.find("div", class_="entity_bio")
         if div_info:
             print("   ➤ Conteúdo encontrado dentro da div específica do mandante!")
             print("   ", div_info.get_text(strip=True))
