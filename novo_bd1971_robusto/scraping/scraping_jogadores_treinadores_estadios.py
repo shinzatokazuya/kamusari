@@ -10,10 +10,18 @@ class OGolScraperModular:
         self.base_url = "https://www.ogol.com.br"
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         self.delay = 2
-        self.times_lidos = set()  # evitar repetição
-        self.estadios_lidos = set()
-        self.arbitros_lidos = set()
 
+        # caches para evitar repetições
+        self.clubes_lidos = set()
+        self.estadios_lidos = set()
+
+        # coletores de dados
+        self.lista_clubes = []
+        self.lista_estadios = []
+
+    # =====================================================
+    # BASE
+    # =====================================================
     def _get_soup(self, url):
         time.sleep(self.delay)
         r = requests.get(url, headers=self.headers)
@@ -27,7 +35,7 @@ class OGolScraperModular:
         return texto, link
 
     # =====================================================
-    # LISTA DE PARTIDAS
+    # LISTA PRINCIPAL
     # =====================================================
     def ler_lista_partidas(self):
         print(f"🔍 Lendo tabela de partidas: {self.url_lista}")
@@ -64,133 +72,114 @@ class OGolScraperModular:
         return partidas
 
     # =====================================================
-    # MANDANTE / VISITANTE
+    # CLUBES
     # =====================================================
-    def ler_link_time(self, url_time, tipo):
-        """Lê link do time (mandante ou visitante)"""
-        if not url_time:
-            return None
-        if url_time in self.times_lidos:
-            print(f"⏭ {tipo} já lido anteriormente, pulando.")
-            return None
-        self.times_lidos.add(url_time)
+    def ler_link_clube(self, url_clube, tipo):
+        """Lê o link do clube e extrai os campos da div.bio"""
+        if not url_clube or url_clube in self.clubes_lidos:
+            return
+        self.clubes_lidos.add(url_clube)
 
-        print(f"🏟️ Lendo {tipo}: {url_time}")
-        soup = self._get_soup(url_time)
+        print(f"🏟️ Lendo {tipo}: {url_clube}")
+        soup = self._get_soup(url_clube)
 
-        div_especifica = soup.find("div", id="entity_bio")
-        if not div_especifica:
-            print(f"⚠ Div 'entity_bio' não encontrada em {tipo}.")
-            return None
+        div_bio = soup.find("div", class_="bio")
+        if not div_bio:
+            print("⚠ Div 'bio' não encontrada para o clube.")
+            return
 
-        dados = {}
-        spans = div_especifica.find_all("span")
+        dados = {"tipo": tipo}
+        spans = div_bio.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
+            # Captura o conteúdo de texto que vem logo após o <span>
+            valor = span.next_sibling.strip() if span.next_sibling else None
+
             if "Nome" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["nome_completo"] = valor
-            if "Apelidos" in texto:
-                valor = span.find_next("span").get_text(strip=True)
+                dados["nome"] = valor
+            elif "Apelido" in texto:
                 dados["apelido"] = valor
-            if "Ano de Fundação" in texto:
-                valor = span.find_next("span").get_text(strip=True)
+            elif "Fundado" in texto or "Ano de Fundação" in texto:
                 dados["fundacao"] = valor
-            if "Cidade" in texto:
-                valor = span.find_next("span").get_text(strip=True)
+            elif "Cidade" in texto:
                 dados["cidade"] = valor
-            if "Estado" in texto:
-                valor = span.find_next("span").get_text(strip=True)
+            elif "Estado" in texto:
                 dados["estado"] = valor
-        return dados
+            elif "País" in texto:
+                dados["pais"] = valor
+
+        # Adiciona à lista de clubes
+        self.lista_clubes.append(dados)
+        print(f"   ➤ Clube '{dados.get('nome')}' adicionado.")
 
     # =====================================================
-    # PARTIDA + LINKS INTERNOS (ESTÁDIO, ÁRBITRO)
+    # PARTIDAS — PEGAR LINKS DE ESTÁDIO E JOGADORES
     # =====================================================
     def ler_link_partida(self, url_partida):
+        """Acessa o link da partida e encontra as duas divs de interesse"""
         print(f"⚽ Lendo partida: {url_partida}")
         soup = self._get_soup(url_partida)
-        div_especifica = soup.find("div", class_="header")
-        if not div_especifica:
-            print("⚠ Div 'header' não encontrada.")
-            return None
 
-        dados = {}
-        for a_tag in div_especifica.find_all("a"):
-            texto = a_tag.get_text(strip=True)
-            link = urljoin(self.base_url, a_tag["href"]) if "href" in a_tag.attrs else None
+        # Div 1 — Links de estádio e árbitro
+        div_estadio_arbitro = soup.find("div", class_="gameinfo")
+        if div_estadio_arbitro:
+            for a_tag in div_estadio_arbitro.find_all("a", href=True):
+                link = urljoin(self.base_url, a_tag["href"])
+                texto = a_tag.get_text(strip=True)
 
-            if "Estádio" in texto or "Estádio" in a_tag.parent.get_text():
-                dados["estadio_nome"] = texto
-                dados["link_estadio"] = link
-                if link and link not in self.estadios_lidos:
-                    self.estadios_lidos.add(link)
-                    est = self.ler_link_estadio(link)
-                    if est:
-                        dados.update(est)
+                # Aqui só guardamos os links, não extraímos nada ainda
+                if "estadio" in link.lower() or "estádio" in texto.lower():
+                    self.ler_link_estadio(link)
 
-            elif "Árbitro" in texto or "Árbitro" in a_tag.parent.get_text():
-                dados["arbitro_nome"] = texto
-                dados["link_arbitro"] = link
-                if link and link not in self.arbitros_lidos:
-                    self.arbitros_lidos.add(link)
-                    arb = self.ler_link_arbitro(link)
-                    if arb:
-                        dados.update(arb)
-
-        return dados
+        # Div 2 — Links de jogadores (ainda não usados nesta fase)
+        div_jogadores = soup.find("div", class_="match_squads")
+        if div_jogadores:
+            print("   ➤ Div de jogadores encontrada (guardando para futura extração).")
 
     # =====================================================
-    # ESTÁDIO / ÁRBITRO (EXTRAÇÃO ESPECÍFICA)
+    # ESTÁDIOS
     # =====================================================
     def ler_link_estadio(self, url_estadio):
+        """Acessa o link do estádio e extrai dados da div.bio"""
+        if not url_estadio or url_estadio in self.estadios_lidos:
+            return
+        self.estadios_lidos.add(url_estadio)
+
         print(f"🏟️ Lendo estádio: {url_estadio}")
         soup = self._get_soup(url_estadio)
-        div = soup.find("div", id="entity_bio")
-        if not div:
-            return None
 
-        dados = {"origem": "estadio"}
-        spans = div.find_all("span")
-        for span in spans:
-            texto = span.get_text(strip=True)
-            if "Nome" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["nome_completo_estadio"] = valor
-            if "Cidade" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["cidade_estadio"] = valor
-            if "Capacidade" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["capacidade"] = valor
-        return dados
-
-    def ler_link_arbitro(self, url_arbitro):
-        print(f"👨‍⚖️ Lendo árbitro: {url_arbitro}")
-        soup = self._get_soup(url_arbitro)
-        div = soup.find("div", id="entity_bio")
-        if not div:
-            return None
-
-        dados = {"origem": "arbitro"}
-        spans = div.find_all("span")
-        for span in spans:
-            texto = span.get_text(strip=True)
-            if "Nome" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["nome_completo_arbitro"] = valor
-            if "Nacionalidade" in texto:
-                valor = span.find_next("span").get_text(strip=True)
-                dados["nacionalidade_arbitro"] = valor
-        return dados
-
-    # =====================================================
-    # SALVAR CSVs
-    # =====================================================
-    def salvar_csv(self, nome, dados_lista):
-        if not dados_lista:
+        div_bio = soup.find("div", class_="bio")
+        if not div_bio:
+            print("⚠ Div 'bio' não encontrada no estádio.")
             return
-        campos = sorted({k for d in dados_lista for k in d})
+
+        dados = {}
+        spans = div_bio.find_all("span")
+        for span in spans:
+            texto = span.get_text(strip=True)
+            valor = span.next_sibling.strip() if span.next_sibling else None
+
+            if "Nome" in texto:
+                dados["nome"] = valor
+            elif "País" in texto:
+                dados["pais"] = valor
+            elif "Cidade" in texto:
+                dados["cidade"] = valor
+            elif "Fundado" in texto:
+                dados["fundacao"] = valor
+            elif "Capacidade" in texto:
+                dados["capacidade"] = valor
+
+        self.lista_estadios.append(dados)
+        print(f"   ➤ Estádio '{dados.get('nome')}' adicionado.")
+
+    # =====================================================
+    # EXPORTAÇÃO
+    # =====================================================
+    def salvar_csv(self, nome, dados_lista, campos):
+        if not dados_lista:
+            print(f"⚠ Nenhum dado para salvar em {nome}.")
+            return
         with open(nome, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
@@ -198,27 +187,33 @@ class OGolScraperModular:
         print(f"💾 CSV salvo: {nome}")
 
     # =====================================================
-    # EXECUÇÃO
+    # EXECUÇÃO PRINCIPAL
     # =====================================================
     def executar(self):
         partidas = self.ler_lista_partidas()
-        dados_partidas, dados_times = [], []
 
         for p in partidas:
             print(f"\n=== Processando {p['mandante']} x {p['visitante']} ===")
 
+            # clubes
+            self.ler_link_clube(p["link_mandante"], "mandante")
+            self.ler_link_clube(p["link_visitante"], "visitante")
+
+            # partida (para pegar links de estádio)
             if p["link_partida"]:
-                info_partida = self.ler_link_partida(p["link_partida"])
-                if info_partida:
-                    dados_partidas.append({"partida": p["placar"], **info_partida})
+                self.ler_link_partida(p["link_partida"])
 
-            for tipo, link in [("mandante", p["link_mandante"]), ("visitante", p["link_visitante"])]:
-                info_time = self.ler_link_time(link, tipo)
-                if info_time:
-                    dados_times.append({"time": p[tipo], "tipo": tipo, **info_time})
-
-        self.salvar_csv("novo_bd1971_robusto/csv_extraidos/partidas.csv", dados_partidas)
-        self.salvar_csv("novo_bd1971_robusto/csv_extraidos/times.csv", dados_times)
+        # salvar csvs
+        self.salvar_csv(
+            "clubes.csv",
+            self.lista_clubes,
+            ["tipo", "nome", "apelido", "fundacao", "cidade", "estado", "pais"]
+        )
+        self.salvar_csv(
+            "estadios.csv",
+            self.lista_estadios,
+            ["nome", "pais", "cidade", "fundacao", "capacidade"]
+        )
 
 
 # =====================================================
