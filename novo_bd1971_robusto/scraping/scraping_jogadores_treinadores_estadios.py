@@ -99,19 +99,19 @@ class OGolScraperModular:
 
             if "Nome" in texto:
                 dados["nome"] = valor
+            if "Apelido" in texto:
+                dados["apelido"] = valor
         for pan in pans:
             texto = pan.get_text(strip=True)
             valor = pan.next_sibling.strip() if pan.next_sibling else None
 
-            if "Apelido" in texto:
-                dados["apelido"] = valor
-            elif "Fundado" in texto or "Ano de Fundação" in texto:
+            if "Fundado" in texto or "Ano de Fundação" in texto:
                 dados["fundacao"] = valor
-            elif "Cidade" in texto:
+            if "Cidade" in texto:
                 dados["cidade"] = valor
-            elif "Estado" in texto:
+            if "Estado" in texto:
                 dados["estado"] = valor
-            elif "País" in texto:
+            if "País" in texto:
                 dados["pais"] = valor
 
         # Adiciona à lista de clubes
