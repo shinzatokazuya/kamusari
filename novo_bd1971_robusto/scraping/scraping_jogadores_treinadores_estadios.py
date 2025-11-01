@@ -196,15 +196,15 @@ class OGolScraperModular:
             elif div.find("div", class_="text"):
                 valor = div.find("div", class_="text").get_text(strip=True)
 
-            if "Nome" in texto:
+            if "Nome" in campo:
                 dados["nome"] = valor
-            elif "País" in texto:
+            elif "País" in campo:
                 dados["pais"] = valor
-            elif "Cidade" in texto:
+            elif "Cidade" in campo:
                 dados["cidade"] = valor
-            elif "Fundado" in texto:
+            elif "Fundado" in campo:
                 dados["fundacao"] = valor
-            elif "Capacidade" in texto:
+            elif "Capacidade" in campo:
                 dados["capacidade"] = valor
 
         self.lista_estadios.append(dados)
