@@ -166,16 +166,35 @@ class OGolScraperModular:
         print(f"🏟️ Lendo estádio: {url_estadio}")
         soup = self._get_soup(url_estadio)
 
-        div_bio = soup.find("div", class_="bio")
-        if not div_bio:
-            print("⚠ Div 'bio' não encontrada no estádio.")
+        container = soup.find("div", id="entity_bio")
+        if not container:
+            print("⚠ Div 'entity_bio' não encontrada.")
             return
 
-        dados = {}
-        spans = div_bio.find_all("span")
-        for span in spans:
-            texto = span.get_text(strip=True)
-            valor = span.next_sibling.strip() if span.next_sibling else None
+        # pega todas as divs com classe bio OU bio_half
+        divs_info = container.find_all("div", class_=["bio", "bio_half"])
+        dados = {"tipo": tipo}
+
+        for div in divs_info:
+            span = div.find("span")
+            if not span:
+                continue
+
+            campo = span.get_text(strip=True)
+            valor = None
+
+            # tenta pegar o valor da forma correta
+            # 1️⃣ valor direto (irmão de span)
+            if span.next_sibling and span.next_sibling.string:
+                valor = span.next_sibling.strip()
+
+            # 2️⃣ dentro de <a> (ex: Estado → <a>Bahia</a>)
+            elif div.find("a"):
+                valor = div.find("a").get_text(strip=True)
+
+            # 3️⃣ dentro de uma div com classe .text (ex: País → <div class="text">Brasil</div>)
+            elif div.find("div", class_="text"):
+                valor = div.find("div", class_="text").get_text(strip=True)
 
             if "Nome" in texto:
                 dados["nome"] = valor
