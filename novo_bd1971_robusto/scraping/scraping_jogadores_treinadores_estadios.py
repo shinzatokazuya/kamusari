@@ -127,17 +127,6 @@ class OGolScraperModular:
             valor = self._valor_depois_do_span(span)
 
             # tenta pegar o valor da forma correta
-            # 1️⃣ valor direto (irmão de span)
-            if span.next_sibling and span.next_sibling.string:
-                valor = span.next_sibling.strip()
-
-            # 2️⃣ dentro de <a> (ex: Estado → <a>Bahia</a>)
-            elif div.find("a"):
-                valor = div.find("a").get_text(strip=True)
-
-            # 3️⃣ dentro de uma div com classe .text (ex: País → <div class="text">Brasil</div>)
-            elif div.find("div", class_="text"):
-                valor = div.find("div", class_="text").get_text(strip=True)
 
             # guarda apenas campos de interesse
             if "Nome" in campo:
@@ -210,17 +199,6 @@ class OGolScraperModular:
             valor = self._valor_depois_do_span(span)
 
             # tenta pegar o valor da forma correta
-            # 1️⃣ valor direto (irmão de span)
-            if span.next_sibling and span.next_sibling.string:
-        
-
-            # 2️⃣ dentro de <a> (ex: Estado → <a>Bahia</a>)
-            elif div.find("a"):
-                valor = div.find("a").get_text(strip=True)
-
-            # 3️⃣ dentro de uma div com classe .text (ex: País → <div class="text">Brasil</div>)
-            elif div.find("div", class_="text"):
-                valor = div.find("div", class_="text").get_text(strip=True)
 
             if "Nome" in campo:
                 dados["nome"] = valor
