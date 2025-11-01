@@ -188,7 +188,7 @@ class OGolScraperModular:
 
         # pega todas as divs com classe bio OU bio_half
         divs_info = container.find_all("div", class_=["bio", "bio_half"])
-        dados = {"tipo": tipo}
+        dados = {}
 
         for div in divs_info:
             span = div.find("span")
