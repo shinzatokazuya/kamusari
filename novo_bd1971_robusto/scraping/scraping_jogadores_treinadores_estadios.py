@@ -101,6 +101,8 @@ class OGolScraperModular:
                 dados["nome"] = valor
             if "Apelido" in texto:
                 dados["apelido"] = valor
+            if "Estado" in texto:
+                dados["estado"] = valor
         for pan in pans:
             texto = pan.get_text(strip=True)
             valor = pan.next_sibling.strip() if pan.next_sibling else None
@@ -109,8 +111,6 @@ class OGolScraperModular:
                 dados["fundacao"] = valor
             if "Cidade" in texto:
                 dados["cidade"] = valor
-            if "Estado" in texto:
-                dados["estado"] = valor
             if "País" in texto:
                 dados["pais"] = valor
 
