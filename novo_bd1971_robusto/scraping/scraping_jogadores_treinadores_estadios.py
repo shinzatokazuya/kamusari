@@ -75,7 +75,7 @@ class OGolScraperModular:
     # CLUBES
     # =====================================================
     def ler_link_clube(self, url_clube, tipo):
-        """Lê o link do clube e extrai os campos da div.bio"""
+        """Lê o link do clube e extrai todos os campos da div#entity_bio"""
         if not url_clube or url_clube in self.clubes_lidos:
             return
         self.clubes_lidos.add(url_clube)
@@ -83,38 +83,50 @@ class OGolScraperModular:
         print(f"🏟️ Lendo {tipo}: {url_clube}")
         soup = self._get_soup(url_clube)
 
-        div_bio = soup.find("div", class_="bio")
-        div_bio2 = soup.find("div", class_="bio_half")
-        if not div_bio or not div_bio2:
-            print("⚠ Div 'bio' não encontrada para o clube.")
+        container = soup.find("div", id="entity_bio")
+        if not container:
+            print("⚠ Div 'entity_bio' não encontrada.")
             return
 
+        # pega todas as divs com classe bio OU bio_half
+        divs_info = container.find_all("div", class_=["bio", "bio_half"])
         dados = {"tipo": tipo}
-        spans = div_bio.find_all("span")
-        pans = div_bio2.find_all("span")
-        for span in spans:
-            texto = span.get_text(strip=True)
-            # Captura o conteúdo de texto que vem logo após o <span>
-            valor = span.next_sibling.strip() if span.next_sibling else None
 
-            if "Nome" in texto:
+        for div in divs_info:
+            span = div.find("span")
+            if not span:
+                continue
+
+            campo = span.get_text(strip=True)
+            valor = None
+
+            # tenta pegar o valor da forma correta
+            # 1️⃣ valor direto (irmão de span)
+            if span.next_sibling and span.next_sibling.string:
+                valor = span.next_sibling.strip()
+
+            # 2️⃣ dentro de <a> (ex: Estado → <a>Bahia</a>)
+            elif div.find("a"):
+                valor = div.find("a").get_text(strip=True)
+
+            # 3️⃣ dentro de uma div com classe .text (ex: País → <div class="text">Brasil</div>)
+            elif div.find("div", class_="text"):
+                valor = div.find("div", class_="text").get_text(strip=True)
+
+            # guarda apenas campos de interesse
+            if "Nome" in campo:
                 dados["nome"] = valor
-            if "Apelido" in texto:
+            elif "Apelido" in campo or "Apelidos" in campo:
                 dados["apelido"] = valor
-            if "Estado" in texto:
-                dados["estado"] = valor
-        for pan in pans:
-            texto = pan.get_text(strip=True)
-            valor = pan.next_sibling.strip() if pan.next_sibling else None
-
-            if "Fundado" in texto or "Ano de Fundação" in texto:
+            elif "Fundado" in campo or "Ano de Fundação" in campo:
                 dados["fundacao"] = valor
-            if "Cidade" in texto:
+            elif "Cidade" in campo:
                 dados["cidade"] = valor
-            if "País" in texto:
+            elif "Estado" in campo:
+                dados["estado"] = valor
+            elif "País" in campo:
                 dados["pais"] = valor
 
-        # Adiciona à lista de clubes
         self.lista_clubes.append(dados)
         print(f"   ➤ Clube '{dados.get('nome')}' adicionado.")
 
