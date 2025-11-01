@@ -34,6 +34,32 @@ class OGolScraperModular:
         link = urljoin(self.base_url, tag["href"]) if tag and "href" in tag.attrs else None
         return texto, link
 
+    def _valor_depois_do_span(self, span):
+        """
+        Retorna o primeiro valor textual útil que aparece depois do <span>
+        Pode ser:
+        - texto direto como sibling,
+        - texto dentro de uma tag (a, div.text, etc),
+        - ou None se não encontrado.
+        """
+        # percorre todos os siblings que aparecem depois do span
+        for sib in span.next_siblings:
+            # se for string (NavigableString)
+            if isinstance(sib, str):
+                txt = sib.strip()
+                if txt:
+                    return txt
+                else:
+                    continue
+            # se for Tag (BeautifulSoup)
+            try:
+                txt = sib.get_text(strip=True)
+            except Exception:
+                txt = None
+            if txt:
+                return txt
+        return None
+
     # =====================================================
     # LISTA PRINCIPAL
     # =====================================================
