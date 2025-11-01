@@ -212,7 +212,7 @@ class OGolScraperModular:
             # tenta pegar o valor da forma correta
             # 1️⃣ valor direto (irmão de span)
             if span.next_sibling and span.next_sibling.string:
-                valor = span.next_sibling.strip()
+        
 
             # 2️⃣ dentro de <a> (ex: Estado → <a>Bahia</a>)
             elif div.find("a"):
