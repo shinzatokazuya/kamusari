@@ -84,12 +84,14 @@ class OGolScraperModular:
         soup = self._get_soup(url_clube)
 
         div_bio = soup.find("div", class_="bio")
+        div_bio2 = soup.find("div", class_="bio_half")
         if not div_bio:
             print("⚠ Div 'bio' não encontrada para o clube.")
             return
 
         dados = {"tipo": tipo}
         spans = div_bio.find_all("span")
+        pan = div_bio2.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
             # Captura o conteúdo de texto que vem logo após o <span>
@@ -97,7 +99,11 @@ class OGolScraperModular:
 
             if "Nome" in texto:
                 dados["nome"] = valor
-            elif "Apelido" in texto:
+        for pan in pans:
+            texto = pan.get_text(strip=True)
+            valor = pan.next_sibling.strip() if pan.next_sibling else None
+
+            if "Apelido" in texto:
                 dados["apelido"] = valor
             elif "Fundado" in texto or "Ano de Fundação" in texto:
                 dados["fundacao"] = valor
