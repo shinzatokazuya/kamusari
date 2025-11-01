@@ -155,7 +155,7 @@ class OGolScraperModular:
         soup = self._get_soup(url_estadio)
 
         div_bio = soup.find("div", class_="bio")
-        if not div_bio or not div_bio2:
+        if not div_bio:
             print("⚠ Div 'bio' não encontrada no estádio.")
             return
 
