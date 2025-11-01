@@ -85,7 +85,7 @@ class OGolScraperModular:
 
         div_bio = soup.find("div", class_="bio")
         div_bio2 = soup.find("div", class_="bio_half")
-        if not div_bio:
+        if not div_bio or not div_bio2:
             print("⚠ Div 'bio' não encontrada para o clube.")
             return
 
@@ -155,19 +155,26 @@ class OGolScraperModular:
         soup = self._get_soup(url_estadio)
 
         div_bio = soup.find("div", class_="bio")
-        if not div_bio:
+        div_bio2 = soup.find("div", class_="bio_half")
+        if not div_bio or not div_bio2:
             print("⚠ Div 'bio' não encontrada no estádio.")
             return
 
         dados = {}
         spans = div_bio.find_all("span")
+        pans = div_bio2.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
             valor = span.next_sibling.strip() if span.next_sibling else None
 
             if "Nome" in texto:
                 dados["nome"] = valor
-            elif "País" in texto:
+
+        for pan in pans:
+            texto = pan.get_text(strip=True)
+            valor = pan.next_sibling.strip() if pan.next_sibling else None
+
+            if "País" in texto:
                 dados["pais"] = valor
             elif "Cidade" in texto:
                 dados["cidade"] = valor
