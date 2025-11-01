@@ -1,21 +1,21 @@
 tipo,nome,apelido,fundacao,cidade,estado,pais
-mandante,Esporte Clube Bahia,,1931-01-01,,,
-visitante,Santos Futebol Clube,,1912-04-14,,,
-mandante,Clube Atlético Mineiro,,1908-03-25,,,
-visitante,América Futebol Clube,,1912-04-30,,,
-mandante,Botafogo de Futebol e Regatas,,1904-08-12,,,
-visitante,America Football Club,,1904-09-18,,,
-mandante,Santa Cruz Futebol Clube,,1914-02-03,,,
-visitante,Sport Club Corinthians Paulista,,1910-09-01,,,
-mandante,Sport Club do Recife,,1905-05-13,,,
-visitante,Clube de Regatas do Flamengo,,1895-11-15,,,
-mandante,São Paulo Futebol Clube,,1930-01-25,,,
-visitante,Grêmio Foot-Ball Porto Alegrense,,1903-09-15,,,
-mandante,Sport Club Internacional,,1909-04-04,,,
-visitante,Fluminense Football Club,,1902-07-21,,,
-mandante,Sociedade Esportiva Palmeiras,,1914-08-26,,,
-visitante,Associação Portuguesa de Desportos,,1920-08-14,,,
-mandante,Ceará Sporting Club,,1914-06-02,,,
-visitante,Club de Regatas Vasco da Gama,,1898-08-21,,,
-mandante,Coritiba Foot Ball Club,,1909-10-12,,,
-visitante,Cruzeiro Esporte Clube,,1921-01-02,,,
+mandante,Esporte Clube Bahia,"Tricolor de Aço, Esquadrão de Aço",1931-01-01,Salvador (BA),Bahia,Brasil
+visitante,Santos Futebol Clube,Peixe,1912-04-14,Santos (SP),São Paulo,Brasil
+mandante,Clube Atlético Mineiro,Galo,1908-03-25,Belo Horizonte (MG),Minas Gerais,Brasil
+visitante,América Futebol Clube,Coelho,1912-04-30,Belo Horizonte (MG),Minas Gerais,Brasil
+mandante,Botafogo de Futebol e Regatas,"Fogão, Estrela Solitária, Time de General Severiano, O Glorioso",1904-08-12,Rio de Janeiro (RJ),Rio de Janeiro,Brasil
+visitante,America Football Club,"Rubro, Mecão, Diabo, Sangue",1904-09-18,Rio de Janeiro (RJ),Rio de Janeiro,Brasil
+mandante,Santa Cruz Futebol Clube,"Santa, Santinha, Tricolor do Arruda, O Mais Querido, Cobra Coral",1914-02-03,Recife (PE),Pernambuco,Brasil
+visitante,Sport Club Corinthians Paulista,"Timão, Coringão",1910-09-01,São Paulo (SP),São Paulo,Brasil
+mandante,Sport Club do Recife,"Leão da Ilha, Leão do Norte, Leão da Praça da Bandeira",1905-05-13,Recife (PE),Pernambuco,Brasil
+visitante,Clube de Regatas do Flamengo,"Mengão, Fla, Rubro-Negro",1895-11-15,Rio de Janeiro (RJ),Rio de Janeiro,Brasil
+mandante,São Paulo Futebol Clube,Tricolor Paulista,1930-01-25,São Paulo (SP),São Paulo,Brasil
+visitante,Grêmio Foot-Ball Porto Alegrense,"Tricolor dos Pampas, Imortal Tricolor, Máquina Tricolor",1903-09-15,Porto Alegre (RS),Rio Grande do Sul,Brasil
+mandante,Sport Club Internacional,Colorado,1909-04-04,Porto Alegre (RS),Rio Grande do Sul,Brasil
+visitante,Fluminense Football Club,"Tricolor das Laranjeiras, Flu, Time de Guerreiros, Fluzão, Pó de Arroz",1902-07-21,Rio de Janeiro (RJ),Rio de Janeiro,Brasil
+mandante,Sociedade Esportiva Palmeiras,"Verdão, Alviverde",1914-08-26,São Paulo (SP),São Paulo,Brasil
+visitante,Associação Portuguesa de Desportos,Lusa,1920-08-14,São Paulo (SP),São Paulo,Brasil
+mandante,Ceará Sporting Club,Vozão,1914-06-02,Fortaleza (CE),Ceará,Brasil
+visitante,Club de Regatas Vasco da Gama,"Gigante da Colina, Vascão",1898-08-21,Rio de Janeiro (RJ),Rio de Janeiro,Brasil
+mandante,Coritiba Foot Ball Club,Coxa,1909-10-12,Curitiba (PR),Paraná,Brasil
+visitante,Cruzeiro Esporte Clube,Raposa,1921-01-02,Belo Horizonte (MG),Minas Gerais,Brasil
