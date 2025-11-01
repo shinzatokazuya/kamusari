@@ -91,7 +91,7 @@ class OGolScraperModular:
 
         dados = {"tipo": tipo}
         spans = div_bio.find_all("span")
-        pan = div_bio2.find_all("span")
+        pans = div_bio2.find_all("span")
         for span in spans:
             texto = span.get_text(strip=True)
             # Captura o conteúdo de texto que vem logo após o <span>
