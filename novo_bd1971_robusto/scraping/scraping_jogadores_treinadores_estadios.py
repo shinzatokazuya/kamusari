@@ -124,7 +124,7 @@ class OGolScraperModular:
                 continue
 
             campo = span.get_text(strip=True)
-            valor = None
+            valor = self._valor_depois_do_span(span)
 
             # tenta pegar o valor da forma correta
             # 1️⃣ valor direto (irmão de span)
@@ -207,7 +207,7 @@ class OGolScraperModular:
                 continue
 
             campo = span.get_text(strip=True)
-            valor = None
+            valor = self._valor_depois_do_span(span)
 
             # tenta pegar o valor da forma correta
             # 1️⃣ valor direto (irmão de span)
