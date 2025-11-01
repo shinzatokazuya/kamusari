@@ -206,9 +206,9 @@ class OGolScraperModular:
                 dados["pais"] = valor
             elif "Cidade" in campo:
                 dados["cidade"] = valor
-            elif "Fundado" in campo:
+            elif "Ano de Inauguração" in campo:
                 dados["fundacao"] = valor
-            elif "Capacidade" in campo:
+            elif "Lotação" in campo:
                 dados["capacidade"] = valor
 
         self.lista_estadios.append(dados)
