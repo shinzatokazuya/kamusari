@@ -227,10 +227,10 @@ class OGolScraperModular:
         """ Acessa o link dos jogadores e extrai dados da div#entity_bio """
         if not url_jogadores or url_jogadores in self.jogadores_lidos:
             return
-        self.estadios_lidos.add(url_estadio)
+        self.jogadores_lidos.add(url_jogadores)
 
-        print(f"🏟️ Lendo estádio: {url_estadio}")
-        soup = self._get_soup(url_estadio)
+        print(f"🏟️ Lendo estádio: {url_jogadores}")
+        soup = self._get_soup(url_jogadores)
 
         container = soup.find("div", id="entity_bio")
         if not container:
@@ -250,7 +250,11 @@ class OGolScraperModular:
             valor = self._valor_depois_do_span(span)
 
             # tenta pegar o valor da forma correta
-
+            if "Nome" in campo:
+                dados["nome"] = valor
+            elif "Data de Nascimento" in campo:
+                dados["data_de_nascimento"] = valor
+            elif ""
     # =====================================================
     # EXPORTAÇÃO
     # =====================================================
