@@ -175,7 +175,7 @@ class OGolScraperModular:
                 texto = a_tag.get_text(strip=True)
 
                 # Aqui só guardamos os links, não extraímos nada ainda
-                if texto not None:
+                if texto != "":
                     self.ler_link_jogadores(link)
 
     # =====================================================
