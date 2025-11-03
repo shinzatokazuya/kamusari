@@ -9,7 +9,7 @@ class OGolScraperModular:
         self.url_lista = url_lista
         self.base_url = "https://www.ogol.com.br"
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-        self.delay = 2
+        self.delay = 30
 
         # caches para evitar repetições
         self.clubes_lidos = set()
