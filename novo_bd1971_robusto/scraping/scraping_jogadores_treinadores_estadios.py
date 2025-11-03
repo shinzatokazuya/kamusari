@@ -165,10 +165,15 @@ class OGolScraperModular:
                     self.ler_link_estadio(link)
 
         # Div 2 — Links de jogadores (ainda não usados nesta fase)
-        div_jogadores = soup.find("div", class_="zz-tpl-main")
+        div_jogadores = soup.find("div", class_="box_container")
         if div_jogadores:
             print("   ➤ Div de jogadores encontrada.")
-            for a_tag in div_jogadores.find_all("a")
+            for a_tag in div_jogadores.find_all("a", href=True):
+                link = urljoin(self.base_url, a_tag["href"])
+                texto = a_tag.get_text(strip=True)
+
+                # Aqui só guardamos os links, não extraímos nada ainda
+                if 
 
     # =====================================================
     # ESTÁDIOS
