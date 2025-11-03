@@ -14,10 +14,12 @@ class OGolScraperModular:
         # caches para evitar repetições
         self.clubes_lidos = set()
         self.estadios_lidos = set()
+        self.jogadores_lidos = set()
 
         # coletores de dados
         self.lista_clubes = []
         self.lista_estadios = []
+        self.lista_jogadores = []
 
     # =====================================================
     # BASE
@@ -180,7 +182,7 @@ class OGolScraperModular:
     # ESTÁDIOS
     # =====================================================
     def ler_link_estadio(self, url_estadio):
-        """Acessa o link do estádio e extrai dados da div.bio"""
+        """Acessa o link do estádio e extrai dados da div#entity_bio"""
         if not url_estadio or url_estadio in self.estadios_lidos:
             return
         self.estadios_lidos.add(url_estadio)
@@ -223,6 +225,31 @@ class OGolScraperModular:
 
     def ler_link_jogadores(self, url_jogadores):
         """ Acessa o link dos jogadores e extrai dados da div#entity_bio """
+        if not url_jogadores or url_jogadores in self.jogadores_lidos:
+            return
+        self.estadios_lidos.add(url_estadio)
+
+        print(f"🏟️ Lendo estádio: {url_estadio}")
+        soup = self._get_soup(url_estadio)
+
+        container = soup.find("div", id="entity_bio")
+        if not container:
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
+
+        # pega todas as divs com classe bio OU bio_half
+        divs_info = container.find_all("div", class_=["bio", "bio_half"])
+        dados = {}
+
+        for div in divs_info:
+            span = div.find("span")
+            if not span:
+                continue
+
+            campo = span.get_text(strip=True)
+            valor = self._valor_depois_do_span(span)
+
+            # tenta pegar o valor da forma correta
 
     # =====================================================
     # EXPORTAÇÃO
