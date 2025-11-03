@@ -269,7 +269,12 @@ class OGolScraperModular:
             elif "Situação" in campo:
                 if "Falecido" in valor:
                     dados["data_de_falecimento"] = valor
-                else
+                else:
+                    dados["situacao"] = valor
+
+        self.lista_jogadores.append(dados)
+        print(f"   ➤ Jogador '{dados.get('nome')}' adicionado.")
+
     # =====================================================
     # EXPORTAÇÃO
     # =====================================================
@@ -310,6 +315,11 @@ class OGolScraperModular:
             "novo_bd1971_robusto/csv_extraidos/estadios.csv",
             self.lista_estadios,
             ["nome", "pais", "cidade", "fundacao", "capacidade"]
+        )
+        self.salvar_csv(
+            "novo_bd1971_robusto/csv_extraidos/jogadores.csv",
+            self.lista_jogadores,
+            ["nome", "data_de_nascimento", "nacionalidade", "pais_de_nascimento", "posicao", "pe_preferido", "altura", "peso", "data_de_falecimento", "situacao"]
         )
 
 
