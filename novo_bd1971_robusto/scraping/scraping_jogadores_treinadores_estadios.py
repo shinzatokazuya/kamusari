@@ -173,7 +173,8 @@ class OGolScraperModular:
                 texto = a_tag.get_text(strip=True)
 
                 # Aqui só guardamos os links, não extraímos nada ainda
-                if 
+                if texto not None:
+                    self.ler_link_jogadores(link)
 
     # =====================================================
     # ESTÁDIOS
@@ -219,6 +220,9 @@ class OGolScraperModular:
 
         self.lista_estadios.append(dados)
         print(f"   ➤ Estádio '{dados.get('nome')}' adicionado.")
+
+    def ler_link_jogadores(self, url_jogadores):
+        """ Acessa o link dos jogadores e extrai dados da div#entity_bio """
 
     # =====================================================
     # EXPORTAÇÃO
