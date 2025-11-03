@@ -263,6 +263,10 @@ class OGolScraperModular:
             elif "Pé preferencial" in campo:
                 dados["pe_preferido"] = valor
             elif "Altura" in campo:
+                dados["altura"] = valor
+            elif "peso" in campo:
+                dados["peso"] = valor
+            elif "Situação" in campo:
                 dados[""]
     # =====================================================
     # EXPORTAÇÃO
