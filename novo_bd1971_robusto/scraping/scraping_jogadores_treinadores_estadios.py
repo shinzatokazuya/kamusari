@@ -267,7 +267,9 @@ class OGolScraperModular:
             elif "peso" in campo:
                 dados["peso"] = valor
             elif "Situação" in campo:
-                if valor 
+                if "Falecido" in valor:
+                    dados["data_de_falecimento"] = valor
+                else
     # =====================================================
     # EXPORTAÇÃO
     # =====================================================
