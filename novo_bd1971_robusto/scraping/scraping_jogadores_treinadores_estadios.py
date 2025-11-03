@@ -254,7 +254,16 @@ class OGolScraperModular:
                 dados["nome"] = valor
             elif "Data de Nascimento" in campo:
                 dados["data_de_nascimento"] = valor
-            elif ""
+            elif "Nacionalidade" in campo:
+                dados["nacionalidade"] = valor
+            elif "País de Nascimento" in campo:
+                dados["pais_de_nascimento"] = valor
+            elif "Posição" in campo:
+                dados["posicao"] = valor
+            elif "Pé preferencial" in campo:
+                dados["pe_preferido"] = valor
+            elif "Altura" in campo:
+                dados[""]
     # =====================================================
     # EXPORTAÇÃO
     # =====================================================
