@@ -229,7 +229,7 @@ class OGolScraperModular:
             return
         self.jogadores_lidos.add(url_jogadores)
 
-        print(f"🏟️ Lendo estádio: {url_jogadores}")
+        print(f"🏟️ Lendo jogador: {url_jogadores}")
         soup = self._get_soup(url_jogadores)
 
         container = soup.find("div", id="entity_bio")
