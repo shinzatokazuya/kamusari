@@ -258,6 +258,8 @@ class OGolScraperModular:
                 dados["nacionalidade"] = valor
             elif "País de Nascimento" in campo:
                 dados["pais_de_nascimento"] = valor
+            elif "Naturalidade" in campo:
+                dados["cidade"] = valor
             elif "Posição" in campo:
                 dados["posicao"] = valor
             elif "Pé preferencial" in campo:
@@ -319,7 +321,7 @@ class OGolScraperModular:
         self.salvar_csv(
             "novo_bd1971_robusto/csv_extraidos/jogadores.csv",
             self.lista_jogadores,
-            ["nome", "data_de_nascimento", "nacionalidade", "pais_de_nascimento", "posicao", "pe_preferido", "altura", "peso", "data_de_falecimento", "situacao"]
+            ["nome", "data_de_nascimento", "nacionalidade", "pais_de_nascimento", "cidade", "posicao", "pe_preferido", "altura", "peso", "data_de_falecimento", "situacao"]
         )
 
 
