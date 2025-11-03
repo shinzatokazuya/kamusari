@@ -167,7 +167,8 @@ class OGolScraperModular:
         # Div 2 — Links de jogadores (ainda não usados nesta fase)
         div_jogadores = soup.find("div", class_="zz-tpl-main")
         if div_jogadores:
-            print("   ➤ Div de jogadores encontrada (guardando para futura extração).")
+            print("   ➤ Div de jogadores encontrada.")
+            for a_tag in div_jogadores.find_all("a")
 
     # =====================================================
     # ESTÁDIOS
