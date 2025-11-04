@@ -215,9 +215,3 @@ CREATE TABLE transferencias (
     FOREIGN KEY (clube_origem_id) REFERENCES clubes(ID),
     FOREIGN KEY (clube_destino_id) REFERENCES clubes(ID)
 );
-
-
-
-
-
-Construí um código onde faz um scrape do site para extração de dados. Contudo não consegui relacionar estes dados com as partidas o qual estou extraindo. Estou colocando os arquivos que usei de código e os csv gerados, também to colocando o txt da estrutura de tabela que gostaria de armazenar no meu banco de dados, sinto que a única coisa que estaria faltando seria a estatísticas, porém ela so vou conseguir obter mais tarde com os jogos a partir de 2015 em diante, mas não vem ao caso por agora. Pode me ajudar a relacionar os dados com as partidas? Caso também precisar melhorar a estrutura do banco de dados, pode falar. Por enquanto, não quero salvar nada no banco, quero salvar primeiro em csv, para depois importar do csv para banco, fica melhor de visualizar e até mesmo de alterar caso necessário.
