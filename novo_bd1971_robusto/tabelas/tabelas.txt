@@ -190,6 +190,7 @@ CREATE TABLE eventos_partida (
     partida_id INTEGER NOT NULL,
     minuto INTEGER NOT NULL,
     tipo_evento TEXT NOT NULL, -- 'gol', 'cartao_amarelo', 'cartao_vermelho', 'substituicao', 'penalti'
+    tipo_gol TEXT, -- 'penalti', 'contra', 'normal', 'cabeça'
     jogador_principal_id INTEGER NOT NULL,
     jogador_secundario_id INTEGER, -- Para assistências ou jogador que entrou na substituição
     clube_id INTEGER NOT NULL,
