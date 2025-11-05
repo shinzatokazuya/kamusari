@@ -225,6 +225,7 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
+            print("⚠ Div 'entity_bio' não encontrada.")
             return None
 
         dados = {}
@@ -357,6 +358,7 @@ class OGolScraperRelacional:
         # 2. Buscar escalações e eventos
         box_container = soup.find("div", class_="box_container")
         if not box_container:
+            print("⚠ Div 'box_container' não encontrada.")
             return estadio_id, None
 
         # Identificar times (geralmente há 2 divs principais)
