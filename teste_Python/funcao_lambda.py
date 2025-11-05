@@ -1,5 +1,5 @@
 # função lambda ou função anônimas
-lambda arguemntos: expressao
+lambda argumentos: expressao
 
 add = lambda x, y: x + y
 print(add(3, 4)) #Output: 7
@@ -11,7 +11,7 @@ print(multiplicacao(2, 3, 4)) #Output: 24
 
 # Combinando funções regulares e lambda
 def criando_funcao(n):
-    return lambda x: x + n 
+    return lambda x: x + n
 
 add_5 = criando_funcao(5)
 add_10 = criando_funcao(10)
