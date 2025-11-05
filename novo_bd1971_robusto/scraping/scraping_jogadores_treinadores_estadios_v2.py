@@ -27,6 +27,7 @@ class OGolScraperRelacional:
         self.next_treinador_id = 1
         self.next_local_id = 1
         self.next_partida_id = 1
+        self.next_evento_id = 1
 
         # Listas para CSVs finais
         self.partidas_lista = []
@@ -355,88 +356,84 @@ class OGolScraperRelacional:
                     break
 
         # 2. Buscar o container principal da partida
-        game_report = soup.find("div", id="game_report")
-        if not game_report:
-            print("⚠️ Div game_report não encontrada")
+        box_container = soup.find("div", id="game_report")
+        if not box_container:
+            print("⚠️ Div 'game_report' não encontrada")
             return estadio_id
 
         # 3. Buscar todas as linhas (rows) do relatório
-        rows = game_report.find_all("div", class_="zz-tpl-row game_report")
+        rows = box_container.find_all("div", class_="zz-tpl-row game_report")
 
-        if len(rows) < 1:
+        if not rows:
             print("⚠️ Nenhuma linha encontrada no game_report")
             return estadio_id
 
-        # 4. Processar primeira linha - TITULARES
+        def registrar_evento(jogador_id, clube_id, tipo, minuto=None):
+            self.eventos_partidas_lista.append({
+                'id': self.next_evento_id,
+                'parida_id': partida_id,
+                'jogador_id': jogador_id,
+                'clube_id': clube_id,
+                'tipo_evento': tipo,
+                'minuto': minuto
+            })
+            self.next_evento_id += 1
+
+        # ---------------- TITULARES ----------------
         primeira_linha = rows[0]
-        colunas = primeira_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
+        colunas = primeira_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
 
-        if len(colunas) >= 2:
-            # Coluna 0 = Mandante, Coluna 1 = Visitante
-            for idx, coluna in enumerate(colunas):
-                clube_id = mandante_id if idx == 0 else visitante_id
+        for idx, coluna in enumerate(colunas):
+            clube_id = mandante_id if idx == 0 else visitante_id
 
-                # Buscar subtitle para confirmar o time
-                subtitle = coluna.find("div", class_="subtitle")
-                time_nome = subtitle.get_text(strip=True) if subtitle else ""
-                print(f"   📝 Processando titulares de: {time_nome}")
+            # Buscar subtitle para confirmar o time
+            subtitle = coluna.find("div", class_="subtitle")
+            time_nome = subtitle.get_text(strip=True) if subtitle else ""
+            print(f"   📝 Processando titulares de: {time_nome}")
 
-                # Buscar todos os jogadores (divs com classe "player")
-                players = coluna.find_all("div", class_="player")
+            for player_div in coluna.find_all("div", class_="player"):
+                # Buscar o link do jogador
+                link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
+                if not link_tag:
+                    continue
 
-                for player_div in players:
-                    # Buscar o link do jogador
-                    link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
-                    if not link_tag:
-                        continue
+                jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
+                if not jogador_id:
+                    continue
 
-                    link = urljoin(self.base_url, link_tag["href"])
-                    jogador_id = self.processar_jogador(link)
+                self.jogadores_em_partida_lista.append({
+                    'partida_id': partida_id,
+                    'jogador_id': jogador_id,
+                    'clube_id': clube_id,
+                    'titular': 1,
+                    'posicao_jogada': '',
+                    'numero_camisa': numero_camisa,
+                    'gols': 1 if tem_gol else 0
+                })
 
-                    if jogador_id:
-                        # Verificar se há eventos (gols, cartões, etc)
-                        events_div = player_div.find("div", class_="events")
-                        tem_gol = False
-                        tem_cartao = False
-                        saiu = False
+                # ---------------- EVENTOS ----------------
+                events_div = player_div.find("div", class_="events")
+                if events_div:
+                    for icon in events_div.find_all("span", class_="icn_zerozero"):
+                        txt = icon.get_text(strip=True)
+                        if txt == "8":
+                            registrar_evento(jogador_id, clube_id, "Gol")
+                        elif txt == "4":
+                            registrar_evento(jogador_id, clube_id, "Amarelo")
+                        elif txt == "5":
+                            registrar_evento(jogador_id, clube_id, "Vermelho")
+                        elif txt == "7":
+                            registrar_evento(jogador_id, clube_id, "Substituição")
 
-                        if events_div:
-                            # Ícone 8 = gol, 7 = substituição, etc
-                            icons = events_div.find_all("span", class_="icn_zerozero")
-                            for icon in icons:
-                                icon_text = icon.get_text(strip=True)
-                                if icon_text == "8":  # Gol
-                                    tem_gol = True
-                                elif icon_text == "7":  # Saiu
-                                    saiu = True
-
-                        # Buscar número da camisa
-                        number_div = player_div.find("div", class_="number")
-                        numero = number_div.get_text(strip=True) if number_div else None
-                        numero = int(numero) if numero and numero.isdigit() else None
-
-                        self.jogadores_em_partida_lista.append({
-                            'partida_id': partida_id,
-                            'jogador_id': jogador_id,
-                            'clube_id': clube_id,
-                            'titular': 1,
-                            'posicao_jogada': '',
-                            'numero_camisa': numero,
-                            'gols': 1 if tem_gol else 0,
-                            'minuto_saida': None  # Não temos o minuto exato
-                        })
-
-        # 5. Processar segunda linha - RESERVAS (se houver)
-        if len(rows) >= 2:
+        # ---------------- RESERVAS ----------------
+        if len(rows) > 1:
             segunda_linha = rows[1]
-            colunas = segunda_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
+            colunas = segunda_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
 
             for idx, coluna in enumerate(colunas):
                 clube_id = mandante_id if idx == 0 else visitante_id
 
-                players = coluna.find_all("div", class_="player")
-
-                for player_div in players:
+                for player_div in coluna.find_all("div", class_="player"):
                     link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
                     if not link_tag:
                         continue
@@ -445,56 +442,42 @@ class OGolScraperRelacional:
                     jogador_id = self.processar_jogador(link)
 
                     if jogador_id:
-                        # Reserva que entrou
-                        events_div = player_div.find("div", class_="events")
-                        entrou = False
-
-                        if events_div:
-                            icons = events_div.find_all("span", title="Entrou")
-                            entrou = len(icons) > 0
-
-                        number_div = player_div.find("div", class_="number")
-                        numero = number_div.get_text(strip=True) if number_div else None
-                        numero = int(numero) if numero and numero.isdigit() else None
-
                         self.jogadores_em_partida_lista.append({
                             'partida_id': partida_id,
                             'jogador_id': jogador_id,
                             'clube_id': clube_id,
-                            'titular': 0,  # É reserva
+                            'titular': 0, # É RESERVA
                             'posicao_jogada': '',
-                            'numero_camisa': numero,
-                            'gols': 0,
-                            'minuto_entrada': None  # Não temos o minuto exato
+                            'numero_camisa': None
                         })
+                        events_div = player_div.find("div", class_="events")
+                        if events_div and events_div.find("span", title="Entrou"):
+                            registrar_evento(jogador_id, clube_id, "Entrou")
 
-        # 6. Processar terceira linha - TREINADORES (se houver)
-        if len(rows) >= 3:
+        # ---------------- TREINADORES ----------------
+        if len(rows) > 2:
             terceira_linha = rows[2]
-            colunas = terceira_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
+            colunas = terceira_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
 
             for idx, coluna in enumerate(colunas):
                 clube_id = mandante_id if idx == 0 else visitante_id
-
-                # Buscar subtitle para confirmar se é "Treinadores"
-                subtitle = coluna.find("div", class_="subtitle")
-                if subtitle and "Treinador" in subtitle.get_text(strip=True):
-
-                    # Buscar link do treinador
-                    link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
-                    if link_tag:
-                        link = urljoin(self.base_url, link_tag["href"])
-                        treinador_id = self.processar_treinador(link)
-
-                        if treinador_id:
-                            self.treinadores_em_partida_lista.append({
-                                'partida_id': partida_id,
-                                'treinador_id': treinador_id,
-                                'clube_id': clube_id,
-                                'tipo': 'Titular'
-                            })
+                link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
+                if link_tag:
+                    link = urljoin(self.base_url, link_tag["href"])
+                    treinador_id = self.processar_treinador(link)
+                    if treinador_id:
+                        self.treinadores_em_partida_lista.append({
+                            'partida_id': partida_id,
+                            'treinador_id': treinador_id,
+                            'clube_id': clube_id,
+                            'tipo': 'Titular'
+                        })
 
         return estadio_id
+
+    # ======================================================
+    # Execução principal
+    # ======================================================
 
     def executar(self, edicao_id=1):
         """Execução principal do scraper"""
@@ -571,84 +554,41 @@ class OGolScraperRelacional:
         print("\n✅ Scraping concluído!")
 
     def salvar_csvs(self):
-        """Salva todos os CSVs"""
         os.makedirs("output_csvs", exist_ok=True)
 
-        # Locais
-        with open("output_csvs/locais.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'cidade', 'uf', 'estado', 'regiao', 'pais']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            for local in self.locais_dict.values():
-                writer.writerow(local)
-        print("💾 locais.csv salvo")
+        def salvar(nome, campos, dados):
+            path = f"output_csvs/{nome}.csv"
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=campos)
+                w.writeheader()
+                # dados pode ser dict_values (para dicts de entidade) ou lista
+                if hasattr(dados, "values"):
+                    rows = list(dados)
+                    # if it's dict_values, iterate differently:
+                    try:
+                        for item in dados:
+                            w.writerow(item)
+                    except Exception:
+                        for item in list(dados):
+                            w.writerow(item)
+                else:
+                    w.writerows(dados)
+            print(f"💾 {nome}.csv salvo ({path})")
 
-        # Clubes
-        with open("output_csvs/clubes.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'clube', 'apelido', 'local_id', 'fundacao', 'ativo']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            for clube in self.clubes_dict.values():
-                writer.writerow(clube)
-        print("💾 clubes.csv salvo")
+        # entidades
+        salvar("locais", ['id','cidade','uf','estado','regiao','pais'], self.locais_dict.values())
+        salvar("clubes", ['id','clube','apelido','local_id','fundacao','ativo'], self.clubes_dict.values())
+        salvar("estadios", ['id','estadio','capacidade','local_id','inauguracao','ativo'], self.estadios_dict.values())
+        salvar("jogadores", ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado'], self.jogadores_dict.values())
+        salvar("treinadores", ['id','nome','nascimento','falecimento','nacionalidade'], self.treinadores_dict.values())
 
-        # Estádios
-        with open("output_csvs/estadios.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'estadio', 'capacidade', 'local_id', 'inauguracao', 'ativo']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            for estadio in self.estadios_dict.values():
-                writer.writerow(estadio)
-        print("💾 estadios.csv salvo")
+        # relacionais
+        salvar("partidas", ['id','edicao_id','data','hora','mandante_id','visitante_id','estadio_id'], self.partidas_lista)
+        salvar("jogadores_em_partida", ['partida_id','jogador_id','clube_id','titular','posicao_jogada','numero_camisa'], self.jogadores_em_partida_lista)
+        salvar("treinadores_em_partida", ['partida_id','treinador_id','clube_id','tipo'], self.treinadores_em_partida_lista)
+        salvar("eventos_partida", ['id','partida_id','jogador_id','clube_id','tipo_evento','minuto'], self.eventos_partida_lista)
 
-        # Jogadores
-        with open("output_csvs/jogadores.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'nome', 'nascimento', 'falecimento', 'nacionalidade',
-                     'altura', 'peso', 'posicao', 'pe_preferido', 'aposentado']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            for jogador in self.jogadores_dict.values():
-                writer.writerow(jogador)
-        print("💾 jogadores.csv salvo")
-
-        # Treinadores
-        with open("output_csvs/treinadores.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'nome', 'nascimento', 'falecimento', 'nacionalidade']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            for treinador in self.treinadores_dict.values():
-                writer.writerow(treinador)
-        print("💾 treinadores.csv salvo")
-
-        # Partidas
-        with open("output_csvs/partidas.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['id', 'edicao_id', 'estadio_id', 'data', 'hora', 'fase', 'rodada',
-                     'mandante_id', 'visitante_id', 'mandante_placar', 'visitante_placar',
-                     'mandante_penalti', 'visitante_penalti', 'prorrogacao']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            writer.writerows(self.partidas_lista)
-        print("💾 partidas.csv salvo")
-
-        # Jogadores em Partida
-        with open("output_csvs/jogadores_em_partida.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['partida_id', 'jogador_id', 'clube_id', 'titular',
-                     'posicao_jogada', 'numero_camisa']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            writer.writerows(self.jogadores_em_partida_lista)
-        print("💾 jogadores_em_partida.csv salvo")
-
-        # Treinadores em Partida
-        with open("output_csvs/treinadores_em_partida.csv", "w", newline="", encoding="utf-8") as f:
-            campos = ['partida_id', 'treinador_id', 'clube_id', 'tipo']
-            writer = csv.DictWriter(f, fieldnames=campos)
-            writer.writeheader()
-            writer.writerows(self.treinadores_em_partida_lista)
-        print("💾 treinadores_em_partida.csv salvo")
-
-
-# Executar
+# ---------------- executar ----------------
 if __name__ == "__main__":
     url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario"
     scraper = OGolScraperRelacional(url)
