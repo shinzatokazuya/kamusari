@@ -542,7 +542,7 @@ class OGolScraperRelacional:
             partida_id = self.next_partida_id
 
             # Processar detalhes da partida
-            estadio_id, eventos = self.processar_detalhes_partida(
+            estadio_id = self.processar_detalhes_partida(
                 link_partida, partida_id, mandante_id, visitante_id
             )
 
