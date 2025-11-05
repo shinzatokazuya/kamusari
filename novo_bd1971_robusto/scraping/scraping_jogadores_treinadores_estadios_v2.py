@@ -225,6 +225,7 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
+            print("⚠ Div 'entity_bio' não encontrada.")
             return None
 
         dados = {}
