@@ -5,6 +5,7 @@ import time
 from urllib.parse import urljoin
 from datetime import datetime
 import os
+import re
 
 class OGolScraperRelacional:
     def __init__(self, url_lista):
@@ -518,9 +519,39 @@ class OGolScraperRelacional:
                 continue
 
             # Parse do placar: "2 - 1" -> mandante=2, visitante=1
-            placar_split = placar.split("-")
-            mandante_placar = int(placar_split[0].strip()) if len(placar_split) == 2 else None
-            visitante_placar = int(placar_split[1].strip()) if len(placar_split) == 2 else None
+            placar_split = placar.text.split().upper()
+            if "WO" in placar_split or "ANU" in placar_split or "IC" in placar_split:
+                # Define regra
+                mandante_placar, visitante_placar = '-', '-'
+            else:
+                placar_split = placar.text.strip().lower()
+                penalti_mandante = penalti_visitante = None
+                prorrogacao = 0
+
+                # Verifica se há pênaltis no placar (ex: "1-1 (4-3 pen.)")
+                match_penaltis = re.search(r'\((\d+)-(\d+)\s*pen', placar_split)
+                if match_penaltis:
+                    penalti_mandante = int(match_penaltis.group(1))
+                    penalti_visitante = int(match_penaltis.group(2))
+
+                if 'pro.' in placar_split:
+                    prorrogacao = 1
+
+                if '-' not in placar_split:
+                    print(f"Placar inválido: {placar}, pulando partida")
+                    continue
+                try:
+                    placar_limpo = re.search(r'(\d+)\s*-\s*(\d+)', placar)
+                    if placar_limpo:
+                        mandante_placar = int(placar_limpo.group(1))
+                        visitante_placar = int(placar_limpo.group(2))
+                    else:
+                        print(f"Placar mal formatado: {placar}, pulando partida")
+                        continue
+
+                except ValueError:
+                    print(f"Erro ao converter placar: {placar}, pulando partida")
+                    continue
 
             partida_id = self.next_partida_id
 
@@ -542,9 +573,9 @@ class OGolScraperRelacional:
                 'visitante_id': visitante_id,
                 'mandante_placar': mandante_placar,
                 'visitante_placar': visitante_placar,
-                'mandante_penalti': None,
-                'visitante_penalti': None,
-                'prorrogacao': 0
+                'mandante_penalti': penalti_mandante,
+                'visitante_penalti': penalti_visitante,
+                'prorrogacao': prorrogacao
             })
 
             self.next_partida_id += 1
