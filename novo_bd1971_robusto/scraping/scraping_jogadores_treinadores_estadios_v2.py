@@ -225,7 +225,6 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            print("⚠ Div 'entity_bio' não encontrada.")
             return None
 
         dados = {}
@@ -339,7 +338,7 @@ class OGolScraperRelacional:
     def processar_detalhes_partida(self, url_partida, partida_id, mandante_id, visitante_id):
         """Processa detalhes da partida: escalações, eventos, etc."""
         if not url_partida:
-            return None, None
+            return None
 
         print(f"📋 Processando detalhes da partida: {url_partida}")
         soup = self._get_soup(url_partida)
@@ -355,10 +354,10 @@ class OGolScraperRelacional:
                     estadio_id = self.processar_estadio(link)
                     break
 
-        # 2. Buscar escalações e eventos
+        # 2. Buscar o container principal da partida
         game_report = soup.find("div", id="game_report")
         if not game_report:
-            print("⚠ Div 'game_report' não encontrada.")
+            print("⚠️ Div game_report não encontrada")
             return estadio_id
 
         # 3. Buscar todas as linhas (rows) do relatório
