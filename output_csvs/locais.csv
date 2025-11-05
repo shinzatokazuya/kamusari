@@ -1,11 +1,11 @@
 id,cidade,uf,estado,regiao,pais
 1,Salvador,BA,Bahia,Nordeste,Brasil
-2,Santos,SP,"São Paulo",Sudeste,Brasil
-3,Belo Horizonte,MG,"Minas Gerais",Sudeste,Brasil
-4,Rio de Janeiro,RJ,"Rio de Janeiro",Sudeste,Brasil
+2,Santos,SP,São Paulo,Sudeste,Brasil
+3,Belo Horizonte,MG,Minas Gerais,Sudeste,Brasil
+4,Rio de Janeiro,RJ,Rio de Janeiro,Sudeste,Brasil
 5,Recife,PE,Pernambuco,Nordeste,Brasil
-6,São Paulo,SP,"São Paulo",Sudeste,Brasil
-7,Porto Alegre,RS,"Rio Grande do Sul",Sul,Brasil
+6,São Paulo,SP,São Paulo,Sudeste,Brasil
+7,Porto Alegre,RS,Rio Grande do Sul,Sul,Brasil
 8,Fortaleza,CE,Ceará,Nordeste,Brasil
 9,Fortaleza,,,,Brasil
-10,Curitiba,PR,PR,Sul,Brasil
+10,Curitiba,PR,Paraná,Sul,Brasil
