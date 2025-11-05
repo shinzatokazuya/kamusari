@@ -356,49 +356,146 @@ class OGolScraperRelacional:
                     break
 
         # 2. Buscar escalações e eventos
-        box_container = soup.find("div", class_="box_container")
-        if not box_container:
-            print("⚠ Div 'box_container' não encontrada.")
-            return estadio_id, None
+        game_report = soup.find("div", id="game_report")
+        if not game_report:
+            print("⚠ Div 'game_report' não encontrada.")
+            return estadio_id
 
-        # Identificar times (geralmente há 2 divs principais)
-        team_sections = box_container.find_all("div", class_="row", recursive=False)
+        # 3. Buscar todas as linhas (rows) do relatório
+        rows = game_report.find_all("div", class_="zz-tpl-row game_report")
 
-        for idx, section in enumerate(team_sections[:2]):  # Processar só os 2 primeiros (mandante e visitante)
-            clube_id = mandante_id if idx == 0 else visitante_id
+        if len(rows) < 1:
+            print("⚠️ Nenhuma linha encontrada no game_report")
+            return estadio_id
 
-            # Buscar jogadores nesta seção
-            jogadores_links = section.find_all("a", href=True)
+        # 4. Processar primeira linha - TITULARES
+        primeira_linha = rows[0]
+        colunas = primeira_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
 
-            for link_tag in jogadores_links:
-                link = urljoin(self.base_url, link_tag["href"])
+        if len(colunas) >= 2:
+            # Coluna 0 = Mandante, Coluna 1 = Visitante
+            for idx, coluna in enumerate(colunas):
+                clube_id = mandante_id if idx == 0 else visitante_id
 
-                # Identificar se é jogador ou treinador pelo URL
-                if "/jogador/" in link:
+                # Buscar subtitle para confirmar o time
+                subtitle = coluna.find("div", class_="subtitle")
+                time_nome = subtitle.get_text(strip=True) if subtitle else ""
+                print(f"   📝 Processando titulares de: {time_nome}")
+
+                # Buscar todos os jogadores (divs com classe "player")
+                players = coluna.find_all("div", class_="player")
+
+                for player_div in players:
+                    # Buscar o link do jogador
+                    link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
+                    if not link_tag:
+                        continue
+
+                    link = urljoin(self.base_url, link_tag["href"])
                     jogador_id = self.processar_jogador(link)
+
                     if jogador_id:
-                        # Determinar se é titular ou reserva (pode precisar de lógica mais sofisticada)
-                        # Por enquanto, assume titular
+                        # Verificar se há eventos (gols, cartões, etc)
+                        events_div = player_div.find("div", class_="events")
+                        tem_gol = False
+                        tem_cartao = False
+                        saiu = False
+
+                        if events_div:
+                            # Ícone 8 = gol, 7 = substituição, etc
+                            icons = events_div.find_all("span", class_="icn_zerozero")
+                            for icon in icons:
+                                icon_text = icon.get_text(strip=True)
+                                if icon_text == "8":  # Gol
+                                    tem_gol = True
+                                elif icon_text == "7":  # Saiu
+                                    saiu = True
+
+                        # Buscar número da camisa
+                        number_div = player_div.find("div", class_="number")
+                        numero = number_div.get_text(strip=True) if number_div else None
+                        numero = int(numero) if numero and numero.isdigit() else None
+
                         self.jogadores_em_partida_lista.append({
                             'partida_id': partida_id,
                             'jogador_id': jogador_id,
                             'clube_id': clube_id,
                             'titular': 1,
                             'posicao_jogada': '',
-                            'numero_camisa': None
+                            'numero_camisa': numero,
+                            'gols': 1 if tem_gol else 0,
+                            'minuto_saida': None  # Não temos o minuto exato
                         })
 
-                elif "/treinador/" in link or "/tecnico/" in link:
-                    treinador_id = self.processar_treinador(link)
-                    if treinador_id:
-                        self.treinadores_em_partida_lista.append({
+        # 5. Processar segunda linha - RESERVAS (se houver)
+        if len(rows) >= 2:
+            segunda_linha = rows[1]
+            colunas = segunda_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
+
+            for idx, coluna in enumerate(colunas):
+                clube_id = mandante_id if idx == 0 else visitante_id
+
+                players = coluna.find_all("div", class_="player")
+
+                for player_div in players:
+                    link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
+                    if not link_tag:
+                        continue
+
+                    link = urljoin(self.base_url, link_tag["href"])
+                    jogador_id = self.processar_jogador(link)
+
+                    if jogador_id:
+                        # Reserva que entrou
+                        events_div = player_div.find("div", class_="events")
+                        entrou = False
+
+                        if events_div:
+                            icons = events_div.find_all("span", title="Entrou")
+                            entrou = len(icons) > 0
+
+                        number_div = player_div.find("div", class_="number")
+                        numero = number_div.get_text(strip=True) if number_div else None
+                        numero = int(numero) if numero and numero.isdigit() else None
+
+                        self.jogadores_em_partida_lista.append({
                             'partida_id': partida_id,
-                            'treinador_id': treinador_id,
+                            'jogador_id': jogador_id,
                             'clube_id': clube_id,
-                            'tipo': 'Titular'
+                            'titular': 0,  # É reserva
+                            'posicao_jogada': '',
+                            'numero_camisa': numero,
+                            'gols': 0,
+                            'minuto_entrada': None  # Não temos o minuto exato
                         })
 
-        return estadio_id, None
+        # 6. Processar terceira linha - TREINADORES (se houver)
+        if len(rows) >= 3:
+            terceira_linha = rows[2]
+            colunas = terceira_linha.find_all("div", class_="zz-tpl-col is-6", recursive=False)
+
+            for idx, coluna in enumerate(colunas):
+                clube_id = mandante_id if idx == 0 else visitante_id
+
+                # Buscar subtitle para confirmar se é "Treinadores"
+                subtitle = coluna.find("div", class_="subtitle")
+                if subtitle and "Treinador" in subtitle.get_text(strip=True):
+
+                    # Buscar link do treinador
+                    link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
+                    if link_tag:
+                        link = urljoin(self.base_url, link_tag["href"])
+                        treinador_id = self.processar_treinador(link)
+
+                        if treinador_id:
+                            self.treinadores_em_partida_lista.append({
+                                'partida_id': partida_id,
+                                'treinador_id': treinador_id,
+                                'clube_id': clube_id,
+                                'tipo': 'Titular'
+                            })
+
+        return estadio_id
 
     def executar(self, edicao_id=1):
         """Execução principal do scraper"""
