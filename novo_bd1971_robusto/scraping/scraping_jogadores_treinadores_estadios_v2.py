@@ -29,11 +29,23 @@ class OGolScraperRelacional:
         self.next_partida_id = 1
         self.next_evento_id = 1
 
-        # Listas para CSVs finais
+        # Listas temporárias (buffer antes de salvar)
         self.partidas_lista = []
         self.jogadores_em_partida_lista = []
         self.treinadores_em_partida_lista = []
         self.eventos_partida_lista = []
+
+        # Caminho dos CSVs
+        self.output_dir = "output_csvs"
+        os.makedirs(self.output_dir, exist_ok=True)
+
+        # Caminho do CHECKPOINT
+        self.checkpoint_path = os.path.join(self.output_dir, "checkpoint.txt")
+
+
+    # ======================================================
+    # Funções utilitárias
+    # ======================================================
 
     def _get_soup(self, url):
         time.sleep(self.delay)
