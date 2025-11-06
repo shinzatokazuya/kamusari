@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import csv
 import time
 from urllib.parse import urljoin
-from datetime import datetime
 import os
 import re
 
