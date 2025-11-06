@@ -113,6 +113,10 @@ class OGolScraperRelacional:
 
         return self.locais_dict[chave]['id']
 
+    # ======================================================
+    # Processadores
+    # ======================================================
+
     def processar_clube(self, url_clube):
         """Processa clube e retorna ID único"""
         if not url_clube:
@@ -218,7 +222,7 @@ class OGolScraperRelacional:
 
         return estadio_id
 
-   
+
 
     def processar_jogador(self, url_jogador):
         """Processa jogador e retorna ID único"""
