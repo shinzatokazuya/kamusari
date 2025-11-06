@@ -128,10 +128,8 @@ class OGolScraperRelacional:
         if not container:
             return None
 
-        dados = {'url': url_clube}
-        divs_info = container.find_all("div", class_=["bio", "bio_half"])
-
-        for div in divs_info:
+        dados = {}
+        for div in container.find_all("div", class_=["bio", "bio_half"]):
             span = div.find("span")
             if not span:
                 continue
@@ -153,9 +151,7 @@ class OGolScraperRelacional:
                 dados["pais"] = valor
 
         # Criar local
-        cidade_completa = dados.get("cidade", "")
-        local_id = self._get_ou_criar_local(cidade_completa)
-
+        local_id = self._get_ou_criar_local(dados.get("cidade", ""))
         clube_id = self.next_clube_id
         self.clubes_dict[url_clube] = {
             'id': clube_id,
