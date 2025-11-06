@@ -243,7 +243,7 @@ class OGolScraperRelacional:
             'ativo': 1
         }
         self.estadios_dict[url_estadio] = registro
-        self._novo_clube.append(registro)
+        self._novo_estadio.append(registro)
         self.next_estadio_id += 1
 
         return estadio_id
@@ -326,7 +326,7 @@ class OGolScraperRelacional:
             'aposentado': dados.get('aposentado', 0)
         }
         self.jogadores_dict[url_jogador] = registro
-        self._novo_clube.append(registro)
+        self._novo_jogador.append(registro)
         self.next_jogador_id += 1
 
         return jogador_id
@@ -382,7 +382,7 @@ class OGolScraperRelacional:
             'nacionalidade': dados.get('nacionalidade', '')
         }
         self.treinadores_dict[url_treinador] = registro
-        self._novo_clube.append(registro)
+        self._novo_treinador.append(registro)
         self.next_treinador_id += 1
 
         return treinador_id
