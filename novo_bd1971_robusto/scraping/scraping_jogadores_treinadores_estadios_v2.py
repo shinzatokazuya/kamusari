@@ -173,6 +173,8 @@ class OGolScraperRelacional:
             'fundacao': dados.get('fundacao', ''),
             'ativo': 1
         }
+        self.clubes_dict[url_clube] = registro
+        self.novo_clubes_append(registro)
         self.next_clube_id += 1
 
         return clube_id
