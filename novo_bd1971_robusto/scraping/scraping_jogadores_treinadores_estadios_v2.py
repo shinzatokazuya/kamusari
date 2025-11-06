@@ -577,23 +577,23 @@ class OGolScraperRelacional:
 
         if self._novo_estadio:
             path = os.path.join(self.output_dir, "estadios.csv")
-            campos = ['id','estadio','capacidade','local_id','inauguracao','ativo','url']
-            append_rows(path, campos, self._new_estadios)
-            self._new_estadios.clear()
+            campos = ['id','estadio','capacidade','local_id','inauguracao','ativo']
+            append_rows(path, campos, self._novo_estadio)
+            self._novo_estadio.clear()
             print("💾 estadios.csv atualizado")
 
-        if self._new_jogadores:
+        if self._novo_jogador:
             path = os.path.join(self.output_dir, "jogadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado','url']
-            append_rows(path, campos, self._new_jogadores)
-            self._new_jogadores.clear()
+            campos = ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado']
+            append_rows(path, campos, self._novo_jogador)
+            self._novo_jogador.clear()
             print("💾 jogadores.csv atualizado")
 
-        if self._new_treinadores:
+        if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','url']
-            append_rows(path, campos, self._new_treinadores)
-            self._new_treinadores.clear()
+            campos = ['id','nome','nascimento','falecimento','nacionalidade']
+            append_rows(path, campos, self._novo_treinador)
+            self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
 
         # Locais (re-escrever inteiramente só na primeira vez ou quando houver novos)
@@ -611,7 +611,7 @@ class OGolScraperRelacional:
         # Relacionais: partidas, jogadores_em_partida, treinadores_em_partida, eventos_partida append
         if self.partidas_lista:
             path = os.path.join(self.output_dir, "partidas.csv")
-            campos = ['id','edicao_id','data','hora','fase','mandante_id','visitante_id','estadio_id','mandante_placar','visitante_placar']
+            campos = ['id','edicao_id', 'campeonato_id', 'data','hora','fase', 'rodada', 'estadio_id', 'mandante_id','visitante_id','mandante_placar','visitante_placar', 'mandante_penalti', 'visitante_penalti', 'prorrogacao']
             append_rows(path, campos, self.partidas_lista)
             self.partidas_lista.clear()
             print("💾 partidas.csv atualizado")
