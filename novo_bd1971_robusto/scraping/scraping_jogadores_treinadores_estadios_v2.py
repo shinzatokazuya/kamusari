@@ -258,15 +258,21 @@ class OGolScraperRelacional:
             return None
 
         dados = {}
-        divs_info = container.find_all("div", class_=["bio", "bio_half"])
-
-        for div in divs_info:
+        for div in container.find_all("div", class_=["bio", "bio_half"]):
             span = div.find("span")
             if not span:
                 continue
 
             campo = span.get_text(strip=True)
             valor = self._valor_depois_do_span(span)
+            if not valor:
+                a = div.find("a")
+                if a:
+                    valor = a.get_text(strip=True)
+                else:
+                    txtdiv = div.find("div", class_="text")
+                    if txtdiv:
+                        valor = txtdiv.get_text(strip=True)
 
             if "Nome" in campo and "nome" not in dados:
                 dados["nome"] = valor
@@ -282,15 +288,15 @@ class OGolScraperRelacional:
                 dados["pe_preferido"] = valor
             elif "Altura" in campo:
                 # "175 cm" -> 175
-                alt = valor.replace("cm", "").strip()
+                # alt = valor.replace("cm", "").strip()
                 try:
-                    dados["altura"] = int(alt)
+                    dados["altura"] = int(re.sub(r"[^\d]", "", valor))
                 except:
                     dados["altura"] = None
             elif "Peso" in campo:
-                peso = valor.replace("kg", "").strip()
+                # peso = valor.replace("kg", "").strip()
                 try:
-                    dados["peso"] = int(peso)
+                    dados["peso"] = int(re.sub(r"[^\d]", "", valor))
                 except:
                     dados["peso"] = None
             elif "Situação" in campo:
