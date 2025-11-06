@@ -180,7 +180,7 @@ class OGolScraperRelacional:
             'ativo': 1
         }
         self.clubes_dict[url_clube] = registro
-        self.novo_clube.append(registro)
+        self._novo_clube.append(registro)
         self.next_clube_id += 1
 
         return clube_id
@@ -243,7 +243,7 @@ class OGolScraperRelacional:
             'ativo': 1
         }
         self.estadios_dict[url_estadio] = registro
-        self.novo_clube.append(registro)
+        self._novo_clube.append(registro)
         self.next_estadio_id += 1
 
         return estadio_id
@@ -326,7 +326,7 @@ class OGolScraperRelacional:
             'aposentado': dados.get('aposentado', 0)
         }
         self.jogadores_dict[url_jogador] = registro
-        self.novo_clube.append(registro)
+        self._novo_clube.append(registro)
         self.next_jogador_id += 1
 
         return jogador_id
@@ -382,7 +382,7 @@ class OGolScraperRelacional:
             'nacionalidade': dados.get('nacionalidade', '')
         }
         self.treinadores_dict[url_treinador] = registro
-        self.novo_clube.append(registro)
+        self._novo_clube.append(registro)
         self.next_treinador_id += 1
 
         return treinador_id
@@ -570,12 +570,12 @@ class OGolScraperRelacional:
         # Entidades: gravar apenas os novos (buffers), depois limpar buffers
         if self._novo_clube:
             path = os.path.join(self.output_dir, "clubes.csv")
-            campos = ['id','clube','apelido','local_id','fundacao','ativo','url']
-            append_rows(path, campos, self._new_clubes)
-            self._new_clubes.clear()
+            campos = ['id','clube','apelido','local_id','fundacao','ativo']
+            append_rows(path, campos, self._novo_clube)
+            self._novo_clube.clear()
             print("💾 clubes.csv atualizado")
 
-        if self._new_estadios:
+        if self._novo_estadio:
             path = os.path.join(self.output_dir, "estadios.csv")
             campos = ['id','estadio','capacidade','local_id','inauguracao','ativo','url']
             append_rows(path, campos, self._new_estadios)
