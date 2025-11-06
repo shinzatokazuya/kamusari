@@ -413,7 +413,6 @@ class OGolScraperRelacional:
                     'titular': 1,
                     'posicao_jogada': '',
                     'numero_camisa': numero_camisa,
-                    'gols': 1 if tem_gol else 0
                 })
 
                 # ---------------- EVENTOS ----------------
@@ -453,7 +452,7 @@ class OGolScraperRelacional:
                             'clube_id': clube_id,
                             'titular': 0, # É RESERVA
                             'posicao_jogada': '',
-                            'numero_camisa': None
+                            'numero_camisa': numero_camisa
                         })
                         events_div = player_div.find("div", class_="events")
                         if events_div and events_div.find("span", title="Entrou"):
