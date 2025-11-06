@@ -197,9 +197,9 @@ class OGolScraperRelacional:
                 dados["inauguracao"] = valor
             elif "Lotação" in campo:
                 # Remove pontos e espaços: "68 000" -> 68000
-                cap = valor.replace(".", "").replace(" ", "").replace(",", "")
+                # cap = valor.replace(".", "").replace(" ", "").replace(",", "")
                 try:
-                    dados["capacidade"] = int(cap)
+                    dados["capacidade"] = int(re.sub(r"[^\d]", "", valor))
                 except:
                     dados["capacidade"] = None
 
@@ -217,6 +217,10 @@ class OGolScraperRelacional:
         self.next_estadio_id += 1
 
         return estadio_id
+
+    # ======================================================
+    # Execução principal
+    # ======================================================
 
     def processar_jogador(self, url_jogador):
         """Processa jogador e retorna ID único"""
