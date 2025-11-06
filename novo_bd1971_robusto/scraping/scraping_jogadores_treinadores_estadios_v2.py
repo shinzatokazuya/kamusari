@@ -370,7 +370,7 @@ class OGolScraperRelacional:
             return estadio_id
 
         def registrar_evento(jogador_id, clube_id, tipo, minuto=None):
-            self.eventos_partidas_lista.append({
+            self.eventos_partida_lista.append({
                 'id': self.next_evento_id,
                 'parida_id': partida_id,
                 'jogador_id': jogador_id,
