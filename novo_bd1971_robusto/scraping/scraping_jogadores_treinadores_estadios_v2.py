@@ -470,7 +470,6 @@ class OGolScraperRelacional:
                 if not link_tag:
                     continue
 
-                jogador_url = urljoin(self.base_url, link_tag["href"])
                 jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
                 if not jogador_id:
                     continue
@@ -517,8 +516,7 @@ class OGolScraperRelacional:
                     if not link_tag:
                         continue
 
-                    jogador_url = urljoin(self.base_url, link_tag["href"])
-                    jogador_id = self.processar_jogador(link)
+                    jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
 
                     if jogador_id:
                         self.jogadores_em_partida_lista.append({
@@ -542,8 +540,7 @@ class OGolScraperRelacional:
                 clube_id = mandante_id if idx == 0 else visitante_id
                 link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
                 if link_tag:
-                    treinador_url = urljoin(self.base_url, link_tag["href"])
-                    treinador_id = self.processar_treinador(link)
+                    treinador_id = self.processar_treinador(urljoin(self.base_url, link_tag["href"]))
                     if treinador_id:
                         self.treinadores_em_partida_lista.append({
                             'partida_id': partida_id,
