@@ -402,6 +402,10 @@ class OGolScraperRelacional:
                 if not jogador_id:
                     continue
 
+                numero = player_div.find("div", class_="number")
+                numero_camisa = numero.get_text(strip=True) if numero else None
+                numero_camisa = int(numero_camisa) if numero_camisa and numero_camisa.isdigit() else None
+
                 self.jogadores_em_partida_lista.append({
                     'partida_id': partida_id,
                     'jogador_id': jogador_id,
