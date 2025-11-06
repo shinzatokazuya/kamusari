@@ -553,7 +553,83 @@ class OGolScraperRelacional:
     # ======================================================
 
     def salvar_csvs(self):
-        
+        def append_rows(path, campos, rows):
+            existe = os.path.exists(path)
+            with open(path, "a", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=campos)
+                if not existe:
+                    w.writeheader()
+                w.writerows(rows)
+
+        # Entidades: gravar apenas os novos (buffers), depois limpar buffers
+        if self._novo_clube:
+            path = os.path.join(self.output_dir, "clubes.csv")
+            campos = ['id','clube','apelido','local_id','fundacao','ativo','url']
+            append_rows(path, campos, self._new_clubes)
+            self._new_clubes.clear()
+            print("💾 clubes.csv atualizado")
+
+        if self._new_estadios:
+            path = os.path.join(self.output_dir, "estadios.csv")
+            campos = ['id','estadio','capacidade','local_id','inauguracao','ativo','url']
+            append_rows(path, campos, self._new_estadios)
+            self._new_estadios.clear()
+            print("💾 estadios.csv atualizado")
+
+        if self._new_jogadores:
+            path = os.path.join(self.output_dir, "jogadores.csv")
+            campos = ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado','url']
+            append_rows(path, campos, self._new_jogadores)
+            self._new_jogadores.clear()
+            print("💾 jogadores.csv atualizado")
+
+        if self._new_treinadores:
+            path = os.path.join(self.output_dir, "treinadores.csv")
+            campos = ['id','nome','nascimento','falecimento','nacionalidade','url']
+            append_rows(path, campos, self._new_treinadores)
+            self._new_treinadores.clear()
+            print("💾 treinadores.csv atualizado")
+
+        # Locais (re-escrever inteiramente só na primeira vez ou quando houver novos)
+        if self.locais_dict:
+            path = os.path.join(self.output_dir, "locais.csv")
+            campos = ['id','cidade','uf','estado','regiao','pais']
+            # reescrever: para locais é mais simples reescrever todo o arquivo (geralmente pequeno)
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=campos)
+                w.writeheader()
+                for v in self.locais_dict.values():
+                    w.writerow(v)
+            print("💾 locais.csv reescrito")
+
+        # Relacionais: partidas, jogadores_em_partida, treinadores_em_partida, eventos_partida append
+        if self.partidas_lista:
+            path = os.path.join(self.output_dir, "partidas.csv")
+            campos = ['id','edicao_id','data','hora','fase','mandante_id','visitante_id','estadio_id','mandante_placar','visitante_placar']
+            append_rows(path, campos, self.partidas_lista)
+            self.partidas_lista.clear()
+            print("💾 partidas.csv atualizado")
+
+        if self.jogadores_em_partida_lista:
+            path = os.path.join(self.output_dir, "jogadores_em_partida.csv")
+            campos = ['partida_id','jogador_id','clube_id','titular','posicao_jogada','numero_camisa']
+            append_rows(path, campos, self.jogadores_em_partida_lista)
+            self.jogadores_em_partida_lista.clear()
+            print("💾 jogadores_em_partida.csv atualizado")
+
+        if self.treinadores_em_partida_lista:
+            path = os.path.join(self.output_dir, "treinadores_em_partida.csv")
+            campos = ['partida_id','treinador_id','clube_id','tipo']
+            append_rows(path, campos, self.treinadores_em_partida_lista)
+            self.treinadores_em_partida_lista.clear()
+            print("💾 treinadores_em_partida.csv atualizado")
+
+        if self.eventos_partida_lista:
+            path = os.path.join(self.output_dir, "eventos_partida.csv")
+            campos = ['id','partida_id','jogador_id','clube_id','tipo_evento','minuto']
+            append_rows(path, campos, self.eventos_partida_lista)
+            self.eventos_partida_lista.clear()
+            print("💾 eventos_partida.csv atualizado")
 
     # ======================================================
     # Execução principal
