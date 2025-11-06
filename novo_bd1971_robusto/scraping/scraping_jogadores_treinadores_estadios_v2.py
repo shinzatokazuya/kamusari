@@ -525,7 +525,7 @@ class OGolScraperRelacional:
                 # Define regra
                 mandante_placar, visitante_placar = '-', '-'
             else:
-                placar_split = placar.text.strip().lower()
+                placar_split = celulas[5].text.strip().lower()
                 penalti_mandante = penalti_visitante = None
                 prorrogacao = 0
 
