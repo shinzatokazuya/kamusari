@@ -12,7 +12,7 @@ class OGolScraperRelacional:
         self.url_lista = url_lista
         self.base_url = "https://www.ogol.com.br"
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-        self.delay = 15
+        self.delay = 30
 
         # Dicionários para IDs únicos
         self.clubes_dict = {}  # {url: {id, dados}}
