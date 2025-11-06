@@ -165,7 +165,7 @@ class OGolScraperRelacional:
         # Criar local
         local_id = self._get_ou_criar_local(dados.get("cidade", ""))
         clube_id = self.next_clube_id
-        self.clubes_dict[url_clube] = {
+        registro = {
             'id': clube_id,
             'clube': dados.get('nome', ''),
             'apelido': dados.get('apelido', ''),
@@ -174,7 +174,7 @@ class OGolScraperRelacional:
             'ativo': 1
         }
         self.clubes_dict[url_clube] = registro
-        self.novo_clubes_append(registro)
+        self.novo_clube.append(registro)
         self.next_clube_id += 1
 
         return clube_id
