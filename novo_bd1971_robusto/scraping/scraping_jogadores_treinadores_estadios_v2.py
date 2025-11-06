@@ -464,14 +464,17 @@ class OGolScraperRelacional:
                 if not link_tag:
                     continue
 
+                jogador_url = urljoin(self.base_url, link_tag["href"])
                 jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
                 if not jogador_id:
                     continue
 
+                # Número da camisa (Quando existir)
                 numero = player_div.find("div", class_="number")
                 numero_camisa = numero.get_text(strip=True) if numero else None
                 numero_camisa = int(numero_camisa) if numero_camisa and numero_camisa.isdigit() else None
 
+                # Adiciona relacionamento jogador-em-partida
                 self.jogadores_em_partida_lista.append({
                     'partida_id': partida_id,
                     'jogador_id': jogador_id,
