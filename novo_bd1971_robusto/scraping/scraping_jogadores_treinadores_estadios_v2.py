@@ -536,7 +536,7 @@ class OGolScraperRelacional:
                 clube_id = mandante_id if idx == 0 else visitante_id
                 link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
                 if link_tag:
-                    link = urljoin(self.base_url, link_tag["href"])
+                    treinador_url = urljoin(self.base_url, link_tag["href"])
                     treinador_id = self.processar_treinador(link)
                     if treinador_id:
                         self.treinadores_em_partida_lista.append({
