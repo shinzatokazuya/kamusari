@@ -140,6 +140,14 @@ class OGolScraperRelacional:
 
             campo = span.get_text(strip=True)
             valor = self._valor_depois_do_span(span)
+            if not valor:
+                a = div.find("a")
+                if a:
+                    valor = a.get_find("div", class_="text")
+                else:
+                    txtdiv = div.find("div", class_="text")
+                    if txtdiv:
+                        valor = txtdiv.get_text(strip=True)
 
             if "Nome" in campo and "nome" not in dados:
                 dados["nome"] = valor
