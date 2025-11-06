@@ -520,7 +520,7 @@ class OGolScraperRelacional:
                 continue
 
             # Parse do placar: "2 - 1" -> mandante=2, visitante=1
-            placar_split = placar.text.strip().upper()
+            placar_split = celulas[5].text.strip().upper()
             if "WO" in placar_split or "ANU" in placar_split or "IC" in placar_split:
                 # Define regra
                 mandante_placar, visitante_placar = '-', '-'
