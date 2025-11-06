@@ -307,7 +307,7 @@ class OGolScraperRelacional:
                     dados["aposentado"] = 1
 
         jogador_id = self.next_jogador_id
-        self.jogadores_dict[url_jogador] = {
+        registro = {
             'id': jogador_id,
             'nome': dados.get('nome', ''),
             'nascimento': dados.get('nascimento', ''),
@@ -319,6 +319,8 @@ class OGolScraperRelacional:
             'pe_preferido': dados.get('pe_preferido', ''),
             'aposentado': dados.get('aposentado', 0)
         }
+        self.jogadores_dict[url_jogador] = registro
+        self.novo_clube.append(registro)
         self.next_jogador_id += 1
 
         return jogador_id
@@ -339,15 +341,21 @@ class OGolScraperRelacional:
             return None
 
         dados = {}
-        divs_info = container.find_all("div", class_=["bio", "bio_half"])
-
-        for div in divs_info:
+        for div in container.find_all("div", class_=["bio", "bio_half"]):
             span = div.find("span")
             if not span:
                 continue
 
             campo = span.get_text(strip=True)
             valor = self._valor_depois_do_span(span)
+            if not valor:
+                a = div.find("a")
+                if a:
+                    valor = a.get_text(strip=True)
+                else:
+                    txtdiv = div.find("div", class_="text")
+                    if txtdiv:
+                        valor = txtdiv.get_text(strip=True)
 
             if "Nome" in campo and "nome" not in dados:
                 dados["nome"] = valor
@@ -360,13 +368,15 @@ class OGolScraperRelacional:
                     dados["falecimento"] = valor
 
         treinador_id = self.next_treinador_id
-        self.treinadores_dict[url_treinador] = {
+        registro = {
             'id': treinador_id,
             'nome': dados.get('nome', ''),
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'nacionalidade': dados.get('nacionalidade', '')
         }
+        self.treinadores_dict[url_treinador] = registro
+        self.novo_clube.append(registro)
         self.next_treinador_id += 1
 
         return treinador_id
