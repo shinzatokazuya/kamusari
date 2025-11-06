@@ -381,6 +381,28 @@ class OGolScraperRelacional:
 
         return treinador_id
 
+    # ======================================================
+    # Eventos
+    # ======================================================
+
+    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, minuto=None):
+            if jogador_id is None:
+                return
+            evento = {
+                'id': self.next_evento_id,
+                'parida_id': partida_id,
+                'jogador_id': jogador_id,
+                'clube_id': clube_id,
+                'tipo_evento': tipo,
+                'minuto': minuto
+            }
+            self.eventos_partida_lista.append(evento)
+            self.next_evento_id += 1
+
+    # ======================================================
+    # Detalhes da partida
+    # ======================================================
+
     def processar_detalhes_partida(self, url_partida, partida_id, mandante_id, visitante_id):
         """Processa detalhes da partida: escalações, eventos, etc."""
         if not url_partida:
