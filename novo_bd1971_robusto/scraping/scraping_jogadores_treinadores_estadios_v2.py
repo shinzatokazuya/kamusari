@@ -20,6 +20,12 @@ class OGolScraperRelacional:
         self.treinadores_dict = {}  # {url: {id, dados}}
         self.locais_dict = {}  # {cidade_uf: {id, dados}}
 
+        # Buffers de novos registros
+        self._novo_clube = []
+        self._novo_estadio = []
+        self._novo_jogador = []
+        self._novo_treinador = []
+
         # Contadores de ID
         self.next_clube_id = 1
         self.next_estadio_id = 1
@@ -29,7 +35,7 @@ class OGolScraperRelacional:
         self.next_partida_id = 1
         self.next_evento_id = 1
 
-        # Listas temporárias (buffer antes de salvar)
+        # Buffers relacionais
         self.partidas_lista = []
         self.jogadores_em_partida_lista = []
         self.treinadores_em_partida_lista = []
