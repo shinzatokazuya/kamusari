@@ -228,7 +228,7 @@ class OGolScraperRelacional:
         # Criar local do estádio
         local_id = self._get_ou_criar_local(dados.get("cidade", ""))
         estadio_id = self.next_estadio_id
-        self.estadios_dict[url_estadio] = {
+        registro = {
             'id': estadio_id,
             'estadio': dados.get('nome', ''),
             'capacidade': dados.get('capacidade'),
@@ -236,11 +236,11 @@ class OGolScraperRelacional:
             'inauguracao': dados.get('inauguracao', ''),
             'ativo': 1
         }
+        self.estadios_dict[url_estadio] = registro
+        self.novo_clube.append(registro)
         self.next_estadio_id += 1
 
         return estadio_id
-
-
 
     def processar_jogador(self, url_jogador):
         """Processa jogador e retorna ID único"""
