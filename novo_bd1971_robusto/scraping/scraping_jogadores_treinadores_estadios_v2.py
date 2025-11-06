@@ -511,7 +511,7 @@ class OGolScraperRelacional:
                     if not link_tag:
                         continue
 
-                    link = urljoin(self.base_url, link_tag["href"])
+                    jogador_url = urljoin(self.base_url, link_tag["href"])
                     jogador_id = self.processar_jogador(link)
 
                     if jogador_id:
