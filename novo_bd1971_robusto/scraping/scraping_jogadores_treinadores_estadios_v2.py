@@ -218,9 +218,7 @@ class OGolScraperRelacional:
 
         return estadio_id
 
-    # ======================================================
-    # Execução principal
-    # ======================================================
+   
 
     def processar_jogador(self, url_jogador):
         """Processa jogador e retorna ID único"""
