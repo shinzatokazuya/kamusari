@@ -641,15 +641,21 @@ class OGolScraperRelacional:
     def executar(self, edicao_id=1):
         """Execução principal do scraper"""
         print("🚀 Iniciando scraping...")
+        ultimo_jogo = None
+        if os.path.exists(self.checkpoint_path):
+            with open(self.checkpoint_path, "r", encoding="utf-8") as f:
+                ultimo_jogo = f.read().strip()
+                if ultimo_jogo:
+                    print(f"🔁 Retomando após: {ultimo_jogo}")
 
         # 1. Ler lista de partidas
         soup = self._get_soup(self.url_lista)
         tabela = soup.find("table", class_="zztable stats")
-
         if not tabela:
             print("❌ Tabela de partidas não encontrada")
             return
 
+        skip = bool(ultimo_jogo)
         # 2. Processar cada partida
         for linha in tabela.find_all("tr"):
             celulas = linha.find_all("td")
@@ -664,16 +670,22 @@ class OGolScraperRelacional:
             visitante_nome, link_visitante = self._extrair_link(celulas[7])
             fase = celulas[8].get_text(strip=True) if len(celulas) > 8 else ""
 
+            if skip:
+                if link_partida == ultimo_jogo:
+                    skip = False
+                continue
+
             print(f"\n{'='*60}")
             print(f"⚽ {mandante_nome} x {visitante_nome}")
             print(f"{'='*60}")
 
-            # Processar clubes
             mandante_id = self.processar_clube(link_mandante)
             visitante_id = self.processar_clube(link_visitante)
 
-            if not mandante_id or not visitante_id:
+            if not (mandante_id and visitante_id):
                 print("⚠️ Erro ao processar clubes, pulando partida")
+                # Salva buffers antes de pular
+                self.salvar_csvs()
                 continue
 
             # Parse do placar: "2 - 1" -> mandante=2, visitante=1
@@ -742,42 +754,6 @@ class OGolScraperRelacional:
         self.salvar_csvs()
         print("\n✅ Scraping concluído!")
 
-    def salvar_csvs(self):
-        os.makedirs("output_csvs", exist_ok=True)
-
-        def salvar(nome, campos, dados):
-            path = f"output_csvs/{nome}.csv"
-            with open(path, "w", newline="", encoding="utf-8") as f:
-                w = csv.DictWriter(f, fieldnames=campos)
-                w.writeheader()
-                # dados pode ser dict_values (para dicts de entidade) ou lista
-                if hasattr(dados, "values"):
-                    rows = list(dados)
-                    # if it's dict_values, iterate differently:
-                    try:
-                        for item in dados:
-                            w.writerow(item)
-                    except Exception:
-                        for item in list(dados):
-                            w.writerow(item)
-                else:
-                    w.writerows(dados)
-            print(f"💾 {nome}.csv salvo ({path})")
-
-        # entidades
-        salvar("locais", ['id','cidade','uf','estado','regiao','pais'], self.locais_dict.values())
-        salvar("clubes", ['id','clube','apelido','local_id','fundacao','ativo'], self.clubes_dict.values())
-        salvar("estadios", ['id','estadio','capacidade','local_id','inauguracao','ativo'], self.estadios_dict.values())
-        salvar("jogadores", ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado'], self.jogadores_dict.values())
-        salvar("treinadores", ['id','nome','nascimento','falecimento','nacionalidade'], self.treinadores_dict.values())
-
-        # relacionais
-        salvar("partidas", ['id','edicao_id','data','hora','mandante_id','visitante_id','estadio_id'], self.partidas_lista)
-        salvar("jogadores_em_partida", ['partida_id','jogador_id','clube_id','titular','posicao_jogada','numero_camisa'], self.jogadores_em_partida_lista)
-        salvar("treinadores_em_partida", ['partida_id','treinador_id','clube_id','tipo'], self.treinadores_em_partida_lista)
-        salvar("eventos_partida", ['id','partida_id','jogador_id','clube_id','tipo_evento','minuto'], self.eventos_partida_lista)
-
-# ---------------- executar ----------------
 if __name__ == "__main__":
     url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario"
     scraper = OGolScraperRelacional(url)
