@@ -724,11 +724,14 @@ class OGolScraperRelacional:
                     continue
 
             partida_id = self.next_partida_id
+            self.next_partida_id += 1
 
-            # Processar detalhes da partida
-            estadio_id = self.processar_detalhes_partida(
-                link_partida, partida_id, mandante_id, visitante_id
-            )
+            # processar detalhes da partida (escalação, eventos, estádio)
+            estadio_id = None
+            try:
+                estadio_id = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
+            except Exception as e:
+                print("⚠️ Erro ao processar detalhes:", e)
 
             # Adicionar partida
             self.partidas_lista.append({
@@ -748,10 +751,13 @@ class OGolScraperRelacional:
                 'prorrogacao': prorrogacao
             })
 
-            self.next_partida_id += 1
+            # Checkpoint (salva link da partida processada)
+            with open(self.checkpoint_path, "w", encoding="utf-8") as f:
+                f.write(link_partida or "")
 
-        # 3. Salvar CSVs
-        self.salvar_csvs()
+            # Salvar incrementalmente tudo que está nos buffers
+            self.salvar_csvs()
+
         print("\n✅ Scraping concluído!")
 
 if __name__ == "__main__":
