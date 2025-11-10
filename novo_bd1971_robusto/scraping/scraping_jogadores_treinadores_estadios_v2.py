@@ -18,6 +18,7 @@ class OGolScraperRelacional:
         self.estadios_dict = {}  # {url: {id, dados}}
         self.jogadores_dict = {}  # {url: {id, dados}}
         self.treinadores_dict = {}  # {url: {id, dados}}
+        self.arbitros_dict = {} # {url: {id, dados}}
         self.locais_dict = {}  # {cidade_uf: {id, dados}}
 
         # Buffers de novos registros
@@ -25,12 +26,14 @@ class OGolScraperRelacional:
         self._novo_estadio = []
         self._novo_jogador = []
         self._novo_treinador = []
+        self._novo_arbitro = []
 
         # Contadores de ID
         self.next_clube_id = 1
         self.next_estadio_id = 1
         self.next_jogador_id = 1
         self.next_treinador_id = 1
+        self.next_arbitro_id = 1
         self.next_local_id = 1
         self.next_partida_id = 1
         self.next_evento_id = 1
@@ -39,6 +42,7 @@ class OGolScraperRelacional:
         self.partidas_lista = []
         self.jogadores_em_partida_lista = []
         self.treinadores_em_partida_lista = []
+        self.arbitros_em_partida_lista = []
         self.eventos_partida_lista = []
 
         # Caminho dos CSVs
