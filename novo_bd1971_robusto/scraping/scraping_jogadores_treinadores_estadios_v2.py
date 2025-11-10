@@ -498,9 +498,14 @@ class OGolScraperRelacional:
                 link = urljoin(self.base_url, a_tag["href"])
                 if "estadio" in link.lower():
                     estadio_id = self.processar_estadio(link)
-
-                if "arbitro" in link.lower():
+                elif "arbitro" in link.lower():
                     arbitro_id = self.processar_arbitro(link)
+
+        if arbitro_id:
+            self.arbitros_em_partida_lista.append({
+                'partida_id': partida_id,
+                'arbitro_id': arbitro_id
+            })
 
         # 2. Buscar o container principal da partida
         box_container = soup.find("div", id="game_report")
