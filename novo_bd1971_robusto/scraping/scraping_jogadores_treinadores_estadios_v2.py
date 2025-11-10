@@ -467,7 +467,7 @@ class OGolScraperRelacional:
                 return
             evento = {
                 'id': self.next_evento_id,
-                'parida_id': partida_id,
+                'partida_id': partida_id,
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
                 'tipo_evento': tipo,
@@ -514,17 +514,6 @@ class OGolScraperRelacional:
         if not rows:
             print("⚠️ Nenhuma linha encontrada no game_report")
             return estadio_id
-
-        ###def registrar_evento(jogador_id, clube_id, tipo, minuto=None):
-            self.eventos_partida_lista.append({
-                'id': self.next_evento_id,
-                'parida_id': partida_id,
-                'jogador_id': jogador_id,
-                'clube_id': clube_id,
-                'tipo_evento': tipo,
-                'minuto': minuto
-            })
-            self.next_evento_id += 1###
 
         # ---------------- TITULARES ----------------
         primeira_linha = rows[0]
