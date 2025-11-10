@@ -424,6 +424,7 @@ class OGolScraperRelacional:
         soup = self._get_soup(url_partida)
 
         estadio_id = None
+        arbitro_id = None
 
         # 1. Buscar informações do estádio
         header = soup.find("div", class_="header")
@@ -432,7 +433,8 @@ class OGolScraperRelacional:
                 link = urljoin(self.base_url, a_tag["href"])
                 if "estadio" in link.lower():
                     estadio_id = self.processar_estadio(link)
-                    break
+                if "arbitro" in link.lower():
+                    arbitro_id = self.processar_arbitro(link)
 
         # 2. Buscar o container principal da partida
         box_container = soup.find("div", id="game_report")
@@ -587,17 +589,24 @@ class OGolScraperRelacional:
 
         if self._novo_jogador:
             path = os.path.join(self.output_dir, "jogadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','altura','peso','posicao','pe_preferido','aposentado']
+            campos = ['id','nome','nascimento','falecimento','nacionalidade', 'naturalidade', 'altura','peso','posicao','pe_preferido','aposentado']
             append_rows(path, campos, self._novo_jogador)
             self._novo_jogador.clear()
             print("💾 jogadores.csv atualizado")
 
         if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade', 'situacao']
+            campos = ['id', 'nome', 'nascimento', 'falecimento','nacionalidade', 'naturalidade', 'situacao']
             append_rows(path, campos, self._novo_treinador)
             self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
+
+        if self._novo_arbitro:
+            path = os.path.join(self.output_dir, "arbitros.csv")
+            campos = ['id', 'nome', 'nascimento', 'falecimento','nacionalidade', 'naturalidade', 'situacao']
+            append_rows(path, campos, self._novo_arbitro)
+            self._novo_arbitro.clear()
+            print("💾 arbitros.csv atualizado")
 
         # Locais (re-escrever inteiramente só na primeira vez ou quando houver novos)
         if self.locais_dict:
