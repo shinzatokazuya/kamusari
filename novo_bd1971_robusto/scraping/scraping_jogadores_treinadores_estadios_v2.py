@@ -702,6 +702,13 @@ class OGolScraperRelacional:
             self.treinadores_em_partida_lista.clear()
             print("💾 treinadores_em_partida.csv atualizado")
 
+        if self.arbitros_em_partida_lista:
+            path = os.path.join(self.output_dir, "arbitros_em_partida.csv")
+            campos = ['partida_id','arbitro_id']
+            append_rows(path, campos, self.arbitros_em_partida_lista)
+            self.arbitros_em_partida_lista.clear()
+            print("💾 arbitros_em_partida.csv atualizado")
+
         if self.eventos_partida_lista:
             path = os.path.join(self.output_dir, "eventos_partida.csv")
             campos = ['id','partida_id','jogador_id','clube_id','tipo_evento','minuto']
