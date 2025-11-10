@@ -323,6 +323,7 @@ class OGolScraperRelacional:
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'nacionalidade': dados.get('nacionalidade', ''),
+            'naturalidade': dados.get('naturalidade', ''),
             'altura': dados.get('altura'),
             'peso': dados.get('peso'),
             'posicao': dados.get('posicao', ''),
@@ -373,6 +374,8 @@ class OGolScraperRelacional:
                 dados["nascimento"] = valor
             elif "Nacionalidade" in campo:
                 dados["nacionalidade"] = valor
+            elif "Naturalidade" in campo:
+                dados['naturalidade'] = valor
             elif "Situação" in campo:
                 if "Falecido" in valor:
                     dados["falecimento"] = valor
@@ -385,6 +388,7 @@ class OGolScraperRelacional:
             'nome': dados.get('nome', ''),
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
+            'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', '')
         }
         self.treinadores_dict[url_treinador] = registro
@@ -392,6 +396,67 @@ class OGolScraperRelacional:
         self.next_treinador_id += 1
 
         return treinador_id
+
+    def processar_arbitro(self, url_arbitro):
+        """Processa treinador e retorna ID único"""
+        if not url_arbitro:
+            return None
+
+        if url_arbitro in self.arbitros_dict:
+            return self.arbitros_dict[url_arbitro]['id']
+
+        print(f"👔 Processando arbitro: {url_arbitro}")
+        soup = self._get_soup(url_arbitro)
+
+        container = soup.find("div", id="entity_bio")
+        if not container:
+            return None
+
+        dados = {}
+        for div in container.find_all("div", class_=["bio", "bio_half"]):
+            span = div.find("span")
+            if not span:
+                continue
+
+            campo = span.get_text(strip=True)
+            valor = self._valor_depois_do_span(span)
+            if not valor:
+                a = div.find("a")
+                if a:
+                    valor = a.get_text(strip=True)
+                else:
+                    txtdiv = div.find("div", class_="text")
+                    if txtdiv:
+                        valor = txtdiv.get_text(strip=True)
+
+            if "Nome" in campo and "nome" not in dados:
+                dados["nome"] = valor
+            elif "Data de Nascimento" in campo:
+                dados["nascimento"] = valor
+            elif "Nacionalidade" in campo:
+                dados["nacionalidade"] = valor
+            elif "Naturalidade" in campo:
+                dados['naturalidade'] = valor
+            elif "Situação" in campo:
+                if "Falecido" in valor:
+                    dados["falecimento"] = valor
+                else:
+                    dados["situacao"] = valor
+
+        arbitro_id = self.next_arbitro_id
+        registro = {
+            'id': arbitro_id,
+            'nome': dados.get('nome', ''),
+            'nascimento': dados.get('nascimento', ''),
+            'falecimento': dados.get('falecimento', ''),
+            'naturalidade': dados.get('naturalidade', ''),
+            'nacionalidade': dados.get('nacionalidade', '')
+        }
+        self.arbitros_dict[url_arbitro] = registro
+        self._novo_arbitro.append(registro)
+        self.next_arbitro_id += 1
+
+        return arbitro_id
 
     # ======================================================
     # Eventos
@@ -426,13 +491,14 @@ class OGolScraperRelacional:
         estadio_id = None
         arbitro_id = None
 
-        # 1. Buscar informações do estádio
+        # 1. Buscar informações do estádio e arbitro
         header = soup.find("div", class_="header")
         if header:
             for a_tag in header.find_all("a", href=True):
                 link = urljoin(self.base_url, a_tag["href"])
                 if "estadio" in link.lower():
                     estadio_id = self.processar_estadio(link)
+
                 if "arbitro" in link.lower():
                     arbitro_id = self.processar_arbitro(link)
 
