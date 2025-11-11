@@ -11,15 +11,14 @@ class OGolScraperRelacional:
         self.url_lista = url_lista
         self.base_url = "https://www.ogol.com.br"
         self.headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Referer": "https://www.google.com/",
-    "DNT": "1",
-    "Upgrade-Insecure-Requests": "1",
-    "Connection": "keep-alive"
-}
-
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Referer": "https://www.google.com/",
+            "DNT": "1",
+            "Upgrade-Insecure-Requests": "1",
+            "Connection": "keep-alive"
+        }
         self.delay = 30
 
         # Dicionários para IDs únicos
