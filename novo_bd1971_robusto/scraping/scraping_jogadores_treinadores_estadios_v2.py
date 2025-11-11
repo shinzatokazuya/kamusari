@@ -147,6 +147,7 @@ class OGolScraperRelacional:
                 'regiao': regioes.get(uf, ''),
                 'pais': 'Brasil'
             }
+            print(f"   ➤ Local '{cidade}, {uf}' adicionado.")
             self.next_local_id += 1
 
         return self.locais_dict[chave]['id']
@@ -168,7 +169,8 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            return None
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
 
         dados = {}
         for div in container.find_all("div", class_=["bio", "bio_half"]):
@@ -195,10 +197,6 @@ class OGolScraperRelacional:
                 dados["fundacao"] = valor
             elif "Cidade" in campo:
                 dados["cidade"] = valor
-            elif "Estado" in campo:
-                dados["estado"] = valor
-            elif "País" in campo:
-                dados["pais"] = valor
 
         # Criar local
         local_id = self._get_ou_criar_local(dados.get("cidade", ""))
@@ -211,6 +209,7 @@ class OGolScraperRelacional:
             'fundacao': dados.get('fundacao', ''),
             'ativo': 1
         }
+        print(f"   ➤ Clube '{dados.get('nome')}, Local_id '{local_id}' adicionado.")
         self.clubes_dict[url_clube] = registro
         self._novo_clube.append(registro)
         self.next_clube_id += 1
@@ -230,7 +229,8 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            return None
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
 
         dados = {}
         for div in container.find_all("div", class_=["bio", "bio_half"]):
@@ -274,6 +274,7 @@ class OGolScraperRelacional:
             'inauguracao': dados.get('inauguracao', ''),
             'ativo': 1
         }
+        print(f"   ➤ Estádio '{dados.get('nome')}' adicionado.")
         self.estadios_dict[url_estadio] = registro
         self._novo_estadio.append(registro)
         self.next_estadio_id += 1
@@ -293,7 +294,8 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            return None
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
 
         dados = {}
         for div in container.find_all("div", class_=["bio", "bio_half"]):
@@ -358,6 +360,7 @@ class OGolScraperRelacional:
             'pe_preferido': dados.get('pe_preferido', ''),
             'aposentado': dados.get('aposentado', 0)
         }
+        print(f"   ➤ Jogador '{dados.get('nome')}' adicionado.")
         self.jogadores_dict[url_jogador] = registro
         self._novo_jogador.append(registro)
         self.next_jogador_id += 1
@@ -377,7 +380,8 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            return None
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
 
         dados = {}
         for div in container.find_all("div", class_=["bio", "bio_half"]):
@@ -419,6 +423,7 @@ class OGolScraperRelacional:
             'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', '')
         }
+        print(f"   ➤ Treinador '{dados.get('nome')}' adicionado.")
         self.treinadores_dict[url_treinador] = registro
         self._novo_treinador.append(registro)
         self.next_treinador_id += 1
@@ -438,7 +443,8 @@ class OGolScraperRelacional:
 
         container = soup.find("div", id="entity_bio")
         if not container:
-            return None
+            print("⚠ Div 'entity_bio' não encontrada.")
+            return
 
         dados = {}
         for div in container.find_all("div", class_=["bio", "bio_half"]):
@@ -480,6 +486,7 @@ class OGolScraperRelacional:
             'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', '')
         }
+        print(f"   ➤ Jogador '{dados.get('nome')}' adicionado.")
         self.arbitros_dict[url_arbitro] = registro
         self._novo_arbitro.append(registro)
         self.next_arbitro_id += 1
@@ -501,6 +508,7 @@ class OGolScraperRelacional:
                 'tipo_evento': tipo,
                 'minuto': minuto
             }
+            print(f"   ➤ Evento '{partida_id}' adicionado.")
             self.eventos_partida_lista.append(evento)
             self.next_evento_id += 1
 
@@ -550,7 +558,7 @@ class OGolScraperRelacional:
 
         # ---------------- TITULARES ----------------
         primeira_linha = rows[0]
-        colunas = primeira_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
+        colunas = primeira_linha.find_all("div", class_=lambda c: c and "zz-tpl-col" in c)
 
         for idx, coluna in enumerate(colunas):
             clube_id = mandante_id if idx == 0 else visitante_id
@@ -591,18 +599,18 @@ class OGolScraperRelacional:
                     for icon in events_div.find_all("span", class_="icn_zerozero"):
                         txt = icon.get_text(strip=True)
                         if txt == "8":
-                            registrar_evento(jogador_id, clube_id, "Gol")
+                            self.registrar_evento(jogador_id, clube_id, "Gol")
                         elif txt == "4":
-                            registrar_evento(jogador_id, clube_id, "Amarelo")
+                            self.registrar_evento(jogador_id, clube_id, "Amarelo")
                         elif txt == "5":
-                            registrar_evento(jogador_id, clube_id, "Vermelho")
+                            self.registrar_evento(jogador_id, clube_id, "Vermelho")
                         elif txt == "7":
-                            registrar_evento(jogador_id, clube_id, "Substituição")
+                            self.registrar_evento(jogador_id, clube_id, "Substituição")
 
         # ---------------- RESERVAS ----------------
         if len(rows) > 1:
             segunda_linha = rows[1]
-            colunas = segunda_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
+            colunas = segunda_linha.find_all("div", class_=lambda c: c and "zz-tpl-col" in c)
 
             for idx, coluna in enumerate(colunas):
                 clube_id = mandante_id if idx == 0 else visitante_id
@@ -625,12 +633,12 @@ class OGolScraperRelacional:
                         })
                         events_div = player_div.find("div", class_="events")
                         if events_div and events_div.find("span", title="Entrou"):
-                            registrar_evento(jogador_id, clube_id, "Entrou")
+                            self.registrar_evento(jogador_id, clube_id, "Entrou")
 
         # ---------------- TREINADORES ----------------
         if len(rows) > 2:
             terceira_linha = rows[2]
-            colunas = terceira_linha.find_all("div", class_="zz-tpl-col is-6 fl-c", recursive=False)
+            colunas = terceira_linha.find_all("div", class_=lambda c: c and "zz-tpl-col" in c)
 
             for idx, coluna in enumerate(colunas):
                 clube_id = mandante_id if idx == 0 else visitante_id
@@ -743,6 +751,13 @@ class OGolScraperRelacional:
             append_rows(path, campos, self.eventos_partida_lista)
             self.eventos_partida_lista.clear()
             print("💾 eventos_partida.csv atualizado")
+
+        self._novo_clube.clear()
+        self._novo_estadio.clear()
+        self._novo_jogador.clear()
+        self._novo_treinador.clear()
+        self._novo_arbitro.clear()
+
 
     # ======================================================
     # Execução principal
