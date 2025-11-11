@@ -1,1 +1,224 @@
 id,nome,nascimento,falecimento,nacionalidade,altura,peso,posicao,pe_preferido,aposentado
+1,Renato Acasio de Morais,1947-03-01,,Brasil,Caruaru (PE),0,0,Goleiro,,1
+2,Roberto Pinto da Luz,1953-06-19,,Brasil,Salvador (BA),0,0,Defensor,,1
+3,Ismael Moreira Braga,1945-05-18,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Lateral Direito),Destro,1
+4,Eronildes de Souza,1945-04-11,,Brasil,Santo Amaro da Purificação (BA),0,0,Defensor (Zagueiro),,1
+5,José Otto Pinto Guimarães,1940-01-00,,Brasil,,0,0,Defensor,,1
+6,Eliseu Antonio Vinagre Ferreira de Godoy,1945-10-17,,Brasil,Santos,0,0,Meia (Meia Ofensivo),Destro,1
+7,Leonardo Augusto Caldeira,1946-09-15,Falecido - 2019-09-24 (73 anos),Brasil,,0,0,Atacante (Ponta Esquerda),Destro,1
+8,João Carlos Rodrigues Barreto Amorim,1940-11-07,,Brasil,,0,0,Meia,,1
+9,Edvaldo dos Santos,1949-07-07,,Brasil,São Francisco do Conde (BA),0,0,Meia,,1
+10,Renato Cunha Valle,1944-12-05,,Brasil,Rio de Janeiro,180,72,Goleiro,Destro,1
+11,José Maria Penna,1948-12-27,Falecido,Brasil,São Bernardo do Campo (SP),0,0,Defensor (Lateral Direito),,1
+12,Vantuir Galdino Ramos,1949-11-16,,Brasil,Belo Horizonte (MG),181,78,Defensor (Zagueiro),Destro,1
+13,Oldair Barchi,1939-07-01,Falecido - 2014-10-31 (75 anos),Brasil,São Paulo (SP),173,73,Defensor (Lateral Esquerdo),,1
+14,Onormandes Souza Lima,1945-09-11,,Brasil,,0,0,Defensor,,1
+15,Humberto da Silva Ramos,1949-08-25,,Brasil,Belo Horizonte (MG),173,68,Meia (Meia Central),Canhoto,1
+16,Wanderley Paiva Monteiro,1946-04-07,Falecido - 2023-11-27 (77 anos),Brasil,Três Corações (MG),176,0,Meia (Volante),,1
+17,Raimundo José Correa,1950-01-02,,Brasil,Iguatama (MG),0,0,Meia,Canhoto,1
+18,Ronaldo Gonçalves Drummond,1946-08-21,Falecido - 2020-06-09 (73 anos),Brasil,Belo Horizonte (MG),175,69,Atacante (Ponta Direita),Destro,1
+19,Dario José dos Santos,1946-03-04,,Brasil,Rio de Janeiro (RJ),185,75,Atacante (Centroavante),Destro,1
+20,Sebastião Rocha,1941-09-14,Falecido - 1984-04-12 (42 anos),Brasil,Rio de Janeiro (RJ),170,60,Atacante,,1
+21,Antônio Carlos Venceslau,1942-02-06,,Brasil,Uberlândia (MG),0,0,Goleiro,,1
+22,Osvaldo Domingues da Cunha,1943-04-22,Falecido - 2024-02-27 (80 anos),Brasil,Pedreira (SP),0,0,Defensor (Lateral Direito),Destro,1
+23,Ubirajara Gonçalves Motta,1936-04-04,Falecido,Brasil,"Rio de Janeiro, RJ",174,0,Goleiro,,1
+24,Waltencir Pereira Senra,1946-11-11,Falecido - 1978-09-17 (31 anos),Brasil,Juiz de Fora (MG),190,0,Defensor (Lateral Direito) / Defensor (Zagueiro),Destro,1
+25,Jorge Osmar Guarnelli,1952-02-18,,Brasil,Rio de Janeiro (RJ),186,77,Defensor (Zagueiro),,1
+26,Hércules Brito Ruas,1939-08-09,,Brasil,Rio de Janeiro (RJ),182,81,Defensor (Zagueiro),Destro,1
+27,Maurício Pereira Barros,1944-02-04,,Brasil,,0,0,Defensor (Lateral Direito),,1
+28,Roberto Lopes Miranda,1944-07-31,,Brasil,São Gonçalo (RJ),172,68,Atacante (Centroavante),Destro,1
+29,Nei da Conceição Moreira,1946-12-08,,Brasil,São João de Meriti (RJ),0,0,Meia,,1
+30,Carlos Roberto de Carvalho,1948-05-10,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,1
+31,Walter Machado Silva,1940-01-02,Falecido - 2020-09-29 (80 anos),Brasil,Ribeirão Preto (SP),173,72,Atacante (Centroavante),Destro,1
+32,Gilberto Geraldo de Moraes,1943-01-14,,Brasil,,0,0,Goleiro,,1
+33,Antonino Tavares,1944-05-10,,Brasil,Natal (RN),0,0,Defensor,,1
+34,Rivaldo Cavalcanti Silva,1947-08-15,,Brasil,Recife (PE),0,0,Defensor (Zagueiro),,1
+35,José Paes Cabral,1948-01-01,,Brasil,Recife (PE),0,0,Defensor (Zagueiro) / Defensor (Lateral Esquerdo),Canhoto,1
+36,Genival Costa de Barros Lima,1943-05-11,,Brasil,Recife (PE),0,0,Defensor,,1
+37,Walter da Silva Lessa,1941-09-26,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,1
+38,Juan Miguel Pérez,1938-07-05,Falecido - 2014-12-09 (76 anos),Paraguai,,0,0,Goleiro,,1
+39,Walter Oliveira das Neves,1941-09-17,,Brasil,São Paulo (SP),0,0,Defensor (Lateral Direito),,1
+40,Altair Gomes de Figueiredo,1938-01-22,Falecido - 2019-08-09 (81 anos),Brasil,Niterói (RJ),173,59,Defensor (Lateral Esquerdo) / Defensor (Zagueiro),Canhoto,1
+41,Milton Bezerra das Chagas Filho,1952-10-09,,Brasil,Carnaíba,182,78,Defensor (Zagueiro) / Meia (Volante),,1
+42,Antonio de Arruda Fraga,1945-11-15,Falecido - 2008-09-10 (62 anos),Brasil,,0,0,Defensor (Zagueiro),,1
+43,Gilson dos Santos Costa,1943-06-21,,Brasil,Recife (PE),0,0,Defensor (Zagueiro),,1
+44,Sérgio Vágner Valentim,1945-05-22,,Brasil,Chavantes (SP),0,0,Goleiro,,1
+45,Édson de Souza Barbosa,1943-06-20,Falecido - 2015-07-17 (72 anos),Brasil,Rio de Janeiro-RJ,0,0,Meia (Volante) / Defensor (Lateral Esquerdo),,1
+46,Jurandir de Freitas,1940-11-12,Falecido - 1996-03-06 (55 anos),Brasil,Marília (SP),190,87,Defensor (Zagueiro),Destro,1
+47,Gilberto Ferreira da Silva,1951-09-18,,Brasil,São Paulo (SP),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+48,Valdir Izaú Pereira,1941-10-18,Falecido - 1996-03-12 (54 anos),Brasil,Criciúma-SC,0,0,Defensor (Lateral Esquerdo),Canhoto,1
+49,Carlos Gainete Filho,1940-11-25,,Brasil,Florianópolis,0,0,Goleiro,,1
+50,Manuel Édson Ferreira,1944-05-29,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Zagueiro),Destro,1
+51,Hermes Rianelli,1942-10-20,Falecido - 1988-09-12 (45 anos),Brasil,,0,0,Defensor (Zagueiro),,1
+52,Bibiano Pontes,1947-06-11,,Brasil,,0,0,Defensor (Zagueiro),,1
+53,Jorge Antonio Sundin de Andrade,1942-04-23,Falecido - 2015-10-07 (73 anos),Brasil,Porto Alegre,0,0,Defensor (Lateral Esquerdo),,1
+54,José Luiz Carbone,1946-03-22,Falecido - 2020-12-27 (74 anos),Brasil,São Paulo (SP),0,0,Meia (Volante),,1
+55,Bráulio Barbosa de Lima,1948-08-04,,Brasil,Porto Alegre (RS),174,67,Meia,,1
+56,Emerson Leão,1949-07-11,,Brasil,Ribeirão Preto (SP),182,0,Goleiro,Destro,1
+57,Nélson Alves Moreno,1940-03-07,Falecido - 2004-09-22 (64 anos),Brasil,São Paulo (SP),0,0,Defensor (Zagueiro),,1
+58,Luis Edmundo Pereira,1949-06-21,,Brasil,Juazeiro (BA),181,0,Defensor (Zagueiro),Destro,1
+59,Eurico Pedro de Faria,1948-04-03,,Brasil,Uberlândia (MG),0,0,Defensor (Lateral Direito),Destro,1
+60,Ademar José Ribeiro,1940-02-18,Falecido - 1992-04-12 (52 anos),Brasil,Guariba (SP),0,0,Defensor,,1
+61,Olegário Tolói de Oliveira,1939-11-07,Falecido - 2024-06-28 (84 anos),Brasil,Araraquara (SP),172,63,Meia (Volante),,1
+62,Ademir da Guia,1942-04-03,,Brasil,Rio de Janeiro (RJ),180,74,Meia (Meia Ofensivo),Ambidestro,1
+63,César Augusto da Silva Lemos,1945-05-17,,Brasil,Niterói (RJ),179,73,Atacante (Centroavante),Destro,1
+64,Osmar Alberto Volpe,1944-11-15,,Brasil,Araraquara,0,0,Atacante,,1
+65,João Leiva Campos Filho,1949-09-11,,Brasil,Novo Horizonte,175,0,Atacante (2º Atacante) / Atacante (Ponta Direita),Destro,1
+66,Pedro da Silva Cruz,1943-06-06,,Brasil,,0,0,Goleiro,,1
+67,Mauro da Silva Cruz,1949-11-15,,Brasil,,0,0,Defensor (Lateral Direito) / Defensor (Zagueiro),Destro,1
+68,Carlos Alberto Félix de Lima,1949-07-02,,Brasil,Juazeiro do Norte (CE),0,0,Defensor (Lateral Direito),,1
+69,José Nagel de Mello,1938-07-03,,Brasil,Recife (PE),0,0,Defensor (Zagueiro),Ambidestro,1
+70,Carlindo Nina Baima,1944-05-07,,Brasil,São Luís (MA),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+71,Edmar Oliveira Araújo,1947-11-06,,Brasil,Fortaleza (CE),0,0,Meia (Volante),Destro,1
+72,Célio Maciel dos Santos,1940-01-24,Falecido - 2019-01-15 (78 anos),Brasil,Campos Novos (SC),174,72,Goleiro,,1
+73,Nélson Pescuma,1945-09-27,Falecido - 2006-10-10 (61 anos),Brasil,São Paulo (SP),192,0,Defensor (Zagueiro),,1
+74,Antonio Pilotto Junior,1941-07-11,,Brasil,São Paulo (SP),0,0,Defensor (Zagueiro),,1
+75,Hermes da Rocha Freitas Júnior,1947-02-16,,Brasil,Santos (SP),0,0,Defensor (Lateral Direito),Destro,1
+76,Nilo Roberto Neves,1942-12-02,Falecido - 2022-06-24 (79 anos),Brasil,Porto Alegre (RS),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+77,Reynaldo Domingues Mendes,1948-06-14,,Brasil,Santos (SP),0,0,Meia,,1
+78,Newton Gomes da Silva,1951-12-25,,Brasil,Recife (PE),0,0,Defensor (Lateral Direito),,1
+79,Erico de Paula Coelho Filho,1944-09-08,Falecido - 2014-10-28 (70 anos),Brasil,Jaboatão dos Guararapes (PE),0,0,Meia (Volante) (Meia Central),,1
+80,Carlos Cidreira,1943-09-26,,Brasil,,0,0,Meia,,1
+81,César Correia Rebelo,1944-02-21,,Brasil,Parnaíba (PE),0,0,Atacante,,1
+82,Ademir de Oliveira,1950-01-23,,Brasil,Salvador (BA),0,0,Atacante,,1
+83,Alberto Silveira,1937-12-22,Falecido - 2012-01-16 (74 anos),Brasil,,0,0,Goleiro,,1
+84,Dejair Barbosa,1943-04-29,,Brasil,Bage (RS),0,0,Defensor (Lateral Direito),,1
+85,Sebastião Carlos da Silva,1946-07-09,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Zagueiro),,1
+86,José Carlos Pereira,1947-08-09,,Brasil,São Gonçalo (RJ),0,0,Defensor (Lateral Esquerdo) / Meia (Volante),Canhoto,1
+87,Aldeci Ramos Teixeira,1946-11-05,,Brasil,Campos dos Goytacazes (RJ),0,0,Defensor (Zagueiro),,1
+88,Ivan Manoel de Oliveira,1945-03-15,,Brasil,Joinville,0,0,Meia (Volante),,1
+89,Antônio Carlos Alves Carneiro,1949-04-28,,Brasil,Rio de Janeiro (RJ),164,62,Meia,,1
+90,Gilberto Nogueira Ramos,1948-07-21,,Brasil,Porto Alegre (RS),0,0,Meia,,1
+91,Eduardo Antunes Coimbra,1947-02-05,,Brasil,Rio de Janeiro,0,0,Meia,,1
+92,Francisco de Assis Freitas,1952-10-04,,Brasil,Laje do Murié (RJ),0,0,Atacante,,1
+93,Jorge Aparecido Bonfim,1949-11-11,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,1
+94,Jair Eraldo dos Santos,1946-08-15,,Brasil,Novo Hamburgo (RS),172,0,Goleiro,,1
+95,Valdir Ataualpa Ramires Espinosa,1947-10-17,Falecido - 2020-02-27 (72 anos),Brasil,Porto Alegre (RS),0,0,Defensor (Lateral Direito),Destro,1
+96,Ari Ercílio Barbosa,1941-08-18,Falecido - 1972-11-18 (31 anos),Brasil,Porto Alegre (RS),0,0,Defensor (Zagueiro),Canhoto,1
+97,Everaldo Marques da Silva,1944-09-11,Falecido - 1974-10-27 (30 anos),Brasil,Porto Alegre (RS),171,68,Defensor (Lateral Esquerdo) / Meia (Meia Esquerda),Canhoto,1
+98,Mauro Pinto,1948-02-26,,Brasil,Rio Pardo,0,0,Defensor,Canhoto,1
+99,Vitorino Lopes Garcia,1948-11-01,Falecido,Brasil,Pelotas (RS),0,0,Meia,,1
+100,Gaspar Rodrigues Froteira,1944-05-16,,Brasil,Porto Alegre (RS),0,0,Meia,Canhoto,1
+101,Luiz Carlos Fioravante Goulart,1946-06-21,Falecido - 2013-07-30 (67 anos),Brasil,Porto Alegre (RS),0,0,Meia,,1
+102,Gilberto Alves de Souza,1946-12-31,Falecido - 2022-02-23 (75 anos),Brasil,Porto Alegre,0,0,Atacante (Ponta Direita),Destro,1
+103,Loivo Ivan Johann,1945-01-24,,Brasil,Brochier (RS),0,0,Atacante (Ponta Esquerda),Canhoto,1
+104,Néstor Leonel Scotta,1948-04-07,Falecido - 2001-00-08 (52 anos),Argentina,San Justo,0,0,Atacante,Ambidestro,1
+105,Severino Alonso de Lima,1944-10-21,,Brasil,Itabaiana (PB),0,0,Meia,,1
+106,Artur Ribeiro do Carmo Filho,1949-12-05,,Brasil,Fortaleza (CE),0,0,Meia (Volante) / Defensor (Zagueiro),,1
+107,Hélio Dias de Oliveira,1943-12-19,,Brasil,,0,0,Goleiro,,1
+108,Vanderlei Lázaro,1947-06-20,,Brasil,,0,0,Defensor (Lateral Esquerdo),Canhoto,1
+109,Roberto Alfredo Perfumo,1942-10-03,Falecido - 2016-03-10 (73 anos),Argentina,Sarandí,179,75,Defensor,,1
+110,Pedro Paulo Teles Marcelino,1945-08-15,Falecido - 2008-02-14 (62 anos),Brasil,Pedro Leopoldo (MG),0,0,Defensor (Lateral Direito),Destro,1
+111,Wilson da Silva Piazza,1943-02-25,,Brasil,Ribeirão das Neves,175,75,Meia (Volante) / Defensor (Zagueiro),Destro,1
+112,José Carlos Bernardo,1945-04-28,Falecido - 2018-06-12 (73 anos),Brasil,Juiz de Fora (MG),172,0,Meia (Meia Central) / Meia (Volante),,1
+113,Eberval Vitorino da Silva,1944-01-04,,Brasil,,0,0,Defensor,Canhoto,1
+114,Luciano Jorge Veloso,1948-09-13,,Brasil,Pesqueira (PE),0,0,Meia,,1
+115,Givanildo José de Oliveira,1948-08-08,,Brasil,Olinda (PE),0,0,Meia,,1
+116,Roberto Fontana Madeira,1947-07-09,,Brasil,Vitória (ES),0,0,Meia,,1
+117,Lourival Prudêncio Carvalho,1945-01-31,,Brasil,Barretos (SP),0,0,Meia (Volante),,1
+118,Ramon da Silva Ramos,1950-03-12,,Brasil,Sirinhaém (PE),0,0,Atacante (Centroavante) / Atacante (Ponta Esquerda),Canhoto,1
+119,Fernando José de Santana,1947-12-25,,Brasil,,0,0,Atacante,,1
+120,Ubirajara da Silva Alcântara,1946-02-27,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,Destro,1
+121,Aluisio Elias Paulino,1952-06-25,,Brasil,,0,0,Defensor (Zagueiro),Ambidestro,1
+122,Paulo Henrique Souza de Oliveira,1943-01-05,,Brasil,Macaé (RJ),173,65,Defensor (Lateral Esquerdo),Canhoto,1
+123,José Rodrigues Neto,1949-12-06,Falecido - 2019-04-29 (69 anos),Brasil,Galileia (MG),168,67,Meia (Meia Ofensivo) / Defensor (Lateral Esquerdo),Canhoto,1
+124,Frederico Rodrigues de Oliveira,1949-04-04,Falecido - 2022-05-29 (73 anos),Brasil,Rio de Janeiro,179,78,Defensor,Ambidestro,1
+125,Francisco Santiago Reyes Villalba,1941-07-04,Falecido - 1976-07-31 (35 anos),Paraguai,Asunción,175,72,Meia (Zagueiro) / Meia (Volante),Canhoto,1
+126,Arthur Antunes Coimbra,1953-03-03,,Brasil,Rio de Janeiro (RJ),172,65,Meia (Meia Ofensivo),Destro,1
+127,José Eduardo de Castro,1948-10-29,,Brasil,Salvador (BA),180,72,Meia (Meia Ofensivo) / Atacante (Centroavante),,1
+128,Ibraim Carlos Novoa dos Santos,1950-01-14,Falecido - 2008-10-08 (58 anos),Brasil,Santos (SP),0,0,Meia (Meia Ofensivo),,1
+129,Dirceu Lopes Mendes,1946-09-03,,Brasil,Pedro Leopoldo (MG),162,60,Meia (Meia Ofensivo) / Meia (Meia Esquerda),Destro,1
+130,Eduardo Teixeira Lima,1944-10-31,Falecido - 2020-08-24 (75 anos),Brasil,,0,0,Atacante,,1
+131,Walter González,1933-00-00,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,1
+132,Francisco Luciano Oliveira do Nascimento,1947-11-07,,Brasil,Fortaleza (CE),0,0,Meia,,1
+133,José Pinto Pereira Filho,1948-12-07,,Brasil,Fortaleza (CE),0,0,Meia,,1
+134,Vítor Epanor da Costa Filho,1949-09-01,,Brasil,Rio de Janeiro (RJ),0,0,Atacante (Ponta Direita),Destro,1
+135,Gildo Fernandes de Oliveira,1940-01-11,Falecido - 2016-03-09 (76 anos),Brasil,Recife (PE),0,0,Atacante (Centroavante),,1
+136,Félix Miéli Venerando,1937-12-24,Falecido - 2012-08-24 (74 anos),Brasil,São Paulo (SP),178,72,Goleiro,Destro,1
+137,Raimundo Evandro da Silva Oliveira,1944-03-04,Falecido - 2000-01-12 (55 anos),Brasil,Belém (PA),0,0,Defensor (Lateral Direito),Destro,1
+138,João José Galhardo,1942-10-29,,Brasil,Araraquara (SP),0,0,Defensor (Zagueiro),,1
+139,Marco Antônio Feliciano,1951-02-06,,Brasil,Santos (SP),185,0,Defensor (Lateral Esquerdo),Canhoto,1
+140,Francisco de Assis Luz e Silva,1943-10-04,Falecido - 2020-09-09 (76 anos),Brasil,Ananindeua (PA),0,0,Defensor (Lateral Esquerdo),,1
+141,Denilson Custodio Machado,1943-03-28,Falecido - 2024-10-01 (81 anos),Brasil,Campos dos Goytacazes (RJ),180,75,Meia (Meia Ofensivo) / Meia (Meia Central),Destro,1
+142,Wilton Cezar Xavier,1947-10-13,Falecido - 2009-12-12 (62 anos),Brasil,Belo Horizonte (MG),0,0,Meia (Meia Ofensivo) / Atacante (Ponta Direita),Destro,1
+143,Eduardo Roberto Stinghen,1946-07-04,,Brasil,Jaragua do Sul (SC),186,86,Goleiro,Destro,1
+144,Luís Carlos Galter,1947-10-17,Falecido - 2025-03-07 (77 anos),Brasil,São Paulo,0,0,Defensor (Zagueiro),,1
+145,Pedro José Nepomuceno Cunha,1945-12-10,,Brasil,Realengo - Rio de Janeiro,0,0,Defensor (Lateral Esquerdo) / Defensor (Zagueiro),,1
+146,Deoclécio Manoel de Miranda,1947-09-08,Falecido - 2022-07-25 (74 anos),Brasil,,0,0,Defensor (Lateral Direito),Destro,1
+147,José Guilherme Baldochi,1946-03-14,,Brasil,Batatais,189,0,Defensor (Zagueiro),Destro,1
+148,Sebastião Carlos da Silva,1948-09-16,,Brasil,Santa Leopoldina (ES),0,0,Meia (Volante),Destro,1
+149,Roberto Rivellino,1946-01-01,,Brasil,São Paulo (SP),173,73,Meia (Meia Ofensivo) / Atacante (Ponta Esquerda),Canhoto,1
+150,Adão Ambrósio,1951-10-17,Falecido - 2011-06-12 (59 anos),Brasil,São Paulo (SP),0,0,Meia (Meia Esquerda),Destro,1
+151,Wagno De Freitas,1950-02-11,,Brasil,Sete Lagoas (MG),0,0,Atacante (Ponta Direita),Destro,1
+152,Aladim Luciano,1946-10-10,,Brasil,Barra Mansa (RJ),171,69,Atacante (Ponta Esquerda),Canhoto,1
+153,Sebastião Miranda da Silva Filho,1952-02-26,,Brasil,Bebedouro (SP),179,75,Atacante (Centroavante),,1
+154,José Luiz Ferreira Rodrigues,1946-07-06,,Brasil,Porto Alegre,0,0,Defensor (Lateral Esquerdo),Canhoto,1
+155,Carlos Eduardo da Silva,1948-10-25,,Brasil,São Paulo,0,0,Atacante (Ponta Direita),Destro,1
+156,Walter Ferraz de Negreiros,1946-08-06,,Brasil,,0,0,Meia (Meia Ofensivo),,1
+157,José Hidalgo Neto,1943-11-03,,Brasil,,0,0,Meia (Volante),,1
+158,Rinaldo Luís Dias Amorim,1939-02-19,Falecido - 2023-04-05 (84 anos),Brasil,Jurena (PE),0,0,Atacante (Ponta Esquerda),,1
+159,Sebastião José Ferri,1945-01-20,,Brasil,Abatiá (PR),0,0,Atacante,,1
+160,José Martins Manso,1946-07-25,,Brasil,Ribeirão do Sul (SP),0,0,Atacante,,1
+161,Renato Machado Pinto,1944-04-01,,Brasil,Curitiba (PR),0,0,Atacante,,1
+162,Orlando Alves Ferreira,1940-07-25,Falecido - 2007-07-19 (66 anos),Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,1
+163,Carlos Antonio Arenghi,1951-06-13,Falecido - 1993-12-14 (42 anos),Brasil,Amparo (SP),0,0,Defensor (Zagueiro),,1
+164,Antonio Calegari,1947-04-21,,Brasil,,0,0,Defensor,,1
+165,Dárcio José Massaine,1953-10-18,,Brasil,,0,0,Defensor,,1
+166,Wanderley Nonato,1942-04-11,Falecido - 2021-09-13 (79 anos),Brasil,,0,0,Defensor,,1
+167,João Farias Filho,1940-12-11,Falecido,Brasil,Santos (SP),0,0,Meia (Meia Direita),Destro,1
+168,Heitor Martinho de Souza,1942-03-03,Falecido - 2001-02-11 (58 anos),Brasil,São Franscisco do Sul (SC),0,0,Meia,,1
+169,Joel Mendes,1946-06-25,Falecido - 2024-12-09 (78 anos),Brasil,Campo Magro (PR),176,0,Goleiro,,1
+170,Orlando Pereira,1949-01-22,Falecido - 1999-09-04 (50 anos),Brasil,Santos,0,0,Defensor (Lateral Direito),,1
+171,Oberdan Nazareno Vilain,1945-06-02,,Brasil,Florianópolis (SC),189,83,Defensor (Zagueiro),Destro,1
+172,Emerson Marçal,1944-10-11,,Brasil,Lucelia (SP),0,0,Defensor (Zagueiro),,1
+173,Luiz Paes Leme,1945-01-24,,Brasil,,0,0,Defensor,,1
+174,Oscar Sales Bueno Filho,1947-07-13,,Brasil,Campinas (SP),0,0,Meia (Meia Ofensivo),Destro,1
+175,Roberto de Oliveira,1949-06-29,,Brasil,,0,0,Meia,,1
+176,Jáder da Silva Gonçalves,1950-07-14,Falecido - 1999-03-17 (48 anos),Brasil,Arroio Grande (RS),0,0,Atacante (Ponta Direita),Destro,1
+177,Sildes de Souza Póvoas,1946-07-02,,Brasil,Itaguaí (RJ),0,0,Defensor (Zagueiro),,1
+178,Ivair Ferreira,1945-01-27,Falecido - 2024-08-15 (79 anos),Brasil,Bauru (SP),0,0,Meia,Destro,1
+179,Adir Cid Rodrigues,1950-08-27,,Brasil,Campos (RJ),0,0,Meia,,1
+180,Moacir Fernandes,1948-11-10,Falecido - 1991-08-25 (42 anos),Brasil,,0,0,Atacante (Ponta Direita),Destro,1
+181,Luís Ribeiro Pinto Neto,1946-11-16,Falecido - 2022-02-11 (75 anos),Brasil,Arcoverde (PE),170,0,Atacante (Ponta Esquerda),,1
+182,Cláudio Galbo Garcia,1943-09-10,,Brasil,,0,0,Atacante,,1
+183,Albérico Luiz Pereira dos Santos,1946-07-04,,Brasil,Recife (PE),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+184,Carlos Alberto Gonçalves,1939-11-10,Falecido - 2005-03-09 (65 anos),Brasil,Salvador (BA),0,0,Atacante,,1
+185,Juvenal Calixto Duarte,1944-03-14,,Brasil,Maranguape (CE),0,0,Defensor (Lateral Direito),,1
+186,João Rômulo dos Santos,1946-09-28,,Brasil,Itapipoca (CE),0,0,Meia,,1
+187,Erandy Pereira Montenegro,1946-04-24,Falecido - 2023-12-07 (77 anos),Brasil,Bananeiras (PB),0,0,Atacante,,1
+188,João Rodrigues da Costa,1947-08-17,Falecido,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,1
+189,Livadir Toaldo,1937-03-08,Falecido - 2019-05-06 (82 anos),Brasil,Curitiba (PR),0,0,Defensor (Zagueiro),,1
+190,Paulo Murilo Frederico Ferreira,1939-04-30,,Brasil,,0,0,Defensor (Lateral Direito),Destro,1
+191,Luís Carlos Galter,1947-10-17,Falecido - 2025-03-07 (77 anos),Brasil,São Paulo,0,0,Defensor (Zagueiro),,1
+192,Jadir Garcia Rodrigues,1940-07-21,Falecido - 1992-12-04 (52 anos),Brasil,Santana do Livramento (RS),0,0,Meia,Destro,1
+193,Luiz Cláudio,1946-04-17,,Brasil,Itabirito (MG),0,0,Defensor (Lateral Direito),Destro,1
+194,Nei da Conceição Moreira,1946-12-08,,Brasil,São João de Meriti (RJ),0,0,Meia,,1
+195,José Márcio Pereira da Silva,1948-11-17,,Brasil,Leopoldina (MG),173,0,Atacante (Ponta Direita),Canhoto,1
+196,Paulo César Lima,1949-06-16,,Brasil,Rio de Janeiro (RJ),175,75,Atacante (Ponta Esquerda) / Meia (Meia Esquerda),Canhoto,1
+197,José Benedito Tobias,1949-05-13,Falecido - 2024-07-13 (75 anos),Brasil,Agudos - São Paulo,0,0,Goleiro,,1
+198,Ubaldo de Oliveira,1946-05-16,,Brasil,Feira de Santana (BA),0,0,Defensor (Lateral Direito),Destro,1
+199,Almir da Fonseca Coelho,1947-12-10,,Brasil,Nova Friburgo (RJ),0,0,Defensor (Zagueiro),,1
+200,Draílton José Lopes,1949-09-18,,Brasil,Recife (PE),0,0,Meia (Volante),,1
+201,José Francisco Leandro Filho,1947-08-04,Falecido - 2021-07-11 (73 anos),Brasil,Maceió,0,0,Atacante (Ponta Direita) / Atacante (Centroavante),Destro,1
+202,Francisco Antônio Lopes,1946-10-16,,Brasil,Pirapora - MG,0,0,Atacante,,1
+203,António Raimundo Gomes Filho,1946-09-13,,Brasil,,0,0,Atacante,Destro,1
+204,Wanderley Machado da Silva,1943-11-03,Falecido - 1973-06-17 (29 anos),Brasil,São Paulo (SP),177,75,Atacante,,1
+205,Pablo Justo Forlán Lamarque,1945-07-14,,Uruguai,Soriano,185,79,Defensor (Lateral Direito),Destro,1
+206,Arlindo Galvão,1948-05-08,,Brasil,Marília (SP),0,0,Defensor (Zagueiro),,1
+207,Pedro Virgílio Rocha Franchetti,1942-12-03,Falecido - 2013-12-02 (70 anos),Uruguai,Salto,181,78,Meia (Meia Ofensivo),Destro,1
+208,Edgardo Norberto Andrada,1939-01-02,Falecido - 2019-09-04 (80 anos),Argentina,Rosário,181,72,Goleiro,,1
+209,Haroldo Cid da Silva,-,,Brasil,,0,0,Defensor (Lateral Direito),Destro,1
+210,Paulo Cesar Barreiros,1949-05-30,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+211,Moisés Mathias de Andrade,1948-01-10,Falecido - 2008-08-26 (60 anos),Brasil,Resende (RJ),179,76,Defensor,Canhoto,1
+212,Miguel Ferreira de Almeida Pereira,1949-09-20,,Brasil,Rio de Janeiro,178,72,Defensor (Zagueiro),Destro,1
+213,Alcir Pinto Portela Prates,1944-05-09,Falecido - 2008-08-29 (64 anos),Brasil,Rio de Janeiro (RJ),178,75,Meia (Volante),Destro,1
+214,Afonso Celso Garcia Reis,1947-09-03,,Brasil,Marília (SP),0,0,Meia,,1
+215,Jose Alberto Bougleaux,1944-07-25,,Brasil,,0,0,Meia,,1
+216,César Augusto da Silva Lemos,1945-05-17,,Brasil,Niterói (RJ),179,73,Atacante (Centroavante),Destro,1
+217,Ivaldo José Machado,1942-07-08,,Brasil,Recife (PE),0,0,Defensor (Zagueiro),,1
+218,Humberto Monteiro,1947-08-30,Falecido - 1980-03-27 (32 anos),Brasil,Cachoeiro de Itapemirim (ES),180,80,Defensor (Lateral Direito),Destro,1
+219,Héctor Carlos Cincunegui de Los Santos,1940-07-28,Falecido - 2016-10-13 (76 anos),Uruguai,Montevideo,1,69,Defensor (Lateral Direito) / Defensor (Lateral Esquerdo),,1
+220,João Crevelin,1944-06-15,Falecido - 2013-11-01 (69 anos),Brasil,,0,0,Meia,Canhoto,1
+221,Carlos Roberto Ferreira Cabral,1945-01-02,,Brasil,"Santos, SP",0,0,Meia,,1
+222,Leocádio Consul,1944-10-05,,Brasil,Mafra (SC),0,0,Meia,,1
+223,Abel Verônico da Silva Filho,1941-10-02,,Brasil,Rio de Janeiro (RJ),0,0,Atacante (Ponta Esquerda),Canhoto,1
