@@ -54,7 +54,7 @@ class OGolScraperRelacional:
         self.eventos_partida_lista = []
 
         # Caminho dos CSVs
-        self.output_dir = "output_csvs"
+        self.output_dir = "novo_bd1971_robusto/output_csvs"
         os.makedirs(self.output_dir, exist_ok=True)
 
         # Caminho do CHECKPOINT
