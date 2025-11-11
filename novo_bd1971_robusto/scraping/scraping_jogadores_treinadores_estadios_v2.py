@@ -181,7 +181,7 @@ class OGolScraperRelacional:
             if not valor:
                 a = div.find("a")
                 if a:
-                    valor = a.get_find("div", class_="text")
+                    valor = a.get_text(strip=True)
                 else:
                     txtdiv = div.find("div", class_="text")
                     if txtdiv:
