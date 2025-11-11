@@ -10,7 +10,16 @@ class OGolScraperRelacional:
     def __init__(self, url_lista):
         self.url_lista = url_lista
         self.base_url = "https://www.ogol.com.br"
-        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+        self.headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Referer": "https://www.google.com/",
+    "DNT": "1",
+    "Upgrade-Insecure-Requests": "1",
+    "Connection": "keep-alive"
+}
+
         self.delay = 30
 
         # Dicionários para IDs únicos
@@ -57,12 +66,32 @@ class OGolScraperRelacional:
     # Funções utilitárias
     # ======================================================
 
-    def _get_soup(self, url):
-        time.sleep(self.delay)
-        print(f"🌐 Acessando: {url}")
-        r = requests.get(url, headers=self.headers)
-        r.raise_for_status()
-        return BeautifulSoup(r.text, "html.parser")
+        def _get_soup(self, url):
+        """Faz a requisição HTTP com tentativas e tratamento de erro 429 (Too Many Requests)."""
+        tentativa = 0
+        max_tentativas = 5
+        delay = self.delay
+
+        while tentativa < max_tentativas:
+            try:
+                print(f"🌐 Acessando: {url}")
+                r = requests.get(url, headers=self.headers)
+                if r.status_code == 429:
+                    tentativa += 1
+                    espera = delay * (tentativa + 1)
+                    print(f"⚠️ Erro 429 (Too Many Requests). Aguardando {espera} segundos antes de tentar novamente...")
+                    time.sleep(espera)
+                    continue
+                r.raise_for_status()
+                return BeautifulSoup(r.text, "html.parser")
+            except requests.exceptions.RequestException as e:
+                tentativa += 1
+                espera = delay * (tentativa + 1)
+                print(f"⚠️ Tentativa {tentativa} falhou ({e}). Aguardando {espera}s e tentando novamente...")
+                time.sleep(espera)
+
+        raise Exception(f"❌ Falha ao acessar {url} após {max_tentativas} tentativas")
+
 
     def _extrair_link(self, celula):
         tag = celula.find("a")
