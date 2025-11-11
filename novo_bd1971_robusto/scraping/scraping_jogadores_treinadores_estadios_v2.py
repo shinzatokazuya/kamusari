@@ -65,7 +65,7 @@ class OGolScraperRelacional:
     # Funções utilitárias
     # ======================================================
 
-        def _get_soup(self, url):
+    def _get_soup(self, url):
         """Faz a requisição HTTP com tentativas e tratamento de erro 429 (Too Many Requests)."""
         tentativa = 0
         max_tentativas = 5
