@@ -619,9 +619,9 @@ class OGolScraperRelacional:
                         # Detecta o tipo de evento
                         if "gol" in title or "fut-11" in classe:
                             tipo_evento = "Gol"
-                        elif "público" in title:
+                        elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
-                        elif "amarel" in title:
+                        elif "amarel" in title or "icn_zerozero yellow" in classe:
                             tipo_evento = "Cartão Amarelo"
                         elif "vermelh" in title:
                             tipo_evento = "Cartão Vermelho"
