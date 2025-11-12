@@ -623,9 +623,9 @@ class OGolScraperRelacional:
                             tipo_evento = "Assistência"
                         elif "amarel" in title or "icn_zerozero yellow" in classe:
                             tipo_evento = "Cartão Amarelo"
-                        elif "vermelh" in title:
+                        elif "vermelh" in title or "icn_zerozero red" in classe:
                             tipo_evento = "Cartão Vermelho"
-                        elif "entrou" in title:
+                        elif "entrou" in title or "icn_zerozero grey" in classe:
                             tipo_evento = "Entrou"
                         elif "substit" in title:
                             tipo_evento = "Substituição"
