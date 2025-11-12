@@ -600,40 +600,40 @@ class OGolScraperRelacional:
 
                 # ---------------- EVENTOS ----------------
                 events_div = player_div.find("div", class_="events")
-                if events_div:
+                if not events_div:
+                    print("⚠ Div 'events' não encontrada.")
+                    continue
+
+                for i, span in enumerate(spans):
+                    tipo_evento = None
+                    minuto = None
+
                     spans = events_div.find_all("span")
                     minuto_tags = events_div.find_all("div")
 
-                    for i, span in enumerate(spans):
-                        tipo_evento = None
-                        minuto = None
+                    # Extrai tipo do atributo title
+                    title = span.get("title", "").strip().lower()
 
-                        campo = spans.get_text(strip=True)
-                        valor = self._valor_depois_do_span(spans)
+                    if "gol" in title:
+                        tipo_evento = "Gol"
+                    elif "amarel" in title:
+                        tipo_evento = "Cartão Amarelo"
+                    elif "vermelh" in title:
+                        tipo_evento = "Cartão Vermelho"
+                    elif "entrou" in title:
+                        tipo_evento = "Entrou"
+                    elif "substit" in title:
+                        tipo_evento = "Substituição"
 
-                        # Extrai tipo do atributo title
-                        title = span.get("title", "").strip().lower()
+                    # Tenta extrair o minuto
+                    if len(minuto_tags) > i:
+                        minuto_texto = minuto_tags[i].get_text(strip=True)
+                        if minuto_texto:
+                            minuto = minuto_texto.replace("'", "").strip()
 
-                        if "gol" in title:
-                            tipo_evento = "Gol"
-                        elif "amarel" in title:
-                            tipo_evento = "Cartão Amarelo"
-                        elif "vermelh" in title:
-                            tipo_evento = "Cartão Vermelho"
-                        elif "entrou" in title:
-                            tipo_evento = "Entrou"
-                        elif "substit" in title:
-                            tipo_evento = "Substituição"
-
-                        # Tenta extrair o minuto
-                        if len(minuto_tags) > i:
-                            minuto_texto = minuto_tags[i].get_text(strip=True)
-                            if minuto_texto:
-                                minuto = minuto_texto.replace("'", "").strip()
-
-                        # Registra somente se houver evento identificado
-                        if tipo_evento:
-                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, minuto)
+                    # Registra somente se houver evento identificado
+                    if tipo_evento:
+                        self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, minuto)
 
 
         # ---------------- RESERVAS ----------------
