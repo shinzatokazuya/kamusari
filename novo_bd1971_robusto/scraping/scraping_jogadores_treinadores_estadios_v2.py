@@ -498,7 +498,7 @@ class OGolScraperRelacional:
     # ======================================================
 
     def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, minuto=None):
-            if jogador_id is None:
+            if not all([partida_id, jogador_id, clube_id]) or not tipo:
                 return
             evento = {
                 'id': self.next_evento_id,
@@ -509,8 +509,10 @@ class OGolScraperRelacional:
                 'minuto': minuto
             }
             print(f"   ➤ Evento '{partida_id}' adicionado.")
-            self.eventos_partida_lista.append(evento)
-            self.next_evento_id += 1
+            # Evitar duplicação
+            if evento not in self.eventos_partida_lista:
+                self.eventos_partida_lista.append(evento)
+                self.next_evento_id += 1
 
     # ======================================================
     # Detalhes da partida
@@ -662,11 +664,29 @@ class OGolScraperRelacional:
     def salvar_csvs(self):
         def append_rows(path, campos, rows):
             existe = os.path.exists(path)
+            registros_existentes = set()
+            if existe:
+                with open(path, "r", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    for r in reader:
+                        # Cria chave única pela combinação de todos os valores
+                        chave = tuple(r[c].strip() for c in campos if c in r)
+                        registros_existentes.add(chave)
+            novas_linhas = []
+            for r in rows:
+                chave = tuple(str(r.get(c, "")).strip() for c in campos)
+                if chave not in registros_existentes:
+                novas_linhas.append(r)
+                registros_existentes.add(chave)
+
+            if not novas_linhas:
+                return
+
             with open(path, "a", newline="", encoding="utf-8") as f:
                 w = csv.DictWriter(f, fieldnames=campos)
                 if not existe:
                     w.writeheader()
-                w.writerows(rows)
+                w.writerows(novas_linhas)
 
         # Entidades: gravar apenas os novos (buffers), depois limpar buffers
         if self._novo_clube:
