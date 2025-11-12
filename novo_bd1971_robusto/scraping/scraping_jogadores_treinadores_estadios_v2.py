@@ -615,7 +615,7 @@ class OGolScraperRelacional:
                         # Extrai tipo do atributo title
                         title = span.get("title", "").strip().lower()
                         classe = " ".join(span.get("class", [])).lower()
-                        texto_icone = span.get_text(stripe=True)
+                        texto_icone = span.get_text(strip=True)
 
                         tipo_gol = None
 
