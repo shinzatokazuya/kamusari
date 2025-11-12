@@ -616,6 +616,8 @@ class OGolScraperRelacional:
 
                     if "gol" in title:
                         tipo_evento = "Gol"
+                    elif "público" in title:
+                        tipo_evento = "Assistência"
                     elif "amarel" in title:
                         tipo_evento = "Cartão Amarelo"
                     elif "vermelh" in title:
