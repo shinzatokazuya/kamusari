@@ -672,6 +672,8 @@ class OGolScraperRelacional:
                             'jogador_id': jogador_id,
                             'clube_id': clube_id,
                             'titular': 0, # É RESERVA
+                            'tipo_evento': tipo_evento,
+                            'tipo_gol': tipo_gol,
                             'posicao_jogada': '',
                             'numero_camisa': numero_camisa
                         })
@@ -694,7 +696,7 @@ class OGolScraperRelacional:
                             'partida_id': partida_id,
                             'treinador_id': treinador_id,
                             'clube_id': clube_id,
-                            'tipo': 'Titular'
+                            'tipo': 1
                         })
 
         return estadio_id
@@ -795,7 +797,7 @@ class OGolScraperRelacional:
 
         if self.treinadores_em_partida_lista:
             path = os.path.join(self.output_dir, "treinadores_em_partida.csv")
-            campos = ['partida_id','treinador_id','clube_id','tipo']
+            campos = ['partida_id','treinador_id','clube_id','titular']
             append_rows(path, campos, self.treinadores_em_partida_lista)
             self.treinadores_em_partida_lista.clear()
             print("💾 treinadores_em_partida.csv atualizado")
@@ -809,7 +811,7 @@ class OGolScraperRelacional:
 
         if self.eventos_partida_lista:
             path = os.path.join(self.output_dir, "eventos_partida.csv")
-            campos = ['id','partida_id','jogador_id','clube_id','tipo_evento', 'tipo_gol', 'minuto']
+            campos = ['id','partida_id','jogador_id','clube_id','titular', 'tipo_evento', 'tipo_gol', 'minuto']
             append_rows(path, campos, self.eventos_partida_lista)
             self.eventos_partida_lista.clear()
             print("💾 eventos_partida.csv atualizado")
