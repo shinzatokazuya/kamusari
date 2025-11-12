@@ -507,7 +507,7 @@ class OGolScraperRelacional:
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
                 'tipo_evento': tipo,
-                'tipo_gol': tipo_gol
+                'tipo_gol': tipo_gol,
                 'minuto': minuto or ''
             }
             print(f"   ➤ Evento '{partida_id}' adicionado.")
