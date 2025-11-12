@@ -599,7 +599,7 @@ class OGolScraperRelacional:
                     for icon in events_div.find_all("span", class_="icn_zerozero"):
                         txt = icon.get_text(strip=True)
                         if txt == "8":
-                            self.registrar_evento(jogador_id, clube_id, "Gol")
+                            self.registrar_evento(jogador_id, clube_id, "Substituido")
                         elif txt == "4":
                             self.registrar_evento(jogador_id, clube_id, "Amarelo")
                         elif txt == "5":
