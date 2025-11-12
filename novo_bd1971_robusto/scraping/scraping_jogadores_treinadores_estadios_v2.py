@@ -703,8 +703,8 @@ class OGolScraperRelacional:
             for r in rows:
                 chave = tuple(str(r.get(c, "")).strip() for c in campos)
                 if chave not in registros_existentes:
-                novas_linhas.append(r)
-                registros_existentes.add(chave)
+                    novas_linhas.append(r)
+                    registros_existentes.add(chave)
 
             if not novas_linhas:
                 return
