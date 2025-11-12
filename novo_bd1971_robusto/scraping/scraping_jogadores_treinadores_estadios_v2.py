@@ -604,7 +604,7 @@ class OGolScraperRelacional:
                     print("⚠ Div 'events' não encontrada.")
                     continue
 
-                for span in events_div.find_all("span"):
+                for span in events_div.find_all("span", class_=""):
                     tipo_evento = None
                     minuto = None
 
