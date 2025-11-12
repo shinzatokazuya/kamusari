@@ -627,7 +627,7 @@ class OGolScraperRelacional:
                             tipo_evento = "Cartão Vermelho"
                         elif "entrou" in title or "icn_zerozero grey" in classe:
                             tipo_evento = "Entrou"
-                        elif "substit" in title:
+                        elif "icn_zerozero grey" in classe or "8" in texto_icone:
                             tipo_evento = "Substituição"
 
                         # Tenta extrair o minuto
