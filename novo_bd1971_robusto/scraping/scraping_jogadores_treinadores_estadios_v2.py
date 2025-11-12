@@ -497,7 +497,8 @@ class OGolScraperRelacional:
     # Eventos
     # ======================================================
 
-    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto=None):
+    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol=None, minuto=None):
+            """Registra evento evitando duplicação exata, mas permitindo múltiplos eventos por jogador"""
             if not all([partida_id, jogador_id, clube_id, tipo_evento]):
                 return
 
@@ -507,16 +508,18 @@ class OGolScraperRelacional:
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
                 'tipo_evento': tipo_evento,
-                'tipo_gol': tipo_gol,
+                'tipo_gol': tipo_gol or '',
                 'minuto': minuto or ''
             }
-            print(f"   ➤ Evento '{partida_id}' adicionado.")
+            print(f"   ➤ Evento '{tipo_evento}' adicionado.")
 
-            # Evitar duplicação
+            # Chave única por partida - permite repetições em minutos diferentes
             chave = (partida_id, jogador_id, tipo_evento, tipo_gol, minuto)
+
             if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
+                print(f"   ➤ Evento '{tipo_evento}' registrado (Partida {partida_id}, Jogador {jogador_id}, Minuto {minuto})")
 
     # ======================================================
     # Detalhes da partida
@@ -528,33 +531,38 @@ class OGolScraperRelacional:
             return None
 
         print(f"📋 Processando detalhes da partida: {url_partida}")
-        soup = self._get_soup(url_partida)
+        try:
+            soup = self._get_soup(url_partida)
+        except Exception as e:
+            print(f"❌ Falha ao acessar partida ({url_partida}): {e}")
+            return
 
         estadio_id = None
         arbitro_id = None
 
-        # 1. Buscar informações do estádio e arbitro
+        # ---------- Estádio e Árbitro ----------
         header = soup.find("div", class_="header")
         if header:
             for a_tag in header.find_all("a", href=True):
                 link = urljoin(self.base_url, a_tag["href"])
                 if "estadio" in link.lower():
-                    estadio_id = self.processar_estadio(link)
+                    try:
+                        estadio_id = self.processar_estadio(link)
+                    except Exception as e:
+                        print(f"⚠️ Erro ao processar estádio ({link}): {e}")
                 elif "arbitro" in link.lower():
-                    arbitro_id = self.processar_arbitro(link)
+                    try:
+                        arbitro_id = self.processar_arbitro(link)
+                    except Exception as e:
+                        print(f"⚠️ Erro ao processar árbitro ({link}): {e}")
 
-        if arbitro_id:
-            self.arbitros_em_partida_lista.append({
-                'partida_id': partida_id,
-                'arbitro_id': arbitro_id
-            })
-        else:
-            self.arbitros_em_partida_lista.append({
-                'partida_id': partida_id,
-                'arbitro_id': None
-            })
+        # Sempre registrar arbitro (mesmo None)
+        self.arbitros_em_partida_lista.append({
+            'partida_id': partida_id,
+            'arbitro_id': arbitro_id or None
+        })
 
-        # 2. Buscar o container principal da partida
+        # ---------- Container principal ----------
         box_container = soup.find("div", id="game_report")
         if not box_container:
             print("⚠️ Div 'game_report' não encontrada")
@@ -585,8 +593,10 @@ class OGolScraperRelacional:
                 if not link_tag:
                     continue
 
-                jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
-                if not jogador_id:
+                try:
+                    jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
+                except Exception as e:
+                    print(f"⚠️ Erro ao processar jogador titular ({link_tag['href']}): {e}")
                     continue
 
                 # Número da camisa (Quando existir)
@@ -611,18 +621,15 @@ class OGolScraperRelacional:
                     continue
                 else:
                     spans = events_div.find_all("span")
-                    minuto_tags = events_div.find_all("div")
+                    minutos = events_div.find_all("div")
 
                     for i, span in enumerate(spans):
-                        tipo_evento = None
-                        minuto = None
+                        tipo_evento, tipo_gol, minuto = None, None, None
 
                         # Extrai tipo do atributo title
                         title = span.get("title", "").strip().lower()
                         classe = " ".join(span.get("class", [])).lower()
                         texto_icone = span.get_text(strip=True)
-
-                        tipo_gol = None
 
                         # Detecta o tipo de evento
                         if "gol" in title or "fut-11" in classe:
@@ -635,16 +642,14 @@ class OGolScraperRelacional:
                             tipo_evento = "Cartão Amarelo"
                         elif "vermelh" in title or "icn_zerozero red" in classe:
                             tipo_evento = "Cartão Vermelho"
-                        elif "icn_zerozero grey" in classe or texto_icone == "8":
-                            tipo_evento = "Substituição"
                         elif "entrou" in title or texto_icone == "7":
                             tipo_evento = "Entrou"
+                        elif texto_icone == "8":
+                            tipo_evento = "Substituição"
 
                         # Tenta extrair o minuto
-                        if len(minuto_tags) > i:
-                            minuto_texto = minuto_tags[i].get_text(strip=True)
-                            if minuto_texto:
-                                minuto = minuto_texto.replace("'", "").strip()
+                        if len(minutos) > i:
+                            minuto = minutos[i].get_text(strip=True).replace("'", "")
 
                         # Registra somente se houver evento identificado
                         if tipo_evento:
@@ -663,29 +668,57 @@ class OGolScraperRelacional:
                     link_tag = player_div.find("a", href=lambda x: x and "/jogador/" in x)
                     if not link_tag:
                         continue
+                    try:
+                        jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
+                    except Exception as e:
+                        print(f"⚠️ Erro ao processar reserva ({link_tag['href']}): {e}")
+                        continue
 
-                    jogador_id = self.processar_jogador(urljoin(self.base_url, link_tag["href"]))
-
-                    if jogador_id:
-                        self.jogadores_em_partida_lista.append({
+                    self.jogadores_em_partida_lista.append({
                             'partida_id': partida_id,
                             'jogador_id': jogador_id,
                             'clube_id': clube_id,
                             'titular': 0, # É RESERVA
                             'posicao_jogada': '',
                             'numero_camisa': numero_camisa
-                        })
+                    })
 
-                        events_div = player_div.find("div", class_="events")
-                        if events_div and events_div.find("span", title="Entrou"):
-                            self.registrar_evento(
-                                partida_id=partida_id,
-                                jogador_id=jogador_id,
-                                clube_id=clube_id,
-                                tipo_evento=tipo_evento,
-                                tipo_gol=tipo_gol,
-                                minuto=minuto
-                            )
+                    events_div = player_div.find("div", class_="events")
+                    if events_div:
+                        spans = events_div.find_all("span")
+                        minutos = events_div.find_all("div")
+
+                        for i, span in enumerate(spans):
+                            tipo_evento, tipo_gol, minuto = None, None, None
+
+                            # Extrai tipo do atributo title
+                            title = span.get("title", "").strip().lower()
+                            classe = " ".join(span.get("class", [])).lower()
+                            texto_icone = span.get_text(strip=True)
+
+                            # Detecta o tipo de evento
+                            if "gol" in title or "fut-11" in classe:
+                                tipo_evento = "Gol"
+                                if "(pen.)" in texto_icone:
+                                    tipo_gol = "Penalti"
+                            elif "público" in title or "icn_zerozero2 grey" in classe:
+                                tipo_evento = "Assistência"
+                            elif "amarel" in title or "icn_zerozero yellow" in classe:
+                                tipo_evento = "Cartão Amarelo"
+                            elif "vermelh" in title or "icn_zerozero red" in classe:
+                                tipo_evento = "Cartão Vermelho"
+                            elif "entrou" in title or texto_icone == "7":
+                                tipo_evento = "Entrou"
+                            elif texto_icone == "8":
+                                tipo_evento = "Substituição"
+
+                            # Tenta extrair o minuto
+                            if len(minutos) > i:
+                                minuto = minutos[i].get_text(strip=True).replace("'", "")
+
+                            # Registra somente se houver evento identificado
+                            if tipo_evento:
+                                self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
 
         # ---------------- TREINADORES ----------------
         if len(rows) > 2:
@@ -696,14 +729,21 @@ class OGolScraperRelacional:
                 clube_id = mandante_id if idx == 0 else visitante_id
                 link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
                 if link_tag:
-                    treinador_id = self.processar_treinador(urljoin(self.base_url, link_tag["href"]))
-                    if treinador_id:
-                        self.treinadores_em_partida_lista.append({
-                            'partida_id': partida_id,
-                            'treinador_id': treinador_id,
-                            'clube_id': clube_id,
-                            'titular': 1
-                        })
+                    try:
+                        treinador_id = self.processar_treinador(urljoin(self.base_url, link_tag["href"]))
+                    except Exception as e:
+                        print(f"⚠️ Erro ao processar treinador ({link_tag['href']}): {e}")
+                        treinador_id = None
+                else:
+                    print(f"⚠️ Nenhum treinador encontrado para clube_id {clube_id}")
+                    treinador_id = None
+
+                self.treinadores_em_partida_lista.append({
+                    'partida_id': partida_id,
+                    'treinador_id': treinador_id,
+                    'clube_id': clube_id,
+                    'titular': 1 if treinador_id else 0
+                })
 
         return estadio_id
 
