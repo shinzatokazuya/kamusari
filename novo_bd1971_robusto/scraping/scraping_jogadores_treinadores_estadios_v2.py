@@ -497,7 +497,7 @@ class OGolScraperRelacional:
     # Eventos
     # ======================================================
 
-    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, tipo_gol, minuto=None):
+    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto=None):
             if not all([partida_id, jogador_id, clube_id, tipo]):
                 return
 
@@ -506,14 +506,14 @@ class OGolScraperRelacional:
                 'partida_id': partida_id,
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
-                'tipo_evento': tipo,
+                'tipo_evento': tipo_evento,
                 'tipo_gol': tipo_gol,
                 'minuto': minuto or ''
             }
             print(f"   ➤ Evento '{partida_id}' adicionado.")
 
             # Evitar duplicação
-            chave = (partida_id, jogador_id, tipo, tipo_gol, minuto)
+            chave = (partida_id, jogador_id, tipo_evento, tipo_gol, minuto)
             if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
@@ -682,7 +682,7 @@ class OGolScraperRelacional:
                                 partida_id=partida_id,
                                 jogador_id=jogador_id,
                                 clube_id=clube_id,
-                                tipo=tipo_evento,
+                                tipo_evento=tipo_evento,
                                 tipo_gol=tipo_gol,
                                 minuto=minuto
                             )
