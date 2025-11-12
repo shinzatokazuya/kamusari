@@ -497,7 +497,7 @@ class OGolScraperRelacional:
     # Eventos
     # ======================================================
 
-    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, minuto=None):
+    def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, tipo_gol, minuto=None):
             if not all([partida_id, jogador_id, clube_id, tipo]):
                 return
 
@@ -507,13 +507,14 @@ class OGolScraperRelacional:
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
                 'tipo_evento': tipo,
+                'tipo_gol': tipo_gol
                 'minuto': minuto or ''
             }
             print(f"   ➤ Evento '{partida_id}' adicionado.")
 
             # Evitar duplicação
-            chave = (partida_id, jogador_id, tipo, minuto)
-            if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['minuto']) for e in self.eventos_partida_lista}:
+            chave = (partida_id, jogador_id, tipo, tipo_gol, minuto)
+            if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
 
@@ -621,7 +622,8 @@ class OGolScraperRelacional:
                         # Detecta o tipo de evento
                         if "gol" in title or "fut-11" in classe:
                             tipo_evento = "Gol"
-                            if "(pen.)
+                            if "(pen.)" in texto_icone:
+                                tipo_gol = "Penalti"
                         elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
                         elif "amarel" in title or "icn_zerozero yellow" in classe:
@@ -641,7 +643,7 @@ class OGolScraperRelacional:
 
                         # Registra somente se houver evento identificado
                         if tipo_evento:
-                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, minuto)
+                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
 
 
         # ---------------- RESERVAS ----------------
@@ -802,7 +804,7 @@ class OGolScraperRelacional:
 
         if self.eventos_partida_lista:
             path = os.path.join(self.output_dir, "eventos_partida.csv")
-            campos = ['id','partida_id','jogador_id','clube_id','tipo_evento','minuto']
+            campos = ['id','partida_id','jogador_id','clube_id','tipo_evento', 'tipo_gol', 'minuto']
             append_rows(path, campos, self.eventos_partida_lista)
             self.eventos_partida_lista.clear()
             print("💾 eventos_partida.csv atualizado")
