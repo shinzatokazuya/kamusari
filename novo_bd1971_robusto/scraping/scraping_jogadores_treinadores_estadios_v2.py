@@ -598,16 +598,27 @@ class OGolScraperRelacional:
                 # ---------------- EVENTOS ----------------
                 events_div = player_div.find("div", class_="events")
                 if events_div:
-                    for icon in events_div.find_all("span", class_="icn_zerozero"):
-                        txt = icon.get_text(strip=True)
-                        if txt == "8":
-                            self.registrar_evento(jogador_id, clube_id, "Substituido")
-                        elif txt == "4":
-                            self.registrar_evento(jogador_id, clube_id, "Amarelo")
-                        elif txt == "5":
-                            self.registrar_evento(jogador_id, clube_id, "Vermelho")
-                        elif txt == "7":
-                            self.registrar_evento(jogador_id, clube_id, "Substituição")
+                    spans = events_div.find_all("span")
+                    minuto_tags = events_div.find_all("div")
+
+                    for i, span in enumerate(spans):
+                        tipo_evento = None
+                        minuto = None
+
+                        # Extrai tipo do atributo title
+                        title = span.get("title", "").strip().lower()
+
+                        if "gol" in title:
+                            tipo_evento = "Gol"
+                        elif "amarel" in title:
+                            tipo_evento = "Cartão Amarelo"
+                        elif "vermelh" in title:
+                            tipo_evento = "Cartão Vermelho"
+                        elif "entrou" in title:
+                            tipo_evento = "Entrou"
+                        elif "substit" in title:
+                            tipo_evento = "Substituição"
+
 
         # ---------------- RESERVAS ----------------
         if len(rows) > 1:
