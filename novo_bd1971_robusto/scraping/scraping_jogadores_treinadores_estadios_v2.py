@@ -498,19 +498,22 @@ class OGolScraperRelacional:
     # ======================================================
 
     def registrar_evento(self, partida_id, jogador_id, clube_id, tipo, minuto=None):
-            if not all([partida_id, jogador_id, clube_id]) or not tipo:
+            if not all([partida_id, jogador_id, clube_id, tipo]):
                 return
+
             evento = {
                 'id': self.next_evento_id,
                 'partida_id': partida_id,
                 'jogador_id': jogador_id,
                 'clube_id': clube_id,
                 'tipo_evento': tipo,
-                'minuto': minuto
+                'minuto': minuto or ''
             }
             print(f"   ➤ Evento '{partida_id}' adicionado.")
+
             # Evitar duplicação
-            if evento not in self.eventos_partida_lista:
+            chave = (partida_id, jogador_id, tipo, minuto)
+            if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['minuto']) for e in self.eventos_partida_lista}:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
 
@@ -618,6 +621,16 @@ class OGolScraperRelacional:
                             tipo_evento = "Entrou"
                         elif "substit" in title:
                             tipo_evento = "Substituição"
+
+                        # Tenta extrair o minuto
+                        if len(minuto_tags) > i:
+                            minuto_texto = minuto_tags[i].get_text(strip=True)
+                            if minuto_texto:
+                                minuto = minuto_texto.replace("'", "").strip()
+
+                        # Registra somente se houver evento identificado
+                        if tipo_evento:
+                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, minuto)
 
 
         # ---------------- RESERVAS ----------------
