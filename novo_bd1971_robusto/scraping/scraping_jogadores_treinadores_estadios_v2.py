@@ -616,9 +616,12 @@ class OGolScraperRelacional:
                         classe = " ".join(span.get("class", [])).lower()
                         texto_icone = span.get_text(stripe=True)
 
+                        tipo_gol = None
+
                         # Detecta o tipo de evento
                         if "gol" in title or "fut-11" in classe:
                             tipo_evento = "Gol"
+                            if
                         elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
                         elif "amarel" in title or "icn_zerozero yellow" in classe:
@@ -627,7 +630,7 @@ class OGolScraperRelacional:
                             tipo_evento = "Cartão Vermelho"
                         elif "entrou" in title or "icn_zerozero grey" in classe:
                             tipo_evento = "Entrou"
-                        elif "icn_zerozero grey" in classe or "8" in texto_icone:
+                        elif "icn_zerozero grey" in classe or texto_icone == "8":
                             tipo_evento = "Substituição"
 
                         # Tenta extrair o minuto
