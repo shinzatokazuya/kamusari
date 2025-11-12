@@ -548,6 +548,11 @@ class OGolScraperRelacional:
                 'partida_id': partida_id,
                 'arbitro_id': arbitro_id
             })
+        else:
+            self.arbitros_em_partida_lista.append({
+                'partida_id': partida_id,
+                'arbitro_id': None
+            })
 
         # 2. Buscar o container principal da partida
         box_container = soup.find("div", id="game_report")
