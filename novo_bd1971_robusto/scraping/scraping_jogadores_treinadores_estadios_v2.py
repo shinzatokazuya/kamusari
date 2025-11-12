@@ -635,10 +635,10 @@ class OGolScraperRelacional:
                             tipo_evento = "Cartão Amarelo"
                         elif "vermelh" in title or "icn_zerozero red" in classe:
                             tipo_evento = "Cartão Vermelho"
-                        elif "entrou" in title or "icn_zerozero grey" in classe:
-                            tipo_evento = "Entrou"
                         elif "icn_zerozero grey" in classe or texto_icone == "8":
                             tipo_evento = "Substituição"
+                        elif "entrou" in title or texto_icone == "7":
+                            tipo_evento = "Entrou"
 
                         # Tenta extrair o minuto
                         if len(minuto_tags) > i:
@@ -682,7 +682,7 @@ class OGolScraperRelacional:
                                 partida_id=partida_id,
                                 jogador_id=jogador_id,
                                 clube_id=clube_id,
-                                tipo_evento="Entrou",
+                                tipo_evento=tipo_evento,
                                 tipo_gol=tipo_gol,
                                 minuto=minuto
                             )
