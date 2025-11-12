@@ -682,7 +682,7 @@ class OGolScraperRelacional:
                                 partida_id=partida_id,
                                 jogador_id=jogador_id,
                                 clube_id=clube_id,
-                                tipo_evento=tipo_evento,
+                                tipo=tipo_evento,
                                 tipo_gol=tipo_gol,
                                 minuto=minuto
                             )
