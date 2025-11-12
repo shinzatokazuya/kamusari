@@ -498,7 +498,7 @@ class OGolScraperRelacional:
     # ======================================================
 
     def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto=None):
-            if not all([partida_id, jogador_id, clube_id, tipo]):
+            if not all([partida_id, jogador_id, clube_id, tipo_evento]):
                 return
 
             evento = {
