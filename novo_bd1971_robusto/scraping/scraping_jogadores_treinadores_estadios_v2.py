@@ -672,14 +672,19 @@ class OGolScraperRelacional:
                             'jogador_id': jogador_id,
                             'clube_id': clube_id,
                             'titular': 0, # É RESERVA
-                            'tipo_evento': tipo_evento,
-                            'tipo_gol': tipo_gol,
                             'posicao_jogada': '',
                             'numero_camisa': numero_camisa
                         })
                         events_div = player_div.find("div", class_="events")
                         if events_div and events_div.find("span", title="Entrou"):
-                            self.registrar_evento(jogador_id, clube_id, "Entrou")
+                            self.registrar_evento(
+                                partida_id=partida_id,
+                                jogador_id=jogador_id,
+                                clube_id=clube_id,
+                                tipo_evento="Entrou",
+                                tipo_gol=tipo_gol,
+                                minuto=minuto
+                            )
 
         # ---------------- TREINADORES ----------------
         if len(rows) > 2:
