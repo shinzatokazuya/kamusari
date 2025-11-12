@@ -702,7 +702,7 @@ class OGolScraperRelacional:
                             'partida_id': partida_id,
                             'treinador_id': treinador_id,
                             'clube_id': clube_id,
-                            'tipo': 1
+                            'titular': 1
                         })
 
         return estadio_id
