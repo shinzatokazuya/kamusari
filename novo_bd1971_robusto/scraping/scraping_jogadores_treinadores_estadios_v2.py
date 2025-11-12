@@ -608,6 +608,9 @@ class OGolScraperRelacional:
                         tipo_evento = None
                         minuto = None
 
+                        campo = spans.get_text(strip=True)
+                        valor = self._valor_depois_do_span(spans)
+
                         # Extrai tipo do atributo title
                         title = span.get("title", "").strip().lower()
 
