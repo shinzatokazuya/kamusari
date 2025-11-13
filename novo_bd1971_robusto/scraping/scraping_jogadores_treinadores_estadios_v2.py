@@ -503,7 +503,7 @@ class OGolScraperRelacional:
 
     def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol=None, minuto=None):
             """Registra evento evitando duplicação exata, mas permitindo múltiplos eventos por jogador"""
-            if not all([partida_id, jogador_id, clube_id, tipo_evento]):
+            if not all([partida_id is not None, jogador_id is not None, clube_id is not None, tipo_evento]):
                 return
 
             evento = {
