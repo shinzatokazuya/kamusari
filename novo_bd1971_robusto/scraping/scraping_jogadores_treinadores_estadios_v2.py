@@ -499,7 +499,26 @@ class OGolScraperRelacional:
 
     def registrar_evento(self, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol=None, minuto=None):
             """Registra evento evitando duplicação exata, mas permitindo múltiplos eventos por jogador"""
-            if not all([partida_id, jogador_id, clube_id, tipo_evento]):
+            """Extrai e registra múltiplos eventos de um jogador (gols, cartões, substituições etc.)"""
+            eventos = []
+            icones = eventos_div.find_all("span")
+
+            for icone in icones:
+                title = icone.get("title", "").strip()
+                classe = " ".join(icone.get("class", []))
+                tempo_div = icone.find_next_sibling("div")
+                tempos_raw = tempo_div.get_text(" ", strip=True) if tempo_div else ""
+                tempos = re.findall(r"\d+'\+?\d*'?\s*\(?[a-z.]*\)?", tempos_raw)
+
+                for tempo in tempos:
+                    tempo = tempo.replace("'", "").strip()
+                    tipo = ""
+                    descricao = ""
+
+                    # GOLS
+                    
+
+            """if not all([partida_id, jogador_id, clube_id, tipo_evento]):
                 return
 
             evento = {
@@ -519,7 +538,7 @@ class OGolScraperRelacional:
             if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
-                print(f"   ➤ Evento '{tipo_evento}' registrado (Partida {partida_id}, Jogador {jogador_id}, Minuto {minuto})")
+                print(f"   ➤ Evento '{tipo_evento}' registrado (Partida {partida_id}, Jogador {jogador_id}, Minuto {minuto})")"""
 
     # ======================================================
     # Detalhes da partida
