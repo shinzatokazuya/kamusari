@@ -518,12 +518,15 @@ class OGolScraperRelacional:
             print(f"   ➤ Evento '{tipo_evento}' adicionado.")
 
             # Chave única por partida - permite repetições em minutos diferentes
-            chave = (partida_id, jogador_id, tipo_evento, tipo_gol, minuto)
+            chave = (partida_id, jogador_id, tipo_evento, tipo_gol or '', minuto or '')
+            existing_keys = {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}
 
-            if chave not in {(e['partida_id'], e['jogador_id'], e['tipo_evento'], e['tipo_gol'], e['minuto']) for e in self.eventos_partida_lista}:
+            if chave not in existing_keys:
                 self.eventos_partida_lista.append(evento)
                 self.next_evento_id += 1
-                print(f"   ➤ Evento '{tipo_evento}' registrado (Partida {partida_id}, Jogador {jogador_id}, Minuto {minuto})")
+                print(f"   ➤ Evento '{tipo_evento}' registrado (Partida {partida_id}, Jogador {jogador_id}, Minuto {minuto}, TipoGol {tipo_gol})")
+            else:
+                print(f"   ➤ Evento duplicado ignorado: {chave}")
 
     # ======================================================
     # Detalhes da partida
