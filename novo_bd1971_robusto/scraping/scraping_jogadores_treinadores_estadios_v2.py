@@ -648,7 +648,7 @@ class OGolScraperRelacional:
                             tipo_evento = "Cartão Amarelo"
                         elif texto_icone == "S":
                             tipo_evento = "Segundo Amarelo"
-                        elif "vermelh" in title or "icn_zerozero red" in classe:
+                        elif texto_icone == "R" and "icn_zerozero red" in classe:
                             tipo_evento = "Cartão Vermelho"
                         elif "entrou" in title or texto_icone == "7":
                             tipo_evento = "Entrou"
