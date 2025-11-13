@@ -644,7 +644,7 @@ class OGolScraperRelacional:
                                 tipo_gol = "Normal"
                         elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
-                        elif "amarel" in title or "icn_zerozero yellow" in classe:
+                        elif ("amarel" in title or "icn_zerozero yellow" in classe) and texto_icone == "R":
                             tipo_evento = "Cartão Amarelo"
                         elif texto_icone == "S":
                             tipo_evento = "Segundo Amarelo"
