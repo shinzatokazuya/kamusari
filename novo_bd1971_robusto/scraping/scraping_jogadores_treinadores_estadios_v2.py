@@ -635,15 +635,13 @@ class OGolScraperRelacional:
                         classe = " ".join(span.get("class", [])).lower()
                         texto_icone = span.get_text(strip=True)
 
-                        tempo_div = span.find_next_sibling("div")
-                        tempos_raw = tempo_div.get_text(" ", strip=True) if tempo_div else ""
-                        tempos = re.findall(r"\d+'\+?\d*'?\s*\(?[a-z.]*\)?", tempos_raw)
-
                         # Detecta o tipo de evento
                         if "gol" in title or "fut-11" in classe:
                             tipo_evento = "Gol"
                             if "(pen.)" in texto_icone:
                                 tipo_gol = "Penalti"
+                            elif "(g.c.)" in texto_icone:
+                                tipo_gol = "Gol Contra"
                         elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
                         elif "amarel" in title or "icn_zerozero yellow" in classe:
@@ -709,6 +707,8 @@ class OGolScraperRelacional:
                                 tipo_evento = "Gol"
                                 if "(pen.)" in texto_icone:
                                     tipo_gol = "Penalti"
+                                elif "(g.c.)" in texto_icone:
+                                    tipo_gol = "Gol Contra"
                             elif "público" in title or "icn_zerozero2 grey" in classe:
                                 tipo_evento = "Assistência"
                             elif "amarel" in title or "icn_zerozero yellow" in classe:
