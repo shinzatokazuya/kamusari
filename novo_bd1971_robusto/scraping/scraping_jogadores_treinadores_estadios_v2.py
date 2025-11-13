@@ -644,6 +644,8 @@ class OGolScraperRelacional:
                                 tipo_gol = "Penalti"
                             elif "(g.c.)" in texto_icone:
                                 tipo_gol = "Gol Contra"
+                            else:
+                                tipo_gol = "Normal"
                         elif "público" in title or "icn_zerozero2 grey" in classe:
                             tipo_evento = "Assistência"
                         elif "amarel" in title or "icn_zerozero yellow" in classe:
@@ -711,6 +713,8 @@ class OGolScraperRelacional:
                                     tipo_gol = "Penalti"
                                 elif "(g.c.)" in texto_icone:
                                     tipo_gol = "Gol Contra"
+                                else:
+                                    tipo_gol = "Normal"
                             elif "público" in title or "icn_zerozero2 grey" in classe:
                                 tipo_evento = "Assistência"
                             elif "amarel" in title or "icn_zerozero yellow" in classe:
