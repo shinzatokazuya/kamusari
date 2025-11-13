@@ -861,7 +861,7 @@ class OGolScraperRelacional:
 
         if self.eventos_partida_lista:
             path = os.path.join(self.output_dir, "eventos_partida.csv")
-            campos = ['id','partida_id','jogador_id','clube_id','titular', 'tipo_evento', 'tipo_gol', 'minuto']
+            campos = ['id','partida_id','jogador_id','clube_id', 'tipo_evento', 'tipo_gol', 'minuto']
             append_rows(path, campos, self.eventos_partida_lista)
             self.eventos_partida_lista.clear()
             print("💾 eventos_partida.csv atualizado")
