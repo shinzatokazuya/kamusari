@@ -516,7 +516,20 @@ class OGolScraperRelacional:
                     descricao = ""
 
                     # GOLS
-                    
+                    if "Gols" in title:
+                        tipo = "Gol"
+                        if "(pen" in tempo:
+                            descricao = "penalti"
+                            tempo = tempo.replace("(pen.)", "").strip()
+                        elif "(g.c." in tempo:
+                            descricao = "Gol Contra"
+                            tempo = tempo.replace("(g.c.)", "").strip()
+                        else:
+                            descricao = "Normal"
+                    # Cartões
+                    elif "Amarelos" in title:
+                        tipo = "Cartão Amarelo"
+                        
 
             """if not all([partida_id, jogador_id, clube_id, tipo_evento]):
                 return
