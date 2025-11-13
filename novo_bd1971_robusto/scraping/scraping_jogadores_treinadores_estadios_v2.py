@@ -627,42 +627,86 @@ class OGolScraperRelacional:
                     print("⚠ Div 'events' não encontrada.")
                     continue
                 else:
-                    spans = events_div.find_all("span")
-                    minutos = events_div.find_all("div")
+                    # Vamos iterar sobre os filhos: span (icone) seguido possivelmente por um ou mais div com tempos/texto
+                    children = [c for c in events_div.children if (not isinstance(c, str)) and (c)]
+                    i = 0
+                    while i < len(children):
+                        node = children[i]
+                        # se for span -> evento
+                        if node.name == "span":
+                            span = node
+                            title = span.get("title", "").strip().lower()
+                            classe = " ".join(span.get("class", [])).lower()
+                            texto_icone = span.get_text(strip=True)
 
-                    for i, span in enumerate(spans):
-                        tipo_evento, tipo_gol, minuto = None, None, None
+                            tipo_evento = None
+                            tipo_gol = None
 
-                        # Extrai tipo do atributo title
-                        title = span.get("title", "").strip().lower()
-                        classe = " ".join(span.get("class", [])).lower()
-                        texto_icone = span.get_text(strip=True)
+                            # identificar tipo do ícone/span
+                            if "gol" in title or "fut-11" in classe:
+                                tipo_evento = "Gol"
+                                # verificar no próximo(s) textos se aparece "(pen.)" ou "(g.c.)"
+                                # Observação: às vezes o texto com (pen.) aparece na mesma div de minuto, tratamos adiante
+                            elif "público" in title or "icn_zerozero2 grey" in classe:
+                                tipo_evento = "Assistência"
+                            elif "amarel" in title or "icn_zerozero yellow" in classe:
+                                tipo_evento = "Cartão Amarelo"
+                            elif "vermelh" in title or "icn_zerozero red" in classe:
+                                tipo_evento = "Cartão Vermelho"
+                            elif "entrou" in title or texto_icone == "7":
+                                tipo_evento = "Entrou"
+                            elif texto_icone == "8":
+                                # 8 costuma representar substituição
+                                tipo_evento = "Substituição"
+                            else:
+                                # caso não saiba, pula
+                                tipo_evento = None
 
-                        # Detecta o tipo de evento
-                        if "gol" in title or "fut-11" in classe:
-                            tipo_evento = "Gol"
-                            if "(pen.)" in texto_icone:
-                                tipo_gol = "Penalti"
-                            elif "(g.c.)" in texto_icone:
-                                tipo_gol = "Gol Contra"
-                        elif "público" in title or "icn_zerozero2 grey" in classe:
-                            tipo_evento = "Assistência"
-                        elif "amarel" in title or "icn_zerozero yellow" in classe:
-                            tipo_evento = "Cartão Amarelo"
-                        elif "vermelh" in title or "icn_zerozero red" in classe:
-                            tipo_evento = "Cartão Vermelho"
-                        elif "entrou" in title or texto_icone == "7":
-                            tipo_evento = "Entrou"
-                        elif texto_icone == "8":
-                            tipo_evento = "Substituição"
+                            # procurar o(s) div(s) seguintes que contenham minutos/texto
+                            minutos_texto = ""
+                            j = i + 1
+                            while j < len(children) and children[j].name == "div":
+                                minutos_texto += " " + children[j].get_text(" ", strip=True)
+                                j += 1
 
-                        # Tenta extrair o minuto
-                        if len(minutos) > i:
-                            minuto = minutos[i].get_text(strip=True).replace("'", "")
+                            minutos_texto = minutos_texto.strip()
 
-                        # Registra somente se houver evento identificado
-                        if tipo_evento:
-                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
+                            # se for gol, detectar (pen.) ou (g.c.) no minutos_texto
+                            if tipo_evento == "Gol":
+                                if "(pen.)" in minutos_texto.lower() or "(pen.)" in texto_icone.lower():
+                                    tipo_gol = "Penalti"
+                                elif "(g.c.)" in minutos_texto.lower() or "(g.c.)" in texto_icone.lower():
+                                    tipo_gol = "Gol Contra"
+                                else:
+                                    tipo_gol = ""
+
+                    # extrair múltiplos tempos — regex robusta:
+                    # exemplos que queremos pegar: "35' (pen.)48' 67' ", "45+3'", "70", "45' 60'"
+                    # usamos regex para capturar padrões de minuto, incluindo "45+2", "45+3"
+                    if minutos_texto:
+                        # substitui apostrofos por espaços para normalizar e procurar padrões
+                        # vamos procurar por padrões como 45+2, 45, 85, etc
+                        tempos = re.findall(r"(\d+\+?\d*)'", minutos_texto)
+                        if not tempos:
+                            # às vezes o site coloca sem apóstrofo: "67 " ou "67' " — tentamos pegar números isolados
+                            tempos = re.findall(r"(\d+\+?\d*)", minutos_texto)
+                        # se tempos vazios e tipo_evento identificado (ex: assistência sem minuto visível), gravar um evento sem minuto
+                        if tempos:
+                            for t in tempos:
+                                t_clean = t.replace("'", "").strip()
+                                self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, t_clean)
+                        else:
+                            # registra sem minuto explícito
+                            self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, None)
+                    else:
+                        # sem div de minuto, registra sem minuto (algumas vezes o ícone aparece sozinho)
+                        self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, None)
+
+                    # avançar i até j (pular as divs de minuto que já consumimos)
+                    i = j
+                else:
+                    # se não for span (pode ser div vazio), apenas avança
+                    i += 1
 
 
         # ---------------- RESERVAS ----------------
