@@ -793,7 +793,7 @@ class OGolScraperRelacional:
                                     elif "(g.c.)" in minutos_texto.lower() or "(g.c.)" in texto_icone.lower():
                                         tipo_gol = "Gol Contra"
                                     else:
-                                        tipo_gol = ""
+                                        tipo_gol = "Normal"
 
                                 # extrair múltiplos tempos — regex robusta:
                                 # exemplos que queremos pegar: "35' (pen.)48' 67' ", "45+3'", "70", "45' 60'"
