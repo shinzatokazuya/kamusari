@@ -60,9 +60,9 @@ class OGolScraperRelacional:
         # Caminho do CHECKPOINT
         self.checkpoint_path = os.path.join(self.output_dir, "checkpoint.txt")
 
-        # Carrega dados e sincroniza IDs existentes
+        """# Carrega dados e sincroniza IDs existentes
         self._carregar_existentes()
-        self._sincronizar_ids_existentes()
+        self._sincronizar_ids_existentes()"""
 
 
     # ======================================================
