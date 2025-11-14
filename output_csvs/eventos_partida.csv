@@ -339,7 +339,7 @@ id,partida_id,jogador_id,clube_id,titular,tipo_evento,tipo_gol,minuto
 338,47,199,16,,Entrou,,n/d
 339,48,289,9,,Substituição,,n/d
 340,48,107,9,,Substituição,,n/d
-341,48,317,3,,Gol,,70 (g.c.)
+341,48,317,3,,Gol,Gol Contra,70 
 342,48,31,3,,Gol,,20
 343,48,106,9,,Entrou,,n/d
 344,48,252,9,,Entrou,,n/d
