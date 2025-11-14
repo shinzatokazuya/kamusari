@@ -43,3 +43,7 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 42,6,147,11,Entrou,,n/d
 43,6,148,12,Entrou,,n/d
 44,6,149,12,Entrou,,n/d
+45,7,156,13,Substituição,,n/d
+46,7,167,14,Substituição,,n/d
+47,7,172,13,Entrou,,n/d
+48,7,173,14,Entrou,,n/d

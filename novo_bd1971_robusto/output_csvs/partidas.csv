@@ -5,3 +5,4 @@ id,edicao_id,campeonato_id,data,hora,fase,rodada,estadio_id,mandante_id,visitant
 4,1,,1971-08-07,,1R,,4,7,8,1,4,,,0
 5,1,,1971-08-07,,1R,,4,9,10,1,0,,,0
 6,1,,1971-08-07,,1R,,5,11,12,0,3,,,0
+7,1,,1971-08-07,,1R,,,13,14,0,0,,,0
