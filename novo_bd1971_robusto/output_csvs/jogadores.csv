@@ -96,3 +96,55 @@ id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe
 95,Aladim Luciano,1946-10-10,,Brasil,Barra Mansa (RJ),171,69,Atacante (Ponta Esquerda),Canhoto,1
 96,Lourival Prudêncio Carvalho,1945-01-31,,Brasil,Barretos (SP),0,0,Meia (Volante),,1
 97,Eidnilson José Torres Alves,1943-09-04,,Brasil,Recife (PE),0,0,Meia,Destro,1
+98,Juan Miguel Pérez,1938-07-05,Falecido - 2014-12-09 (76 anos),Paraguai,,0,0,Goleiro,,1
+99,Walter Oliveira das Neves,1941-09-17,,Brasil,São Paulo (SP),0,0,Defensor (Lateral Direito),,1
+100,Altair Gomes de Figueiredo,1938-01-22,Falecido - 2019-08-09 (81 anos),Brasil,Niterói (RJ),173,59,Defensor (Lateral Esquerdo) / Defensor (Zagueiro),Canhoto,1
+101,Milton Bezerra das Chagas Filho,1952-10-09,,Brasil,Carnaíba,182,78,Defensor (Zagueiro) / Meia (Volante),,1
+102,Antonio de Arruda Fraga,1945-11-15,Falecido - 2008-09-10 (62 anos),Brasil,,0,0,Defensor (Zagueiro),,1
+103,Gilson dos Santos Costa,1943-06-21,,Brasil,Recife (PE),0,0,Defensor (Zagueiro),,1
+104,Erico de Paula Coelho Filho,1944-09-08,Falecido - 2014-10-28 (70 anos),Brasil,Jaboatão dos Guararapes (PE),0,0,Meia (Volante) (Meia Central),,1
+105,Carlos Cidreira,1943-09-26,,Brasil,,0,0,Meia,,1
+106,César Correia Rebelo,1944-02-21,,Brasil,Parnaíba (PE),0,0,Atacante,,1
+107,Denis D´Ugo,1948-04-24,,Brasil,,0,0,Atacante,Destro,1
+108,José Francisco Leandro Filho,1947-08-04,Falecido - 2021-07-11 (73 anos),Brasil,Maceió,0,0,Atacante (Ponta Direita) / Atacante (Centroavante),Destro,1
+109,Ubirajara da Silva Alcântara,1946-02-27,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,Destro,1
+110,Frederico Rodrigues de Oliveira,1949-04-04,Falecido - 2022-05-29 (73 anos),Brasil,Rio de Janeiro,179,78,Defensor,Ambidestro,1
+111,Paulo Murilo Frederico Ferreira,1939-04-30,,Brasil,,0,0,Defensor (Lateral Direito),Destro,1
+112,José Jorge Fabiano,1948-09-25,,Brasil,Cachoeiro do Itapemirim (ES),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+113,José Rodrigues Neto,1949-12-06,Falecido - 2019-04-29 (69 anos),Brasil,Galileia (MG),168,67,Meia (Meia Ofensivo) / Defensor (Lateral Esquerdo),Canhoto,1
+114,Francisco Santiago Reyes Villalba,1941-07-04,Falecido - 1976-07-31 (35 anos),Paraguai,Asunción,175,72,Meia (Zagueiro) / Meia (Volante),Canhoto,1
+115,José Eduardo de Castro,1948-10-29,,Brasil,Salvador (BA),180,72,Meia (Meia Ofensivo) / Atacante (Centroavante),,1
+116,Arthur Antunes Coimbra,1953-03-03,,Brasil,Rio de Janeiro (RJ),172,65,Meia (Meia Ofensivo),Destro,1
+117,João Crevelin,1944-06-15,Falecido - 2013-11-01 (69 anos),Brasil,,0,0,Meia,Canhoto,1
+118,Rogério Hetmanek,1948-08-02,,Brasil,Rio de Janeiro (RJ),0,0,Atacante (Ponta Direita),Destro,1
+119,João Batista de Sales,1945-01-19,,Brasil,Conselheiro Pena (MG),0,0,Atacante (Centroavante),,1
+120,Newton Gomes da Silva,1951-12-25,,Brasil,Recife (PE),0,0,Defensor (Lateral Direito),,1
+121,Draílton José Lopes,1949-09-18,,Brasil,Recife (PE),0,0,Meia (Volante),,1
+122,Francisco de Jesus Fernandes,1946-08-21,Falecido - 2010-04-14 (63 anos),Brasil,Rio de Janeiro (RJ),0,0,Defensor (Zagueiro),Destro,1
+123,João Bosco dos Santos,1946-01-31,,Brasil,Vespasiano (MG),168,69,Atacante (Ponta Direita) / Meia (Meia Direita),Destro,1
+124,Sérgio Vágner Valentim,1945-05-22,,Brasil,Chavantes (SP),0,0,Goleiro,,1
+125,Édson de Souza Barbosa,1943-06-20,Falecido - 2015-07-17 (72 anos),Brasil,Rio de Janeiro-RJ,0,0,Meia (Volante) / Defensor (Lateral Esquerdo),,1
+126,Jurandir de Freitas,1940-11-12,Falecido - 1996-03-06 (55 anos),Brasil,Marília (SP),190,87,Defensor (Zagueiro),Destro,1
+127,Gilberto Ferreira da Silva,1951-09-18,,Brasil,São Paulo (SP),0,0,Defensor (Lateral Esquerdo),Canhoto,1
+128,Valdir Izaú Pereira,1941-10-18,Falecido - 1996-03-12 (54 anos),Brasil,Criciúma-SC,0,0,Defensor (Lateral Esquerdo),Canhoto,1
+129,Paulo Nani da Silva,1950-02-08,,Brasil,São Paulo (SP),0,0,Meia (Meia Direita) / Atacante (Ponta Direita),Destro,1
+130,Gérson de Oliveira Nunes,1941-01-11,,Brasil,Niterói (RJ),172,69,Meia (Meia Central) / Meia (Meia Ofensivo),Canhoto,1
+131,Pedro Virgílio Rocha Franchetti,1942-12-03,Falecido - 2013-12-02 (70 anos),Uruguai,Salto,181,78,Meia (Meia Ofensivo),Destro,1
+132,Tertuliano Severiano dos Santos,1946-12-29,Falecido - 2024-04-09 (77 anos),Brasil,Recife (PE),0,0,Atacante (Ponta Direita),Destro,1
+133,Antônio Zelenkov Silvestre,1949-04-29,,Brasil,Regente Feijó (SP),0,0,Atacante (Centroavante),Destro,1
+134,Ademir de Barros,1942-03-21,,Brasil,Cambará (PR),173,71,Atacante (Ponta Esquerda),Canhoto,1
+135,Jair Eraldo dos Santos,1946-08-15,,Brasil,Novo Hamburgo (RS),172,0,Goleiro,,1
+136,Valdir Ataualpa Ramires Espinosa,1947-10-17,Falecido - 2020-02-27 (72 anos),Brasil,Porto Alegre (RS),0,0,Defensor (Lateral Direito),Destro,1
+137,Ari Ercílio Barbosa,1941-08-18,Falecido - 1972-11-18 (31 anos),Brasil,Porto Alegre (RS),0,0,Defensor (Zagueiro),Canhoto,1
+138,Mauro Pinto,1948-02-26,,Brasil,Rio Pardo,0,0,Defensor,Canhoto,1
+139,Everaldo Marques da Silva,1944-09-11,Falecido - 1974-10-27 (30 anos),Brasil,Porto Alegre (RS),171,68,Defensor (Lateral Esquerdo) / Meia (Meia Esquerda),Canhoto,1
+140,Jadir Garcia Rodrigues,1940-07-21,Falecido - 1992-12-04 (52 anos),Brasil,Santana do Livramento (RS),0,0,Meia,Destro,1
+141,Luiz Carlos Fioravante Goulart,1946-06-21,Falecido - 2013-07-30 (67 anos),Brasil,Porto Alegre (RS),0,0,Meia,,1
+142,Vitorino Lopes Garcia,1948-11-01,Falecido,Brasil,Pelotas (RS),0,0,Meia,,1
+143,Loivo Ivan Johann,1945-01-24,,Brasil,Brochier (RS),0,0,Atacante (Ponta Esquerda),Canhoto,1
+144,Néstor Leonel Scotta,1948-04-07,Falecido - 2001-00-08 (52 anos),Argentina,San Justo,0,0,Atacante,Ambidestro,1
+145,Gilberto Alves de Souza,1946-12-31,Falecido - 2022-02-23 (75 anos),Brasil,Porto Alegre,0,0,Atacante (Ponta Direita),Destro,1
+146,Pablo Justo Forlán Lamarque,1945-07-14,,Uruguai,Soriano,185,79,Defensor (Lateral Direito),Destro,1
+147,Everaldo Ferreira Lima,1949-06-11,Falecido - 2001-01-20 (51 anos),Brasil,Catende (PE),0,0,Atacante (Ponta Direita),Destro,1
+148,Francisco de Jesus Fernandes,1946-08-21,Falecido - 2010-04-14 (63 anos),Brasil,Rio de Janeiro (RJ),0,0,Defensor (Zagueiro),Destro,1
+149,Carlos Manuel Rodríguez,1944-01-31,,Argentina,Buenos Aires,0,0,Meia (Volante),,1
