@@ -1,0 +1,49 @@
+id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe_preferido,aposentado
+1,Renato Acasio de Morais,1947-03-01,,Brasil,Caruaru (PE),0,0,Goleiro,,1
+2,Roberto Pinto da Luz,1953-06-19,,Brasil,Salvador (BA),0,0,Defensor,,1
+3,Ismael Moreira Braga,1945-05-18,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Lateral Direito),Destro,1
+4,Eronildes de Souza,1945-04-11,,Brasil,Santo Amaro da Purificação (BA),0,0,Defensor (Zagueiro),,1
+5,José Otto Pinto Guimarães,1940-01-00,,Brasil,,0,0,Defensor,,1
+6,Eliseu Antonio Vinagre Ferreira de Godoy,1945-10-17,,Brasil,Santos,0,0,Meia (Meia Ofensivo),Destro,1
+7,Leonardo Augusto Caldeira,1946-09-15,Falecido - 2019-09-24 (73 anos),Brasil,,0,0,Atacante (Ponta Esquerda),Destro,1
+8,João Carlos Rodrigues Barreto Amorim,1940-11-07,,Brasil,,0,0,Meia,,1
+9,Edvaldo dos Santos,1949-07-07,,Brasil,São Francisco do Conde (BA),0,0,Meia,,1
+10,Carlos Alberto Gonçalves,1939-11-10,Falecido - 2005-03-09 (65 anos),Brasil,Salvador (BA),0,0,Atacante,,1
+11,Ademir de Oliveira,1950-01-23,,Brasil,Salvador (BA),0,0,Atacante,,1
+12,Ibraim Carlos Novoa dos Santos,1950-01-14,Falecido - 2008-10-08 (58 anos),Brasil,Santos (SP),0,0,Meia (Meia Ofensivo),,1
+13,Emerson Marçal,1944-10-11,,Brasil,Lucelia (SP),0,0,Defensor (Zagueiro),,1
+14,José Manuel Ramos Delgado,1935-08-26,Falecido - 2010-12-03 (75 anos),Argentina,Quilmes,181,78,Defensor,,1
+15,Luiz Paes Leme,1945-01-24,,Brasil,,0,0,Defensor,,1
+16,Orlando Pereira,1949-01-22,Falecido - 1999-09-04 (50 anos),Brasil,Santos,0,0,Defensor (Lateral Direito),,1
+17,Oscar Sales Bueno Filho,1947-07-13,,Brasil,Campinas (SP),0,0,Meia (Meia Ofensivo),Destro,1
+18,Clodoaldo Tavares Santana,1949-09-25,,Brasil,Aracaju (SE),174,69,Meia (Volante) / Meia (Meia Ofensivo),Destro,1
+19,Jáder da Silva Gonçalves,1950-07-14,Falecido - 1999-03-17 (48 anos),Brasil,Arroio Grande (RS),0,0,Atacante (Ponta Direita),Destro,1
+20,Edson Arantes do Nascimento,1940-10-23,Falecido - 2022-12-29 (82 anos),Brasil,Três Corações (MG),173,66,Atacante (2º Atacante),Ambidestro,1
+21,Alvimar Eustáquio de Oliveira,1948-02-20,,Brasil,Belo Horizonte (MG),0,0,Atacante (Centroavante),,1
+22,Jonas Eduardo Américo,1949-08-06,,Brasil,Campinas - SP,0,0,Atacante,Canhoto,1
+23,Adilson Ribeiro da Silva,1948-04-16,Falecido - 2022-10-07 (74 anos),Brasil,Rio de Janeiro (RJ),0,0,Atacante,,1
+24,David Benedito Magalhaes,1944-06-14,,Brasil,Campinas (SP),169,66,Atacante,,1
+25,Renato Cunha Valle,1944-12-05,,Brasil,Rio de Janeiro,180,72,Goleiro,Destro,1
+26,José Maria Penna,1948-12-27,Falecido,Brasil,São Bernardo do Campo (SP),0,0,Defensor (Lateral Direito),,1
+27,Vantuir Galdino Ramos,1949-11-16,,Brasil,Belo Horizonte (MG),181,78,Defensor (Zagueiro),Destro,1
+28,Oldair Barchi,1939-07-01,Falecido - 2014-10-31 (75 anos),Brasil,São Paulo (SP),173,73,Defensor (Lateral Esquerdo),,1
+29,Onormandes Souza Lima,1945-09-11,,Brasil,,0,0,Defensor,,1
+30,Humberto da Silva Ramos,1949-08-25,,Brasil,Belo Horizonte (MG),173,68,Meia (Meia Central),Canhoto,1
+31,Wanderley Paiva Monteiro,1946-04-07,Falecido - 2023-11-27 (77 anos),Brasil,Três Corações (MG),176,0,Meia (Volante),,1
+32,Raimundo José Correa,1950-01-02,,Brasil,Iguatama (MG),0,0,Meia,Canhoto,1
+33,Ronaldo Gonçalves Drummond,1946-08-21,Falecido - 2020-06-09 (73 anos),Brasil,Belo Horizonte (MG),175,69,Atacante (Ponta Direita),Destro,1
+34,Dario José dos Santos,1946-03-04,,Brasil,Rio de Janeiro (RJ),185,75,Atacante (Centroavante),Destro,1
+35,Sebastião Rocha,1941-09-14,Falecido - 1984-04-12 (42 anos),Brasil,Rio de Janeiro (RJ),170,60,Atacante,,1
+36,Antônio Carlos Venceslau,1942-02-06,,Brasil,Uberlândia (MG),0,0,Goleiro,,1
+37,Osvaldo Domingues da Cunha,1943-04-22,Falecido - 2024-02-27 (80 anos),Brasil,Pedreira (SP),0,0,Defensor (Lateral Direito),Destro,1
+38,Cláudio Antônio do Nascimento,1952-07-18,,Brasil,Belo Horizonte (MG),0,0,Defensor (Lateral Esquerdo) (Lateral Direito),Canhoto,1
+39,Mihajlo Schingiriy,1946-02-12,,Alemanha,Frankfurt,0,0,Defensor,,1
+40,Vander Martins,1945-05-05,,Brasil,,0,0,Defensor,,1
+41,Amauri Alves Horta,1942-08-21,,Brasil,,0,0,Meia,,1
+42,Dirceu Alves Ferreira,1944-08-16,,Brasil,Araxá (MG),0,0,Meia (Volante),,1
+43,Pedro Omar Machado,1948-06-09,,Brasil,Castelo (ES),0,0,Meia (Volante),,1
+44,Jair Félix da Silva,1943-05-10,Falecido - 2022-12-27 (79 anos),Brasil,,0,0,Atacante (Centroavante),,1
+45,Hélio dos Santos,1942-12-13,,Brasil,,0,0,Meia,,1
+46,Hilton José de Oliveira,1940-09-30,Falecido - 2006-03-03 (65 anos),Brasil,Belo Horizonte,0,0,Atacante,,1
+47,Augusto Clemente Neto,1947-10-22,,Brasil,Juiz de Fora (MG),0,0,Meia (Volante),,1
+48,Jurandir Dario Gouveia Damasceno dos Santos,1944-04-05,Falecido - 2021-10-09 (77 anos),Brasil,Paracatu (MG),0,0,Atacante (Ponta Direita),Canhoto,1
