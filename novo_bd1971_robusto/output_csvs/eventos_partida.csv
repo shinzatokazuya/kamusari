@@ -342,3 +342,27 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 341,47,345,8,Entrou,,
 342,47,346,8,Entrou,,
 343,47,199,16,Entrou,,
+344,48,289,9,Substituição,,
+345,48,107,9,Substituição,,
+346,48,317,3,Gol,Gol Contra,70
+347,48,31,3,Gol,Normal,20
+348,48,106,9,Entrou,,
+349,48,252,9,Entrou,,
+350,49,7,1,Substituição,,
+351,49,10,1,Substituição,,
+352,49,40,4,Substituição,,
+353,49,303,4,Substituição,,
+354,49,257,1,Entrou,,
+355,49,347,1,Entrou,,
+356,49,304,4,Entrou,,
+357,49,348,4,Entrou,,
+358,50,314,19,Substituição,,
+359,50,301,19,Substituição,,
+360,50,349,18,Gol,Normal,73
+361,50,223,18,Gol,Normal,77
+362,50,223,18,Substituição,,
+363,50,221,18,Substituição,,
+364,50,235,19,Entrou,,
+365,50,309,19,Entrou,,
+366,50,219,18,Entrou,,
+367,50,224,18,Entrou,,
