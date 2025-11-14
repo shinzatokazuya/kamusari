@@ -47,3 +47,19 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 46,7,167,14,Substituição,,n/d
 47,7,172,13,Entrou,,n/d
 48,7,173,14,Entrou,,n/d
+49,8,177,15,Cartão Vermelho,,n/d
+50,8,181,15,Gol,Normal,38
+51,8,183,15,Substituição,,n/d
+52,8,184,15,Substituição,,n/d
+53,8,191,16,Substituição,,n/d
+54,8,194,16,Substituição,,n/d
+55,8,196,15,Entrou,,n/d
+56,8,197,15,Entrou,,n/d
+57,8,198,16,Entrou,,n/d
+58,8,199,16,Entrou,,n/d
+59,8,199,16,Cartão Vermelho,,n/d
+60,9,205,17,Substituição,,n/d
+61,9,219,18,Substituição,,n/d
+62,9,222,17,Entrou,,n/d
+63,9,223,18,Entrou,,n/d
+64,9,224,18,Entrou,,n/d
