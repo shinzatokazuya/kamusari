@@ -238,7 +238,7 @@ class OGolScraperRelacional:
                 dados["nome"] = valor
             elif "Apelido" in campo:
                 dados["apelido"] = valor
-            elif "Fundado" in campo:
+            elif "Ano de Fundação" in campo:
                 dados["fundacao"] = valor
             elif "Cidade" in campo:
                 dados["cidade"] = valor
