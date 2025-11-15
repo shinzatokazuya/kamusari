@@ -6,3 +6,5 @@ id,cidade,uf,estado,regiao,pais
 5,Recife,PE,PE,Nordeste,Brasil
 6,São Paulo,SP,SP,Sudeste,Brasil
 7,Porto Alegre,RS,RS,Sul,Brasil
+8,Fortaleza,CE,CE,Nordeste,Brasil
+9,Fortaleza,,,,Brasil

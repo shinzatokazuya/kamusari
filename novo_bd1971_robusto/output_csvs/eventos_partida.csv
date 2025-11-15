@@ -59,3 +59,8 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 58,8,198,16,Entrou,,
 59,8,199,16,Entrou,,
 60,8,199,16,Cartão Vermelho,,
+61,9,205,17,Substituição,,
+62,9,219,18,Substituição,,
+63,9,222,17,Entrou,,
+64,9,223,18,Entrou,,
+65,9,224,18,Entrou,,
