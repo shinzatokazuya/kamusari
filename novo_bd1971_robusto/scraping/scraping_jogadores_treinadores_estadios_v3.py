@@ -53,12 +53,13 @@ class OGolScraperRelacional:
         # Caminho do CHECKPOINT
         self.checkpoint_path = os.path.join(self.output_dir, "checkpoint.txt")
 
-    def _carregar_ids_existentes(self):
+     def _carregar_ids_existentes(self):
         """
-        Carrega os IDs existentes dos CSVs para continuar a numeração.
-        Essa função é fundamental para evitar conflitos de IDs.
+        Carrega os IDs existentes dos CSVs E os registros completos para evitar duplicação.
+        Esta função é fundamental para garantir que entidades não sejam duplicadas
+        em múltiplas execuções do scraper.
         """
-        print("📂 Carregando IDs existentes dos CSVs...")
+        print("📂 Carregando IDs e registros existentes dos CSVs...")
 
         # Inicializa contadores com 1 (caso não exista nenhum registro)
         self.next_clube_id = 1
@@ -88,22 +89,7 @@ class OGolScraperRelacional:
                         continue
             return max_id
 
-        # Atualiza cada contador baseado no maior ID encontrado
-        self.next_clube_id = obter_max_id('clubes.csv') + 1
-        self.next_estadio_id = obter_max_id('estadios.csv') + 1
-        self.next_jogador_id = obter_max_id('jogadores.csv') + 1
-        self.next_treinador_id = obter_max_id('treinadores.csv') + 1
-        self.next_arbitro_id = obter_max_id('arbitros.csv') + 1
-        self.next_local_id = obter_max_id('locais.csv') + 1
-        self.next_partida_id = obter_max_id('partidas.csv') + 1
-        self.next_evento_id = obter_max_id('eventos_partida.csv') + 1
-
-        print(f"   ✓ Próximos IDs: Clube={self.next_clube_id}, Estádio={self.next_estadio_id}, "
-              f"Jogador={self.next_jogador_id}, Treinador={self.next_treinador_id}, "
-              f"Árbitro={self.next_arbitro_id}, Local={self.next_local_id}, "
-              f"Partida={self.next_partida_id}, Evento={self.next_evento_id}")
-
-        # Carrega também os locais existentes para o dicionário
+        # ========== CARREGA LOCAIS ==========
         path_locais = os.path.join(self.output_dir, 'locais.csv')
         if os.path.exists(path_locais):
             with open(path_locais, 'r', encoding='utf-8') as f:
@@ -118,6 +104,121 @@ class OGolScraperRelacional:
                         'regiao': row['regiao'],
                         'pais': row['pais']
                     }
+            self.next_local_id = obter_max_id('locais.csv') + 1
+            print(f"   ✓ {len(self.locais_dict)} locais carregados")
+
+        # ========== CARREGA CLUBES ==========
+        # Para clubes, usamos nome+local_id como identificador único
+        path_clubes = os.path.join(self.output_dir, 'clubes.csv')
+        if os.path.exists(path_clubes):
+            with open(path_clubes, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Cria uma chave única baseada em atributos
+                    chave_atributos = f"{row['clube']}_{row.get('local_id', '')}"
+                    # Também armazena no dicionário normal (que usará URLs depois)
+                    self.clubes_dict[chave_atributos] = {
+                        'id': int(row['id']),
+                        'clube': row['clube'],
+                        'apelido': row.get('apelido', ''),
+                        'local_id': int(row['local_id']) if row.get('local_id') else None,
+                        'fundacao': row.get('fundacao', ''),
+                        'ativo': int(row.get('ativo', 1))
+                    }
+            self.next_clube_id = obter_max_id('clubes.csv') + 1
+            print(f"   ✓ {len(self.clubes_dict)} clubes carregados")
+
+        # ========== CARREGA ESTÁDIOS ==========
+        path_estadios = os.path.join(self.output_dir, 'estadios.csv')
+        if os.path.exists(path_estadios):
+            with open(path_estadios, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Chave única: nome do estádio + local_id
+                    chave_atributos = f"{row['estadio']}_{row.get('local_id', '')}"
+                    self.estadios_dict[chave_atributos] = {
+                        'id': int(row['id']),
+                        'estadio': row['estadio'],
+                        'capacidade': int(row['capacidade']) if row.get('capacidade') else None,
+                        'local_id': int(row['local_id']) if row.get('local_id') else None,
+                        'inauguracao': row.get('inauguracao', ''),
+                        'ativo': int(row.get('ativo', 1))
+                    }
+            self.next_estadio_id = obter_max_id('estadios.csv') + 1
+            print(f"   ✓ {len(self.estadios_dict)} estádios carregados")
+
+        # ========== CARREGA JOGADORES ==========
+        path_jogadores = os.path.join(self.output_dir, 'jogadores.csv')
+        if os.path.exists(path_jogadores):
+            with open(path_jogadores, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Chave única: nome + data de nascimento
+                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.jogadores_dict[chave_atributos] = {
+                        'id': int(row['id']),
+                        'nome': row['nome'],
+                        'nascimento': row.get('nascimento', ''),
+                        'falecimento': row.get('falecimento', ''),
+                        'nacionalidade': row.get('nacionalidade', ''),
+                        'naturalidade': row.get('naturalidade', ''),
+                        'altura': int(row['altura']) if row.get('altura') and row['altura'] != '0' else None,
+                        'peso': int(row['peso']) if row.get('peso') and row['peso'] != '0' else None,
+                        'posicao': row.get('posicao', ''),
+                        'pe_preferido': row.get('pe_preferido', ''),
+                        'aposentado': int(row.get('aposentado', 0))
+                    }
+            self.next_jogador_id = obter_max_id('jogadores.csv') + 1
+            print(f"   ✓ {len(self.jogadores_dict)} jogadores carregados")
+
+        # ========== CARREGA TREINADORES ==========
+        path_treinadores = os.path.join(self.output_dir, 'treinadores.csv')
+        if os.path.exists(path_treinadores):
+            with open(path_treinadores, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Chave única: nome + data de nascimento
+                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.treinadores_dict[chave_atributos] = {
+                        'id': int(row['id']),
+                        'nome': row['nome'],
+                        'nascimento': row.get('nascimento', ''),
+                        'falecimento': row.get('falecimento', ''),
+                        'nacionalidade': row.get('nacionalidade', ''),
+                        'naturalidade': row.get('naturalidade', ''),
+                        'situacao': row.get('situacao', '')
+                    }
+            self.next_treinador_id = obter_max_id('treinadores.csv') + 1
+            print(f"   ✓ {len(self.treinadores_dict)} treinadores carregados")
+
+        # ========== CARREGA ÁRBITROS ==========
+        path_arbitros = os.path.join(self.output_dir, 'arbitros.csv')
+        if os.path.exists(path_arbitros):
+            with open(path_arbitros, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Chave única: nome + data de nascimento
+                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.arbitros_dict[chave_atributos] = {
+                        'id': int(row['id']),
+                        'nome': row['nome'],
+                        'nascimento': row.get('nascimento', ''),
+                        'falecimento': row.get('falecimento', ''),
+                        'nacionalidade': row.get('nacionalidade', ''),
+                        'naturalidade': row.get('naturalidade', ''),
+                        'situacao': row.get('situacao', '')
+                    }
+            self.next_arbitro_id = obter_max_id('arbitros.csv') + 1
+            print(f"   ✓ {len(self.arbitros_dict)} árbitros carregados")
+
+        # Atualiza contadores para partidas e eventos
+        self.next_partida_id = obter_max_id('partidas.csv') + 1
+        self.next_evento_id = obter_max_id('eventos_partida.csv') + 1
+
+        print(f"\n   📊 Próximos IDs: Clube={self.next_clube_id}, Estádio={self.next_estadio_id}, "
+              f"Jogador={self.next_jogador_id}, Treinador={self.next_treinador_id}, "
+              f"Árbitro={self.next_arbitro_id}, Local={self.next_local_id}, "
+              f"Partida={self.next_partida_id}, Evento={self.next_evento_id}\n")
 
     # ======================================================
     # Funções utilitárias
