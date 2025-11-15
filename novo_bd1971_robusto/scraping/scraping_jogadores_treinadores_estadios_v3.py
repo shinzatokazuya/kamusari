@@ -53,7 +53,7 @@ class OGolScraperRelacional:
         # Caminho do CHECKPOINT
         self.checkpoint_path = os.path.join(self.output_dir, "checkpoint.txt")
 
-     def _carregar_ids_existentes(self):
+    def _carregar_ids_existentes(self):
         """
         Carrega os IDs existentes dos CSVs E os registros completos para evitar duplicação.
         Esta função é fundamental para garantir que entidades não sejam duplicadas
