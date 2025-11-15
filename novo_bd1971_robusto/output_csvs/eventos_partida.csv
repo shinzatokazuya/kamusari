@@ -1,0 +1,5 @@
+id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
+1,1,9,1,Substituição,,
+2,1,19,2,Substituição,,
+3,1,23,1,Entrou,,
+4,1,24,2,Entrou,,
