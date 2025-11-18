@@ -5,7 +5,7 @@ CREATE TABLE locais (
     UF TEXT,
     regiao TEXT,
     pais TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE estadios (
@@ -15,8 +15,8 @@ CREATE TABLE estadios (
     local_id INTEGER NOT NULL,
     inauguracao TEXT,
     ativo BOOLEAN DEFAULT 1,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     FOREIGN KEY (local_id) REFERENCES locais(ID)
 );
 
@@ -27,8 +27,8 @@ CREATE TABLE clubes (
     fundacao TEXT,
     estadio_principal_id INTEGER,
     ativo BOOLEAN DEFAULT 1,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     FOREIGN KEY (local_id) REFERENCES locais(ID),
     FOREIGN KEY (estadio_principal_id) REFERENCES estadios(ID)
 );
@@ -39,7 +39,7 @@ CREATE TABLE campeonatos (
     pais TEXT NOT NULL,
     entidade TEXT, -- CBF, CONMEBOL, FIFA, etc.
     tipo TEXT, -- 'nacional', 'estadual', 'internacional'
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE edicoes (
@@ -50,7 +50,7 @@ CREATE TABLE edicoes (
     data_fim TEXT,
     campeao_id INTEGER, -- clube vencedor
     vice_id INTEGER,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (campeonato_id) REFERENCES campeonatos(ID),
     FOREIGN KEY (campeao_id) REFERENCES clubes(ID),
     FOREIGN KEY (vice_id) REFERENCES clubes(ID)
@@ -76,8 +76,8 @@ CREATE TABLE partidas (
     arbitro TEXT,
     arbitro_assistente1 TEXT,
     arbitro_assistente2 TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     FOREIGN KEY (edicao_id) REFERENCES edicoes(ID),
     FOREIGN KEY (estadio_id) REFERENCES estadios(ID),
     FOREIGN KEY (mandante_id) REFERENCES clubes(ID),
@@ -118,8 +118,8 @@ CREATE TABLE jogadores (
     clube_atual_id INTEGER,
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
 );
 
@@ -150,8 +150,8 @@ CREATE TABLE jogadores_em_partida (
     passes_errados INTEGER DEFAULT 0,
     desarmes INTEGER DEFAULT 0,
     nota_avaliacao REAL, -- Nota de 0 a 10
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     PRIMARY KEY (partida_id, jogador_id),
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
     FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE,
@@ -168,8 +168,8 @@ CREATE TABLE treinadores (
     clube_atual_id INTEGER,
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
     FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
 );
 
@@ -178,7 +178,7 @@ CREATE TABLE treinadores_em_partida (
     treinador_id INTEGER NOT NULL,
     clube_id INTEGER NOT NULL,
     tipo TEXT DEFAULT 'Titular', -- 'Titular', 'Assistente', 'Interino'
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (partida_id, treinador_id, clube_id),
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
     FOREIGN KEY (treinador_id) REFERENCES treinadores(ID) ON DELETE CASCADE,
@@ -195,7 +195,7 @@ CREATE TABLE eventos_partida (
     jogador_secundario_id INTEGER, -- Para assistências ou jogador que entrou na substituição
     clube_id INTEGER NOT NULL,
     descricao TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
     FOREIGN KEY (jogador_principal_id) REFERENCES jogadores(ID),
     FOREIGN KEY (jogador_secundario_id) REFERENCES jogadores(ID),
@@ -211,7 +211,7 @@ CREATE TABLE transferencias (
     valor REAL, -- Valor da transferência
     tipo TEXT, -- 'Compra', 'Empréstimo', 'Livre', 'Troca'
     duracao_meses INTEGER, -- Para empréstimos
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (jogador_id) REFERENCES jogadores(ID),
     FOREIGN KEY (clube_origem_id) REFERENCES clubes(ID),
     FOREIGN KEY (clube_destino_id) REFERENCES clubes(ID)
