@@ -1,90 +1,60 @@
+# criar_banco.py
 import sqlite3
 import os
+from pathlib import Path
 
-# Caminhos dos bancos
-DB_ANTIGO = "bd/teste_bd_1971.db"
-DB_NOVO = "bd/estruturado_bd_1971.db"
-SCHEMA_NOVO = "tabelas/tabelas.txt"
+# Ajuste estes caminhos conforme sua organização de pastas
+SCHEMA_PATH = Path("tabelas/tabelas.txt")   # arquivo SQL com CREATE TABLE... (seu schema). :contentReference[oaicite:1]{index=1}
+DB_PATH = Path("bd/estruturadoV2_bd_1971.db") # caminho do novo banco SQLite
 
-def criar_banco_novo():
-    """Cria o novo banco e aplica o schema"""
-    if os.path.exists(DB_NOVO):
-        os.remove(DB_NOVO)
-        print("🧹 Banco novo antigo removido para recriação.")
+def criar_banco(schema_path=SCHEMA_PATH, db_path=DB_PATH, recreate=False):
+    # cria diretório pai se necessário
+    db_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(SCHEMA_NOVO, "r", encoding="utf-8") as f:
-        schema_sql = f.read()
+    if recreate and db_path.exists():
+        print(f"Removendo banco existente: {db_path}")
+        db_path.unlink()
 
-    conn = sqlite3.connect(DB_NOVO)
-    conn.executescript(schema_sql)
-    conn.commit()
-    conn.close()
-    print("✅ Novo banco criado com sucesso.")
+    if not schema_path.exists():
+        raise FileNotFoundError(f"Schema não encontrado: {schema_path}")
 
-def migrar_dados():
-    """Migra os dados do banco antigo para o novo"""
-    conn_novo = sqlite3.connect(DB_NOVO)
-    conn_antigo = sqlite3.connect(DB_ANTIGO)
+    if db_path.exists():
+        print(f"Banco já existe em {db_path}. Use recreate=True para recriar.")
+        return
 
-    conn_novo.execute("PRAGMA foreign_keys = ON;")
-    conn_antigo.execute("PRAGMA foreign_keys = ON;")
+    schema_sql = schema_path.read_text(encoding="utf-8")
 
-    cur_novo = conn_novo.cursor()
-    cur_antigo = conn_antigo.cursor()
+    conn = sqlite3.connect(db_path)
+    try:
+        # executa o schema inteiro (várias CREATE TABLE)
+        conn.executescript(schema_sql)
+        conn.commit()
+        # ativa foreign keys por segurança nas operações seguintes
+        conn.execute("PRAGMA foreign_keys = ON;")
+        print(f"Banco criado com sucesso em: {db_path}")
+    finally:
+        conn.close()
 
-    # --- LOCAIS ---
-    print("➡️ Migrando locais...")
-    cur_antigo.execute("SELECT cidade, UF, regiao, pais FROM locais;")
-    locais = cur_antigo.fetchall()
-    cur_novo.executemany("INSERT INTO locais (cidade, UF, regiao, pais) VALUES (?, ?, ?, ?)", locais)
-
-    # --- CLUBES ---
-    print("➡️ Migrando clubes...")
-    cur_antigo.execute("SELECT clube, local_id FROM clubes;")
-    clubes = cur_antigo.fetchall()
-    cur_novo.executemany("INSERT INTO clubes (clube, local_id) VALUES (?, ?)", clubes)
-
-    # --- CAMPEONATOS ---
-    print("➡️ Migrando campeonatos...")
-    cur_antigo.execute("SELECT campeonato, pais, entidade FROM campeonatos;")
-    campeonatos = cur_antigo.fetchall()
-    cur_novo.executemany("INSERT INTO campeonatos (campeonato, pais, entidade) VALUES (?, ?, ?)", campeonatos)
-
-    # --- EDIÇÕES ---
-    print("➡️ Migrando edicoes...")
-    cur_antigo.execute("SELECT campeonato_id, ano FROM edicoes;")
-    edicoes = cur_antigo.fetchall()
-    cur_novo.executemany("INSERT INTO edicoes (campeonato_id, ano) VALUES (?, ?)", edicoes)
-
-    # --- PARTIDAS ---
-    print("➡️ Migrando partidas...")
-    cur_antigo.execute("""
-        SELECT edicao_id, estadio_id, data, hora, fase, mandante_id, visitante_id,
-               mandante_placar, visitante_placar, mandante_penalti, visitante_penalti, prorrogacao
-        FROM partidas;
-    """)
-    partidas = cur_antigo.fetchall()
-    cur_novo.executemany("""
-        INSERT INTO partidas (
-            edicao_id, estadio_id, data, hora, fase, mandante_id, visitante_id,
-            mandante_placar, visitante_placar, mandante_penalti, visitante_penalti, prorrogacao
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, partidas)
-
-    conn_novo.commit()
-
-    # --- CHECAGEM FINAL ---
-    cur_novo.execute("PRAGMA foreign_key_check;")
-    inconsistencias = cur_novo.fetchall()
-    if inconsistencias:
-        print("⚠️ Inconsistências detectadas:", inconsistencias)
-    else:
-        print("✅ Migração concluída sem erros de integridade!")
-
-    conn_antigo.close()
-    conn_novo.close()
+def checar_integridade(db_path=DB_PATH):
+    if not db_path.exists():
+        print("Banco não encontrado para checagem.")
+        return
+    conn = sqlite3.connect(db_path)
+    try:
+        cur = conn.cursor()
+        cur.execute("PRAGMA foreign_keys = ON;")
+        cur.execute("PRAGMA foreign_key_check;")
+        issues = cur.fetchall()
+        if issues:
+            print("⚠️ Problemas de integridade (foreign key) encontrados:")
+            for i in issues[:20]:
+                print(i)
+        else:
+            print("✅ Nenhuma inconsistência de foreign key detectada.")
+    finally:
+        conn.close()
 
 if __name__ == "__main__":
-    criar_banco_novo()
-    migrar_dados()
+    # Se quiser recriar sempre, troque para True
+    criar_banco(recreate=False)
+    checar_integridade()
