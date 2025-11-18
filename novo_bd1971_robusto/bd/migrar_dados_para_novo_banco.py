@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Caminhos dos bancos
-DB_ANTIGO = "bd/teste_bd_1971.db"
+
 DB_NOVO = "bd/estruturado_bd_1971.db"
 SCHEMA_NOVO = "tabelas/tabelas.txt"
 
