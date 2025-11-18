@@ -37,7 +37,7 @@ class OGolScraperRelacional:
         self._novo_arbitro = []
 
         # Caminho dos CSVs
-        self.output_dir = "novo_bd1971_robusto/output_csvs"
+        self.output_dir = "output_csvs"
         os.makedirs(self.output_dir, exist_ok=True)
 
         # IMPORTANTE: Carregar IDs existentes dos CSVs antes de iniciar
@@ -1124,6 +1124,6 @@ class OGolScraperRelacional:
         print("\n✅ Scraping concluído!")
 
 if __name__ == "__main__":
-    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario"
+    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario?equipa=0&estado=&filtro=&op=calendario&page=2"
     scraper = OGolScraperRelacional(url)
     scraper.executar(edicao_id=1)
