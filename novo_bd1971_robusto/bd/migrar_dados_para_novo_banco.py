@@ -3,9 +3,15 @@ import sqlite3
 import os
 from pathlib import Path
 
+
 # Ajuste estes caminhos conforme sua organização de pastas
 SCHEMA_PATH = Path("tabelas/tabelas.txt")   # arquivo SQL com CREATE TABLE... (seu schema). :contentReference[oaicite:1]{index=1}
 DB_PATH = Path("bd/estruturadoV2_bd_1971.db") # caminho do novo banco SQLite
+
+# Caminhos dos bancos
+DB_NOVO = "bd/estruturado_bd_1971.db"
+SCHEMA_NOVO = "tabelas/tabelas.txt"
+
 
 def criar_banco(schema_path=SCHEMA_PATH, db_path=DB_PATH, recreate=False):
     # cria diretório pai se necessário
