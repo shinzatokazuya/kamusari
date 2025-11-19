@@ -21,13 +21,22 @@ class OGolScraperRelacional:
         }
         self.delay = 30
 
-        # Dicionários para IDs únicos
+        # Dicionários usando chaves de atributos (não URLs!)
         self.clubes_dict = {}
         self.estadios_dict = {}
         self.jogadores_dict = {}
         self.treinadores_dict = {}
         self.arbitros_dict = {}
         self.locais_dict = {}
+
+        # Cache de URLs para esta sessão (evita reprocessar mesma URL)
+        self.url_cache = {
+            'jogadores': {},
+            'treinadores': {},
+            'arbitros': {},
+            'clubes': {},
+            'estadios': {}
+        }
 
         # Buffers de novos registros
         self._novo_clube = []
@@ -40,7 +49,7 @@ class OGolScraperRelacional:
         self.output_dir = "output_csvs"
         os.makedirs(self.output_dir, exist_ok=True)
 
-        # IMPORTANTE: Carregar IDs existentes dos CSVs antes de iniciar
+        # Carrega IDs existentes
         self._carregar_ids_existentes()
 
         # Buffers relacionais
@@ -55,13 +64,12 @@ class OGolScraperRelacional:
 
     def _carregar_ids_existentes(self):
         """
-        Carrega os IDs existentes dos CSVs E os registros completos para evitar duplicação.
-        Esta função é fundamental para garantir que entidades não sejam duplicadas
-        em múltiplas execuções do scraper.
+        Carrega os IDs existentes dos CSVs usando chaves baseadas em atributos.
+        Isso garante que não tenhamos duplicações independente de URLs diferentes.
         """
         print("📂 Carregando IDs e registros existentes dos CSVs...")
 
-        # Inicializa contadores com 1 (caso não exista nenhum registro)
+        # Inicializa contadores
         self.next_clube_id = 1
         self.next_estadio_id = 1
         self.next_jogador_id = 1
@@ -71,7 +79,6 @@ class OGolScraperRelacional:
         self.next_partida_id = 1
         self.next_evento_id = 1
 
-        # Função auxiliar para encontrar o maior ID em um CSV
         def obter_max_id(filename, id_field='id'):
             path = os.path.join(self.output_dir, filename)
             if not os.path.exists(path):
@@ -108,16 +115,13 @@ class OGolScraperRelacional:
             print(f"   ✓ {len(self.locais_dict)} locais carregados")
 
         # ========== CARREGA CLUBES ==========
-        # Para clubes, usamos nome+local_id como identificador único
         path_clubes = os.path.join(self.output_dir, 'clubes.csv')
         if os.path.exists(path_clubes):
             with open(path_clubes, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    # Cria uma chave única baseada em atributos
-                    chave_atributos = f"{row['clube']}_{row.get('local_id', '')}"
-                    # Também armazena no dicionário normal (que usará URLs depois)
-                    self.clubes_dict[chave_atributos] = {
+                    chave = f"{row['clube']}_{row.get('local_id', '')}"
+                    self.clubes_dict[chave] = {
                         'id': int(row['id']),
                         'clube': row['clube'],
                         'apelido': row.get('apelido', ''),
@@ -134,9 +138,8 @@ class OGolScraperRelacional:
             with open(path_estadios, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    # Chave única: nome do estádio + local_id
-                    chave_atributos = f"{row['estadio']}_{row.get('local_id', '')}"
-                    self.estadios_dict[chave_atributos] = {
+                    chave = f"{row['estadio']}_{row.get('local_id', '')}"
+                    self.estadios_dict[chave] = {
                         'id': int(row['id']),
                         'estadio': row['estadio'],
                         'capacidade': int(row['capacidade']) if row.get('capacidade') else None,
@@ -153,9 +156,8 @@ class OGolScraperRelacional:
             with open(path_jogadores, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    # Chave única: nome + data de nascimento
-                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
-                    self.jogadores_dict[chave_atributos] = {
+                    chave = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.jogadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
                         'nascimento': row.get('nascimento', ''),
@@ -177,9 +179,8 @@ class OGolScraperRelacional:
             with open(path_treinadores, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    # Chave única: nome + data de nascimento
-                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
-                    self.treinadores_dict[chave_atributos] = {
+                    chave = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.treinadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
                         'nascimento': row.get('nascimento', ''),
@@ -197,9 +198,8 @@ class OGolScraperRelacional:
             with open(path_arbitros, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    # Chave única: nome + data de nascimento
-                    chave_atributos = f"{row['nome']}_{row.get('nascimento', '')}"
-                    self.arbitros_dict[chave_atributos] = {
+                    chave = f"{row['nome']}_{row.get('nascimento', '')}"
+                    self.arbitros_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
                         'nascimento': row.get('nascimento', ''),
@@ -211,7 +211,6 @@ class OGolScraperRelacional:
             self.next_arbitro_id = obter_max_id('arbitros.csv') + 1
             print(f"   ✓ {len(self.arbitros_dict)} árbitros carregados")
 
-        # Atualiza contadores para partidas e eventos
         self.next_partida_id = obter_max_id('partidas.csv') + 1
         self.next_evento_id = obter_max_id('eventos_partida.csv') + 1
 
@@ -220,12 +219,8 @@ class OGolScraperRelacional:
               f"Árbitro={self.next_arbitro_id}, Local={self.next_local_id}, "
               f"Partida={self.next_partida_id}, Evento={self.next_evento_id}\n")
 
-    # ======================================================
-    # Funções utilitárias
-    # ======================================================
-
     def _get_soup(self, url):
-        """Faz a requisição HTTP com tentativas e tratamento de erro 429."""
+        """Faz a requisição HTTP com tratamento de erros."""
         tentativa = 0
         max_tentativas = 5
         delay = self.delay
@@ -309,17 +304,25 @@ class OGolScraperRelacional:
         return self.locais_dict[chave]['id']
 
     # ======================================================
-    # Processadores
+    # Processadores usando chaves de atributos
     # ======================================================
 
     def processar_clube(self, url_clube):
+        """Processa clube usando chave de atributos (nome + local_id)"""
         if not url_clube:
             return None
-        if url_clube in self.clubes_dict:
-            return self.clubes_dict[url_clube]['id']
+
+        # Verifica cache de URL desta sessão
+        if url_clube in self.url_cache['clubes']:
+            return self.url_cache['clubes'][url_clube]
 
         print(f"🏟️ Processando clube: {url_clube}")
-        soup = self._get_soup(url_clube)
+        try:
+            soup = self._get_soup(url_clube)
+        except Exception as e:
+            print(f"❌ Erro ao acessar URL: {e}")
+            return None
+
         container = soup.find("div", id="entity_bio")
         if not container:
             return None
@@ -345,7 +348,21 @@ class OGolScraperRelacional:
                 dados["cidade"] = valor
 
         local_id = self._get_ou_criar_local(dados.get("cidade", ""))
+
+        # Cria chave de atributos
+        chave_atributos = f"{dados.get('nome', '')}_{local_id}"
+
+        # Verifica se clube já existe
+        if chave_atributos in self.clubes_dict:
+            clube_id = self.clubes_dict[chave_atributos]['id']
+            print(f"   ✓ Clube já existente: {dados.get('nome', '')} (ID: {clube_id})")
+            self.url_cache['clubes'][url_clube] = clube_id
+            return clube_id
+
+        # Clube novo
         clube_id = self.next_clube_id
+        print(f"   ➕ Novo clube: {dados.get('nome', '')} (ID: {clube_id})")
+
         registro = {
             'id': clube_id,
             'clube': dados.get('nome', ''),
@@ -354,19 +371,29 @@ class OGolScraperRelacional:
             'fundacao': dados.get('fundacao', ''),
             'ativo': 1
         }
-        self.clubes_dict[url_clube] = registro
+
+        self.clubes_dict[chave_atributos] = registro
+        self.url_cache['clubes'][url_clube] = clube_id
         self._novo_clube.append(registro)
         self.next_clube_id += 1
         return clube_id
 
     def processar_estadio(self, url_estadio):
+        """Processa estádio usando chave de atributos (nome + local_id)"""
         if not url_estadio:
             return None
-        if url_estadio in self.estadios_dict:
-            return self.estadios_dict[url_estadio]['id']
+
+        # Verifica cache de URL desta sessão
+        if url_estadio in self.url_cache['estadios']:
+            return self.url_cache['estadios'][url_estadio]
 
         print(f"🏟️ Processando estádio: {url_estadio}")
-        soup = self._get_soup(url_estadio)
+        try:
+            soup = self._get_soup(url_estadio)
+        except Exception as e:
+            print(f"❌ Erro ao acessar URL: {e}")
+            return None
+
         container = soup.find("div", id="entity_bio")
         if not container:
             return None
@@ -392,7 +419,21 @@ class OGolScraperRelacional:
                     dados["capacidade"] = None
 
         local_id = self._get_ou_criar_local(dados.get("cidade", ""))
+
+        # Cria chave de atributos
+        chave_atributos = f"{dados.get('nome', '')}_{local_id}"
+
+        # Verifica se estádio já existe
+        if chave_atributos in self.estadios_dict:
+            estadio_id = self.estadios_dict[chave_atributos]['id']
+            print(f"   ✓ Estádio já existente: {dados.get('nome', '')} (ID: {estadio_id})")
+            self.url_cache['estadios'][url_estadio] = estadio_id
+            return estadio_id
+
+        # Estádio novo
         estadio_id = self.next_estadio_id
+        print(f"   ➕ Novo estádio: {dados.get('nome', '')} (ID: {estadio_id})")
+
         registro = {
             'id': estadio_id,
             'estadio': dados.get('nome', ''),
@@ -401,21 +442,32 @@ class OGolScraperRelacional:
             'inauguracao': dados.get('inauguracao', ''),
             'ativo': 1
         }
-        self.estadios_dict[url_estadio] = registro
+
+        self.estadios_dict[chave_atributos] = registro
+        self.url_cache['estadios'][url_estadio] = estadio_id
         self._novo_estadio.append(registro)
         self.next_estadio_id += 1
         return estadio_id
 
     def processar_jogador(self, url_jogador):
+        """Processa jogador usando chave de atributos (nome + nascimento)"""
         if not url_jogador:
             return None
-        if url_jogador in self.jogadores_dict:
-            return self.jogadores_dict[url_jogador]['id']
+
+        # Verifica cache de URL desta sessão
+        if url_jogador in self.url_cache['jogadores']:
+            return self.url_cache['jogadores'][url_jogador]
 
         print(f"⚽ Processando jogador: {url_jogador}")
-        soup = self._get_soup(url_jogador)
+        try:
+            soup = self._get_soup(url_jogador)
+        except Exception as e:
+            print(f"❌ Erro ao acessar URL: {e}")
+            return None
+
         container = soup.find("div", id="entity_bio")
         if not container:
+            print("⚠️ Container de biografia não encontrado")
             return None
 
         dados = {}
@@ -455,7 +507,20 @@ class OGolScraperRelacional:
                 elif "Aposentado" in valor:
                     dados["aposentado"] = 1
 
+        # Cria chave de atributos
+        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        # Verifica se jogador já existe
+        if chave_atributos in self.jogadores_dict:
+            jogador_id = self.jogadores_dict[chave_atributos]['id']
+            print(f"   ✓ Jogador já existente: {dados.get('nome', '')} (ID: {jogador_id})")
+            self.url_cache['jogadores'][url_jogador] = jogador_id
+            return jogador_id
+
+        # Jogador novo
         jogador_id = self.next_jogador_id
+        print(f"   ➕ Novo jogador: {dados.get('nome', '')} (ID: {jogador_id})")
+
         registro = {
             'id': jogador_id,
             'nome': dados.get('nome', ''),
@@ -469,19 +534,29 @@ class OGolScraperRelacional:
             'pe_preferido': dados.get('pe_preferido', ''),
             'aposentado': dados.get('aposentado', 0)
         }
-        self.jogadores_dict[url_jogador] = registro
+
+        self.jogadores_dict[chave_atributos] = registro
+        self.url_cache['jogadores'][url_jogador] = jogador_id
         self._novo_jogador.append(registro)
         self.next_jogador_id += 1
         return jogador_id
 
     def processar_treinador(self, url_treinador):
+        """Processa treinador usando chave de atributos (nome + nascimento)"""
         if not url_treinador:
             return None
-        if url_treinador in self.treinadores_dict:
-            return self.treinadores_dict[url_treinador]['id']
+
+        # Verifica cache de URL desta sessão
+        if url_treinador in self.url_cache['treinadores']:
+            return self.url_cache['treinadores'][url_treinador]
 
         print(f"👔 Processando treinador: {url_treinador}")
-        soup = self._get_soup(url_treinador)
+        try:
+            soup = self._get_soup(url_treinador)
+        except Exception as e:
+            print(f"❌ Erro ao acessar URL: {e}")
+            return None
+
         container = soup.find("div", id="entity_bio")
         if not container:
             return None
@@ -508,28 +583,52 @@ class OGolScraperRelacional:
                 else:
                     dados["situacao"] = valor
 
+        # Cria chave de atributos
+        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        # Verifica se treinador já existe
+        if chave_atributos in self.treinadores_dict:
+            treinador_id = self.treinadores_dict[chave_atributos]['id']
+            print(f"   ✓ Treinador já existente: {dados.get('nome', '')} (ID: {treinador_id})")
+            self.url_cache['treinadores'][url_treinador] = treinador_id
+            return treinador_id
+
+        # Treinador novo
         treinador_id = self.next_treinador_id
+        print(f"   ➕ Novo treinador: {dados.get('nome', '')} (ID: {treinador_id})")
+
         registro = {
             'id': treinador_id,
             'nome': dados.get('nome', ''),
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
-            'nacionalidade': dados.get('nacionalidade', '')
+            'nacionalidade': dados.get('nacionalidade', ''),
+            'situacao': dados.get('situacao', '')
         }
-        self.treinadores_dict[url_treinador] = registro
+
+        self.treinadores_dict[chave_atributos] = registro
+        self.url_cache['treinadores'][url_treinador] = treinador_id
         self._novo_treinador.append(registro)
         self.next_treinador_id += 1
         return treinador_id
 
     def processar_arbitro(self, url_arbitro):
+        """Processa árbitro usando chave de atributos (nome + nascimento)"""
         if not url_arbitro:
             return None
-        if url_arbitro in self.arbitros_dict:
-            return self.arbitros_dict[url_arbitro]['id']
+
+        # Verifica cache de URL desta sessão
+        if url_arbitro in self.url_cache['arbitros']:
+            return self.url_cache['arbitros'][url_arbitro]
 
         print(f"🧑‍⚖️ Processando árbitro: {url_arbitro}")
-        soup = self._get_soup(url_arbitro)
+        try:
+            soup = self._get_soup(url_arbitro)
+        except Exception as e:
+            print(f"❌ Erro ao acessar URL: {e}")
+            return None
+
         container = soup.find("div", id="entity_bio")
         if not container:
             return None
@@ -556,16 +655,32 @@ class OGolScraperRelacional:
                 else:
                     dados["situacao"] = valor
 
+        # Cria chave de atributos
+        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        # Verifica se árbitro já existe
+        if chave_atributos in self.arbitros_dict:
+            arbitro_id = self.arbitros_dict[chave_atributos]['id']
+            print(f"   ✓ Árbitro já existente: {dados.get('nome', '')} (ID: {arbitro_id})")
+            self.url_cache['arbitros'][url_arbitro] = arbitro_id
+            return arbitro_id
+
+        # Árbitro novo
         arbitro_id = self.next_arbitro_id
+        print(f"   ➕ Novo árbitro: {dados.get('nome', '')} (ID: {arbitro_id})")
+
         registro = {
             'id': arbitro_id,
             'nome': dados.get('nome', ''),
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
-            'nacionalidade': dados.get('nacionalidade', '')
+            'nacionalidade': dados.get('nacionalidade', ''),
+            'situacao': dados.get('situacao', '')
         }
-        self.arbitros_dict[url_arbitro] = registro
+
+        self.arbitros_dict[chave_atributos] = registro
+        self.url_cache['arbitros'][url_arbitro] = arbitro_id
         self._novo_arbitro.append(registro)
         self.next_arbitro_id += 1
         return arbitro_id
@@ -597,10 +712,7 @@ class OGolScraperRelacional:
             print(f"   ➤ Evento '{tipo_evento}' registrado (minuto {minuto})")
 
     def processar_detalhes_partida(self, url_partida, partida_id, mandante_id, visitante_id):
-        """
-        Processa detalhes da partida com tratamento melhorado para múltiplos eventos.
-        A chave aqui é dividir corretamente os minutos quando há múltiplos gols.
-        """
+        """Processa detalhes da partida com tratamento melhorado para múltiplos eventos."""
         if not url_partida:
             return None
 
@@ -676,27 +788,23 @@ class OGolScraperRelacional:
                     'numero_camisa': numero_camisa,
                 })
 
-                # PROCESSA EVENTOS - Versão melhorada para múltiplos gols
+                # PROCESSA EVENTOS
                 events_div = player_div.find("div", class_="events")
                 if not events_div:
                     continue
 
-                # Processa cada par de span (evento) + div (minutos) sequencialmente
                 spans = events_div.find_all("span")
                 divs_minutos = events_div.find_all("div")
 
-                # Itera sobre os spans (cada span representa um tipo de evento)
                 for i, span in enumerate(spans):
-                    # Identifica o tipo de evento
                     tipo_evento, tipo_gol = None, None
                     title = span.get("title", "").strip().lower()
                     classe = " ".join(span.get("class", [])).lower()
                     texto_icone = span.get_text(strip=True)
 
-                    # Determina o tipo de evento baseado no span
                     if "gol" in title or "fut-11" in classe:
                         tipo_evento = "Gol"
-                        tipo_gol = "Normal"  # padrão
+                        tipo_gol = "Normal"
                     elif "público" in title or texto_icone == "B":
                         tipo_evento = "Assistência"
                     elif ("amarel" in title or "icn_zerozero yellow" in classe) and texto_icone == "R":
@@ -713,23 +821,13 @@ class OGolScraperRelacional:
                     if not tipo_evento:
                         continue
 
-                    # Pega a div de minutos correspondente a este span
                     if i >= len(divs_minutos):
                         continue
 
                     texto_completo = divs_minutos[i].get_text(strip=True)
 
-                    # Para gols, precisamos extrair múltiplos minutos E identificar tipo
                     if tipo_evento == "Gol":
-                        # Usa regex para extrair todos os padrões de minutos
-                        # Padrões: "35'" ou "45+3'" ou "35' (pen.)" ou "48' 67'"
-                        import re
-
-                        # Remove espaços extras e normaliza
                         texto_normalizado = texto_completo.strip()
-
-                        # Extrai todos os minutos com seus modificadores
-                        # Padrão: número + opcional(+número) + opcional(') + opcional((pen.)|(g.c.))
                         padrao_minutos = r"(\d+(?:\+\d+)?)'?\s*(?:\(([^)]+)\))?"
                         matches = re.findall(padrao_minutos, texto_normalizado)
 
@@ -737,7 +835,6 @@ class OGolScraperRelacional:
                             for minuto_bruto, modificador in matches:
                                 minuto_limpo = minuto_bruto.strip()
 
-                                # Identifica o tipo de gol baseado no modificador
                                 if modificador:
                                     mod_lower = modificador.lower()
                                     if "pen" in mod_lower:
@@ -749,15 +846,10 @@ class OGolScraperRelacional:
                                 else:
                                     tipo_gol = "Normal"
 
-                                # Registra cada gol separadamente
                                 self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto_limpo)
                         else:
-                            # Se não encontrou nenhum padrão, registra sem minuto
                             self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, None)
-
                     else:
-                        # Para outros eventos, extrai o minuto simples
-                        import re
                         match_minuto = re.search(r'(\d+(?:\+\d+)?)', texto_completo)
                         minuto = match_minuto.group(1) if match_minuto else None
                         self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
@@ -792,7 +884,6 @@ class OGolScraperRelacional:
                         'numero_camisa': numero_camisa
                     })
 
-                    # Processa eventos dos reservas - mesma lógica melhorada
                     events_div = player_div.find("div", class_="events")
                     if events_div:
                         spans = events_div.find_all("span")
@@ -804,7 +895,6 @@ class OGolScraperRelacional:
                             classe = " ".join(span.get("class", [])).lower()
                             texto_icone = span.get_text(strip=True)
 
-                            # Identifica tipo de evento
                             if "gol" in title or "fut-11" in classe:
                                 tipo_evento = "Gol"
                                 tipo_gol = "Normal"
@@ -830,7 +920,6 @@ class OGolScraperRelacional:
                             texto_completo = divs_minutos[i].get_text(strip=True)
 
                             if tipo_evento == "Gol":
-                                import re
                                 texto_normalizado = texto_completo.strip()
                                 padrao_minutos = r"(\d+(?:\+\d+)?)'?\s*(?:\(([^)]+)\))?"
                                 matches = re.findall(padrao_minutos, texto_normalizado)
@@ -854,7 +943,6 @@ class OGolScraperRelacional:
                                 else:
                                     self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, None)
                             else:
-                                import re
                                 match_minuto = re.search(r'(\d+(?:\+\d+)?)', texto_completo)
                                 minuto = match_minuto.group(1) if match_minuto else None
                                 self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
@@ -955,7 +1043,7 @@ class OGolScraperRelacional:
             self._novo_arbitro.clear()
             print("💾 arbitros.csv atualizado")
 
-        # Salva locais
+        # Salva locais (reescreve sempre pois é pequeno)
         if self.locais_dict:
             path = os.path.join(self.output_dir, "locais.csv")
             campos = ['id','cidade','uf','estado','regiao','pais']
@@ -1101,7 +1189,7 @@ class OGolScraperRelacional:
             self.partidas_lista.append({
                 'id': partida_id,
                 'edicao_id': edicao_id,
-                'campeonato_id': None,
+                'campeonato_id': 1,
                 'estadio_id': estadio_id,
                 'data': data,
                 'hora': hora,
@@ -1122,6 +1210,7 @@ class OGolScraperRelacional:
             self.salvar_csvs()
 
         print("\n✅ Scraping concluído!")
+
 
 if __name__ == "__main__":
     url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario?equipa=0&estado=&filtro=&op=calendario&page=2"
