@@ -671,6 +671,7 @@ class OGolScraperRelacional:
             elif "Situação" in campo:
                 if "Falecido" in valor:
                     dados["falecimento"] = valor
+                    dados["situacao"] = "Aposentado"
                 else:
                     dados["situacao"] = valor
 
