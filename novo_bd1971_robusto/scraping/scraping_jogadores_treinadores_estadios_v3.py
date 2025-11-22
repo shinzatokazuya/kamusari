@@ -284,26 +284,41 @@ class OGolScraperRelacional:
         if chave in self.locais_dict:
             return self.locais_dict[chave]['id']
 
-        if chave not in self.locais_dict:
-            regioes = {
-                'SP': 'Sudeste', 'RJ': 'Sudeste', 'MG': 'Sudeste', 'ES': 'Sudeste',
-                'RS': 'Sul', 'SC': 'Sul', 'PR': 'Sul',
-                'BA': 'Nordeste', 'PE': 'Nordeste', 'CE': 'Nordeste', 'RN': 'Nordeste',
-                'PB': 'Nordeste', 'AL': 'Nordeste', 'SE': 'Nordeste', 'PI': 'Nordeste', 'MA': 'Nordeste',
-                'GO': 'Centro-Oeste', 'MT': 'Centro-Oeste', 'MS': 'Centro-Oeste', 'DF': 'Centro-Oeste',
-                'AM': 'Norte', 'PA': 'Norte', 'RO': 'Norte', 'AC': 'Norte', 'RR': 'Norte', 'AP': 'Norte', 'TO': 'Norte'
-            }
+        # Se a UF está vazia (informação incompleta), verifica se já existe
+        # algum registro com esse nome de cidade (com UF preenchida)
+        if not uf:
+            for chave_existente, local_existente in self.locais_dict.items():
+                if local_existente['cidade'] == cidade and local_existente['uf']:
+                    # Encontrou uma cidade com mesmo nome mas com UF preenchida
+                    # Retorna esse registro ao invés de criar um vazio
+                    print(f"   ℹ️ Local '{cidade}' encontrado com UF '{local_existente['uf']}', reutilizando...")
+                    return local_existente['id']
 
-            self.locais_dict[chave] = {
-                'id': self.next_local_id,
-                'cidade': cidade,
-                'uf': uf,
-                'estado': uf,
-                'regiao': regioes.get(uf, ''),
-                'pais': 'Brasil'
-            }
-            print(f"   ➤ Local '{cidade}, {uf}' adicionado.")
-            self.next_local_id += 1
+        # Se chegou aqui, pode criar o novo local
+        # Mas só cria se tiver pelo menos a UF (informação mínima)
+        if not uf:
+            print(f"   ⚠️ Local '{cidade}' sem UF, não será criado")
+            return None
+
+        regioes = {
+            'SP': 'Sudeste', 'RJ': 'Sudeste', 'MG': 'Sudeste', 'ES': 'Sudeste',
+            'RS': 'Sul', 'SC': 'Sul', 'PR': 'Sul',
+            'BA': 'Nordeste', 'PE': 'Nordeste', 'CE': 'Nordeste', 'RN': 'Nordeste',
+            'PB': 'Nordeste', 'AL': 'Nordeste', 'SE': 'Nordeste', 'PI': 'Nordeste', 'MA': 'Nordeste',
+            'GO': 'Centro-Oeste', 'MT': 'Centro-Oeste', 'MS': 'Centro-Oeste', 'DF': 'Centro-Oeste',
+            'AM': 'Norte', 'PA': 'Norte', 'RO': 'Norte', 'AC': 'Norte', 'RR': 'Norte', 'AP': 'Norte', 'TO': 'Norte'
+        }
+
+        self.locais_dict[chave] = {
+            'id': self.next_local_id,
+            'cidade': cidade,
+            'uf': uf,
+            'estado': uf,
+            'regiao': regioes.get(uf, ''),
+            'pais': 'Brasil'
+        }
+        print(f"   ➤ Local '{cidade}, {uf}' adicionado.")
+        self.next_local_id += 1
 
         return self.locais_dict[chave]['id']
 
