@@ -280,6 +280,10 @@ class OGolScraperRelacional:
 
         chave = f"{cidade}_{uf}"
 
+        # Se já existe com essa chave exata, retorna
+        if chave in self.locais_dict:
+            return self.locais_dict[chave]['id']
+
         if chave not in self.locais_dict:
             regioes = {
                 'SP': 'Sudeste', 'RJ': 'Sudeste', 'MG': 'Sudeste', 'ES': 'Sudeste',
