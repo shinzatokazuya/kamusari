@@ -1169,3 +1169,7 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 1168,150,378,3,Entrou,,
 1169,150,380,16,Entrou,,
 1170,150,199,16,Entrou,,
+1171,151,160,13,Substituição,,
+1172,151,351,13,Substituição,,
+1173,151,156,13,Entrou,,
+1174,151,321,13,Entrou,,
