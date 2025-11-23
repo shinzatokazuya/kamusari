@@ -57,12 +57,13 @@ CREATE TABLE edicoes (
 
 CREATE TABLE partidas (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    edicao_id INTEGER NOT NULL,
-    estadio_id INTEGER,
-    data TEXT NOT NULL,
+    edicao_id INTEGER,
+    campeonato_id INTEGER,
+    data TEXT,
     hora TEXT,
     fase TEXT, -- 'Primeira Fase', 'Oitavas', 'Quartas', 'Semi', 'Final', etc.
     rodada INTEGER,
+    estadio_id INTEGER,
     mandante_id INTEGER NOT NULL,
     visitante_id INTEGER NOT NULL,
     mandante_placar INTEGER,
@@ -75,6 +76,7 @@ CREATE TABLE partidas (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
     FOREIGN KEY (edicao_id) REFERENCES edicoes(ID),
+    FOREIGN KEY (campeonato_id) REFERENCES campeonatos(ID),
     FOREIGN KEY (estadio_id) REFERENCES estadios(ID),
     FOREIGN KEY (mandante_id) REFERENCES clubes(ID),
     FOREIGN KEY (visitante_id) REFERENCES clubes(ID),
