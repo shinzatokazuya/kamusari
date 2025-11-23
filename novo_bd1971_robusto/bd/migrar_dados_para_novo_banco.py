@@ -54,13 +54,13 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO locais (id, cidade, uf, estado, regiao, pais)
+                        INSERT OR IGNORE INTO locais (id, cidade, estado, UF, regiao, pais)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
                         self.limpar_valor(row['cidade']),
-                        self.limpar_valor(row['uf']),
                         self.limpar_valor(row['estado']),
+                        self.limpar_valor(row['uf']),
                         self.limpar_valor(row['regiao']),
                         self.limpar_valor(row['pais'])
                     ))
