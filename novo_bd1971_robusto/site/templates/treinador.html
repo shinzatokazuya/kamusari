@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="entidade-header">
+    <div class="entidade-info-card">
+        <h1>{{ treinador['nome'] }}</h1>
+
+        {% if treinador['apelido'] %}
+            <p class="entidade-apelido">"{{ treinador['apelido'] }}"</p>
+        {% endif %}
+
+        <div class="entidade-detalhes">
+            {% if treinador['nascimento'] %}
+                <div class="detalhe-item">
+                    <span class="label">Nascimento:</span>
+                    <span class="valor">{{ treinador['nascimento'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if treinador['falecimento'] %}
+                <div class="detalhe-item">
+                    <span class="label">Falecimento:</span>
+                    <span class="valor">{{ treinador['falecimento'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if treinador['naturalidade'] %}
+                <div class="detalhe-item">
+                    <span class="label">Naturalidade:</span>
+                    <span class="valor">{{ treinador['naturalidade'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if treinador['nacionalidade'] %}
+                <div class="detalhe-item">
+                    <span class="label">Nacionalidade:</span>
+                    <span class="valor">{{ treinador['nacionalidade'] }}</span>
+                </div>
+            {% endif %}
+
+            <div class="detalhe-item">
+                <span class="label">Status:</span>
+                <span class="valor {% if not treinador['aposentado'] %}ativo{% else %}aposentado{% endif %}">
+                    {{ 'Aposentado' if treinador['aposentado'] else 'Ativo' }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="partidas-container">
+    <h2>Partidas como Treinador</h2>
+
+    {% if partidas %}
+        <table class="tabela-partidas">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Ano</th>
+                    <th>Clube</th>
+                    <th>Tipo</th>
+                    <th>Mandante</th>
+                    <th>Placar</th>
+                    <th>Visitante</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for partida in partidas %}
+                <tr>
+                    <td>{{ partida['data'] }}</td>
+                    <td>{{ partida['ano'] }}</td>
+                    <td><strong>{{ partida['clube_treinador'] }}</strong></td>
+                    <td>{{ partida['tipo'] }}</td>
+                    <td><a href="/clube/{{ partida['mandante'] }}">{{ partida['mandante'] }}</a></td>
+                    <td class="placar-cell">
+                        <a href="/jogo/{{ partida['partida_id'] }}">
+                            {{ partida['mandante_placar'] }} x {{ partida['visitante_placar'] }}
+                        </a>
+                    </td>
+                    <td><a href="/clube/{{ partida['visitante'] }}">{{ partida['visitante'] }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-data">Nenhuma partida registrada para este treinador.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

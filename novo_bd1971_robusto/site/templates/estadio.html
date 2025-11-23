@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="entidade-header">
+    <div class="entidade-info-card">
+        <h1>{{ estadio['estadio'] }}</h1>
+
+        <div class="entidade-detalhes">
+            {% if estadio['cidade'] and estadio['UF'] %}
+                <div class="detalhe-item">
+                    <span class="label">Localização:</span>
+                    <span class="valor">{{ estadio['cidade'] }}, {{ estadio['UF'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if estadio['capacidade'] %}
+                <div class="detalhe-item">
+                    <span class="label">Capacidade:</span>
+                    <span class="valor">{{ "{:,}".format(estadio['capacidade']).replace(',', '.') }} pessoas</span>
+                </div>
+            {% endif %}
+
+            {% if estadio['inauguracao'] %}
+                <div class="detalhe-item">
+                    <span class="label">Inauguração:</span>
+                    <span class="valor">{{ estadio['inauguracao'] }}</span>
+                </div>
+            {% endif %}
+
+            <div class="detalhe-item">
+                <span class="label">Status:</span>
+                <span class="valor {% if estadio['ativo'] %}ativo{% else %}inativo{% endif %}">
+                    {{ 'Ativo' if estadio['ativo'] else 'Inativo' }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="partidas-container">
+    <h2>Partidas no Estádio (Últimas 50)</h2>
+
+    {% if partidas %}
+        <table class="tabela-partidas">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Ano</th>
+                    <th>Campeonato</th>
+                    <th>Mandante</th>
+                    <th>Placar</th>
+                    <th>Visitante</th>
+                    <th>Público</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for partida in partidas %}
+                <tr>
+                    <td>{{ partida['data'] }}</td>
+                    <td>{{ partida['ano'] }}</td>
+                    <td>{{ partida['campeonato'] }}</td>
+                    <td><a href="/clube/{{ partida['mandante'] }}">{{ partida['mandante'] }}</a></td>
+                    <td class="placar-cell">
+                        <a href="/jogo/{{ partida['partida_id'] }}">
+                            {{ partida['mandante_placar'] }} x {{ partida['visitante_placar'] }}
+                        </a>
+                    </td>
+                    <td><a href="/clube/{{ partida['visitante'] }}">{{ partida['visitante'] }}</a></td>
+                    <td>{% if partida['publico'] %}{{ "{:,}".format(partida['publico']).replace(',', '.') }}{% else %}-{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-data">Nenhuma partida registrada neste estádio.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
