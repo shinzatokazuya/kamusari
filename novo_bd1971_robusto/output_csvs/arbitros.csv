@@ -1,22 +1,22 @@
-id,nome,nascimento,falecimento,nacionalidade,naturalidade,situacao
-1,José Marçal Filho,-,,Brasil,,
-2,Juan de la Pasión Artes,-,,Brasil,,
-3,Valquir Pimentel,-,,Brasil,,
-4,José Aldo Pereira,-,,Brasil,,
-5,Emidio Marques de Mesquita,1944-03-20,,Brasil,,
-6,Arnaldo David Cezar Coelho,1943-01-15,,Brasil,"Rio de Janeiro, RJ",
-7,José Faville Neto,-,,Brasil,São Paulo,
-8,Dulcídio Wanderley Boschilia,1938-01-00,Falecido - 1998-05-14 (60 anos),Brasil,,
-9,Oscar Scolfaro,1937-00-00,Falecido - 2017-09-09 (80 anos),Brasil,,
-10,Romualdo Arppi Filho,1939-01-07,Falecido,Brasil,Santos - S. Paulo,
-11,José Luis Barreto,-,,Brasil,,
-12,Luis Carlos Félix Ferreira,1940-05-11,,Brasil,Rio de Janeiro,
-13,Garibaldo Matos,-,,Brasil,,
-14,Sebastião Rufino Ribeiro,-,,Brasil,,Aposentado
-15,Agomar Martins Röhrig,1931-03-23,,Brasil,,Aposentado
-16,José Mário Vinhas,-,,Brasil,,Em atividade
-17,Manoel Amaro de Lima,1946-10-05,Falecido - 2009-05-09 (62 anos),Brasil,Murici,
-18,Joaquim Gonçalves Da Silva,-,,Brasil,,Aposentado
-19,José Carlos Cavalheiro de Moraes,1934-00-00,Falecido - 2011-06-03 (77 anos),Brasil,,
-20,Armando Nunes Castanheira da Rosa Marques,1930-03-06,,Brasil,"Rio de Janeiro, RJ",Aposentado
-21,Nivaldo dos Santos,-,,Brasil,,Aposentado
+id,nome,nascimento,falecimento,nacionalidade,naturalidade,aposentado
+1,José Marçal Filho,-,,Brasil,,1
+2,Juan de la Pasión Artes,-,,Brasil,,1
+3,Valquir Pimentel,-,,Brasil,,1
+4,José Aldo Pereira,-,,Brasil,,1
+5,Emidio Marques de Mesquita,20/03/1944,,Brasil,,1
+6,Arnaldo David Cezar Coelho,15/01/1943,,Brasil,Rio de Janeiro,1
+7,José Faville Neto,-,,Brasil,São Paulo,1
+8,Dulcídio Wanderley Boschilia,21/04/1905,14/05/1998,Brasil,,1
+9,Oscar Scolfaro,20/04/1905,09/09/2017,Brasil,,1
+10,Romualdo Arppi Filho,07/01/1939,05/03/2023,Brasil,Santos ,1
+11,José Luis Barreto,-,,Brasil,,1
+12,Luis Carlos Félix Ferreira,11/05/1940,,Brasil,Rio de Janeiro,1
+13,Garibaldo Matos,-,,Brasil,,1
+14,Sebastião Rufino Ribeiro,-,,Brasil,,1
+15,Agomar Martins Röhrig,23/03/1931,,Brasil,,1
+16,José Mário Vinhas,-,,Brasil,,0
+17,Manoel Amaro de Lima,05/10/1946,09/05/2009,Brasil,Murici,1
+18,Joaquim Gonçalves Da Silva,-,,Brasil,,1
+19,José Carlos Cavalheiro de Moraes,17/04/1905,03/06/2011,Brasil,,1
+20,Armando Nunes Castanheira da Rosa Marques,06/03/1930,,Brasil,Rio de Janeiro,1
+21,Nivaldo dos Santos,-,,Brasil,,1
