@@ -2,53 +2,119 @@
 
 {% block body %}
 
-<div class="clube-info">
-    <h2>Histórico de Jogos - {{ clube }}</h2>
+<div class="clube-header">
+    <div class="clube-info-card">
+        <h1>{{ clube_info['clube'] }}</h1>
+
+        {% if clube_info['apelido'] %}
+            <p class="clube-apelido">"{{ clube_info['apelido'] }}"</p>
+        {% endif %}
+
+        <div class="clube-detalhes">
+            {% if clube_info['fundacao'] %}
+                <div class="detalhe-item">
+                    <span class="label">Fundação:</span>
+                    <span class="valor">{{ clube_info['fundacao'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if clube_info['cidade'] and clube_info['UF'] %}
+                <div class="detalhe-item">
+                    <span class="label">Localização:</span>
+                    <span class="valor">{{ clube_info['cidade'] }}, {{ clube_info['UF'] }}</span>
+                </div>
+            {% endif %}
+
+            {% if clube_info['regiao'] %}
+                <div class="detalhe-item">
+                    <span class="label">Região:</span>
+                    <span class="valor">{{ clube_info['regiao'] }}</span>
+                </div>
+            {% endif %}
+
+            <div class="detalhe-item">
+                <span class="label">Status:</span>
+                <span class="valor {% if clube_info['ativo'] %}ativo{% else %}inativo{% endif %}">
+                    {{ 'Ativo' if clube_info['ativo'] else 'Inativo' }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    {% if estatisticas %}
+    <div class="clube-estatisticas-card">
+        <h3>Estatísticas Históricas</h3>
+        <div class="stats-grid">
+            <div class="stat">
+                <span class="stat-numero">{{ estatisticas['total_jogos'] }}</span>
+                <span class="stat-label">Jogos</span>
+            </div>
+            <div class="stat">
+                <span class="stat-numero">{{ estatisticas['total_pontos'] }}</span>
+                <span class="stat-label">Pontos</span>
+            </div>
+            <div class="stat stat-vitoria">
+                <span class="stat-numero">{{ estatisticas['total_vitorias'] }}</span>
+                <span class="stat-label">Vitórias</span>
+            </div>
+            <div class="stat stat-empate">
+                <span class="stat-numero">{{ estatisticas['total_empates'] }}</span>
+                <span class="stat-label">Empates</span>
+            </div>
+            <div class="stat stat-derrota">
+                <span class="stat-numero">{{ estatisticas['total_derrotas'] }}</span>
+                <span class="stat-label">Derrotas</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
-<div class="jogos-container">
-        {% if jogos_por_ano %}
-        {% for ano, jogos in jogos_por_ano.items() %}
-            <div class="jogos-ano">
-                <table>
+<div class="jogos-recentes-container">
+    <h2>Últimos Jogos por Competição</h2>
+
+    {% if jogos_por_campeonato %}
+        {% for campeonato, jogos in jogos_por_campeonato.items() %}
+            <div class="campeonato-section">
+                <h3 class="campeonato-titulo">{{ campeonato }}</h3>
+                <table class="tabela-jogos-recentes">
                     <thead>
                         <tr>
-                            <th colspan="5">Temporada {{ ano }}</th>
-                        </tr>
-                        <tr>
-                            <th>Rodada</th>
                             <th>Data</th>
+                            <th>Ano</th>
+                            <th>Rodada</th>
                             <th>Mandante</th>
                             <th>Placar</th>
                             <th>Visitante</th>
+                            <th>Arena</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for jogo in jogos %}
-                        <tr>
-                            <td>{{ jogo["rodada"] }}</td>
-                            <td>{{ jogo["data"] }}</td>
-                            <td>
-                                {% if jogo["mandante"] == clube %}
-                                    <strong>{{ jogo["mandante"] }}</strong>
+                        <tr class="{% if (jogo['mandante'] == clube_info['clube'] and jogo['mandante_placar'] > jogo['visitante_placar']) or (jogo['visitante'] == clube_info['clube'] and jogo['visitante_placar'] > jogo['mandante_placar']) %}resultado-vitoria{% elif jogo['mandante_placar'] == jogo['visitante_placar'] %}resultado-empate{% else %}resultado-derrota{% endif %}">
+                            <td>{{ jogo['data'] }}</td>
+                            <td>{{ jogo['ano'] }}</td>
+                            <td>{{ jogo['rodada'] }}</td>
+                            <td class="{% if jogo['mandante'] == clube_info['clube'] %}clube-destaque{% endif %}">
+                                {% if jogo['mandante'] == clube_info['clube'] %}
+                                    <strong>{{ jogo['mandante'] }}</strong>
                                 {% else %}
-                                    <a href="/clube/{{ jogo['mandante'] }}">{{ jogo["mandante"] }}</a>
+                                    <a href="/clube/{{ jogo['mandante'] }}">{{ jogo['mandante'] }}</a>
                                 {% endif %}
                             </td>
-                            <td>
-                                <strong>
-                                    <a href="/estatisticas/{{ jogo['ID'] }}">
-                                        {{ jogo["mandante_placar"] }} x {{ jogo["visitante_placar"] }}
-                                    </a>
-                                </strong>
+                            <td class="placar">
+                                <a href="/jogo/{{ jogo['ID'] }}" class="link-placar">
+                                    <strong>{{ jogo['mandante_placar'] }} x {{ jogo['visitante_placar'] }}</strong>
+                                </a>
                             </td>
-                            <td>
-                                {% if jogo["visitante"] == clube %}
-                                    <strong>{{ jogo["visitante"] }}</strong>
+                            <td class="{% if jogo['visitante'] == clube_info['clube'] %}clube-destaque{% endif %}">
+                                {% if jogo['visitante'] == clube_info['clube'] %}
+                                    <strong>{{ jogo['visitante'] }}</strong>
                                 {% else %}
-                                    <a href="/clube/{{ jogo['visitante'] }}">{{ jogo["visitante"] }}</a>
+                                    <a href="/clube/{{ jogo['visitante'] }}">{{ jogo['visitante'] }}</a>
                                 {% endif %}
                             </td>
+                            <td class="arena-info">{{ jogo['arena'] if jogo['arena'] else '-' }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -56,7 +122,9 @@
             </div>
         {% endfor %}
     {% else %}
-        <p style="text-align: center; padding: 20px;">Nenhum jogo encontrado para este clube.</p>
+        <div class="no-data">
+            <p>Nenhum jogo encontrado para este clube.</p>
+        </div>
     {% endif %}
 </div>
 
