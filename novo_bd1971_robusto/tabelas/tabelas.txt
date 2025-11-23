@@ -119,7 +119,6 @@ CREATE TABLE jogadores (
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
-    FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
 );
 
 CREATE TABLE jogadores_em_partida (
@@ -169,7 +168,6 @@ CREATE TABLE treinadores (
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
-    FOREIGN KEY (clube_atual_id) REFERENCES clubes(ID)
 );
 
 CREATE TABLE treinadores_em_partida (
@@ -182,6 +180,20 @@ CREATE TABLE treinadores_em_partida (
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
     FOREIGN KEY (treinador_id) REFERENCES treinadores(ID) ON DELETE CASCADE,
     FOREIGN KEY (clube_id) REFERENCES clubes(ID)
+);
+
+CREATE TABLE arbitros (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    apelido TEXT,
+    nascimento TEXT,
+    falecimento TEXT,
+    nacionalidade TEXT,
+    naturalidade TEXT,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP,
 );
 
 CREATE TABLE eventos_partida (
