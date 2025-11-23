@@ -754,3 +754,9 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 753,100,34,3,Gol,Normal,12
 754,100,260,17,Entrou,,
 755,100,338,3,Entrou,,
+756,101,94,8,Substituição,,
+757,101,30,3,Substituição,,
+758,101,335,3,Substituição,,
+759,101,394,8,Entrou,,
+760,101,402,3,Entrou,,
+761,101,338,3,Entrou,,
