@@ -87,7 +87,7 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO clubes (id, nome, apelido, local_id, fundacao, ativo)
+                        INSERT OR IGNORE INTO clubes (id, clube, apelido, local_id, fundacao, ativo)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),

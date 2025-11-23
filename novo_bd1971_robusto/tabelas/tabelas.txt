@@ -23,14 +23,13 @@ CREATE TABLE estadios (
 CREATE TABLE clubes (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     clube TEXT NOT NULL,
+    apelido TEXT,
     local_id INTEGER NOT NULL,
     fundacao TEXT,
-    estadio_principal_id INTEGER,
     ativo BOOLEAN DEFAULT 1,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
-    FOREIGN KEY (local_id) REFERENCES locais(ID),
-    FOREIGN KEY (estadio_principal_id) REFERENCES estadios(ID)
+    FOREIGN KEY (local_id) REFERENCES locais(ID)
 );
 
 CREATE TABLE campeonatos (
