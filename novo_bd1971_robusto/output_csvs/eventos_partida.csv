@@ -808,3 +808,12 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 807,107,363,4,Entrou,,
 808,107,196,15,Entrou,,
 809,107,323,15,Entrou,,
+810,108,152,13,Substituição,,
+811,108,160,13,Substituição,,
+812,108,14,2,Cartão Vermelho,,
+813,108,21,2,Gol,Normal,58
+814,108,21,2,Substituição,,
+815,108,408,13,Entrou,,
+816,108,156,13,Entrou,,
+817,108,156,13,Gol,Normal,90
+818,108,280,2,Entrou,,
