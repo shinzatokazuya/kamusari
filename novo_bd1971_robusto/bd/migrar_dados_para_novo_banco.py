@@ -156,7 +156,7 @@ class MigradorCSVParaSQLite:
                         INSERT OR IGNORE INTO jogadores
                         (ID, nome, nascimento, falecimento, nacionalidade, naturalidade,
                          altura, peso, posicao, posicao_detalhada, pe_preferido, aposentado)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
                         self.limpar_valor(row['nome']),
