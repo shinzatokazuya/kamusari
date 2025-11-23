@@ -109,6 +109,7 @@ CREATE TABLE jogadores (
     nascimento TEXT,
     falecimento TEXT, -- Para jogadores históricos já falecidos
     nacionalidade TEXT,
+    naturalidade TEXT, -- Cidade em que nasceu
     altura INTEGER, -- em centímetros
     peso INTEGER, -- em quilogramas
     posicao TEXT, -- 'Goleiro', 'Zagueiro', 'Lateral', 'Meia', 'Atacante'
