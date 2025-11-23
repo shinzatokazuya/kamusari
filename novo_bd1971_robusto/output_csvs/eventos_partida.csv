@@ -1173,3 +1173,24 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 1172,151,351,13,Substituição,,
 1173,151,156,13,Entrou,,
 1174,151,321,13,Entrou,,
+1175,152,113,10,Cartão Vermelho,,
+1176,152,112,10,Substituição,,
+1177,152,116,10,Substituição,,
+1178,152,87,8,Gol,Normal,53
+1179,152,346,8,Cartão Vermelho,,
+1180,152,394,8,Substituição,,
+1181,152,94,8,Gol,Normal,9
+1182,152,95,8,Gol,Normal,73
+1183,152,433,10,Entrou,,
+1184,152,119,10,Entrou,,
+1185,152,119,10,Gol,Normal,85
+1186,152,441,8,Entrou,,
+1187,153,142,12,Substituição,,
+1188,153,145,12,Substituição,,
+1189,153,442,12,Gol,Normal,33
+1190,153,357,14,Substituição,,
+1191,153,297,14,Substituição,,
+1192,153,140,12,Entrou,,
+1193,153,144,12,Entrou,,
+1194,153,443,14,Entrou,,
+1195,153,444,14,Entrou,,
