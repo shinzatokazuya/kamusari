@@ -535,8 +535,8 @@ class MigradorCSVParaSQLite:
 
 if __name__ == "__main__":
     # Configure os caminhos dos seus arquivos
-    CAMINHO_BANCO_SQLITE = "brasileirao.db"  # Seu arquivo .db
-    DIRETORIO_CSVS = "novo_bd1971_robusto/output_csvs"  # Pasta com os CSVs
+    CAMINHO_BANCO_SQLITE = "estruturadoV2_bd_1971.db"  # Seu arquivo .db
+    DIRETORIO_CSVS = "csv_atualizados"  # Pasta com os CSVs
 
     # Cria o migrador e executa
     migrador = MigradorCSVParaSQLite(CAMINHO_BANCO_SQLITE, DIRETORIO_CSVS)
