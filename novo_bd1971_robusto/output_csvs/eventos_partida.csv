@@ -797,3 +797,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 796,106,223,18,Gol,Normal,87
 797,106,360,9,Entrou,,
 798,106,221,18,Entrou,,
+799,107,42,4,Gol,Normal,77
+800,107,348,4,Substituição,,
+801,107,48,4,Substituição,,
+802,107,184,15,Substituição,,
+803,107,319,15,Gol,Normal,43
+804,107,183,15,Gol,Normal,70
+805,107,183,15,Substituição,,
+806,107,370,4,Entrou,,
+807,107,363,4,Entrou,,
+808,107,196,15,Entrou,,
+809,107,323,15,Entrou,,
