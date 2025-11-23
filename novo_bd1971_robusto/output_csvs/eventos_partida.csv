@@ -1194,3 +1194,9 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 1193,153,144,12,Entrou,,
 1194,153,443,14,Entrou,,
 1195,153,444,14,Entrou,,
+1196,154,252,9,Gol,Normal,70
+1197,154,252,9,Substituição,,
+1198,154,96,7,Substituição,,
+1199,154,82,7,Gol,Normal,66
+1200,154,367,9,Entrou,,
+1201,154,445,7,Entrou,,
