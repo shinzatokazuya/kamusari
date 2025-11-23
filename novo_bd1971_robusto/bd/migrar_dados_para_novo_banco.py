@@ -54,7 +54,7 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO locais (id, cidade, estado, UF, regiao, pais)
+                        INSERT OR IGNORE INTO locais (ID, cidade, estado, UF, regiao, pais)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
@@ -87,7 +87,7 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO clubes (id, clube, apelido, local_id, fundacao, ativo)
+                        INSERT OR IGNORE INTO clubes (ID, clube, apelido, local_id, fundacao, ativo)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
@@ -120,7 +120,7 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO estadios (id, estadio, capacidade, local_id, inauguracao, ativo)
+                        INSERT OR IGNORE INTO estadios (ID, estadio, capacidade, local_id, inauguracao, ativo)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
@@ -154,7 +154,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO jogadores
-                        (id, nome, nascimento, falecimento, nacionalidade, naturalidade,
+                        (ID, nome, nascimento, falecimento, nacionalidade, naturalidade,
                          altura, peso, posicao, posicao_detalhada, pe_preferido, aposentado)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
@@ -195,7 +195,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO treinadores
-                        (id, nome, nascimento, falecimento, nacionalidade, naturalidade, situacao)
+                        (ID, nome, nascimento, falecimento, nacionalidade, naturalidade, aposentado)
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),

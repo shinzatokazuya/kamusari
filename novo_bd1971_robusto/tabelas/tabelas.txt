@@ -160,11 +160,11 @@ CREATE TABLE jogadores_em_partida (
 CREATE TABLE treinadores (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    nome_completo TEXT,
+    apelido TEXT,
     nascimento TEXT,
     falecimento TEXT,
     nacionalidade TEXT,
-    clube_atual_id INTEGER,
+    naturalidade TEXT,
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
