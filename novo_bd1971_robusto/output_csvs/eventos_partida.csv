@@ -817,3 +817,16 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 816,108,156,13,Entrou,,
 817,108,156,13,Gol,Normal,90
 818,108,280,2,Entrou,,
+819,109,162,14,Substituição,,
+820,109,340,5,Substituição,,
+821,109,306,5,Substituição,,
+822,109,163,14,Entrou,,
+823,109,56,5,Entrou,,
+824,109,57,5,Entrou,,
+825,110,411,1,Gol,Normal,40
+826,110,411,1,Substituição,,
+827,110,93,8,Substituição,,
+828,110,94,8,Gol,Normal,68
+829,110,339,1,Entrou,,
+830,110,394,8,Entrou,,
+831,110,394,8,Gol,Normal,70
