@@ -116,10 +116,10 @@
                             </td>
                             <td class="arena-info">
                                 {% if jogo['arena'] %}
-                                    <a href="/estadio/{{ jogo['arena'] }}">{{ jogo['arena'] if jogo['arena'] else '-' }}</a>
-                                { % else %}
+                                    <a href="/estadio/{{ jogo['arena'] }}">{{ jogo['arena'] }}</a>
+                                {% else %}
                                     -
-                                { % endif %}
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
