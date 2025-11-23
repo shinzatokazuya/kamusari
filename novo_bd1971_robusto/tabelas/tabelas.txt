@@ -115,7 +115,7 @@ CREATE TABLE jogadores (
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP,
+    atualizado_em TIMESTAMP
 );
 
 CREATE TABLE jogadores_em_partida (
@@ -164,7 +164,7 @@ CREATE TABLE treinadores (
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP,
+    atualizado_em TIMESTAMP
 );
 
 CREATE TABLE treinadores_em_partida (
@@ -190,7 +190,16 @@ CREATE TABLE arbitros (
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP,
+    atualizado_em TIMESTAMP
+);
+
+CREATE TABLE arbitros_em_partida (
+    partida_id INTEGER NOT NULL,
+    arbitro_id INTEGER NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (partida_id, arbitro_id),
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (arbitro_id) REFERENCES arbitros(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE eventos_partida (
