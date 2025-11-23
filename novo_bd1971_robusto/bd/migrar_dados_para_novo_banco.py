@@ -204,7 +204,7 @@ class MigradorCSVParaSQLite:
                         self.limpar_valor(row['falecimento']),
                         self.limpar_valor(row['nacionalidade']),
                         self.limpar_valor(row['naturalidade']),
-                        self.limpar_valor(row['situacao'])
+                        self.limpar_valor(row['aposentado'])
                     ))
                     contador += 1
                 except Exception as e:
@@ -230,7 +230,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO arbitros
-                        (id, nome, nascimento, falecimento, nacionalidade, naturalidade, situacao)
+                        (ID, nome, nascimento, falecimento, nacionalidade, naturalidade, aposentado)
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
@@ -239,7 +239,7 @@ class MigradorCSVParaSQLite:
                         self.limpar_valor(row['falecimento']),
                         self.limpar_valor(row['nacionalidade']),
                         self.limpar_valor(row['naturalidade']),
-                        self.limpar_valor(row['situacao'])
+                        self.limpar_valor(row['aposentado'])
                     ))
                     contador += 1
                 except Exception as e:
@@ -264,7 +264,7 @@ class MigradorCSVParaSQLite:
             for row in reader:
                 try:
                     self.cursor.execute('''
-                        INSERT OR IGNORE INTO campeonatos (id, nome, pais, entidade, tipo, criado_em)
+                        INSERT OR IGNORE INTO campeonatos (ID, campeonato, pais, entidade, tipo, criado_em)
                         VALUES (?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['ID']),
@@ -298,7 +298,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO edicoes
-                        (id, campeonato_id, ano, data_inicio, data_fim, campeao_id, vice_id, criado_em)
+                        (ID, campeonato_id, ano, data_inicio, data_fim, campeao_id, vice_id, criado_em)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['ID']),
@@ -334,7 +334,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO partidas
-                        (id, edicao_id, campeonato_id, data, hora, fase, rodada,
+                        (ID, edicao_id, campeonato_id, data, hora, fase, rodada,
                          estadio_id, mandante_id, visitante_id, mandante_placar,
                          visitante_placar, mandante_penalti, visitante_penalti, prorrogacao)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
