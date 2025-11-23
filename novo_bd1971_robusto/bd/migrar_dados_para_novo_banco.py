@@ -40,7 +40,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_locais(self):
         """Migra dados da tabela locais"""
-        csv_path = os.path.join(self.csv_dir, 'locais.csv')
+        csv_path = os.path.join(self.csv_dir, 'locais - locais.csv')
         if not os.path.exists(csv_path):
             print("⚠️  locais.csv não encontrado")
             return
@@ -73,7 +73,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_clubes(self):
         """Migra dados da tabela clubes"""
-        csv_path = os.path.join(self.csv_dir, 'clubes.csv')
+        csv_path = os.path.join(self.csv_dir, 'clubes - clubes.csv')
         if not os.path.exists(csv_path):
             print("⚠️  clubes.csv não encontrado")
             return
