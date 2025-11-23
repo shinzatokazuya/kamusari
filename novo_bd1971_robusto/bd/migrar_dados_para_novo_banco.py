@@ -474,7 +474,7 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO eventos_partida
-                        (id, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
+                        (ID, partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
