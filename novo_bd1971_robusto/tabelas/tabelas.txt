@@ -115,7 +115,6 @@ CREATE TABLE jogadores (
     posicao TEXT, -- 'Goleiro', 'Zagueiro', 'Lateral', 'Meia', 'Atacante'
     posicao_detalhada TEXT, -- 'Zagueiro Central', 'Ponta Esquerda', etc.
     pe_preferido TEXT, -- 'Direito', 'Esquerdo', 'Ambidestro'
-    clube_atual_id INTEGER,
     aposentado BOOLEAN DEFAULT 0,
     url_foto TEXT,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

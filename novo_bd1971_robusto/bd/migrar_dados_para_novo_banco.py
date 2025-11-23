@@ -155,7 +155,7 @@ class MigradorCSVParaSQLite:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO jogadores
                         (id, nome, nascimento, falecimento, nacionalidade, naturalidade,
-                         altura, peso, posicao, pe_preferido, aposentado)
+                         altura, peso, posicao, posicao_detalhada, pe_preferido, aposentado)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
@@ -167,6 +167,7 @@ class MigradorCSVParaSQLite:
                         self.limpar_valor(row['altura']),
                         self.limpar_valor(row['peso']),
                         self.limpar_valor(row['posicao']),
+                        self.limpar_valor(row['posicao_detalhada']),
                         self.limpar_valor(row['pe_preferido']),
                         self.limpar_valor(row.get('aposentado', 0))
                     ))
