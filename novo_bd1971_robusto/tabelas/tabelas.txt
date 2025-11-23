@@ -105,7 +105,7 @@ CREATE TABLE estatisticas_partida (
 CREATE TABLE jogadores (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    nome_completo TEXT,
+    apelido TEXT,
     nascimento TEXT,
     falecimento TEXT, -- Para jogadores históricos já falecidos
     nacionalidade TEXT,
