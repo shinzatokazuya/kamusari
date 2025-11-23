@@ -187,7 +187,7 @@ class OGolScraperRelacional:
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
                         'naturalidade': row.get('naturalidade', ''),
-                        'situacao': row.get('situacao', '')
+                        'aposentado': row.get('aposentado', '')
                     }
             self.next_treinador_id = obter_max_id('treinadores.csv') + 1
             print(f"   ✓ {len(self.treinadores_dict)} treinadores carregados")
@@ -206,7 +206,7 @@ class OGolScraperRelacional:
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
                         'naturalidade': row.get('naturalidade', ''),
-                        'situacao': row.get('situacao', '')
+                        'aposentado': row.get('aposentado', '')
                     }
             self.next_arbitro_id = obter_max_id('arbitros.csv') + 1
             print(f"   ✓ {len(self.arbitros_dict)} árbitros carregados")

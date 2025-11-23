@@ -413,13 +413,13 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO treinadores_em_partida
-                        (partida_id, treinador_id, clube_id, titular)
+                        (partida_id, treinador_id, clube_id, tipo)
                         VALUES (?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['partida_id']),
                         self.limpar_valor(row['treinador_id']),
                         self.limpar_valor(row['clube_id']),
-                        self.limpar_valor(row['titular'])
+                        self.limpar_valor(row['tipo'])
                     ))
                     contador += 1
                 except Exception as e:
