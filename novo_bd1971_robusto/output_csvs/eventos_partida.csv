@@ -792,3 +792,8 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 791,105,198,16,Entrou,,
 792,105,63,6,Entrou,,
 793,105,66,6,Entrou,,
+794,106,107,9,Substituição,,
+795,106,349,18,Substituição,,
+796,106,223,18,Gol,Normal,87
+797,106,360,9,Entrou,,
+798,106,221,18,Entrou,,
