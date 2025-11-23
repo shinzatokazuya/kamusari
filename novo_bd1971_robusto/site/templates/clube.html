@@ -114,7 +114,9 @@
                                     <a href="/clube/{{ jogo['visitante'] }}">{{ jogo['visitante'] }}</a>
                                 {% endif %}
                             </td>
-                            <td class="arena-info">{{ jogo['arena'] if jogo['arena'] else '-' }}</td>
+                            <td class="arena-info">
+                                <a href="/estadio/{{ jogo['arena'] }}">{{ jogo['arena'] if jogo['arena'] else '-' }}</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
