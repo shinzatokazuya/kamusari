@@ -781,3 +781,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 780,104,205,17,Substituição,,
 781,104,207,17,Entrou,,
 782,104,263,17,Entrou,,
+783,105,194,16,Substituição,,
+784,105,193,16,Substituição,,
+785,105,273,6,Substituição,,
+786,105,324,6,Substituição,,
+787,105,70,6,Gol,Normal,55
+788,105,70,6,Gol,Normal,77
+789,105,325,6,Gol,Normal,75
+790,105,268,16,Entrou,,
+791,105,198,16,Entrou,,
+792,105,63,6,Entrou,,
+793,105,66,6,Entrou,,
