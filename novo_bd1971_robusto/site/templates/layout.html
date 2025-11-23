@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Brasileirão</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link rel="stylesheet" href="../static/css/layout.css">
+        <link rel="stylesheet" href="../static/css/index.css">
+        <link rel="stylesheet" href="../static/css/clube.css">
+        <link rel="stylesheet" href="../static/css/estatisticas.css">
+        <link rel="stylesheet" href="../static/css/search.css">
+
+        <script>
+            window.ALL_CLUBS = {{ clubes_json | safe }};
+        </script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="/"></a>
+            </div>
+            <div class="navbar-search">
+                <form action="/search" method="get">
+                    <div class="autocomplete-container">
+                        <input autocomplete="off" autofocus name="q" placeholder="Buscar Clube" type="text" id="clube_nav">
+                        <ul id="autocomplete-list-nav"></ul>
+                    </div>
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="navbar-links">
+                <a href="/">Home</a>
+            </div>
+        </nav>
+
+        <main class="container">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            </footer>
+
+        <script src="../static/js/layout.js"></script>
+        {% block scripts %}
+            {# Para scripts específicos de cada página #}
+        {% endblock %}
+    </body>
+</html>

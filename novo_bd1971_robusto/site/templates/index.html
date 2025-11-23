@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+     <div style="text-align: center;">
+        <h2>Campeonato Brasileiro</h2>
+
+        <select name="select-ano-index" id="select-ano-index">
+            <option disabled selected value="">Selecione um Ano</option>
+            {% for year in datas %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="ranking-section">
+        <h2 class="ranking-title">Ranking geral do Campeonato Brasileiro de 1971 - 2025</h2>
+
+        <div class="rankings-container">
+            {% set chunk_size = 15 %}
+            {% for i in range(0, rankings|length, chunk_size) %}
+            <table id="tabela-classificacao-geral">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Clube</th>
+                        <th>Jogos</th>
+                        <th>Pontos</th>
+                        <th>Vitórias</th>
+                        <th>Empates</th>
+                        <th>Derrotas</th>
+                        <th>GM</th>
+                        <th>GC</th>
+                        <th>SG</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-classificacao-geral-tbody">
+                    {% for ranking in rankings[i:i+chunk_size] %}
+                    <tr>
+                        <td>{{ ranking["posicao"] }}</td>
+                        <td><a href="{{ url_for('clube', nome=ranking['clube']) }}">{{ ranking["clube"] }}</a></td>
+                        <td>{{ ranking["total_jogos"] }}</td>
+                        <td><strong>{{ ranking["pontos"] }}</strong></td>
+                        <td>{{ ranking["vitorias"] }}</td>
+                        <td>{{ ranking["empates"] }}</td>
+                        <td>{{ ranking["derrotas"] }}</td>
+                        <td>{{ ranking["gm"] }}</td>
+                        <td>{{ ranking["gs"] }}</td>
+                        <td>{{ ranking["sg"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+    // Define ALL_CLUBS globalmente para o autocomplete do navbar
+    const ALL_CLUBS = {{ clubes_json | safe }}; // Use |safe para evitar escape HTML
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const yearSelectIndex = document.querySelector('#select-ano-index');
+
+        if (yearSelectIndex) {
+            yearSelectIndex.addEventListener('change', () => {
+                const selectedYear = yearSelectIndex.value;
+                if (selectedYear) {
+                    window.location.href = `/search?data=${selectedYear}`;
+                }
+            });
+        }
+    });
+
+</script>
+
+{% endblock %}

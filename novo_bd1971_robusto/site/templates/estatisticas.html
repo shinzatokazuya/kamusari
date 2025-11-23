@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="match-header">
+    <div class="team">
+        <h2><a href="/clube/{{ confronto['mandante']}}">{{ confronto["mandante"] }}</a></h2>
+        {% if gols %}
+            <ul class="gols-list">
+                {% for gol in gols if gol["clube"] == confronto["mandante"] %}
+                    <li>{{ gol["atleta"] }} {{ gol["minuto"] }}' {% if gol["tipo_de_gol"] %}({{ gol["tipo_de_gol"] }}){% endif %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="score">
+        <h1>{{ confronto["gols_mandante"] }} - {{ confronto["gols_visitante"] }}</h1>
+        <p class="match-info">
+            {{ confronto["data"] }}
+            {% if confronto["hora"] %} • {{ confronto["hora"] }}{% endif %}
+        </p>
+        {% if confronto["arena"] %}
+            <p class="match-info">{{ confronto["arena"] }}{% if confronto["mandante_Estado"] %} - {{ confronto["mandante_Estado"] }}{% endif %}</p>
+        {% endif %}
+        <p class="match-info">RODADA {{ confronto["rodada"] }} • {{ confronto["ano"] }}</p>
+    </div>
+
+    <div class="team">
+        <h2><a href="/clube/{{ confronto['visitante'] }}">{{ confronto["visitante"] }}</a></h2>
+        {% if gols %}
+            <ul class="gols-list">
+                {% for gol in gols if gol["clube"] == confronto["visitante"] %}
+                    <li>{{ gol["atleta"] }} {{ gol["minuto"] }}' {% if gol["tipo_de_gol"] %}({{ gol["tipo_de_gol"] }}){% endif %}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% if estatisticas %}
+    <h3 class="section-title">Estatísticas</h3>
+    <div class="stats-container">
+        {% for e in estatisticas %}
+        <div class="stat-box">
+            <h4>{{ e["clube"] }}</h4>
+            <ul>
+                <li><strong>Chutes:</strong> {{ e["chutes"] }}</li>
+                <li><strong>No Alvo:</strong> {{ e["chutes_no_alvo"] }}</li>
+                <li><strong>Posse de Bola:</strong> {{ e["posse_de_bola"] }}</li>
+                <li><strong>Passes:</strong> {{ e["passes"] }}</li>
+                <li><strong>Precisão de passe:</strong> {{ e["precisao_passes"] }}</li>
+                <li><strong>Cartões amarelos:</strong> {{ e["cartao_amarelo"] }}</li>
+                <li><strong>Cartões vermelhos:</strong> {{ e["cartao_vermelho"] }}</li>
+                <li><strong>Impedimentos:</strong> {{ e["impedimentos"] }}</li>
+                <li><strong>Escanteios:</strong> {{ e["escanteios"] }}</li>
+                <li><strong>Faltas:</strong> {{ e["faltas"] }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div style="text-align: center; padding: 20px; background-color: #f0f0f0; margin: 20px 0; border-radius: 5px;">
+        <p><em>Estatísticas detalhadas não disponíveis para esta partida.</em></p>
+    </div>
+{% endif %}
+
+{% if cartoes %}
+    <h3 class="section-title">Cartões</h3>
+    <ul class="cards-list">
+        {% for cartao in cartoes %}
+            <li>{{ cartao["clube"] }} - {{ cartao["atleta"] }} {{ cartao["minuto"] }}' ({{ cartao["tipo_de_cartao"] }})</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if not gols and not estatisticas and not cartoes %}
+    <div style="text-align: center; padding: 40px; background-color: #f9f9f9; margin: 20px 0; border-radius: 5px;">
+        <p style="font-size: 18px; color: #666;"><em>Informações detalhadas não disponíveis para esta partida.</em></p>
+        <p style="color: #999;">Apenas o placar final está registrado no banco de dados.</p>
+    </div>
+{% endif %}
+
+{% endblock %}

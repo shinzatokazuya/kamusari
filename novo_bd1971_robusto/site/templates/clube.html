@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="clube-info">
+    <h2>Histórico de Jogos - {{ clube }}</h2>
+</div>
+
+<div class="jogos-container">
+        {% if jogos_por_ano %}
+        {% for ano, jogos in jogos_por_ano.items() %}
+            <div class="jogos-ano">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Temporada {{ ano }}</th>
+                        </tr>
+                        <tr>
+                            <th>Rodada</th>
+                            <th>Data</th>
+                            <th>Mandante</th>
+                            <th>Placar</th>
+                            <th>Visitante</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for jogo in jogos %}
+                        <tr>
+                            <td>{{ jogo["rodada"] }}</td>
+                            <td>{{ jogo["data"] }}</td>
+                            <td>
+                                {% if jogo["mandante"] == clube %}
+                                    <strong>{{ jogo["mandante"] }}</strong>
+                                {% else %}
+                                    <a href="/clube/{{ jogo['mandante'] }}">{{ jogo["mandante"] }}</a>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <strong>
+                                    <a href="/estatisticas/{{ jogo['ID'] }}">
+                                        {{ jogo["mandante_placar"] }} x {{ jogo["visitante_placar"] }}
+                                    </a>
+                                </strong>
+                            </td>
+                            <td>
+                                {% if jogo["visitante"] == clube %}
+                                    <strong>{{ jogo["visitante"] }}</strong>
+                                {% else %}
+                                    <a href="/clube/{{ jogo['visitante'] }}">{{ jogo["visitante"] }}</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align: center; padding: 20px;">Nenhum jogo encontrado para este clube.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
