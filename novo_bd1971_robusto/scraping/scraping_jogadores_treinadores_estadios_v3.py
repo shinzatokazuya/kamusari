@@ -624,7 +624,7 @@ class OGolScraperRelacional:
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', ''),
-            'aposentado': dados.get('situacao', '')
+            'aposentado': dados.get('aposentado', '')
         }
 
         self.treinadores_dict[chave_atributos] = registro
@@ -672,11 +672,9 @@ class OGolScraperRelacional:
             elif "Situação" in campo:
                 if "Falecido" in valor:
                     dados["falecimento"] = valor
-                    dados["situacao"] = "Aposentado"
-                elif "" in valor:
-                    dados["situacao"] = "Aposentado"
+                    dados["aposentado"] = 1
                 else:
-                    dados["situacao"] = valor
+                    dados["aposentado"] = 1
 
         # Cria chave de atributos
         chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
@@ -699,7 +697,7 @@ class OGolScraperRelacional:
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', ''),
-            'situacao': dados.get('situacao', '')
+            'aposentado': dados.get('aposentado', '')
         }
 
         self.arbitros_dict[chave_atributos] = registro
