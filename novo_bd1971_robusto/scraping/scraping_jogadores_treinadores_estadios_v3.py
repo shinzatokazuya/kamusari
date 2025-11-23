@@ -990,7 +990,7 @@ class OGolScraperRelacional:
                 'partida_id': partida_id,
                 'treinador_id': treinador_id,
                 'clube_id': clube_id,
-                'titular': 1 if treinador_id else 0
+                'tipo': "Titular" if treinador_id else ""
             })
 
         return estadio_id
@@ -1092,7 +1092,7 @@ class OGolScraperRelacional:
 
         if self.treinadores_em_partida_lista:
             path = os.path.join(self.output_dir, "treinadores_em_partida.csv")
-            campos = ['partida_id','treinador_id','clube_id','titular']
+            campos = ['partida_id','treinador_id','clube_id','tipo']
             append_rows(path, campos, self.treinadores_em_partida_lista)
             self.treinadores_em_partida_lista.clear()
             print("💾 treinadores_em_partida.csv atualizado")
