@@ -599,8 +599,9 @@ class OGolScraperRelacional:
             elif "Situação" in campo:
                 if "Falecido" in valor:
                     dados["falecimento"] = valor
+                    dados["aposentado"] = 1
                 else:
-                    dados["situacao"] = valor
+                    dados["aposentado"] = 1
 
         # Cria chave de atributos
         chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
@@ -623,7 +624,7 @@ class OGolScraperRelacional:
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
             'nacionalidade': dados.get('nacionalidade', ''),
-            'situacao': dados.get('situacao', '')
+            'aposentado': dados.get('situacao', '')
         }
 
         self.treinadores_dict[chave_atributos] = registro
@@ -1053,7 +1054,7 @@ class OGolScraperRelacional:
 
         if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','naturalidade','situacao']
+            campos = ['id','nome','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
             append_rows(path, campos, self._novo_treinador)
             self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
