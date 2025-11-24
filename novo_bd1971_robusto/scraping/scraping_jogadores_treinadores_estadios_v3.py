@@ -1234,6 +1234,6 @@ class OGolScraperRelacional:
 
 
 if __name__ == "__main__":
-    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario?equipa=0&estado=&filtro=&op=calendario&page=4"
+    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario?equipa=0&estado=&filtro=&op=calendario&page=5"
     scraper = OGolScraperRelacional(url)
     scraper.executar(edicao_id=1)
