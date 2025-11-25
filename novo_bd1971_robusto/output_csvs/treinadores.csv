@@ -1,39 +1,26 @@
 id,nome,nascimento,falecimento,nacionalidade,naturalidade,aposentado
-1,Jorge Silva Vieira,18/07/1934,25/07/2012,Brasil,Rio de Janeiro,1
-2,Mauro Ramos de Oliveira,30/08/1930,18/09/2002,Brasil,Poços de Caldas,1
-3,Telê Santana da Silva,26/07/1931,21/04/2006,Brasil,Itabarito,1
-4,Aírton Moreira,31/12/1917,22/11/1975,Brasil,Miracema,1
-5,Egídio Landolfi,20/01/1928,20/06/1905,Brasil,Laguna Carapã,1
-6,Thomaz Soares da Silva,14/09/1921,07/02/2002,Brasil,Niterói,1
-7,Davi Ferreira,15/05/1926,16/07/2017,Brasil,Belo Horizonte,1
-8,Osvaldo da Silva,14/01/1926,25/03/1997,Brasil,Santos,1
-9,João Carlos Batista Pinheiro,13/01/1932,30/08/2011,Brasil,Campos dos Goytacazes,1
-10,Manuel Fleitas Solich,30/12/1901,24/03/1984,Paraguai,Asunción,1
-11,Oswaldo Augusto Brandão,18/09/1916,29/07/1989,Brasil,Taquara,1
-12,Dino Sani,23/05/1932,,Brasil,São Paulo,1
-13,Mário Jorge Lobo Zagallo,09/08/1931,05/01/2024,Brasil,Maceió,1
-14,Mário Travaglini,30/04/1932,21/02/2014,Brasil,São Paulo,1
-15,João Avelino Gomes,10/11/1929,24/11/2006,Brasil,Andradas,1
-16,Marinho Rodrigues de Oliveira,21/05/1923,17/11/2001,Brasil,Paracambi,1
-17,Paulo Lima Amaral,18/10/1923,01/05/2008,Brasil,Rio de Janeiro,1
-18,Elba de Pádua Lima,20/02/1915,07/07/1984,Brasil,Rifaina,1
-19,Orlando Fantoni,13/05/1917,05/06/2002,Brasil,Belo Horizonte,1
-20,Otto Martins Glória,09/01/1917,04/09/1986,Brasil,Rio de Janeiro,1
-21,Osvaldo da Silva,1926-01-14,Falecido - 1997-03-25 (71 anos),Brasil,Santos (SP),1
-22,Telê Santana da Silva,1931-07-26,Falecido - 2006-04-21 (74 anos),Brasil,Itabarito (MG),1
-23,Davi Ferreira,1926-05-15,Falecido - 2017-07-16 (91 anos),Brasil,Belo Horizonte,1
-24,Otto Martins Glória,1917-01-09,Falecido - 1986-09-04 (69 anos),Brasil,Rio de Janeiro,1
-25,Mário Jorge Lobo Zagallo,1931-08-09,Falecido - 2024-01-05 (92 anos),Brasil,Maceió (AL),1
-26,Egídio Landolfi,1928-01-20,Falecido - 1998-00-00 (69 anos),Brasil,Laguna Carapã (MS),1
-27,Oswaldo Augusto Brandão,1916-09-18,Falecido - 1989-07-29 (72 anos),Brasil,Taquara (RS),1
-28,Orlando Fantoni,1917-05-13,Falecido - 2002-06-05 (85 anos),Brasil,Belo Horizonte (MG),1
-29,Mauro Ramos de Oliveira,1930-08-30,Falecido - 2002-09-18 (72 anos),Brasil,Poços de Caldas (MG),1
-30,Mário Travaglini,1932-04-30,Falecido - 2014-02-21 (81 anos),Brasil,São Paulo,1
-31,Rubens Francisco Minelli,1928-12-19,Falecido - 2023-11-23 (94 anos),Brasil,São Paulo,1
-32,Elba de Pádua Lima,1915-02-20,Falecido - 1984-07-07 (69 anos),Brasil,Rifaina (SP),1
-33,Jorge Silva Vieira,1934-07-18,Falecido - 2012-07-25 (78 anos),Brasil,Rio de Janeiro,1
-34,Admildo de Abreu Chirol,1934-02-25,Falecido - 1998-12-28 (64 anos),Brasil,Rio de Janeiro (RJ),1
-35,Dorival Knippel Yustrich,1917-09-28,Falecido - 1990-02-15 (72 anos),Brasil,Corumbá (MS),1
-36,Dino Sani,1932-05-23,,Brasil,São Paulo (SP),1
-37,José Poy,1926-04-11,Falecido - 1996-02-08 (69 anos),Argentina,Rosário,1
-38,Thomaz Soares da Silva,1921-09-14,Falecido - 2002-02-07 (80 anos),Brasil,Niterói (RJ),1
+1,Jorge Silva Vieira,1934-07-18,Falecido - 2012-07-25 (78 anos),Brasil,Rio de Janeiro,1
+2,Mauro Ramos de Oliveira,1930-08-30,Falecido - 2002-09-18 (72 anos),Brasil,Poços de Caldas (MG),1
+3,Telê Santana da Silva,1931-07-26,Falecido - 2006-04-21 (74 anos),Brasil,Itabarito (MG),1
+4,Aírton Moreira,1917-12-31,Falecido - 1975-11-22,Brasil,Miracema,1
+5,Egídio Landolfi,1928-01-20,Falecido - 1998-00-00 (69 anos),Brasil,Laguna Carapã (MS),1
+6,Thomaz Soares da Silva,1921-09-14,Falecido - 2002-02-07,Brasil,Niterói,1
+7,Davi Ferreira,1926-05-15,Falecido - 2017-07-16 (91 anos),Brasil,Belo Horizonte,1
+8,Osvaldo da Silva,1926-01-14,Falecido - 1997-03-25 (71 anos),Brasil,Santos (SP),1
+9,João Carlos Batista Pinheiro,1932-01-13,Falecido - 2011-08-30,Brasil,Campos dos Goytacazes,1
+10,Manuel Fleitas Solich,1901-12-30,Falecido - 1984-03-24,Paraguai,Asunción,1
+11,Oswaldo Augusto Brandão,1916-09-18,Falecido - 1989-07-29 (72 anos),Brasil,Taquara (RS),1
+12,Dino Sani,1932-05-23,,Brasil,São Paulo (SP),1
+13,Mário Jorge Lobo Zagallo,1931-08-09,Falecido - 2024-01-05 (92 anos),Brasil,Maceió (AL),1
+14,Mário Travaglini,1932-04-30,Falecido - 2014-02-21 (81 anos),Brasil,São Paulo,1
+15,João Avelino Gomes,1929-11-10,Falecido - 2006-11-24,Brasil,Andradas,1
+16,Marinho Rodrigues de Oliveira,1923-05-21,Falecido - 2001-11-17,Brasil,Paracambi,1
+17,Paulo Lima Amaral,1923-10-18,Falecido - 2008-05-01,Brasil,Rio de Janeiro,1
+18,Elba de Pádua Lima,1915-02-20,Falecido - 1984-07-07 (69 anos),Brasil,Rifaina (SP),1
+19,Orlando Fantoni,1917-05-13,Falecido - 2002-06-05 (85 anos),Brasil,Belo Horizonte (MG),1
+20,Otto Martins Glória,1917-01-09,Falecido - 1986-09-04 (69 anos),Brasil,Rio de Janeiro,1
+21,Rubens Francisco Minelli,1928-12-19,Falecido - 2023-11-23 (94 anos),Brasil,São Paulo,1
+22,Admildo de Abreu Chirol,1934-02-25,Falecido - 1998-12-28 (64 anos),Brasil,Rio de Janeiro (RJ),1
+23,Dorival Knippel Yustrich,1917-09-28,Falecido - 1990-02-15 (72 anos),Brasil,Corumbá (MS)
+24,José Poy,1926-04-11,Falecido - 1996-02-08 (69 anos),Argentina,Rosário,1
+
