@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block body %}
@@ -21,10 +20,17 @@
         <select id="select-rodada-search" {% if not ano_selecionado or formato_campeonato != 'pontos_corridos' %}style="display: none;"{% endif %}>
             <option value="">Selecione a Rodada</option>
         </select>
+
+        <!-- Botão para mostrar chaveamento (apenas para mata-mata) -->
+        <button id="btn-toggle-chaveamento" class="btn-toggle-chaveamento"
+                {% if not ano_selecionado or formato_campeonato == 'pontos_corridos' %}style="display: none;"{% endif %}>
+            <span class="chaveamento-icon">🏆</span>
+            <span class="chaveamento-text">Ver Chaveamento</span>
+        </button>
     </div>
 
     {% if formato_campeonato and formato_campeonato != 'pontos_corridos' %}
-        <div class="aviso-formato">
+        <div class="aviso-formato alert alert-info">
             <p>
                 ℹ️ <strong>Formato Histórico:</strong>
                 {% if formato_campeonato == 'grupos_fases' %}
@@ -36,6 +42,32 @@
             </p>
         </div>
     {% endif %}
+</div>
+
+<!-- Container do Chaveamento (inicialmente oculto) -->
+<div id="chaveamento-container" class="chaveamento-container" style="display: none;">
+    <div class="chaveamento-header">
+        <h2 class="chaveamento-title">Chaveamento do Mata-Mata</h2>
+    </div>
+    <div id="chaveamento-content" class="chaveamento-wrapper"></div>
+    <div class="chaveamento-legenda">
+        <div class="legenda-item">
+            <div class="legenda-cor vencedor"></div>
+            <span>Vencedor</span>
+        </div>
+        <div class="legenda-item">
+            <div class="legenda-cor perdedor"></div>
+            <span>Eliminado</span>
+        </div>
+        <div class="legenda-item">
+            <div class="legenda-cor penaltis"></div>
+            <span>Decidido nos Pênaltis</span>
+        </div>
+        <div class="legenda-item">
+            <div class="legenda-cor prorrogacao"></div>
+            <span>Teve Prorrogação</span>
+        </div>
+    </div>
 </div>
 
 <div class="container-tabelas-search">
@@ -132,13 +164,15 @@
 {% endblock %}
 
 {% block scripts %}
-
 <script>
     window.ALL_CLUBS = {{ clubes_json | safe }};
 
     document.addEventListener('DOMContentLoaded', () => {
         const selectAnoSearch = document.querySelector('#select-ano-search');
         const selectRodadaSearch = document.querySelector('#select-rodada-search');
+        const btnToggleChaveamento = document.querySelector('#btn-toggle-chaveamento');
+        const chaveamentoContainer = document.querySelector('#chaveamento-container');
+        const chaveamentoContent = document.querySelector('#chaveamento-content');
         const tabelaClassificacaoTbody = document.querySelector('#tabela-classificacao-anual-tbody');
         const tabelaJogosTbody = document.querySelector('#tabela-jogos-anual-tbody');
         const anoSelecionadoHeader = document.querySelector('#classificacao-titulo');
@@ -147,6 +181,146 @@
         let currentYear = {{ ano_selecionado | tojson }};
         let currentRodada = {{ rodada_selecionada | tojson }};
         let currentFormato = {{ formato_campeonato | tojson }};
+        let chaveamentoVisible = false;
+
+        // Toggle do chaveamento
+        if (btnToggleChaveamento) {
+            btnToggleChaveamento.addEventListener('click', async () => {
+                chaveamentoVisible = !chaveamentoVisible;
+
+                if (chaveamentoVisible) {
+                    chaveamentoContainer.style.display = 'block';
+                    btnToggleChaveamento.classList.add('active');
+                    btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ocultar Chaveamento';
+                    await loadChaveamento(currentYear);
+                } else {
+                    chaveamentoContainer.style.display = 'none';
+                    btnToggleChaveamento.classList.remove('active');
+                    btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ver Chaveamento';
+                }
+            });
+        }
+
+        async function loadChaveamento(year) {
+            try {
+                chaveamentoContent.innerHTML = '<div class="loading" style="margin: 40px auto;"></div>';
+
+                const response = await fetch(`/api/chaveamento/${year}`);
+                if (!response.ok) throw new Error('Erro ao carregar chaveamento');
+
+                const chaveamento = await response.json();
+                renderChaveamento(chaveamento);
+
+            } catch (error) {
+                console.error('Erro ao carregar chaveamento:', error);
+                chaveamentoContent.innerHTML = `
+                    <div class="no-data">
+                        <p>Erro ao carregar o chaveamento. Tente novamente.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderChaveamento(chaveamento) {
+            if (Object.keys(chaveamento).length === 0) {
+                chaveamentoContent.innerHTML = `
+                    <div class="no-data">
+                        <p>Nenhum chaveamento disponível para este ano.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Ordem das fases (do mais avançado para o início)
+            const ordemFases = ['Final', 'Semifinal', 'Semi', 'Quartas', 'Oitavas', 'Décimas Sextas'];
+            const fasesOrdenadas = [];
+
+            ordemFases.forEach(nomeF => {
+                Object.keys(chaveamento).forEach(fase => {
+                    if (fase.includes(nomeF) && !fasesOrdenadas.includes(fase)) {
+                        fasesOrdenadas.push(fase);
+                    }
+                });
+            });
+
+            // Adicionar fases restantes
+            Object.keys(chaveamento).forEach(fase => {
+                if (!fasesOrdenadas.includes(fase)) {
+                    fasesOrdenadas.push(fase);
+                }
+            });
+
+            let html = '<div class="chaveamento-fases">';
+
+            fasesOrdenadas.reverse().forEach(fase => {
+                const jogos = chaveamento[fase];
+
+                html += `
+                    <div class="fase">
+                        <div class="fase-header">
+                            <h3 class="fase-title">${fase}</h3>
+                        </div>
+                        <div class="fase-confrontos">
+                `;
+
+                jogos.forEach(jogo => {
+                    const mandanteVencedor = jogo.vencedor === jogo.mandante;
+                    const visitanteVencedor = jogo.vencedor === jogo.visitante;
+                    const temPenaltis = jogo.mandante_penalti !== null && jogo.visitante_penalti !== null;
+                    const temProrrogacao = jogo.prorrogacao;
+
+                    html += `
+                        <div class="confronto ${jogo.vencedor ? 'finalizado' : 'aguardando'}">
+                            <div class="confronto-time ${mandanteVencedor ? 'vencedor' : (visitanteVencedor ? 'perdedor' : '')}">
+                                <div class="time-nome">
+                                    <a href="/clube/${jogo.mandante}">${jogo.mandante}</a>
+                                    ${mandanteVencedor ? '<span class="vencedor-icon">✓</span>' : ''}
+                                </div>
+                                <div class="time-placar">${jogo.mandante_placar !== null ? jogo.mandante_placar : '-'}</div>
+                            </div>
+                            <div class="confronto-time ${visitanteVencedor ? 'vencedor' : (mandanteVencedor ? 'perdedor' : '')}">
+                                <div class="time-nome">
+                                    <a href="/clube/${jogo.visitante}">${jogo.visitante}</a>
+                                    ${visitanteVencedor ? '<span class="vencedor-icon">✓</span>' : ''}
+                                </div>
+                                <div class="time-placar">${jogo.visitante_placar !== null ? jogo.visitante_placar : '-'}</div>
+                            </div>
+                            <div class="confronto-info">
+                                <div class="confronto-data">
+                                    <a href="${makeUrlJogo(jogo.ID, jogo.mandante, jogo.visitante)}">${jogo.data || 'Data não definida'}</a>
+                                </div>
+                                <div>
+                                    ${temProrrogacao ? '<span class="confronto-prorrogacao">PRORR.</span>' : ''}
+                                    ${temPenaltis ? `<span class="confronto-penaltis">Pênaltis: ${jogo.mandante_penalti} - ${jogo.visitante_penalti}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            chaveamentoContent.innerHTML = html;
+        }
+
+        function makeUrlJogo(id, mandante, visitante) {
+            const slug = `${slugify(mandante)}-vs-${slugify(visitante)}`;
+            return `/jogo/${id}/${slug}`;
+        }
+
+        function slugify(text) {
+            return text.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^\w\s-]/g, '')
+                .replace(/[-\s]+/g, '-')
+                .trim();
+        }
 
         async function checkFormatoAndPopulateRodada(year) {
             try {
@@ -305,9 +479,24 @@
         selectAnoSearch.addEventListener('change', async () => {
             currentYear = selectAnoSearch.value;
             currentRodada = null;
+            chaveamentoVisible = false;
+            chaveamentoContainer.style.display = 'none';
+            if (btnToggleChaveamento) {
+                btnToggleChaveamento.classList.remove('active');
+                btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ver Chaveamento';
+            }
 
             if (currentYear) {
                 const formato = await checkFormatoAndPopulateRodada(currentYear);
+
+                // Mostrar/ocultar botão de chaveamento baseado no formato
+                if (btnToggleChaveamento) {
+                    if (formato === 'pontos_corridos') {
+                        btnToggleChaveamento.style.display = 'none';
+                    } else {
+                        btnToggleChaveamento.style.display = 'flex';
+                    }
+                }
 
                 if (formato === 'pontos_corridos') {
                     const maxRodadaDoAno = await populateRodadaDropdown(currentYear, currentRodada);
@@ -320,6 +509,7 @@
                 }
             } else {
                 selectRodadaSearch.style.display = 'none';
+                if (btnToggleChaveamento) btnToggleChaveamento.style.display = 'none';
                 tabelaClassificacaoTbody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Selecione um ano.</td></tr>`;
                 tabelaJogosTbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Selecione um ano.</td></tr>`;
                 history.pushState(null, '', `/search`);
@@ -344,5 +534,62 @@
         }
     });
 </script>
+{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="../static/css/chaveamento.css">
+<style>
+    .controls-container {
+        background: var(--bg-primary);
+        padding: var(--spacing-2xl);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-md);
+        margin-bottom: var(--spacing-3xl);
+    }
+
+    .controls-container h3 {
+        margin: 0 0 var(--spacing-xl) 0;
+        color: var(--text-primary);
+        font-size: var(--font-size-2xl);
+    }
+
+    .selects-container {
+        display: flex;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .selects-container select {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .container-tabelas-search {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .table-section {
+        background: var(--bg-primary);
+        padding: var(--spacing-2xl);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-md);
+    }
+
+    .table-section h2 {
+        margin: 0 0 var(--spacing-xl) 0;
+        color: var(--text-primary);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 3px solid var(--primary-color);
+        font-size: var(--font-size-xl);
+    }
+
+    @media (max-width: 992px) {
+        .container-tabelas-search {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 {% endblock %}

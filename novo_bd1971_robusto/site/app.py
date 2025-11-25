@@ -325,7 +325,8 @@ def clube(nome):
                           estatisticas=dict(estatisticas))
 
 @app.route("/jogo/<int:jogo_id>")
-def jogo(jogo_id):
+@app.route("/jogo/<int:jogo_id>/<path:descricao>")
+def jogo(jogo_id, descricao=None):
     """Página completa de uma partida com todos os detalhes."""
     db = get_db()
 
@@ -334,7 +335,9 @@ def jogo(jogo_id):
         SELECT
             p.ID,
             cm.clube AS mandante,
+            cm.ID as mandante_id,
             cv.clube AS visitante,
+            cv.ID as visitante_id,
             p.mandante_placar AS gols_mandante,
             p.visitante_placar AS gols_visitante,
             p.mandante_penalti,
@@ -470,7 +473,8 @@ def jogo(jogo_id):
     )
 
 @app.route("/jogador/<int:jogador_id>")
-def jogador(jogador_id):
+@app.route("/jogador/<int:jogador_id>/<path:nome>")
+def jogador(jogador_id, nome=None):
     """Página de um jogador específico."""
     db = get_db()
 
@@ -515,7 +519,8 @@ def jogador(jogador_id):
                           partidas=[dict(p) for p in partidas])
 
 @app.route("/arbitro/<int:arbitro_id>")
-def arbitro(arbitro_id):
+@app.route("/arbitro/<int:arbitro_id>/<path:nome>")
+def arbitro(arbitro_id, nome=None):
     """Página de um árbitro específico."""
     db = get_db()
 
@@ -554,7 +559,8 @@ def arbitro(arbitro_id):
                           partidas=[dict(p) for p in partidas])
 
 @app.route("/treinador/<int:treinador_id>")
-def treinador(treinador_id):
+@app.route("/treinador/<int:treinador_id>/<path:nome>")
+def treinador(treinador_id, nome=None):
     """Página de um treinador específico."""
     db = get_db()
 
@@ -594,7 +600,8 @@ def treinador(treinador_id):
                           partidas=[dict(p) for p in partidas])
 
 @app.route("/estadio/<int:estadio_id>")
-def estadio(estadio_id):
+@app.route("/estadio/<int:estadio_id>/<path:nome>")
+def estadio(estadio_id, nome=None):
     """Página de um estádio específico."""
     db = get_db()
 
@@ -678,7 +685,133 @@ def api_formato_campeonato(ano):
     formato = get_formato_campeonato(ano)
     return jsonify({"formato": formato})
 
+@app.route("/api/chaveamento/<int:ano>")
+def api_chaveamento(ano):
+    """Retorna o chaveamento do mata-mata para um dado ano."""
+    db = get_db()
+
+    # Buscar todas as partidas do ano que não são de rodada (pontos corridos)
+    jogos = db.execute("""
+        SELECT
+            p.ID,
+            cm.clube AS mandante,
+            cm.ID as mandante_id,
+            cv.clube AS visitante,
+            cv.ID as visitante_id,
+            p.mandante_placar,
+            p.visitante_placar,
+            p.mandante_penalti,
+            p.visitante_penalti,
+            p.fase,
+            p.data,
+            p.prorrogacao
+        FROM partidas p
+        JOIN clubes cm ON p.mandante_id = cm.ID
+        JOIN clubes cv ON p.visitante_id = cv.ID
+        JOIN edicoes ed ON p.edicao_id = ed.ID
+        WHERE ed.ano = ?
+            AND (p.fase NOT LIKE 'R%' OR p.fase NOT GLOB 'R[0-9]*')
+        ORDER BY
+            CASE p.fase
+                WHEN 'Final' THEN 1
+                WHEN 'Semi' THEN 2
+                WHEN 'Semifinal' THEN 2
+                WHEN 'Quartas' THEN 3
+                WHEN 'Oitavas' THEN 4
+                WHEN 'Décimas Sextas' THEN 5
+                ELSE 6
+            END,
+            p.data
+    """, (ano,)).fetchall()
+
+    # Organizar jogos por fase
+    chaveamento = {}
+    for jogo in jogos:
+        fase = jogo['fase']
+        if fase not in chaveamento:
+            chaveamento[fase] = []
+
+        jogo_dict = dict(jogo)
+        # Determinar vencedor
+        if jogo['mandante_placar'] is not None and jogo['visitante_placar'] is not None:
+            if jogo['mandante_penalti'] is not None and jogo['visitante_penalti'] is not None:
+                # Definido nos pênaltis
+                vencedor = jogo['mandante'] if jogo['mandante_penalti'] > jogo['visitante_penalti'] else jogo['visitante']
+                vencedor_id = jogo['mandante_id'] if jogo['mandante_penalti'] > jogo['visitante_penalti'] else jogo['visitante_id']
+            else:
+                # Definido no tempo normal ou prorrogação
+                if jogo['mandante_placar'] > jogo['visitante_placar']:
+                    vencedor = jogo['mandante']
+                    vencedor_id = jogo['mandante_id']
+                elif jogo['visitante_placar'] > jogo['mandante_placar']:
+                    vencedor = jogo['visitante']
+                    vencedor_id = jogo['visitante_id']
+                else:
+                    vencedor = None
+                    vencedor_id = None
+
+            jogo_dict['vencedor'] = vencedor
+            jogo_dict['vencedor_id'] = vencedor_id
+        else:
+            jogo_dict['vencedor'] = None
+            jogo_dict['vencedor_id'] = None
+
+        chaveamento[fase].append(jogo_dict)
+
+    return jsonify(chaveamento)
+
 # ==================== HELPER FUNCTIONS ====================
+
+def slugify(text):
+    """
+    Converte texto para formato URL amigável.
+    Ex: "São Paulo" -> "sao-paulo"
+    """
+    import unicodedata
+    import re
+
+    # Normaliza caracteres unicode
+    text = unicodedata.normalize('NFKD', text)
+    text = text.encode('ascii', 'ignore').decode('ascii')
+
+    # Converte para minúsculas e substitui espaços por hífens
+    text = text.lower()
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[-\s]+', '-', text)
+
+    return text.strip('-')
+
+def make_url_jogador(jogador_id, nome):
+    """Cria URL amigável para jogador."""
+    return f"/jogador/{jogador_id}/{slugify(nome)}"
+
+def make_url_arbitro(arbitro_id, nome):
+    """Cria URL amigável para árbitro."""
+    return f"/arbitro/{arbitro_id}/{slugify(nome)}"
+
+def make_url_treinador(treinador_id, nome):
+    """Cria URL amigável para treinador."""
+    return f"/treinador/{treinador_id}/{slugify(nome)}"
+
+def make_url_estadio(estadio_id, nome):
+    """Cria URL amigável para estádio."""
+    return f"/estadio/{estadio_id}/{slugify(nome)}"
+
+def make_url_jogo(jogo_id, mandante, visitante):
+    """Cria URL amigável para jogo."""
+    slug = f"{slugify(mandante)}-vs-{slugify(visitante)}"
+    return f"/jogo/{jogo_id}/{slug}"
+
+# Adicionar funções ao contexto do Jinja2
+@app.context_processor
+def utility_processor():
+    return dict(
+        make_url_jogador=make_url_jogador,
+        make_url_arbitro=make_url_arbitro,
+        make_url_treinador=make_url_treinador,
+        make_url_estadio=make_url_estadio,
+        make_url_jogo=make_url_jogo
+    )
 
 def get_formato_campeonato(ano):
     """
@@ -855,3 +988,6 @@ def get_classificacao_por_ano_e_rodada(ano, rodada_num=None):
     """, params * 2).fetchall()
 
     return rankings
+
+if __name__ == "__main__":
+    app.run(debug=True)

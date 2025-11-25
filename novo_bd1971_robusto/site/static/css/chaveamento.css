@@ -1,0 +1,440 @@
+/* chaveamento.css - Estilos para visualização de chaveamento mata-mata */
+
+/* ===== CONTAINER DO CHAVEAMENTO ===== */
+.chaveamento-container {
+    background: var(--bg-primary);
+    padding: var(--spacing-3xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    margin: var(--spacing-3xl) 0;
+    overflow-x: auto;
+}
+
+.chaveamento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-3xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.chaveamento-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.btn-toggle-chaveamento {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.btn-toggle-chaveamento:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-toggle-chaveamento.active {
+    background: var(--danger-color);
+}
+
+.chaveamento-icon {
+    font-size: var(--font-size-lg);
+    transition: transform var(--transition-base);
+}
+
+.btn-toggle-chaveamento.active .chaveamento-icon {
+    transform: rotate(180deg);
+}
+
+/* ===== LAYOUT DO CHAVEAMENTO ===== */
+.chaveamento-wrapper {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.chaveamento-wrapper.show {
+    display: block;
+}
+
+.chaveamento-fases {
+    display: flex;
+    gap: var(--spacing-4xl);
+    min-width: max-content;
+    padding: var(--spacing-xl) 0;
+}
+
+/* ===== FASE DO CHAVEAMENTO ===== */
+.fase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+    min-width: 280px;
+    position: relative;
+}
+
+.fase-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.fase-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: var(--spacing-md);
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+}
+
+.fase-confrontos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+/* ===== CONFRONTO ===== */
+.confronto {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.confronto:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.confronto-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    transition: background-color var(--transition-fast);
+}
+
+.confronto-time:first-child {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.confronto-time:hover {
+    background-color: var(--gray-100);
+}
+
+.confronto-time.vencedor {
+    background-color: var(--success-bg);
+    font-weight: var(--font-weight-bold);
+}
+
+.confronto-time.perdedor {
+    opacity: 0.6;
+}
+
+.time-nome {
+    flex: 1;
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.time-nome a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.time-nome a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.time-placar {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    min-width: 40px;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.confronto-time.vencedor .time-placar {
+    color: var(--success-color);
+}
+
+/* Indicador de vencedor */
+.vencedor-icon {
+    color: var(--success-color);
+    font-size: var(--font-size-lg);
+    margin-left: var(--spacing-sm);
+}
+
+/* ===== INFORMAÇÕES DO CONFRONTO ===== */
+.confronto-info {
+    background: var(--gray-100);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.confronto-data {
+    font-weight: var(--font-weight-medium);
+}
+
+.confronto-penaltis {
+    background: var(--warning-bg);
+    color: var(--warning-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.confronto-prorrogacao {
+    background: var(--info-bg);
+    color: var(--info-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-xs);
+}
+
+/* ===== LINHAS DE CONEXÃO ===== */
+.fase::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+    z-index: -1;
+}
+
+.fase:last-child::after {
+    display: none;
+}
+
+/* Linha vertical para conectar confrontos */
+.confronto::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    width: 20px;
+    height: 2px;
+    background: var(--primary-light);
+}
+
+/* ===== LEGENDA ===== */
+.chaveamento-legenda {
+    display: flex;
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
+    padding: var(--spacing-lg);
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.legenda-cor {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-color);
+}
+
+.legenda-cor.vencedor {
+    background: var(--success-bg);
+}
+
+.legenda-cor.perdedor {
+    background: var(--bg-primary);
+    opacity: 0.6;
+}
+
+.legenda-cor.penaltis {
+    background: var(--warning-bg);
+}
+
+.legenda-cor.prorrogacao {
+    background: var(--info-bg);
+}
+
+/* ===== ESTADOS ESPECIAIS ===== */
+.confronto.finalizado {
+    border-color: var(--success-color);
+    border-width: 2px;
+}
+
+.confronto.aguardando {
+    opacity: 0.7;
+    border-style: dashed;
+}
+
+.aguardando-text {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1200px) {
+    .chaveamento-fases {
+        gap: var(--spacing-2xl);
+    }
+
+    .fase {
+        min-width: 240px;
+    }
+
+    .fase::after {
+        width: 20px;
+        right: -20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .chaveamento-container {
+        padding: var(--spacing-xl);
+    }
+
+    .chaveamento-header {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .chaveamento-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .fase {
+        min-width: 220px;
+    }
+
+    .confronto-time {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .time-nome {
+        font-size: var(--font-size-sm);
+    }
+
+    .time-placar {
+        font-size: var(--font-size-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .chaveamento-container {
+        margin: var(--spacing-xl) 0;
+        padding: var(--spacing-md);
+    }
+
+    .chaveamento-fases {
+        flex-direction: column;
+        gap: var(--spacing-3xl);
+    }
+
+    .fase {
+        min-width: 100%;
+    }
+
+    .fase::after {
+        display: none;
+    }
+
+    .confronto::before {
+        display: none;
+    }
+
+    .fase-title {
+        font-size: var(--font-size-lg);
+    }
+
+    .chaveamento-legenda {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fase {
+    animation: slideInFromLeft 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.fase:nth-child(1) { animation-delay: 0.1s; }
+.fase:nth-child(2) { animation-delay: 0.2s; }
+.fase:nth-child(3) { animation-delay: 0.3s; }
+.fase:nth-child(4) { animation-delay: 0.4s; }
+.fase:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===== HOVER EFFECTS ===== */
+.confronto-time:hover .time-nome a {
+    color: var(--primary-color);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .chaveamento-container {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    .btn-toggle-chaveamento {
+        display: none;
+    }
+
+    .chaveamento-wrapper {
+        display: block !important;
+    }
+
+    .confronto:hover {
+        transform: none;
+    }
+}

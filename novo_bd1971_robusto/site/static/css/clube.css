@@ -1,0 +1,51 @@
+.clube-info {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #444;
+}
+
+.jogos-container {
+    display: flex;
+    flex-wrap: wrap; /* permite quebrar linhas quando não couber horizontalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    gap: 20px; /* espaço entre as tabelas */
+}
+
+.jogos-ano {
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.jogos-ano thead {
+    background: #0056b3;
+    color: white;
+}
+
+.jogos-ano th {
+    padding: 10px;
+}
+
+.jogos-ano td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.jogos-ano tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.jogos-ano tbody tr:hover {
+    background: #f1f1f1;
+}

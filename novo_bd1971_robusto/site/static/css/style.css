@@ -1,0 +1,202 @@
+/* static/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #e6f0f8;
+    color: #333;
+}
+
+/* Estilos gerais para tabelas */
+.classificacao-geral {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f3f7fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-tabelas-search {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.tabela-jogos, .tabela-classificacao {
+    flex-shrink: 0;
+    background-color: #f3f7fa;
+}
+
+.tabela-jogos th, .tabela-classificacao th {
+    background-color: #dddddd;
+    color: #333333;
+    padding: 10px 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tabela-jogos td, .tabela-classificacao td {
+    padding: 5px 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.tabela-jogos tbody tr::nth-child(even), .tabela-classificacao tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+a {
+    color: #5e47de;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para o formulário de pesquisa */
+form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form input,
+form select,
+form button {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Estilos para o autocomplete */
+.autocomplete-container {
+    position: relative;
+    display: inline-block;
+}
+
+#autocomplete-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    width: calc(100% - 2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: left; /* Alinha o texto das sugestões à esquerda */
+}
+
+#autocomplete-list li {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+#autocomplete-list li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Layout para a página de busca (/search) */
+.search-results-container {
+    display: flex; /* Habilita flexbox */
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    justify-content: center; /* Centraliza os itens no container */
+    gap: 20px; /* Espaçamento entre os flex items */
+}
+
+.jogos-table-container {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 400px; /* Largura mínima para a tabela de jogos */
+    max-width: 60%; /* Impede que a tabela de jogos fique muito larga */
+}
+
+.classificacao-table-container {
+    flex: 1; /* Ocupa o espaço disponível */
+    min-width: 400px; /* Largura mínima para a tabela de classificação */
+    max-width: 40%; /* Impede que a tabela de classificação fique muito larga */
+}
+
+/* Ajustes para a tabela de classificação anual no search.html */
+.classificacao-table-container table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Estilo para a linha do clube pesquisado */
+.highlight-club {
+    background-color: #ffd700; /* Amarelo para destacar */
+    font-weight: bold;
+}
+
+/* Estilos para a página de clube */
+.clube-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clube-jogos-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px; /* Limita a largura da lista de jogos */
+}
+
+.clube-jogos-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Estilos para a página de estatísticas */
+.estatisticas-container h2, .estatisticas-container h3 {
+    text-align: center;
+}
+
+.estatisticas-container table {
+    margin: 20px auto;
+    width: 80%; /* Ajusta a largura da tabela de estatísticas */
+}
+
+.estatisticas-container ul {
+    list-style-type: disc; /* Usa marcadores de lista padrão */
+    margin: 0 auto 20px auto;
+    padding-left: 20px;
+    max-width: 600px; /* Limita a largura das listas de gols/cartões */
+}
+
+.estatisticas-container ul li {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+/* Estilos para o gráfico */
+.chart-container {
+    width: 80%;
+    margin: 40px auto; /* Centraliza e adiciona margem */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}

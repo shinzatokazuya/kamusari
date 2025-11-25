@@ -1,0 +1,41 @@
+.ranking-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.rankings-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#tabela-classificacao-geral {
+    border-collapse: collapse;
+    width: 400px;
+    font-size: 14px;
+    background: #fdfdfd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#tabela-classificacao-geral thead {
+    background: #0056b3;
+    color: white;
+}
+
+#tabela-classificacao-geral th,
+#tabela-classificacao-geral td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#tabela-classificacao-geral tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+#tabela-classificacao-geral tbody tr:hover {
+    background: #f1f1f1;
+}

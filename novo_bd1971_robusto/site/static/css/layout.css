@@ -1,0 +1,67 @@
+/* Container da autocomplete */
+.autocomplete-container {
+    position: relative;
+    width: 250px; /* ajuste conforme necessário */
+}
+
+/* Lista de sugestões */
+#autocomplete-list-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 250px; /* altura máxima com scroll */
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 9999;
+    display: none; /* inicialmente escondido */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 6px 6px;
+}
+
+/* Cada item da lista */
+#autocomplete-list-nav li {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+/* Hover ou foco do item */
+#autocomplete-list-nav li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Se quiser adicionar um destaque visual para o primeiro item */
+#autocomplete-list-nav li:first-child {
+    border-top: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;   /* centraliza verticalmente */
+    justify-content: space-between; /* espaço entre os itens */
+    padding: 10px 20px;
+}
+
+.navbar-search form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search input {
+    flex: 1;
+    padding: 6px 10px;
+}
+
+.navbar-links a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+}
+
