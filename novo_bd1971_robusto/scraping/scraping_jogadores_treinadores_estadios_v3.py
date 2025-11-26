@@ -986,12 +986,14 @@ class OGolScraperRelacional:
                 else:
                     treinador_id = None
 
-            self.treinadores_em_partida_lista.append({
-                'partida_id': partida_id,
-                'treinador_id': treinador_id,
-                'clube_id': clube_id,
-                'tipo': "Titular" if treinador_id else ""
-            })
+                self.treinadores_em_partida_lista.append({
+                    'partida_id': partida_id,
+                    'treinador_id': treinador_id,
+                    'clube_id': clube_id,
+                    'tipo': "Titular" if treinador_id else ""
+                })
+
+                print(f"   ✓ Treinador registrado: clube_id={clube_id}, treinador_id={treinador_id}")
 
         return estadio_id
 
