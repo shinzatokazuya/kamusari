@@ -62,6 +62,7 @@ CREATE TABLE partidas (
     data TEXT,
     hora TEXT,
     fase TEXT, -- 'Primeira Fase', 'Oitavas', 'Quartas', 'Semi', 'Final', etc.
+    grupo TEXT,
     rodada INTEGER,
     estadio_id INTEGER,
     mandante_id INTEGER NOT NULL,
