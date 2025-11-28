@@ -7,7 +7,7 @@ from pathlib import Path
 SCHEMA_PATH = Path("tabelas/tabelas.txt")   # arquivo SQL com CREATE TABLE... (seu schema). :contentReference[oaicite:1]{index=1}
 DB_PATH = Path("bd/estruturado_bd_1971.db") # caminho do novo banco SQLite
 
-def criar_banco(schema_path=SCHEMA_PATH, db_path=DB_PATH, recreate=True):
+def criar_banco(schema_path=SCHEMA_PATH, db_path=DB_PATH, recreate=False):
     # cria diretório pai se necessário
     db_path.parent.mkdir(parents=True, exist_ok=True)
 
