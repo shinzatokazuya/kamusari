@@ -106,7 +106,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_estadios(self):
         """Migra dados da tabela estadios"""
-        csv_path = os.path.join(self.csv_dir, 'estadios.csv')
+        csv_path = os.path.join(self.csv_dir, 'estadios - estadios.csv')
         if not os.path.exists(csv_path):
             print("⚠️  estadios.csv não encontrado")
             return
@@ -250,7 +250,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_campeonatos(self):
         """Migra dados da tabela campeonatos"""
-        csv_path = os.path.join(self.csv_dir, 'campeonatos.csv')
+        csv_path = os.path.join(self.csv_dir, 'campeonatos - campeonatos.csv')
         if not os.path.exists(csv_path):
             print("⚠️  campeonatos.csv não encontrado")
             return
@@ -283,7 +283,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_edicoes(self):
         """Migra dados da tabela edicoes"""
-        csv_path = os.path.join(self.csv_dir, 'edicoes.csv')
+        csv_path = os.path.join(self.csv_dir, 'edicoes - edicoes.csv')
         if not os.path.exists(csv_path):
             print("⚠️  edicoes.csv não encontrado")
             return
@@ -365,7 +365,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_jogadores_em_partida(self):
         """Migra dados da tabela jogadores_em_partida"""
-        csv_path = os.path.join(self.csv_dir, 'jogadores_em_partida.csv')
+        csv_path = os.path.join(self.csv_dir, 'jogadores_em_partida - jogadores_em_partida.csv')
         if not os.path.exists(csv_path):
             print("⚠️  jogadores_em_partida.csv não encontrado")
             return
@@ -399,7 +399,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_treinadores_em_partida(self):
         """Migra dados da tabela treinadores_em_partida"""
-        csv_path = os.path.join(self.csv_dir, 'treinadores_em_partida.csv')
+        csv_path = os.path.join(self.csv_dir, 'treinadores_em_partida - treinadores_em_partida.csv')
         if not os.path.exists(csv_path):
             print("⚠️  treinadores_em_partida.csv não encontrado")
             return
@@ -431,7 +431,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_arbitros_em_partida(self):
         """Migra dados da tabela arbitros_em_partida"""
-        csv_path = os.path.join(self.csv_dir, 'arbitros_em_partida.csv')
+        csv_path = os.path.join(self.csv_dir, 'arbitros_em_partida - arbitros_em_partida.csv')
         if not os.path.exists(csv_path):
             print("⚠️  arbitros_em_partida.csv não encontrado")
             return
@@ -460,7 +460,7 @@ class MigradorCSVParaSQLite:
 
     def migrar_eventos_partida(self):
         """Migra dados da tabela eventos_partida"""
-        csv_path = os.path.join(self.csv_dir, 'eventos_partida.csv')
+        csv_path = os.path.join(self.csv_dir, 'eventos_partida - eventos_partida.csv')
         if not os.path.exists(csv_path):
             print("⚠️  eventos_partida.csv não encontrado")
             return
