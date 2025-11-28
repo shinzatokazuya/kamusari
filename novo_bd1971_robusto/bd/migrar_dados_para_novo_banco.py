@@ -334,10 +334,10 @@ class MigradorCSVParaSQLite:
                 try:
                     self.cursor.execute('''
                         INSERT OR IGNORE INTO partidas
-                        (ID, edicao_id, campeonato_id, data, hora, fase, rodada,
+                        (ID, edicao_id, campeonato_id, data, hora, fase, grupo, rodada,
                          estadio_id, mandante_id, visitante_id, mandante_placar,
                          visitante_placar, mandante_penalti, visitante_penalti, prorrogacao)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ''', (
                         self.limpar_valor(row['id']),
                         self.limpar_valor(row['edicao_id']),
@@ -345,6 +345,7 @@ class MigradorCSVParaSQLite:
                         self.limpar_valor(row['data']),
                         self.limpar_valor(row['hora']),
                         self.limpar_valor(row['fase']),
+                        self.limpar_valor(row['grupo']),
                         self.limpar_valor(row['rodada']),
                         self.limpar_valor(row['estadio_id']),
                         self.limpar_valor(row['mandante_id']),
