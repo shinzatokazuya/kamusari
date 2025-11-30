@@ -44,7 +44,7 @@ CREATE TABLE campeonatos (
 CREATE TABLE edicoes (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     campeonato_id INTEGER NOT NULL,
-    ano INTEGER NOT NULL,
+    ano TEXT NOT NULL,
     data_inicio TEXT,
     data_fim TEXT,
     campeao_id INTEGER, -- clube vencedor
@@ -69,6 +69,8 @@ CREATE TABLE partidas (
     visitante_id INTEGER NOT NULL,
     mandante_placar INTEGER,
     visitante_placar INTEGER,
+    mandante_grupo TEXT,
+    visitante_grupo TEXT,
     mandante_penalti INTEGER,
     visitante_penalti INTEGER,
     prorrogacao BOOLEAN DEFAULT 0,

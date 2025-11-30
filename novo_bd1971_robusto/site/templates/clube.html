@@ -103,7 +103,8 @@
                                 {% endif %}
                             </td>
                             <td class="placar">
-                                <a href="/jogo/{{ jogo['ID'] }}" class="link-placar">
+                                {# AQUI está a mudança principal - usando a função helper #}
+                                <a href="{{ make_url_jogo(jogo['ID'], jogo['mandante'], jogo['visitante']) }}" class="link-placar">
                                     <strong>{{ jogo['mandante_placar'] }} x {{ jogo['visitante_placar'] }}</strong>
                                 </a>
                             </td>
@@ -116,7 +117,8 @@
                             </td>
                             <td class="arena-info">
                                 {% if jogo['arena'] %}
-                                    <a href="/estadio/{{ jogo['arena'] }}">{{ jogo['arena'] }}</a>
+                                    {# Se tivermos o ID do estádio, poderíamos usar make_url_estadio #}
+                                    {{ jogo['arena'] }}
                                 {% else %}
                                     -
                                 {% endif %}

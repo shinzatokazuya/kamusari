@@ -1,51 +1,362 @@
-.clube-info {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    color: #444;
-}
+/* ========================================
+   CLUBE.CSS - Estilos da Página do Clube
+   ========================================
 
-.jogos-container {
+   Este arquivo contém todos os estilos específicos
+   para a página que mostra informações de um clube.
+
+   Estrutura:
+   1. Cabeçalho do Clube (nome, informações básicas)
+   2. Cards de Estatísticas
+   3. Tabelas de Jogos Recentes
+   ======================================== */
+
+
+/* ==========================================
+   1. CABEÇALHO DO CLUBE
+   ==========================================
+   O cabeçalho contém duas partes lado a lado:
+   - Card de informações (nome, fundação, local)
+   - Card de estatísticas (jogos, pontos, vitórias)
+   ========================================== */
+
+.clube-header {
+    /* Usa flexbox para colocar os dois cards lado a lado */
     display: flex;
-    flex-wrap: wrap; /* permite quebrar linhas quando não couber horizontalmente */
-    justify-content: center; /* centraliza horizontalmente */
-    gap: 20px; /* espaço entre as tabelas */
+    gap: 30px; /* Espaço entre os cards */
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Se não couber, quebra pra baixo */
 }
 
-.jogos-ano {
+/* Card de Informações do Clube */
+.clube-info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    flex: 1; /* Ocupa espaço disponível */
+    min-width: 300px; /* Largura mínima */
+}
+
+.clube-info-card h1 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.clube-apelido {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    font-style: italic;
+    margin: 0 0 25px 0;
+}
+
+/* Lista de Detalhes do Clube */
+.clube-detalhes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cada linha de detalhe (ex: Fundação: 1900) */
+.detalhe-item {
+    display: flex;
+    justify-content: space-between; /* Label à esquerda, valor à direita */
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #3498db; /* Barra azul do lado */
+}
+
+.detalhe-item .label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.detalhe-item .valor {
+    color: #555;
+    text-align: right;
+}
+
+/* Estilos especiais para status do clube */
+.detalhe-item .valor.ativo {
+    color: #27ae60; /* Verde para clube ativo */
+    font-weight: 600;
+}
+
+.detalhe-item .valor.inativo {
+    color: #e74c3c; /* Vermelho para clube inativo */
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   2. CARD DE ESTATÍSTICAS
+   ==========================================
+   Mostra números importantes do clube em um
+   grid de cards pequenos
+   ========================================== */
+
+.clube-estatisticas-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    flex: 1;
+    min-width: 300px;
+}
+
+.clube-estatisticas-card h3 {
+    margin: 0 0 25px 0;
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+
+/* Grid de Estatísticas (Jogos, Pontos, Vitórias, etc.) */
+.stats-grid {
+    display: grid;
+    /* Cria colunas que se ajustam automaticamente, mínimo 100px */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+/* Cada estatística individual */
+.stat {
+    text-align: center;
+    padding: 18px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    /* Barra colorida do lado esquerdo */
+    border-left: 4px solid #3498db;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito ao passar o mouse */
+.stat:hover {
+    transform: translateY(-3px); /* Move pra cima */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Cores diferentes para cada tipo de estatística */
+.stat-vitoria {
+    border-left-color: #27ae60; /* Verde */
+}
+
+.stat-empate {
+    border-left-color: #f39c12; /* Laranja */
+}
+
+.stat-derrota {
+    border-left-color: #e74c3c; /* Vermelho */
+}
+
+/* Número grande da estatística */
+.stat-numero {
+    display: block;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+/* Label da estatística (ex: "Vitórias") */
+.stat-label {
+    display: block;
+    font-size: 0.85em;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   3. SEÇÃO DE JOGOS RECENTES
+   ==========================================
+   Mostra os últimos jogos do clube, organizados
+   por competição (Campeonato Brasileiro, Copa, etc.)
+   ========================================== */
+
+.jogos-recentes-container {
+    margin-top: 40px;
+}
+
+.jogos-recentes-container > h2 {
+    color: #2c3e50;
     margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 700;
 }
 
-table {
+/* Cada seção de campeonato (ex: "Campeonato Brasileiro") */
+.campeonato-section {
+    margin-bottom: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Título do campeonato */
+.campeonato-titulo {
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    /* Borda azul grossa embaixo */
+    border-bottom: 3px solid #3498db;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+/* Tabela de Jogos */
+.tabela-jogos-recentes {
     width: 100%;
     border-collapse: collapse;
-    margin: auto;
-    text-align: center;
-    font-size: 14px;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.jogos-ano thead {
-    background: #0056b3;
+.tabela-jogos-recentes thead {
+    background: #34495e; /* Cinza escuro */
     color: white;
 }
 
-.jogos-ano th {
-    padding: 10px;
+.tabela-jogos-recentes th {
+    padding: 14px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.jogos-ano td {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
+.tabela-jogos-recentes td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #ecf0f1;
 }
 
-.jogos-ano tbody tr:nth-child(even) {
-    background: #f9f9f9;
+/* Efeito hover nas linhas */
+.tabela-jogos-recentes tbody tr {
+    transition: background-color 0.2s;
 }
 
-.jogos-ano tbody tr:hover {
-    background: #f1f1f1;
+.tabela-jogos-recentes tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Cores de fundo baseadas no resultado */
+.resultado-vitoria {
+    background-color: #d5f4e6 !important; /* Verde claro */
+}
+
+.resultado-empate {
+    background-color: #fff3cd !important; /* Amarelo claro */
+}
+
+.resultado-derrota {
+    background-color: #f8d7da !important; /* Vermelho claro */
+}
+
+/* Destaque para o clube sendo visualizado */
+.clube-destaque {
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Célula do placar */
+.placar {
+    text-align: center;
+    font-size: 1.15em;
+}
+
+/* Link do placar */
+.link-placar {
+    text-decoration: none;
+    color: #2c3e50;
+    transition: color 0.3s;
+    font-weight: 700;
+}
+
+.link-placar:hover {
+    color: #3498db;
+}
+
+/* Informação da arena */
+.arena-info {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+
+/* ==========================================
+   4. MENSAGEM QUANDO NÃO HÁ DADOS
+   ========================================== */
+
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+
+/* ==========================================
+   5. RESPONSIVIDADE - TELAS MENORES
+   ==========================================
+   Ajustes para tablets e celulares
+   ========================================== */
+
+/* Tablets (telas menores que 992px) */
+@media (max-width: 992px) {
+    .clube-header {
+        flex-direction: column; /* Empilha os cards */
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    }
+}
+
+/* Celulares (telas menores que 768px) */
+@media (max-width: 768px) {
+    .clube-info-card h1 {
+        font-size: 2em; /* Título menor */
+    }
+
+    .stat-numero {
+        font-size: 1.8em; /* Números menores */
+    }
+
+    /* Esconde algumas colunas na tabela para economizar espaço */
+    .tabela-jogos-recentes th:nth-child(2), /* Ano */
+    .tabela-jogos-recentes td:nth-child(2),
+    .tabela-jogos-recentes th:nth-child(7), /* Arena */
+    .tabela-jogos-recentes td:nth-child(7) {
+        display: none;
+    }
+
+    /* Ajusta padding para telas pequenas */
+    .tabela-jogos-recentes th,
+    .tabela-jogos-recentes td {
+        padding: 10px 6px;
+        font-size: 0.85em;
+    }
+}
+
+/* Celulares muito pequenos (menores que 480px) */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr; /* 1 coluna só */
+    }
+
+    .campeonato-section {
+        padding: 15px;
+    }
+
+    .clube-info-card,
+    .clube-estatisticas-card {
+        padding: 20px;
+    }
 }

@@ -969,31 +969,55 @@ class OGolScraperRelacional:
                                 self.registrar_evento(partida_id, jogador_id, clube_id, tipo_evento, tipo_gol, minuto)
 
         # TREINADORES (terceira linha)
+        # SEMPRE registrar os treinadores, mesmo que a linha não exista
+        treinador_mandante_id = None
+        treinador_visitante_id = None
+
+        # Primeiro, tentamos processar a terceira linha se ela existir
         if len(rows) > 2:
             terceira_linha = rows[2]
             colunas = terceira_linha.find_all("div", class_=lambda c: c and "zz-tpl-col" in c)
 
             for idx, coluna in enumerate(colunas):
-                clube_id = mandante_id if idx == 0 else visitante_id
                 link_tag = coluna.find("a", href=lambda x: x and "/treinador/" in x)
 
                 if link_tag:
                     try:
                         treinador_id = self.processar_treinador(urljoin(self.base_url, link_tag["href"]))
+                        # Salva na variável apropriada
+                        if idx == 0:
+                            treinador_mandante_id = treinador_id
+                        else:
+                            treinador_visitante_id = treinador_id
                     except Exception as e:
                         print(f"⚠️ Erro ao processar treinador: {e}")
-                        treinador_id = None
-                else:
-                    treinador_id = None
 
-                self.treinadores_em_partida_lista.append({
-                    'partida_id': partida_id,
-                    'treinador_id': treinador_id,
-                    'clube_id': clube_id,
-                    'tipo': "Titular" if treinador_id else ""
-                })
+        # SEMPRE registramos os dois clubes, independente de ter encontrado treinadores
+        # Isso garante que sempre teremos 2 registros por partida
+        self.treinadores_em_partida_lista.append({
+            'partida_id': partida_id,
+            'treinador_id': treinador_mandante_id,
+            'clube_id': mandante_id,
+            'tipo': "Titular" if treinador_mandante_id else ""
+        })
 
-                print(f"   ✓ Treinador registrado: clube_id={clube_id}, treinador_id={treinador_id}")
+        self.treinadores_em_partida_lista.append({
+            'partida_id': partida_id,
+            'treinador_id': treinador_visitante_id,
+            'clube_id': visitante_id,
+            'tipo': "Titular" if treinador_visitante_id else ""
+        })
+
+        # Mensagens informativas para acompanhar o processo
+        if treinador_mandante_id:
+            print(f"   ✓ Treinador mandante registrado: clube_id={mandante_id}, treinador_id={treinador_mandante_id}")
+        else:
+            print(f"   ℹ️ Sem treinador mandante: clube_id={mandante_id}, treinador_id=None")
+
+        if treinador_visitante_id:
+            print(f"   ✓ Treinador visitante registrado: clube_id={visitante_id}, treinador_id={treinador_visitante_id}")
+        else:
+            print(f"   ℹ️ Sem treinador visitante: clube_id={visitante_id}, treinador_id=None")
 
         return estadio_id
 
@@ -1236,6 +1260,6 @@ class OGolScraperRelacional:
 
 
 if __name__ == "__main__":
-    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1971/2477/calendario?equipa=0&estado=&filtro=&op=calendario&page=5"
+    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1972/2481/calendario?equipa=0&estado=1&filtro=&op=calendario&page=2"
     scraper = OGolScraperRelacional(url)
-    scraper.executar(edicao_id=1)
+    scraper.executar(edicao_id=2)
