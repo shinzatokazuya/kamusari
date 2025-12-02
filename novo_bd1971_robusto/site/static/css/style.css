@@ -1,202 +1,733 @@
-/* static/style.css */
+/* ==================== RESET E VARIÁVEIS ==================== */
+
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS - facilitam mudanças de cores e tamanhos em todo o site */
+:root {
+    /* Cores principais */
+    --cor-primaria: #1e88e5;
+    --cor-primaria-escura: #1565c0;
+    --cor-secundaria: #43a047;
+    --cor-destaque: #ffa726;
+
+    /* Cores de fundo */
+    --cor-fundo: #f5f7fa;
+    --cor-fundo-escuro: #e8eaf0;
+    --cor-card: #ffffff;
+
+    /* Cores de texto */
+    --cor-texto: #2c3e50;
+    --cor-texto-secundario: #546e7a;
+    --cor-texto-claro: #78909c;
+
+    /* Zonas da tabela */
+    --cor-libertadores: #1e88e5;
+    --cor-libertadores-quali: #42a5f5;
+    --cor-sulamericana: #ff9800;
+    --cor-rebaixamento: #f44336;
+
+    /* Tamanhos */
+    --largura-maxima: 1400px;
+    --espaco-pequeno: 0.5rem;
+    --espaco-medio: 1rem;
+    --espaco-grande: 2rem;
+
+    /* Bordas */
+    --raio-borda: 8px;
+    --raio-borda-grande: 12px;
+
+    /* Sombras - criam profundidade visual */
+    --sombra-leve: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --sombra-media: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --sombra-forte: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== ESTILOS GLOBAIS ==================== */
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #e6f0f8;
-    color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    font-size: 16px;
 }
 
-/* Estilos gerais para tabelas */
-.classificacao-geral {
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #f3f7fa;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Container - limita largura e centraliza conteúdo */
+.container {
+    max-width: var(--largura-maxima);
+    margin: 0 auto;
+    padding: 0 var(--espaco-medio);
 }
 
-.container-tabelas-search {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.tabela-jogos, .tabela-classificacao {
-    flex-shrink: 0;
-    background-color: #f3f7fa;
-}
-
-.tabela-jogos th, .tabela-classificacao th {
-    background-color: #dddddd;
-    color: #333333;
-    padding: 10px 15px;
-    text-align: left;
-    font-weight: bold;
-}
-
-.tabela-jogos td, .tabela-classificacao td {
-    padding: 5px 15px;
-    border-bottom: 1px solid #eeeeee;
-}
-
-.tabela-jogos tbody tr::nth-child(even), .tabela-classificacao tbody tr:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
+/* Links padrão */
 a {
-    color: #5e47de;
+    color: var(--cor-primaria);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--cor-primaria-escura);
 }
 
-/* Estilos para o formulário de pesquisa */
-form {
-    margin-bottom: 20px;
-    text-align: center;
-}
+/* ==================== NAVEGAÇÃO ==================== */
 
-form input,
-form select,
-form button {
-    padding: 8px;
-    margin: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #218838;
-}
-
-/* Estilos para o autocomplete */
-.autocomplete-container {
-    position: relative;
-    display: inline-block;
-}
-
-#autocomplete-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    max-height: 150px;
-    overflow-y: auto;
-    position: absolute;
-    background-color: white;
+.navbar {
+    background: var(--cor-card);
+    box-shadow: var(--sombra-leve);
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    width: calc(100% - 2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    text-align: left; /* Alinha o texto das sugestões à esquerda */
+    padding: var(--espaco-medio) 0;
 }
 
-#autocomplete-list li {
-    padding: 8px 10px;
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espaco-grande);
+}
+
+/* Logo e marca */
+.nav-brand a {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-pequeno);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+}
+
+.nav-brand .logo {
+    font-size: 2rem;
+}
+
+.brand-text {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Links de navegação */
+.nav-links {
+    display: flex;
+    gap: var(--espaco-grande);
+}
+
+.nav-link {
+    padding: var(--espaco-pequeno) var(--espaco-medio);
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+    border-radius: var(--raio-borda);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-primaria);
+}
+
+/* Busca na navegação */
+.nav-search {
+    flex: 0 1 300px;
+}
+
+.search-form {
+    display: flex;
+    gap: var(--espaco-pequeno);
+    background: var(--cor-fundo);
+    padding: var(--espaco-pequeno);
+    border-radius: var(--raio-borda);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: var(--espaco-pequeno);
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--cor-texto);
+}
+
+.search-btn {
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: var(--espaco-pequeno) var(--espaco-medio);
+    border-radius: var(--raio-borda);
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-#autocomplete-list li:hover {
-    background-color: #f0f0f0;
+.search-btn:hover {
+    background: var(--cor-primaria-escura);
 }
 
-/* Layout para a página de busca (/search) */
-.search-results-container {
-    display: flex; /* Habilita flexbox */
-    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
-    justify-content: center; /* Centraliza os itens no container */
-    gap: 20px; /* Espaçamento entre os flex items */
-}
+/* ==================== HERO SECTION ==================== */
 
-.jogos-table-container {
-    flex: 1; /* Ocupa o espaço disponível */
-    min-width: 400px; /* Largura mínima para a tabela de jogos */
-    max-width: 60%; /* Impede que a tabela de jogos fique muito larga */
-}
-
-.classificacao-table-container {
-    flex: 1; /* Ocupa o espaço disponível */
-    min-width: 400px; /* Largura mínima para a tabela de classificação */
-    max-width: 40%; /* Impede que a tabela de classificação fique muito larga */
-}
-
-/* Ajustes para a tabela de classificação anual no search.html */
-.classificacao-table-container table {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-}
-
-/* Estilo para a linha do clube pesquisado */
-.highlight-club {
-    background-color: #ffd700; /* Amarelo para destacar */
-    font-weight: bold;
-}
-
-/* Estilos para a página de clube */
-.clube-info {
+.hero {
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+    color: white;
+    padding: var(--espaco-grande) 0;
     text-align: center;
-    margin-bottom: 20px;
 }
 
-.clube-jogos-list {
-    list-style-type: none;
-    padding: 0;
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: var(--espaco-medio);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: var(--espaco-grande);
+    opacity: 0.95;
+}
+
+/* Cards de estatísticas no hero */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--espaco-medio);
+    max-width: 900px;
     margin: 0 auto;
-    max-width: 800px; /* Limita a largura da lista de jogos */
 }
 
-.clube-jogos-list li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+.stat-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: var(--espaco-grande);
+    border-radius: var(--raio-borda-grande);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: var(--espaco-pequeno);
+}
+
+/* ==================== LAYOUT PRINCIPAL ==================== */
+
+.main-content {
+    min-height: calc(100vh - 200px);
+    padding: var(--espaco-grande) 0;
+}
+
+/* Grid principal (conteúdo + sidebar) */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: var(--espaco-grande);
+    margin-top: var(--espaco-grande);
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-grande);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+}
+
+/* ==================== CARDS DE SEÇÃO ==================== */
+
+.section-card {
+    background: var(--cor-card);
+    border-radius: var(--raio-borda-grande);
+    padding: var(--espaco-grande);
+    box-shadow: var(--sombra-leve);
+    transition: box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    box-shadow: var(--sombra-media);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--espaco-grande);
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.section-description {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: var(--espaco-medio);
+}
+
+/* ==================== TABELAS ==================== */
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.classificacao-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.classificacao-table thead {
+    background-color: var(--cor-fundo);
+}
+
+.classificacao-table th {
+    padding: var(--espaco-medio);
+    text-align: left;
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.classificacao-table td {
+    padding: var(--espaco-medio);
+    border-bottom: 1px solid var(--cor-fundo);
+}
+
+/* Linha da tabela - com hover interativo */
+.time-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.time-row:hover {
+    background-color: var(--cor-fundo);
+}
+
+/* Indicadores visuais das zonas de classificação */
+.time-row.zona-libertadores {
+    border-left-color: var(--cor-libertadores);
+}
+
+.time-row.zona-libertadores-quali {
+    border-left-color: var(--cor-libertadores-quali);
+}
+
+.time-row.zona-sulamericana {
+    border-left-color: var(--cor-sulamericana);
+}
+
+.time-row.zona-rebaixamento {
+    border-left-color: var(--cor-rebaixamento);
+}
+
+/* Células específicas */
+.posicao {
+    font-weight: 700;
+    color: var(--cor-texto-secundario);
+}
+
+.clube a {
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.pontos {
+    font-size: 1.1rem;
+}
+
+.positivo {
+    color: var(--cor-secundaria);
+    font-weight: 600;
+}
+
+.negativo {
+    color: var(--cor-rebaixamento);
+    font-weight: 600;
+}
+
+/* Legenda das zonas */
+.legenda-zonas {
+    display: flex;
+    gap: var(--espaco-grande);
+    margin-top: var(--espaco-medio);
+    padding-top: var(--espaco-medio);
+    border-top: 1px solid var(--cor-fundo);
+    flex-wrap: wrap;
+}
+
+.zona-item {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-pequeno);
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+}
+
+.zona-item span[class^="cor-"] {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.cor-libertadores { background: var(--cor-libertadores); }
+.cor-libertadores-quali { background: var(--cor-libertadores-quali); }
+.cor-sulamericana { background: var(--cor-sulamericana); }
+.cor-rebaixamento { background: var(--cor-rebaixamento); }
+
+/* ==================== JOGOS ==================== */
+
+.jogos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+}
+
+.jogo-card {
+    padding: var(--espaco-medio);
+    background: var(--cor-fundo);
+    border-radius: var(--raio-borda);
+    transition: all 0.3s ease;
+}
+
+.jogo-card:hover {
+    background: var(--cor-fundo-escuro);
+    transform: translateX(5px);
+}
+
+.jogo-data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--espaco-pequeno);
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+}
+
+.jogo-placar {
+    display: grid;
+    grid-template-columns: 2fr auto 2fr;
+    gap: var(--espaco-medio);
+    align-items: center;
+    margin: var(--espaco-medio) 0;
+}
+
+.nome-time {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.time-mandante {
+    text-align: right;
+}
+
+.time-visitante {
+    text-align: left;
+}
+
+.placar {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-pequeno);
+    padding: var(--espaco-pequeno) var(--espaco-medio);
+    background: white;
+    border-radius: var(--raio-borda);
+}
+
+.placar .gols {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.placar .separador {
+    color: var(--cor-texto-claro);
+}
+
+.jogo-local {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    margin-top: var(--espaco-pequeno);
+}
+
+/* ==================== RANKING HISTÓRICO ==================== */
+
+.ranking-historico {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-medio);
+}
+
+.ranking-item {
+    display: flex;
+    gap: var(--espaco-medio);
+    align-items: flex-start;
+    padding: var(--espaco-medio);
+    background: var(--cor-fundo);
+    border-radius: var(--raio-borda);
+    transition: all 0.3s ease;
+}
+
+.ranking-item:hover {
+    background: var(--cor-fundo-escuro);
+}
+
+.ranking-pos {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--cor-primaria);
+    min-width: 35px;
+}
+
+.ranking-info {
+    flex: 1;
+}
+
+.ranking-nome {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--cor-texto);
+    display: block;
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.ranking-stats {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+}
+
+.ranking-stats .dot {
+    margin: 0 var(--espaco-pequeno);
+    opacity: 0.5;
+}
+
+/* ==================== LINKS RÁPIDOS ==================== */
+
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-pequeno);
+}
+
+.quick-link-item {
+    display: flex;
+    gap: var(--espaco-medio);
+    padding: var(--espaco-medio);
+    background: var(--cor-fundo);
+    border-radius: var(--raio-borda);
+    transition: all 0.3s ease;
+}
+
+.quick-link-item:hover {
+    background: var(--cor-fundo-escuro);
+    transform: translateX(5px);
+}
+
+.quick-link-item .icon {
+    font-size: 2rem;
+}
+
+.quick-link-item strong {
+    display: block;
+    color: var(--cor-texto);
+    margin-bottom: 0.25rem;
+}
+
+.quick-link-item p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    margin: 0;
+}
+
+/* ==================== BOTÕES ==================== */
+
+.btn-secondary {
+    padding: var(--espaco-pequeno) var(--espaco-medio);
+    background: var(--cor-fundo);
+    color: var(--cor-primaria);
+    border-radius: var(--raio-borda);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: var(--espaco-medio);
+    color: var(--cor-primaria);
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.btn-link:hover {
+    transform: translateX(5px);
+}
+
+/* ==================== CARD DE DICA ==================== */
+
+.dica-card {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    border-left: 4px solid var(--cor-destaque);
+}
+
+.dica-card h3 {
+    color: var(--cor-texto);
+    margin-bottom: var(--espaco-pequeno);
+}
+
+.dica-card p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* ==================== RODAPÉ ==================== */
+
+.footer {
+    background: var(--cor-texto);
+    color: white;
+    padding: var(--espaco-grande) 0;
+    margin-top: var(--espaco-grande);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espaco-grande);
+    margin-bottom: var(--espaco-grande);
+}
+
+.footer-section h4 {
+    margin-bottom: var(--espaco-medio);
+    color: white;
+}
+
+.footer-section p,
+.footer-section li {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--espaco-medio);
     text-align: center;
 }
 
-/* Estilos para a página de estatísticas */
-.estatisticas-container h2, .estatisticas-container h3 {
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+/* ==================== MENSAGENS E ESTADOS ==================== */
+
+.no-data {
     text-align: center;
+    padding: var(--espaco-grande);
+    color: var(--cor-texto-secundario);
+    font-style: italic;
 }
 
-.estatisticas-container table {
-    margin: 20px auto;
-    width: 80%; /* Ajusta a largura da tabela de estatísticas */
+/* ==================== RESPONSIVIDADE ==================== */
+
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1; /* Coloca sidebar antes do conteúdo principal em mobile */
+    }
 }
 
-.estatisticas-container ul {
-    list-style-type: disc; /* Usa marcadores de lista padrão */
-    margin: 0 auto 20px auto;
-    padding-left: 20px;
-    max-width: 600px; /* Limita a largura das listas de gols/cartões */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: var(--espaco-medio);
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-search {
+        width: 100%;
+        flex: 1;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .jogo-placar {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .time-mandante,
+    .time-visitante {
+        text-align: center;
+    }
+
+    .placar {
+        justify-content: center;
+    }
 }
 
-.estatisticas-container ul li {
-    background-color: #fff;
-    border: 1px solid #eee;
-    padding: 8px;
-    margin-bottom: 5px;
-    border-radius: 3px;
-}
+@media (max-width: 480px) {
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
 
-/* Estilos para o gráfico */
-.chart-container {
-    width: 80%;
-    margin: 40px auto; /* Centraliza e adiciona margem */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    .legenda-zonas {
+        flex-direction: column;
+        gap: var(--espaco-pequeno);
+    }
 }
