@@ -1,55 +1,88 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <title>Brasileirão</title>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="../static/css/style.css">
-        <link rel="stylesheet" href="../static/css/layout.css">
-        <link rel="stylesheet" href="../static/css/index.css">
-        <link rel="stylesheet" href="../static/css/clube.css">
-        <link rel="stylesheet" href="../static/css/estatisticas.css">
-        <link rel="stylesheet" href="../static/css/search.css">
-        <link rel="stylesheet" href="../static/css/jogo.css">
-        <link rel="stylesheet" href="../static/css/base.css">
-        <link rel="stylesheet" href="../static/css/chaveamento.css">
-        <link rel="stylesheet" href="../static/css/variables.css">
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Brasileirão Stats{% endblock %}</title>
 
-        <script>
-            window.ALL_CLUBS = {{ clubes_json | safe }};
-        </script>
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="navbar-brand">
-                <a href="/"></a>
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Navegação Principal -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="{{ url_for('index') }}">
+                    <span class="logo">⚽</span>
+                    <span class="brand-text">Brasileirão Stats</span>
+                </a>
             </div>
-            <div class="navbar-search">
-                <form action="/search" method="get">
-                    <div class="autocomplete-container">
-                        <input autocomplete="off" autofocus name="q" placeholder="Buscar Clube" type="text" id="clube_nav">
-                        <ul id="autocomplete-list-nav"></ul>
-                    </div>
-                    <button type="submit">Buscar</button>
+
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-link">Início</a>
+                <a href="{{ url_for('explorar') }}" class="nav-link">Explorar</a>
+                <a href="{{ url_for('temporada', ano=g.ANO_ATUAL) }}" class="nav-link">Temporada {{ g.ANO_ATUAL }}</a>
+            </div>
+
+            <!-- Busca Rápida -->
+            <div class="nav-search">
+                <form action="{{ url_for('buscar') }}" method="get" class="search-form">
+                    <input type="text"
+                           name="q"
+                           placeholder="Buscar clubes, jogadores..."
+                           class="search-input"
+                           autocomplete="off">
+                    <button type="submit" class="search-btn">🔍</button>
                 </form>
             </div>
-            <div class="navbar-links">
-                <a href="/">Home</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <p>Base de dados completa do Campeonato Brasileiro desde 1971, com estatísticas detalhadas de jogos, jogadores e clubes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="{{ url_for('explorar') }}">Explorar Dados</a></li>
+                        <li><a href="{{ url_for('buscar') }}">Busca Avançada</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Estatísticas</h4>
+                    <p>Dados de {{ g.ANOS_DISPONIVEIS|length }} temporadas</p>
+                    <p>{{ g.ANO_ATUAL - 1971 + 1 }} anos de história</p>
+                </div>
             </div>
-        </nav>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Brasileirão Stats. Dados compilados para fins educacionais.</p>
+            </div>
+        </div>
+    </footer>
 
-        <main class="container">
-            {% block body %}{% endblock %}
-        </main>
-
-        <footer>
-            </footer>
-
-        <script src="../static/js/layout.js"></script>
-        {% block scripts %}
-            {# Para scripts específicos de cada página #}
-        {% endblock %}
-    </body>
+    <!-- JavaScript Principal -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
 </html>

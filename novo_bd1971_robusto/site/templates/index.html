@@ -1,81 +1,220 @@
 {% extends "layout.html" %}
 
-{% block body %}
+{% block title %}Brasileirão Stats - Estatísticas Completas do Campeonato Brasileiro{% endblock %}
 
-     <div style="text-align: center;">
-        <h2>Campeonato Brasileiro</h2>
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Explore a História do Brasileirão</h1>
+            <p class="hero-subtitle">Base de dados completa com {{ stats_gerais.total_partidas }} partidas, {{ stats_gerais.total_clubes }} clubes e {{ stats_gerais.total_jogadores }} jogadores desde 1971</p>
 
-        <select name="select-ano-index" id="select-ano-index">
-            <option disabled selected value="">Selecione um Ano</option>
-            {% for year in datas %}
-                <option value="{{ year }}">{{ year }}</option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <div class="ranking-section">
-        <h2 class="ranking-title">Ranking geral do Campeonato Brasileiro de 1971 - 2025</h2>
-
-        <div class="rankings-container">
-            {% set chunk_size = 15 %}
-            {% for i in range(0, rankings|length, chunk_size) %}
-            <table id="tabela-classificacao-geral">
-                <thead>
-                    <tr>
-                        <th>Posição</th>
-                        <th>Clube</th>
-                        <th>Jogos</th>
-                        <th>Pontos</th>
-                        <th>Vitórias</th>
-                        <th>Empates</th>
-                        <th>Derrotas</th>
-                        <th>GM</th>
-                        <th>GC</th>
-                        <th>SG</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-classificacao-geral-tbody">
-                    {% for ranking in rankings[i:i+chunk_size] %}
-                    <tr>
-                        <td>{{ ranking["posicao"] }}</td>
-                        <td><a href="{{ url_for('clube', nome=ranking['clube']) }}">{{ ranking["clube"] }}</a></td>
-                        <td>{{ ranking["total_jogos"] }}</td>
-                        <td><strong>{{ ranking["pontos"] }}</strong></td>
-                        <td>{{ ranking["vitorias"] }}</td>
-                        <td>{{ ranking["empates"] }}</td>
-                        <td>{{ ranking["derrotas"] }}</td>
-                        <td>{{ ranking["gm"] }}</td>
-                        <td>{{ ranking["gs"] }}</td>
-                        <td>{{ ranking["sg"] }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% endfor %}
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">{{ stats_gerais.total_edicoes }}</span>
+                    <span class="stat-label">Temporadas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">{{ stats_gerais.total_partidas }}</span>
+                    <span class="stat-label">Partidas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">{{ stats_gerais.total_clubes }}</span>
+                    <span class="stat-label">Clubes</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">{{ stats_gerais.total_jogadores }}</span>
+                    <span class="stat-label">Jogadores</span>
+                </div>
+            </div>
         </div>
     </div>
+</section>
+
+<!-- Conteúdo Principal -->
+<div class="container main-grid">
+    <!-- Coluna Principal -->
+    <div class="main-column">
+        <!-- Classificação Atual -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2>🏆 Brasileirão {{ g.ANO_ATUAL }}</h2>
+                <a href="{{ url_for('temporada', ano=g.ANO_ATUAL) }}" class="btn-secondary">Ver Completo</a>
+            </div>
+
+            {% if classificacao_atual %}
+            <div class="table-responsive">
+                <table class="classificacao-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Clube</th>
+                            <th>PTS</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>E</th>
+                            <th>D</th>
+                            <th>GP</th>
+                            <th>GC</th>
+                            <th>SG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for time in classificacao_atual %}
+                        <tr class="time-row {% if loop.index <= 4 %}zona-libertadores{% elif loop.index <= 6 %}zona-libertadores-quali{% elif loop.index <= 12 %}zona-sulamericana{% elif loop.index >= classificacao_atual|length - 3 %}zona-rebaixamento{% endif %}">
+                            <td class="posicao">{{ time.posicao }}</td>
+                            <td class="clube">
+                                <a href="{{ url_for('clube', nome=time.clube) }}">{{ time.clube }}</a>
+                            </td>
+                            <td class="pontos"><strong>{{ time.pts }}</strong></td>
+                            <td>{{ time.jogos }}</td>
+                            <td>{{ time.v }}</td>
+                            <td>{{ time.e }}</td>
+                            <td>{{ time.d }}</td>
+                            <td>{{ time.gp }}</td>
+                            <td>{{ time.gc }}</td>
+                            <td class="{% if time.sg > 0 %}positivo{% elif time.sg < 0 %}negativo{% endif %}">
+                                {{ time.sg }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Legenda das Zonas -->
+            <div class="legenda-zonas">
+                <span class="zona-item"><span class="cor-libertadores"></span> Libertadores</span>
+                <span class="zona-item"><span class="cor-libertadores-quali"></span> Pré-Libertadores</span>
+                <span class="zona-item"><span class="cor-sulamericana"></span> Sul-Americana</span>
+                <span class="zona-item"><span class="cor-rebaixamento"></span> Rebaixamento</span>
+            </div>
+            {% else %}
+            <p class="no-data">Dados da temporada {{ g.ANO_ATUAL }} ainda não disponíveis.</p>
+            {% endif %}
+        </section>
+
+        <!-- Últimos Jogos -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2>⚽ Últimos Jogos</h2>
+            </div>
+
+            {% if ultimos_jogos %}
+            <div class="jogos-lista">
+                {% for jogo in ultimos_jogos %}
+                <div class="jogo-card">
+                    <div class="jogo-data">
+                        <span class="data">{{ jogo.data }}</span>
+                        <span class="rodada">{{ jogo.fase }}</span>
+                    </div>
+                    <div class="jogo-placar">
+                        <div class="time time-mandante">
+                            <span class="nome-time">{{ jogo.mandante }}</span>
+                        </div>
+                        <div class="placar">
+                            <span class="gols">{{ jogo.mandante_placar }}</span>
+                            <span class="separador">×</span>
+                            <span class="gols">{{ jogo.visitante_placar }}</span>
+                        </div>
+                        <div class="time time-visitante">
+                            <span class="nome-time">{{ jogo.visitante }}</span>
+                        </div>
+                    </div>
+                    <div class="jogo-local">
+                        {% if jogo.estadio %}
+                        <span>🏟️ {{ jogo.estadio }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="no-data">Nenhum jogo registrado ainda nesta temporada.</p>
+            {% endif %}
+        </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Top 5 Histórico -->
+        <section class="section-card">
+            <h3>🏅 Maiores Pontuadores Históricos</h3>
+            <p class="section-description">Os clubes com mais pontos acumulados desde 1971</p>
+
+            {% if top_historico %}
+            <div class="ranking-historico">
+                {% for clube in top_historico %}
+                <div class="ranking-item">
+                    <span class="ranking-pos">{{ loop.index }}º</span>
+                    <div class="ranking-info">
+                        <a href="{{ url_for('clube', nome=clube.clube) }}" class="ranking-nome">
+                            {{ clube.clube }}
+                        </a>
+                        <div class="ranking-stats">
+                            <span>{{ clube.pontos_total }} pts</span>
+                            <span class="dot">•</span>
+                            <span>{{ clube.jogos_total }} jogos</span>
+                            <span class="dot">•</span>
+                            <span>{{ clube.vitorias_total }} vitórias</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="{{ url_for('explorar') }}" class="btn-link">Ver classificação completa →</a>
+            {% endif %}
+        </section>
+
+        <!-- Atalhos de Navegação -->
+        <section class="section-card">
+            <h3>🔍 Explorar Dados</h3>
+            <div class="quick-links">
+                <a href="{{ url_for('explorar') }}" class="quick-link-item">
+                    <span class="icon">📊</span>
+                    <div>
+                        <strong>Por Temporada</strong>
+                        <p>Veja classificações e estatísticas de cada ano</p>
+                    </div>
+                </a>
+                <a href="{{ url_for('explorar') }}#clubes" class="quick-link-item">
+                    <span class="icon">⚽</span>
+                    <div>
+                        <strong>Por Clube</strong>
+                        <p>Histórico completo de todos os times</p>
+                    </div>
+                </a>
+                <a href="{{ url_for('buscar') }}" class="quick-link-item">
+                    <span class="icon">🔎</span>
+                    <div>
+                        <strong>Busca Avançada</strong>
+                        <p>Encontre jogadores, árbitros e mais</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Dica de Uso -->
+        <section class="section-card dica-card">
+            <h3>💡 Dica</h3>
+            <p>Use a busca no topo da página para encontrar rapidamente qualquer clube, jogador, treinador ou árbitro na base de dados!</p>
+        </section>
+    </aside>
+</div>
 
 {% endblock %}
 
-{% block scripts %}
+{% block extra_js %}
 <script>
-
-    // Define ALL_CLUBS globalmente para o autocomplete do navbar
-    const ALL_CLUBS = {{ clubes_json | safe }}; // Use |safe para evitar escape HTML
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const yearSelectIndex = document.querySelector('#select-ano-index');
-
-        if (yearSelectIndex) {
-            yearSelectIndex.addEventListener('change', () => {
-                const selectedYear = yearSelectIndex.value;
-                if (selectedYear) {
-                    window.location.href = `/search?data=${selectedYear}`;
-                }
-            });
-        }
+    // Adicionar interatividade aos cards da tabela
+    document.querySelectorAll('.time-row').forEach(row => {
+        row.addEventListener('click', function() {
+            const link = this.querySelector('a');
+            if (link) {
+                window.location.href = link.href;
+            }
+        });
     });
-
 </script>
-
 {% endblock %}
