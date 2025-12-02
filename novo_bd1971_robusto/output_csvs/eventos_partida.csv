@@ -4319,3 +4319,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 4318,533,576,7,Entrou,,
 4319,533,770,19,Entrou,,
 4320,533,404,19,Entrou,,
+4321,534,42,8,Substituição,,
+4322,534,91,8,Gol,Normal,4
+4323,534,322,8,Gol,Normal,53
+4324,534,322,8,Substituição,,
+4325,534,241,1,Gol,Normal,78
+4326,534,309,1,Substituição,,
+4327,534,93,8,Entrou,,
+4328,534,93,8,Gol,Normal,90
+4329,534,578,8,Entrou,,
+4330,534,411,1,Entrou,,
