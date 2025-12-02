@@ -1,4 +1,4 @@
-# app.py - Versão Atualizada com Sistema de Pontuação Histórico
+# app.py 
 import functools
 from flask import Flask, render_template, jsonify, request, redirect, g
 from collections import defaultdict
@@ -43,20 +43,6 @@ def calcular_pontos_vitoria(ano):
     """
     return 2 if ano <= 1994 else 3
 
-def get_caso_pontuacao(ano):
-    """
-    Retorna a cláusula SQL para calcular pontos de vitória de acordo com o ano.
-    """
-    pontos_vitoria = calcular_pontos_vitoria(ano)
-
-    return f"""
-        CASE
-            WHEN {{gols_pro}} > {{gols_contra}} THEN {pontos_vitoria}
-            WHEN {{gols_pro}} = {{gols_contra}} THEN 1
-            ELSE 0
-        END
-    """
-
 # ==================== BEFORE REQUEST ====================
 
 @app.before_request
@@ -74,7 +60,6 @@ def index():
     """Renderiza a página inicial com a classificação geral histórica."""
     db = get_db()
 
-    # Query para classificação geral considerando pontuação variável por ano
     rankings_geral = db.execute("""
         WITH jogos_mandante AS (
             SELECT
@@ -82,7 +67,6 @@ def index():
                 ed.ano,
                 p.mandante_placar AS gols_pro,
                 p.visitante_placar AS gols_sofrido,
-                -- Calcula pontos baseado no ano
                 CASE
                     WHEN p.mandante_placar > p.visitante_placar THEN
                         CASE WHEN ed.ano <= 1994 THEN 2 ELSE 3 END
@@ -145,39 +129,47 @@ def index():
 
 @app.route("/search")
 def search():
-    """Permite buscar por clubes, anos ou rodadas."""
+    """Permite buscar por clubes, anos, fases ou rodadas."""
     db = get_db()
     q = request.args.get("q")
     ano = request.args.get("data")
+    fase_param = request.args.get("fase")
     rodada_param = request.args.get("rodada")
 
     classificacoes = []
+    classificacoes_por_grupo = {}
     jogos = []
     current_year = None
+    current_fase = None
     current_round = None
     max_round = 0
     formato_campeonato = None
+    fases_disponiveis = []
 
     if q:
-        # Busca por clube - redireciona para página do clube
         return redirect(f"/clube/{q}")
 
     elif ano:
         current_year = int(ano)
-
-        # Verifica o formato do campeonato para o ano
         formato_campeonato = get_formato_campeonato(current_year)
 
-        # Buscar a rodada máxima para o ano (apenas para pontos corridos)
+        # Buscar fases disponíveis para o ano
+        fases_disponiveis = get_fases_disponiveis(current_year)
+
+        # Se o usuário selecionou uma fase específica
+        if fase_param:
+            current_fase = fase_param
+        elif fases_disponiveis:
+            # Por padrão, seleciona a primeira fase disponível
+            current_fase = fases_disponiveis[0]
+
         if formato_campeonato == 'pontos_corridos':
             max_round_result = db.execute("""
-                SELECT MAX(CAST(p.fase AS INTEGER)) AS max_r
+                SELECT MAX(p.rodada) AS max_r
                 FROM partidas p
                 JOIN edicoes e ON p.edicao_id = e.ID
                 WHERE e.ano = ?
-                    AND p.fase LIKE 'R%'
-                    AND LENGTH(p.fase) > 1
-                    AND SUBSTR(p.fase, 2) GLOB '[0-9]*'
+                    AND p.rodada IS NOT NULL
             """, (current_year,)).fetchone()
 
             if max_round_result and max_round_result['max_r'] is not None:
@@ -196,18 +188,33 @@ def search():
                 classificacoes = get_classificacao_por_ano_e_rodada(current_year, current_round)
                 jogos = get_jogos_por_ano_e_rodada(current_year, current_round)
         else:
-            # Para formatos antigos, mostra todos os jogos e fases
-            jogos = get_jogos_por_ano_e_fase(current_year)
-            classificacoes = get_classificacao_por_ano_e_rodada(current_year, 0)
+            # Para formatos com grupos e fases
+            if current_fase:
+                # Verificar se há grupos na fase
+                grupos = get_grupos_por_fase(current_year, current_fase)
+
+                if grupos:
+                    # Buscar classificação por grupo
+                    for grupo in grupos:
+                        classificacoes_por_grupo[grupo] = get_classificacao_por_grupo(current_year, current_fase, grupo)
+                else:
+                    # Classificação geral da fase
+                    classificacoes = get_classificacao_por_fase(current_year, current_fase)
+
+                # Buscar jogos da fase
+                jogos = get_jogos_por_fase(current_year, current_fase)
 
     return render_template("search.html",
                            classificacoes=classificacoes,
+                           classificacoes_por_grupo=classificacoes_por_grupo,
                            jogos=jogos,
                            q=q,
                            ano_selecionado=current_year,
+                           fase_selecionada=current_fase,
                            rodada_selecionada=current_round,
                            max_rodada=max_round,
                            formato_campeonato=formato_campeonato,
+                           fases_disponiveis=fases_disponiveis,
                            datas=g.DATAS,
                            clubes_json=g.json_clubes)
 
