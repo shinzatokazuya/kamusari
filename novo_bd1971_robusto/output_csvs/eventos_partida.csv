@@ -4288,3 +4288,17 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 4287,530,79,27,Entrou,,
 4288,530,433,27,Entrou,,
 4289,530,420,18,Entrou,,
+4290,531,589,25,Substituição,,
+4291,531,588,25,Gol,Normal,
+4292,531,592,25,Substituição,,
+4293,531,129,11,Substituição,,
+4294,531,131,11,Gol,Normal,38
+4295,531,131,11,Gol,Normal,60
+4296,531,131,11,Substituição,,
+4297,531,715,25,Entrou,,
+4298,531,633,25,Entrou,,
+4299,531,633,25,Cartão Vermelho,,
+4300,531,104,11,Entrou,,
+4301,531,104,11,Gol,Normal,89
+4302,531,147,11,Entrou,,
+4303,531,147,11,Gol,Normal,77
