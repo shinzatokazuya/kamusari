@@ -1,4 +1,4 @@
-# app.py 
+# app.py
 import functools
 from flask import Flask, render_template, jsonify, request, redirect, g
 from collections import defaultdict
@@ -692,80 +692,23 @@ def api_formato_campeonato(ano):
     formato = get_formato_campeonato(ano)
     return jsonify({"formato": formato})
 
-@app.route("/api/chaveamento/<int:ano>")
-def api_chaveamento(ano):
-    """Retorna o chaveamento do mata-mata para um dado ano."""
-    db = get_db()
+@app.route("/api/fases/<int:ano>")
+def api_fases(ano):
+    """Retorna as fases disponíveis para um ano."""
+    fases = get_fases_disponiveis(ano)
+    return jsonify(fases)
 
-    # Buscar todas as partidas do ano que não são de rodada (pontos corridos)
-    jogos = db.execute("""
-        SELECT
-            p.ID,
-            cm.clube AS mandante,
-            cm.ID as mandante_id,
-            cv.clube AS visitante,
-            cv.ID as visitante_id,
-            p.mandante_placar,
-            p.visitante_placar,
-            p.mandante_penalti,
-            p.visitante_penalti,
-            p.fase,
-            p.data,
-            p.prorrogacao
-        FROM partidas p
-        JOIN clubes cm ON p.mandante_id = cm.ID
-        JOIN clubes cv ON p.visitante_id = cv.ID
-        JOIN edicoes ed ON p.edicao_id = ed.ID
-        WHERE ed.ano = ?
-            AND (p.fase NOT LIKE 'R%' OR p.fase NOT GLOB 'R[0-9]*')
-        ORDER BY
-            CASE p.fase
-                WHEN 'Final' THEN 1
-                WHEN 'Semi' THEN 2
-                WHEN 'Semifinal' THEN 2
-                WHEN 'Quartas' THEN 3
-                WHEN 'Oitavas' THEN 4
-                WHEN 'Décimas Sextas' THEN 5
-                ELSE 6
-            END,
-            p.data
-    """, (ano,)).fetchall()
+@app.route("/api/grupos/<int:ano>/<string:fase>")
+def api_grupos(ano, fase):
+    """Retorna os grupos disponíveis para uma fase específica."""
+    grupos = get_grupos_por_fase(ano, fase)
+    return jsonify(grupos)
 
-    # Organizar jogos por fase
-    chaveamento = {}
-    for jogo in jogos:
-        fase = jogo['fase']
-        if fase not in chaveamento:
-            chaveamento[fase] = []
-
-        jogo_dict = dict(jogo)
-        # Determinar vencedor
-        if jogo['mandante_placar'] is not None and jogo['visitante_placar'] is not None:
-            if jogo['mandante_penalti'] is not None and jogo['visitante_penalti'] is not None:
-                # Definido nos pênaltis
-                vencedor = jogo['mandante'] if jogo['mandante_penalti'] > jogo['visitante_penalti'] else jogo['visitante']
-                vencedor_id = jogo['mandante_id'] if jogo['mandante_penalti'] > jogo['visitante_penalti'] else jogo['visitante_id']
-            else:
-                # Definido no tempo normal ou prorrogação
-                if jogo['mandante_placar'] > jogo['visitante_placar']:
-                    vencedor = jogo['mandante']
-                    vencedor_id = jogo['mandante_id']
-                elif jogo['visitante_placar'] > jogo['mandante_placar']:
-                    vencedor = jogo['visitante']
-                    vencedor_id = jogo['visitante_id']
-                else:
-                    vencedor = None
-                    vencedor_id = None
-
-            jogo_dict['vencedor'] = vencedor
-            jogo_dict['vencedor_id'] = vencedor_id
-        else:
-            jogo_dict['vencedor'] = None
-            jogo_dict['vencedor_id'] = None
-
-        chaveamento[fase].append(jogo_dict)
-
-    return jsonify(chaveamento)
+@app.route("/api/classificacao_grupo/<int:ano>/<string:fase>/<string:grupo>")
+def api_classificacao_grupo(ano, fase, grupo):
+    """Retorna a classificação de um grupo específico."""
+    classificacao = get_classificacao_por_grupo(ano, fase, grupo)
+    return jsonify([dict(row) for row in classificacao])
 
 # ==================== HELPER FUNCTIONS ====================
 
