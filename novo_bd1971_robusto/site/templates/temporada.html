@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+
+{% block title %}Brasileirão {{ ano }} - Brasileirão Stats{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Cabeçalho da Temporada -->
+    <section class="temporada-header">
+        <div class="temporada-navegacao">
+            {% if ano > g.ANOS_DISPONIVEIS[0] %}
+            <a href="{{ url_for('temporada', ano=ano-1) }}" class="btn-nav-ano">← {{ ano - 1 }}</a>
+            {% endif %}
+
+            <div class="temporada-titulo">
+                <h1>🏆 Brasileirão {{ ano }}</h1>
+                {% if edicao.campeao %}
+                <p class="campeao-info">
+                    Campeão: <strong><a href="{{ url_for('clube', nome=edicao.campeao) }}">{{ edicao.campeao
+                            }}</a></strong>
+                    {% if edicao.vice %}
+                    | Vice: <a href="{{ url_for('clube', nome=edicao.vice) }}">{{ edicao.vice }}</a>
+                    {% endif %}
+                </p>
+                {% endif %}
+            </div>
+
+            {% if ano < g.ANO_ATUAL %} <a href="{{ url_for('temporada', ano=ano+1) }}" class="btn-nav-ano">{{ ano + 1 }}
+                →</a>
+                {% endif %}
+        </div>
+    </section>
+
+    <!-- Grid Principal -->
+    <div class="main-grid" style="margin-top: 2rem;">
+        <!-- Coluna Principal -->
+        <div class="main-column">
+            <!-- Classificação -->
+            <section class="section-card">
+                <div class="section-header">
+                    <h2>📊 Classificação Final</h2>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="classificacao-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Clube</th>
+                                <th>PTS</th>
+                                <th>J</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>D</th>
+                                <th>GP</th>
+                                <th>GC</th>
+                                <th>SG</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for time in classificacao %}
+                            <tr
+                                class="time-row {% if loop.index == 1 %}zona-campeao{% elif loop.index <= 4 %}zona-libertadores{% elif loop.index <= 6 %}zona-libertadores-quali{% elif loop.index <= 12 %}zona-sulamericana{% elif loop.index >= classificacao|length - 3 %}zona-rebaixamento{% endif %}">
+                                <td class="posicao">{{ time.pos }}</td>
+                                <td class="clube">
+                                    <a href="{{ url_for('clube', nome=time.clube) }}">{{ time.clube }}</a>
+                                </td>
+                                <td class="pontos"><strong>{{ time.pts }}</strong></td>
+                                <td>{{ time.j }}</td>
+                                <td>{{ time.v }}</td>
+                                <td>{{ time.e }}</td>
+                                <td>{{ time.d }}</td>
+                                <td>{{ time.gp }}</td>
+                                <td>{{ time.gc }}</td>
+                                <td class="{% if time.sg > 0 %}positivo{% elif time.sg < 0 %}negativo{% endif %}">
+                                    {{ time.sg }}
+                                </td>
+                                <td>{{ "%.1f"|format((time.pts / (time.j * 3) * 100)) }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Legenda -->
+                <div class="legenda-zonas">
+                    <span class="zona-item"><span class="cor-campeao"></span> Campeão</span>
+                    <span class="zona-item"><span class="cor-libertadores"></span> Libertadores</span>
+                    <span class="zona-item"><span class="cor-libertadores-quali"></span> Pré-Libertadores</span>
+                    <span class="zona-item"><span class="cor-sulamericana"></span> Sul-Americana</span>
+                    <span class="zona-item"><span class="cor-rebaixamento"></span> Rebaixamento</span>
+                </div>
+            </section>
+
+            <!-- Artilharia -->
+            {% if artilheiros %}
+            <section class="section-card">
+                <h2>⚽ Artilharia</h2>
+                <p class="section-description">Os maiores goleadores do Brasileirão {{ ano }}</p>
+
+                <div class="artilheiros-lista">
+                    {% for artilheiro in artilheiros %}
+                    <div class="artilheiro-item">
+                        <span class="artilheiro-pos">{{ loop.index }}º</span>
+                        <div class="artilheiro-info">
+                            <a href="{{ url_for('jogador', jogador_id=artilheiro.jogador_id) }}"
+                                class="artilheiro-nome">
+                                {{ artilheiro.apelido or artilheiro.nome }}
+                            </a>
+                            <span class="artilheiro-jogos">{{ artilheiro.jogos }} jogos</span>
+                        </div>
+                        <span class="artilheiro-gols">{{ artilheiro.total_gols }} ⚽</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Informações da Temporada -->
+            <section class="section-card">
+                <h3>📋 Informações</h3>
+                <div class="info-lista">
+                    <div class="info-item">
+                        <span class="info-label">Temporada:</span>
+                        <span class="info-valor">{{ ano }}</span>
+                    </div>
+                    {% if edicao.data_inicio %}
+                    <div class="info-item">
+                        <span class="info-label">Início:</span>
+                        <span class="info-valor">{{ edicao.data_inicio }}</span>
+                    </div>
+                    {% endif %}
+                    {% if edicao.data_fim %}
+                    <div class="info-item">
+                        <span class="info-label">Término:</span>
+                        <span class="info-valor">{{ edicao.data_fim }}</span>
+                    </div>
+                    {% endif %}
+                    <div class="info-item">
+                        <span class="info-label">Participantes:</span>
+                        <span class="info-valor">{{ classificacao|length }} clubes</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Sistema:</span>
+                        <span class="info-valor">
+                            {% if ano >= 2003 %}
+                            Pontos corridos
+                            {% elif ano >= 1992 %}
+                            Mata-mata
+                            {% else %}
+                            Grupos e fases
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estatísticas da Temporada -->
+            <section class="section-card">
+                <h3>📈 Estatísticas</h3>
+                <div class="stats-temporada">
+                    {% set total_jogos = classificacao|sum(attribute='j') // 2 %}
+                    {% set total_gols = classificacao|sum(attribute='gp') %}
+
+                    <div class="stat-temporada-item">
+                        <span class="stat-temporada-valor">{{ total_jogos }}</span>
+                        <span class="stat-temporada-label">Partidas</span>
+                    </div>
+                    <div class="stat-temporada-item">
+                        <span class="stat-temporada-valor">{{ total_gols }}</span>
+                        <span class="stat-temporada-label">Gols</span>
+                    </div>
+                    <div class="stat-temporada-item">
+                        <span class="stat-temporada-valor">{{ "%.2f"|format(total_gols / total_jogos) }}</span>
+                        <span class="stat-temporada-label">Média de gols</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Destaques -->
+            <section class="section-card">
+                <h3>🌟 Destaques</h3>
+                <div class="destaques-lista">
+                    {% set melhor_ataque = classificacao|max(attribute='gp') %}
+                    {% set melhor_defesa = classificacao|min(attribute='gc') %}
+
+                    <div class="destaque-item">
+                        <span class="destaque-label">Melhor ataque:</span>
+                        <span class="destaque-valor">
+                            {% for time in classificacao if time.gp == melhor_ataque.gp %}
+                            <a href="{{ url_for('clube', nome=time.clube) }}">{{ time.clube }}</a> ({{ time.gp }} gols)
+                            {% endfor %}
+                        </span>
+                    </div>
+
+                    <div class="destaque-item">
+                        <span class="destaque-label">Melhor defesa:</span>
+                        <span class="destaque-valor">
+                            {% for time in classificacao if time.gc == melhor_defesa.gc %}
+                            <a href="{{ url_for('clube', nome=time.clube) }}">{{ time.clube }}</a> ({{ time.gc }} gols)
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navegação Rápida -->
+            <section class="section-card">
+                <h3>🔍 Ver Também</h3>
+                <div class="quick-links">
+                    <a href="{{ url_for('explorar') }}" class="quick-link-item">
+                        <span class="icon">📅</span>
+                        <div>
+                            <strong>Outras Temporadas</strong>
+                            <p>Navegar por anos</p>
+                        </div>
+                    </a>
+                    {% if edicao.campeao %}
+                    <a href="{{ url_for('clube', nome=edicao.campeao) }}" class="quick-link-item">
+                        <span class="icon">🏆</span>
+                        <div>
+                            <strong>Ver Campeão</strong>
+                            <p>História do {{ edicao.campeao }}</p>
+                        </div>
+                    </a>
+                    {% endif %}
+                </div>
+            </section>
+        </aside>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .temporada-header {
+        background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: var(--raio-borda-grande);
+        margin-bottom: 2rem;
+    }
+
+    .temporada-navegacao {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .temporada-titulo {
+        flex: 1;
+        text-align: center;
+    }
+
+    .temporada-titulo h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .campeao-info {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .campeao-info a {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .btn-nav-ano {
+        padding: 0.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: var(--raio-borda);
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-nav-ano:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+
+    .zona-campeao {
+        border-left-color: #ffd700 !important;
+    }
+
+    .cor-campeao {
+        background: #ffd700;
+    }
+
+    .artilheiros-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .artilheiro-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--cor-fundo);
+        border-radius: var(--raio-borda);
+    }
+
+    .artilheiro-pos {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--cor-primaria);
+        min-width: 35px;
+    }
+
+    .artilheiro-info {
+        flex: 1;
+    }
+
+    .artilheiro-nome {
+        font-weight: 600;
+        font-size: 1.05rem;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .artilheiro-jogos {
+        font-size: 0.85rem;
+        color: var(--cor-texto-secundario);
+    }
+
+    .artilheiro-gols {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--cor-secundaria);
+    }
+
+    .info-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--cor-fundo);
+    }
+
+    .info-label {
+        color: var(--cor-texto-secundario);
+        font-size: 0.9rem;
+    }
+
+    .info-valor {
+        font-weight: 600;
+    }
+
+    .stats-temporada {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .stat-temporada-item {
+        padding: 1rem;
+        background: var(--cor-fundo);
+        border-radius: var(--raio-borda);
+    }
+
+    .stat-temporada-valor {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--cor-primaria);
+    }
+
+    .stat-temporada-label {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--cor-texto-secundario);
+        margin-top: 0.25rem;
+    }
+
+    .destaques-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .destaque-item {
+        padding: 1rem;
+        background: var(--cor-fundo);
+        border-radius: var(--raio-borda);
+    }
+
+    .destaque-label {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--cor-texto-secundario);
+        margin-bottom: 0.25rem;
+    }
+
+    .destaque-valor {
+        font-weight: 600;
+    }
+</style>
+{% endblock %}

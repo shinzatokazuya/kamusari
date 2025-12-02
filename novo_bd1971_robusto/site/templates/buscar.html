@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}{% if query %}Resultados para "{{ query }}"{% else %}Buscar{% endif %} - Brasileirão Stats{% endblock
+%}
+
+{% block content %}
+<div class="container">
+    <!-- Hero de Busca -->
+    <section class="hero-secundario">
+        <h1>🔎 Busca Avançada</h1>
+        <p>Encontre clubes, jogadores, treinadores, árbitros e estádios</p>
+    </section>
+
+    <!-- Formulário de Busca -->
+    <section class="section-card busca-principal">
+        <form action="{{ url_for('buscar') }}" method="get" class="form-busca-avancada">
+            <div class="input-busca-container">
+                <input type="text" name="q" class="input-busca-grande" placeholder="Digite o que você procura..."
+                    value="{{ query or '' }}" autofocus>
+                <button type="submit" class="btn-buscar">
+                    🔍 Buscar
+                </button>
+            </div>
+        </form>
+    </section>
+
+    {% if query %}
+    <!-- Resultados da Busca -->
+    <div class="resultados-container">
+        {% if resultados %}
+        <!-- Clubes -->
+        {% if resultados.clubes %}
+        <section class="section-card resultados-secao">
+            <h2>⚽ Clubes ({{ resultados.clubes|length }})</h2>
+            <div class="resultados-lista">
+                {% for clube in resultados.clubes %}
+                <a href="{{ url_for('clube', nome=clube.clube) }}" class="resultado-item">
+                    <div class="resultado-icone">
+                        <span class="escudo-inicial">{{ clube.clube[0] }}</span>
+                    </div>
+                    <div class="resultado-info">
+                        <h3>{{ clube.clube }}</h3>
+                        {% if clube.apelido %}
+                        <p class="resultado-subtitulo">{{ clube.apelido }}</p>
+                        {% endif %}
+                        {% if clube.cidade and clube.UF %}
+                        <p class="resultado-detalhes">📍 {{ clube.cidade }}, {{ clube.UF }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="resultado-seta">→</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Jogadores -->
+        {% if resultados.jogadores %}
+        <section class="section-card resultados-secao">
+            <h2>👤 Jogadores ({{ resultados.jogadores|length }})</h2>
+            <div class="resultados-lista">
+                {% for jogador in resultados.jogadores %}
+                <a href="{{ url_for('jogador', jogador_id=jogador.ID) }}" class="resultado-item">
+                    <div class="resultado-icone">
+                        <span class="icone-tipo">👤</span>
+                    </div>
+                    <div class="resultado-info">
+                        <h3>{{ jogador.nome }}</h3>
+                        {% if jogador.apelido %}
+                        <p class="resultado-subtitulo">"{{ jogador.apelido }}"</p>
+                        {% endif %}
+                        <div class="resultado-detalhes">
+                            {% if jogador.posicao %}
+                            <span class="badge">{{ jogador.posicao }}</span>
+                            {% endif %}
+                            {% if jogador.nascimento %}
+                            <span>📅 {{ jogador.nascimento }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="resultado-seta">→</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Treinadores -->
+        {% if resultados.treinadores %}
+        <section class="section-card resultados-secao">
+            <h2>👔 Treinadores ({{ resultados.treinadores|length }})</h2>
+            <div class="resultados-lista">
+                {% for treinador in resultados.treinadores %}
+                <a href="{{ url_for('treinador', treinador_id=treinador.ID) }}" class="resultado-item">
+                    <div class="resultado-icone">
+                        <span class="icone-tipo">👔</span>
+                    </div>
+                    <div class="resultado-info">
+                        <h3>{{ treinador.nome }}</h3>
+                        {% if treinador.apelido %}
+                        <p class="resultado-subtitulo">"{{ treinador.apelido }}"</p>
+                        {% endif %}
+                        {% if treinador.nacionalidade %}
+                        <p class="resultado-detalhes">🌍 {{ treinador.nacionalidade }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="resultado-seta">→</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Árbitros -->
+        {% if resultados.arbitros %}
+        <section class="section-card resultados-secao">
+            <h2>🟨 Árbitros ({{ resultados.arbitros|length }})</h2>
+            <div class="resultados-lista">
+                {% for arbitro in resultados.arbitros %}
+                <a href="{{ url_for('arbitro', arbitro_id=arbitro.ID) }}" class="resultado-item">
+                    <div class="resultado-icone">
+                        <span class="icone-tipo">🟨</span>
+                    </div>
+                    <div class="resultado-info">
+                        <h3>{{ arbitro.nome }}</h3>
+                        {% if arbitro.naturalidade %}
+                        <p class="resultado-detalhes">📍 {{ arbitro.naturalidade }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="resultado-seta">→</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Estádios -->
+        {% if resultados.estadios %}
+        <section class="section-card resultados-secao">
+            <h2>🏟️ Estádios ({{ resultados.estadios|length }})</h2>
+            <div class="resultados-lista">
+                {% for estadio in resultados.estadios %}
+                <a href="{{ url_for('estadio', estadio_id=estadio.ID) }}" class="resultado-item">
+                    <div class="resultado-icone">
+                        <span class="icone-tipo">🏟️</span>
+                    </div>
+                    <div class="resultado-info">
+                        <h3>{{ estadio.estadio }}</h3>
+                        {% if estadio.cidade and estadio.UF %}
+                        <p class="resultado-detalhes">📍 {{ estadio.cidade }}, {{ estadio.UF }}</p>
+                        {% endif %}
+                        {% if estadio.capacidade %}
+                        <p class="resultado-detalhes">👥 Capacidade: {{ "{:,}".format(estadio.capacidade).replace(',',
+                            '.') }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="resultado-seta">→</div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Nenhum resultado -->
+        {% if not resultados.clubes and not resultados.jogadores and not resultados.treinadores and not
+        resultados.arbitros and not resultados.estadios %}
+        <section class="section-card">
+            <div class="sem-resultados">
+                <div class="sem-resultados-icone">🔍</div>
+                <h2>Nenhum resultado encontrado</h2>
+                <p>Não encontramos nada para "<strong>{{ query }}</strong>"</p>
+                <p class="dica">Tente usar termos diferentes ou verifique a ortografia</p>
+            </div>
+        </section>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% else %}
+    <!-- Sugestões quando não há busca -->
+    <section class="section-card">
+        <h2>💡 Sugestões de Busca</h2>
+        <div class="sugestoes-grid">
+            <div class="sugestao-categoria">
+                <h3>⚽ Clubes Populares</h3>
+                <div class="sugestoes-lista">
+                    <a href="{{ url_for('buscar') }}?q=Flamengo" class="sugestao-link">Flamengo</a>
+                    <a href="{{ url_for('buscar') }}?q=Palmeiras" class="sugestao-link">Palmeiras</a>
+                    <a href="{{ url_for('buscar') }}?q=São Paulo" class="sugestao-link">São Paulo</a>
+                    <a href="{{ url_for('buscar') }}?q=Corinthians" class="sugestao-link">Corinthians</a>
+                </div>
+            </div>
+
+            <div class="sugestao-categoria">
+                <h3>🏟️ Estádios Famosos</h3>
+                <div class="sugestoes-lista">
+                    <a href="{{ url_for('buscar') }}?q=Maracanã" class="sugestao-link">Maracanã</a>
+                    <a href="{{ url_for('buscar') }}?q=Morumbi" class="sugestao-link">Morumbi</a>
+                    <a href="{{ url_for('buscar') }}?q=Mineirão" class="sugestao-link">Mineirão</a>
+                    <a href="{{ url_for('buscar') }}?q=Beira-Rio" class="sugestao-link">Beira-Rio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dicas de uso -->
+    <section class="section-card dica-card">
+        <h3>📌 Dicas de Busca</h3>
+        <ul class="lista-dicas">
+            <li>Use o nome completo ou parte dele (ex: "Flamengo" ou "Fla")</li>
+            <li>Para jogadores, tente o nome ou apelido (ex: "Ronaldo" ou "Fenômeno")</li>
+            <li>A busca encontra correspondências parciais</li>
+            <li>Não diferencia maiúsculas de minúsculas</li>
+        </ul>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}
