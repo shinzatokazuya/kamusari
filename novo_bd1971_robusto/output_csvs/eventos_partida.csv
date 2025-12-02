@@ -4282,3 +4282,9 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 4281,529,655,4,Gol,Normal,49
 4282,529,663,3,Entrou,,
 4283,529,403,4,Entrou,,
+4284,530,671,27,Substituição,,
+4285,530,621,27,Substituição,,
+4286,530,57,18,Substituição,,
+4287,530,79,27,Entrou,,
+4288,530,433,27,Entrou,,
+4289,530,420,18,Entrou,,
