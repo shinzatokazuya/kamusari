@@ -3,394 +3,697 @@
 {% block body %}
 
 <!-- ===================================
-     CABEÇALHO DA PARTIDA
-     Mostra os times, placar e autores dos gols
+     CABEÇALHO DA PARTIDA - COMPACTO
      =================================== -->
-<div class="match-header-wrapper">
-    <div class="match-header-card">
-        <!-- Time da Casa (Mandante) -->
-        <div class="team team-home">
-            <h2 class="team-name">
-                <a href="/clube/{{ partida['mandante'] }}">{{ partida['mandante'] }}</a>
-            </h2>
-            <div class="team-score">{{ partida['gols_mandante'] }}</div>
-
-            <!-- GOLS DO TIME MANDANTE -->
-            {% if gols %}
-                <div class="gols-list">
-                    {% for gol in gols if gol['clube'] == partida['mandante'] %}
-                        <div class="gol-item">
-                            <span class="gol-icon">⚽</span>
-                            <span class="gol-jogador">{{ gol['jogador_apelido'] or gol['jogador_nome'] }}</span>
-                            <span class="gol-minuto">{{ gol['minuto'] }}'</span>
-                            {% if gol['tipo_gol'] and gol['tipo_gol'] != 'normal' %}
-                                <span class="gol-tipo">({{ gol['tipo_gol'] }})</span>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+<div class="match-header-compact">
+    <div class="match-teams">
+        <div class="team-info">
+            <a href="/clube/{{ partida['mandante'] }}" class="team-name">{{ partida['mandante'] }}</a>
+            <div class="team-score-large">{{ partida['gols_mandante'] }}</div>
         </div>
 
-        <!-- Informações Centrais -->
-        <div class="match-center">
-            <div class="match-vs">X</div>
-
-            <!-- Informações da Partida -->
-            <div class="match-info">
-                <div class="match-date">{{ partida['data'] }}</div>
-                {% if partida['hora'] %}
-                    <div class="match-time">{{ partida['hora'] }}</div>
-                {% endif %}
-
+        <div class="match-details-center">
+            <div class="score-separator">×</div>
+            <div class="match-meta">
+                <div class="match-date">📅 {{ partida['data'] }}{% if partida['hora'] %} • {{ partida['hora'] }}{% endif %}</div>
                 {% if partida['arena'] %}
                     <div class="match-venue">
-                        <a href="{{ make_url_estadio(partida['estadio_id'], partida['arena']) }}">
-                            📍 {{ partida['arena'] }}
-                        </a>
+                        📍 <a href="{{ make_url_estadio(partida['estadio_id'], partida['arena']) }}">{{ partida['arena'] }}</a>
+                        {% if partida['estadio_cidade'] %} - {{ partida['estadio_cidade'] }}, {{ partida['estadio_uf'] }}{% endif %}
                     </div>
                 {% endif %}
-
-                <div class="match-competition">
-                    <span class="badge-round">{{ partida['rodada'] }}</span>
-                    {{ partida['campeonato'] }} {{ partida['ano'] }}
-                </div>
-
-                <!-- Indicadores Especiais -->
-                {% if partida['mandante_penalti'] is not none and partida['visitante_penalti'] is not none %}
-                    <div class="match-penalties">
-                        Pênaltis: {{ partida['mandante_penalti'] }} - {{ partida['visitante_penalti'] }}
-                    </div>
-                {% endif %}
-
-                {% if partida['prorrogacao'] %}
-                    <div class="match-overtime">Após Prorrogação</div>
-                {% endif %}
-
+                <div class="match-competition">🏆 {{ partida['campeonato'] }} {{ partida['ano'] }} - {{ partida['rodada'] }}</div>
                 {% if partida['publico'] %}
-                    <div class="match-attendance">
-                        👥 {{ "{:,}".format(partida['publico']).replace(',', '.') }} pessoas
-                    </div>
+                    <div class="match-attendance">👥 {{ "{:,}".format(partida['publico']).replace(',', '.') }} pessoas</div>
                 {% endif %}
             </div>
-        </div>
-
-        <!-- Time Visitante -->
-        <div class="team team-away">
-            <h2 class="team-name">
-                <a href="/clube/{{ partida['visitante'] }}">{{ partida['visitante'] }}</a>
-            </h2>
-            <div class="team-score">{{ partida['gols_visitante'] }}</div>
-
-            <!-- GOLS DO TIME VISITANTE -->
-            {% if gols %}
-                <div class="gols-list">
-                    {% for gol in gols if gol['clube'] == partida['visitante'] %}
-                        <div class="gol-item">
-                            <span class="gol-icon">⚽</span>
-                            <span class="gol-jogador">{{ gol['jogador_apelido'] or gol['jogador_nome'] }}</span>
-                            <span class="gol-minuto">{{ gol['minuto'] }}'</span>
-                            {% if gol['tipo_gol'] and gol['tipo_gol'] != 'normal' %}
-                                <span class="gol-tipo">({{ gol['tipo_gol'] }})</span>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+            {% if partida['mandante_penalti'] is not none and partida['visitante_penalti'] is not none %}
+                <div class="match-penalties-badge">
+                    Pênaltis: {{ partida['mandante_penalti'] }} - {{ partida['visitante_penalti'] }}
                 </div>
             {% endif %}
+            {% if partida['prorrogacao'] %}
+                <div class="match-overtime-badge">Prorrogação</div>
+            {% endif %}
+        </div>
+
+        <div class="team-info">
+            <a href="/clube/{{ partida['visitante'] }}" class="team-name">{{ partida['visitante'] }}</a>
+            <div class="team-score-large">{{ partida['gols_visitante'] }}</div>
         </div>
     </div>
 </div>
 
-
 <!-- ===================================
-     ARBITRAGEM
+     EVENTOS DA PARTIDA (GOLS E CARTÕES)
      =================================== -->
-{% if arbitros %}
-<div class="section-card">
-    <h3 class="section-title">
-        <span class="section-icon">👨‍⚖️</span>
-        Arbitragem
-    </h3>
-    <div class="arbitros-list">
-        {% for arbitro in arbitros %}
-            <div class="arbitro-chip">
-                <a href="{{ make_url_arbitro(arbitro['arbitro_id'], arbitro['nome']) }}">
-                    {{ arbitro['nome'] }}
-                </a>
-                {% if arbitro['naturalidade'] %}
-                    <span class="origem">({{ arbitro['naturalidade'] }})</span>
-                {% endif %}
-            </div>
+{% if gols or cartoes_amarelos or cartoes_vermelhos %}
+<div class="match-events-timeline">
+    <h3 class="section-title-inline">⚡ Eventos da Partida</h3>
+
+    <div class="events-container">
+        {% set all_events = [] %}
+
+        {# Adiciona gols #}
+        {% for gol in gols %}
+            {% set _ = all_events.append({
+                'tipo': 'gol',
+                'minuto': gol['minuto'],
+                'clube': gol['clube'],
+                'jogador': gol['jogador_apelido'] or gol['jogador_nome'],
+                'tipo_gol': gol['tipo_gol']
+            }) %}
         {% endfor %}
+
+        {# Adiciona cartões amarelos #}
+        {% for cartao in cartoes_amarelos %}
+            {% set _ = all_events.append({
+                'tipo': 'amarelo',
+                'minuto': cartao['minuto'],
+                'clube': cartao['clube'],
+                'jogador': cartao['jogador_apelido'] or cartao['jogador_nome']
+            }) %}
+        {% endfor %}
+
+        {# Adiciona cartões vermelhos #}
+        {% for cartao in cartoes_vermelhos %}
+            {% set _ = all_events.append({
+                'tipo': 'vermelho',
+                'minuto': cartao['minuto'],
+                'clube': cartao['clube'],
+                'jogador': cartao['jogador_apelido'] or cartao['jogador_nome']
+            }) %}
+        {% endfor %}
+
+        {# Ordena eventos por minuto #}
+        {% set sorted_events = all_events|sort(attribute='minuto') %}
+
+        <div class="timeline">
+            {% for evento in sorted_events %}
+                <div class="timeline-event evento-{{ evento['clube'].replace(' ', '-').lower() }}">
+                    <span class="event-minute">{{ evento['minuto'] }}'</span>
+                    <span class="event-icon">
+                        {% if evento['tipo'] == 'gol' %}⚽
+                        {% elif evento['tipo'] == 'amarelo' %}🟨
+                        {% elif evento['tipo'] == 'vermelho' %}🟥
+                        {% endif %}
+                    </span>
+                    <span class="event-player">{{ evento['jogador'] }}</span>
+                    <span class="event-team">({{ evento['clube'] }})</span>
+                    {% if evento.get('tipo_gol') and evento['tipo_gol'] != 'normal' %}
+                        <span class="event-detail">[{{ evento['tipo_gol'] }}]</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endif %}
 
-
 <!-- ===================================
-     COMISSÃO TÉCNICA (TREINADORES)
+     LAYOUT LADO A LADO: ESCALAÇÕES E ESTATÍSTICAS
      =================================== -->
-{% if treinadores %}
-<div class="section-card">
-    <h3 class="section-title">
-        <span class="section-icon">📋</span>
-        Comissão Técnica
-    </h3>
-    <div class="treinadores-grid">
-        {% for time in [partida['mandante'], partida['visitante']] %}
-            <div class="treinador-team-box">
-                <h4 class="team-subtitle">{{ time }}</h4>
-                {% for treinador in treinadores if treinador['clube'] == time %}
-                    <div class="treinador-item">
+<div class="match-main-content">
+    <!-- COLUNA ESQUERDA: ESCALAÇÕES -->
+    <div class="lineups-column">
+        <h3 class="section-title-inline">👕 Escalações</h3>
+
+        {% for time_nome, jogadores in [
+            (partida['mandante'], jogadores_mandante),
+            (partida['visitante'], jogadores_visitante)
+        ] %}
+            <div class="team-lineup">
+                <h4 class="team-lineup-title">{{ time_nome }}</h4>
+
+                <!-- Titulares -->
+                <div class="players-section">
+                    <h5 class="players-subtitle">Titulares</h5>
+                    <div class="players-list">
+                        {% for jogador in jogadores if jogador['titular'] %}
+                            <div class="player-row">
+                                {% if jogador['numero_camisa'] %}
+                                    <span class="player-num">{{ jogador['numero_camisa'] }}</span>
+                                {% endif %}
+                                <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}"
+                                   class="player-link">
+                                    {{ jogador['apelido'] or jogador['nome'] }}
+                                </a>
+                                {% if jogador['posicao_jogada'] %}
+                                    <span class="player-pos">{{ jogador['posicao_jogada'] }}</span>
+                                {% endif %}
+
+                                <div class="player-stats-inline">
+                                    {% if jogador['gols'] > 0 %}
+                                        <span class="stat-icon">⚽{{ jogador['gols'] }}</span>
+                                    {% endif %}
+                                    {% if jogador['assistencias'] > 0 %}
+                                        <span class="stat-icon">🎯{{ jogador['assistencias'] }}</span>
+                                    {% endif %}
+                                    {% if jogador['cartao_amarelo'] > 0 %}
+                                        <span class="stat-icon">🟨</span>
+                                    {% endif %}
+                                    {% if jogador['cartao_vermelho'] > 0 %}
+                                        <span class="stat-icon">🟥</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Reservas -->
+                {% set reservas = jogadores | selectattr('titular', 'equalto', 0) | list %}
+                {% if reservas | length > 0 %}
+                    <div class="players-section">
+                        <h5 class="players-subtitle">Reservas</h5>
+                        <div class="players-list">
+                            {% for jogador in reservas %}
+                                <div class="player-row player-substitute">
+                                    {% if jogador['numero_camisa'] %}
+                                        <span class="player-num">{{ jogador['numero_camisa'] }}</span>
+                                    {% endif %}
+                                    <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}"
+                                       class="player-link">
+                                        {{ jogador['apelido'] or jogador['nome'] }}
+                                    </a>
+
+                                    <div class="player-stats-inline">
+                                        {% if jogador['gols'] > 0 %}
+                                            <span class="stat-icon">⚽{{ jogador['gols'] }}</span>
+                                        {% endif %}
+                                        {% if jogador['assistencias'] > 0 %}
+                                            <span class="stat-icon">🎯{{ jogador['assistencias'] }}</span>
+                                        {% endif %}
+                                        {% if jogador['cartao_amarelo'] > 0 %}
+                                            <span class="stat-icon">🟨</span>
+                                        {% endif %}
+                                        {% if jogador['cartao_vermelho'] > 0 %}
+                                            <span class="stat-icon">🟥</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Treinador -->
+                {% for treinador in treinadores if treinador['clube'] == time_nome %}
+                    <div class="coach-info">
+                        <span class="coach-label">Treinador:</span>
                         <a href="{{ make_url_treinador(treinador['treinador_id'], treinador['nome']) }}">
                             {{ treinador['nome'] }}
                         </a>
-                        <span class="role">({{ treinador['tipo'] }})</span>
                     </div>
                 {% endfor %}
             </div>
         {% endfor %}
     </div>
-</div>
-{% endif %}
 
+    <!-- COLUNA DIREITA: ESTATÍSTICAS E INFORMAÇÕES -->
+    <div class="stats-column">
+        <h3 class="section-title-inline">📊 Estatísticas</h3>
 
-<!-- ===================================
-     ESCALAÇÕES
-     =================================== -->
-{% if jogadores_mandante or jogadores_visitante %}
-<div class="section-card">
-    <h3 class="section-title">
-        <span class="section-icon">👕</span>
-        Escalações
-    </h3>
-    <div class="escalacoes-grid">
-        <!-- Mandante -->
-        <div class="escalacao-team">
-            <h4 class="team-subtitle">{{ partida['mandante'] }}</h4>
+        {% if estatisticas %}
+            <div class="stats-bars">
+                {% for stat_name, stat_label in [
+                    ('chutes', 'Chutes'),
+                    ('chutes_no_alvo', 'Chutes no Alvo'),
+                    ('posse_de_bola', 'Posse de Bola'),
+                    ('passes', 'Passes'),
+                    ('precisao_passes', 'Precisão'),
+                    ('escanteios', 'Escanteios'),
+                    ('impedimentos', 'Impedimentos'),
+                    ('faltas', 'Faltas')
+                ] %}
+                    {% set mandante_stat = estatisticas | selectattr('clube', 'equalto', partida['mandante']) | first %}
+                    {% set visitante_stat = estatisticas | selectattr('clube', 'equalto', partida['visitante']) | first %}
 
-            <!-- Titulares -->
-            <div class="players-group">
-                <h5 class="players-group-title">Titulares</h5>
-                {% for jogador in jogadores_mandante if jogador['titular'] %}
-                    <div class="player-item">
-                        {% if jogador['numero_camisa'] %}
-                            <span class="player-number">{{ jogador['numero_camisa'] }}</span>
-                        {% endif %}
-                        <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}" class="player-name">
-                            {{ jogador['apelido'] or jogador['nome'] }}
-                        </a>
-                        {% if jogador['posicao_jogada'] %}
-                            <span class="player-position">{{ jogador['posicao_jogada'] }}</span>
-                        {% endif %}
+                    {% if mandante_stat and visitante_stat and mandante_stat[stat_name] is not none %}
+                        <div class="stat-bar-row">
+                            <div class="stat-value-left">{{ mandante_stat[stat_name] }}</div>
+                            <div class="stat-bar-container">
+                                <div class="stat-label">{{ stat_label }}</div>
+                                <div class="stat-bars-wrapper">
+                                    {% set mandante_val = mandante_stat[stat_name]|float if mandante_stat[stat_name] is not none else 0 %}
+                                    {% set visitante_val = visitante_stat[stat_name]|float if visitante_stat[stat_name] is not none else 0 %}
+                                    {% set total = mandante_val + visitante_val %}
+                                    {% set mandante_pct = (mandante_val / total * 100) if total > 0 else 50 %}
+                                    {% set visitante_pct = (visitante_val / total * 100) if total > 0 else 50 %}
 
-                        <!-- Stats do jogador -->
-                        <div class="player-stats">
-                            {% if jogador['gols'] > 0 %}
-                                <span class="stat-badge stat-goal" title="Gols">⚽{{ jogador['gols'] }}</span>
-                            {% endif %}
-                            {% if jogador['assistencias'] > 0 %}
-                                <span class="stat-badge stat-assist" title="Assistências">🎯{{ jogador['assistencias'] }}</span>
-                            {% endif %}
-                            {% if jogador['cartao_amarelo'] > 0 %}
-                                <span class="stat-badge stat-yellow" title="Cartão Amarelo">🟨</span>
-                            {% endif %}
-                            {% if jogador['cartao_vermelho'] > 0 %}
-                                <span class="stat-badge stat-red" title="Cartão Vermelho">🟥</span>
-                            {% endif %}
+                                    <div class="stat-bar stat-bar-home" style="width: {{ mandante_pct }}%"></div>
+                                    <div class="stat-bar stat-bar-away" style="width: {{ visitante_pct }}%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-value-right">{{ visitante_stat[stat_name] }}</div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
-
-            <!-- Reservas -->
-            {% set reservas = jogadores_mandante | selectattr('titular', 'equalto', 0) | list %}
-            {% if reservas | length > 0 %}
-                <div class="players-group">
-                    <h5 class="players-group-title">Reservas</h5>
-                    {% for jogador in reservas %}
-                        <div class="player-item player-substitute">
-                            {% if jogador['numero_camisa'] %}
-                                <span class="player-number">{{ jogador['numero_camisa'] }}</span>
-                            {% endif %}
-                            <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}" class="player-name">
-                                {{ jogador['apelido'] or jogador['nome'] }}
-                            </a>
-
-                            <div class="player-stats">
-                                {% if jogador['gols'] > 0 %}
-                                    <span class="stat-badge stat-goal">⚽{{ jogador['gols'] }}</span>
-                                {% endif %}
-                                {% if jogador['assistencias'] > 0 %}
-                                    <span class="stat-badge stat-assist">🎯{{ jogador['assistencias'] }}</span>
-                                {% endif %}
-                                {% if jogador['cartao_amarelo'] > 0 %}
-                                    <span class="stat-badge stat-yellow">🟨</span>
-                                {% endif %}
-                                {% if jogador['cartao_vermelho'] > 0 %}
-                                    <span class="stat-badge stat-red">🟥</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-
-        <!-- Visitante (mesma estrutura) -->
-        <div class="escalacao-team">
-            <h4 class="team-subtitle">{{ partida['visitante'] }}</h4>
-
-            <div class="players-group">
-                <h5 class="players-group-title">Titulares</h5>
-                {% for jogador in jogadores_visitante if jogador['titular'] %}
-                    <div class="player-item">
-                        {% if jogador['numero_camisa'] %}
-                            <span class="player-number">{{ jogador['numero_camisa'] }}</span>
-                        {% endif %}
-                        <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}" class="player-name">
-                            {{ jogador['apelido'] or jogador['nome'] }}
-                        </a>
-                        {% if jogador['posicao_jogada'] %}
-                            <span class="player-position">{{ jogador['posicao_jogada'] }}</span>
-                        {% endif %}
-
-                        <div class="player-stats">
-                            {% if jogador['gols'] > 0 %}
-                                <span class="stat-badge stat-goal">⚽{{ jogador['gols'] }}</span>
-                            {% endif %}
-                            {% if jogador['assistencias'] > 0 %}
-                                <span class="stat-badge stat-assist">🎯{{ jogador['assistencias'] }}</span>
-                            {% endif %}
-                            {% if jogador['cartao_amarelo'] > 0 %}
-                                <span class="stat-badge stat-yellow">🟨</span>
-                            {% endif %}
-                            {% if jogador['cartao_vermelho'] > 0 %}
-                                <span class="stat-badge stat-red">🟥</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-            {% set reservas = jogadores_visitante | selectattr('titular', 'equalto', 0) | list %}
-            {% if reservas | length > 0 %}
-                <div class="players-group">
-                    <h5 class="players-group-title">Reservas</h5>
-                    {% for jogador in reservas %}
-                        <div class="player-item player-substitute">
-                            {% if jogador['numero_camisa'] %}
-                                <span class="player-number">{{ jogador['numero_camisa'] }}</span>
-                            {% endif %}
-                            <a href="{{ make_url_jogador(jogador['jogador_id'], jogador['apelido'] or jogador['nome']) }}" class="player-name">
-                                {{ jogador['apelido'] or jogador['nome'] }}
-                            </a>
-
-                            <div class="player-stats">
-                                {% if jogador['gols'] > 0 %}
-                                    <span class="stat-badge stat-goal">⚽{{ jogador['gols'] }}</span>
-                                {% endif %}
-                                {% if jogador['assistencias'] > 0 %}
-                                    <span class="stat-badge stat-assist">🎯{{ jogador['assistencias'] }}</span>
-                                {% endif %}
-                                {% if jogador['cartao_amarelo'] > 0 %}
-                                    <span class="stat-badge stat-yellow">🟨</span>
-                                {% endif %}
-                                {% if jogador['cartao_vermelho'] > 0 %}
-                                    <span class="stat-badge stat-red">🟥</span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
-{% endif %}
-
-
-<!-- ===================================
-     ESTATÍSTICAS DA PARTIDA
-     =================================== -->
-{% if estatisticas %}
-<div class="section-card">
-    <h3 class="section-title">
-        <span class="section-icon">📊</span>
-        Estatísticas da Partida
-    </h3>
-    <div class="stats-comparison">
-        {% for stat_name, stat_label in [
-            ('chutes', 'Chutes'),
-            ('chutes_no_alvo', 'Chutes no Alvo'),
-            ('posse_de_bola', 'Posse de Bola'),
-            ('passes', 'Passes'),
-            ('precisao_passes', 'Precisão de Passes'),
-            ('escanteios', 'Escanteios'),
-            ('impedimentos', 'Impedimentos'),
-            ('faltas', 'Faltas'),
-            ('cartao_amarelo', 'Cartões Amarelos'),
-            ('cartao_vermelho', 'Cartões Vermelhos')
-        ] %}
-            {% set mandante_stat = estatisticas | selectattr('clube', 'equalto', partida['mandante']) | first %}
-            {% set visitante_stat = estatisticas | selectattr('clube', 'equalto', partida['visitante']) | first %}
-
-            {% if mandante_stat and visitante_stat and mandante_stat[stat_name] is not none %}
-                <div class="stat-row">
-                    <div class="stat-value stat-home-value">{{ mandante_stat[stat_name] }}</div>
-                    <div class="stat-label-center">{{ stat_label }}</div>
-                    <div class="stat-value stat-away-value">{{ visitante_stat[stat_name] }}</div>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-{% else %}
-    <div class="no-data-card">
-        <div class="no-data-icon">📊</div>
-        <p class="no-data-text">Estatísticas detalhadas não disponíveis para esta partida</p>
-        <p class="no-data-subtext">Apenas o resultado final está registrado</p>
-    </div>
-{% endif %}
-
-
-<!-- ===================================
-     CARTÕES
-     =================================== -->
-{% if cartoes_amarelos or cartoes_vermelhos %}
-<div class="section-card">
-    <h3 class="section-title">
-        <span class="section-icon">🎴</span>
-        Cartões
-    </h3>
-    <div class="cartoes-grid">
-        {% if cartoes_amarelos %}
-            <div class="cartoes-list">
-                <h4 class="cartoes-subtitle">🟨 Cartões Amarelos</h4>
-                {% for cartao in cartoes_amarelos %}
-                    <div class="cartao-item">
-                        <span class="cartao-club">{{ cartao['clube'] }}</span>
-                        <span class="cartao-player">{{ cartao['jogador_apelido'] or cartao['jogador_nome'] }}</span>
-                        <span class="cartao-minute">{{ cartao['minuto'] }}'</span>
-                    </div>
-                {% endfor %}
+        {% else %}
+            <div class="no-stats-message">
+                <p>📊 Estatísticas detalhadas não disponíveis</p>
             </div>
         {% endif %}
 
-        {% if cartoes_vermelhos %}
-            <div class="cartoes-list">
-                <h4 class="cartoes-subtitle">🟥 Cartões Vermelhos</h4>
-                {% for cartao in cartoes_vermelhos %}
-                    <div class="cartao-item">
-                        <span class="cartao-club">{{ cartao['clube'] }}</span>
-                        <span class="cartao-player">{{ cartao['jogador_apelido'] or cartao['jogador_nome'] }}</span>
-                        <span class="cartao-minute">{{ cartao['minuto'] }}'</span>
-                    </div>
-                {% endfor %}
+        <!-- Arbitragem -->
+        {% if arbitros %}
+            <div class="match-officials">
+                <h4 class="subsection-title">👨‍⚖️ Arbitragem</h4>
+                <div class="officials-list">
+                    {% for arbitro in arbitros %}
+                        <div class="official-item">
+                            <a href="{{ make_url_arbitro(arbitro['arbitro_id'], arbitro['nome']) }}">
+                                {{ arbitro['nome'] }}
+                            </a>
+                            {% if arbitro['naturalidade'] %}
+                                <span class="official-origin">({{ arbitro['naturalidade'] }})</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Informações Adicionais -->
+        {% if partida['renda'] %}
+            <div class="additional-info">
+                <h4 class="subsection-title">💰 Renda</h4>
+                <p>R$ {{ "{:,.2f}".format(partida['renda']).replace(',', 'X').replace('.', ',').replace('X', '.') }}</p>
             </div>
         {% endif %}
     </div>
 </div>
-{% endif %}
+
+<style>
+/* Estilos para o cabeçalho compacto */
+.match-header-compact {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.match-teams {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.team-info {
+    text-align: center;
+}
+
+.team-name {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.team-name:hover {
+    opacity: 0.85;
+}
+
+.team-score-large {
+    font-size: 4em;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.match-details-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.score-separator {
+    font-size: 2.5em;
+    font-weight: 900;
+    opacity: 0.3;
+}
+
+.match-meta {
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.match-meta > div {
+    margin: 4px 0;
+}
+
+.match-penalties-badge,
+.match-overtime-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Timeline de eventos */
+.match-events-timeline {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.section-title-inline {
+    margin: 0 0 20px 0;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2c3e50;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timeline-event {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.event-minute {
+    font-weight: 700;
+    color: #3498db;
+    min-width: 40px;
+}
+
+.event-icon {
+    font-size: 1.2em;
+}
+
+.event-player {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.event-team {
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.event-detail {
+    color: #95a5a6;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+/* Layout principal lado a lado */
+.match-main-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 25px;
+}
+
+/* Coluna de escalações */
+.lineups-column {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.team-lineup {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.team-lineup:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.team-lineup-title {
+    margin: 0 0 15px 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.players-section {
+    margin-bottom: 20px;
+}
+
+.players-subtitle {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #7f8c8d;
+    letter-spacing: 0.5px;
+}
+
+.players-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.player-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.player-row:hover {
+    background: #e8f4f8;
+}
+
+.player-substitute {
+    opacity: 0.7;
+}
+
+.player-num {
+    background: #34495e;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    min-width: 32px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.player-link {
+    flex: 1;
+    font-weight: 600;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.player-link:hover {
+    color: #3498db;
+}
+
+.player-pos {
+    font-size: 0.85em;
+    color: #7f8c8d;
+}
+
+.player-stats-inline {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.stat-icon {
+    font-size: 0.9em;
+}
+
+.coach-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e8f4f8;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.coach-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-right: 5px;
+}
+
+/* Coluna de estatísticas */
+.stats-column {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.stats-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-bar-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-value-left,
+.stat-value-right {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+.stat-value-left {
+    text-align: right;
+    color: #3498db;
+}
+
+.stat-value-right {
+    text-align: left;
+    color: #e74c3c;
+}
+
+.stat-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    text-align: center;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #7f8c8d;
+    text-transform: uppercase;
+}
+
+.stat-bars-wrapper {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #ecf0f1;
+}
+
+.stat-bar {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.stat-bar-home {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+}
+
+.stat-bar-away {
+    background: linear-gradient(90deg, #e74c3c, #ec7063);
+}
+
+.no-stats-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.match-officials,
+.additional-info {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #ecf0f1;
+}
+
+.subsection-title {
+    margin: 0 0 12px 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.officials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.official-item {
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.official-origin {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .match-teams {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .match-main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .team-score-large {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .match-header-compact {
+        padding: 20px;
+    }
+
+    .team-score-large {
+        font-size: 2.5em;
+    }
+
+    .stat-bar-row {
+        grid-template-columns: 40px 1fr 40px;
+        gap: 8px;
+    }
+
+    .player-row {
+        flex-wrap: wrap;
+    }
+
+    .player-stats-inline {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
+</style>
 
 {% endblock %}
