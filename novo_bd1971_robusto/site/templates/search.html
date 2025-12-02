@@ -6,24 +6,33 @@
         Campeonato Brasileiro
         {% if q %}Clube: {{ q }}{% endif %}
         {% if ano_selecionado %} de {{ ano_selecionado }} {% endif %}
+        {% if fase_selecionada %} - {{ fase_selecionada }} {% endif %}
     </h3>
 
     <div class="selects-container">
         <select id="select-ano-search">
-            <option value="">Selecione outro Ano</option>
+            <option value="">Selecione um Ano</option>
             {% for year in datas %}
                 <option value="{{ year }}" {% if year == ano_selecionado %}selected{% endif %}>{{ year }}</option>
             {% endfor %}
         </select>
 
-        <!-- Dropdown de rodada só aparece para pontos corridos (2003+) -->
-        <select id="select-rodada-search" {% if not ano_selecionado or formato_campeonato != 'pontos_corridos' %}style="display: none;"{% endif %}>
+        <!-- Dropdown de fase (para campeonatos com grupos/fases) -->
+        <select id="select-fase-search" {% if not fases_disponiveis %}style="display: none;"{% endif %}>
+            <option value="">Selecione a Fase</option>
+            {% for fase in fases_disponiveis %}
+                <option value="{{ fase }}" {% if fase == fase_selecionada %}selected{% endif %}>{{ fase }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Dropdown de rodada (apenas para pontos corridos) -->
+        <select id="select-rodada-search" {% if formato_campeonato != 'pontos_corridos' %}style="display: none;"{% endif %}>
             <option value="">Selecione a Rodada</option>
         </select>
 
-        <!-- Botão para mostrar chaveamento (apenas para mata-mata) -->
+        <!-- Botão para chaveamento (apenas para mata-mata) -->
         <button id="btn-toggle-chaveamento" class="btn-toggle-chaveamento"
-                {% if not ano_selecionado or formato_campeonato == 'pontos_corridos' %}style="display: none;"{% endif %}>
+                {% if formato_campeonato == 'pontos_corridos' %}style="display: none;"{% endif %}>
             <span class="chaveamento-icon">🏆</span>
             <span class="chaveamento-text">Ver Chaveamento</span>
         </button>
@@ -34,17 +43,19 @@
             <p>
                 ℹ️ <strong>Formato Histórico:</strong>
                 {% if formato_campeonato == 'grupos_fases' %}
-                    Este campeonato foi disputado em grupos e fases eliminatórias.
+                    Este campeonato foi disputado em grupos e fases classificatórias.
+                    {% if fases_disponiveis %}
+                        Use o seletor acima para escolher entre as diferentes fases.
+                    {% endif %}
                 {% elif formato_campeonato == 'mata_mata' %}
                     Este campeonato foi disputado em formato mata-mata e fases classificatórias.
                 {% endif %}
-                A classificação mostrada é a final do campeonato.
             </p>
         </div>
     {% endif %}
 </div>
 
-<!-- Container do Chaveamento (inicialmente oculto) -->
+<!-- Container do Chaveamento -->
 <div id="chaveamento-container" class="chaveamento-container" style="display: none;">
     <div class="chaveamento-header">
         <h2 class="chaveamento-title">Chaveamento do Mata-Mata</h2>
@@ -63,43 +74,85 @@
             <div class="legenda-cor penaltis"></div>
             <span>Decidido nos Pênaltis</span>
         </div>
-        <div class="legenda-item">
-            <div class="legenda-cor prorrogacao"></div>
-            <span>Teve Prorrogação</span>
-        </div>
     </div>
 </div>
 
+<!-- Área de Classificação e Jogos -->
 <div class="container-tabelas-search">
+    <!-- Classificação -->
     <div class="table-section">
-        <h2 id="classificacao-titulo">Classificação
+        <h2 id="classificacao-titulo">
+            Classificação
             {% if ano_selecionado %}
                 {% if formato_campeonato == 'pontos_corridos' %}
                     {% if rodada_selecionada == 0 %} Final de {{ ano_selecionado }}
-                    {% elif rodada_selecionada %} de {{ ano_selecionado }} até a Rodada {{ rodada_selecionada }}
+                    {% elif rodada_selecionada %} até a Rodada {{ rodada_selecionada }} de {{ ano_selecionado }}
                     {% endif %}
                 {% else %}
-                    Final de {{ ano_selecionado }}
+                    {% if fase_selecionada %} - {{ fase_selecionada }} de {{ ano_selecionado }}
+                    {% else %} de {{ ano_selecionado }}
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </h2>
-        <table class="tabela-classificacao" id="tabela-classificacao-anual">
-            <thead>
-                <tr>
-                    <th>Posição</th>
-                    <th>Clube</th>
-                    <th>Jogos</th>
-                    <th>Pontos</th>
-                    <th>Vitórias</th>
-                    <th>Empates</th>
-                    <th>Derrotas</th>
-                    <th>GM</th>
-                    <th>GC</th>
-                    <th>SG</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-classificacao-anual-tbody">
-                {% if classificacoes %}
+
+        <!-- Se houver grupos, mostrar classificação por grupo -->
+        {% if classificacoes_por_grupo %}
+            {% for grupo, classificacao in classificacoes_por_grupo.items() %}
+                <div class="grupo-classificacao">
+                    <h3 class="grupo-titulo">{{ grupo }}</h3>
+                    <table class="tabela-classificacao">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Clube</th>
+                                <th>J</th>
+                                <th>Pts</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>D</th>
+                                <th>GM</th>
+                                <th>GC</th>
+                                <th>SG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ranking in classificacao %}
+                            <tr>
+                                <td>{{ ranking["posicao"] }}</td>
+                                <td><a href="{{ url_for('clube', nome=ranking['clube']) }}">{{ ranking["clube"] }}</a></td>
+                                <td>{{ ranking["total_jogos"] }}</td>
+                                <td><strong>{{ ranking["pontos"] }}</strong></td>
+                                <td>{{ ranking["vitorias"] }}</td>
+                                <td>{{ ranking["empates"] }}</td>
+                                <td>{{ ranking["derrotas"] }}</td>
+                                <td>{{ ranking["gm"] }}</td>
+                                <td>{{ ranking["gs"] }}</td>
+                                <td>{{ ranking["sg"] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        {% elif classificacoes %}
+            <!-- Classificação única (sem grupos) -->
+            <table class="tabela-classificacao" id="tabela-classificacao-anual">
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Clube</th>
+                        <th>J</th>
+                        <th>Pts</th>
+                        <th>V</th>
+                        <th>E</th>
+                        <th>D</th>
+                        <th>GM</th>
+                        <th>GC</th>
+                        <th>SG</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for ranking in classificacoes %}
                     <tr>
                         <td>{{ ranking["posicao"] }}</td>
@@ -114,482 +167,301 @@
                         <td>{{ ranking["sg"] }}</td>
                     </tr>
                     {% endfor %}
-                {% else %}
-                    <tr><td colspan="10" style="text-align: center;">Selecione um ano acima para ver a classificação.</td></tr>
-                {% endif %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-data">Selecione um ano acima para ver a classificação.</div>
+        {% endif %}
     </div>
 
+    <!-- Jogos -->
     <div class="table-section">
-        <h2 id="jogos-titulo">Jogos
+        <h2 id="jogos-titulo">
+            Jogos
             {% if ano_selecionado %}
                 {% if formato_campeonato == 'pontos_corridos' %}
                     {% if rodada_selecionada == 0 %} de {{ ano_selecionado }}
                     {% elif rodada_selecionada %} da Rodada {{ rodada_selecionada }} de {{ ano_selecionado }}
                     {% endif %}
                 {% else %}
-                    de {{ ano_selecionado }}
+                    {% if fase_selecionada %} - {{ fase_selecionada }} de {{ ano_selecionado }}
+                    {% else %} de {{ ano_selecionado }}
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </h2>
-        <table class="tabela-jogos" id="tabela-jogos-anual">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Rodada/Fase</th>
-                    <th>Mandante</th>
-                    <th>Placar</th>
-                    <th>Visitante</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-jogos-anual-tbody">
-                {% if jogos %}
+
+        {% if jogos %}
+            <table class="tabela-jogos">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        {% if formato_campeonato != 'pontos_corridos' %}
+                            <th>Grupo</th>
+                        {% endif %}
+                        <th>Rodada</th>
+                        <th>Mandante</th>
+                        <th>Placar</th>
+                        <th>Visitante</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for jogo in jogos %}
                     <tr>
                         <td>{{ jogo["data"] }}</td>
-                        <td>{{ jogo["rodada"] }}</td>
+                        {% if formato_campeonato != 'pontos_corridos' %}
+                            <td>{{ jogo["grupo"] or "-" }}</td>
+                        {% endif %}
+                        <td>{{ jogo["rodada"] or jogo["fase"] }}</td>
                         <td><a href="{{ url_for('clube', nome=jogo['mandante']) }}">{{ jogo["mandante"] }}</a></td>
-                        <td><a href="{{ url_for('jogo', jogo_id=jogo['ID']) }}">{{ jogo["mandante_placar"] }} x {{ jogo["visitante_placar"] }}</a></td>
+                        <td class="placar-cell">
+                            <a href="{{ url_for('jogo', jogo_id=jogo['ID']) }}">
+                                <strong>{{ jogo["mandante_placar"] }} x {{ jogo["visitante_placar"] }}</strong>
+                            </a>
+                        </td>
                         <td><a href="{{ url_for('clube', nome=jogo['visitante']) }}">{{ jogo["visitante"] }}</a></td>
                     </tr>
                     {% endfor %}
-                {% else %}
-                    <tr><td colspan="5" style="text-align: center;">Selecione um ano acima para ver os jogos.</td></tr>
-                {% endif %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-data">Selecione um ano acima para ver os jogos.</div>
+        {% endif %}
     </div>
 </div>
+
+<style>
+.controls-container {
+    background: var(--bg-primary);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.controls-container h3 {
+    margin: 0 0 var(--spacing-xl) 0;
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+}
+
+.selects-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.selects-container select {
+    flex: 1;
+    min-width: 200px;
+}
+
+.container-tabelas-search {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+}
+
+.table-section {
+    background: var(--bg-primary);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.table-section h2 {
+    margin: 0 0 var(--spacing-xl) 0;
+    color: var(--text-primary);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 3px solid var(--primary-color);
+    font-size: var(--font-size-xl);
+}
+
+/* Grupos */
+.grupo-classificacao {
+    margin-bottom: 30px;
+}
+
+.grupo-classificacao:last-child {
+    margin-bottom: 0;
+}
+
+.grupo-titulo {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    margin: 0 0 0 0;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.grupo-classificacao .tabela-classificacao {
+    border-radius: 0 0 8px 8px;
+    margin-top: 0;
+}
+
+.placar-cell {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.placar-cell a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.placar-cell a:hover {
+    color: var(--primary-color);
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+}
+
+.aviso-formato {
+    margin-top: 20px;
+    background: #d6eaf8;
+    border-left: 4px solid #3498db;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.aviso-formato p {
+    margin: 0;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .container-tabelas-search {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
 {% endblock %}
 
 {% block scripts %}
 <script>
-    window.ALL_CLUBS = {{ clubes_json | safe }};
+window.ALL_CLUBS = {{ clubes_json | safe }};
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const selectAnoSearch = document.querySelector('#select-ano-search');
-        const selectRodadaSearch = document.querySelector('#select-rodada-search');
-        const btnToggleChaveamento = document.querySelector('#btn-toggle-chaveamento');
-        const chaveamentoContainer = document.querySelector('#chaveamento-container');
-        const chaveamentoContent = document.querySelector('#chaveamento-content');
-        const tabelaClassificacaoTbody = document.querySelector('#tabela-classificacao-anual-tbody');
-        const tabelaJogosTbody = document.querySelector('#tabela-jogos-anual-tbody');
-        const anoSelecionadoHeader = document.querySelector('#classificacao-titulo');
-        const jogosAnoHeader = document.querySelector('#jogos-titulo');
+document.addEventListener('DOMContentLoaded', () => {
+    const selectAnoSearch = document.querySelector('#select-ano-search');
+    const selectFaseSearch = document.querySelector('#select-fase-search');
+    const selectRodadaSearch = document.querySelector('#select-rodada-search');
+    const btnToggleChaveamento = document.querySelector('#btn-toggle-chaveamento');
 
-        let currentYear = {{ ano_selecionado | tojson }};
-        let currentRodada = {{ rodada_selecionada | tojson }};
-        let currentFormato = {{ formato_campeonato | tojson }};
-        let chaveamentoVisible = false;
+    let currentYear = {{ ano_selecionado | tojson }};
+    let currentFase = {{ fase_selecionada | tojson }};
+    let currentRodada = {{ rodada_selecionada | tojson }};
+    let currentFormato = {{ formato_campeonato | tojson }};
 
-        // Toggle do chaveamento
-        if (btnToggleChaveamento) {
-            btnToggleChaveamento.addEventListener('click', async () => {
-                chaveamentoVisible = !chaveamentoVisible;
+    // Event Listeners
+    selectAnoSearch.addEventListener('change', async () => {
+        currentYear = selectAnoSearch.value;
+        if (currentYear) {
+            await loadYearData(currentYear);
+        } else {
+            resetUI();
+        }
+    });
 
-                if (chaveamentoVisible) {
-                    chaveamentoContainer.style.display = 'block';
-                    btnToggleChaveamento.classList.add('active');
-                    btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ocultar Chaveamento';
-                    await loadChaveamento(currentYear);
+    selectFaseSearch.addEventListener('change', async () => {
+        currentFase = selectFaseSearch.value;
+        if (currentYear && currentFase) {
+            history.pushState(null, '', `/search?data=${currentYear}&fase=${currentFase}`);
+            location.reload();
+        }
+    });
+
+    async function loadYearData(year) {
+        try {
+            // Buscar formato do campeonato
+            const formatoResp = await fetch(`/api/formato_campeonato/${year}`);
+            const formatoData = await formatoResp.json();
+            currentFormato = formatoData.formato;
+
+            if (currentFormato === 'pontos_corridos') {
+                selectFaseSearch.style.display = 'none';
+                selectRodadaSearch.style.display = 'inline-block';
+                if (btnToggleChaveamento) btnToggleChaveamento.style.display = 'none';
+
+                // Carregar rodadas
+                await populateRodadaDropdown(year);
+            } else {
+                // Campeonatos com fases/grupos
+                selectRodadaSearch.style.display = 'none';
+                if (btnToggleChaveamento) btnToggleChaveamento.style.display = 'flex';
+
+                // Buscar fases disponíveis
+                const fasesResp = await fetch(`/api/fases/${year}`);
+                const fases = await fasesResp.json();
+
+                if (fases && fases.length > 0) {
+                    selectFaseSearch.style.display = 'inline-block';
+                    selectFaseSearch.innerHTML = '<option value="">Selecione a Fase</option>';
+
+                    fases.forEach(fase => {
+                        const option = document.createElement('option');
+                        option.value = fase;
+                        option.textContent = fase;
+                        selectFaseSearch.appendChild(option);
+                    });
+
+                    // Selecionar primeira fase por padrão
+                    const primeiraFase = fases[0];
+                    selectFaseSearch.value = primeiraFase;
+                    history.pushState(null, '', `/search?data=${year}&fase=${primeiraFase}`);
+                    location.reload();
                 } else {
-                    chaveamentoContainer.style.display = 'none';
-                    btnToggleChaveamento.classList.remove('active');
-                    btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ver Chaveamento';
+                    history.pushState(null, '', `/search?data=${year}`);
+                    location.reload();
                 }
-            });
-        }
-
-        async function loadChaveamento(year) {
-            try {
-                chaveamentoContent.innerHTML = '<div class="loading" style="margin: 40px auto;"></div>';
-
-                const response = await fetch(`/api/chaveamento/${year}`);
-                if (!response.ok) throw new Error('Erro ao carregar chaveamento');
-
-                const chaveamento = await response.json();
-                renderChaveamento(chaveamento);
-
-            } catch (error) {
-                console.error('Erro ao carregar chaveamento:', error);
-                chaveamentoContent.innerHTML = `
-                    <div class="no-data">
-                        <p>Erro ao carregar o chaveamento. Tente novamente.</p>
-                    </div>
-                `;
             }
+        } catch (error) {
+            console.error('Erro ao carregar dados do ano:', error);
         }
+    }
 
-        function renderChaveamento(chaveamento) {
-            if (Object.keys(chaveamento).length === 0) {
-                chaveamentoContent.innerHTML = `
-                    <div class="no-data">
-                        <p>Nenhum chaveamento disponível para este ano.</p>
-                    </div>
-                `;
-                return;
-            }
+    async function populateRodadaDropdown(year) {
+        try {
+            const response = await fetch(`/api/max_rodada/${year}`);
+            const maxRodada = await response.json();
 
-            // Ordem das fases (do mais avançado para o início)
-            const ordemFases = ['Final', 'Semifinal', 'Semi', 'Quartas', 'Oitavas', 'Décimas Sextas'];
-            const fasesOrdenadas = [];
-
-            ordemFases.forEach(nomeF => {
-                Object.keys(chaveamento).forEach(fase => {
-                    if (fase.includes(nomeF) && !fasesOrdenadas.includes(fase)) {
-                        fasesOrdenadas.push(fase);
-                    }
-                });
-            });
-
-            // Adicionar fases restantes
-            Object.keys(chaveamento).forEach(fase => {
-                if (!fasesOrdenadas.includes(fase)) {
-                    fasesOrdenadas.push(fase);
-                }
-            });
-
-            let html = '<div class="chaveamento-fases">';
-
-            fasesOrdenadas.reverse().forEach(fase => {
-                const jogos = chaveamento[fase];
-
-                html += `
-                    <div class="fase">
-                        <div class="fase-header">
-                            <h3 class="fase-title">${fase}</h3>
-                        </div>
-                        <div class="fase-confrontos">
-                `;
-
-                jogos.forEach(jogo => {
-                    const mandanteVencedor = jogo.vencedor === jogo.mandante;
-                    const visitanteVencedor = jogo.vencedor === jogo.visitante;
-                    const temPenaltis = jogo.mandante_penalti !== null && jogo.visitante_penalti !== null;
-                    const temProrrogacao = jogo.prorrogacao;
-
-                    html += `
-                        <div class="confronto ${jogo.vencedor ? 'finalizado' : 'aguardando'}">
-                            <div class="confronto-time ${mandanteVencedor ? 'vencedor' : (visitanteVencedor ? 'perdedor' : '')}">
-                                <div class="time-nome">
-                                    <a href="/clube/${jogo.mandante}">${jogo.mandante}</a>
-                                    ${mandanteVencedor ? '<span class="vencedor-icon">✓</span>' : ''}
-                                </div>
-                                <div class="time-placar">${jogo.mandante_placar !== null ? jogo.mandante_placar : '-'}</div>
-                            </div>
-                            <div class="confronto-time ${visitanteVencedor ? 'vencedor' : (mandanteVencedor ? 'perdedor' : '')}">
-                                <div class="time-nome">
-                                    <a href="/clube/${jogo.visitante}">${jogo.visitante}</a>
-                                    ${visitanteVencedor ? '<span class="vencedor-icon">✓</span>' : ''}
-                                </div>
-                                <div class="time-placar">${jogo.visitante_placar !== null ? jogo.visitante_placar : '-'}</div>
-                            </div>
-                            <div class="confronto-info">
-                                <div class="confronto-data">
-                                    <a href="${makeUrlJogo(jogo.ID, jogo.mandante, jogo.visitante)}">${jogo.data || 'Data não definida'}</a>
-                                </div>
-                                <div>
-                                    ${temProrrogacao ? '<span class="confronto-prorrogacao">PRORR.</span>' : ''}
-                                    ${temPenaltis ? `<span class="confronto-penaltis">Pênaltis: ${jogo.mandante_penalti} - ${jogo.visitante_penalti}</span>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                html += `
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += '</div>';
-            chaveamentoContent.innerHTML = html;
-        }
-
-        function makeUrlJogo(id, mandante, visitante) {
-            const slug = `${slugify(mandante)}-vs-${slugify(visitante)}`;
-            return `/jogo/${id}/${slug}`;
-        }
-
-        function slugify(text) {
-            return text.toLowerCase()
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')
-                .replace(/[^\w\s-]/g, '')
-                .replace(/[-\s]+/g, '-')
-                .trim();
-        }
-
-        async function checkFormatoAndPopulateRodada(year) {
-            try {
-                const formatoResp = await fetch(`/api/formato_campeonato/${year}`);
-                const formatoData = await formatoResp.json();
-                currentFormato = formatoData.formato;
-
-                if (currentFormato === 'pontos_corridos') {
-                    await populateRodadaDropdown(year);
-                    selectRodadaSearch.style.display = 'inline-block';
-                } else {
-                    selectRodadaSearch.style.display = 'none';
-                }
-
-                return currentFormato;
-            } catch (error) {
-                console.error('Erro ao verificar formato:', error);
-                return 'pontos_corridos';
-            }
-        }
-
-        async function populateRodadaDropdown(year, selectedRodada = null) {
             selectRodadaSearch.innerHTML = '<option value="">Selecione a Rodada</option>';
             selectRodadaSearch.innerHTML += '<option value="0">Classificação Final / Todos os Jogos</option>';
 
-            if (!year) {
-                selectRodadaSearch.style.display = 'none';
-                return 0;
+            if (maxRodada > 0) {
+                for (let i = 1; i <= maxRodada; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = `Rodada ${i}`;
+                    selectRodadaSearch.appendChild(option);
+                }
+                selectRodadaSearch.value = maxRodada;
             }
 
-            let maxRodadaFromAPI = 0;
-
-            try {
-                const response = await fetch(`/api/max_rodada/${year}`);
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar rodadas.');
-                }
-                maxRodadaFromAPI = await response.json();
-
-                if (typeof maxRodadaFromAPI === 'number' && maxRodadaFromAPI > 0) {
-                    for (let i = 1; i <= maxRodadaFromAPI; i++) {
-                        const option = document.createElement('option');
-                        option.value = i;
-                        option.textContent = `Rodada ${i}`;
-                        selectRodadaSearch.appendChild(option);
-                    }
-                    selectRodadaSearch.style.display = 'inline-block';
-                }
-
-                let defaultSelection = null;
-                if (selectedRodada !== null && (selectedRodada === 0 || (maxRodadaFromAPI > 0 && selectedRodada <= maxRodadaFromAPI))) {
-                    defaultSelection = selectedRodada;
-                } else if (maxRodadaFromAPI > 0) {
-                    defaultSelection = maxRodadaFromAPI;
-                } else {
-                    defaultSelection = "0";
-                }
-
-                if (defaultSelection !== null && selectRodadaSearch.querySelector(`option[value="${defaultSelection}"]`)) {
-                    selectRodadaSearch.value = defaultSelection;
-                }
-
-            } catch (error) {
-                console.error('Erro:', error);
-                selectRodadaSearch.innerHTML = '<option value="">Erro ao carregar rodadas</option>';
-                selectRodadaSearch.style.display = 'inline-block';
-            }
-            return maxRodadaFromAPI;
+            history.pushState(null, '', `/search?data=${year}&rodada=${maxRodada || 0}`);
+            location.reload();
+        } catch (error) {
+            console.error('Erro ao carregar rodadas:', error);
         }
+    }
 
-        async function updateTables(year, rodada) {
-            tabelaClassificacaoTbody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Carregando...</td></tr>`;
-            tabelaJogosTbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Carregando...</td></tr>`;
-
-            if (anoSelecionadoHeader) {
-                if (currentFormato === 'pontos_corridos') {
-                    if (rodada === 0) {
-                        anoSelecionadoHeader.textContent = `Classificação Final de ${year}`;
-                    } else {
-                        anoSelecionadoHeader.textContent = `Classificação de ${year} até a Rodada ${rodada}`;
-                    }
-                } else {
-                    anoSelecionadoHeader.textContent = `Classificação Final de ${year}`;
-                }
-            }
-
-            if (jogosAnoHeader) {
-                if (currentFormato === 'pontos_corridos') {
-                    if (rodada === 0) {
-                        jogosAnoHeader.textContent = `Todos os Jogos de ${year}`;
-                    } else {
-                        jogosAnoHeader.textContent = `Jogos da Rodada ${rodada} de ${year}`;
-                    }
-                } else {
-                    jogosAnoHeader.textContent = `Jogos de ${year}`;
-                }
-            }
-
-            try {
-                const classificacaoResponse = await fetch(`/api/classificacao/${year}/${rodada}`);
-                if (!classificacaoResponse.ok) throw new Error('Erro ao carregar classificação.');
-                const classificacoes = await classificacaoResponse.json();
-
-                tabelaClassificacaoTbody.innerHTML = '';
-                if (classificacoes.length > 0) {
-                    classificacoes.forEach(ranking => {
-                        const row = `
-                            <tr>
-                                <td>${ranking.posicao}</td>
-                                <td><a href="/clube/${ranking.clube}">${ranking.clube}</a></td>
-                                <td>${ranking.total_jogos}</td>
-                                <td><strong>${ranking.pontos}</strong></td>
-                                <td>${ranking.vitorias}</td>
-                                <td>${ranking.empates}</td>
-                                <td>${ranking.derrotas}</td>
-                                <td>${ranking.gm}</td>
-                                <td>${ranking.gs}</td>
-                                <td>${ranking.sg}</td>
-                            </tr>
-                        `;
-                        tabelaClassificacaoTbody.insertAdjacentHTML('beforeend', row);
-                    });
-                } else {
-                    tabelaClassificacaoTbody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Nenhuma classificação encontrada.</td></tr>`;
-                }
-
-                const jogosResponse = await fetch(`/api/jogos/${year}/${rodada}`);
-                if (!jogosResponse.ok) throw new Error('Erro ao carregar jogos.');
-                const jogos = await jogosResponse.json();
-
-                tabelaJogosTbody.innerHTML = '';
-                if (jogos.length > 0) {
-                    jogos.forEach(jogo => {
-                        const row = `
-                            <tr>
-                                <td>${jogo.data}</td>
-                                <td>${jogo.rodada}</td>
-                                <td><a href="/clube/${jogo.mandante}">${jogo.mandante}</a></td>
-                                <td><a href="/jogo/${jogo.ID}">${jogo.mandante_placar} x ${jogo.visitante_placar}</a></td>
-                                <td><a href="/clube/${jogo.visitante}">${jogo.visitante}</a></td>
-                            </tr>
-                        `;
-                        tabelaJogosTbody.insertAdjacentHTML('beforeend', row);
-                    });
-                } else {
-                    tabelaJogosTbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum jogo encontrado.</td></tr>`;
-                }
-
-            } catch (error) {
-                console.error('Erro:', error);
-                tabelaClassificacaoTbody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Erro ao carregar dados.</td></tr>`;
-                tabelaJogosTbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Erro ao carregar dados.</td></tr>`;
-            }
-        }
-
-        selectAnoSearch.addEventListener('change', async () => {
-            currentYear = selectAnoSearch.value;
-            currentRodada = null;
-            chaveamentoVisible = false;
-            chaveamentoContainer.style.display = 'none';
-            if (btnToggleChaveamento) {
-                btnToggleChaveamento.classList.remove('active');
-                btnToggleChaveamento.querySelector('.chaveamento-text').textContent = 'Ver Chaveamento';
-            }
-
-            if (currentYear) {
-                const formato = await checkFormatoAndPopulateRodada(currentYear);
-
-                // Mostrar/ocultar botão de chaveamento baseado no formato
-                if (btnToggleChaveamento) {
-                    if (formato === 'pontos_corridos') {
-                        btnToggleChaveamento.style.display = 'none';
-                    } else {
-                        btnToggleChaveamento.style.display = 'flex';
-                    }
-                }
-
-                if (formato === 'pontos_corridos') {
-                    const maxRodadaDoAno = await populateRodadaDropdown(currentYear, currentRodada);
-                    const rodadaParaUsar = maxRodadaDoAno > 0 ? maxRodadaDoAno : 0;
-                    history.pushState(null, '', `/search?data=${currentYear}&rodada=${rodadaParaUsar}`);
-                    await updateTables(currentYear, rodadaParaUsar);
-                } else {
-                    history.pushState(null, '', `/search?data=${currentYear}`);
-                    await updateTables(currentYear, 0);
-                }
-            } else {
-                selectRodadaSearch.style.display = 'none';
-                if (btnToggleChaveamento) btnToggleChaveamento.style.display = 'none';
-                tabelaClassificacaoTbody.innerHTML = `<tr><td colspan="10" style="text-align: center;">Selecione um ano.</td></tr>`;
-                tabelaJogosTbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Selecione um ano.</td></tr>`;
-                history.pushState(null, '', `/search`);
-            }
-        });
-
-        selectRodadaSearch.addEventListener('change', async () => {
-            currentRodada = selectRodadaSearch.value ? parseInt(selectRodadaSearch.value) : null;
-            if (currentYear && currentRodada !== null) {
-                await updateTables(currentYear, currentRodada);
-                history.pushState(null, '', `/search?data=${currentYear}&rodada=${currentRodada}`);
-            }
-        });
-
-        // Inicialização
-        if (currentYear) {
-            checkFormatoAndPopulateRodada(currentYear).then(() => {
-                if (currentFormato === 'pontos_corridos') {
-                    populateRodadaDropdown(currentYear, currentRodada);
-                }
-            });
-        }
-    });
+    function resetUI() {
+        selectFaseSearch.style.display = 'none';
+        selectRodadaSearch.style.display = 'none';
+        if (btnToggleChaveamento) btnToggleChaveamento.style.display = 'none';
+        history.pushState(null, '', '/search');
+        location.reload();
+    }
+});
 </script>
-{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="../static/css/chaveamento.css">
-<style>
-    .controls-container {
-        background: var(--bg-primary);
-        padding: var(--spacing-2xl);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-md);
-        margin-bottom: var(--spacing-3xl);
-    }
-
-    .controls-container h3 {
-        margin: 0 0 var(--spacing-xl) 0;
-        color: var(--text-primary);
-        font-size: var(--font-size-2xl);
-    }
-
-    .selects-container {
-        display: flex;
-        gap: var(--spacing-lg);
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-    .selects-container select {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .container-tabelas-search {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-3xl);
-    }
-
-    .table-section {
-        background: var(--bg-primary);
-        padding: var(--spacing-2xl);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-md);
-    }
-
-    .table-section h2 {
-        margin: 0 0 var(--spacing-xl) 0;
-        color: var(--text-primary);
-        padding-bottom: var(--spacing-md);
-        border-bottom: 3px solid var(--primary-color);
-        font-size: var(--font-size-xl);
-    }
-
-    @media (max-width: 992px) {
-        .container-tabelas-search {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 {% endblock %}
