@@ -939,5 +939,225 @@ def get_classificacao_por_ano_e_rodada(ano, rodada_num=None):
 
     return rankings
 
+def get_formato_campeonato(ano):
+    """Determina o formato do campeonato baseado no ano."""
+    if ano >= 2003:
+        return 'pontos_corridos'
+    elif ano >= 1992:
+        return 'mata_mata'
+    else:
+        return 'grupos_fases'
+
+def get_fases_disponiveis(ano):
+    """Retorna lista de fases únicas disponíveis para um ano."""
+    db = get_db()
+
+    result = db.execute("""
+        SELECT DISTINCT p.fase
+        FROM partidas p
+        JOIN edicoes e ON p.edicao_id = e.ID
+        WHERE e.ano = ?
+            AND p.fase IS NOT NULL
+            AND p.fase != ''
+        ORDER BY
+            CASE
+                WHEN p.fase LIKE '%Primeira%' OR p.fase LIKE '%1ª%' THEN 1
+                WHEN p.fase LIKE '%Segunda%' OR p.fase LIKE '%2ª%' THEN 2
+                WHEN p.fase LIKE '%Terceira%' OR p.fase LIKE '%3ª%' THEN 3
+                WHEN p.fase LIKE '%Final%' THEN 4
+                ELSE 5
+            END
+    """, (ano,)).fetchall()
+
+    return [row['fase'] for row in result]
+
+def get_grupos_por_fase(ano, fase):
+    """Retorna lista de grupos disponíveis para uma fase específica."""
+    db = get_db()
+
+    result = db.execute("""
+        SELECT DISTINCT p.grupo
+        FROM partidas p
+        JOIN edicoes e ON p.edicao_id = e.ID
+        WHERE e.ano = ?
+            AND p.fase = ?
+            AND p.grupo IS NOT NULL
+            AND p.grupo != ''
+        ORDER BY p.grupo
+    """, (ano, fase)).fetchall()
+
+    return [row['grupo'] for row in result]
+
+def get_classificacao_por_grupo(ano, fase, grupo):
+    """Calcula a classificação de um grupo específico."""
+    db = get_db()
+    pontos_vitoria = calcular_pontos_vitoria(ano)
+
+    rankings = db.execute(f"""
+        WITH jogos_mandante AS (
+            SELECT
+                c.clube,
+                p.mandante_placar AS gols_pro,
+                p.visitante_placar AS gols_sofrido,
+                CASE
+                    WHEN p.mandante_placar > p.visitante_placar THEN {pontos_vitoria}
+                    WHEN p.mandante_placar = p.visitante_placar THEN 1
+                    ELSE 0
+                END AS pontos,
+                CASE WHEN p.mandante_placar > p.visitante_placar THEN 1 ELSE 0 END AS vitorias,
+                CASE WHEN p.mandante_placar = p.visitante_placar THEN 1 ELSE 0 END AS empates,
+                CASE WHEN p.mandante_placar < p.visitante_placar THEN 1 ELSE 0 END AS derrotas
+            FROM partidas p
+            JOIN clubes c ON p.mandante_id = c.ID
+            JOIN edicoes ed ON p.edicao_id = ed.ID
+            WHERE ed.ano = ?
+                AND p.fase = ?
+                AND p.mandante_grupo = ?
+        ),
+        jogos_visitante AS (
+            SELECT
+                c.clube,
+                p.visitante_placar AS gols_pro,
+                p.mandante_placar AS gols_sofrido,
+                CASE
+                    WHEN p.visitante_placar > p.mandante_placar THEN {pontos_vitoria}
+                    WHEN p.visitante_placar = p.mandante_placar THEN 1
+                    ELSE 0
+                END AS pontos,
+                CASE WHEN p.visitante_placar > p.mandante_placar THEN 1 ELSE 0 END AS vitorias,
+                CASE WHEN p.visitante_placar = p.mandante_placar THEN 1 ELSE 0 END AS empates,
+                CASE WHEN p.visitante_placar < p.mandante_placar THEN 1 ELSE 0 END AS derrotas
+            FROM partidas p
+            JOIN clubes c ON p.visitante_id = c.ID
+            JOIN edicoes ed ON p.edicao_id = ed.ID
+            WHERE ed.ano = ?
+                AND p.fase = ?
+                AND p.visitante_grupo = ?
+        ),
+        todos_jogos AS (
+            SELECT * FROM jogos_mandante
+            UNION ALL
+            SELECT * FROM jogos_visitante
+        )
+        SELECT
+            ROW_NUMBER() OVER (
+                ORDER BY SUM(pontos) DESC,
+                         SUM(vitorias) DESC,
+                         (SUM(gols_pro) - SUM(gols_sofrido)) DESC,
+                         SUM(gols_pro) DESC
+            ) AS posicao,
+            clube,
+            COUNT(*) AS total_jogos,
+            SUM(pontos) AS pontos,
+            SUM(vitorias) AS vitorias,
+            SUM(empates) AS empates,
+            SUM(derrotas) AS derrotas,
+            SUM(gols_pro) AS gm,
+            SUM(gols_sofrido) AS gs,
+            (SUM(gols_pro) - SUM(gols_sofrido)) AS sg
+        FROM todos_jogos
+        GROUP BY clube
+        ORDER BY pontos DESC, vitorias DESC, sg DESC, gm DESC
+    """, (ano, fase, grupo, ano, fase, grupo)).fetchall()
+
+    return rankings
+
+def get_classificacao_por_fase(ano, fase):
+    """Calcula a classificação geral de uma fase (sem divisão por grupos)."""
+    db = get_db()
+    pontos_vitoria = calcular_pontos_vitoria(ano)
+
+    rankings = db.execute(f"""
+        WITH jogos_mandante AS (
+            SELECT
+                c.clube,
+                p.mandante_placar AS gols_pro,
+                p.visitante_placar AS gols_sofrido,
+                CASE
+                    WHEN p.mandante_placar > p.visitante_placar THEN {pontos_vitoria}
+                    WHEN p.mandante_placar = p.visitante_placar THEN 1
+                    ELSE 0
+                END AS pontos,
+                CASE WHEN p.mandante_placar > p.visitante_placar THEN 1 ELSE 0 END AS vitorias,
+                CASE WHEN p.mandante_placar = p.visitante_placar THEN 1 ELSE 0 END AS empates,
+                CASE WHEN p.mandante_placar < p.visitante_placar THEN 1 ELSE 0 END AS derrotas
+            FROM partidas p
+            JOIN clubes c ON p.mandante_id = c.ID
+            JOIN edicoes ed ON p.edicao_id = ed.ID
+            WHERE ed.ano = ? AND p.fase = ?
+        ),
+        jogos_visitante AS (
+            SELECT
+                c.clube,
+                p.visitante_placar AS gols_pro,
+                p.mandante_placar AS gols_sofrido,
+                CASE
+                    WHEN p.visitante_placar > p.mandante_placar THEN {pontos_vitoria}
+                    WHEN p.visitante_placar = p.mandante_placar THEN 1
+                    ELSE 0
+                END AS pontos,
+                CASE WHEN p.visitante_placar > p.mandante_placar THEN 1 ELSE 0 END AS vitorias,
+                CASE WHEN p.visitante_placar = p.mandante_placar THEN 1 ELSE 0 END AS empates,
+                CASE WHEN p.visitante_placar < p.mandante_placar THEN 1 ELSE 0 END AS derrotas
+            FROM partidas p
+            JOIN clubes c ON p.visitante_id = c.ID
+            JOIN edicoes ed ON p.edicao_id = ed.ID
+            WHERE ed.ano = ? AND p.fase = ?
+        ),
+        todos_jogos AS (
+            SELECT * FROM jogos_mandante
+            UNION ALL
+            SELECT * FROM jogos_visitante
+        )
+        SELECT
+            ROW_NUMBER() OVER (
+                ORDER BY SUM(pontos) DESC,
+                         SUM(vitorias) DESC,
+                         (SUM(gols_pro) - SUM(gols_sofrido)) DESC,
+                         SUM(gols_pro) DESC
+            ) AS posicao,
+            clube,
+            COUNT(*) AS total_jogos,
+            SUM(pontos) AS pontos,
+            SUM(vitorias) AS vitorias,
+            SUM(empates) AS empates,
+            SUM(derrotas) AS derrotas,
+            SUM(gols_pro) AS gm,
+            SUM(gols_sofrido) AS gs,
+            (SUM(gols_pro) - SUM(gols_sofrido)) AS sg
+        FROM todos_jogos
+        GROUP BY clube
+        ORDER BY pontos DESC, vitorias DESC, sg DESC, gm DESC
+    """, (ano, fase, ano, fase)).fetchall()
+
+    return rankings
+
+def get_jogos_por_fase(ano, fase):
+    """Retorna todos os jogos de uma fase específica."""
+    db = get_db()
+
+    jogos = db.execute("""
+        SELECT
+            p.ID,
+            cm.clube AS mandante,
+            cv.clube AS visitante,
+            p.mandante_placar,
+            p.visitante_placar,
+            p.data,
+            p.fase,
+            p.grupo,
+            p.rodada,
+            est.estadio AS arena
+        FROM partidas p
+        JOIN clubes cm ON p.mandante_id = cm.ID
+        JOIN clubes cv ON p.visitante_id = cv.ID
+        JOIN edicoes ed ON p.edicao_id = ed.ID
+        LEFT JOIN estadios est ON p.estadio_id = est.ID
+        WHERE ed.ano = ? AND p.fase = ?
+        ORDER BY p.grupo, p.rodada, p.data
+    """, (ano, fase)).fetchall()
+
+    return jogos
+
 if __name__ == "__main__":
     app.run(debug=True)
