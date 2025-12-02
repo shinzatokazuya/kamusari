@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Explorar Dados - Brasileirão Stats{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero de Exploração -->
+    <section class="hero-secundario">
+        <h1>🔍 Explore os Dados do Brasileirão</h1>
+        <p>Navegue por temporadas, clubes e descubra estatísticas fascinantes</p>
+    </section>
+
+    <!-- Abas de Navegação -->
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="temporadas">📅 Por Temporada</button>
+            <button class="tab-btn" data-tab="clubes">⚽ Por Clube</button>
+            <button class="tab-btn" data-tab="campeoes">🏆 Campeões</button>
+        </div>
+    </div>
+
+    <!-- Conteúdo das Abas -->
+    <div class="tabs-content">
+        <!-- Aba: Por Temporada -->
+        <div id="tab-temporadas" class="tab-content active">
+            <section class="section-card">
+                <h2>Temporadas do Brasileirão</h2>
+                <p class="section-description">Selecione um ano para ver a classificação completa, jogos e estatísticas
+                </p>
+
+                <div class="temporadas-grid">
+                    {% for ano in g.ANOS_DISPONIVEIS|reverse %}
+                    <a href="{{ url_for('temporada', ano=ano) }}" class="temporada-card">
+                        <div class="temporada-ano">{{ ano }}</div>
+                        <div class="temporada-info">
+                            {% if ano == g.ANO_ATUAL %}
+                            <span class="badge badge-atual">Em andamento</span>
+                            {% endif %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Aba: Por Clube -->
+        <div id="tab-clubes" class="tab-content">
+            <section class="section-card">
+                <h2>Clubes que Participaram</h2>
+                <p class="section-description">{{ clubes|length }} clubes já fizeram parte da história do Brasileirão
+                </p>
+
+                <!-- Filtro por Estado -->
+                <div class="filtros-clubes">
+                    <label for="filtro-uf">Filtrar por Estado:</label>
+                    <select id="filtro-uf" class="select-filtro">
+                        <option value="">Todos os estados</option>
+                        {% set estados = clubes|map(attribute='UF')|unique|sort %}
+                        {% for uf in estados %}
+                        {% if uf %}
+                        <option value="{{ uf }}">{{ uf }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="clubes-grid" id="clubes-lista">
+                    {% for clube in clubes|sort(attribute='clube') %}
+                    <a href="{{ url_for('clube', nome=clube.clube) }}" class="clube-card"
+                        data-uf="{{ clube.UF or '' }}">
+                        <div class="clube-card-escudo">
+                            <span class="escudo-inicial">{{ clube.clube[0] }}</span>
+                        </div>
+                        <div class="clube-card-info">
+                            <h3>{{ clube.clube }}</h3>
+                            {% if clube.cidade and clube.UF %}
+                            <p class="clube-localizacao">{{ clube.cidade }}, {{ clube.UF }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Aba: Campeões -->
+        <div id="tab-campeoes" class="tab-content">
+            <section class="section-card">
+                <h2>🏆 Campeões Brasileiros</h2>
+                <p class="section-description">Todos os times que conquistaram o título nacional</p>
+
+                <div class="campeoes-lista">
+                    {% for campeonato in campeoes %}
+                    <div class="campeao-item">
+                        <div class="campeao-ano">{{ campeonato.ano }}</div>
+                        <div class="campeao-info">
+                            <div class="campeao-principal">
+                                <span class="trofeu">🏆</span>
+                                <a href="{{ url_for('clube', nome=campeonato.campeao) }}" class="campeao-nome">
+                                    {{ campeonato.campeao }}
+                                </a>
+                            </div>
+                            {% if campeonato.vice %}
+                            <div class="campeao-vice">
+                                Vice: <a href="{{ url_for('clube', nome=campeonato.vice) }}">{{ campeonato.vice }}</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="campeao-acoes">
+                            <a href="{{ url_for('temporada', ano=campeonato.ano) }}" class="btn-ver-temporada">
+                                Ver temporada →
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Estatísticas de Títulos -->
+                <div class="titulos-estatisticas">
+                    <h3>Ranking de Títulos</h3>
+                    {% set titulos_count = {} %}
+                    {% for campeonato in campeoes %}
+                    {% if campeonato.campeao %}
+                    {% set _ = titulos_count.update({campeonato.campeao: titulos_count.get(campeonato.campeao, 0) + 1})
+                    %}
+                    {% endif %}
+                    {% endfor %}
+
+                    <div class="ranking-titulos">
+                        {% for clube, qtd in titulos_count.items()|sort(attribute='1', reverse=True) %}
+                        <div class="ranking-titulo-item">
+                            <span class="ranking-pos">{{ loop.index }}º</span>
+                            <a href="{{ url_for('clube', nome=clube) }}" class="ranking-clube">{{ clube }}</a>
+                            <span class="ranking-qtd">{{ qtd }} título{% if qtd > 1 %}s{% endif %}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Sistema de Abas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabName = this.dataset.tab;
+
+            // Remover classe active de todas as abas e botões
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            // Adicionar classe active na aba e botão clicados
+            this.classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        });
+    });
+
+    // Filtro de Clubes por Estado
+    const filtroUF = document.getElementById('filtro-uf');
+    if (filtroUF) {
+        filtroUF.addEventListener('change', function() {
+            const ufSelecionada = this.value.toLowerCase();
+            const clubes = document.querySelectorAll('.clube-card');
+
+            clubes.forEach(clube => {
+                const clubeUF = clube.dataset.uf.toLowerCase();
+
+                if (ufSelecionada === '' || clubeUF === ufSelecionada) {
+                    clube.style.display = '';
+                } else {
+                    clube.style.display = 'none';
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

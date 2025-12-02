@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}{{ clube.clube }} - Brasileirão Stats{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Cabeçalho do Clube -->
+    <section class="clube-header">
+        <div class="clube-header-content">
+            <div class="clube-escudo">
+                <div class="escudo-placeholder">
+                    <span class="escudo-inicial">{{ clube.clube[0] }}</span>
+                </div>
+            </div>
+            <div class="clube-info">
+                <h1>{{ clube.clube }}</h1>
+                {% if clube.apelido %}
+                <p class="clube-apelido">{{ clube.apelido }}</p>
+                {% endif %}
+                <div class="clube-detalhes">
+                    {% if clube.fundacao %}
+                    <span class="detalhe-item">📅 Fundado em {{ clube.fundacao }}</span>
+                    {% endif %}
+                    {% if clube.cidade and clube.UF %}
+                    <span class="detalhe-item">📍 {{ clube.cidade }}, {{ clube.UF }}</span>
+                    {% endif %}
+                    {% if clube.ativo %}
+                    <span class="detalhe-item status-ativo">✓ Ativo</span>
+                    {% else %}
+                    <span class="detalhe-item status-inativo">Inativo</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Principal -->
+    <div class="main-grid" style="margin-top: 2rem;">
+        <!-- Coluna Principal -->
+        <div class="main-column">
+            <!-- Estatísticas Gerais -->
+            <section class="section-card">
+                <h2>📊 Estatísticas Gerais</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-value">{{ stats.total_jogos }}</span>
+                        <span class="stat-label">Jogos</span>
+                    </div>
+                    <div class="stat-box vitoria">
+                        <span class="stat-value">{{ stats.vitorias }}</span>
+                        <span class="stat-label">Vitórias</span>
+                    </div>
+                    <div class="stat-box empate">
+                        <span class="stat-value">{{ stats.empates }}</span>
+                        <span class="stat-label">Empates</span>
+                    </div>
+                    <div class="stat-box derrota">
+                        <span class="stat-value">{{ stats.derrotas }}</span>
+                        <span class="stat-label">Derrotas</span>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Pizza -->
+                <div class="grafico-container" style="margin-top: 2rem;">
+                    <h3>Distribuição de Resultados</h3>
+                    <canvas id="graficoPizzaResultados" height="250"></canvas>
+                </div>
+            </section>
+
+            <!-- Últimos Jogos -->
+            <section class="section-card">
+                <h2>⚽ Últimos Jogos</h2>
+                <p class="section-description">Os 20 jogos mais recentes do {{ clube.clube }} no Brasileirão</p>
+
+                <div class="jogos-lista">
+                    {% for jogo in ultimos_jogos %}
+                    <a href="{{ url_for('jogo', jogo_id=jogo.ID) }}" class="jogo-card-link">
+                        <div class="jogo-card {% if jogo.mandante == clube.clube %}{% if jogo.mandante_placar > jogo.visitante_placar %}resultado-vitoria{% elif jogo.mandante_placar == jogo.visitante_placar %}resultado-empate{% else %}resultado-derrota{% endif %}{% else %}{% if jogo.visitante_placar > jogo.mandante_placar %}resultado-vitoria{% elif jogo.visitante_placar == jogo.mandante_placar %}resultado-empate{% else %}resultado-derrota{% endif %}{% endif %}">
+                            <div class="jogo-data">
+                                <span class="data">{{ jogo.data }}</span>
+                                <span class="ano">{{ jogo.ano }}</span>
+                                <span class="rodada">{{ jogo.fase or 'Fase Única' }}</span>
+                            </div>
+                            <div class="jogo-placar">
+                                <div class="time time-mandante {% if jogo.mandante == clube.clube %}time-destaque{% endif %}">
+                                    <span class="nome-time">{{ jogo.mandante }}</span>
+                                </div>
+                                <div class="placar">
+                                    <span class="gols">{{ jogo.mandante_placar }}</span>
+                                    <span class="separador">×</span>
+                                    <span class="gols">{{ jogo.visitante_placar }}</span>
+                                </div>
+                                <div class="time time-visitante {% if jogo.visitante == clube.clube %}time-destaque{% endif %}">
+                                    <span class="nome-time">{{ jogo.visitante }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Gráfico de Evolução -->
+            <section class="section-card">
+                <h3>📈 Evolução Histórica</h3>
+                <p class="section-description">Pontos conquistados por ano</p>
+                <div class="grafico-container">
+                    <canvas id="graficoEvolucao" height="300"></canvas>
+                </div>
+            </section>
+
+            <!-- Ações Rápidas -->
+            <section class="section-card">
+                <h3>🔍 Explorar Mais</h3>
+                <div class="quick-links">
+                    <a href="{{ url_for('explorar') }}" class="quick-link-item">
+                        <span class="icon">📅</span>
+                        <div>
+                            <strong>Ver por Temporada</strong>
+                            <p>Desempenho ano a ano</p>
+                        </div>
+                    </a>
+                    <a href="{{ url_for('buscar') }}?q={{ clube.clube }}" class="quick-link-item">
+                        <span class="icon">👥</span>
+                        <div>
+                            <strong>Jogadores</strong>
+                            <p>Quem jogou pelo clube</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Curiosidades -->
+            <section class="section-card dica-card">
+                <h3>💡 Saiba Mais</h3>
+                <p>Use os filtros nas outras páginas para ver comparações entre clubes e análises detalhadas de cada temporada.</p>
+            </section>
+        </aside>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Criar gráfico de pizza com distribuição de resultados
+    window.BrasileiraoStats.criarGraficoPizza('graficoPizzaResultados', {
+        vitorias: {{ stats.vitorias }},
+        empates: {{ stats.empates }},
+        derrotas: {{ stats.derrotas }}
+    });
+
+    // Criar gráfico de evolução de pontos ao longo dos anos
+    window.BrasileiraoStats.criarGraficoEvolucao('graficoEvolucao', '{{ clube.clube }}');
+</script>
+{% endblock %}
