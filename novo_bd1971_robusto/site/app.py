@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # ==================== CONFIGURAÇÕES ====================
 DATABASE = "../bd/estruturado_bd_1971.db"
-ANO_ATUAL = 2025  # Atualizar conforme necessário
+ANO_ATUAL = 1971  # Atualizar conforme necessário
 ANOS_DISPONIVEIS = list(range(1971, ANO_ATUAL + 1))
 
 # ==================== DATABASE MANAGEMENT ====================
@@ -608,7 +608,3 @@ def api_comparacao_clubes():
 def slugify_filter(text):
     return slugify(text)
 
-# ==================== EXECUTAR APP ====================
-
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)

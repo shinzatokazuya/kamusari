@@ -111,7 +111,7 @@
                     </div>
                     <div class="jogo-placar">
                         <div class="time time-mandante">
-                            <span class="nome-time">{{ jogo.mandante }}</span>
+                            <a href="/clube/{{ jogo.mandante }}"><span class="nome-time">{{ jogo.mandante }}</span></a>
                         </div>
                         <div class="placar">
                             <span class="gols">{{ jogo.mandante_placar }}</span>
@@ -119,7 +119,7 @@
                             <span class="gols">{{ jogo.visitante_placar }}</span>
                         </div>
                         <div class="time time-visitante">
-                            <span class="nome-time">{{ jogo.visitante }}</span>
+                            <a href="/clube/{{ jogo.visitante }}"><span class="nome-time">{{ jogo.visitante }}</span></a>
                         </div>
                     </div>
                     <div class="jogo-local">
