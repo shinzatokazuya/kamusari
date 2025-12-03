@@ -284,7 +284,7 @@ id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,po
 283,Joel Mendes,25/06/1946,09/12/2024,Brasil,Campo Magro (PR),176,0,Goleiro,,,1
 284,José Roberto Marques,31/05/1945,07/05/2016,Brasil,Sertãozinho (SP),0,0,Atacante,,,1
 285,Paulo César Carpegiani,07/02/1949,,Brasil,Erechim (RS),172,71,Meia,Meia Central,Destro,1
-286,Walter González,1933,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
+286,Walter González,16/04/1905,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
 287,Ubaldo de Oliveira,16/05/1946,,Brasil,Feira de Santana (BA),0,0,Defensor,Lateral Direito,Destro,1
 288,Albérico Luiz Pereira dos Santos,04/07/1946,,Brasil,Recife (PE),0,0,Defensor,Lateral Esquerdo,Canhoto,1
 289,Francisco Antônio Lopes,16/10/1946,,Brasil,Pirapora - MG,0,0,Atacante,,,1
@@ -495,3 +495,308 @@ id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,po
 494,Cícero Ferreira da Silva,21/01/1951,,Brasil,João Pessoa (PB),0,0,Atacante,,,1
 495,Carlos Roberto Orrigo da Cunha,03/03/1953,,Brasil,Porto Alegre (RS),0,0,Defensor,Zagueiro,,1
 496,Armando Oliveira Bento,20/05/1953,,Brasil,Porto Alegre (RS),0,0,Atacante,,,1
+497,Raul Guilherme Plassmann,27/09/1944,,Brasil,Antonina (PR),185,0,Goleiro,,Destro,1
+498,Juarez Alves Pimenta,09/07/1955,,Brasil,Araçuaí (MG),0,0,Atacante,Centroavante,,1
+499,Luiz Carlos José da Silva,11/03/1951,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Direito / Zagueiro,Destro,1
+500,José Aparecido da Conceição,10/11/1944,31/12/2011,Brasil,São Paulo (SP),0,0,Meia,,,1
+501,José Fernando Pádua Lima,09/04/1948,,Brasil,Salvador (BA),0,0,Atacante,Centroavante,,1
+502,Aguinaldo Moreira,12/10/1943,,Brasil,Santos (SP),0,0,Goleiro,,,1
+503,Luiz Carlos da Motta,01/11/1944,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Direito,,1
+504,Francisco Olímpio de Oliveira Filho,20/12/1948,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Direito,Destro,1
+505,Luiz Carlos Rangel,19/09/1950,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+506,Walter Antonio da Silva,07/12/1949,,Brasil,Sao Joao do Meriti (RJ),0,0,Defensor,Zagueiro,Destro,1
+507,Mário Sérgio Pontes de Paiva,07/09/1950,28/11/2016,Brasil,,0,0,Meia,Meia Esquerda / Ponta Esquerda,Canhoto,1
+508,Almiro Antônio Gonçalves,28/02/1948,10/03/2022,Brasil,Cuiabá (MT),0,0,Meia,,Destro,1
+509,Juarez Cezário dos Santos,25/02/1945,,Brasil,Duque de Caxias (RJ),0,0,Meia,,,1
+510,Osni Lopes,13/07/1952,,Brasil,Osasco (SP),156,0,Atacante,,Canhoto,1
+511,Luiz Carlos Vitali,04/04/1946,,Brasil,Colatina (ES),0,0,Atacante,,,1
+512,Frederico Chimiti Neto,12/03/1949,,Brasil,Colatina (ES),0,0,Goleiro,,,1
+513,Antônio Aranha Alves,04/08/1946,,Brasil,Sorocaba (SP),0,0,Defensor,Lateral Direito,Destro,1
+514,José Pedro Oliveira Pradera,24/03/1951,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+515,Lúcio da Paixão Ferreira Andrade,15/04/1949,,Brasil,Belém (PA),0,0,Defensor,Lateral Esquerdo,,1
+516,José Dutra dos Santos,26/01/1948,,Brasil,Rio de Janeiro,170,68,Defensor,,,1
+517,Hertz González Alcántara,01/08/1951,15/06/2009,Brasil,São Paulo,0,0,Meia,,Canhoto,1
+518,Dionísio Ramos de Moraes Filho,16/02/1946,,Brasil,Cuiabá (MT),0,0,Meia,,,1
+519,Fernando Antônio Marcelino,20/10/1948,,Brasil,Campinas (SP),0,0,Atacante,Centroavante,,1
+520,Nílton Rosa,15/03/1943,,Brasil,,0,0,Atacante,,,1
+521,Rubens Luiz Pereira Júnior,07/07/1949,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+522,Carlos André Avelino de Lima,30/10/1946,28/07/2021,Brasil,Salvador,173,72,Atacante,Centroavante,Destro,1
+523,Manoel Freitas da Silva,09/06/1947,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+524,José Luiz de Lima Rente,1951-00-00,,Brasil,,0,0,Atacante,,,1
+525,Francisco das Chagas Marinho,08/02/1952,01/06/2014,Brasil,Natal,178,70,Defensor,Lateral Esquerdo,Destro,1
+526,Rodolfo José Fischer Eichler,02/04/1944,16/10/2020,Argentina,Oberá,0,0,Atacante,,,1
+527,Cláudio César de Aguiar Mauriz,22/08/1940,24/06/1979,Brasil,,172,0,Goleiro,,,1
+528,Ladislao Mazurkiewicz Iglesias,14/02/1945,02/01/2013,Uruguai,Piriápolis,179,78,Goleiro,,Ambidestro,1
+529,Raul Fernandes da Costa Filho,02/12/1941,,Brasil,Belo Horizonte (MG),0,0,Defensor,Zagueiro,,1
+530,Paulo César de Souza,29/09/1950,31/07/2002,Brasil,Alfenas (MG),171,66,Atacante,Ponta Esquerda,Canhoto,1
+531,Jorge Vieira,11/10/1953,13/07/1977,Brasil,Castelo (ES),171,64,Atacante,Ponta Direita,Destro,1
+532,Carlos Alberto Costa,12/11/1947,,Brasil,Votorantim (SP),0,0,Atacante,,Canhoto,1
+533,Alfredo Domingo Obberti,12/08/1945,05/07/2021,Argentina,Buenos Aires,185,0,Atacante,,,1
+534,Paulo Sérgio Teixeira Brasil,08/01/1949,19/06/1979,Brasil,,0,0,Meia,,,1
+535,José Carlos Serrão,12/10/1950,,Brasil,São Paulo (SP),0,0,Atacante,Ponta Esquerda / Ponta Direita,,1
+536,Nilton Ferreira de Souza,18/01/1943,,Brasil,,0,0,Defensor,Zagueiro,Ambidestro,1
+537,José Carlos Albim Marques,24/05/1950,Falecido,Brasil,,0,0,Defensor,Lateral Esquerdo,Canhoto,1
+538,José Mário De Almeida Barros,01/02/1949,,Brasil,Río de Janeiro,0,0,Meia,Volante,Ambidestro,1
+539,Narciso Horacio Doval,04/01/1944,12/10/1991,Argentina,Buenos Aires,178,79,Atacante,Ponta Direita / Centroavante,Destro,1
+540,Alvanir Almeida Alves dos Santos,27/03/1951,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Esquerdo,,1
+541,Mauro da Costa Pedrazzi,01/01/1952,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+542,Espedito Antônio dos Santos Júnior,09/02/1953,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+543,Vicente de Paula Santos de Figueiredo Júnior,26/10/1951,,Brasil,Salvador (BA),0,0,Atacante,,,1
+544,João Henrique Brenner,17/01/1944,,Brasil,Porto Alegre (RS),0,0,Atacante,,,1
+545,Roberto Cardoso Dormund Martins,15/11/1947,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+546,Walter José dos Santos,13/09/1945,,Brasil,Recife (PE),0,0,Defensor,Lateral Direito,,1
+547,Mário Filipe Pedreira,13/07/1943,,Brasil,,0,0,Defensor,,Ambidestro,1
+548,Simão Teles Bacelar,07/03/1948,,Brasil,Miguel Alves (PI),170,69,Atacante,Centroavante / Meia Ofensivo,Ambidestro,1
+549,Gilson Pereira Porto,14/02/1944,13/01/2003,Brasil,Feira de Santana,0,0,Atacante,Ponta Esquerda,,1
+550,Edson Luiz de Carvalho,28/10/1941,,Brasil,Tarumirim (MG),0,0,Goleiro,,,1
+551,Antônio da Costa Petrucio,27/09/1945,,Brasil,,0,0,Defensor,Lateral Direito / Lateral Direito,Destro,1
+552,Almir Coutinho,16/04/1947,23/03/2021,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Esquerdo,Canhoto,1
+553,Jurandir Avólio de Carvalho,07/01/1943,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,,,1
+554,Danival de Oliveira,05/11/1952,,Brasil,Vespasiano (MG),0,0,Meia,,Destro,1
+555,Alderi Mesquita Matos,07/01/1950,,Brasil,Belém (PA),0,0,Meia,,,1
+556,Jorge Rezende Maia,11/10/1951,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+557,Lacy Gomes Guimarães,23/04/1948,18/07/2000,Brasil,Belo Horizonte (MG),0,0,Atacante,Ponta Direita,,1
+558,José Reis Barbosa,06/01/1953,,Brasil,São Geraldo (MG),0,0,Atacante,Ponta Esquerda,,1
+559,Walmir Coutinho,20/09/1948,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Centroavante,Destro,1
+560,Alberto Raimundo Marques,28/02/1953,01/02/2025,Brasil,Santo Amaro da Purificação - BA,0,0,Meia,,,1
+561,Julião Furtado dos Reis,09/01/1948,12/06/2002,Brasil,Bragança (PA),0,0,Atacante,,,1
+562,Luiz Carlos Vicente,26/12/1949,,Brasil,Votuporanga (SP),0,0,Meia / Defensor,Zagueiro,,1
+563,Hélio Carreiro da Silva,30/10/1941,,Brasil,Rio de Janeiro (RJ),176,0,Goleiro,,Destro,1
+564,Sidclei Andrade da Silva,20/07/1949,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro / Lateral Esquerdo,Canhoto,1
+565,Jorge Romero Filho,21/12/1952,,Brasil,Rio de Janeiro (RJ),190,0,Defensor,Lateral Esquerdo,Canhoto,1
+566,José Paulo De Araújo,10/09/1954,,Brasil,Caicó (RN),0,0,Meia,,,1
+567,Elói José dos Santos,22/05/1951,,Brasil,Recife (PE),0,0,Atacante,Ponta Direita,,1
+568,Ederlindo Pereira Silva Filho,22/02/1950,,Brasil,Salvador (BA),0,0,Atacante,Ponta Direita,Destro,1
+569,Edvaldo de Araújo,01/09/1951,,Brasil,Recife (PE),0,0,Atacante,Centroavante,,1
+570,João Paulo Filho,05/06/1945,,Brasil,,0,0,Atacante,Ponta Esquerda,,1
+571,Francisco das Chagas Vera,26/12/1946,,Brasil,Fortaleza (CE),0,0,Defensor,Lateral Direito,Destro,1
+572,Paulo Ricardo Batista Oliveira,19/01/1950,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+573,Élcio Nogueira da Silva,15/10/1947,05/06/2020,Brasil,Campos (RJ),0,0,Defensor,Zagueiro,Canhoto,1
+574,José Amílton Cavalcante Rocha,21/10/1951,,Brasil,Fortaleza (CE),0,0,Atacante,Ponta Direita,,1
+575,Paulo Roberto Rodrigues de Amorim,26/01/1952,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Ponta Direita,Destro,1
+576,Jair Pereira da Silva,29/05/1947,,Brasil,Rio de Janeiro,0,0,Meia / Atacante,,,1
+577,José Carlos dos Santos,17/03/1954,,Brasil,Recife (PE),172,70,Atacante,Ponta Esquerda,Canhoto,1
+578,Carlos Alberto Garcia,12/04/1954,,Brasil,Flórida Paulista (SP),0,0,Atacante,Centroavante,,1
+579,Ernesto Luis Lance,19/01/1949,,Brasil,Casa Branca (SP),0,0,Atacante,Ponta Esquerda / Meia Direita,Ambidestro,1
+580,José Roberto Lopes Padilha,12/06/1952,,Brasil,Três Rios,0,0,Atacante,Ponta Esquerda,,1
+581,Jairo do Nascimento,23/10/1946,06/02/2019,Brasil,Joinville,194,0,Goleiro,,,1
+582,Eduardo Francisco Dreyer,14/05/1948,,Argentina,Córdoba,0,0,Meia,Volante,,1
+583,João Helio Pereira Pires,22/03/1947,08/01/2022,Brasil,Taquara (RS),0,0,Atacante,,Destro,1
+584,Alfredo Mostarda Filho,18/10/1946,28/03/2025,Brasil,São Paulo (SP),176,77,Defensor,Zagueiro,Destro,1
+585,Norberto Rubén Madurga,29/12/1944,,Argentina,,173,0,Meia,,,1
+586,Elias Ferreira Sobrinho,15/08/1949,,Brasil,Araraquara (SP),0,0,Atacante,Ponta Esquerda,Canhoto,1
+587,Valmir Pereira dos Santos,10/11/1942,,Brasil,Itajuipe (BA),0,0,Goleiro,,,1
+588,João Carlos Estanislau de Jesus,16/10/1948,,Brasil,Santos (SP),0,0,Defensor,Zagueiro,,1
+589,Raimundo Dória Dias,08/09/1950,,Brasil,Ribeira do Amparo (BA),0,0,Defensor,Zagueiro,,1
+590,Valnil Borges Barreto,01/08/1947,,Brasil,Capão do Leão (RS),0,0,Defensor,Zagueiro,,1
+591,Altair Soares do Nascimento,17/01/1948,,Brasil,Campo dos Goytacazes (RJ),0,0,Defensor,Zagueiro,Destro,1
+592,Paulo Sérgio Amaral Campos,03/06/1950,,Brasil,São Paulo (SP),0,0,Meia,Volante,,1
+593,José Leal dos Santos,02/02/1947,,Brasil,Salvador (BA),0,0,Meia,,,1
+594,Adão Valério dos Reis,18/08/1950,,Brasil,Tombos (MG),0,0,Meia,,,1
+595,Ercy Rosa de Souza,08/11/1943,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+596,Fernando Batista de Souza,05/06/1951,,Brasil,Aracaju (SE),0,0,Atacante,,,1
+597,Paulo Roberto Tavares,22/01/1946,,Brasil,Recife (PE),0,0,Defensor,Lateral Esquerdo,,1
+598,Samuel de Jesus Asco,14/09/1944,,Brasil,Niterói (RJ),0,0,Atacante,,,1
+599,Jorge Rodrigues da Costa,31/07/1948,,Brasil,Imhauma (RJ),0,0,Atacante,Centroavante,,1
+600,José Silva,17/08/1944,,Brasil,Porto da Folha (SE),0,0,Atacante,,,1
+601,Edivaldo Sousa Anjos,16/09/1947,Falecido,Brasil,,0,0,Atacante,,Destro,1
+602,Carlos Henrique Pires do Amaral,28/11/1950,,Brasil,São Paulo (SP),0,0,Atacante,,,1
+603,Sebastião Botelho Filho,29/04/1950,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
+604,José Édson Gomes da Silva,15/02/1946,,Brasil,Orobo (PE),0,0,Defensor,Zagueiro,,1
+605,Nilson Florindo Andrade,08/12/1949,,Brasil,Belo Horizonte (MG),0,0,Defensor,Zagueiro,Canhoto,1
+606,Adeildo José da Silva,15/11/1945,,Brasil,Recife (PE),0,0,Defensor,Zagueiro,,1
+607,José de Anchieta da Silva,19/03/1948,,Brasil,Natal (RN),0,0,Defensor,Lateral Esquerdo,Canhoto,1
+608,William Alves de Oliveira,12/02/1947,,Brasil,Ceara-Mirim (RN),0,0,Meia,Volante,,1
+609,Jailson Correia Aguiar,01/09/1947,,Brasil,Natal (RN),0,0,Meia,,,1
+610,Antonio Soares de Albuquerque,11/04/1951,,Brasil,Recife (PE),0,0,Atacante,Ponta Esquerda,Canhoto,1
+611,Alberi José Ferreira de Matos,28/01/1945,28/10/2022,Brasil,Recife (PE),0,0,Atacante,,,1
+612,Danilo Menezes Nuñez,17/02/1945,,Uruguai,Rivera,0,0,Atacante,,,1
+613,José Hugo de Jesus,21/07/1940,,Brasil,Criciúma (SC),0,0,Goleiro,,,1
+614,Djalma Batista Sales,30/07/1945,,Brasil,Recife (PE),0,0,Defensor,Zagueiro,,1
+615,Ademir Pedro Araújo,28/07/1946,,Brasil,Maceió (AL),0,0,Defensor,Lateral Esquerdo,,1
+616,Adherbal Teixeira da Cunha Filho,08/08/1945,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Esquerdo,,1
+617,José Ernesto Soares Costa,17/02/1952,,Brasil,Maceió (AL),0,0,Meia,,,1
+618,Orlando José de Oliveira,1946-00-00,,Brasil,Ribeirão Preto (SP),0,0,Atacante,Ponta Direita,Destro,1
+619,Averaldo Dantas da Silva,09/05/1948,,Brasil,Maceió (AL),0,0,Atacante,Ponta Esquerda,Canhoto,1
+620,Carlos Xavier Castilho,21/03/1950,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+621,Reinaldo Strelciunas,30/10/1948,,Brasil,São Paulo (SP),0,0,Atacante,,,1
+622,Everaldo da Silva,12/10/1949,,Brasil,São Paulo (SP),0,0,Meia,,,1
+623,Roberto Gonçalves Menezes,09/05/1948,28/05/2000,Brasil,Maceio (AL),0,0,Meia,Meia Central,,1
+624,Benedito Israel Ribeiro,10/04/1943,,Brasil,Cairu (BA),0,0,Atacante,,,1
+625,Luís Carlos Machado,18/01/1950,27/09/2011,Brasil,Porto Alegre (RS),182,0,Atacante,Centroavante,,1
+626,Tadeu José da Costa Lima,24/08/1945,,Brasil,Recife (PE),0,0,Defensor,Lateral Direito,,1
+627,Manoel Hermano Soares da Silva,20/09/1950,,Brasil,João Pessoa (PB),0,0,Atacante,Ponta Direita,,1
+628,José Ribamar Celestino,30/06/1942,22/08/2007,Brasil,São Luís (MA),0,0,Meia,Volante,,1
+629,Luiz Gonzaga da Câmara e Silva,01/02/1948,,Brasil,Natal (RN),0,0,Meia,,,1
+630,Lúcio Flávio Figueiredo Cruz,26/03/1949,26/05/2001,Brasil,Fortaleza (CE),0,0,Meia,Meia Central / Volante,Destro,1
+631,Everaldo Dionisio,22/02/1945,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
+632,Nilo Sergio Ferreira,15/03/1952,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro / Volante,,1
+633,Joel de Oliveira,01/02/1942,,Brasil,Aracaju (SE),0,0,Meia,,,1
+634,Edevar Sérgio Nicoletti,15/12/1945,,Brasil,São José do Rio Preto (SP),0,0,Goleiro,,,1
+635,Antônio Carlos Cerezo,21/04/1955,,Brasil,Belo Horizonte (MG),183,75,Meia,Meia Central / Volante,Destro,1
+636,Júlio Titow,04/11/1952,,Brasil,Porto Alegre (RS),181,72,Meia,,Destro,1
+637,Sérgio Ezequiel Nogueira,04/03/1949,,Brasil,Varginha (MG),0,0,Meia / Atacante,Ponta Esquerda,Canhoto,1
+638,Neto Minervo Guerino,12/10/1950,,Brasil,Brazil,180,76,Atacante,,,1
+639,João Marques,01/01/1950,,Brasil,São Paulo (SP),0,0,Atacante,Ponta Direita,Destro,1
+640,Rangel Campi Delamarque,08/04/1951,,Brasil,Belo Horizonte (MG),0,0,Meia,,,1
+641,Sebatião Mendes Neto,08/04/1945,,Brasil,São Paulo (SP),0,0,Defensor,Zagueiro,Destro,1
+642,Alcino Neves dos Santos Filho,24/03/1951,20/07/2006,Brasil,Rio de Janeiro,0,0,Atacante,Centroavante,,1
+643,Ademir da Silva Azevedo,20/11/1952,,Brasil,Niterói (RJ),0,0,Meia,,,1
+644,José Roberto da Silva,20/12/1947,,Brasil,Presidente Prudente (SP),0,0,Atacante,,,1
+645,José Ricardo Cardoso Ramos,04/12/1954,,Brasil,Maceió (AL),0,0,Atacante,,,1
+646,Fausto de Souza Neto,07/04/1951,,Brasil,,0,0,Defensor,Zagueiro,,1
+647,Mário Vieira,09/07/1944,,Brasil,Encantado (RJ),0,0,Meia,Volante,,1
+648,Humberto André Redes Filho,20/06/1945,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+649,Fernando Silva,05/01/1948,,Brasil,Belo Horizonte (BH),0,0,Meia,Volante / Zagueiro,,1
+650,Luis dos Santos Costa,16/01/1942,,Brasil,,0,0,Goleiro,,,1
+651,Severino Vasconcelos Barbosa,24/09/1951,,Brasil,Recife,178,0,Meia,,,1
+652,Ney Bento de Souza,20/02/1945,17/11/2014,Brasil,Santos (SP),0,0,Goleiro,,,1
+653,Bianor Roque Duarte,24/11/1948,,Brasil,Itaguaí (RJ),0,0,Defensor,Zagueiro,,1
+654,Rubens dos Santos,14/07/1946,28/03/2023,Brasil,São José do Rio Preto (SP),0,0,Meia,Volante,Destro,1
+655,José Geraldo Cândido,04/01/1950,09/07/1988,Brasil,Volta Redonda (RJ),0,0,Meia,,,1
+656,Miguel Lopes Ruiz Filho,24/05/1948,,Brasil,São Paulo (SP),0,0,Goleiro,,,1
+657,Dejair Pacheco Duarte,30/05/1951,,Brasil,Canoas (RS),0,0,Meia,,,1
+658,Mário Lourenço de Oliveira,16/01/1948,,Brasil,Belo Horizonte (MG),0,0,Meia,Volante,,1
+659,Jorge Guaraci da Silva e Silva,22/04/1949,,Brasil,Porto Alegre,179,77,Defensor,Zagueiro,Destro,1
+660,Luciano de Oliveira,04/07/1945,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+661,Adilson David,21/03/1952,,Brasil,Santos (SP),0,0,Atacante,,,1
+662,Luiz de Matos Luchesi,14/08/1938,20/11/2018,Brasil,Belo Horizonte (MG),0,0,Goleiro,,,1
+663,Ronaldo José Nogueira,05/04/1951,,Brasil,Belo Horizonte (MG),0,0,Atacante / Meia,Meia Ofensivo,,1
+664,Paulo Mauricio de Oliveira,11/11/1952,,Brasil,,0,0,Defensor,Lateral Direito,Destro,1
+665,Antônio Feliciano da Costa,26/12/1947,,Brasil,Visconde do Rio Branco (MG),0,0,Defensor,Lateral Direito,,1
+666,Edmilson Santos,21/06/1949,,Brasil,Aracaju,0,0,Atacante,,Destro,1
+667,João Façanha Júnior,05/05/1945,,Brasil,Fortaleza (CE),0,0,Atacante,Ponta Esquerda,,1
+668,Wilson do Nascimento Lopes,21/11/1943,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+669,Cosme da Silva Campos,21/12/1952,,Brasil,Pedro Leopoldo (MG),0,0,Atacante,Centroavante,Destro,1
+670,Aylton Rocha de Santos,03/08/1939,,Brasil,Paulista (PE),0,0,Meia,,,1
+671,Claudiomir Alves Guerra,11/03/1948,10/07/1905,Brasil,Rio de Janeiro - RJ,0,0,Meia,,,1
+672,Allan Aloysius Cole Junior,14/10/1950,09/09/2025,Jamaica,Kingston,0,0,Atacante,,,1
+673,José Júlio Farias De Oliveira,26/09/1947,,Brasil,Maceio (AL),0,0,Defensor,Zagueiro,Canhoto,1
+674,Mário Bacuri,1949-00-00,04/08/2015,Brasil,,0,0,Meia,,,1
+675,Moacir Bernardes Brida,12/07/1948,,Brasil,Itajobi (SP),0,0,Meia,,,1
+676,Odélio de Souza,27/07/1948,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+677,Edmilson Machado da Silva,10/09/1951,,Brasil,Feira de Santana (BA),0,0,Defensor,Lateral Direito,Destro,1
+678,Ademir Vicente,06/06/1950,21/06/2016,Brasil,Ribeirão Preto (SP),0,0,Defensor,,,1
+679,Carlos Alberto Zanata Amato,06/09/1950,,Brasil,São José do Rio Pardo (SP),0,0,Meia,,Canhoto,1
+680,Cláudio Batista Coelho,29/05/1953,11/08/2003,Brasil,Vespasiano (MG),0,0,Atacante,Ponta Esquerda / Lateral Esquerdo,Canhoto,1
+681,Luís Artime,02/12/1938,,Argentina,Mendoza,174,73,Atacante,Centroavante,Destro,1
+682,Sebastião Cardoso dos Santos Sobrinho,20/01/1951,,Brasil,Duartina (SP),0,0,Defensor,Lateral Direito,Destro,1
+683,Hélcio Baptista Xavier,28/06/1948,26/06/1905,Brasil,Campos dos Goytacazes (RJ),178,80,Atacante,,,1
+684,Edison Pereira de Souza,15/10/1947,,Brasil,São José dos Campos (SP),0,0,Goleiro,,,1
+685,Eustáquio Ribeiro,18/09/1945,,Brasil,Bom Despanho (MG),0,0,Meia,Volante,,1
+686,Ubirajara Camilo de Sousa,30/12/1948,,Brasil,,0,0,Defensor,Zagueiro,Destro,1
+687,José Osmar Cordeiro Raposo,27/10/1948,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+688,Antônio Pereira dos Santos,08/07/1947,,Brasil,Aracaju (SE),0,0,Atacante,,,1
+689,Alberto Tavares Filho,11/06/1946,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+690,Ilson Peres de Farias,01/09/1947,,Brasil,Parnamirim (RN),0,0,Meia,,,1
+691,Luiz Alberto da Silva Júnior,02/01/1952,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+692,Humberto Mascarenhas,13/11/1944,,Brasil,Pelotas (RS),0,0,Atacante,Ponta Direita,,1
+693,Luiz Carlos Oliveira da Silva,11/02/1949,,Brasil,Recife (PE),0,0,Defensor,Zagueiro,,1
+694,Gecélio Santos,26/03/1945,,Brasil,Aracaju (SE),0,0,Defensor,Lateral Esquerdo,,1
+695,Manoel da Silva Costa,14/02/1953,17/10/2015,Brasil,Uruguaiana (RS),187,72,Atacante,,Destro,1
+696,Odair César de Oliveira,1948-00-00,,Brasil,Nova Europa (SP),0,0,Defensor,Lateral Direito,Destro,1
+697,Afonso Souza da Cunha,17/11/1941,,Brasil,Salvador (BA),0,0,Meia,,,1
+698,Nílson Borges,16/12/1941,03/02/2021,Brasil,São Paulo (SP),0,0,Atacante,Ponta Esquerda,,1
+699,Renato de Sousa Cogo,01/12/1947,,Brasil,Porto Alegre (RS),0,0,Defensor,Zagueiro / Lateral Direito,Destro,1
+700,Jorge Luís da Silva,14/11/1952,,Brasil,Castelo,0,0,Atacante,Ponta Direita,Destro,1
+701,Jorge Tabajara Lima dos Santos,16/08/1950,,Brasil,Dois Irmãos (RS),0,0,Defensor,Lateral Esquerdo,Canhoto,1
+702,Nelson José de Souza,19/04/1948,,Brasil,Guaxupé (MG),0,0,Defensor,Lateral Esquerdo,,1
+703,Francisco Afonso Valle de Figueiredo,28/12/1949,,Brasil,,0,0,Meia,,,1
+704,Reinaldo Costa,03/09/1950,,Brasil,Belo Horizonte (MG),0,0,Defensor,Lateral Direito,,1
+705,Miguel Couto Gomes Laranjeira,16/03/1945,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Centroavante,,1
+706,Elias das Graças Travassos,30/01/1951,,Brasil,Santarém (PA),0,0,Defensor,Lateral Esquerdo,Canhoto,1
+707,Antônio Ribeiro da Silva,10/06/1946,,Brasil,Monteiro (PB),0,0,Defensor,Zagueiro,,1
+708,Jorge Mendes,19/05/1946,,Brasil,Rio de Janeiro (RJ),0,0,Meia,,,1
+709,Barcímio Sicupira Júnior,10/05/1944,07/11/2021,Brasil,Lapa (PR),0,0,Meia,,Destro,1
+710,Paulo de Oliveira Lima,09/02/1949,,Brasil,Ourinhos (SP),0,0,Defensor,,Ambidestro,1
+711,Mário Sebastião Bochenek,14/09/1946,,Brasil,Curitiba (PR),0,0,Defensor,Lateral Esquerdo,Canhoto,1
+712,William Silvio Modesto,08/03/1953,23/02/2008,Brasil,Araraquara (SP),185,83,Atacante,,Destro,1
+713,Mário José Braga,02/01/1944,,Brasil,Cachoeira do Itapemirim (ES),0,0,Defensor,Zagueiro,,1
+714,Luiz José Cruz de Almeida,01/05/1947,,Brasil,Salvador (BA),0,0,Defensor,Zagueiro,,1
+715,Carlos Alberto de Oliveira Souza,09/06/1951,,Brasil,Belo Horizonte (MG),0,0,Meia,,,1
+716,Arismario Carvalho da Silva,01/10/1949,,Brasil,Caruaru (PE),0,0,Defensor,Lateral Direito,Destro,1
+717,Alberto Edmar Nascimento,02/12/1946,,Brasil,Girua (RS),0,0,Defensor,Zagueiro,,1
+718,Valdemar Costa Sobrinho,31/08/1949,,Brasil,Belo Horizonte (MG),0,0,Defensor,Zagueiro,,1
+719,José Amílton Melo de Carvalho,25/06/1949,06/07/1997,Brasil,Tamboril (CE),0,0,Atacante,Ponta Esquerda / Ponta Esquerda,,1
+720,José Marcelo de Almeida,19/05/1947,,Brasil,Itabaiana (SE),0,0,Goleiro,,,1
+721,Dorival Arrivabene,03/11/1946,,Brasil,São Paulo (SP),0,0,Defensor,Lateral Direito,,1
+722,Severino Fortunato da Silva,12/02/1946,,Brasil,Recife (PE),0,0,Atacante,Centroavante,,1
+723,Jair da Costa,09/07/1940,26/04/2025,Brasil,Santo André (SP),173,67,Atacante,Ponta Direita,Destro,1
+724,Jésum Gabriel,25/12/1953,,Brasil,Corinto (MG),165,66,Atacante,Ponta Esquerda,Canhoto,1
+725,Elías Batista Arruda,07/12/1945,,Brasil,Caruaru (PE),0,0,Atacante,,,1
+726,João Carlos Rodrigues,23/06/1947,,Brasil,Santos (SP),0,0,Defensor,Lateral Direito / Zagueiro,Destro,1
+727,Ivanir Santos Honorato,30/11/1953,,Brasil,Novo Hamburgo (RS),0,0,Atacante,,Ambidestro,1
+728,Otávio José Souto Pongeluppe,06/12/1951,,Brasil,São Paulo (SP),0,0,Defensor,Zagueiro,,1
+729,Marco Antônio da Silva Vaz,16/01/1950,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Ponta Direita,,1
+730,Lincoln Dias da Alves,07/09/1943,,Brasil,Sabará (MG),0,0,Meia,,,1
+731,Francisco George Pereira da Silva,04/06/1941,,Brasil,Trairi (CE),0,0,Goleiro,,,1
+732,Roberto Santos de Oliveira,10/11/1945,,Brasil,Salvador (BA),0,0,Defensor,Lateral Direito,,1
+733,Orlando de Oliveira Filho,15/11/1949,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Lateral Esquerdo,,1
+734,Israel Almeida Souza,27/10/1947,,Brasil,Ipiau (BA),0,0,Defensor,Zagueiro,,1
+735,Sílvio Carlos Veloso Tavares,12/01/1953,,Brasil,São Gonçalo (RJ),0,0,Atacante,,,1
+736,Adílton de Souza Rodrigues,13/02/1952,11/07/2008,Brasil,Volta Redonda (RJ),0,0,Atacante,,,1
+737,Edmar Meurer Azevedo Marques,20/06/1946,,Brasil,Conceição do Formoso (MG),0,0,Defensor,Zagueiro,Destro,1
+738,Evangelista Bispo dos Santos,27/12/1948,,Brasil,Itabaiana (SE),0,0,Meia,,,1
+739,Manoel Rezende de Matos Cabral,26/07/1950,,Brasil,Rio de Janeiro (RJ),180,80,Defensor,Lateral Direito,Destro,1
+740,Wagner Caetano Acedo,07/02/1948,,Brasil,São Paulo (SP),0,0,Atacante,Centroavante,,1
+741,Moacir Arquejos,10/02/1954,,Brasil,Uberlândia (MG),0,0,Atacante,,,1
+742,José Édson Cardoso da Mata,21/11/1944,,Brasil,Recife (PE),0,0,Defensor,Lateral Esquerdo,,1
+743,Cláudio Norberto Deodato,27/08/1947,11/09/2011,Brasil,São Paulo,170,69,Defensor,Lateral Direito,Destro,1
+744,Roberto Vágner Chinoca,02/05/1950,,Brasil,São Paulo,180,73,Defensor,,,1
+745,Norberto Costa,06/06/1953,,Brasil,Florianopolis (SC),0,0,Meia,Meia Direita / Ponta Direita,Destro,1
+746,Luiz Fernando Calore,12/08/1949,,Brasil,Jundiaí (SP),0,0,Goleiro,,,1
+747,João de Oliveira Carvalho,26/02/1954,,Brasil,São Paulo (SP),0,0,Atacante,Ponta Direita,,1
+748,Marco Antonio Cardelli,23/06/1948,,Brasil,Uberlândia (MG),0,0,Atacante,Ponta Direita,Destro,1
+749,Celton António Nunes,21/11/1945,,Brasil,Belo Horizonte - Minas Gerais,0,0,Defensor,Zagueiro,Destro,1
+750,Hermes,-,,Brasil,,0,0,Meia,,,1
+751,Pedro Basílio Filho,02/03/1951,21/11/2007,Brasil,Crateús (CE),0,0,Defensor,Zagueiro,,1
+752,Delorme Martins de Lacerda,28/06/1944,,Brasil,Salvador (BA),0,0,Atacante,,,1
+753,Sérgio Gonçalves Lopes,18/01/1941,05/08/2024,Brasil,Osasco (SP),0,0,Meia,Meia Ofensivo,Destro,1
+754,Carlos Alberto dos Santos Couto,03/07/1950,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,,,1
+755,Paulo do Nascimento Ribeiro,19/09/1943,Falecido,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+756,Warlindo Carneiro da Silva Filho,17/02/1951,,Brasil,Campina Grande (PB),0,0,Goleiro,,,1
+757,Mário dos Santos Corso Júnior,23/10/1953,,Brasil,São Paulo (SP),0,0,Defensor,,,1
+758,Paulo Maurício Ferreira de Amorim,05/11/1950,,Brasil,Recife (PE),0,0,Meia,,,1
+759,Baltazar Germano de Aguiar,05/12/1950,,Brasil,,0,0,Meia,Volante,,1
+760,Benivaldo Silva Feitosa,27/09/1951,,Brasil,Saúde (BA),0,0,Meia,,,1
+761,Jair Antônio Bragança dos Reis,16/11/1949,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
+762,Domingos dos Santos,03/08/1947,,Brasil,Santa Maria (RS),0,0,Defensor,Zagueiro,,1
+763,José Rinaldo Tasso Lasalvia,15/01/1939,03/05/2013,Brasil,Olinda (PE),164,68,Atacante,Ponta Direita / Meia Direita,Destro,1
+764,Octávio Corrêa César Filho,28/10/1944,,Brasil,Rio de Janeiro (RJ),0,0,Goleiro,,,1
+765,Antenor Machado Filho,26/05/1952,,Brasil,Belo Horizonte (MG),0,0,Defensor,Lateral Direito / Lateral Esquerdo,Destro,1
+766,Francisco Pereira de Melo,10/04/1949,,Brasil,Cabo de Santo Agostinho (PE),0,0,Atacante,,,1
+767,Gilvan Pereira da Silva,26/03/1953,,Brasil,Recife (PE),0,0,Atacante,Ponta Esquerda,Canhoto,1
+768,José Carlos dos Santos Molinos,01/12/1945,,Brasil,Uruguaiana (RS),0,0,Goleiro,,,1
+769,Bernardino de Moraes,06/10/1942,,Brasil,Barra do Piraí (RJ),0,0,Atacante,Ponta Esquerda,,1
+770,Levir Culpi,28/02/1953,,Brasil,Curitiba (PR),178,73,Defensor,Zagueiro,,1
+771,Abel Carlos da Silva Braga,01/09/1952,,Brasil,Rio de Janeiro (RJ),187,83,Defensor,Zagueiro,Canhoto,1
+772,Dimas Filgueiras Filho,13/05/1944,22/12/2023,Brasil,,0,0,Defensor,,,1
+773,Josenildo Domingos da Silva,27/11/1947,,Brasil,Recife (PE),0,0,Atacante,,,1
+774,Ronei Paulo Travi,07/05/1939,,Brasil,Canela (RS),0,0,Goleiro,,,1
+775,Álvaro Horácio Andrade de Carvalho,17/03/1950,,Brasil,Ubá (MG),0,0,Defensor,Lateral Direito,Destro,1
+776,José Maria de Souza Neto,31/01/1953,,Brasil,Recife,0,0,Meia,Volante,,1
+777,Manoel Fernando Jucá Neves,12/03/1944,,Brasil,Belém (PA),0,0,Atacante,,,1
+778,Pedronito Barbosa da Silva,01/06/1941,,Brasil,Olinda (PE),0,0,Goleiro,,,1
+779,Nélson Gonçalves Torres,31/12/1945,,Brasil,Pedro Leopoldo (MG),0,0,Defensor,Zagueiro,,1
+780,Roberto Azevedo Newton,07/08/1948,,Brasil,Maceió (AL),0,0,Defensor,Lateral Direito,,1
+781,José Marcílio Nocrato Soares,01/12/1948,,Brasil,Saboeiro (CE),0,0,Atacante,,,1
+782,Paulo Roberto Peralta,08/12/1941,,Brasil,Arroio dos Ratos (RS),0,0,Defensor,Zagueiro,,1
+783,Adilson Rodrigues,20/01/1947,30/04/2020,Brasil,Campinas (SP),0,0,Atacante,,,1
+784,José Raimundo Dias do Sacramento,30/08/1944,,Brasil,Japaratuba (SE),0,0,Meia,Meia Esquerda / Lateral Esquerdo,Canhoto,1
+785,Ademir da Silva,09/05/1947,05/01/2001,Brasil,Santos (SP),0,0,Atacante,,,1
+786,Nílton Santana Múrias,17/07/1950,,Brasil,Santos (SP),0,0,Defensor,Lateral Esquerdo,,1
+787,Waldemiro de Abreu Lima,21/02/1949,10/12/2019,Brasil,Manaus (AM),0,0,Defensor,Zagueiro,,1
+788,Dionisio Muniz Trajano,09/10/1947,,Brasil,Fortaleza (CE),0,0,Meia,Volante / Ponta Direita,,1
+789,José Eduardo Rebelo de Souza,26/07/1951,,Brasil,,0,0,Atacante,Ponta Esquerda,,1
+790,Marco Antônio,-,,Brasil,,0,0,Meia,,,1
+791,Cláudio Roberto Gomes,04/04/1951,25/12/2008,Brasil,Porto Alegre (RS),0,0,Defensor,Lateral Direito / Lateral Esquerdo,Ambidestro,1
+792,Bolívar Modualdo Guedes,21/12/1954,,Brasil,Porto Alegre (RS),183,78,Defensor,Zagueiro / Lateral Esquerdo,,1
+793,Luiz Alberto Oliveira Santos,12/03/1949,,Brasil,Feira de Santana (BA),0,0,Defensor,Lateral Direito,,1
+794,Valdir Borck,16/09/1943,09/04/2004,Brasil,Brusque (SC),0,0,Defensor,,,1
+795,Altivo de Souza Filho,26/04/1948,,Brasil,Rio de Janeiro (RJ),0,0,Defensor,Zagueiro,,1
+796,Ademir José Gonçalves,19/11/1946,22/07/2022,Brasil,Santa Bárbara do Oeste,0,0,Defensor,Zagueiro,Ambidestro,1
+797,Vanderlei Emidio Ferreira,28/02/1950,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Ponta Esquerda / Lateral Esquerdo,Canhoto,1
+798,Sidney Rodrigues da Costa,27/09/1955,,Brasil,Catalão (GO),0,0,Goleiro,,,1
+799,José das Graças Procópio da Silveira,26/11/1949,13/10/2024,Brasil,Eirunepé (AM),0,0,Goleiro,,,1
+800,Anselmo Orçay,09/05/1954,,Brasil,Rio de Janeiro (RJ),0,0,Atacante,Centroavante,,1
+801,Miguel Vitorino de Andrade,01/02/1950,,Brasil,Vassouras (RJ),0,0,Goleiro,,,1

@@ -1,0 +1,443 @@
+{% extends "base.html" %}
+
+{% block title %}{{ partida.mandante }} {{ partida.gols_mandante }} x {{ partida.gols_visitante }} {{ partida.visitante }} - Brasileirão Stats{% endblock %}
+
+{% block extra_head %}
+<!-- CSS do jogo.css que você já tem -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/jogo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- CABEÇALHO DA PARTIDA COM PLACAR -->
+    <div class="match-header-wrapper">
+        <div class="match-header-card">
+            <!-- TIME DA CASA (Mandante) -->
+            <div class="team">
+                <h2 class="team-name">
+                    <a href="{{ url_for('clube', nome=partida.mandante) }}">{{ partida.mandante }}</a>
+                </h2>
+                <div class="team-score">{{ partida.gols_mandante }}</div>
+
+                <!-- GOLS DO MANDANTE -->
+                {% if gols_mandante %}
+                <div class="gols-list">
+                    {% for gol in gols_mandante %}
+                    <div class="gol-item">
+                        <span class="gol-icon">⚽</span>
+                        <span class="gol-jogador">{{ gol.jogador_apelido or gol.jogador_nome }}</span>
+                        <span class="gol-minuto">{{ gol.minuto }}'</span>
+                        {% if gol.tipo_gol and gol.tipo_gol != 'normal' %}
+                        <span class="gol-tipo">({{ gol.tipo_gol }})</span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- CENTRO (Informações do Jogo) -->
+            <div class="match-center">
+                <div class="match-vs">×</div>
+                <div class="match-info">
+                    <div class="match-date">{{ partida.data }}</div>
+                    {% if partida.hora %}
+                    <div>{{ partida.hora }}</div>
+                    {% endif %}
+                    {% if partida.rodada %}
+                    <div><span class="badge-round">{{ partida.rodada }}</span></div>
+                    {% endif %}
+                    {% if partida.arena %}
+                    <div class="match-venue">
+                        <a href="{{ url_for('estadio', estadio_id=partida.estadio_id) }}">
+                            🏟️ {{ partida.arena }}
+                        </a>
+                        {% if partida.estadio_cidade %}
+                        <div>{{ partida.estadio_cidade }}, {{ partida.estadio_uf }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% if partida.publico %}
+                    <div>👥 Público: {{ "{:,}".format(partida.publico).replace(',', '.') }}</div>
+                    {% endif %}
+                </div>
+
+                <!-- Avisos de prorrogação/pênaltis -->
+                {% if partida.prorrogacao %}
+                <div class="match-overtime">⏱️ Prorrogação</div>
+                {% endif %}
+                {% if partida.mandante_penalti is not none %}
+                <div class="match-penalties">
+                    🥅 Pênaltis: {{ partida.mandante_penalti }} - {{ partida.visitante_penalti }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- TIME VISITANTE -->
+            <div class="team">
+                <h2 class="team-name">
+                    <a href="{{ url_for('clube', nome=partida.visitante) }}">{{ partida.visitante }}</a>
+                </h2>
+                <div class="team-score">{{ partida.gols_visitante }}</div>
+
+                <!-- GOLS DO VISITANTE -->
+                {% if gols_visitante %}
+                <div class="gols-list">
+                    {% for gol in gols_visitante %}
+                    <div class="gol-item">
+                        <span class="gol-icon">⚽</span>
+                        <span class="gol-jogador">{{ gol.jogador_apelido or gol.jogador_nome }}</span>
+                        <span class="gol-minuto">{{ gol.minuto }}'</span>
+                        {% if gol.tipo_gol and gol.tipo_gol != 'normal' %}
+                        <span class="gol-tipo">({{ gol.tipo_gol }})</span>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- ESCALAÇÕES -->
+    {% if jogadores_mandante or jogadores_visitante %}
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="section-icon">👥</span>
+            Escalações
+        </h2>
+
+        <div class="escalacoes-grid">
+            <!-- MANDANTE -->
+            <div class="escalacao-team">
+                <h3 class="team-subtitle">{{ partida.mandante }}</h3>
+
+                <!-- Titulares -->
+                <div class="players-group">
+                    <h4 class="players-group-title">Titulares</h4>
+                    {% for jogador in jogadores_mandante if jogador.titular %}
+                    <div class="player-item">
+                        <span class="player-number">{{ jogador.numero_camisa or '-' }}</span>
+                        <a href="{{ url_for('jogador', jogador_id=jogador.jogador_id) }}" class="player-name">
+                            {{ jogador.apelido or jogador.nome }}
+                        </a>
+                        {% if jogador.posicao_jogada %}
+                        <span class="player-position">{{ jogador.posicao_jogada }}</span>
+                        {% endif %}
+                        <div class="player-stats">
+                            {% if jogador.gols > 0 %}
+                            <span class="stat-badge stat-goal">⚽ {{ jogador.gols }}</span>
+                            {% endif %}
+                            {% if jogador.assistencias > 0 %}
+                            <span class="stat-badge stat-assist">🎯 {{ jogador.assistencias }}</span>
+                            {% endif %}
+                            {% if jogador.cartao_amarelo > 0 %}
+                            <span class="stat-badge stat-yellow">🟨</span>
+                            {% endif %}
+                            {% if jogador.cartao_vermelho > 0 %}
+                            <span class="stat-badge stat-red">🟥</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Reservas -->
+                {% set reservas_mandante = jogadores_mandante|selectattr('titular', 'equalto', 0)|list %}
+                {% if reservas_mandante %}
+                <div class="players-group">
+                    <h4 class="players-group-title">Reservas</h4>
+                    {% for jogador in reservas_mandante %}
+                    <div class="player-item player-substitute">
+                        <span class="player-number">{{ jogador.numero_camisa or '-' }}</span>
+                        <a href="{{ url_for('jogador', jogador_id=jogador.jogador_id) }}" class="player-name">
+                            {{ jogador.apelido or jogador.nome }}
+                        </a>
+                        {% if jogador.posicao_jogada %}
+                        <span class="player-position">{{ jogador.posicao_jogada }}</span>
+                        {% endif %}
+                        <div class="player-stats">
+                            {% if jogador.gols > 0 %}
+                            <span class="stat-badge stat-goal">⚽ {{ jogador.gols }}</span>
+                            {% endif %}
+                            {% if jogador.assistencias > 0 %}
+                            <span class="stat-badge stat-assist">🎯 {{ jogador.assistencias }}</span>
+                            {% endif %}
+                            {% if jogador.cartao_amarelo > 0 %}
+                            <span class="stat-badge stat-yellow">🟨</span>
+                            {% endif %}
+                            {% if jogador.cartao_vermelho > 0 %}
+                            <span class="stat-badge stat-red">🟥</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- VISITANTE -->
+            <div class="escalacao-team">
+                <h3 class="team-subtitle">{{ partida.visitante }}</h3>
+
+                <!-- Titulares -->
+                <div class="players-group">
+                    <h4 class="players-group-title">Titulares</h4>
+                    {% for jogador in jogadores_visitante if jogador.titular %}
+                    <div class="player-item">
+                        <span class="player-number">{{ jogador.numero_camisa or '-' }}</span>
+                        <a href="{{ url_for('jogador', jogador_id=jogador.jogador_id) }}" class="player-name">
+                            {{ jogador.apelido or jogador.nome }}
+                        </a>
+                        {% if jogador.posicao_jogada %}
+                        <span class="player-position">{{ jogador.posicao_jogada }}</span>
+                        {% endif %}
+                        <div class="player-stats">
+                            {% if jogador.gols > 0 %}
+                            <span class="stat-badge stat-goal">⚽ {{ jogador.gols }}</span>
+                            {% endif %}
+                            {% if jogador.assistencias > 0 %}
+                            <span class="stat-badge stat-assist">🎯 {{ jogador.assistencias }}</span>
+                            {% endif %}
+                            {% if jogador.cartao_amarelo > 0 %}
+                            <span class="stat-badge stat-yellow">🟨</span>
+                            {% endif %}
+                            {% if jogador.cartao_vermelho > 0 %}
+                            <span class="stat-badge stat-red">🟥</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Reservas -->
+                {% set reservas_visitante = jogadores_visitante|selectattr('titular', 'equalto', 0)|list %}
+                {% if reservas_visitante %}
+                <div class="players-group">
+                    <h4 class="players-group-title">Reservas</h4>
+                    {% for jogador in reservas_visitante %}
+                    <div class="player-item player-substitute">
+                        <span class="player-number">{{ jogador.numero_camisa or '-' }}</span>
+                        <a href="{{ url_for('jogador', jogador_id=jogador.jogador_id) }}" class="player-name">
+                            {{ jogador.apelido or jogador.nome }}
+                        </a>
+                        {% if jogador.posicao_jogada %}
+                        <span class="player-position">{{ jogador.posicao_jogada }}</span>
+                        {% endif %}
+                        <div class="player-stats">
+                            {% if jogador.gols > 0 %}
+                            <span class="stat-badge stat-goal">⚽ {{ jogador.gols }}</span>
+                            {% endif %}
+                            {% if jogador.assistencias > 0 %}
+                            <span class="stat-badge stat-assist">🎯 {{ jogador.assistencias }}</span>
+                            {% endif %}
+                            {% if jogador.cartao_amarelo > 0 %}
+                            <span class="stat-badge stat-yellow">🟨</span>
+                            {% endif %}
+                            {% if jogador.cartao_vermelho > 0 %}
+                            <span class="stat-badge stat-red">🟥</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <div class="no-data-card">
+        <div class="no-data-icon">📋</div>
+        <p class="no-data-text">Escalações não disponíveis</p>
+        <p class="no-data-subtext">As informações de escalação não foram registradas para esta partida.</p>
+    </div>
+    {% endif %}
+
+    <!-- ESTATÍSTICAS DO JOGO -->
+    {% if estatisticas %}
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="section-icon">📊</span>
+            Estatísticas
+        </h2>
+
+        <div class="stats-comparison">
+            {% for stat_mandante in estatisticas if stat_mandante.clube == partida.mandante %}
+                {% set stat_visitante = estatisticas|selectattr('clube', 'equalto', partida.visitante)|first %}
+
+                {% if stat_mandante.chutes is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.chutes }}</span>
+                    <span class="stat-label-center">Finalizações</span>
+                    <span class="stat-away-value">{{ stat_visitante.chutes if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.chutes_no_alvo is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.chutes_no_alvo }}</span>
+                    <span class="stat-label-center">Finalizações no Alvo</span>
+                    <span class="stat-away-value">{{ stat_visitante.chutes_no_alvo if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.posse_de_bola %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.posse_de_bola }}</span>
+                    <span class="stat-label-center">Posse de Bola</span>
+                    <span class="stat-away-value">{{ stat_visitante.posse_de_bola if stat_visitante else '-' }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.passes is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.passes }}</span>
+                    <span class="stat-label-center">Passes</span>
+                    <span class="stat-away-value">{{ stat_visitante.passes if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.precisao_passes %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.precisao_passes }}</span>
+                    <span class="stat-label-center">Precisão de Passes</span>
+                    <span class="stat-away-value">{{ stat_visitante.precisao_passes if stat_visitante else '-' }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.faltas is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.faltas }}</span>
+                    <span class="stat-label-center">Faltas</span>
+                    <span class="stat-away-value">{{ stat_visitante.faltas if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.impedimentos is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.impedimentos }}</span>
+                    <span class="stat-label-center">Impedimentos</span>
+                    <span class="stat-away-value">{{ stat_visitante.impedimentos if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+
+                {% if stat_mandante.escanteios is not none %}
+                <div class="stat-row">
+                    <span class="stat-home-value">{{ stat_mandante.escanteios }}</span>
+                    <span class="stat-label-center">Escanteios</span>
+                    <span class="stat-away-value">{{ stat_visitante.escanteios if stat_visitante else 0 }}</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% else %}
+    <div class="no-data-card">
+        <div class="no-data-icon">📊</div>
+        <p class="no-data-text">Estatísticas não disponíveis</p>
+        <p class="no-data-subtext">As estatísticas detalhadas do jogo não foram registradas.</p>
+    </div>
+    {% endif %}
+
+    <!-- CARTÕES -->
+    {% if cartoes_amarelos or cartoes_vermelhos %}
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="section-icon">🟨</span>
+            Cartões
+        </h2>
+
+        <div class="cartoes-grid">
+            <!-- Cartões Amarelos -->
+            {% if cartoes_amarelos %}
+            <div class="cartoes-list">
+                <h3 class="cartoes-subtitle">Cartões Amarelos</h3>
+                {% for cartao in cartoes_amarelos %}
+                <div class="cartao-item">
+                    <span class="cartao-club">{{ cartao.clube }}</span>
+                    <span class="cartao-player">{{ cartao.jogador_apelido or cartao.jogador_nome }}</span>
+                    <span class="cartao-minute">{{ cartao.minuto }}'</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Cartões Vermelhos -->
+            {% if cartoes_vermelhos %}
+            <div class="cartoes-list">
+                <h3 class="cartoes-subtitle">Cartões Vermelhos</h3>
+                {% for cartao in cartoes_vermelhos %}
+                <div class="cartao-item">
+                    <span class="cartao-club">{{ cartao.clube }}</span>
+                    <span class="cartao-player">{{ cartao.jogador_apelido or cartao.jogador_nome }}</span>
+                    <span class="cartao-minute">{{ cartao.minuto }}'</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- ARBITRAGEM -->
+    {% if arbitros %}
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="section-icon">👨‍⚖️</span>
+            Arbitragem
+        </h2>
+
+        <div class="arbitros-list">
+            {% for arbitro in arbitros %}
+            <div class="arbitro-chip">
+                <a href="{{ url_for('arbitro', arbitro_id=arbitro.arbitro_id) }}">
+                    {{ arbitro.nome }}
+                </a>
+                {% if arbitro.naturalidade %}
+                <span class="origem">({{ arbitro.naturalidade }})</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- COMISSÃO TÉCNICA -->
+    {% if treinadores %}
+    <section class="section-card">
+        <h2 class="section-title">
+            <span class="section-icon">👔</span>
+            Comissão Técnica
+        </h2>
+
+        <div class="treinadores-grid">
+            <!-- Mandante -->
+            <div class="treinador-team-box">
+                <h3 class="team-subtitle">{{ partida.mandante }}</h3>
+                {% for treinador in treinadores if treinador.clube == partida.mandante %}
+                <div class="treinador-item">
+                    <a href="{{ url_for('treinador', treinador_id=treinador.treinador_id) }}">
+                        {{ treinador.nome }}
+                    </a>
+                    <span class="role">({{ treinador.tipo }})</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Visitante -->
+            <div class="treinador-team-box">
+                <h3 class="team-subtitle">{{ partida.visitante }}</h3>
+                {% for treinador in treinadores if treinador.clube == partida.visitante %}
+                <div class="treinador-item">
+                    <a href="{{ url_for('treinador', treinador_id=treinador.treinador_id) }}">
+                        {{ treinador.nome }}
+                    </a>
+                    <span class="role">({{ treinador.tipo }})</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

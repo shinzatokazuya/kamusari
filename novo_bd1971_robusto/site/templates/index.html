@@ -113,11 +113,13 @@
                         <div class="time time-mandante">
                             <a href="/clube/{{ jogo.mandante }}"><span class="nome-time">{{ jogo.mandante }}</span></a>
                         </div>
-                        <div class="placar">
-                            <span class="gols">{{ jogo.mandante_placar }}</span>
-                            <span class="separador">×</span>
-                            <span class="gols">{{ jogo.visitante_placar }}</span>
-                        </div>
+                        <a href="{{ url_for('jogo', jogo_id=jogo.ID) }}">
+                            <div class="placar">
+                                <span class="gols">{{ jogo.mandante_placar }}</span>
+                                <span class="separador">×</span>
+                                <span class="gols">{{ jogo.visitante_placar }}</span>
+                            </div>
+                        </a>
                         <div class="time time-visitante">
                             <a href="/clube/{{ jogo.visitante }}"><span class="nome-time">{{ jogo.visitante }}</span></a>
                         </div>
