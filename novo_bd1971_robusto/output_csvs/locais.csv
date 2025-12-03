@@ -13,3 +13,11 @@ id,cidade,uf,estado,regiao,pais
 12,Aracaju,SE,SE,Nordeste,Brasil
 13,Natal,RN,RN,Nordeste,Brasil
 14,Maceió,AL,AL,Nordeste,Brasil
+15,Campo Grande,MS,MS,Centro-Oeste,Brasil
+16,Brasília,DF,DF,Centro-Oeste,Brasil
+17,Goiânia,GO,GO,Centro-Oeste,Brasil
+18,Florianópolis,SC,SC,Sul,Brasil
+19,Campinas,SP,SP,Sudeste,Brasil
+20,Teresina,PI,PI,Nordeste,Brasil
+21,Cariacica,ES,ES,Sudeste,Brasil
+22,São Luís,MA,MA,Nordeste,Brasil
