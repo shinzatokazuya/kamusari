@@ -5446,3 +5446,20 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5444,670,339,14,Gol,Normal,10
 5445,670,339,14,Gol,Normal,73
 5446,670,626,27,Entrou,,
+5447,671,1078,41,Substituição,,
+5448,671,671,41,Gol,Normal,19
+5449,671,671,41,Substituição,,
+5450,671,324,6,Gol,Normal,19
+5451,671,70,6,Substituição,,
+5452,671,972,41,Entrou,,
+5453,671,1052,41,Entrou,,
+5454,671,541,6,Entrou,,
+5455,672,460,31,Substituição,,
+5456,672,1079,31,Substituição,,
+5457,672,850,31,Gol,Normal,87
+5458,672,719,31,Gol,Normal,7
+5459,672,771,37,Cartão Vermelho,,
+5460,672,912,37,Substituição,,
+5461,672,686,31,Entrou,,
+5462,672,630,31,Entrou,,
+5463,672,1081,37,Entrou,,
