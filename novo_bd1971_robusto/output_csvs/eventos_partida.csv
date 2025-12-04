@@ -5188,3 +5188,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5187,637,1014,13,Entrou,,
 5188,637,249,20,Entrou,,
 5189,637,330,20,Entrou,,
+5190,638,443,33,Substituição,,
+5191,638,258,33,Substituição,,
+5192,638,1039,38,Gol,Normal,88
+5193,638,922,38,Gol,Normal,75
+5194,638,924,38,Substituição,,
+5195,638,929,38,Substituição,,
+5196,638,1040,33,Entrou,,
+5197,638,861,33,Entrou,,
+5198,638,923,38,Entrou,,
+5199,638,928,38,Entrou,,
