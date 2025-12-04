@@ -5405,3 +5405,16 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5404,664,826,22,Entrou,,
 5405,664,401,22,Entrou,,
 
+5406,665,820,30,Substituição,,
+5407,665,73,30,Substituição,,
+5408,665,502,21,Substituição,,
+5409,665,805,21,Substituição,,
+5410,665,1020,30,Entrou,,
+5411,665,1072,30,Entrou,,
+5412,665,1073,21,Entrou,,
+5413,665,511,21,Entrou,,
+5414,666,1044,10,Substituição,,
+5415,666,22,2,Gol,Normal,18
+5416,666,988,2,Substituição,,
+5417,666,351,10,Entrou,,
+5418,666,583,2,Entrou,,
