@@ -5404,8 +5404,4 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5403,664,601,25,Entrou,,
 5404,664,826,22,Entrou,,
 5405,664,401,22,Entrou,,
-5406,665,820,30,Substituição,,
-5407,665,73,30,Substituição,,
-5408,665,502,21,Substituição,,
-5409,665,805,21,Substituição,,
-5410,665,1020,30,Entrou,,
+
