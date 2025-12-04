@@ -5181,3 +5181,10 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5180,636,795,1,Gol,Normal,58
 5181,636,868,27,Entrou,,
 5182,636,618,27,Entrou,,
+5183,637,157,13,Substituição,,
+5184,637,245,20,Substituição,,
+5185,637,242,20,Gol,Normal,13
+5186,637,242,20,Substituição,,
+5187,637,1014,13,Entrou,,
+5188,637,249,20,Entrou,,
+5189,637,330,20,Entrou,,
