@@ -1260,6 +1260,6 @@ class OGolScraperRelacional:
 
 
 if __name__ == "__main__":
-    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?fase_in=0&equipa=0&estado=1&filtro=&page=1&op=calendario"
+    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?equipa=0&estado=1&filtro=&op=calendario&page=2"
     scraper = OGolScraperRelacional(url)
     scraper.executar(edicao_id=3)
