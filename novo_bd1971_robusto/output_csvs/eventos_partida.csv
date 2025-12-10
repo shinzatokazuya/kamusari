@@ -5599,3 +5599,10 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5597,690,1098,41,Entrou,,
 5598,690,973,41,Entrou,,
 5599,690,579,8,Entrou,,
+5600,691,132,11,Gol,Normal,31
+5601,691,132,11,Substituição,,
+5602,691,335,4,Substituição,,
+5603,691,640,4,Substituição,,
+5604,691,1099,11,Entrou,,
+5605,691,779,4,Entrou,,
+5606,691,1100,4,Entrou,,
