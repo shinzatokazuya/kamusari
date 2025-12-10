@@ -5617,3 +5617,18 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5615,692,654,9,Entrou,,
 5616,692,847,9,Entrou,,
 5617,692,64,23,Entrou,,
+5618,693,866,27,Substituição,,
+5619,693,623,27,Cartão Vermelho,,
+5620,693,1077,27,Substituição,,
+5621,693,371,13,Substituição,,
+5622,693,1036,13,Gol,Normal,40
+5623,693,1036,13,Substituição,,
+5624,693,626,27,Entrou,,
+5625,693,1101,27,Entrou,,
+5626,693,152,13,Entrou,,
+5627,693,695,13,Entrou,,
+5628,694,911,37,Substituição,,
+5629,694,249,20,Gol,Normal,73
+5630,694,245,20,Substituição,,
+5631,694,912,37,Entrou,,
+5632,694,1084,20,Entrou,,
