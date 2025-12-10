@@ -5533,3 +5533,16 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5531,681,531,18,Gol,Normal,32
 5532,681,1090,29,Entrou,,
 5533,681,411,29,Entrou,,
+5534,682,950,44,Substituição,,
+5535,682,119,44,Substituição,,
+5536,682,953,44,Gol,Normal,54
+5537,682,564,24,Substituição,,
+5538,682,651,24,Substituição,,
+5539,682,996,44,Entrou,,
+5540,682,1091,44,Entrou,,
+5541,682,1092,24,Entrou,,
+5542,682,986,24,Entrou,,
+5543,683,393,1,Substituição,,
+5544,683,147,1,Substituição,,
+5545,683,998,1,Entrou,,
+5546,683,309,1,Entrou,,
