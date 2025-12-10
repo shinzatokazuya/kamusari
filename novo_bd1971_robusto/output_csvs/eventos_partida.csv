@@ -5606,3 +5606,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5604,691,1099,11,Entrou,,
 5605,691,779,4,Entrou,,
 5606,691,1100,4,Entrou,,
+5607,692,1034,9,Cartão Vermelho,,
+5608,692,121,9,Substituição,,
+5609,692,841,9,Gol,Normal,70
+5610,692,334,9,Substituição,,
+5611,692,916,23,Cartão Vermelho,,
+5612,692,1012,23,Gol,Normal,45
+5613,692,1012,23,Substituição,,
+5614,692,638,23,Gol,Normal,66
+5615,692,654,9,Entrou,,
+5616,692,847,9,Entrou,,
+5617,692,64,23,Entrou,,
