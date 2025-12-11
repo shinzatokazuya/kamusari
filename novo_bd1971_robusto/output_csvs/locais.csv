@@ -1,23 +1,23 @@
 id,cidade,uf,estado,regiao,pais
-1,Salvador,BA,BA,Nordeste,Brasil
-2,Santos,SP,SP,Sudeste,Brasil
-3,Belo Horizonte,MG,MG,Sudeste,Brasil
-4,Rio de Janeiro,RJ,RJ,Sudeste,Brasil
-5,Recife,PE,PE,Nordeste,Brasil
-6,São Paulo,SP,SP,Sudeste,Brasil
-7,Porto Alegre,RS,RS,Sul,Brasil
-8,Fortaleza,CE,CE,Nordeste,Brasil
-9,Curitiba,PR,PR,Sul,Brasil
-10,Belém,PA,PA,Norte,Brasil
-11,Manaus,AM,AM,Norte,Brasil
-12,Aracaju,SE,SE,Nordeste,Brasil
-13,Natal,RN,RN,Nordeste,Brasil
-14,Maceió,AL,AL,Nordeste,Brasil
-15,Campo Grande,MS,MS,Centro-Oeste,Brasil
-16,Brasília,DF,DF,Centro-Oeste,Brasil
-17,Goiânia,GO,GO,Centro-Oeste,Brasil
-18,Florianópolis,SC,SC,Sul,Brasil
-19,Campinas,SP,SP,Sudeste,Brasil
-20,Teresina,PI,PI,Nordeste,Brasil
-21,Cariacica,ES,ES,Sudeste,Brasil
-22,São Luís,MA,MA,Nordeste,Brasil
+1,Salvador,BA,Bahia,Nordeste,Brasil
+2,Santos,SP,São Paulo,Sudeste,Brasil
+3,Belo Horizonte,MG,Minas Gerais,Sudeste,Brasil
+4,Rio de Janeiro,RJ,Rio de Janeiro,Sudeste,Brasil
+5,Recife,PE,Pernambuco,Nordeste,Brasil
+6,São Paulo,SP,São Paulo,Sudeste,Brasil
+7,Porto Alegre,RS,Rio Grande do Sul,Sul,Brasil
+8,Fortaleza,CE,Ceará,Nordeste,Brasil
+9,Curitiba,PR,Paraná,Sul,Brasil
+10,Belém,PA,Pará,Norte,Brasil
+11,Manaus,AM,Amazonas,Norte,Brasil
+12,Aracaju,SE,Sergipe,Nordeste,Brasil
+13,Natal,RN,Rio Grande do Norte,Nordeste,Brasil
+14,Maceió,AL,Alagoas,Nordeste,Brasil
+15,Campo Grande,MS,Mato Grosso do Sul,Centro-Oeste,Brasil
+16,Brasília,DF,Destrito Federal,Centro-Oeste,Brasil
+17,Goiânia,GO,Goiás,Centro-Oeste,Brasil
+18,Florianópolis,SC,Santa Catarina,Sul,Brasil
+19,Campinas,SP,São Paulo,Sudeste,Brasil
+20,Teresina,PI,Piauí,Nordeste,Brasil
+21,Cariacica,ES,Espírito Santo,Sudeste,Brasil
+22,São Luís,MA,Maranhão,Nordeste,Brasil

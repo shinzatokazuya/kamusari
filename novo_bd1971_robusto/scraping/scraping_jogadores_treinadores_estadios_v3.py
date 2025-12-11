@@ -271,11 +271,18 @@ class OGolScraperRelacional:
         if not cidade_completa or cidade_completa == "-":
             return None
 
+        # Trata dois formatos: "Cidade (UF)" ou "Cidade-UF"
         if "(" in cidade_completa and ")" in cidade_completa:
+            # Formato: "Cariacica (ES)"
             cidade = cidade_completa.split("(")[0].strip()
             uf = cidade_completa.split("(")[1].replace(")", "").strip()
+        elif "-" in cidade_completa:
+            # Formato: "Cariacica-ES"
+            partes = cidade_completa.rsplit("-", 1)  # rsplit para pegar só o último hífen
+            cidade = partes[0].strip()
+            uf = partes[1].strip() if len(partes) > 1 else ""
         else:
-            cidade = cidade_completa
+            cidade = cidade_completa.strip()
             uf = ""
 
         chave = f"{cidade}_{uf}"
@@ -300,24 +307,49 @@ class OGolScraperRelacional:
             print(f"   ⚠️ Local '{cidade}' sem UF, não será criado")
             return None
 
-        regioes = {
-            'SP': 'Sudeste', 'RJ': 'Sudeste', 'MG': 'Sudeste', 'ES': 'Sudeste',
-            'RS': 'Sul', 'SC': 'Sul', 'PR': 'Sul',
-            'BA': 'Nordeste', 'PE': 'Nordeste', 'CE': 'Nordeste', 'RN': 'Nordeste',
-            'PB': 'Nordeste', 'AL': 'Nordeste', 'SE': 'Nordeste', 'PI': 'Nordeste', 'MA': 'Nordeste',
-            'GO': 'Centro-Oeste', 'MT': 'Centro-Oeste', 'MS': 'Centro-Oeste', 'DF': 'Centro-Oeste',
-            'AM': 'Norte', 'PA': 'Norte', 'RO': 'Norte', 'AC': 'Norte', 'RR': 'Norte', 'AP': 'Norte', 'TO': 'Norte'
+        # Dicionário com UF -> (Nome Completo, Região)
+        estados_info = {
+            'SP': ('São Paulo', 'Sudeste'),
+            'RJ': ('Rio de Janeiro', 'Sudeste'),
+            'MG': ('Minas Gerais', 'Sudeste'),
+            'ES': ('Espírito Santo', 'Sudeste'),
+            'RS': ('Rio Grande do Sul', 'Sul'),
+            'SC': ('Santa Catarina', 'Sul'),
+            'PR': ('Paraná', 'Sul'),
+            'BA': ('Bahia', 'Nordeste'),
+            'PE': ('Pernambuco', 'Nordeste'),
+            'CE': ('Ceará', 'Nordeste'),
+            'RN': ('Rio Grande do Norte', 'Nordeste'),
+            'PB': ('Paraíba', 'Nordeste'),
+            'AL': ('Alagoas', 'Nordeste'),
+            'SE': ('Sergipe', 'Nordeste'),
+            'PI': ('Piauí', 'Nordeste'),
+            'MA': ('Maranhão', 'Nordeste'),
+            'GO': ('Goiás', 'Centro-Oeste'),
+            'MT': ('Mato Grosso', 'Centro-Oeste'),
+            'MS': ('Mato Grosso do Sul', 'Centro-Oeste'),
+            'DF': ('Distrito Federal', 'Centro-Oeste'),
+            'AM': ('Amazonas', 'Norte'),
+            'PA': ('Pará', 'Norte'),
+            'RO': ('Rondônia', 'Norte'),
+            'AC': ('Acre', 'Norte'),
+            'RR': ('Roraima', 'Norte'),
+            'AP': ('Amapá', 'Norte'),
+            'TO': ('Tocantins', 'Norte')
         }
+
+        # Obtém nome completo e região do estado
+        estado_nome, regiao = estados_info.get(uf.upper(), (uf, ''))
 
         self.locais_dict[chave] = {
             'id': self.next_local_id,
             'cidade': cidade,
-            'uf': uf,
-            'estado': uf,
-            'regiao': regioes.get(uf, ''),
+            'uf': uf.upper(),  # Garante que UF esteja em maiúsculas
+            'estado': estado_nome,  # Nome completo do estado
+            'regiao': regiao,
             'pais': 'Brasil'
         }
-        print(f"   ➤ Local '{cidade}, {uf}' adicionado.")
+        print(f"   ➤ Local '{cidade}, {uf}' ({estado_nome}) adicionado.")
         self.next_local_id += 1
 
         return self.locais_dict[chave]['id']
