@@ -5796,3 +5796,12 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5794,715,771,37,Entrou,,
 5795,715,912,37,Entrou,,
 5796,715,1121,38,Entrou,,
+5797,716,663,23,Gol,Normal,7
+5798,716,663,23,Gol,Normal,32
+5799,716,1123,23,Substituição,,
+5800,716,44,33,Substituição,,
+5801,716,1062,33,Substituição,,
+5802,716,1125,23,Entrou,,
+5803,716,863,33,Entrou,,
+5804,716,258,33,Entrou,,
+5805,716,258,33,Gol,Normal,80
