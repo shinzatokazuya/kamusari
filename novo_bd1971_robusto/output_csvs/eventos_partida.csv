@@ -5752,3 +5752,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5750,709,700,18,Substituição,,
 5751,709,984,24,Entrou,,
 5752,709,217,18,Entrou,,
+5753,710,939,14,Substituição,,
+5754,710,339,14,Substituição,,
+5755,710,783,14,Gol,Normal,21
+5756,710,783,14,Gol,Normal,55
+5757,710,68,6,Substituição,,
+5758,710,145,6,Substituição,,
+5759,710,357,14,Entrou,,
+5760,710,577,14,Entrou,,
+5761,710,541,6,Entrou,,
+5762,710,1011,6,Entrou,,
