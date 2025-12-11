@@ -5784,3 +5784,15 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 5782,713,439,5,Gol,Normal,52
 5783,713,356,13,Entrou,,
 5784,713,1118,13,Entrou,,
+5785,714,900,11,Substituição,,
+5786,714,1099,11,Substituição,,
+5787,714,450,11,Entrou,,
+5788,714,1120,11,Entrou,,
+5789,715,908,37,Substituição,,
+5790,715,910,37,Substituição,,
+5791,715,913,37,Gol,Normal,4
+5792,715,925,38,Gol,Normal,47
+5793,715,929,38,Substituição,,
+5794,715,771,37,Entrou,,
+5795,715,912,37,Entrou,,
+5796,715,1121,38,Entrou,,
