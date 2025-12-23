@@ -19,7 +19,7 @@ class OGolScraperRelacional:
             "Upgrade-Insecure-Requests": "1",
             "Connection": "keep-alive"
         }
-        self.delay = 30
+        self.delay = 45
 
         # Dicionários usando chaves de atributos (não URLs!)
         self.clubes_dict = {}
