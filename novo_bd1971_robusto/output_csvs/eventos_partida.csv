@@ -6735,3 +6735,11 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6733,829,517,35,Entrou,,
 6734,829,1132,35,Entrou,,
 6735,829,1132,35,Gol,Normal,60
+6736,830,1002,25,Substituição,,
+6737,830,601,25,Substituição,,
+6738,830,177,15,Substituição,,
+6739,830,182,15,Substituição,,
+6740,830,1071,25,Entrou,,
+6741,830,964,25,Entrou,,
+6742,830,726,15,Entrou,,
+6743,830,586,15,Entrou,,
