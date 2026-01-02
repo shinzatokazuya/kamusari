@@ -6709,3 +6709,19 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6707,827,57,30,Gol,Normal,86
 6708,827,1165,30,Entrou,,
 6709,827,716,24,Entrou,,
+6710,828,126,32,Gol,Normal,53
+6711,828,126,32,Substituição,,
+6712,828,1075,32,Substituição,,
+6713,828,594,32,Gol,Normal,49
+6714,828,594,32,Gol,Normal,73
+6715,828,105,32,Gol,Normal,8
+6716,828,697,29,Substituição,,
+6717,828,1138,29,Substituição,,
+6718,828,811,29,Cartão Vermelho,,
+6719,828,683,29,Gol,Normal,65
+6720,828,683,29,Gol,Normal,80
+6721,828,411,29,Gol,Normal,88
+6722,828,1164,32,Entrou,,
+6723,828,1111,32,Entrou,,
+6724,828,809,29,Entrou,,
+6725,828,549,29,Entrou,,
