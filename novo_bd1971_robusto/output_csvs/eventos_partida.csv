@@ -6743,3 +6743,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6741,830,964,25,Entrou,,
 6742,830,726,15,Entrou,,
 6743,830,586,15,Entrou,,
+6744,831,136,21,Gol,Normal,75
+6745,831,1024,21,Substituição,,
+6746,831,522,21,Gol,Normal,23
+6747,831,806,21,Substituição,,
+6748,831,702,40,Substituição,,
+6749,831,1076,40,Substituição,,
+6750,831,953,40,Gol,Normal,38
+6751,831,169,21,Entrou,,
+6752,831,1153,21,Entrou,,
+6753,831,1187,40,Entrou,,
+6754,831,950,40,Entrou,,
