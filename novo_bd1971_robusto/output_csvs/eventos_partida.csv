@@ -6725,3 +6725,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6723,828,1111,32,Entrou,,
 6724,828,809,29,Entrou,,
 6725,828,549,29,Entrou,,
+6726,829,878,35,Gol,Normal,40
+6727,829,878,35,Gol,Normal,71
+6728,829,884,35,Gol,Normal,15
+6729,829,884,35,Substituição,,
+6730,829,886,35,Substituição,,
+6731,829,1025,35,Gol,Normal,21
+6732,829,84,7,Gol,Normal,24
+6733,829,517,35,Entrou,,
+6734,829,1132,35,Entrou,,
+6735,829,1132,35,Gol,Normal,60
