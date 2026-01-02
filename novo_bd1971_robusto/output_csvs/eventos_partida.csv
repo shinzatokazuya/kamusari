@@ -6567,3 +6567,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6565,811,54,8,Gol,Normal,80
 6566,811,221,5,Entrou,,
 6567,811,221,5,Gol,Normal,89
+6568,812,16,19,Substituição,,
+6569,812,280,19,Gol,Normal,43
+6570,812,300,19,Gol,Normal,1
+6571,812,284,19,Gol,Normal,84
+6572,812,284,19,Gol,Normal,87
+6573,812,973,41,Substituição,,
+6574,812,972,41,Substituição,,
+6575,812,163,19,Entrou,,
+6576,812,671,41,Entrou,,
+6577,812,1052,41,Entrou,,
