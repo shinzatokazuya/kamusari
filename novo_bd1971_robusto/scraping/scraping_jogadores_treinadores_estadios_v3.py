@@ -52,6 +52,9 @@ class OGolScraperRelacional:
         # Carrega IDs existentes
         self._carregar_ids_existentes()
 
+        # Carrega cache de URLs persistido de edições anteriores
+        self._carregar_cache_urls()
+
         # Buffers relacionais
         self.partidas_lista = []
         self.jogadores_em_partida_lista = []
