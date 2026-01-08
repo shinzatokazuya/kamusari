@@ -7276,3 +7276,11 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7275,891,1014,13,Entrou,,
 7276,891,695,13,Entrou,,
 7277,891,695,13,Gol,Normal,49
+7278,892,393,1,Substituição,,
+7279,892,147,1,Gol,Normal,73
+7280,892,578,39,Substituição,,
+7281,892,309,1,Entrou,,
+7282,892,943,39,Entrou,,
+7283,893,800,41,Substituição,,
+7284,893,1175,23,Gol,Normal,34
+7285,893,1078,41,Entrou,,
