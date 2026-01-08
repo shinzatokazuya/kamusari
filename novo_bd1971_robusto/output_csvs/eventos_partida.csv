@@ -6768,3 +6768,9 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6767,833,1039,38,Entrou,,
 6768,833,1082,38,Entrou,,
 6769,833,626,27,Entrou,,
+6770,834,284,19,Gol,Normal,55
+6771,834,162,14,Substituição,,
+6772,834,170,14,Substituição,,
+6773,834,339,14,Cartão Vermelho,,
+6774,834,1103,14,Entrou,,
+6775,834,577,14,Entrou,,
