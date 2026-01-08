@@ -159,7 +159,7 @@ class OGolScraperRelacional:
             with open(path_jogadores, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    chave = f"{row['nome']}_{row.get('nascimento', '')}"
+                    chave = f"{row['nome']}_{row.get('apelido', '')}_{row.get('nascimento', '')}"
                     self.jogadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
