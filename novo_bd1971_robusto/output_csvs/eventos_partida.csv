@@ -7256,3 +7256,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7255,889,221,5,Gol,Normal,85
 7256,889,341,20,Entrou,,
 7257,889,245,20,Entrou,,
+7258,890,862,33,Substituição,,
+7259,890,524,33,Substituição,,
+7260,890,450,11,Assistência,,79
+7261,890,131,11,Assistência,,4
+7262,890,94,11,Gol,Normal,4
+7263,890,94,11,Gol,Normal,79
+7264,890,195,11,Substituição,,
+7265,890,1194,33,Entrou,,
+7266,890,258,33,Entrou,,
+7267,890,1181,11,Entrou,,
