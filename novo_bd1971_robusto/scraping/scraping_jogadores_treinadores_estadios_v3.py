@@ -1294,7 +1294,7 @@ class OGolScraperRelacional:
 if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
     min_page = 7
-    max_page =
+    max_page = 14
     edicao_id = 3
 
     # URL base (sem o parâmetro page)
