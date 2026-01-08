@@ -1282,6 +1282,8 @@ class OGolScraperRelacional:
         print("🚀 Iniciando scraping...")
 
         ultimo_jogo = None
+        ultima_url_partida = None
+        
         if os.path.exists(self.checkpoint_path):
             with open(self.checkpoint_path, "r", encoding="utf-8") as f:
                 ultimo_jogo = f.read().strip()
