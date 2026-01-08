@@ -1,1 +1,3 @@
-https://www.ogol.com.br/jogo/1973-11-04-sergipe-nautico/501069
+ERRO NA PÁGINA 8
+URL: https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?equipa=0&estado=1&filtro=&op=calendario&page=8
+Último erro: 'NoneType' object has no attribute 'strip'
