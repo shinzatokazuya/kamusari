@@ -224,25 +224,26 @@ class OGolScraperRelacional:
               f"Partida={self.next_partida_id}, Evento={self.next_evento_id}\n")
 
     def _carregar_cache_urls(self):
-    """Carrega cache de URLs persistido de edições anteriores."""
-    cache_path = os.path.join(self.output_dir, "cache_urls.csv")
-    if os.path.exists(cache_path):
-        print("📥 Carregando cache de URLs persistido...")
-        with open(cache_path, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                tipo = row.get('tipo', '')
-                url = row.get('url', '')
-                entity_id = row.get('entity_id', '')
+        """Carrega cache de URLs persistido de edições anteriores."""
+        cache_path = os.path.join(self.output_dir, "cache_urls.csv")
+        if os.path.exists(cache_path):
+            print("📥 Carregando cache de URLs persistido...")
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    tipo = row.get('tipo', '')
+                    url = row.get('url', '')
+                    entity_id = row.get('entity_id', '')
 
-                if tipo and url and entity_id:
-                    if tipo not in self.url_cache:
-                        self.url_cache[tipo] = {}
-                    try:
-                        self.url_cache[tipo][url] = int(entity_id)
-                    except ValueError:
-                        continue
-        print(f"   ✓ Cache carregado com {sum(len(v) for v in self.url_cache.values())} URLs")
+                    if tipo and url and entity_id:
+                        if tipo not in self.url_cache:
+                            self.url_cache[tipo] = {}
+                        try:
+                            self.url_cache[tipo][url] = int(entity_id)
+                        except ValueError:
+                            continue
+            total_urls = sum(len(v) for v in self.url_cache.values())
+            print(f"   ✓ Cache carregado com {total_urls} URLs")
 
     def _salvar_cache_urls(self):
         """Salva cache de URLs para reutilização em futuras edições."""
@@ -250,14 +251,19 @@ class OGolScraperRelacional:
 
         print("💾 Salvando cache de URLs...")
         with open(cache_path, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            writer.writerow(['tipo', 'url', 'entity_id'])
+            writer = csv.DictWriter(f, fieldnames=['tipo', 'url', 'entity_id'])
+            writer.writeheader()
 
             for tipo, urls_dict in self.url_cache.items():
                 for url, entity_id in urls_dict.items():
-                    writer.writerow([tipo, url, entity_id])
+                    writer.writerow({
+                        'tipo': tipo,
+                        'url': url,
+                        'entity_id': entity_id
+                    })
 
-        print(f"   ✓ Cache salvo com {sum(len(v) for v in self.url_cache.values())} URLs")
+        total_urls = sum(len(v) for v in self.url_cache.values())
+        print(f"   ✓ Cache salvo com {total_urls} URLs")
 
     def _get_soup(self, url):
         """Faz a requisição HTTP com tratamento de erros."""
