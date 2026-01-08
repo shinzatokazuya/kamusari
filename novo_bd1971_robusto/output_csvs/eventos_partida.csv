@@ -7191,3 +7191,17 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7190,882,897,35,Entrou,,
 7191,882,402,3,Entrou,,
 7192,882,1047,3,Entrou,,
+7193,883,1002,25,Substituição,,
+7194,883,1071,25,Gol,Normal,20
+7195,883,1071,25,Substituição,,
+7196,883,141,28,Substituição,,
+7197,883,234,28,Substituição,,
+7198,883,593,25,Entrou,,
+7199,883,964,25,Entrou,,
+7200,883,964,25,Gol,Normal,90
+7201,883,142,28,Entrou,,
+7202,883,318,28,Entrou,,
+7203,884,182,15,Substituição,,
+7204,884,785,18,Substituição,,
+7205,884,184,15,Entrou,,
+7206,884,223,18,Entrou,,
