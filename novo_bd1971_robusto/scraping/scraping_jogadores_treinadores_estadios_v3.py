@@ -1196,12 +1196,21 @@ class OGolScraperRelacional:
             self._novo_estadio.clear()
             print("💾 estadios.csv atualizado")
 
-        if self._novo_jogador:
+        if self._novo_jogador or any(v.get('apelido') for v in self.jogadores_dict.values()):
+            # Reescreve jogadores inteiro para incluir apelidos atualizados
             path = os.path.join(self.output_dir, "jogadores.csv")
-            campos = ['id','nome', 'apelido', 'nascimento','falecimento','nacionalidade','naturalidade','altura','peso','posicao','pe_preferido','aposentado']
-            append_rows(path, campos, self._novo_jogador)
+            campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','altura','peso','posicao','pe_preferido','aposentado']
+
+            with open(path, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=campos)
+                writer.writeheader()
+
+                # Escreve todos os jogadores do dicionário (inclui atualizados)
+                for jogador in self.jogadores_dict.values():
+                    writer.writerow(jogador)
+
             self._novo_jogador.clear()
-            print("💾 jogadores.csv atualizado")
+            print("💾 jogadores.csv atualizados")
 
         if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
