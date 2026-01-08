@@ -1345,7 +1345,7 @@ class OGolScraperRelacional:
 
             self.salvar_csvs()
 
-            # Se for o última jogo página, limpa o checkpoint
+            # Se for o última jogo da página, limpa o checkpoint
             if is_ultima_pagina:
                 if os.path.exists(self.checkpoint_path):
                     os.remove(self.checkpoint_path)
