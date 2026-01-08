@@ -1460,9 +1460,19 @@ if __name__ == "__main__":
         if scraper:
             scraper._salvar_cache_urls()
 
-            # Salva checkpoint indicando em qual página e qual URL parou
+            # Salva checkpoint com informações para recuperação
             try:
-                checkpoint_info = f"ERRO NA PÁGINA {page_num}\nURL: {url}\nÚltimo erro: {str(e)}"
+                # Tenta pegar a última URL de partida processada do checkpoint existente
+                ultima_partida = "N/A"
+                if os.path.exists(scraper.checkpoint_path):
+                    with open(scraper.checkpoint_path, 'r', encoding='utf-8') as f:
+                        conteudo = f.read()
+                        for linha in conteudo.split('\n'):
+                            if 'URL Última Partida:' in linha:
+                                ultima_partida = linha.split('URL Última Partida:')[1].strip()
+                                break
+
+                checkpoint_info = f"ERRO NA PÁGINA {page_num}\nURL Página: {url}\nURL Última Partida Processada: {ultima_partida}\nÚltimo erro: {str(e)}"
                 with open(scraper.checkpoint_path, 'w', encoding='utf-8') as f:
                     f.write(checkpoint_info)
                 print(f"📌 Checkpoint salvo com informações de erro:")
