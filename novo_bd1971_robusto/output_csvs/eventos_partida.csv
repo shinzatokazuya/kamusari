@@ -6774,3 +6774,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6773,834,339,14,Cartão Vermelho,,
 6774,834,1103,14,Entrou,,
 6775,834,577,14,Entrou,,
+6776,835,1200,39,Substituição,,
+6777,835,315,39,Substituição,,
+6778,835,937,39,Gol,Normal,50
+6779,835,1036,13,Substituição,,
+6780,835,158,13,Gol,Normal,15
+6781,835,160,13,Substituição,,
+6782,835,260,39,Entrou,,
+6783,835,936,39,Entrou,,
+6784,835,625,13,Entrou,,
+6785,835,625,13,Gol,Normal,72
+6786,835,390,13,Entrou,,
