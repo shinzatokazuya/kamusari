@@ -1292,6 +1292,33 @@ class OGolScraperRelacional:
 
 
 if __name__ == "__main__":
-    url = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?equipa=0&estado=1&filtro=&op=calendario&page=7"
-    scraper = OGolScraperRelacional(url)
-    scraper.executar(edicao_id=3)
+    # ========== CONFIGURAÇÕES ==========
+    min_page = 7
+    max_page =
+    edicao_id = 3
+
+    # URL base (sem o parâmetro page)
+    url_base = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?equipa=0&estado=1&filtro=&op=calendario&page="
+
+    # Cria uma única instância que será reutilizada entre páginas
+    # Isso mantém o CACHE, tornando muito mais rápido!
+    scraper = None
+
+    for page_num in range(min_page, max_page + 1):
+        url = url_base + str(page_num)
+        print(f"\n{'='*70}")
+        print(f"📄 Processando página {page_num}/{max_page}")
+        print(f"{'='*70}")
+
+        if scraper is None:
+            # Primeira página: cria a instância
+            scraper = OGolScraperRelacional(url)
+            scraper.executar(edicao_id=edicao_id)
+        else:
+            # Próximas páginas: reutiliza a mesma instância (CACHE mantido!)
+            scraper.url_lista = url
+            scraper.executar(edicao_id=edicao_id)
+
+    print(f"\n{'='*70}")
+    print("✅ Scraping de todas as páginas concluído!")
+    print(f"{'='*70}")
