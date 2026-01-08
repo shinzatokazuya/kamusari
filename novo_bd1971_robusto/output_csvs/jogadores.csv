@@ -1,4 +1,4 @@
-id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe_preferido,aposentado
+id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe_preferido,aposentado
 1,Renato Acasio de Morais,1947-03-01,,Brasil,Caruaru (PE),0,0,Goleiro,,1
 2,Roberto Pinto da Luz,1953-06-19,,Brasil,Salvador (BA),0,0,Defensor,,1
 3,Ismael Moreira Braga,1945-05-18,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Lateral Direito),Destro,1
@@ -6,7 +6,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 5,José Otto Pinto Guimarães,1940-01-00,,Brasil,,0,0,Defensor,,1
 6,Eliseu Antonio Vinagre Ferreira de Godoy,1945-10-17,,Brasil,Santos,0,0,Meia (Meia Ofensivo),Destro,1
 7,Leonardo Augusto Caldeira,1946-09-15,Falecido - 2019-09-24 (73 anos),Brasil,,0,0,Atacante (Ponta Esquerda),Destro,1
-8,João Carlos Rodrigues Barreto Amorim,1940-11-07,,Brasil,,0,0,Meia,,1
+8,João Carlos Rodrigues Barreto Amorim,1940-11-07,,Brasil,,0,Meia,,1
 9,Edvaldo dos Santos,1949-07-07,,Brasil,São Francisco do Conde (BA),0,0,Meia,,1
 10,Carlos Alberto Gonçalves,1939-11-10,Falecido - 2005-03-09 (65 anos),Brasil,Salvador (BA),0,0,Atacante,,1
 11,Ademir de Oliveira,1950-01-23,,Brasil,Salvador (BA),0,0,Atacante,,1
