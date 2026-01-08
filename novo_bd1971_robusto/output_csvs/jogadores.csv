@@ -1,4 +1,4 @@
-id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe_preferido,aposentado
+id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe_preferido,aposentado
 1,Renato Acasio de Morais,1947-03-01,,Brasil,Caruaru (PE),0,0,Goleiro,,1
 2,Roberto Pinto da Luz,1953-06-19,,Brasil,Salvador (BA),0,0,Defensor,,1
 3,Ismael Moreira Braga,1945-05-18,,Brasil,Rio de Janeiro (RJ),0,0,Defensor (Lateral Direito),Destro,1
@@ -1232,3 +1232,7 @@ id,nome,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,posicao,pe
 1231,José Oliveira País,1953-07-11,,Brasil,,0,0,Goleiro,,1
 1232,Sérgio Luiz Gonzaga,1953-06-29,,Brasil,São João do Meriti (RJ),0,0,Atacante,,1
 1233,César Julião Batista de Sales,1949-03-15,,Brasil,Pedro Leopoldo (MG),0,0,Defensor (Zagueiro),,1
+1234,Waldir Peres de Arruda,Waldir Peres,1951-01-02,Falecido - 2017-07-23 (66 anos),Brasil,Garça,186,0,Goleiro,Destro,1
+1235,Avelino de Souza Abreu,Mosquito,1949-05-20,,Brasil,Caxias do Sul (RS),0,0,Meia,,1
+1236,Joubertinho,Joubertinho,-,,Brasil,,0,0,Atacante,,1
+1237,Geraldo Dias Gadelha,Geraldo,1953-08-06,,Brasil,Fortaleza (CE),0,0,Defensor (Zagueiro),,1
