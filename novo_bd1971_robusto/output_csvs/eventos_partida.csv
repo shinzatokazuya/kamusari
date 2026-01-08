@@ -7245,3 +7245,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7244,888,541,6,Entrou,,
 7245,888,542,6,Entrou,,
 7246,888,542,6,Gol,Normal,83
+7247,889,155,5,Substituição,,
+7248,889,439,5,Gol,Normal,69
+7249,889,526,5,Substituição,,
+7250,889,399,20,Substituição,,
+7251,889,242,20,Gol,Normal,52
+7252,889,1084,20,Substituição,,
+7253,889,461,5,Entrou,,
+7254,889,221,5,Entrou,,
+7255,889,221,5,Gol,Normal,85
+7256,889,341,20,Entrou,,
+7257,889,245,20,Entrou,,
