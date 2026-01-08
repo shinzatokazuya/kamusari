@@ -1345,6 +1345,19 @@ class OGolScraperRelacional:
 
             self.salvar_csvs()
 
+            # Se for o última jogo página, limpa o checkpoint
+            if is_ultima_pagina:
+                if os.path.exists(self.checkpoint_path):
+                    os.remove(self.checkpoint_path)
+                    print(f"🗑️ Checkpoint limpo (fim de página)")
+
+            # Detecta se a página estava vazia (possível bloqueio)
+            if not self.partidas_lista or len(self.partidas_lista) == 0:
+                print(f"⚠️ ATENÇÃO: Nenhuma partida processada nesta página!")
+                if page_atual < page_maxima:
+                    print(f"❌ PARANDO EXECUÇÃO: Página vazia detectada na página {page_atual}/{page_maxima}")
+                    raise Exception(f"Página vazia na página {page_atual} - possível bloqueio do servidor")
+
         print("\n✅ Scraping concluído!")
 
 
