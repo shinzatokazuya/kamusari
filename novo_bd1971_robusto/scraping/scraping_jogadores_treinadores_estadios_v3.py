@@ -555,7 +555,7 @@ class OGolScraperRelacional:
         match = re.search(r'/jogador/([^/?]+)', url_jogador)
         if match:
             apelido = match.group(1).lower().replace('-', ' ').title()
-            
+
         try:
             soup = self._get_soup(url_jogador)
         except Exception as e:
@@ -621,6 +621,7 @@ class OGolScraperRelacional:
         registro = {
             'id': jogador_id,
             'nome': dados.get('nome', ''),
+            'apelido': apelido,
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'nacionalidade': dados.get('nacionalidade', ''),
