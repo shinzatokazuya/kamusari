@@ -159,7 +159,13 @@ class OGolScraperRelacional:
             with open(path_jogadores, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    chave = f"{row['nome']}_{row.get('apelido', '')}_{row.get('nascimento', '')}"
+                    # Cria chave da mesma forma dinâmica
+                    apelido = row.get('apelido', '')
+                    if apelido:
+                        chave = f"{row['nome']}_{row.get('apelido', '')}_{row.get('nascimento', '')}"
+                    else:
+                        chave = f"{row['nome']}_{row.get('nascimento', '')}"
+                        
                     self.jogadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
@@ -620,8 +626,13 @@ class OGolScraperRelacional:
                 elif "Aposentado" in valor:
                     dados["aposentado"] = 1
 
-        # Cria chave de atributos
-        chave_atributos = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
+        # Cria chave de atributos de forma dinâmica
+        # Se tem apelido: nome_apelido_nascimento
+        # Se não tem apelido: nome_nascimento
+        if apelido:
+            chave_atributos = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
+        else:
+            chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
 
         # Verifica se jogador já existe
         if chave_atributos in self.jogadores_dict:
