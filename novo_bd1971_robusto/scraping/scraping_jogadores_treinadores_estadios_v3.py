@@ -1346,10 +1346,9 @@ class OGolScraperRelacional:
             self.salvar_csvs()
 
             # Se for o última jogo da página, limpa o checkpoint
-            if is_ultima_pagina:
-                if os.path.exists(self.checkpoint_path):
-                    os.remove(self.checkpoint_path)
-                    print(f"🗑️ Checkpoint limpo (fim de página)")
+            if is_ultima_pagina and os.path.exists(self.checkpoint_path):
+                os.remove(self.checkpoint_path)
+                print(f"🗑️ Checkpoint limpo (último jogo processado)")
 
             # Detecta se a página estava vazia (possível bloqueio)
             if not self.partidas_lista or len(self.partidas_lista) == 0:
