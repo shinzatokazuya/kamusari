@@ -165,7 +165,7 @@ class OGolScraperRelacional:
                         chave = f"{row['nome']}_{row.get('apelido', '')}_{row.get('nascimento', '')}"
                     else:
                         chave = f"{row['nome']}_{row.get('nascimento', '')}"
-                        
+
                     self.jogadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
@@ -630,20 +630,41 @@ class OGolScraperRelacional:
         # Se tem apelido: nome_apelido_nascimento
         # Se não tem apelido: nome_nascimento
         if apelido:
-            chave_atributos = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
+            chave_com_apelido = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
         else:
-            chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+            chave_com_apelido = None
 
-        # Verifica se jogador já existe
-        if chave_atributos in self.jogadores_dict:
-            jogador_id = self.jogadores_dict[chave_atributos]['id']
-            print(f"   ✓ Jogador já existente: {dados.get('nome', '')} (ID: {jogador_id})")
+        chave_sem_apelido = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        # Verifica se jogador já existe - primeiro com apelido, depois sem
+        jogador_encontrado = False
+        jogador_id = None
+
+        if chave_com_apelido and chave_com_apelido in self.jogadores_dict:
+            # Encontrou com apelido
+            jogador_id = self.jogadores_dict[chave_com_apelido]['id']
+            jogador_encontrado = True
+            print(f"   ✓ Jogador já existente (com apelido): {dados.get('nome', '')} / {apelido} (ID: {jogador_id})")
+        elif chave_sem_apelido in self.jogadores_dict:
+            # Encontrou sem apelido (do CSV antigo)
+            jogador_id = self.jogadores_dict[chave_sem_apelido]['id']
+            jogador_encontrado = True
+            # Se agora temos apelido, atualiza o registro
+            if apelido:
+                self.jogadores_dict[chave_sem_apelido]['apelido'] = apelido
+                print(f"   ✓ Jogador encontrado (atualizado apelido): {dados.get('nome', '')} / {apelido} (ID: {jogador_id})")
+            else:
+                print(f"   ✓ Jogador já existente: {dados.get('nome', '')} (ID: {jogador_id})")
+
+        if jogador_encontrado:
             self.url_cache['jogadores'][url_jogador] = jogador_id
             return jogador_id
 
-        # Jogador novo
+        # Jogador novo - usa chave com apelido se tiver
         jogador_id = self.next_jogador_id
-        print(f"   ➕ Novo jogador: {dados.get('nome', '')} (ID: {jogador_id})")
+        chave_final = chave_com_apelido if chave_com_apelido else chave_sem_apelido
+
+        print(f"   ➕ Novo jogador: {dados.get('nome', '')} (apelido: {apelido}) (ID: {jogador_id})")
 
         registro = {
             'id': jogador_id,
@@ -660,7 +681,7 @@ class OGolScraperRelacional:
             'aposentado': dados.get('aposentado', 0)
         }
 
-        self.jogadores_dict[chave_atributos] = registro
+        self.jogadores_dict[chave_final] = registro
         self.url_cache['jogadores'][url_jogador] = jogador_id
         self._novo_jogador.append(registro)
         self.next_jogador_id += 1
