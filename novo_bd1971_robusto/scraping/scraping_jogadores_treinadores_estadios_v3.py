@@ -1230,7 +1230,7 @@ class OGolScraperRelacional:
     # Execução principal
     # ======================================================
 
-    def executar(self, edicao_id=1):
+    def executar(self, edicao_id=1, page_atual=1, page_maxima=1, is_ultima_pagina=False):
         """Execução principal do scraper"""
         print("🚀 Iniciando scraping...")
 
