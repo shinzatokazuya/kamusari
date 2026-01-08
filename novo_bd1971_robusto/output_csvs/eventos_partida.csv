@@ -6754,3 +6754,10 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6752,831,1153,21,Entrou,,
 6753,831,1187,40,Entrou,,
 6754,831,950,40,Entrou,,
+6755,832,318,28,Gol,Normal,44
+6756,832,318,28,Substituição,,
+6757,832,551,30,Substituição,,
+6758,832,817,30,Substituição,,
+6759,832,123,28,Entrou,,
+6760,832,814,30,Entrou,,
+6761,832,818,30,Entrou,,
