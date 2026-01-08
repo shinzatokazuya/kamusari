@@ -163,6 +163,7 @@ class OGolScraperRelacional:
                     self.jogadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
+                        'apelido': row.get('apelido', ''),
                         'nascimento': row.get('nascimento', ''),
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
