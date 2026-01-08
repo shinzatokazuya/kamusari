@@ -615,7 +615,7 @@ class OGolScraperRelacional:
                     dados["aposentado"] = 1
 
         # Cria chave de atributos
-        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+        chave_atributos = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
 
         # Verifica se jogador já existe
         if chave_atributos in self.jogadores_dict:
