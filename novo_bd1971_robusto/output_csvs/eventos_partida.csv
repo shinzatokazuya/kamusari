@@ -7234,3 +7234,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7233,887,1221,40,Entrou,,
 7234,887,988,2,Entrou,,
 7235,887,384,2,Entrou,,
+7236,888,1035,9,Substituição,,
+7237,888,847,9,Substituição,,
+7238,888,839,9,Gol,Normal,32
+7239,888,68,6,Substituição,,
+7240,888,70,6,Substituição,,
+7241,888,308,6,Gol,Normal,48
+7242,888,1034,9,Entrou,,
+7243,888,334,9,Entrou,,
+7244,888,541,6,Entrou,,
+7245,888,542,6,Entrou,,
+7246,888,542,6,Gol,Normal,83
