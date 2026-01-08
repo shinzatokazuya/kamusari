@@ -549,6 +549,13 @@ class OGolScraperRelacional:
             return self.url_cache['jogadores'][url_jogador]
 
         print(f"⚽ Processando jogador: {url_jogador}")
+
+        # Extrai apelido da URL (ex: /jogador/pele -> "pele")
+        apelido = ""
+        match = re.search(r'/jogador/([^/?]+)', url_jogador)
+        if match:
+            apelido = match.group(1).lower().replace('-', ' ').title()
+            
         try:
             soup = self._get_soup(url_jogador)
         except Exception as e:
