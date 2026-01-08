@@ -1374,21 +1374,37 @@ if __name__ == "__main__":
     # Isso mantém o CACHE, tornando muito mais rápido!
     scraper = None
 
-    for page_num in range(min_page, max_page + 1):
-        url = url_base + str(page_num)
+    try:
+        for page_num in range(min_page, max_page + 1):
+            url = url_base + str(page_num)
+            print(f"\n{'='*70}")
+            print(f"📄 Processando página {page_num}/{max_page}")
+            print(f"{'='*70}")
+
+            if scraper is None:
+                # Primeira página: cria a instância
+                scraper = OGolScraperRelacional(url)
+                scraper.executar(edicao_id=edicao_id)
+            else:
+                # Próximas páginas: reutiliza a mesma instância (CACHE mantido!)
+                scraper.url_lista = url
+                scraper.executar(edicao_id=edicao_id)
+
+        # Salva cache de URLs para futuras edições
+        if scraper:
+            scraper._salvar_cache_urls()
+
         print(f"\n{'='*70}")
-        print(f"📄 Processando página {page_num}/{max_page}")
+        print("✅ Scraping de todas as páginas concluído com sucesso!")
         print(f"{'='*70}")
 
-        if scraper is None:
-            # Primeira página: cria a instância
-            scraper = OGolScraperRelacional(url)
-            scraper.executar(edicao_id=edicao_id)
-        else:
-            # Próximas páginas: reutiliza a mesma instância (CACHE mantido!)
-            scraper.url_lista = url
-            scraper.executar(edicao_id=edicao_id)
+    except Exception as e:
+        print(f"\n{'='*70}")
+        print(f"❌ ERRO DURANTE SCRAPING: {str(e)}")
+        print(f"{'='*70}")
 
-    print(f"\n{'='*70}")
-    print("✅ Scraping de todas as páginas concluído!")
-    print(f"{'='*70}")
+        # Mesmo com erro, salva o cache
+        if scraper:
+            scraper._salvar_cache_urls()
+
+        raise
