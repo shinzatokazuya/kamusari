@@ -6785,3 +6785,13 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 6784,835,625,13,Entrou,,
 6785,835,625,13,Gol,Normal,72
 6786,835,390,13,Entrou,,
+6787,836,679,18,Substituição,,
+6788,836,474,18,Gol,Normal,34
+6789,836,785,18,Substituição,,
+6790,836,251,2,Substituição,,
+6791,836,988,2,Gol,Normal,90
+6792,836,494,2,Substituição,,
+6793,836,495,18,Entrou,,
+6794,836,223,18,Entrou,,
+6795,836,675,2,Entrou,,
+6796,836,1041,2,Entrou,,
