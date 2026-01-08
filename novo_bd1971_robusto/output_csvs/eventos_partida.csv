@@ -7284,3 +7284,15 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7283,893,800,41,Substituição,,
 7284,893,1175,23,Gol,Normal,34
 7285,893,1078,41,Entrou,,
+7286,894,280,19,Gol,Normal,23
+7287,894,300,19,Gol,Normal,87
+7288,894,871,27,Substituição,,
+7289,894,621,27,Entrou,,
+7290,895,831,8,Gol,Normal,83
+7291,895,322,8,Substituição,,
+7292,895,385,8,Substituição,,
+7293,895,335,4,Gol,Normal,29
+7294,895,1100,4,Substituição,,
+7295,895,441,8,Entrou,,
+7296,895,832,8,Entrou,,
+7297,895,35,4,Entrou,,
