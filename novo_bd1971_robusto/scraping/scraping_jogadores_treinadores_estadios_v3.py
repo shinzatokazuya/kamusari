@@ -1363,7 +1363,7 @@ class OGolScraperRelacional:
 
 if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
-    min_page = 7
+    min_page = 8
     max_page = 14
     edicao_id = 3
 
