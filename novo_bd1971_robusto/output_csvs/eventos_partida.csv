@@ -7205,3 +7205,11 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 7204,884,785,18,Substituição,,
 7205,884,184,15,Entrou,,
 7206,884,223,18,Entrou,,
+7207,885,1137,29,Substituição,,
+7208,885,411,29,Gol,Normal,25
+7209,885,812,29,Substituição,,
+7210,885,169,21,Substituição,,
+7211,885,522,21,Gol,Normal,73
+7212,885,1138,29,Entrou,,
+7213,885,821,29,Entrou,,
+7214,885,660,21,Entrou,,
