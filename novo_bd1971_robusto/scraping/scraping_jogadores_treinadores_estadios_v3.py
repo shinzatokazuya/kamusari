@@ -264,6 +264,7 @@ class OGolScraperRelacional:
         tentativa = 0
         max_tentativas = 5
         delay = self.delay
+        erros_429 = 0
 
         while tentativa < max_tentativas:
             try:
@@ -271,11 +272,19 @@ class OGolScraperRelacional:
                 r = requests.get(url, headers=self.headers)
                 if r.status_code == 429:
                     tentativa += 1
+                    erros_429 += 1
                     espera = delay * (tentativa + 1)
-                    print(f"⚠️ Erro 429. Aguardando {espera}s...")
+                    print(f"⚠️ Erro 429 (tentativa {tentativa}/{max_tentativas}). Aguardando {espera}s...")
+
+                    # Se houver 3 erros 429 seguidos, para a execução
+                    if erros_429 >= 3:
+                        raise Exception(f"❌ BLOQUEIO DO SERVIDOR DETECTADO! Muitos erros 429 seguidos. Parando execução.")
+
                     time.sleep(espera)
                     continue
+
                 r.raise_for_status()
+                erros_429 = 0
                 return BeautifulSoup(r.text, "html.parser")
             except requests.exceptions.RequestException as e:
                 tentativa += 1
