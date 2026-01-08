@@ -1413,4 +1413,16 @@ if __name__ == "__main__":
         if scraper:
             scraper._salvar_cache_urls()
 
+            # Salva checkpoint indicando em qual página e qual URL parou
+            try:
+                checkpoint_info = f"ERRO NA PÁGINA {page_num}\nURL: {url}\nÚltimo erro: {str(e)}"
+                with open(scraper.checkpoint_path, 'w', encoding='utf-8') as f:
+                    f.write(checkpoint_info)
+                print(f"📌 Checkpoint salvo com informações de erro:")
+                print(f"   - Página: {page_num}")
+                print(f"   - URL: {url}")
+                print(f"   - Erro: {str(e)}")
+            except:
+                pass
+
         raise
