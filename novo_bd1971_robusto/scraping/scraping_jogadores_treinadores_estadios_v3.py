@@ -1283,7 +1283,7 @@ class OGolScraperRelacional:
 
         ultimo_jogo = None
         ultima_url_partida = None
-        
+
         if os.path.exists(self.checkpoint_path):
             with open(self.checkpoint_path, "r", encoding="utf-8") as f:
                 ultimo_jogo = f.read().strip()
@@ -1389,8 +1389,12 @@ class OGolScraperRelacional:
                 'prorrogacao': prorrogacao
             })
 
+            # Salva a última URL de partida processada com sucesso
+            ultima_url_partida = link_partida
+
+            checkpoint_info = f"Página: {page_atual}\nURL Página: {self.url_lista}\nURL Última Partida: {link_partida or 'N/A'}"
             with open(self.checkpoint_path, "w", encoding="utf-8") as f:
-                f.write(link_partida or "")
+                f.write(checkpoint_info)
 
             self.salvar_csvs()
 
