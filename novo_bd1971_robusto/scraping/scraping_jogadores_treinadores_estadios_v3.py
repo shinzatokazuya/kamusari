@@ -1236,7 +1236,7 @@ class OGolScraperRelacional:
     # Execução principal
     # ======================================================
 
-    def executar(self, edicao_id=1, page_atual=1, page_maxima=1, is_ultima_pagina=False):
+    def executar(self, edicao_id=1, page_atual=1, page_maxima=1):
         """Execução principal do scraper"""
         print("🚀 Iniciando scraping...")
 
@@ -1351,17 +1351,18 @@ class OGolScraperRelacional:
 
             self.salvar_csvs()
 
-            # Se for o última jogo da página, limpa o checkpoint
-            if is_ultima_pagina and os.path.exists(self.checkpoint_path):
-                os.remove(self.checkpoint_path)
-                print(f"🗑️ Checkpoint limpo (último jogo processado)")
+        # Se chegou aqui, a página foi processada com sucesso
+        # Limpa o checkpoint para a próxima página
+        if os.path.exists(self.checkpoint_path):
+            os.remove(self.checkpoint_path)
+            print(f"🗑️ Checkpoint limpo (página {page_atual} processada com sucesso)")
 
-            # Detecta se a página estava vazia (possível bloqueio)
-            if not self.partidas_lista or len(self.partidas_lista) == 0:
-                print(f"⚠️ ATENÇÃO: Nenhuma partida processada nesta página!")
-                if page_atual < page_maxima:
-                    print(f"❌ PARANDO EXECUÇÃO: Página vazia detectada na página {page_atual}/{page_maxima}")
-                    raise Exception(f"Página vazia na página {page_atual} - possível bloqueio do servidor")
+        # Detecta se a página estava vazia (possível bloqueio)
+        if not self.partidas_lista or len(self.partidas_lista) == 0:
+            print(f"⚠️ ATENÇÃO: Nenhuma partida processada nesta página!")
+            if page_atual < page_maxima:
+                print(f"❌ PARANDO EXECUÇÃO: Página vazia detectada na página {page_atual}/{page_maxima}")
+                raise Exception(f"Página vazia na página {page_atual} - possível bloqueio do servidor")
 
         print("\n✅ Scraping concluído!")
 
