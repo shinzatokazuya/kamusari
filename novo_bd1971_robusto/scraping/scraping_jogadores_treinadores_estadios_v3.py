@@ -1416,12 +1416,12 @@ class OGolScraperRelacional:
 
 if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
-    min_page =
-    max_page =
-    edicao_id = 
+    min_page = 1
+    max_page = 9
+    edicao_id = 4
 
     # URL base (sem o parâmetro page)
-    url_base = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1973/2482/calendario?equipa=0&estado=1&filtro=&op=calendario&page="
+    url_base = "https://www.ogol.com.br/edicao/campeonato-nacional-de-clubes-1974/2483/calendario?equipa=0&estado=1&filtro=&op=calendario&page="
 
     # Cria uma única instância que será reutilizada entre páginas
     # Isso mantém o CACHE, tornando muito mais rápido!
