@@ -875,7 +875,7 @@ class OGolScraperRelacional:
         arbitro_id = None
 
         # Processa estádio e árbitro
-        header = soup.find("div", class_="header")
+        header = soup.find("div", class_="card-data")
         if header:
             for a_tag in header.find_all("a", href=True):
                 link = urljoin(self.base_url, a_tag["href"])
