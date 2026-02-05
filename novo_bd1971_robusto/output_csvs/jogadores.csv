@@ -233,7 +233,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 233,José Hidalgo Neto,Hidalgo,1943-11-03,,Brasil,,,,Meia (Volante),,1
 234,Renato Machado Pinto,Renatinho,1944-04-01,,Brasil,Curitiba (PR),,,Atacante,,1
 235,Rinaldo Luís Dias Amorim,,1939-02-19,Falecido - 2023-04-05 (84 anos),Brasil,Jurena (PE),,,Atacante (Ponta Esquerda),,1
-236,Hélio Dias de Oliveira,,1943-12-19,,Brasil,,,,Goleiro,,1
+236,Hélio Dias de Oliveira,Helio Dias,1943-12-19,,Brasil,,,,Goleiro,,1
 237,Manoel Caetano Silva,,1940-07-07,Falecido - 1994-03-09 (53 anos),Brasil,Rio Casca (MG),,,Defensor (Lateral Esquerdo),,1
 238,Pedro Paulo Teles Marcelino,Pedro Paulo,1945-08-15,Falecido - 2008-02-14 (62 anos),Brasil,Pedro Leopoldo (MG),,,Defensor (Lateral Direito),Destro,1
 239,Roberto Alfredo Perfumo,Roberto Perfumo,1942-10-03,Falecido - 2016-03-10 (73 anos),Argentina,Sarandí,179,75,Defensor,,1
@@ -521,7 +521,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 527,Cláudio César de Aguiar Mauriz,,1940-08-22,Falecido - 1979-06-24 (38 anos),Brasil,,172,,Goleiro,,1
 528,Ladislao Mazurkiewicz Iglesias,Ladislao Mazurkiewicz,1945-02-14,Falecido - 2013-01-02 (67 anos),Uruguai,Piriápolis,179,78,Goleiro,Ambidestro,1
 529,Raul Fernandes da Costa Filho,Raul Fernandes,1941-12-02,,Brasil,Belo Horizonte (MG),,,Defensor (Zagueiro),,1
-530,Paulo César de Souza,,1950-09-29,Falecido - 2002-07-31 (51 anos),Brasil,Alfenas (MG),171,66,Atacante (Ponta Esquerda),Canhoto,1
+530,Paulo César de Souza,Paulinho,1950-09-29,Falecido - 2002-07-31 (51 anos),Brasil,Alfenas (MG),171,66,Atacante (Ponta Esquerda),Canhoto,1
 531,Jorge Vieira,Jorginho Carvoeiro,1953-10-11,Falecido - 1977-07-13 (23 anos),Brasil,Castelo (ES),171,64,Atacante (Ponta Direita),Destro,1
 532,Carlos Alberto Costa,Carlinhos,1947-11-12,,Brasil,Votorantim (SP),,,Atacante,Canhoto,1
 533,Alfredo Domingo Obberti,Alfredo Obberti,1945-08-12,Falecido - 2021-07-05 (75 anos),Argentina,Buenos Aires,185,,Atacante,,1
@@ -707,12 +707,12 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 713,Mário José Braga,Ma 769 Rio Braga,1944-01-02,,Brasil,Cachoeira do Itapemirim (ES),,,Defensor (Zagueiro),,1
 714,Luiz José Cruz de Almeida,,1947-05-01,,Brasil,Salvador (BA),,,Defensor (Zagueiro),,1
 715,Carlos Alberto de Oliveira Souza,,1951-06-09,,Brasil,Belo Horizonte (MG),,,Meia,,1
-716,Arismario Carvalho da Silva,,1949-10-01,,Brasil,Caruaru (PE),,,Defensor (Lateral Direito),Destro,1
+716,Arismario Carvalho da Silva,Borges,1949-10-01,,Brasil,Caruaru (PE),,,Defensor (Lateral Direito),Destro,1
 717,Alberto Edmar Nascimento,Beto Nascimento,1946-12-02,,Brasil,Girua (RS),,,Defensor (Zagueiro),,1
 718,Valdemar Costa Sobrinho,,1949-08-31,,Brasil,Belo Horizonte (MG),,,Defensor (Zagueiro),,1
 719,José Amílton Melo de Carvalho,Amilton Melo,1949-06-25,Falecido - 1997-07-06 (48 anos),Brasil,Tamboril (CE),,,Atacante (Ponta Esquerda) / Atacante (Ponta Esquerda),,1
 720,José Marcelo de Almeida,Marcelo,1947-05-19,,Brasil,Itabaiana (SE),,,Goleiro,,1
-721,Dorival Arrivabene,,1946-11-03,,Brasil,São Paulo (SP),,,Defensor (Lateral Direito),,1
+721,Dorival Arrivabene,Leleu,1946-11-03,,Brasil,São Paulo (SP),,,Defensor (Lateral Direito),,1
 722,Severino Fortunato da Silva,,1946-02-12,,Brasil,Recife (PE),,,Atacante (Centroavante),,1
 723,Jair da Costa,Jair,1940-07-09,Falecido - 2025-04-26 (84 anos),Brasil,Santo André (SP),173,67,Atacante (Ponta Direita),Destro,1
 724,Jésum Gabriel,Jesum,1953-12-25,,Brasil,Corinto (MG),165,66,Atacante (Ponta Esquerda),Canhoto,1
@@ -761,7 +761,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 767,Gilvan Pereira da Silva,Gilva,1953-03-26,,Brasil,Recife (PE),,,Atacante (Ponta Esquerda),Canhoto,1
 768,José Carlos dos Santos Molinos,,1945-12-01,,Brasil,Uruguaiana (RS),,,Goleiro,,1
 769,Bernardino de Moraes,Moraes,1942-10-06,,Brasil,Barra do Piraí (RJ),,,Atacante (Ponta Esquerda),,1
-770,Levir Culpi,,1953-02-28,,Brasil,Curitiba (PR),178,73,Defensor (Zagueiro),,1
+770,Levir Culpi,Levir,1953-02-28,,Brasil,Curitiba (PR),178,73,Defensor (Zagueiro),,1
 771,Abel Carlos da Silva Braga,Abel Braga,1952-09-01,,Brasil,Rio de Janeiro (RJ),187,83,Defensor (Zagueiro),Canhoto,1
 772,Dimas Filgueiras Filho,Dimas,1944-05-13,Falecido - 2023-12-22 (79 anos),Brasil,,,,Defensor,,1
 773,Josenildo Domingos da Silva,,1947-11-27,,Brasil,Recife (PE),,,Atacante,,1
@@ -1539,3 +1539,9 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1545,Túlio Tangioni Neto,Tulio,1949-01-04,,Brasil,São Paulo (SP),,,Defensor (Zagueiro),,1
 1546,Eudes Lacerda Medeiros,Eudes,1955-04-08,,Brasil,Lorena - SP,,,Meia,Canhoto,1
 1547,Vanderlei Luxemburgo da Silva,Vanderlei Luxemburgo,1952-05-10,,Brasil,Nova Iguaçu (RJ),,,Defensor (Lateral Esquerdo),Canhoto,1
+1548,Geraldo do Espirito Santo,Leo,1951-03-14,,Brasil,Salvador (BA),,,Defensor (Lateral Direito),,1
+1549,Raymundo Marques de Souza,Marques,-,,Brasil,,,,Atacante,,1
+1550,Neto,Neto Ii,-,,Brasil,,,,Atacante,,1
+1551,Edair Rosa de Souza,Edair,1950-02-19,,Brasil,Rio de Janeiro (RJ),,,Defensor (Zagueiro),,1
+1552,Marcos Antônio de Araújo,Marcos,1953-09-25,,Brasil,Recife (PE),,,Defensor (Lateral Direito),,1
+1553,Reinaldo Francisco de Oliveira,Reinaldo,1953-12-11,Falecido - 2024-09-27 (70 anos),Brasil,Natal (RN),,,Atacante (Centroavante),Ambidestro,1
