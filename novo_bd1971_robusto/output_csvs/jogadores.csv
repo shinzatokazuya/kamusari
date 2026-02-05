@@ -16,7 +16,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 15,Luiz Paes Leme,Turcao,1945-01-24,,Brasil,,,,Defensor,,1
 16,Orlando Pereira,Orlando,1949-01-22,Falecido - 1999-09-04 (50 anos),Brasil,Santos,,,Defensor (Lateral Direito),,1
 17,Oscar Sales Bueno Filho,Dica,1947-07-13,,Brasil,Campinas (SP),,,Meia (Meia Ofensivo),Destro,1
-18,Clodoaldo Tavares Santana,,1949-09-25,,Brasil,Aracaju (SE),174,69,Meia (Volante) / Meia (Meia Ofensivo),Destro,1
+18,Clodoaldo Tavares Santana,Clodoaldo,1949-09-25,,Brasil,Aracaju (SE),174,69,Meia (Volante) / Meia (Meia Ofensivo),Destro,1
 19,Jáder da Silva Gonçalves,,1950-07-14,Falecido - 1999-03-17 (48 anos),Brasil,Arroio Grande (RS),,,Atacante (Ponta Direita),Destro,1
 20,Edson Arantes do Nascimento,Pele,1940-10-23,Falecido - 2022-12-29 (82 anos),Brasil,Três Corações (MG),173,66,Atacante (2º Atacante),Ambidestro,1
 21,Alvimar Eustáquio de Oliveira,Mazinho,1948-02-20,,Brasil,Belo Horizonte (MG),,,Atacante (Centroavante),,1
@@ -57,7 +57,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 56,Carlos Roberto de Carvalho,Carlos Roberto,1948-05-10,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
 57,Walter Machado Silva,,1940-01-02,Falecido - 2020-09-29 (80 anos),Brasil,Ribeirão Preto (SP),173,72,Atacante (Centroavante),Destro,1
 58,Paulo César Lima,,1949-06-16,,Brasil,Rio de Janeiro (RJ),175,75,Atacante (Ponta Esquerda) / Meia (Meia Esquerda),Canhoto,1
-59,José Márcio Pereira da Silva,,1948-11-17,,Brasil,Leopoldina (MG),173,,Atacante (Ponta Direita),Canhoto,1
+59,José Márcio Pereira da Silva,Zequinha,1948-11-17,,Brasil,Leopoldina (MG),173,,Atacante (Ponta Direita),Canhoto,1
 60,Alberto Silveira,,1937-12-22,Falecido - 2012-01-16 (74 anos),Brasil,,,,Goleiro,,1
 61,Dejair Barbosa,Dejair,1943-04-29,,Brasil,Bage (RS),,,Defensor (Lateral Direito),,1
 62,José Carlos Pereira,Ze Carlos,1947-08-09,,Brasil,São Gonçalo (RJ),,,Defensor (Lateral Esquerdo) / Meia (Volante),Canhoto,1
@@ -83,7 +83,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 82,Ramon da Silva Ramos,Ramon,1950-03-12,,Brasil,Sirinhaém (PE),,,Atacante (Centroavante) / Atacante (Ponta Esquerda),Canhoto,1
 83,João José Venceslau dos Santos,Cuica,1947-10-13,,Brasil,,,,Atacante,,1
 84,Fernando José de Santana,Fernando Santana,1947-12-25,,Brasil,,,,Atacante,,1
-85,Eduardo Roberto Stinghen,,1946-07-04,,Brasil,Jaragua do Sul (SC),186,86,Goleiro,Destro,1
+85,Eduardo Roberto Stinghen,Ado,1946-07-04,,Brasil,Jaragua do Sul (SC),186,86,Goleiro,Destro,1
 86,Luís Carlos Galter,Luis Carlos,1947-10-17,Falecido - 2025-03-07 (77 anos),Brasil,São Paulo,,,Defensor (Zagueiro),,1
 87,Pedro José Nepomuceno Cunha,Pedrinho,1945-12-10,,Brasil,Realengo - Rio de Janeiro,,,Defensor (Lateral Esquerdo) / Defensor (Zagueiro),,1
 88,José Guilherme Baldochi,Baldochi,1946-03-14,,Brasil,Batatais,189,,Defensor (Zagueiro),Destro,1
@@ -92,7 +92,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 91,Roberto Rivellino,,1946-01-01,,Brasil,São Paulo (SP),173,73,Meia (Meia Ofensivo) / Atacante (Ponta Esquerda),Canhoto,1
 92,Adão Ambrósio,Adaozinho,1951-10-17,Falecido - 2011-06-12 (59 anos),Brasil,São Paulo (SP),,,Meia (Meia Esquerda),Destro,1
 93,Wagno De Freitas,Vaguinho,1950-02-11,,Brasil,Sete Lagoas (MG),,,Atacante (Ponta Direita),Destro,1
-94,Sebastião Miranda da Silva Filho,,1952-02-26,,Brasil,Bebedouro (SP),179,75,Atacante (Centroavante),,1
+94,Sebastião Miranda da Silva Filho,Mirandinha,1952-02-26,,Brasil,Bebedouro (SP),179,75,Atacante (Centroavante),,1
 95,Aladim Luciano,Aladim,1946-10-10,,Brasil,Barra Mansa (RJ),171,69,Atacante (Ponta Esquerda),Canhoto,1
 96,Lourival Prudêncio Carvalho,Lourival,1945-01-31,,Brasil,Barretos (SP),,,Meia (Volante),,1
 97,Eidnilson José Torres Alves,,1943-09-04,,Brasil,Recife (PE),,,Meia,Destro,1
@@ -116,7 +116,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 115,José Eduardo de Castro,Ze Eduardo,1948-10-29,,Brasil,Salvador (BA),180,72,Meia (Meia Ofensivo) / Atacante (Centroavante),,1
 116,Arthur Antunes Coimbra,Zico,1953-03-03,,Brasil,Rio de Janeiro (RJ),172,65,Meia (Meia Ofensivo),Destro,1
 117,João Crevelin,Liminha,1944-06-15,Falecido - 2013-11-01 (69 anos),Brasil,,,,Meia,Canhoto,1
-118,Rogério Hetmanek,,1948-08-02,,Brasil,Rio de Janeiro (RJ),,,Atacante (Ponta Direita),Destro,1
+118,Rogério Hetmanek,Rogerio,1948-08-02,,Brasil,Rio de Janeiro (RJ),,,Atacante (Ponta Direita),Destro,1
 119,João Batista de Sales,,1945-01-19,,Brasil,Conselheiro Pena (MG),,,Atacante (Centroavante),,1
 120,Newton Gomes da Silva,Nilton,1951-12-25,,Brasil,Recife (PE),,,Defensor (Lateral Direito),,1
 121,Draílton José Lopes,Drailton,1949-09-18,,Brasil,Recife (PE),,,Meia (Volante),,1
@@ -163,7 +163,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 163,Raimundo Evandro da Silva Oliveira,Oliveira,1944-03-04,Falecido - 2000-01-12 (55 anos),Brasil,Belém (PA),,,Defensor (Lateral Direito),Destro,1
 164,Sildes de Souza Póvoas,Silveira,1946-07-02,,Brasil,Itaguaí (RJ),,,Defensor (Zagueiro),,1
 165,Francisco de Assis Luz e Silva,Assis,1943-10-04,Falecido - 2020-09-09 (76 anos),Brasil,Ananindeua (PA),,,Defensor (Lateral Esquerdo),,1
-166,Ivair Ferreira,,1945-01-27,Falecido - 2024-08-15 (79 anos),Brasil,Bauru (SP),,,Meia,Destro,1
+166,Ivair Ferreira,Ivair Ferreira,1945-01-27,Falecido - 2024-08-15 (79 anos),Brasil,Bauru (SP),,,Meia,Destro,1
 167,Wilton Cezar Xavier,Wilton,1947-10-13,Falecido - 2009-12-12 (62 anos),Brasil,Belo Horizonte (MG),,,Meia (Meia Ofensivo) / Atacante (Ponta Direita),Destro,1
 168,Denilson Custodio Machado,Denilson,1943-03-28,Falecido - 2024-10-01 (81 anos),Brasil,Campos dos Goytacazes (RJ),180,75,Meia (Meia Ofensivo) / Meia (Meia Central),Destro,1
 169,Adir Cid Rodrigues,Didi,1950-08-27,,Brasil,Campos (RJ),,,Meia,,1
@@ -173,7 +173,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 173,Adalberto Kretzer,Mickey,1948-03-19,Falecido - 2024-08-24 (76 anos),Brasil,Presidente Getúlio (SC),181,,Atacante (Centroavante),,1
 174,Emerson Leão,,1949-07-11,,Brasil,Ribeirão Preto (SP),182,,Goleiro,Destro,1
 175,Nélson Alves Moreno,,1940-03-07,Falecido - 2004-09-22 (64 anos),Brasil,São Paulo (SP),,,Defensor (Zagueiro),,1
-176,Luis Edmundo Pereira,,1949-06-21,,Brasil,Juazeiro (BA),181,,Defensor (Zagueiro),Destro,1
+176,Luis Edmundo Pereira,Luis Pereira,1949-06-21,,Brasil,Juazeiro (BA),181,,Defensor (Zagueiro),Destro,1
 177,Eurico Pedro de Faria,Eurico,1948-04-03,,Brasil,Uberlândia (MG),,,Defensor (Lateral Direito),Destro,1
 178,Ademar José Ribeiro,,1940-02-18,Falecido - 1992-04-12 (52 anos),Brasil,Guariba (SP),,,Defensor,,1
 179,Olegário Tolói de Oliveira,Dudu,1939-11-07,Falecido - 2024-06-28 (84 anos),Brasil,Araraquara (SP),172,63,Meia (Volante),,1
@@ -190,7 +190,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 190,João Farias Filho,,1940-12-11,Falecido,Brasil,Santos (SP),,,Meia (Meia Direita),Destro,1
 191,Heitor Martinho de Souza,Ratinho,1942-03-03,Falecido - 2001-02-11 (58 anos),Brasil,São Franscisco do Sul (SC),,,Meia,,1
 192,João Roberto Basílio,Basilio,1949-02-04,,Brasil,São Paulo (SP),,,Meia,Canhoto,1
-193,Dirceu Silva Melo Correia,,1949-01-09,,Brasil,Porto Alegre (RS),,,Atacante,,1
+193,Dirceu Silva Melo Correia,Dirceu,1949-01-09,,Brasil,Porto Alegre (RS),,,Atacante,,1
 194,Evanivaldo Castro Silva,Cabinho,1948-04-28,,Brasil,Salvador da Bahia,,,Atacante,,1
 195,Eronildes de Souza,Piau,1948-09-06,,Brasil,Guaimbé (SP),,,Atacante,,1
 196,Héctor Jesús Silva,,1940-02-01,Falecido - 2015-08-30 (75 anos),Uruguai,,176,71,Atacante,,1
@@ -213,9 +213,9 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 213,Miguel Ferreira de Almeida Pereira,Miguel,1949-09-20,,Brasil,Rio de Janeiro,178,72,Defensor (Zagueiro),Destro,1
 214,Paulo Cesar Barreiros,Alfinete,1949-05-30,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Esquerdo),Canhoto,1
 215,Moisés Mathias de Andrade,Moises,1948-01-10,Falecido - 2008-08-26 (60 anos),Brasil,Resende (RJ),179,76,Defensor,Canhoto,1
-216,Alcir Pinto Portela Prates,Alcir Portela,1944-05-09,Falecido - 2008-08-29 (64 anos),Brasil,Rio de Janeiro (RJ),178,75,Meia (Volante),Destro,1
+216,Alcir Pinto Portela Prates,Alcir,1944-05-09,Falecido - 2008-08-29 (64 anos),Brasil,Rio de Janeiro (RJ),178,75,Meia (Volante),Destro,1
 217,José Geraldo Felipe,Nenem,1953-05-29,,Brasil,Caratinga (MG),,,Meia,,1
-218,Afonso Celso Garcia Reis,,1947-09-03,,Brasil,Marília (SP),,,Meia,,1
+218,Afonso Celso Garcia Reis,Afonsinho,1947-09-03,,Brasil,Marília (SP),,,Meia,,1
 219,Jose Alberto Bougleaux,Bugle,1944-07-25,,Brasil,,,,Meia,,1
 220,José Rodrigues dos Santos,,1946-07-31,Falecido - 2015-00-00 (68 anos),Brasil,Conde (BA),,,Atacante (Ponta Esquerda),Canhoto,1
 221,Fernando Ferretti,Ferretti,1949-04-26,Falecido - 2011-08-29 (62 anos),Brasil,Rio de Janeiro,188,85,Atacante,,1
@@ -228,7 +228,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 228,Hermes da Rocha Freitas Júnior,Hermes,1947-02-16,,Brasil,Santos (SP),,,Defensor (Lateral Direito),Destro,1
 229,Nilo Roberto Neves,Nilo,1942-12-02,Falecido - 2022-06-24 (79 anos),Brasil,Porto Alegre (RS),,,Defensor (Lateral Esquerdo),Canhoto,1
 230,Reynaldo Domingues Mendes,,1948-06-14,,Brasil,Santos (SP),,,Meia,,1
-231,Walter Ferraz de Negreiros,,1946-08-06,,Brasil,,,,Meia (Meia Ofensivo),,1
+231,Walter Ferraz de Negreiros,Negreiros,1946-08-06,,Brasil,,,,Meia (Meia Ofensivo),,1
 232,Leocádio Consul,,1944-10-05,,Brasil,Mafra (SC),,,Meia,,1
 233,José Hidalgo Neto,Hidalgo,1943-11-03,,Brasil,,,,Meia (Volante),,1
 234,Renato Machado Pinto,Renatinho,1944-04-01,,Brasil,Curitiba (PR),,,Atacante,,1
@@ -237,7 +237,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 237,Manoel Caetano Silva,,1940-07-07,Falecido - 1994-03-09 (53 anos),Brasil,Rio Casca (MG),,,Defensor (Lateral Esquerdo),,1
 238,Pedro Paulo Teles Marcelino,Pedro Paulo,1945-08-15,Falecido - 2008-02-14 (62 anos),Brasil,Pedro Leopoldo (MG),,,Defensor (Lateral Direito),Destro,1
 239,Roberto Alfredo Perfumo,Roberto Perfumo,1942-10-03,Falecido - 2016-03-10 (73 anos),Argentina,Sarandí,179,75,Defensor,,1
-240,Wilson da Silva Piazza,,1943-02-25,,Brasil,Ribeirão das Neves,175,75,Meia (Volante) / Defensor (Zagueiro),Destro,1
+240,Wilson da Silva Piazza,Piazza,1943-02-25,,Brasil,Ribeirão das Neves,175,75,Meia (Volante) / Defensor (Zagueiro),Destro,1
 241,Natal de Carvalho Baroni,Natal,1945-11-24,,Brasil,Belo Horizonte (MG),164,61,Meia (Meia Direita) / Atacante (Ponta Direita),Destro,1
 242,Wanderley Eustáquio de Oliveira,Palhinha,1950-06-11,Falecido - 2023-07-17 (73 anos),Brasil,Belo Horizonte (MG),174,71,Meia (Meia Ofensivo) / Atacante (Centroavante),Destro,1
 243,José Carlos Bernardo,Ze Carlos,1945-04-28,Falecido - 2018-06-12 (73 anos),Brasil,Juiz de Fora (MG),172,,Meia (Meia Central) / Meia (Volante),,1
@@ -279,7 +279,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 282,Antônio Ferreira,Toninho Guerreiro,1942-08-10,Falecido - 1990-01-26 (47 anos),Brasil,Bauru-SP,,,Atacante (Centroavante),Destro,1
 283,Joel Mendes,Joel Mendes,1946-06-25,Falecido - 2024-12-09 (78 anos),Brasil,Campo Magro (PR),176,,Goleiro,,1
 284,José Roberto Marques,Ze Roberto,1945-05-31,Falecido - 2016-05-07 (70 anos),Brasil,Sertãozinho (SP),,,Atacante,,1
-285,Paulo César Carpegiani,,1949-02-07,,Brasil,Erechim (RS),172,71,Meia (Meia Central),Destro,1
+285,Paulo César Carpegiani,Carpegiani,1949-02-07,,Brasil,Erechim (RS),172,71,Meia (Meia Central),Destro,1
 286,Walter González,,1933-00-00,,Brasil,Rio de Janeiro (RJ),,,Goleiro,,1
 287,Ubaldo de Oliveira,Ubaldo,1946-05-16,,Brasil,Feira de Santana (BA),,,Defensor (Lateral Direito),Destro,1
 288,Albérico Luiz Pereira dos Santos,,1946-07-04,,Brasil,Recife (PE),,,Defensor (Lateral Esquerdo),Canhoto,1
@@ -304,7 +304,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 308,Jorge da Silva Pereira,,1949-04-22,,Brasil,Niteroi,170,72,Atacante,,1
 309,Paulo Roberto Rodrigues Matheus,Picole,1953-04-29,Falecido - 1995-08-05 (42 anos),Brasil,Santos (SP),,,Atacante,,1
 310,Carlos Alberto Rodrigues,Carlos Alberto,1947-07-12,,Brasil,São Paulo (SP),,,Atacante (Ponta Esquerda) / Meia (Meia Esquerda),Destro,1
-311,Juvenal Calixto Duarte,,1944-03-14,,Brasil,Maranguape (CE),,,Defensor (Lateral Direito),,1
+311,Juvenal Calixto Duarte,Mauro Calixto,1944-03-14,,Brasil,Maranguape (CE),,,Defensor (Lateral Direito),,1
 312,João Rômulo dos Santos,Joaozinho,1946-09-28,,Brasil,Itapipoca (CE),,,Meia,,1
 313,Erandy Pereira Montenegro,Erandy,1946-04-24,Falecido - 2023-12-07 (77 anos),Brasil,Bananeiras (PB),,,Atacante,,1
 314,Abel Verônico da Silva Filho,,1941-10-02,,Brasil,Rio de Janeiro (RJ),,,Atacante (Ponta Esquerda),Canhoto,1
@@ -348,7 +348,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 354,Rildo da Costa Menezes,Rildo,1942-01-23,Falecido - 2021-05-16 (79 anos),Brasil,Recife,173,,Defensor (Lateral Esquerdo),Canhoto,1
 355,Laírton José Giovanella,Lairton,1948-01-20,,Brasil,Lajeado (RS),,,Meia,,1
 356,João Batista Barbosa Ribeiro,Joao Ribeiro,1949-05-29,,Brasil,Pará de Minas (MG),,,Atacante,,1
-357,Marco Aurélio Moreira,,1952-02-10,,Brasil,Muriaé (MG),174,,Meia (Volante),,1
+357,Marco Aurélio Moreira,Marco Aurelio,1952-02-10,,Brasil,Muriaé (MG),174,,Meia (Volante),,1
 358,Ivan Xavier da Silva,,1948-12-24,,Brasil,Recife (PE),,,Defensor,,1
 359,Djalma Pereira Dias Júnior,,1939-08-21,Falecido - 1990-05-01 (50 anos),Brasil,Rio de Janeiro (RJ),,,Defensor (Zagueiro),Destro,1
 360,Fernando Ferreira de Lima,,1944-07-01,,Brasil,Caruaru (PE),,,Atacante (Ponta Esquerda),Canhoto,1
@@ -367,7 +367,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 373,Hélio Ribeiro Alves,Helio Show,1950-06-21,,Brasil,Fortaleza (CE),,,Goleiro,,1
 374,Benedito Benjamin Ferreira,,1943-11-04,,Brasil,Guará (SP),,,Defensor (Lateral Esquerdo),,1
 375,José Carlos dos Santos,,1947-09-28,,Brasil,Catanduva (SP),,,Meia (Volante),,1
-376,Ismael do Amaral Filho,,1948-12-20,,Brasil,Belo Horizonte (MG),,,Atacante,Destro,1
+376,Ismael do Amaral Filho,Ismael,1948-12-20,,Brasil,Belo Horizonte (MG),,,Atacante,Destro,1
 377,Pedrilho Gonçalves Filho,Pedrilho,1949-11-13,,Brasil,Pedro Leopoldo (MG),,,Atacante,,1
 378,Paulo Roberto Durães de Castilho,Guara,1946-03-24,,Brasil,Guaratinguetá (SP),,,Atacante (Ponta Direita),Destro,1
 379,Valdemir Germano Filho,,1948-03-10,,Brasil,Conselheiro Pena (MG),,,Meia,,1
@@ -398,7 +398,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 404,Dirceu José Guimarães,,1952-06-15,Falecido - 1995-09-15 (43 anos),Brasil,Curitiba (PR),172,66,Meia (Meia Ofensivo) / Atacante (2º Atacante),Canhoto,1
 405,Waltemiro Fernandes Pessoa,,1942-06-22,,Brasil,João Pessoa (PB),,,Meia (Ponta Direita),Destro,1
 406,Gilberto Cordeiro de Abreu,,1941-12-09,,Brasil,Maranguape (CE),,,Atacante,,1
-407,Antônio Lima dos Santos,,1942-01-18,Falecido - 2025-02-03 (83 anos),Brasil,São Sebastião do Paraíso (MG),173,73,Meia (Meia Central) / Defensor (Lateral Direito),Canhoto,1
+407,Antônio Lima dos Santos,Lima,1942-01-18,Falecido - 2025-02-03 (83 anos),Brasil,São Sebastião do Paraíso (MG),173,73,Meia (Meia Central) / Defensor (Lateral Direito),Canhoto,1
 408,Flávio Augusto dos Santos,Flavio,1949-09-05,,Brasil,Santa Maria (RS),,,Defensor (Zagueiro),,1
 409,Rubens Márcio Cordeiro Galaxe,Rubens Galaxe,1952-04-29,,Brasil,,170,67,Meia (Meia Direita),Destro,1
 410,João Francisco Pinheiro,,1947-08-06,,Brasil,Feira de Santana (BA),,,Meia,,1
@@ -409,11 +409,11 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 415,Edson Bastos Scott,Edson Scott,1950-06-04,,Brasil,Caxias do Sul (RS),,,Defensor (Lateral Esquerdo),Canhoto,1
 416,José Francisco de Moraes,Moraes,1948-07-26,,Brasil,Belo Horizonte (MG),,,Defensor (Zagueiro),,1
 417,Samuel Arruda,Samuel,1949-03-31,Falecido - 2006-02-05 (56 anos),Brasil,Mogi Guaçú,,,Defensor,,1
-418,Paulo Roberto Davoli,Paulo ,1949-01-16,,Brasil,Mogi Mirim (SP),,,Defensor (Zagueiro),,1
-419,Paulo César Martins,,1947-01-18,,Brasil,,,,Defensor (Lateral Esquerdo),,1
+418,Paulo Roberto Davoli,Paulo,1949-01-16,,Brasil,Mogi Mirim (SP),,,Defensor (Zagueiro),,1
+419,Paulo César Martins,Paulo Cesar Martins,1947-01-18,,Brasil,,,,Defensor (Lateral Esquerdo),,1
 420,Jaílson Guimarães,Jailson,1950-04-27,,Brasil,Rio de Janeiro,,,Atacante,Destro,1
 421,Raimundo Aguilera Solis,,1949-01-07,,Paraguai,Itacurubi de La Cordillera,187,79,Goleiro,,1
-422,Enéas de Camargo,,1954-03-18,Falecido - 1988-12-27 (34 anos),Brasil,São Paulo (SP),,,Atacante (Centroavante),Destro,1
+422,Enéas de Camargo,Eneas,1954-03-18,Falecido - 1988-12-27 (34 anos),Brasil,São Paulo (SP),,,Atacante (Centroavante),Destro,1
 423,Ângelo Paulino de Souza,Angelo,1953-05-30,Falecido - 2007-08-02 (54 anos),Brasil,Onça de Pitangui (MG),165,66,Meia (Meia Direita),Destro,1
 424,Hélio Luzia Batista Gilioli,,1941-05-22,,Brasil,,,,Meia,,1
 425,Jorge Hipólito dos Santos,Jorge Hipolito,1950-10-28,Falecido - 2014-03-18 (63 anos),Brasil,Duque de Caxias (RJ),,,Goleiro,,1
@@ -426,7 +426,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 432,Celso Ferreira,Celsinho,1950-10-02,,Brasil,São Paulo,173,69,Defensor (Lateral Esquerdo),,1
 433,Édson Ferreira Bonfim,Edson Ferreira,1945-10-20,,Brasil,Rio de Janeiro (RJ),,,Atacante (Centroavante),,1
 434,Selmar Rodrigues,,1942-02-17,,Brasil,Santana do Livramento (RS),,,Atacante,,1
-435,Gílson Siqueira Nunes,,1946-06-12,,Brasil,Rio de Janeiro,,,Atacante (Ponta Esquerda),,1
+435,Gílson Siqueira Nunes,Gilson Nunes,1946-06-12,,Brasil,Rio de Janeiro,,,Atacante (Ponta Esquerda),,1
 436,Jonas de Paula,Jonas,1944-04-25,,Brasil,Cachoeira do Itapemirim (ES),167,,Goleiro,,1
 437,Rainésio de Carvalho,,1943-10-31,,Brasil,Rio de Janeiro (RJ),,,Goleiro,,1
 438,Antônio Carlos Rosa Machado,,1949-08-08,,Brasil,Dom Pedrito (RS),,,Atacante (Centroavante),,1
@@ -434,7 +434,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 440,Adevaldo Virgílio Netto,,1943-08-16,,Brasil,Leopoldina (MG),,,Defensor (Lateral Esquerdo),,1
 441,Nélson Lopes Filho,Nelson Lopes,1952-03-14,Falecido - 1987-07-25 (35 anos),Brasil,São Paulo (SP),,,Meia (Meia Esquerda),Canhoto,1
 442,Alcindo Martha de Freitas,,1945-03-31,Falecido - 2016-08-27 (71 anos),Brasil,Sapucaia do Sul (RS),172,71,Atacante (Centroavante),Canhoto,1
-443,Luiz Carlos da Matt,,1950-09-19,,Brasil,São Gonçalo (RJ),,,Meia,,1
+443,Luiz Carlos da Matt,Lulinha,1950-09-19,,Brasil,São Gonçalo (RJ),,,Meia,,1
 444,Sérgio Roberto Silva,Sergio Roberto,1950-03-10,,Brasil,,,,Atacante,,1
 445,Erb Rocha do Nascimento,Erb,1949-01-09,,Brasil,Maceió (AL),,,Meia,,1
 446,José de Anchieta Fontana,,1940-12-31,Falecido - 1980-09-09 (39 anos),Brasil,Santa Teresa (ES),187,75,Defensor (Zagueiro),Destro,1
@@ -489,7 +489,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 495,Carlos Roberto Orrigo da Cunha,Gaucho,1953-03-03,,Brasil,Porto Alegre (RS),,,Defensor (Zagueiro),,1
 496,Armando Oliveira Bento,Tupa,1953-05-20,,Brasil,Porto Alegre (RS),,,Atacante,,1
 497,Raul Guilherme Plassmann,Raul Plassmann,1944-09-27,,Brasil,Antonina (PR),185,,Goleiro,Destro,1
-498,Juarez Alves Pimenta,,1955-07-09,,Brasil,Araçuaí (MG),,,Atacante (Centroavante),,1
+498,Juarez Alves Pimenta,Juarez Baiano,1955-07-09,,Brasil,Araçuaí (MG),,,Atacante (Centroavante),,1
 499,Luiz Carlos José da Silva,Luiz Carlos Beleza,1951-03-11,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Direito) / Defensor (Zagueiro),Destro,1
 500,José Aparecido da Conceição,Juca Show,1944-11-10,Falecido - 2011-12-31 (67 anos),Brasil,São Paulo (SP),,,Meia,,1
 501,José Fernando Pádua Lima,,1948-04-09,,Brasil,Salvador (BA),,,Atacante (Centroavante),,1
@@ -598,14 +598,14 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 604,José Édson Gomes da Silva,,1946-02-15,,Brasil,Orobo (PE),,,Defensor (Zagueiro),,1
 605,Nilson Florindo Andrade,Nilson Andrade,1949-12-08,,Brasil,Belo Horizonte (MG),,,Defensor (Zagueiro),Canhoto,1
 606,Adeildo José da Silva,,1945-11-15,,Brasil,Recife (PE),,,Defensor (Zagueiro),,1
-607,José de Anchieta da Silva,,1948-03-19,,Brasil,Natal (RN),,,Defensor (Lateral Esquerdo),Canhoto,1
+607,José de Anchieta da Silva,Anchieta,1948-03-19,,Brasil,Natal (RN),,,Defensor (Lateral Esquerdo),Canhoto,1
 608,William Alves de Oliveira,,1947-02-12,,Brasil,Ceara-Mirim (RN),,,Meia (Volante),,1
 609,Jailson Correia Aguiar,,1947-09-01,,Brasil,Natal (RN),,,Meia,,1
 610,Antonio Soares de Albuquerque,Soares,1951-04-11,,Brasil,Recife (PE),,,Atacante (Ponta Esquerda),Canhoto,1
 611,Alberi José Ferreira de Matos,Alberi,1945-01-28,Falecido - 2022-10-28 (77 anos),Brasil,Recife (PE),,,Atacante,,1
 612,Danilo Menezes Nuñez,,1945-02-17,,Uruguai,Rivera,,,Atacante,,1
 613,José Hugo de Jesus,,1940-07-21,,Brasil,Criciúma (SC),,,Goleiro,,1
-614,Djalma Batista Sales,,1945-07-30,,Brasil,Recife (PE),,,Defensor (Zagueiro),,1
+614,Djalma Batista Sales,Djalma Sales,1945-07-30,,Brasil,Recife (PE),,,Defensor (Zagueiro),,1
 615,Ademir Pedro Araújo,Ademir,1946-07-28,,Brasil,Maceió (AL),,,Defensor (Lateral Esquerdo),,1
 616,Adherbal Teixeira da Cunha Filho,Bauer,1945-08-08,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Esquerdo),,1
 617,José Ernesto Soares Costa,,1952-02-17,,Brasil,Maceió (AL),,,Meia,,1
@@ -699,7 +699,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 705,Miguel Couto Gomes Laranjeira,,1945-03-16,,Brasil,Rio de Janeiro (RJ),,,Atacante (Centroavante),,1
 706,Elias das Graças Travassos,Cuca,1951-01-30,,Brasil,Santarém (PA),,,Defensor (Lateral Esquerdo),Canhoto,1
 707,Antônio Ribeiro da Silva,,1946-06-10,,Brasil,Monteiro (PB),,,Defensor (Zagueiro),,1
-708,Jorge Mendes,,1946-05-19,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
+708,Jorge Mendes,Jorge Mendes,1946-05-19,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
 709,Barcímio Sicupira Júnior,Sicupira,1944-05-10,Falecido,Brasil,Lapa (PR),,,Meia,Destro,1
 710,Paulo de Oliveira Lima,Lima,1949-02-09,,Brasil,Ourinhos (SP),,,Defensor,Ambidestro,1
 711,Mário Sebastião Bochenek,Marinho,1946-09-14,,Brasil,Curitiba (PR),,,Defensor (Lateral Esquerdo),Canhoto,1
@@ -718,7 +718,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 724,Jésum Gabriel,Jesum,1953-12-25,,Brasil,Corinto (MG),165,66,Atacante (Ponta Esquerda),Canhoto,1
 725,Elías Batista Arruda,,1945-12-07,,Brasil,Caruaru (PE),,,Atacante,,1
 726,João Carlos Rodrigues,Joao Carlos,1947-06-23,,Brasil,Santos (SP),,,Defensor (Lateral Direito) / Defensor (Zagueiro),Destro,1
-727,Ivanir Santos Honorato,,1953-11-30,,Brasil,Novo Hamburgo (RS),,,Atacante,Ambidestro,1
+727,Ivanir Santos Honorato,Ivanir,1953-11-30,,Brasil,Novo Hamburgo (RS),,,Atacante,Ambidestro,1
 728,Otávio José Souto Pongeluppe,,1951-12-06,,Brasil,São Paulo (SP),,,Defensor (Zagueiro),,1
 729,Marco Antônio da Silva Vaz,,1950-01-16,,Brasil,Rio de Janeiro (RJ),,,Atacante (Ponta Direita),,1
 730,Lincoln Dias da Alves,,1943-09-07,,Brasil,Sabará (MG),,,Meia,,1
@@ -748,11 +748,11 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 754,Carlos Alberto dos Santos Couto,,1950-07-03,,Brasil,Rio de Janeiro (RJ),,,Atacante,,1
 755,Paulo do Nascimento Ribeiro,,1943-09-19,Falecido,Brasil,Rio de Janeiro (RJ),,,Defensor (Zagueiro),,1
 756,Warlindo Carneiro da Silva Filho,,1951-02-17,,Brasil,Campina Grande (PB),,,Goleiro,,1
-757,Mário dos Santos Corso Júnior,,1953-10-23,,Brasil,São Paulo (SP),,,Defensor,,1
+757,Mário dos Santos Corso Júnior,Mario,1953-10-23,,Brasil,São Paulo (SP),,,Defensor,,1
 758,Paulo Maurício Ferreira de Amorim,,1950-11-05,,Brasil,Recife (PE),,,Meia,,1
 759,Baltazar Germano de Aguiar,,1950-12-05,,Brasil,,,,Meia (Volante),,1
 760,Benivaldo Silva Feitosa,Feitosa,1951-09-27,,Brasil,Saúde (BA),,,Meia,,1
-761,Jair Antônio Bragança dos Reis,,1949-11-16,,Brasil,Rio de Janeiro (RJ),,,Goleiro,,1
+761,Jair Antônio Bragança dos Reis,Jair Braganca,1949-11-16,,Brasil,Rio de Janeiro (RJ),,,Goleiro,,1
 762,Domingos dos Santos,Domingos,1947-08-03,,Brasil,Santa Maria (RS),,,Defensor (Zagueiro),,1
 763,José Rinaldo Tasso Lasalvia,Nado,1939-01-15,Falecido - 2013-05-03 (74 anos),Brasil,Olinda (PE),164,68,Atacante (Ponta Direita) / Meia (Meia Direita),Destro,1
 764,Octávio Corrêa César Filho,Octavio,1944-10-28,,Brasil,Rio de Janeiro (RJ),,,Goleiro,,1
@@ -767,8 +767,8 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 773,Josenildo Domingos da Silva,,1947-11-27,,Brasil,Recife (PE),,,Atacante,,1
 774,Ronei Paulo Travi,Picasso,1939-05-07,,Brasil,Canela (RS),,,Goleiro,,1
 775,Álvaro Horácio Andrade de Carvalho,Alvaro,1950-03-17,,Brasil,Ubá (MG),,,Defensor (Lateral Direito),Destro,1
-776,José Maria de Souza Neto,,1953-01-31,,Brasil,Recife,,,Meia (Volante),,1
-777,Manoel Fernando Jucá Neves,,1944-03-12,,Brasil,Belém (PA),,,Atacante,,1
+776,José Maria de Souza Neto,Ze Maria,1953-01-31,,Brasil,Recife,,,Meia (Volante),,1
+777,Manoel Fernando Jucá Neves,Neves,1944-03-12,,Brasil,Belém (PA),,,Atacante,,1
 778,Pedronito Barbosa da Silva,,1941-06-01,,Brasil,Olinda (PE),,,Goleiro,,1
 779,Nélson Gonçalves Torres,Nelson Torres,1945-12-31,,Brasil,Pedro Leopoldo (MG),,,Defensor (Zagueiro),,1
 780,Roberto Azevedo Newton,,1948-08-07,,Brasil,Maceió (AL),,,Defensor (Lateral Direito),,1
@@ -782,9 +782,9 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 788,Dionisio Muniz Trajano,Mano,1947-10-09,,Brasil,Fortaleza (CE),,,Meia (Volante) / Atacante (Ponta Direita),,1
 789,José Eduardo Rebelo de Souza,,1951-07-26,,Brasil,,,,Atacante (Ponta Esquerda),,1
 790,Marco Antônio,,-,,Brasil,,,,Meia,,1
-791,Cláudio Roberto Gomes,,1951-04-04,Falecido - 2008-12-25 (57 anos),Brasil,Porto Alegre (RS),,,Defensor (Lateral Direito) / Defensor (Lateral Esquerdo),Ambidestro,1
+791,Cláudio Roberto Gomes,Claudio Radar,1951-04-04,Falecido - 2008-12-25 (57 anos),Brasil,Porto Alegre (RS),,,Defensor (Lateral Direito) / Defensor (Lateral Esquerdo),Ambidestro,1
 792,Bolívar Modualdo Guedes,Bolivar Guedes,1954-12-21,,Brasil,Porto Alegre (RS),183,78,Defensor (Zagueiro) / Defensor (Lateral Esquerdo),,1
-793,Luiz Alberto Oliveira Santos,,1949-03-12,,Brasil,Feira de Santana (BA),,,Defensor (Lateral Direito),,1
+793,Luiz Alberto Oliveira Santos,Luiz Alberto,1949-03-12,,Brasil,Feira de Santana (BA),,,Defensor (Lateral Direito),,1
 794,Valdir Borck,Di,1943-09-16,Falecido - 2004-04-09 (60 anos),Brasil,Brusque (SC),,,Defensor,,1
 795,Altivo de Souza Filho,Altivo,1948-04-26,,Brasil,Rio de Janeiro (RJ),,,Defensor (Zagueiro),,1
 796,Ademir José Gonçalves,Ademir Goncalves,1946-11-19,Falecido,Brasil,Santa Bárbara do Oeste,,,Defensor (Zagueiro),Ambidestro,1
@@ -821,7 +821,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 827,Manoel José Soeiro,Soeiro,-,,Brasil,,,,Atacante,,1
 828,Mário de Queiroz Motta Júnior,Mario,1954-03-10,,Brasil,,180,74,Atacante (Centroavante),,1
 829,Armando Colonesi,Armando,1947-01-22,,Brasil,São Paulo (SP),,,Goleiro,,1
-830,Laércio Santos,,1953-12-17,,Brasil,Montes Claros (MG),,,Defensor (Zagueiro),,1
+830,Laércio Santos,Laercio,1953-12-17,,Brasil,Montes Claros (MG),,,Defensor (Zagueiro),,1
 831,Wladimir Rodrigues dos Santos,Wladimir,1954-08-29,,Brasil,São Paulo,169,64,Defensor (Lateral Esquerdo),Canhoto,1
 832,Ivan Corrêa da Silva,Ivan,1952-03-30,Falecido - 2022-03-05 (69 anos),Brasil,São Paulo (SP),,,Atacante (Ponta Direita),Destro,1
 833,Jair da Silva Santos,Jair,1943-05-24,,Brasil,Rio de Janeiro,,,Meia,Canhoto,1
@@ -842,7 +842,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 848,Luiz Antônio de Oliveira Lima,Luizinho,1947-09-15,,Brasil,Rio de Janeiro (RJ),,,Atacante,,1
 849,Paulo Ferreira dos Santos,,1943-01-12,,Brasil,São Luiz Gonzaga (RS),,,Meia,,1
 850,Jorge Augusto Ferreira de Aragão,Beijoca,1954-04-23,,Brasil,Salvador (BA),,,Atacante (Centroavante),Ambidestro,1
-851,Jesus Carlos da Silva,,1943-09-26,,Brasil,Baldim (MG),,,Goleiro,,1
+851,Jesus Carlos da Silva,Careca,1943-09-26,,Brasil,Baldim (MG),,,Goleiro,,1
 852,João César Neto Filho,,1951-06-22,,Brasil,Belo Horizonte (MG),,,Meia,,1
 853,Ivo Sodré,,1943-07-03,,Brasil,Niterói (RJ),,,Meia,,1
 854,Gilberto Alves,Gil,1950-12-24,,Brasil,Nova Lima (MG),182,81,Atacante (Ponta Direita),Destro,1
@@ -876,7 +876,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 882,José Raimundo da Silva,Matinha,1950-11-01,,Brasil,Pará de Minas (MG),175,74,Meia (Volante),Canhoto,1
 883,Lúcio Eleutério da Cruz,Lucinho,1951-02-20,,Brasil,Itabira (MG),165,,Meia (Meia Ofensivo) / Atacante (Centroavante),Destro,1
 884,Lincoln de Freitas Neves,Lincoln,1949-08-16,,Brasil,Uberlândia (MG),,,Atacante (Centroavante),Destro,1
-885,Ulisses Pernambucano Gama de Menezes,,1945-02-10,,Brasil,,,,Atacante (Centroavante),,1
+885,Ulisses Pernambucano Gama de Menezes,Ulisses,1945-02-10,,Brasil,,,,Atacante (Centroavante),,1
 886,Valtuir Laureano Marques,Tuira,1948-01-03,,Brasil,Parauna (GO),,,Atacante,,1
 887,Antônio Carlos Reis de Oliveira,Reis,1941-12-16,,Brasil,Santo Amaro (BA),,,Atacante,,1
 888,Ênio Benedito de Araújo,Enio,1942-08-14,,Brasil,Salvador (BA),,,Defensor (Zagueiro),,1
@@ -902,7 +902,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 908,Nílton Nunes,,1947-03-27,,Brasil,Florianópolis (SC),,,Meia,,1
 909,Moacir Rosa Filho,Moacir,1949-11-12,,Brasil,Florianópolis (SC),,,Meia,,1
 910,Laudares Veloso,,1952-06-06,,Brasil,Florianopólis (SP),,,Atacante (Ponta Direita),Destro,1
-911,Amilcar João Batistela,,1947-02-13,,Brasil,Videira (SC),,,Atacante,,1
+911,Amilcar João Batistela,Severo,1947-02-13,,Brasil,Videira (SC),,,Atacante,,1
 912,Neilor Eduardo Salles,,1951-02-08,,Brasil,São Paulo (SP),,,Atacante,,1
 913,Luiz Éverton Rodrigues,,1950-11-04,,Brasil,Montenegro (RS),,,Atacante (Centroavante),,1
 914,Benedito de Assis,Dito Cola,1948-10-23,,Brasil,Ouro Fino (MG),,,Atacante,,1
@@ -1026,13 +1026,13 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1032,Antônio Neviton do Carmo,Neviton,1942-06-08,,Brasil,Itaparica (BA),,,Atacante,Canhoto,1
 1033,Gabriel Cardoso Nascimento,,1953-09-23,,Brasil,Belém (PA),,,Atacante,,1
 1034,Aparecido Bernardes,Cidao,1947-02-27,,Brasil,Garça (SP),,,Defensor (Zagueiro),,1
-1035,Joao Barbosa Fonseca,,1953-07-29,,Brasil,Trairi (CE),,,Defensor (Lateral Esquerdo),,1
-1036,Celso Tadeu Carpeggiani,,1947-03-05,,Brasil,Erechim,170,69,Meia,,1
+1035,Joao Barbosa Fonseca,Grilo,1953-07-29,,Brasil,Trairi (CE),,,Defensor (Lateral Esquerdo),,1
+1036,Celso Tadeu Carpeggiani,Borjao,1947-03-05,,Brasil,Erechim,170,69,Meia,,1
 1037,José Paulo Correia Pinto,Paulinho Carimbo,1951-07-28,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Direito),Destro,1
 1038,Alberto Honorio Filho,Beto,1947-05-18,,Brasil,Vassouras (RJ),,,Defensor (Lateral Esquerdo),,1
 1039,Jair Picerni,,1944-10-20,,Brasil,São Paulo (SP),,,Defensor (Lateral Direito),Destro,1
 1040,Carlos Alberto Silva Cavalcante,,1945-01-19,,Brasil,Belém (PA),,,Meia (Volante),,1
-1041,Cláudio Adalberto Adão,,1955-07-02,,Brasil,Volta Redonda (RJ),,,Atacante (Centroavante),Destro,1
+1041,Cláudio Adalberto Adão,Claudio Adao,1955-07-02,,Brasil,Volta Redonda (RJ),,,Atacante (Centroavante),Destro,1
 1042,Maurício Miranda,Mauricio,1951-04-15,,Brasil,Monte Azul Paulista (SP),,,Defensor (Lateral Direito),,1
 1043,José Tanese,Tanese,1945-10-24,,Brasil,São Paulo (SP),,,Atacante,,1
 1044,Geraldo Cleofas Dias Alves,Geraldo Assoviador,1954-04-16,Falecido - 1976-08-26 (22 anos),Brasil,Barão de Cocais,176,,Meia (Meia Central),Destro,1
@@ -1053,7 +1053,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1059,Édson Pereira de Oliveira,Edinho,1953-07-30,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
 1060,Antônio de Lima,,1945-02-21,,Brasil,Fortaleza,,,Meia,,1
 1061,Willi Schmidt,Willi,1949-07-29,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
-1062,Alfredo de Lima Fernandes,,1948-10-17,,Brasil,Belém (PA),,,Atacante,,1
+1062,Alfredo de Lima Fernandes,Alfredinho,1948-10-17,,Brasil,Belém (PA),,,Atacante,,1
 1063,Cláudio Gomes de Oliveira,Claudio Oliveira,1954-07-30,,Brasil,Goiania (GO),,,Defensor (Zagueiro),,1
 1064,José Carlos dos Santos,Santos,1946-07-26,,Brasil,São Paulo (SP),,,Defensor,,1
 1065,Mario Assunção de Carvalho,Marinho,1952-08-13,,Brasil,Belém (PA),,,Defensor (Lateral Direito),Destro,1
@@ -1109,7 +1109,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1115,Claudionor,Claudionor,-,,Brasil,,,,Defensor,,1
 1116,Célio Furtado Rodrigues,Celio Rodrigues,1948-10-12,,Brasil,Penalva (MA),164,59,Defensor (Lateral Direito),Destro,1
 1117,Olavo Dorico Vieira,Vacaria,1949-01-26,Falecido - 2016-07-29 (67 anos),Brasil,Urussanga (SC),,,Defensor (Lateral Esquerdo),Canhoto,1
-1118,José Antônio Guaraldo,,1950-10-31,,Brasil,Jaboticabal (SP),,,Atacante,,1
+1118,José Antônio Guaraldo,Ze Antonio,1950-10-31,,Brasil,Jaboticabal (SP),,,Atacante,,1
 1119,Marivaldo Paranhos Prado,Paranhos,1947-12-03,,Brasil,Maceió (AL),,,Defensor (Zagueiro),,1
 1120,Antônio Carlos da Silva,Silva,1952-08-24,,Brasil,,,,Meia,,1
 1121,Amauri Vital da Silva,Amauri,1953-02-24,,Brasil,São Paulo (SP),,,Atacante,,1
@@ -1130,7 +1130,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1136,Orandir Portassi Lucas,Didi Pedalada,1946-07-23,,Brasil,,,,Atacante,,1
 1137,Djalma Linhares de Araújo,Djalma,1955-06-21,,Brasil,Macaíba (RN),174,65,Defensor (Zagueiro) / Meia (Volante),Destro,1
 1138,Gerásio Nunes de Lira,Nunes,1949-04-03,,Brasil,Itambé,,,Meia,,1
-1139,Carlos Henrique Aud dos Santos,,1947-12-11,,Brasil,São Pedro da Aldeia (RJ),,,Goleiro,,1
+1139,Carlos Henrique Aud dos Santos,Carlos Henrique,1947-12-11,,Brasil,São Pedro da Aldeia (RJ),,,Goleiro,,1
 1140,Jorge Pinto Henriques,,1953-03-25,,Brasil,Campos (RJ),,,Defensor (Zagueiro),,1
 1141,Tirson Maltez Frost Rêgo,Tirson,1949-01-09,,Brasil,Salvador (BA),,,Meia (Meia Direita),Destro,1
 1142,Mario Antonio Francelino,Marinho,1953-03-26,,Brasil,Mogi-Guaçu (SP),,,Defensor (Lateral Direito),Destro,1
@@ -1553,3 +1553,75 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1559,Alfredo Jorge Ebling Bercht,Alfredo,-,,Brasil,Rio Grande do Sul,,,Goleiro,,1
 1560,Alzir Lopes Maciel,Alzir,1954-10-25,,Brasil,,180,72,Atacante,,1
 1561,Perivaldo Lúcio Dantas,Perivaldo,1953-07-12,Falecido - 2017-07-27 (64 anos),Brasil,Itabuna (BA),178,68,Defensor (Lateral Direito),Destro,1
+1562,Francisco de Assis Silva,Assis Paraiba,1955-11-20,,Brasil,Campina Grande (PB),,,Meia,,1
+1563,Humberto Dias do Sacramento,Humberto,1943-09-06,,Brasil,Japaratuba (SE),,,Defensor (Zagueiro),,1
+1564,Luiz Fábio da Silva,Luiz Fa 769 Bio,1951-03-18,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Direito),,1
+1565,Nei Severiano Dias,Nei Dias,1953-05-10,,Brasil,Rio de Janeiro,,,Defensor (Lateral Direito),Destro,1
+1566,João Batista Filho,Dauca,1951-11-17,,Brasil,Boa Esperanca (MG),,,Defensor (Zagueiro),,1
+1567,Antônio Mendes da Silva,Mendes,1956-10-03,,Brasil,,,,Defensor (Lateral Esquerdo),,1
+1568,Hermano Rodrigues de Melo,Mucurica,1957-10-18,,Brasil,,,,Meia,,1
+1569,Gilvan dos Santos,Timbo,1958-02-10,,Brasil,Maceió (AL),,,Meia (Volante),Canhoto,1
+1570,Acir Guilay,Acir,1951-10-20,,Brasil,União da Vitória (PR),,,Atacante,,1
+1571,Fernando Peres da Silva,Fernando Peres,1943-01-08,Falecido - 2019-02-10 (76 anos),Portugal,Algés,167,,Meia (Meia Esquerda) / Atacante (Ponta Esquerda),Canhoto,1
+1572,Maurício,Mauricio,-,,Brasil,,,,Goleiro,,1
+1573,Elias,Elias,-,,Brasil,,,,Atacante,,1
+1574,Neves,Neves,-,,Brasil,,,,Atacante,,1
+1575,Olacy da Conceição Cardoso Cardias,Olacy,1947-12-08,,Brasil,,,,Defensor,,1
+1576,Norberto Bueno,Norberto Mao De Onca,1950-07-03,Falecido,Brasil,Jaú (SP),178,76,Goleiro,Destro,1
+1577,Luís Carlos de Freitas,Luis Carlos Feijao,1946-08-17,Falecido,Brasil,São Paulo (SP),,,Atacante (Centroavante),Destro,1
+1578,Jorge Antônio dos Santos,Jorge Siri,1953-10-09,,Brasil,,,,Meia,,1
+1579,Élson Antônio Pereira,Elson,1952-04-16,,Brasil,Rio de Janeiro (RJ),,,Defensor (Lateral Esquerdo),,1
+1580,João Luís,Joao Luis,-,,Brasil,,,,Meia,,1
+1581,Flávio Benício Irineu,Benicio,1951-09-25,,Brasil,Fortaleza (CE),,,Atacante,,1
+1582,Leônidas de Salles Freire Júnior,Leo,1953-12-12,,Brasil,Rio de Janeiro,,,Defensor,Canhoto,1
+1583,Gérson Silva,Gerson,1951-09-26,,Brasil,Florianópolis (SC),,,Meia,,1
+1584,Mário Cabral do Amaral Júnior,Mario Cabral,1954-03-16,,Brasil,Fortaleza (CE),,,Meia,,1
+1585,Antônio Alexandre dos Santos,Alexandre,1952-05-27,,Brasil,Recife (PE),,,Defensor (Zagueiro),,1
+1586,Cedenir de Almeida Machado,Cedenir,1954-04-14,Falecido,Brasil,Canoas (RS),,,Defensor,Destro,1
+1587,Israel Barbosa,Israel,1953-11-26,,Brasil,Recife (PE),,,Atacante (Ponta Esquerda),Canhoto,1
+1588,Jarbas Vitório dos Santos,Jarbas,1955-04-24,,Brasil,Vila Velha (ES),175,,Atacante,Ambidestro,1
+1589,Francisco Ferreira Lobo,Francisco Picarra,1948-12-03,,Brasil,Fortaleza (CE),,,Atacante (Centroavante),,1
+1590,Djalma Pontes Cabral,Djalma,1956-04-04,,Brasil,Manaus (AM),,,Defensor (Zagueiro),,1
+1591,Nelson Leal,Nelson,1944-01-18,,Brasil,,,,Meia,,1
+1592,Agenor Suzano dos Reis,Ladel,1948-12-01,,Brasil,Jacarezinho (PR),,,Goleiro,,1
+1593,Carlos Bauer do Amaral,Bauer,1953-04-26,,Brasil,Aquidauana (MS),,,Defensor (Lateral Esquerdo),,1
+1594,José Carlos de Araújo,Araujo,1949-03-25,,Brasil,Rio Claro (SP),,,Meia (Volante),,1
+1595,Getúlio Pedro da Cruz,Getulio,1947-02-14,Falecido - 2008-04-04 (61 anos),Brasil,Matão (SP),172,66,Goleiro,,1
+1596,Vinicius Nogueira Pinto Guedes,Vinicius,1956-06-28,,Brasil,São Paulo (SP),,,Defensor (Lateral Esquerdo),,1
+1597,Clóvis Ferreira de Souza,Clovis,-,,Brasil,,,,Meia,,1
+1598,Ademir Campos Moreir,Quizumba,-,,Brasil,,,,Atacante,,1
+1599,Antônio Carlos Vieira da Cruz,Bitonho,1955-12-11,,Brasil,Teresina-PI,,,Defensor (Lateral Esquerdo),Canhoto,1
+1600,Roberto Domachoski,Roberto,1954-01-30,,Brasil,Curitiba (PR),,,Defensor,,1
+1601,Nazareno Florindo Brant,Nazareno,1952-03-28,,Brasil,Belo Horizonte (MG),,,Meia,,1
+1602,Demerval Luz Souza,Diguito,-,,Brasil,,,,Meia,,1
+1603,Rui Dias de Oliveira,Rui,1953-05-03,,Brasil,Belo Horizonte (MG),,,Defensor (Lateral Direito),,1
+1604,Mizael Torres Neto,Mizael,1947-10-31,Falecido - 2020-03-18 (72 anos),Brasil,Matosos (MG),,,Defensor (Zagueiro),,1
+1605,José Eduardo de Toledo,Ze Eduardo,1954-04-12,,Brasil,Campinas,,,Defensor (Zagueiro),,1
+1606,Antônio Alves da Silva,Alves,1954-04-01,,Brasil,São Paulo,,,Atacante (Centroavante),,1
+1607,Baiano,Baiano,-,,Brasil,,,,Meia,,1
+1608,Manoel Berto da Silva,Silva,1946-03-13,,Brasil,João Pessoa (PB),,,Defensor (Zagueiro),,1
+1609,Clésio dos Santos Machado,Clesio,1953-07-06,,Brasil,Rio de Janeiro (RJ),,,Atacante,,1
+1610,João Viana Guedes,Joao Viana,-,,Brasil,,,,Atacante,,1
+1611,José Adérson Lobão Barroso,Aderson,1952-09-19,,Brasil,Nova Timboteua,,,Meia,,1
+1612,José Augusto Ferreira de Jesus,Ze Augusto,1953-01-12,,Brasil,,,,Defensor (Zagueiro),,1
+1613,Washington Luiz Beltrão Pinto,Washington,1954-01-20,,Brasil,Salvador (BA),174,70,Meia (Meia Central),Destro,1
+1614,Fernando Jonas dos Santos,Jabuca,-,,Brasil,,,,Meia,,1
+1615,Antônio Rodrigues Filho,Neca,1950-04-15,,Brasil,Rio Grande - RS,,,Meia,Canhoto,1
+1616,Vavá,Vava,-,,Brasil,,,,Meia,,1
+1617,Jair Perone,Jair Perone,1954-09-11,,Brasil,Cotia (SP),,,Defensor,,1
+1618,Anésio Francelino Filho,Nezinho,1955-01-28,Falecido,Brasil,Mogi Guaçu (SP),,,Defensor (Zagueiro),,1
+1619,Fernando Luiz Antunes Luciano,Fernando,1953-06-14,,Brasil,Governador Valadares (MG),,,Defensor (Zagueiro),,1
+1620,Pedro Gomes Fiscina Filho,Fiscina,1953-04-18,,Brasil,,,,Defensor (Zagueiro),,1
+1621,João Batista Xavier da Silva,Batista,1953-01-27,,Brasil,Fortaleza (CE),,,Meia,,1
+1622,Olívio Pires Pitta,Pitta,1954-05-29,,Brasil,São Paulo (SP),,,Meia (Meia Esquerda) / Atacante (Ponta Esquerda),Canhoto,1
+1623,Décio Torres de Souza,Decio Pele,1943-05-20,,Brasil,Recife (PE),,,Defensor (Zagueiro),,1
+1624,Eurípedes José de Deus,Aripe,1954-08-17,,Brasil,Araguari (MG),,,Defensor (Lateral Esquerdo),Canhoto,1
+1625,João Luiz Correia,Joao Correia,1953-06-22,,Brasil,Sergipe,,,Meia,,1
+1626,Luiz Carlos Guterrez,Luiz Carlos Gaucho,1954-08-15,Falecido,Brasil,Lages (SC),,,Meia,,1
+1627,Marcos Antonio Medeiros de Sousa,Marquinhos,1955-06-11,,Brasil,,,,Atacante (Ponta Esquerda),Canhoto,1
+1628,Heleno Abreu de Oliveira,Heleno,1955-09-30,,Brasil,Belo Horizonte (MG),,,Meia (Volante),,1
+1629,Ricardo Longhi,Ricardo,1954-09-25,,Brasil,São Paulo (SP),,,Defensor (Lateral Esquerdo),Canhoto,1
+1630,Ademir,Ademir,-,,Brasil,,,,Atacante,,1
+1631,Gil Marques da Luz,Gil Marques,1953-01-08,,Brasil,Salvador (BA),,,Atacante,,1
+1632,Jorge José Fernandes,Jorge Fernandes,1950-09-18,,Brasil,São Gonçalo (RJ),,,Defensor (Zagueiro),Canhoto,1
+1633,Aílton Corrêa Arruda,Manga,1937-04-26,Falecido - 2025-04-08 (87 anos),Brasil,Recife,188,86,Goleiro,Destro,1
