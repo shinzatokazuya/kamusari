@@ -13969,3 +13969,10 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 13968,1685,80,7,Gol,Normal,82
 13969,1685,184,15,Entrou,,
 13970,1685,323,15,Entrou,,
+13971,1238,630,31,Substituição,,
+13972,1238,1210,31,Substituição,,
+13973,1238,850,31,Gol,Normal,73
+13974,1238,564,24,Gol,Gol Contra,87
+13975,1238,325,24,Gol,Normal,67
+13976,1238,1182,31,Entrou,,
+13977,1238,844,31,Entrou,,
