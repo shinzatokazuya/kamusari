@@ -13958,3 +13958,14 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 13957,1684,242,20,Substituição,,
 13958,1684,498,20,Entrou,,
 13959,1684,1084,20,Entrou,,
+13960,1685,177,15,Gol,Normal,
+13961,1685,361,15,Gol,Normal,25
+13962,1685,361,15,Gol,Normal,42
+13963,1685,361,15,Substituição,,
+13964,1685,1351,15,Substituição,,
+13965,1685,181,15,Gol,Normal,37
+13966,1685,181,15,Gol,Normal,40
+13967,1685,80,7,Gol,Normal,66
+13968,1685,80,7,Gol,Normal,82
+13969,1685,184,15,Entrou,,
+13970,1685,323,15,Entrou,,
