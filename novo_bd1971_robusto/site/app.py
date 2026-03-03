@@ -179,7 +179,6 @@ def index():
         FROM todos_jogos
         GROUP BY clube
         ORDER BY pts DESC, v DESC, sg DESC, gp DESC
-        LIMIT 10
     """, (ANO_ATUAL, ANO_ATUAL)).fetchall()
 
     # Últimos 10 jogos
