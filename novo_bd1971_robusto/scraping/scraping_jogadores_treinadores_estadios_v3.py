@@ -876,16 +876,16 @@ class OGolScraperRelacional:
 
         # Processa estádio e árbitro
         estadio_link = soup.find("a", href=lambda x: x and "estadio.php" in x)
-        arbitro_link = soup.find()
-        header = soup.find("div", class_="card-data__body")
+        arbitro_link = soup.find("a", href=lambda x: x and "arbitro" in x)
         if estadio_link:
             try:
                 link = urljoin(self.base_url, a_tag["href"])
                 estadio_id = self.processar_estadio(link)
             except Exception as e:
                 print(f"⚠️ Erro ao processar estádio: {e}")
-
-                    try:
+        if arbitro_link:
+            try:
+                link = 
                         arbitro_id = self.processar_arbitro(link)
                     except Exception as e:
                         print(f"⚠️ Erro ao processar árbitro: {e}")
