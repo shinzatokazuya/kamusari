@@ -603,7 +603,7 @@ class OGolScraperRelacional:
                 dados["nascimento"] = valor
             elif "Nacionalidade" in campo:
                 dados["nacionalidade"] = valor
-            elif "Naturalidade" in campo:
+            elif "País de Nascimento (Naturalidade)" in campo:
                 dados["naturalidade"] = valor
             elif "Posição" in campo:
                 dados["posicao"] = valor
