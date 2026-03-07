@@ -590,7 +590,7 @@ class OGolScraperRelacional:
             return None
 
         dados = {}
-        for div in container.find_all("div", class_="card-data__body"):
+        for div in container.find_all("div", class_=["card-data__row", "card-data__row hiddenbio"]):
             span = div.find("span")
             if not span:
                 continue
@@ -708,7 +708,7 @@ class OGolScraperRelacional:
             return None
 
         dados = {}
-        for div in container.find_all("div", class_=["bio", "bio_half"]):
+        for div in container.find_all("div", class_=["card-data__row", "card-data__row hiddenbio"]):
             span = div.find("span")
             if not span:
                 continue
