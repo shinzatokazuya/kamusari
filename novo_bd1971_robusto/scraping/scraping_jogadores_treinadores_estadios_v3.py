@@ -906,7 +906,7 @@ class OGolScraperRelacional:
             return estadio_id
 
         # TITULARES (primeira linha)
-        primeira_linha = rows[0]
+        primeira_linha = rows[-1]
         colunas = primeira_linha.find_all("div", class_=lambda c: c and "zz-tpl-col" in c)
 
         for idx, coluna in enumerate(colunas):
