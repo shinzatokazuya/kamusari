@@ -440,7 +440,7 @@ class OGolScraperRelacional:
             return None
 
         dados = {}
-        for div in container.find_all("div", class_=["card-data__body"]):
+        for div in container.find_all("div", class_=["card-data__body", "card-data__row hiddenbio"]):
             span = div.find("span")
             if not span:
                 continue
@@ -452,7 +452,7 @@ class OGolScraperRelacional:
 
             if "Nome" in campo and "nome" not in dados:
                 dados["nome"] = valor
-            elif "Apelido" in campo:
+            elif "Apelidos" in campo:
                 dados["apelido"] = valor
             elif "Ano de Fundação" in campo:
                 dados["fundacao"] = valor
