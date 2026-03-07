@@ -897,7 +897,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 903,Airton Raul de Andrade,Pinga,1953-00-00,,Brasil,Florianópolis (SC),,,Defensor (Lateral Direito),Destro,1
 904,Jaílson Colombi,,1948-05-21,,Brasil,Tubarão (SC),,,Defensor (Zagueiro),,1
 905,Jaime Casagrande,Casagrande,1949-08-18,Falecido - 2013-00-00 (63 anos),Brasil,Urussanga (SC),,,Defensor (Lateral Esquerdo),,1
-906,Adaírton Martins dos Santos,,1948-04-07,Falecido - 2007-02-27 (58 anos),Brasil,Florianópolis (SC),,,Defensor,,1
+906,Adaírton Martins dos Santos,Adairton,1948-04-07,Falecido - 2007-02-27 (58 anos),Brasil,Florianópolis (SC),,,Defensor,,1
 907,Almir José Gil,,1953-09-28,,Brasil,Florianópolis (SC),,,Meia (Volante),,1
 908,Nílton Nunes,,1947-03-27,,Brasil,Florianópolis (SC),,,Meia,,1
 909,Moacir Rosa Filho,Moacir,1949-11-12,,Brasil,Florianópolis (SC),,,Meia,,1
@@ -1767,3 +1767,15 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1773,Francisco Araujo da Silva,Da Silva,1957-09-04 (68 anos),,Brasil,Brasil (Fortaleza (CE)),,,Atacante,,1
 1774,Hélio Grimaldi,Grimaldi,1946-11-23 (79 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),,,Lateral Esquerdo,,1
 1775,Luiz Rodrigues da Rocha,Lula,1951-03-05 (75 anos),,Brasil,Brasil (Campina Grande (PB)),,,Atacante,,1
+1776,Geraldo Duarte Santana,Geraldo,1947-11-24 (78 anos),,Brasil,Brasil (Jequitai (MG)),,,Meia,,1
+1777,Higinio Alejandro Gamarra Lombardo,Higinio Gamarra,1949-01-11 (77 anos),,Paraguai,,,,Goleiro,,1
+1778,Jorge Carraro,Jorge Carraro,1953-02-03 (73 anos),,Brasil,,,,Zagueiro,,1
+1779,Evanir Martinho Otacílio,Gole,1949-11-11 (76 anos),,Brasil,Brasil (São José dos Campos (SP)),,,Meia EsquerdaPonta Esquerda,Canhoto,1
+1780,José da Silva Oliveira,Bife,1949-09-28,Falecido - 2007-02-16 (57 anos),Brasil,Brasil (Vera Cruz (RS)),,,Centroavante,Destro,1
+1781,Carlos Roberto dos Santos,Carlinhos,1947-12-27 (78 anos),,Brasil,Brasil (São Paulo (SP)),,,Atacante,,1
+1782,Cléber Soares da Silva,Corisco,1955-11-21 (70 anos),,Brasil,Brasil (Rio Branco (AC)),,,Ponta Esquerda,Canhoto,1
+1783,Renato dos Reis,Renato,1950-05-20,Falecido,Brasil,Brasil (Gália (SP)),,,Zagueiro,,1
+1784,José Gomes Pereira,Zeze,1947-05-29 (78 anos),,Brasil,Brasil (Anápolis (GO)),,,Atacante,,1
+1785,Walter Alves de Lima,Valtinho,1952-11-09 (73 anos),,Brasil,,,,Zagueiro,,1
+1786,Manoel Guedes Filho,Neco,1949-01-13 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),,,Atacante,,1
+1787,Aílton Antonio de Lima,Ailton,1953-06-18 (72 anos),,Brasil,Brasil (Rio de Janeiro - RJ),,,Atacante,,1
