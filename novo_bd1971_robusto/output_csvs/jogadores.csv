@@ -516,7 +516,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 522,Carlos André Avelino de Lima,Andre Catimba,1946-10-30,Falecido - 2021-07-28 (74 anos),Brasil,Salvador,173,72,Atacante (Centroavante),Destro,1
 523,Manoel Freitas da Silva,,1947-06-09,,Brasil,Rio de Janeiro (RJ),,,Meia,,1
 524,José Luiz de Lima Rente,Cabecinha,1951-00-00,,Brasil,,,,Atacante,,1
-525,Francisco das Chagas Marinho,,1952-02-08,Falecido - 2014-06-01 (62 anos),Brasil,Natal,178,70,Defensor (Lateral Esquerdo),Destro,1
+525,Francisco das Chagas Marinho,Marinho Chagas,1952-02-08,Falecido - 2014-06-01 (62 anos),Brasil,Natal,178,70,Defensor (Lateral Esquerdo),Destro,1
 526,Rodolfo José Fischer Eichler,Rodolfo Fischer,1944-04-02,Falecido - 2020-10-16 (76 anos),Argentina,Oberá,,,Atacante,,1
 527,Cláudio César de Aguiar Mauriz,,1940-08-22,Falecido - 1979-06-24 (38 anos),Brasil,,172,,Goleiro,,1
 528,Ladislao Mazurkiewicz Iglesias,Ladislao Mazurkiewicz,1945-02-14,Falecido - 2013-01-02 (67 anos),Uruguai,Piriápolis,179,78,Goleiro,Ambidestro,1
@@ -1874,3 +1874,52 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,altura,peso,po
 1880,Aílton da Silva Oliveira,Ailton ,1950-09-11 (75 anos),,Brasil,Brasil (Campina Grande (PB)),,,Goleiro,,1
 1881,José Santana Paixão,Santana,1947-08-03 (78 anos),,Brasil,Brasil (Bequimão (MA)),,,Meia,,1
 1882,Valdeci Leonel da Silva,Valdeci,1946-09-20 (79 anos),,Brasil,Brasil (Campina Grande (PB)),,,Lateral Esquerdo,Canhoto,1
+1883,Dinda,Dinda,-,,Brasil,,,,Zagueiro,,1
+1884,Jorge Flávio do Nascimento Medeiros,Jorge Flavio,1950-03-29 (75 anos),,Brasil,Brasil (João Pessoa (PB)),,,Ponta Esquerda,,1
+1885,Arlindo Fazolin,Arlindo Fazolin,1949-11-19 (76 anos),,Brasil,Brasil (Santo André (SP)),,,Atacante,,1
+1886,Osmar Gomes de Oliveira,Osmar Barao,1954-09-13 (71 anos),,Brasil,Brasil (Belo Horizonte (MG)),,,Zagueiro,,1
+1887,José Aucélio Pires de Souza,Aucelio,1953-08-23 (72 anos),,Brasil,Brasil (Fortaleza (CE)),,,Meia,,1
+1888,Luís Carlos Melo Lopes,Cacapava,1954-12-26,Falecido - 2016-06-26 (61 anos),Brasil,Brasil (Caçapava do Sul (RS)),,,Volante,,1
+1889,Paulo Moisés Pereira,Paulo Moises,1950-12-25 (75 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),,,Ponta Esquerda,Canhoto,1
+1890,José Severino da Silva,Da Silva,1955-10-05 (70 anos),,Brasil,Brasil (São Paulo (SP)),,,Atacante,Destro,1
+1891,Carlos Renato Frederico,Renato,1957-02-21 (69 anos),,Brasil,Brasil (Morungaba (SP)),182,,2º AtacanteMeia Ofensivo,Destro,1
+1892,Nélson Luis Quintiliano,Nelson,1956-10-13 (69 anos),,Brasil,Brasil (Araras (SP)),,,ZagueiroLateral Esquerdo,Canhoto,1
+1893,Maurício Eliezer da Cruz Duarte,Mauricio,1953-09-13 (72 anos),,Brasil,Brasil (Porto Velho (RO)),,,Zagueiro,,1
+1894,Constantino de Andrade Neto,Tininho,1953-03-09 (72 anos),,Brasil,Brasil (São José da Barra (MG)),,,Lateral Direito,,1
+1895,Osmar Rodrigues,Osmar,1949-06-18 (76 anos),,Brasil,,,,Lateral Esquerdo,,1
+1896,Vanderlei,Vanderlei,-,,Brasil,,,,Defensor,,1
+1897,Evandro Gomes da Silva,Vandinho,1950-03-11 (75 anos),,Brasil,Brasil (João Pessoa (PB)),,,Ponta Esquerda,Canhoto,1
+1898,José Luís de Jesus,Ze Luis,1950-07-13 (75 anos),,Brasil,Brasil (Itabaianinha (SE)),,,Goleiro,,1
+1899,Florisvaldo Batista dos Santos,Florisvaldo,1950-11-29 (75 anos),,Brasil,Brasil (Salvador (BA)),,,Centroavante,,1
+1900,Irineulir Antônio Fróes,Bocaiuva,1954-09-05 (71 anos),,Brasil,Brasil (Bocaiúva (MG)),,,Goleiro,,1
+1901,Hélio Carreiro da Silva,Helinho,1941-10-30 (84 anos),,BrasilBrasil,Brasil (Rio de Janeiro (RJ)),176,,Goleiro,Destro,1
+1902,Ibsen de Souza Moreira,Ibsen,1950-03-03 (76 anos),,Brasil,Brasil (Teresina (PI)),,,Meia,,1
+1903,José Antônio do Nascimento,Zuza,1949-04-10,Falecido - 2018-09-16 (69 anos),Brasil,Brasil (Narandiba (SP)),,,Ponta Direita,Destro,1
+1904,Josué Pereira de Oliveira,Brasilia,1958-06-02 (67 anos),,Brasil,,,,Goleiro,,1
+1905,Wilson Roberto,Wilson Roberto,-,,Brasil,,,,Meia,,1
+1906,Sylvio Baptista Santos Filho,Sylvio,1954-01-06 (72 anos),,Brasil,Brasil (Rio de Janeiro),,,Goleiro,,1
+1907,Anastácio Batista Gomes,Tasso,1946-10-07 (79 anos),,Brasil,Brasil (Carmo do Cajuru (MG)),,,Lateral Esquerdo,,1
+1908,Wílson Andrade Siqueira,Wilson Andrade ,1948-10-05 (77 anos),,Brasil,Brasil (Belo Horizonte (MG)),,,Meia,,1
+1909,Fernando Antônio Paschoalim,Pascoalim,1948-08-12,Falecido - 2017-04-25 (68 anos),Brasil,Brasil (Bauru (SP)),,,Goleiro,,1
+1910,Rodney Roz,Nei,1953-11-11 (72 anos),,Brasil,Brasil (Sorocaba (SP)),,,Lateral Direito,,1
+1911,Carlos Alberto de Sousa Padilha,Gato Felix,1953-11-14 (72 anos),,Brasil,Brasil (Itaperuna (RJ)),,,Goleiro,Destro,1
+1912,Jairo do Nascimento,Jaime,1946-10-23,Falecido - 2019-02-06 (72 anos),Brasil,Brasil (Joinville),194,,Goleiro,Canhoto,1
+1913,João Parreira Roberto,Evans,1955-08-18 (70 anos),,Brasil,Brasil (Bela Vista do Paraíso (PR)),,,Meia,,1
+1914,Antônio Luís dos Santos,Milton,1954-09-20 (71 anos),,Brasil,Brasil (Goiania (GO)),,,Zagueiro,,1
+1915,Sérgio Ferreira Ramos,Sergio Ramos,1955-08-24 (70 anos),,Brasil,Brasil (Piratinga (SP)),,,Atacante,,1
+1916,Mário Cavalcanti de Albuquerque,Ma 769 Rio,1955-03-20 (70 anos),,Brasil,Brasil (Recife (PE)),,,Meia,,1
+1917,Silvio Monteiro da Silva,Silvinho,-,,Brasil,Brasil (São Paulo (SP)),,,Meia,,1
+1918,Wilson Roberto Baialuna,Bene,1950-06-16 (75 anos),,Brasil,Brasil (Jundiaí (SP)),,,Atacante,,1
+1919,Donizete Manuel Onofre,Miranda,1957-05-30 (68 anos),,Brasil,Brasil (Presidente Prudente (SP)),,,Lateral EsquerdoLateral Direito,Ambidestro,1
+1920,Carlos Renato Frederico,Renato ,1957-02-21 (69 anos),,Brasil,Brasil (Morungaba (SP)),182,,2º AtacanteMeia Ofensivo,Destro,1
+1921,Eraldo Torres de Oliveira,Eraldo,1950-07-19 (75 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),,,Ponta Esquerda,,1
+1922,Wallace Alexandre Blanc,Wallace,1956-03-31 (69 anos),,Brasil,,,,Atacante,,1
+1923,Albéres Batista,Albe 769 Res,1953-10-04 (72 anos),,Brasil,Brasil (São João da Barra (RJ)),,,Meia,,1
+1924,Sidney da Silva Cardoso,Sidnei,1955-10-10 (70 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),,,Meia DireitaLateral Direito,Destro,1
+1925,Sandoval Cordeiro Guedes,Sandoval,1951-12-26 (74 anos),,Brasil,Brasil (Pedra Lavrada (PB)),,,Meia,,1
+1926,Antônio Dias dos Santos,Toninho,1948-07-26,Falecido - 1999-12-08 (51 anos),Brasil,Brasil (Vera Cruz (BA)),17663,,Lateral DireitoPonta Direita,Destro,1
+1927,Celso Augusto Alves Pereira,Celso Augusto,1953-08-17 (72 anos),,Brasil,Brasil (Pelotas (RS)),,,Lateral Direito,Destro,1
+1928,Luiz Alberto Bachur Serrano,Luizinho,1945-06-22 (80 anos),,Brasil,Brasil (Belo Horizonte (MG)),,,Goleiro,,1
+1929,Marcio Antonio da Silva,Marcinho,1955-09-18 (70 anos),,Brasil,Brasil (Sabará (MG)),17061,,Atacante,Ambidestro,1
+1930,José Antônio Moreira Serra Dourada,Ze Antonio,1956-01-22 (70 anos),,Brasil,Brasil (Goiânia (GO)),,,Meia,,1
+1931,João Carlos da Silva,Joao Carlos,1956-10-29 (69 anos),,Brasil,Brasil (Uberaba (MG)),,,Atacante,,1
