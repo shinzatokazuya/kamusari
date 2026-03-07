@@ -885,10 +885,10 @@ class OGolScraperRelacional:
                 print(f"⚠️ Erro ao processar estádio: {e}")
         if arbitro_link:
             try:
-                link = 
-                        arbitro_id = self.processar_arbitro(link)
-                    except Exception as e:
-                        print(f"⚠️ Erro ao processar árbitro: {e}")
+                link = urljoin(self.base_url, a_tag["href"])
+                arbitro_id = self.processar_arbitro(link)
+            except Exception as e:
+                print(f"⚠️ Erro ao processar árbitro: {e}")
 
         self.arbitros_em_partida_lista.append({
             'partida_id': partida_id,
