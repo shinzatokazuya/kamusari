@@ -584,13 +584,13 @@ class OGolScraperRelacional:
             print(f"❌ Erro ao acessar URL: {e}")
             return None
 
-        container = soup.find("div", id="entity_bio")
+        container = soup.find("div", class_="card-data bio")
         if not container:
             print("⚠️ Container de biografia não encontrado")
             return None
 
         dados = {}
-        for div in container.find_all("div", class_=["bio", "bio_half"]):
+        for div in container.find_all("div", class_="card-data__body"):
             span = div.find("span")
             if not span:
                 continue
