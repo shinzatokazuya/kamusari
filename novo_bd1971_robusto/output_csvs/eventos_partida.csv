@@ -18510,3 +18510,66 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 18509,2108,1888,13,Entrou,,
 18510,2108,1479,16,Entrou,,
 18511,2108,1546,16,Entrou,,
+18512,2109,1715,10,Cartão Amarelo,,
+18513,2109,1463,10,Cartão Amarelo,,
+18514,2109,116,10,Gol,Normal,27
+18515,2109,117,10,Substituição,,
+18516,2109,575,10,Substituição,,
+18517,2109,21,7,Substituição,,
+18518,2109,82,7,Gol,Normal,26
+18519,2109,82,7,Gol,Normal,64
+18520,2109,182,7,Substituição,,
+18521,2109,429,10,Entrou,,
+18522,2109,539,10,Entrou,,
+18523,2109,539,10,Cartão Amarelo,,
+18524,2109,924,7,Entrou,,
+18525,2109,1208,7,Entrou,,
+18526,2109,1208,7,Gol,Normal,87
+18527,2110,646,23,Cartão Amarelo,,
+18528,2110,646,23,Cartão Vermelho,,
+18529,2110,556,23,Substituição,,
+18530,2110,402,23,Substituição,,
+18531,2110,1232,5,Substituição,,
+18532,2110,2014,5,Gol,Normal,34
+18533,2110,2014,5,Gol,Normal,36
+18534,2110,1590,23,Entrou,,
+18535,2110,1964,23,Entrou,,
+18536,2110,2002,5,Entrou,,
+18537,2111,242,20,Gol,Normal,5
+18538,2111,16,6,Substituição,,
+18539,2111,145,6,Substituição,,
+18540,2111,435,6,Gol,Normal,25
+18541,2111,542,6,Cartão Amarelo,,
+18542,2111,271,6,Entrou,,
+18543,2111,1786,6,Entrou,,
+18544,2112,87,7,Cartão Amarelo,,
+18545,2112,924,7,Substituição,,
+18546,2112,700,7,Gol,Normal,32
+18547,2112,700,7,Gol,Normal,73
+18548,2112,310,7,Cartão Amarelo,,
+18549,2112,264,20,Cartão Amarelo,,
+18550,2112,243,20,Gol,Normal,43
+18551,2112,413,20,Substituição,,
+18552,2112,242,20,Gol,Normal,47
+18553,2112,242,20,Gol,Normal,90
+18554,2112,242,20,Cartão Amarelo,,
+18555,2112,1208,7,Entrou,,
+18556,2112,1992,20,Entrou,,
+18557,2113,538,14,Substituição,,
+18558,2113,580,14,Substituição,,
+18559,2113,1483,13,Cartão Amarelo,,
+18560,2113,152,13,Cartão Amarelo,,
+18561,2113,285,13,Gol,Normal,74
+18562,2113,158,13,Substituição,,
+18563,2113,170,13,Gol,Normal,33
+18564,2113,487,14,Entrou,,
+18565,2113,939,14,Entrou,,
+18566,2113,1812,13,Entrou,,
+18567,2114,486,13,Gol,Normal,56
+18568,2114,158,13,Substituição,,
+18569,2114,413,20,Substituição,,
+18570,2114,242,20,Cartão Amarelo,,
+18571,2114,249,20,Substituição,,
+18572,2114,1812,13,Entrou,,
+18573,2114,1837,20,Entrou,,
+18574,2114,1858,20,Entrou,,
