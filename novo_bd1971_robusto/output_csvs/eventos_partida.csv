@@ -15005,3 +15005,19 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 15004,1777,1864,32,Entrou,,
 15005,1777,1663,14,Entrou,,
 15006,1777,507,14,Entrou,,
+15007,1778,676,29,Cartão Amarelo,,
+15008,1778,810,29,Cartão Amarelo,,
+15009,1778,1290,29,Substituição,,
+15010,1778,1865,29,Substituição,,
+15011,1778,840,29,Gol,Normal,16
+15012,1778,1388,35,Gol,Normal,50
+15013,1778,1388,35,Gol,Normal,58
+15014,1778,1388,35,Substituição,,
+15015,1778,330,35,Gol,Normal,47
+15016,1778,1672,35,Substituição,,
+15017,1778,30,29,Entrou,,
+15018,1778,1405,29,Entrou,,
+15019,1778,1405,29,Gol,Normal,70
+15020,1778,1405,29,Gol,Normal,79
+15021,1778,960,35,Entrou,,
+15022,1778,886,35,Entrou,,
