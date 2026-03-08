@@ -1,3 +1,3 @@
 Página: 1
-URL Página: https://www.ogol.com.br/edicao/copa-brasil-1975/2491/calendario?equipa=0&estado=1&filtro=&op=calendario&page=7
-URL Última Partida: https://www.ogol.com.br/jogo/1975-10-29-atletico-mineiro-figueirense/622967
+URL Página: https://www.ogol.com.br/edicao/copa-brasil-1975/2491/calendario?equipa=0&estado=1&filtro=&op=calendario&page=9
+URL Última Partida: https://www.ogol.com.br/jogo/1975-11-26-nacional-am-palmeiras/623073
