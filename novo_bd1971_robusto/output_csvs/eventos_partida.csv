@@ -14980,3 +14980,28 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 14979,1775,59,12,Gol,Normal,20
 14980,1775,371,13,Entrou,,
 14981,1775,143,12,Entrou,,
+14982,1776,1758,1,Cartão Amarelo,,
+14983,1776,366,1,Cartão Vermelho,,
+14984,1776,565,1,Cartão Amarelo,,
+14985,1776,393,1,Gol,Normal,34
+14986,1776,393,1,Substituição,,
+14987,1776,7,1,Cartão Amarelo,,
+14988,1776,795,21,Cartão Amarelo,,
+14989,1776,657,21,Substituição,,
+14990,1776,522,21,Gol,Normal,23
+14991,1776,522,21,Cartão Vermelho,,
+14992,1776,926,21,Substituição,,
+14993,1776,1348,1,Entrou,,
+14994,1776,800,21,Entrou,,
+14995,1776,511,21,Entrou,,
+14996,1777,1534,32,Gol,Normal,67
+14997,1777,1781,32,Substituição,,
+14998,1777,1111,32,Substituição,,
+14999,1777,1103,14,Substituição,,
+15000,1777,939,14,Cartão Amarelo,,
+15001,1777,854,14,Gol,Normal,84
+15002,1777,1665,14,Substituição,,
+15003,1777,1782,32,Entrou,,
+15004,1777,1864,32,Entrou,,
+15005,1777,1663,14,Entrou,,
+15006,1777,507,14,Entrou,,
