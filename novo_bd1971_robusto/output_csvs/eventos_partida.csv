@@ -14917,3 +14917,9 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 14916,1769,541,6,Entrou,,
 14917,1769,695,6,Entrou,,
 14918,1769,695,6,Gol,Normal,81
+14919,1770,642,22,Gol,Normal,67
+14920,1770,642,22,Gol,Normal,69
+14921,1770,644,22,Substituição,,
+14922,1770,290,33,Substituição,,
+14923,1770,1859,22,Entrou,,
+14924,1770,1194,33,Entrou,,
