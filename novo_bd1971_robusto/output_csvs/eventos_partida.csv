@@ -15035,3 +15035,30 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 15034,1780,695,6,Entrou,,
 15035,1780,1700,6,Entrou,,
 15036,1780,1866,20,Entrou,,
+15037,1781,1225,23,Cartão Amarelo,,
+15038,1781,637,23,Gol,Normal,55
+15039,1781,402,23,Substituição,,
+15040,1781,1368,23,Substituição,,
+15041,1781,1258,31,Cartão Amarelo,,
+15042,1781,845,31,Substituição,,
+15043,1781,719,31,Cartão Amarelo,,
+15044,1781,621,31,Substituição,,
+15045,1781,1439,23,Entrou,,
+15046,1781,1215,23,Entrou,,
+15047,1781,844,31,Entrou,,
+15048,1781,1707,31,Entrou,,
+15049,1781,1707,31,Gol,Normal,79
+15050,1782,1063,34,Cartão Vermelho,,
+15051,1782,874,34,Cartão Amarelo,,
+15052,1782,876,34,Gol,Normal,19
+15053,1782,876,34,Substituição,,
+15054,1782,1754,34,Gol,Normal,54
+15055,1782,1754,34,Substituição,,
+15056,1782,1801,48,Cartão Amarelo,,
+15057,1782,1802,48,Substituição,,
+15058,1782,1737,48,Gol,Normal,67
+15059,1782,1173,48,Substituição,,
+15060,1782,1187,34,Entrou,,
+15061,1782,1755,34,Entrou,,
+15062,1782,1739,48,Entrou,,
+15063,1782,1740,48,Entrou,,
