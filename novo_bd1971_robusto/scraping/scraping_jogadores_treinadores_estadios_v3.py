@@ -1306,7 +1306,12 @@ class OGolScraperRelacional:
             data = celulas[1].get_text(strip=True)
             hora = celulas[2].get_text(strip=True)
             mandante_nome, link_mandante = self._extrair_link(celulas[3])
-            placar, link_partida = self._extrair_link(celulas[5])
+            link_partida = None
+            a = celulas[5].find("a")
+            if a:
+                link_partida = urljoin(self.base_url, a["href"])
+
+            placar = celulas[5].get_text(" ", strip=True)
             visitante_nome, link_visitante = self._extrair_link(celulas[7])
             fase = celulas[8].get_text(strip=True) if len(celulas) > 8 else ""
 
