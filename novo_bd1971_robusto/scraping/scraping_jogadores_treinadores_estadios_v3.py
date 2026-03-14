@@ -1338,7 +1338,7 @@ class OGolScraperRelacional:
                 penalti_mandante = penalti_visitante = None
                 prorrogacao = 0
 
-                match_penaltis = re.search(r'\((\d+)-(\d+)\s*pen', placar_split)
+                match_penaltis = re.search(r'\((\d+)\s*-\s*(\d+)\s*pen', placar_split)
                 if match_penaltis:
                     penalti_mandante = int(match_penaltis.group(1))
                     penalti_visitante = int(match_penaltis.group(2))
