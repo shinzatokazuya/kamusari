@@ -22989,3 +22989,22 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 22988,2525,158,13,Gol,Normal,57
 22989,2525,1426,8,Cartão Amarelo,,
 22990,2525,81,8,Cartão Amarelo,,
+22991,2526,2457,28,Substituição,,
+22992,2526,2458,28,Cartão Amarelo,,14
+22993,2526,2461,28,Assistência,,11
+22994,2526,2461,28,Substituição,,
+22995,2526,2462,28,Gol,Normal,11
+22996,2526,2462,28,Substituição,,
+22997,2526,2464,12,Cartão Amarelo,,87
+22998,2526,2466,12,Cartão Amarelo,,
+22999,2526,2466,12,Substituição,,
+23000,2526,2467,12,Gol,Gol Contra,10
+23001,2526,2468,12,Substituição,,
+23002,2526,2471,12,Cartão Amarelo,,
+23003,2526,2472,12,Substituição,,
+23004,2526,2477,28,Entrou,,
+23005,2526,2478,28,Entrou,,
+23006,2526,2480,28,Entrou,,
+23007,2526,2483,12,Entrou,,
+23008,2526,2486,12,Entrou,,
+23009,2526,2487,12,Entrou,,
