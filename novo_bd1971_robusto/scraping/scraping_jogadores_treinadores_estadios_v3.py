@@ -191,14 +191,14 @@ class OGolScraperRelacional:
                 for row in reader:
                     apelido = row.get('apelido', '')
                     if apelido:
-                        chave = f"{row['nome']}_{apelido}_{row.get('nascimento', '')}"
+                        chave = f"{row['nome']}_{row.get('apelido', '')}_{row.get('nascimento', '')}"
                     else:
                         chave = f"{row['nome']}_{row.get('nascimento', '')}"
 
                     self.treinadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
-                        'apelido': row['apelido'],
+                        'apelido': row.get('apelido'. ''),
                         'nascimento': row.get('nascimento', ''),
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
