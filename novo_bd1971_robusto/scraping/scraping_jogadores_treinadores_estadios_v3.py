@@ -776,7 +776,7 @@ class OGolScraperRelacional:
             print(f"❌ Erro ao acessar URL: {e}")
             return None
 
-        container = soup.find("div", class_="card-data bio")
+        container = soup.find("div", class_="zz-tpl-rb")
         if not container:
             return None
 
