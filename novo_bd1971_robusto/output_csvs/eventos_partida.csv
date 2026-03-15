@@ -23146,3 +23146,23 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 23145,2533,2675,35,Entrou,,
 23146,2533,2675,35,Gol,Normal,78
 23147,2533,2676,33,Entrou,,
+23148,2534,2679,10,Gol,Normal,90+1
+23149,2534,2682,10,Cartão Amarelo,,
+23150,2534,2683,10,Cartão Amarelo,,
+23151,2534,2684,10,Substituição,,
+23152,2534,2685,10,Cartão Amarelo,,
+23153,2534,2686,10,Cartão Amarelo,,
+23154,2534,2687,10,Cartão Amarelo,,
+23155,2534,2687,10,Substituição,,
+23156,2534,2690,19,Cartão Amarelo,,
+23157,2534,2694,19,Cartão Amarelo,,
+23158,2534,2695,19,Cartão Amarelo,,
+23159,2534,2695,19,Substituição,,
+23160,2534,2697,19,Substituição,,
+23161,2534,2698,19,Substituição,,
+23162,2534,2699,10,Entrou,,
+23163,2534,2700,10,Entrou,,
+23164,2534,2701,19,Entrou,,
+23165,2534,2702,19,Entrou,,
+23166,2534,2703,19,Entrou,,
+23167,2534,2703,19,Gol,Normal,73
