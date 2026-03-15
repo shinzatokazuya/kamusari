@@ -23113,3 +23113,18 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 23112,2531,2623,1,Entrou,,
 23113,2531,2624,1,Entrou,,
 23114,2531,2625,1,Entrou,,
+23115,2532,2629,64,Cartão Amarelo,,
+23116,2532,2630,64,Substituição,,
+23117,2532,2631,64,Gol,Normal,36
+23118,2532,2631,64,Substituição,,
+23119,2532,2644,11,Gol,Normal,61
+23120,2532,2644,11,Cartão Amarelo,,
+23121,2532,2645,11,Substituição,,
+23122,2532,2646,11,Gol,Penalti,54
+23123,2532,2646,11,Cartão Amarelo,,
+23124,2532,2648,64,Entrou,,
+23125,2532,2649,64,Entrou,,
+23126,2532,2649,64,Gol,Normal,89
+23127,2532,2649,64,Cartão Amarelo,,
+23128,2532,2650,11,Entrou,,
+23129,2532,2650,11,Cartão Vermelho,,78
