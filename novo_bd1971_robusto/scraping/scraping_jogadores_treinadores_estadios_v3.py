@@ -744,18 +744,37 @@ class OGolScraperRelacional:
                     dados["aposentado"] = 1
 
         # Cria chave de atributos
-        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+        if apelido:
+            chave_com_apelido = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
+        else:
+            chave_com_apelido = None
 
-        # Verifica se treinador já existe
-        if chave_atributos in self.treinadores_dict:
-            treinador_id = self.treinadores_dict[chave_atributos]['id']
-            print(f"   ✓ Treinador já existente: {dados.get('nome', '')} (ID: {treinador_id})")
+        chave_sem_apelido = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        treinador_encontrado = False
+        treinador_id = None
+
+        if chave_com_apelido and chave_com_apelido in self.treinadores_dict:
+            treinador_id = self.treinadores_dict[chave_com_apelido]['id']
+            treinador_encontrado = True
+            print(f"   ✓ Treinador já existente (com apelido): {dados.get('nome', '')} / {apelido} (ID: {treinador_id})")
+        elif chave_sem_apelido in self.treinadores_dict:
+            treinador_id = self.treinadores_dict[chave_sem_apelido]['id']
+            treinador_encontrado = True
+            if apelido:
+                self.treinadores_dict[chave_sem_apelido]['apelido'] = apelido
+                print(f"   ✓ Treinador encontrado (atualizado apelido): {dados.get('nome', '')} / {apelido} (ID: {treinador_id})")
+            else:
+                print(f"   ✓ Treinador já existente: {dados.get('nome', '')} (ID: {treinador_id})")
+
+        if treinador_encontrado:
             self.url_cache['treinadores'][url_treinador] = treinador_id
             return treinador_id
 
         # Treinador novo
         treinador_id = self.next_treinador_id
-        print(f"   ➕ Novo treinador: {dados.get('nome', '')} (ID: {treinador_id})")
+        chave_final = chave_com_apelido if chave_com_apelido else chave_sem_apelido
+        print(f"   ➕ Novo treinador: {dados.get('nome', '')} (apelido: {apelido}) (ID: {treinador_id})")
 
         registro = {
             'id': treinador_id,
