@@ -23008,3 +23008,28 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 23007,2526,2483,12,Entrou,,
 23008,2526,2486,12,Entrou,,
 23009,2526,2487,12,Entrou,,
+23010,2527,2489,38,Gol,Normal,10
+23011,2527,2491,38,Assistência,,56
+23012,2527,2493,38,Cartão Amarelo,,
+23013,2527,2494,38,Assistência,,12
+23014,2527,2496,38,Assistência,,10
+23015,2527,2496,38,Cartão Amarelo,,
+23016,2527,2496,38,Substituição,,
+23017,2527,2497,38,Gol,Normal,56
+23018,2527,2497,38,Cartão Amarelo,,
+23019,2527,2498,38,Gol,Normal,12
+23020,2527,2498,38,Gol,Penalti,90
+23021,2527,2503,18,Cartão Amarelo,,
+23022,2527,2503,18,Substituição,,
+23023,2527,2504,18,Cartão Amarelo,,
+23024,2527,2504,18,Substituição,,
+23025,2527,2506,18,Substituição,,
+23026,2527,2507,18,Gol,Normal,16
+23027,2527,2507,18,Cartão Amarelo,,
+23028,2527,2508,18,Gol,Normal,22
+23029,2527,2508,18,Cartão Amarelo,,
+23030,2527,2509,18,Cartão Amarelo,,
+23031,2527,2510,38,Entrou,,
+23032,2527,2511,18,Entrou,,
+23033,2527,2512,18,Entrou,,
+23034,2527,2513,18,Entrou,,
