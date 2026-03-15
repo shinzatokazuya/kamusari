@@ -23094,3 +23094,22 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 23093,2530,2595,58,Entrou,,
 23094,2530,2596,58,Entrou,,
 23095,2530,2597,58,Entrou,,
+23096,2531,2599,31,Substituição,,
+23097,2531,2600,31,Cartão Vermelho,,83
+23098,2531,2604,31,Substituição,,
+23099,2531,2606,31,Cartão Amarelo,,
+23100,2531,2608,31,Substituição,,
+23101,2531,2610,1,Cartão Vermelho,,46
+23102,2531,2613,1,Cartão Amarelo,,
+23103,2531,2615,1,Substituição,,
+23104,2531,2616,1,Substituição,,
+23105,2531,2617,1,Cartão Amarelo,,
+23106,2531,2618,1,Cartão Amarelo,,
+23107,2531,2618,1,Substituição,,
+23108,2531,2619,1,Cartão Vermelho,,76
+23109,2531,2620,31,Entrou,,
+23110,2531,2621,31,Entrou,,
+23111,2531,2622,31,Entrou,,
+23112,2531,2623,1,Entrou,,
+23113,2531,2624,1,Entrou,,
+23114,2531,2625,1,Entrou,,
