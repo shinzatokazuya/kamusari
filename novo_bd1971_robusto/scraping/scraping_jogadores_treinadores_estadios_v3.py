@@ -1455,7 +1455,7 @@ if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
     min_page = 1
     max_page = 12
-    edicao_id = 33
+    edicao_id = 34
 
     # URL base (sem o parâmetro page)
     url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2003/2489/calendario?fase_in=15470&equipa=0&estado=1&filtro=&op=calendario&page="
