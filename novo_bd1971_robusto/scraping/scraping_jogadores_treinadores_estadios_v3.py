@@ -1246,7 +1246,7 @@ class OGolScraperRelacional:
 
         if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
+            campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
             append_rows(path, campos, self._novo_treinador)
             self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
