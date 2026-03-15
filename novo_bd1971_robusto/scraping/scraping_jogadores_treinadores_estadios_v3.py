@@ -198,7 +198,7 @@ class OGolScraperRelacional:
                     self.treinadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
-                        'apelido': ,
+                        'apelido': apelido,
                         'nascimento': row.get('nascimento', ''),
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
