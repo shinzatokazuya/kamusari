@@ -779,6 +779,7 @@ class OGolScraperRelacional:
         registro = {
             'id': treinador_id,
             'nome': dados.get('nome', ''),
+            'apelido': apelido,
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
