@@ -1,3 +1,3 @@
 Página: 1
-URL Página: https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2004/457/calendario?fase_in=10253&equipa=0&estado=1&filtro=&op=calendario&page=6
-URL Última Partida: https://www.ogol.com.br/jogo/2004-08-14-corinthians-ponte-preta/81902
+URL Página: https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2004/457/calendario?fase_in=10253&equipa=0&estado=1&filtro=&op=calendario&page=8
+URL Última Partida: https://www.ogol.com.br/jogo/2004-09-18-parana-guarani/81984
