@@ -1272,7 +1272,7 @@ class OGolScraperRelacional:
             self._novo_jogador.clear()
             print("💾 jogadores.csv atualizados")
 
-        if self._novo_treinador:
+        if self._novo_treinador or any(v.get('apelido') for v in self.treinadores_dict.values()):
             path = os.path.join(self.output_dir, "treinadores.csv")
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
             with open(path, 'w', newline='', encoding='utf-8') as f:
@@ -1286,7 +1286,7 @@ class OGolScraperRelacional:
             self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
 
-        if self._novo_arbitro:
+        if self._novo_arbitro or any(v.get('apelido') for v in self.arbitros_dict.values()):
             path = os.path.join(self.output_dir, "arbitros.csv")
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
             with open(path, 'w', newline='', encoding='utf-8') as f:
