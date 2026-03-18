@@ -803,6 +803,13 @@ class OGolScraperRelacional:
             return self.url_cache['arbitros'][url_arbitro]
 
         print(f"🧑‍⚖️ Processando árbitro: {url_arbitro}")
+
+        # Extrai apelido da URL (ex: /arbitro/...)
+        apelido = ""
+        match = re.search(r'/arbitro/([^/?]+)', url_arbitro)
+        if match:
+            apelido = match.group(1).lower().replace('-', ' ').title()
+
         try:
             soup = self._get_soup(url_arbitro)
         except Exception as e:
@@ -837,22 +844,42 @@ class OGolScraperRelacional:
                     dados["aposentado"] = 1
 
         # Cria chave de atributos
-        chave_atributos = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+        if apelido:
+            chave_com_apelido = f"{dados.get('nome', '')}_{apelido}_{dados.get('nascimento', '')}"
+        else:
+            chave_com_apelido = None
 
-        # Verifica se árbitro já existe
-        if chave_atributos in self.arbitros_dict:
-            arbitro_id = self.arbitros_dict[chave_atributos]['id']
-            print(f"   ✓ Árbitro já existente: {dados.get('nome', '')} (ID: {arbitro_id})")
+        chave_sem_apelido = f"{dados.get('nome', '')}_{dados.get('nascimento', '')}"
+
+        arbitro_encontrado = False
+        arbitro_id = None
+
+        if chave_com_apelido and chave_com_apelido in self.arbitros_dict:
+            arbitro_id = self.arbitros_dict[chave_com_apelido]['id']
+            arbitro_encontrado = True
+            print(f"   ✓ Árbitro já existente (com apelido): {dados.get('nome', '')} / {apelido} (ID: {arbitro_id})")
+        elif chave_sem_apelido in self.treinadores_dict:
+            arbitro_id = self.arbitros_dict[chave_sem_apelido]['id']
+            arbitro_encontrado = True
+            if apelido:
+                self.arbitros_dict[chave_sem_apelido]['apelido'] = apelido
+                print(f"   ✓ Árbitro encontrado (atualizado apelido): {dados.get('nome', '')} / {apelido} (ID: {arbitro_id})")
+            else:
+                print(f"   ✓ Árbitro já existente: {dados.get('nome', '')} (ID: {arbitro_id})")
+
+        if arbitro_encontrado:
             self.url_cache['arbitros'][url_arbitro] = arbitro_id
             return arbitro_id
 
         # Árbitro novo
         arbitro_id = self.next_arbitro_id
-        print(f"   ➕ Novo árbitro: {dados.get('nome', '')} (ID: {arbitro_id})")
+        chave_final = chave_com_apelido if chave_com_apelido else chave_sem_apelido
+        print(f"   ➕ Novo árbitro: {dados.get('nome', '')} (apelido: {apelido}) (ID: {arbitro_id})")
 
         registro = {
             'id': arbitro_id,
             'nome': dados.get('nome', ''),
+            'apelido': apelido,
             'nascimento': dados.get('nascimento', ''),
             'falecimento': dados.get('falecimento', ''),
             'naturalidade': dados.get('naturalidade', ''),
@@ -1248,14 +1275,28 @@ class OGolScraperRelacional:
         if self._novo_treinador:
             path = os.path.join(self.output_dir, "treinadores.csv")
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
-            append_rows(path, campos, self._novo_treinador)
+            with open(path, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=campos)
+                writer.writeheader()
+
+                # Escreve todos os treinadores do dicionário (inclui atualizados)
+                for treinador in self.treinadores_dict.values():
+                    writer.writerow(treinador)
+
             self._novo_treinador.clear()
             print("💾 treinadores.csv atualizado")
 
         if self._novo_arbitro:
             path = os.path.join(self.output_dir, "arbitros.csv")
-            campos = ['id','nome','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
-            append_rows(path, campos, self._novo_arbitro)
+            campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
+            with open(path, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, fieldnames=campos)
+                writer.writerow()
+
+                # Escreve todos os arbitros do dicionário (inclui atualizados)
+                for arbitro in self.arbitros_dict.values():
+                    writer.writerow(arbitro)
+
             self._novo_arbitro.clear()
             print("💾 arbitros.csv atualizado")
 

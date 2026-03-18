@@ -42919,23 +42919,3 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 42918,3629,2669,11,Entrou,,
 42919,3629,2882,11,Entrou,,
 42920,3629,3758,11,Entrou,,
-42921,3630,2692,3,Cartão Amarelo,,
-42922,3630,2692,3,Substituição,,46
-42923,3630,3776,3,Substituição,,78
-42924,3630,3420,3,Gol,Normal,25
-42925,3630,3420,3,Substituição,,59
-42926,3630,3339,3,Gol,Normal,79
-42927,3630,2983,3,Gol,Normal,88
-42928,3630,2468,3,Gol,Normal,81
-42929,3630,2576,37,Cartão Amarelo,,
-42930,3630,3778,37,Substituição,,72
-42931,3630,3324,37,Gol,Normal,38
-42932,3630,3324,37,Substituição,,57
-42933,3630,3214,37,Cartão Amarelo,,
-42934,3630,3214,37,Substituição,,
-42935,3630,3014,3,Entrou,,46
-42936,3630,3779,3,Entrou,,78
-42937,3630,2471,3,Entrou,,59
-42938,3630,2497,37,Entrou,,72
-42939,3630,3780,37,Entrou,,
-42940,3630,3781,37,Entrou,,57
