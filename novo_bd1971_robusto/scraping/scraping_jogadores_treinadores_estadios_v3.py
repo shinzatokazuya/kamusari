@@ -1291,7 +1291,7 @@ class OGolScraperRelacional:
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
             with open(path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=campos)
-                writer.writerow()
+                writer.writeheader()
 
                 # Escreve todos os arbitros do dicionário (inclui atualizados)
                 for arbitro in self.arbitros_dict.values():
