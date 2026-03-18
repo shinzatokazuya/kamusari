@@ -1459,7 +1459,7 @@ if __name__ == "__main__":
     edicao_id = 35
 
     # URL base (sem o parâmetro page)
-    url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2004/457/calendario?fase_in=10253&equipa=0&estado=1&filtro=&op=calendario&page="
+    url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2005/865/calendario?fase_in=10480&equipa=0&estado=1&filtro=&op=calendario&page="
 
     # Cria uma única instância que será reutilizada entre páginas
     # Isso mantém o CACHE, tornando muito mais rápido!
