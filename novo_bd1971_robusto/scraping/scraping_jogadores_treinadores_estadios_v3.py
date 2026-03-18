@@ -887,7 +887,7 @@ class OGolScraperRelacional:
             'aposentado': dados.get('aposentado', '')
         }
 
-        self.arbitros_dict[chave_atributos] = registro
+        self.arbitros_dict[chave_final] = registro
         self.url_cache['arbitros'][url_arbitro] = arbitro_id
         self._novo_arbitro.append(registro)
         self.next_arbitro_id += 1
