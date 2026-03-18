@@ -809,7 +809,7 @@ class OGolScraperRelacional:
             print(f"❌ Erro ao acessar URL: {e}")
             return None
 
-        container = soup.find("div", class_="zz-tpl-rb")
+        container = soup.find("div", class_="card-data bio")
         if not container:
             return None
 
@@ -909,7 +909,7 @@ class OGolScraperRelacional:
 
         # Processa estádio e árbitro
         estadio_link = soup.find("a", href=lambda x: x and "estadio" in x)
-        arbitro_link = soup.find("a", href=lambda x: x and "arbitro" in x)
+        arbitro_link = soup.find("a", href=lambda x: x and "/arbitro/" in x)
         if estadio_link:
             try:
                 link = urljoin(self.base_url, estadio_link["href"])
