@@ -1,0 +1,4 @@
+ERRO NA PÁGINA 1
+URL Página: https://www.ogol.com.br/edicao/campeonato-brasileiro-serie-a-2005/865/calendario?fase_in=10480&equipa=0&estado=1&filtro=&op=calendario&page=1
+URL Última Partida Processada: https://www.ogol.com.br/jogo/2005-04-24-fluminense-sao-paulo/179643
+Último erro: [Errno 22] Invalid argument: 'output_csvs\\jogadores.csv'
