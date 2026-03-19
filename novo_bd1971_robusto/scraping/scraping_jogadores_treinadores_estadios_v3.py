@@ -198,7 +198,7 @@ class OGolScraperRelacional:
                     self.treinadores_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
-                        'apelido': apelido,
+                        'apelido': row.get('apelido', ''),
                         'nascimento': row.get('nascimento', ''),
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
@@ -218,6 +218,7 @@ class OGolScraperRelacional:
                     self.arbitros_dict[chave] = {
                         'id': int(row['id']),
                         'nome': row['nome'],
+                        'apelido': row.get('apelido', ''),
                         'nascimento': row.get('nascimento', ''),
                         'falecimento': row.get('falecimento', ''),
                         'nacionalidade': row.get('nacionalidade', ''),
@@ -1289,14 +1290,7 @@ class OGolScraperRelacional:
         if self._novo_arbitro or any(v.get('apelido') for v in self.arbitros_dict.values()):
             path = os.path.join(self.output_dir, "arbitros.csv")
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','aposentado']
-            with open(path, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.DictWriter(f, fieldnames=campos)
-                writer.writeheader()
-
-                # Escreve todos os arbitros do dicionário (inclui atualizados)
-                for arbitro in self.arbitros_dict.values():
-                    writer.writerow(arbitro)
-
+            append_rows(path, campos, self._novo_arbitro)
             self._novo_arbitro.clear()
             print("💾 arbitros.csv atualizado")
 
