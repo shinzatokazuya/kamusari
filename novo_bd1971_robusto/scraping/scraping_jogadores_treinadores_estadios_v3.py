@@ -858,7 +858,7 @@ class OGolScraperRelacional:
             arbitro_id = self.arbitros_dict[chave_com_apelido]['id']
             arbitro_encontrado = True
             print(f"   ✓ Árbitro já existente (com apelido): {dados.get('nome', '')} / {apelido} (ID: {arbitro_id})")
-        elif chave_sem_apelido in self.treinadores_dict:
+        elif chave_sem_apelido in self.arbitros_dict:
             arbitro_id = self.arbitros_dict[chave_sem_apelido]['id']
             arbitro_encontrado = True
             if apelido:
