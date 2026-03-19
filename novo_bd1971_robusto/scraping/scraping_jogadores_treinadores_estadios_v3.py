@@ -1261,7 +1261,6 @@ class OGolScraperRelacional:
             # Reescreve jogadores inteiro para incluir apelidos atualizados
             path = os.path.join(self.output_dir, "jogadores.csv")
             campos = ['id','nome','apelido','nascimento','falecimento','nacionalidade','naturalidade','altura','peso','posicao','pe_preferido','aposentado']
-
             with open(path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=campos)
                 writer.writeheader()
