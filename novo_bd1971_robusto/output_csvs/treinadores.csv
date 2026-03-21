@@ -155,7 +155,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 154,Ney Franco da Silveira Júnior,Ney Franco,1966-07-22 (59 anos),,Brasil,Brasil (Vargem Grande (MG)),1
 155,José Luiz Santana,,1957-07-17 (68 anos),,Brasil,Brasil (Rincão (SP)),1
 156,Alexandre Torreira da Gama Lima Casado,,1968-01-04 (58 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
-157,Hélio César Pinto dos Anjos,,1958-03-07 (68 anos),,Brasil,Brasil (Janaúba (MG)),1
+157,Hélio César Pinto dos Anjos,Helio Dos Anjos,1958-03-07 (68 anos),,Brasil,Brasil (Janaúba (MG)),1
 158,Carlos Renato Frederico,,1957-02-21 (69 anos),,Brasil,Brasil (Morungaba (SP)),1
 159,Cláudio Roberto Pires Duarte,Claudio Duarte,1951-05-09 (74 anos),,Brasil,Brasil (São Jerônimo (RS)),1
 160,Sinomar Dias Naves,,1953-07-06 (72 anos),,Brasil,Brasil (Corumbaiba (GO)),1
@@ -214,3 +214,4 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 213,Márcio Fernandes Figueiredo,Marcio Fernandes,1962-03-24 (63 anos),,Brasil,Brasil (Santos (SP)),1
 214,Luiz Ronaldo Nunes Rangel,Luizinho Rangel,1956-08-14 (69 anos),,Brasil,Brasil (Niterói (RJ)),1
 215,Augusto Sérgio Ferreira,Guto Ferreira,1965-09-07 (60 anos),,Brasil,Brasil (Piracicaba (SP)),1
+216,Sebastião Ricardo Drubscky de Campos,Ricardo Drubscky,1960-01-20 (66 anos),,Brasil,Brasil (Belo Horizonte (MG)),1
