@@ -77,13 +77,13 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 76,Emílson Peçanha,,1932-02-10,Falecido - 2014-04-24 (82 anos),Brasil,,1
 77,Vicente Trajano,,-,,Brasil,Brasil (Ceará),1
 78,Cláudio Pêcego de Moraes Coutinho,,1939-01-05,Falecido - 1981-11-27 (42 anos),Brasil,Brasil (Dom Pedrito (RS)),1
-79,Oswaldo Fumeiro Alvarez,,1956-08-21,Falecido - 2020-05-25 (63 anos),-,-,1
+79,Oswaldo Fumeiro Alvarez,Vadao,1956-08-21,Falecido - 2020-05-25 (63 anos),-,-,1
 80,Adenor Leonardo Bachi,,1961-05-25 (64 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
 81,Antônio Lopes dos Santos,,1941-06-12 (84 anos),,-,-,1
 82,Joel Natalino Santana,,1948-12-25 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 83,Vágner Benazzi de Andrade,,1954-06-17,Falecido - 2023-05-22 (68 anos),Brasil,Brasil (Osasco (SP)),1
 84,Vanderlei Luxemburgo da Silva,,1952-05-10 (73 anos),,Brasil,Brasil (Nova Iguaçu (RJ)),1
-85,Mário Sérgio Pontes de Paiva,,1950-09-07,Falecido - 2016-11-28 (66 anos),Brasil,Brasil (Rio de Janeiro (RJ)),1
+85,Mário Sérgio Pontes de Paiva,Mario Sergio,1950-09-07,Falecido - 2016-11-28 (66 anos),Brasil,Brasil (Rio de Janeiro (RJ)),1
 86,Muricy Ramalho,,1955-11-30 (70 anos),,Brasil,Brasil (São Paulo (SP)),1
 87,Abel Carlos da Silva Braga,,1952-09-01 (73 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 88,Luiz Carlos Figueiredo Cruz,,1964-02-22 (62 anos),,Brasil,Brasil (Lages (SC)),1
@@ -95,7 +95,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 94,Nelson Baptista Júnior,,1950-07-22 (75 anos),,Brasil,Brasil (Campinas),1
 95,Paulo Afonso Bonamigo,,1960-09-23 (65 anos),,Brasil,Brasil (Ijui (RS)),1
 96,Edson José Valandro,,1955-06-06 (70 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
-97,Renato Portaluppi,,1962-09-09 (63 anos),,BrasilItália,Brasil (Guaporé (RS)),1
+97,Renato Portaluppi,Renato Gaucho,1962-09-09 (63 anos),,BrasilItália,Brasil (Guaporé (RS)),1
 98,Emerson Leão,,1949-07-11 (76 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
 99,Alexi Stival,,1963-06-07 (62 anos),,Brasil,Brasil (Curitiba (PR)),1
 100,Eugênio Machado Souto,,1948-05-15 (77 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
@@ -125,7 +125,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 124,Luiz Carlos Bezerra Pereira,,1956-06-06,Falecido - 2021-02-07 (64 anos),Brasil,Brasil (Olinda (PE)),1
 125,Márcio Longo de Araújo,,1960-05-07 (65 anos),,Brasil,Brasil (São José do Rio Preto (SP)),1
 126,José Luiz Plein Filho,,1951-04-25 (74 anos),,Brasil,Brasil (Santa Maria (RS)),1
-127,Dorival Silvestre Júnior,,1962-04-25 (63 anos),,Brasil,Brasil (Araraquara (SP)),1
+127,Dorival Silvestre Júnior,Dorival Junior,1962-04-25 (63 anos),,Brasil,Brasil (Araraquara (SP)),1
 128,Jairo Lopes César Leal,,1952-06-19 (73 anos),,Brasil,,1
 129,Leovegildo Lins da Gama Júnior,,1954-06-29 (71 anos),,Brasil,Brasil (João Pessoa (PB)),1
 130,Waldemar Lemos de Oliveira,,1954-06-05 (71 anos),,-,-,1
