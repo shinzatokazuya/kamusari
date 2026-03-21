@@ -82,9 +82,9 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 81,Antônio Lopes dos Santos,,1941-06-12 (84 anos),,-,-,1
 82,Joel Natalino Santana,,1948-12-25 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 83,Vágner Benazzi de Andrade,,1954-06-17,Falecido - 2023-05-22 (68 anos),Brasil,Brasil (Osasco (SP)),1
-84,Vanderlei Luxemburgo da Silva,,1952-05-10 (73 anos),,Brasil,Brasil (Nova Iguaçu (RJ)),1
+84,Vanderlei Luxemburgo da Silva,Vanderlei Luxemburgo,1952-05-10 (73 anos),,Brasil,Brasil (Nova Iguaçu (RJ)),1
 85,Mário Sérgio Pontes de Paiva,Mario Sergio,1950-09-07,Falecido - 2016-11-28 (66 anos),Brasil,Brasil (Rio de Janeiro (RJ)),1
-86,Muricy Ramalho,,1955-11-30 (70 anos),,Brasil,Brasil (São Paulo (SP)),1
+86,Muricy Ramalho,Muricy Ramalho,1955-11-30 (70 anos),,Brasil,Brasil (São Paulo (SP)),1
 87,Abel Carlos da Silva Braga,,1952-09-01 (73 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 88,Luiz Carlos Figueiredo Cruz,,1964-02-22 (62 anos),,Brasil,Brasil (Lages (SC)),1
 89,Raimundo Nonato Tavares da Silva,,1962-11-26 (63 anos),,Brasil,Brasil (Senhor do Bonfim),1
@@ -97,14 +97,14 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 96,Edson José Valandro,,1955-06-06 (70 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
 97,Renato Portaluppi,Renato Gaucho,1962-09-09 (63 anos),,BrasilItália,Brasil (Guaporé (RS)),1
 98,Emerson Leão,,1949-07-11 (76 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
-99,Alexi Stival,,1963-06-07 (62 anos),,Brasil,Brasil (Curitiba (PR)),1
+99,Alexi Stival,Cuca,1963-06-07 (62 anos),,Brasil,Brasil (Curitiba (PR)),1
 100,Eugênio Machado Souto,,1948-05-15 (77 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
-101,Celso Juarez Roth,,1957-11-30 (68 anos),,Brasil,Brasil (Caxias do Sul-RS),1
+101,Celso Juarez Roth,Celso Roth,1957-11-30 (68 anos),,Brasil,Brasil (Caxias do Sul-RS),1
 102,Ferdinando José Araújo Teixeira,,1946-03-21 (79 anos),,Brasil,Brasil (Pedro Velho (RN)),1
 103,Roberto Antonio Rojas Saavedra,,1957-08-08 (68 anos),,Chile,Chile (Santiago),1
 104,Mário Peres Ulibarri,,1947-03-19,Falecido - 2023-09-18 (76 anos),Brasil,Brasil (Sorocaba (SP)),1
 105,Gilson Kleina,,1968-03-30 (57 anos),,Brasil,Brasil (Curitiba (PR)),1
-106,Ivo Ardais Wortmann,,1949-03-10 (77 anos),,Brasil,Brasil (Quaraí (RS)),1
+106,Ivo Ardais Wortmann,Ivo Wortmann,1949-03-10 (77 anos),,Brasil,Brasil (Quaraí (RS)),1
 107,Adílson Dias Batista,,1968-03-16 (57 anos),,Brasil,Brasil (Adrianópolis (PR)),1
 108,Cléber Márcio Serpa Xavier,,1964-03-29 (61 anos),,Brasil,Brasil (Alegrete (RS)),1
 109,Artur Alves da Silva Neto,,1955-01-17 (71 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
@@ -112,7 +112,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 111,Edino Nazareth Filho,,1955-06-05 (70 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 112,Luiz Carlos Barbieri,,1957-06-18 (68 anos),,Brasil,Brasil (Erechim),1
 113,Gilson Wilson Francisco,,1957-06-20,Falecido - 2017-05-28 (59 anos),Brasil,Brasil (Itaguaí (RJ)),1
-114,Lori Paulo Sandri,,1949-01-29,Falecido - 2014-10-03 (65 anos),Brasil,Brasil (Encantado (RS)),1
+114,Lori Paulo Sandri,Lori Sandri,1949-01-29,Falecido - 2014-10-03 (65 anos),Brasil,Brasil (Encantado (RS)),1
 115,Mauro Geraldo Galvão,,1961-12-19 (64 anos),,Brasil,Brasil (Porto Alegre (RS)),1
 116,Marcos César Dias de Castro,,1958-08-27 (67 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 117,Saulo da Fé de Freitas,,1967-08-01 (58 anos),,Brasil,Brasil (São Domingos do Prata (MG)  ),1
@@ -134,7 +134,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 133,Agnaldo Liz Souza,,1968-06-07 (57 anos),,Brasil,Brasil (Florianopolis (SC)),1
 134,Levir Culpi,,1953-02-28 (73 anos),,Brasil,Brasil (Curitiba (PR)),1
 135,Jair Picerni,,1944-10-20 (81 anos),,Brasil,Brasil (São Paulo (SP)),1
-136,Paulo César Lopes de Gusmão,,1962-05-19 (63 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+136,Paulo César Lopes de Gusmão,Pc Gusmao,1962-05-19 (63 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 137,Paulo Luiz Campos,,1957-02-20 (69 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 138,Estevam Eduardo Lemos Soares,,1956-06-10 (69 anos),,Brasil,Brasil (Cafelândia (SP)),1
 139,Julio de Toledo Piza,,-,Falecido,Brasil,,1
@@ -144,7 +144,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 143,Nildo Ferreira,,-,,Brasil,,1
 144,Givanildo José de Oliveira,,1948-08-08 (77 anos),,Brasil,Brasil (Olinda (PE)),1
 145,Lino Fachini Junior,,-,,Brasil,,1
-146,Armelino Donizetti Quagliato,,1965-01-10 (61 anos),,BrasilItália,Brasil (Porto Feliz),1
+146,Armelino Donizetti Quagliato,Zetti,1965-01-10 (61 anos),,BrasilItália,Brasil (Porto Feliz),1
 147,Wilson Ricardo Guimarães Coimbra,,1958-03-07 (68 anos),,Brasil,"Brasil (Curitiba, PR)",1
 148,Ronaldo Rodrigues de Jesus,,1965-06-19 (60 anos),,Brasil,Brasil (São Paulo (SP)),1
 149,Marco Aurélio Moreira,,1952-02-10 (74 anos),,Brasil,Brasil (Muriaé (MG)),1
@@ -152,7 +152,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 151,Jorge Luís Andrade da Silva,,1957-04-21 (68 anos),,Brasil,Brasil (Juiz de Fora (MG)),1
 152,José Cândido Farias,,1956-01-21 (70 anos),,Brasil,,1
 153,Péricles Raimundo Oliveira Chamusca,,1965-09-29 (60 anos),,Brasil,Brasil (Salvador (BA)),1
-154,Ney Franco da Silveira Júnior,,1966-07-22 (59 anos),,Brasil,Brasil (Vargem Grande (MG)),1
+154,Ney Franco da Silveira Júnior,Ney Franco,1966-07-22 (59 anos),,Brasil,Brasil (Vargem Grande (MG)),1
 155,José Luiz Santana,,1957-07-17 (68 anos),,Brasil,Brasil (Rincão (SP)),1
 156,Alexandre Torreira da Gama Lima Casado,,1968-01-04 (58 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 157,Hélio César Pinto dos Anjos,,1958-03-07 (68 anos),,Brasil,Brasil (Janaúba (MG)),1
@@ -193,3 +193,6 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 192,Sídnei Espírito Santo,Sidnei Lobo,1970-02-03 (56 anos),,Brasil,Brasil (São Paulo (SP)),1
 193,Daniel Frasson,Daniel Frasson,1966-12-19,Falecido - 2023-07-15 (56 anos),Brasil,Brasil (Siderópolis (SC)),1
 194,Leomir de Souza,Leomir Souza,1961-12-18 (64 anos),,Brasil,Brasil (Curitiba (PR)),1
+195,Wanderley José Ferreira Filho,Wanderley Filho,1964-09-12 (61 anos),,Brasil,Brasil (Mineiros do Tietê (SP)),1
+196,Cleocir Marcos dos Santos,Tico Dos Santos,1960-05-01 (65 anos),,Brasil,Brasil (Ponta Grossa (PR)),1
+197,Paulo César Carpegiani,Carpegiani,1949-02-07 (77 anos),,Brasil,Brasil (Erechim (RS)),1
