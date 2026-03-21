@@ -78,7 +78,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 77,Vicente Trajano,,-,,Brasil,Brasil (Ceará),1
 78,Cláudio Pêcego de Moraes Coutinho,,1939-01-05,Falecido - 1981-11-27 (42 anos),Brasil,Brasil (Dom Pedrito (RS)),1
 79,Oswaldo Fumeiro Alvarez,Vadao,1956-08-21,Falecido - 2020-05-25 (63 anos),-,-,1
-80,Adenor Leonardo Bachi,,1961-05-25 (64 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
+80,Adenor Leonardo Bachi,Tite,1961-05-25 (64 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
 81,Antônio Lopes dos Santos,Antonio Lopes,1941-06-12 (84 anos),,-,-,1
 82,Joel Natalino Santana,Joel Santana,1948-12-25 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 83,Vágner Benazzi de Andrade,Vagner Benazzi,1954-06-17,Falecido - 2023-05-22 (68 anos),Brasil,Brasil (Osasco (SP)),1
@@ -148,7 +148,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 147,Wilson Ricardo Guimarães Coimbra,,1958-03-07 (68 anos),,Brasil,"Brasil (Curitiba, PR)",1
 148,Ronaldo Rodrigues de Jesus,,1965-06-19 (60 anos),,Brasil,Brasil (São Paulo (SP)),1
 149,Marco Aurélio Moreira,,1952-02-10 (74 anos),,Brasil,Brasil (Muriaé (MG)),1
-150,Leandro Altair Machado,,1963-07-15 (62 anos),,Brasil,Brasil (Sapiranga (RS)),1
+150,Leandro Altair Machado,Leandro Machado ,1963-07-15 (62 anos),,Brasil,Brasil (Sapiranga (RS)),1
 151,Jorge Luís Andrade da Silva,,1957-04-21 (68 anos),,Brasil,Brasil (Juiz de Fora (MG)),1
 152,José Cândido Farias,,1956-01-21 (70 anos),,Brasil,,1
 153,Péricles Raimundo Oliveira Chamusca,,1965-09-29 (60 anos),,Brasil,Brasil (Salvador (BA)),1
@@ -211,3 +211,6 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 210,Guilherme Leoni de Moura Macuglia,Guilherme Macuglia,1961-10-11 (64 anos),,Brasil,Brasil (Porto Alegre (RS)),1
 211,Marcelo Antônio Sangaletti,Marcelo Sangaletti,1971-06-01 (54 anos),,Brasil,Brasil (Dois Córregos (SP)),1
 212,Vinícius Soares Eutrópio,Vinicius Eutropio,1966-06-27 (59 anos),,Brasil,Brasil (Mutum (MG)),1
+213,Márcio Fernandes Figueiredo,Marcio Fernandes,1962-03-24 (63 anos),,Brasil,Brasil (Santos (SP)),1
+214,Luiz Ronaldo Nunes Rangel,Luizinho Rangel,1956-08-14 (69 anos),,Brasil,Brasil (Niterói (RJ)),1
+215,Augusto Sérgio Ferreira,Guto Ferreira,1965-09-07 (60 anos),,Brasil,Brasil (Piracicaba (SP)),1
