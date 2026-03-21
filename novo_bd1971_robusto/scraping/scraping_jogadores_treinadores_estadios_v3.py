@@ -699,17 +699,27 @@ class OGolScraperRelacional:
         if not url_treinador:
             return None
 
-        # Verifica cache de URL desta sessão
-        if url_treinador in self.url_cache['treinadores']:
-            return self.url_cache['treinadores'][url_treinador]
-
-        print(f"👔 Processando treinador: {url_treinador}")
-
         # Extrai apelido da URL (ex: /treinador/felipao -> "Felipao")
         apelido = ""
         match = re.search(r'/treinador/([^/?]+)', url_treinador)
         if match:
             apelido = match.group(1).lower().replace('-', ' ').title()
+
+        # Verifica cache de URL desta sessão
+        if url_treinador in self.url_cache['treinadores']:
+            treinador_id = self.url_cache['treinadores'][url_treinador]
+
+            # Se achou no cache, mas capturamos um apelido da URL,
+            # garanto que o dicionário seja atualizado em memória!
+            if apelido:
+                for chave, t_dados in self.treinadores_dict.items():
+                    if t_dados['id'] == treinador_id and not t_dados.get('apelido'):
+                        t_dados['apelido'] = apelido
+                        print(f"   ✓ Treinador do cache atualizado com apelido: {apelido} (ID: {treinador_id})")
+                        break
+            return treinador_id
+
+        print(f"👔 Processando treinador: {url_treinador}")
 
         try:
             soup = self._get_soup(url_treinador)
