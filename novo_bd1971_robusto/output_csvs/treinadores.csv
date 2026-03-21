@@ -79,31 +79,31 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 78,Cláudio Pêcego de Moraes Coutinho,,1939-01-05,Falecido - 1981-11-27 (42 anos),Brasil,Brasil (Dom Pedrito (RS)),1
 79,Oswaldo Fumeiro Alvarez,Vadao,1956-08-21,Falecido - 2020-05-25 (63 anos),-,-,1
 80,Adenor Leonardo Bachi,,1961-05-25 (64 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
-81,Antônio Lopes dos Santos,,1941-06-12 (84 anos),,-,-,1
-82,Joel Natalino Santana,,1948-12-25 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+81,Antônio Lopes dos Santos,Antonio Lopes,1941-06-12 (84 anos),,-,-,1
+82,Joel Natalino Santana,Joel Santana,1948-12-25 (77 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 83,Vágner Benazzi de Andrade,,1954-06-17,Falecido - 2023-05-22 (68 anos),Brasil,Brasil (Osasco (SP)),1
 84,Vanderlei Luxemburgo da Silva,Vanderlei Luxemburgo,1952-05-10 (73 anos),,Brasil,Brasil (Nova Iguaçu (RJ)),1
 85,Mário Sérgio Pontes de Paiva,Mario Sergio,1950-09-07,Falecido - 2016-11-28 (66 anos),Brasil,Brasil (Rio de Janeiro (RJ)),1
 86,Muricy Ramalho,Muricy Ramalho,1955-11-30 (70 anos),,Brasil,Brasil (São Paulo (SP)),1
-87,Abel Carlos da Silva Braga,,1952-09-01 (73 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+87,Abel Carlos da Silva Braga,Abel Braga,1952-09-01 (73 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 88,Luiz Carlos Figueiredo Cruz,,1964-02-22 (62 anos),,Brasil,Brasil (Lages (SC)),1
 89,Raimundo Nonato Tavares da Silva,,1962-11-26 (63 anos),,Brasil,Brasil (Senhor do Bonfim),1
 90,Cristóvão Borges dos Santos,,1959-06-09 (66 anos),,Brasil,Brasil (Salvador (BA)),1
 91,Oswaldo de Oliveira Filho,,1950-12-05 (75 anos),,Brasil,Brasil (Rio de Janeiro),1
 92,José Cândido Sotto Maior,,1945-01-18 (81 anos),,Brasil,Brasil (Sao Paulo- SP),1
 93,Alfonso Darío Pereyra Bueno,,1956-10-19 (69 anos),,Uruguai,Uruguai (Montevideo),1
-94,Nelson Baptista Júnior,,1950-07-22 (75 anos),,Brasil,Brasil (Campinas),1
+94,Nelson Baptista Júnior,Nelsinho Baptista,1950-07-22 (75 anos),,Brasil,Brasil (Campinas),1
 95,Paulo Afonso Bonamigo,Paulo Bonamigo,1960-09-23 (65 anos),,Brasil,Brasil (Ijui (RS)),1
 96,Edson José Valandro,,1955-06-06 (70 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
 97,Renato Portaluppi,Renato Gaucho,1962-09-09 (63 anos),,BrasilItália,Brasil (Guaporé (RS)),1
-98,Emerson Leão,,1949-07-11 (76 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
+98,Emerson Leão,Emerson Leao,1949-07-11 (76 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
 99,Alexi Stival,Cuca,1963-06-07 (62 anos),,Brasil,Brasil (Curitiba (PR)),1
-100,Eugênio Machado Souto,,1948-05-15 (77 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
+100,Eugênio Machado Souto,Geninho,1948-05-15 (77 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
 101,Celso Juarez Roth,Celso Roth,1957-11-30 (68 anos),,Brasil,Brasil (Caxias do Sul-RS),1
 102,Ferdinando José Araújo Teixeira,,1946-03-21 (79 anos),,Brasil,Brasil (Pedro Velho (RN)),1
 103,Roberto Antonio Rojas Saavedra,,1957-08-08 (68 anos),,Chile,Chile (Santiago),1
 104,Mário Peres Ulibarri,,1947-03-19,Falecido - 2023-09-18 (76 anos),Brasil,Brasil (Sorocaba (SP)),1
-105,Gilson Kleina,,1968-03-30 (57 anos),,Brasil,Brasil (Curitiba (PR)),1
+105,Gilson Kleina,Gilson Kleina,1968-03-30 (57 anos),,Brasil,Brasil (Curitiba (PR)),1
 106,Ivo Ardais Wortmann,Ivo Wortmann,1949-03-10 (77 anos),,Brasil,Brasil (Quaraí (RS)),1
 107,Adílson Dias Batista,,1968-03-16 (57 anos),,Brasil,Brasil (Adrianópolis (PR)),1
 108,Cléber Márcio Serpa Xavier,,1964-03-29 (61 anos),,Brasil,Brasil (Alegrete (RS)),1
@@ -115,15 +115,15 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 114,Lori Paulo Sandri,Lori Sandri,1949-01-29,Falecido - 2014-10-03 (65 anos),Brasil,Brasil (Encantado (RS)),1
 115,Mauro Geraldo Galvão,,1961-12-19 (64 anos),,Brasil,Brasil (Porto Alegre (RS)),1
 116,Marcos César Dias de Castro,,1958-08-27 (67 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
-117,Saulo da Fé de Freitas,,1967-08-01 (58 anos),,Brasil,Brasil (São Domingos do Prata (MG)  ),1
-118,Marcelo de Oliveira Santos Uzai,,1955-03-04 (71 anos),,Brasil,Brasil (Pedro Leopoldo (MG)),1
+117,Saulo da Fé de Freitas,Saulo De Freitas,1967-08-01 (58 anos),,Brasil,Brasil (São Domingos do Prata (MG)  ),1
+118,Marcelo de Oliveira Santos Uzai,Marcelo Oliveira,1955-03-04 (71 anos),,Brasil,Brasil (Pedro Leopoldo (MG)),1
 119,Nestor Simionato,,1959-12-17 (66 anos),,Brasil,Brasil (Crissiumal (RS)),1
 120,Nelsinho Góes,,-,,Brasil,,1
 121,Marcelo Augusto Oliveira Chamusca,,1966-09-07 (59 anos),,Brasil,Brasil (Salvador (BA)),1
 122,Luiz Carlos Ferreira dos Santos,,1949-05-12,Falecido - 2020-09-14 (71 anos),Brasil,Brasil (São José do Rio Preto (SP)),1
 123,Carlos Eduardo Marangon,,1963-02-02 (63 anos),,Brasil,Brasil (São Paulo),1
 124,Luiz Carlos Bezerra Pereira,,1956-06-06,Falecido - 2021-02-07 (64 anos),Brasil,Brasil (Olinda (PE)),1
-125,Márcio Longo de Araújo,,1960-05-07 (65 anos),,Brasil,Brasil (São José do Rio Preto (SP)),1
+125,Márcio Longo de Araújo,Marcio Araujo,1960-05-07 (65 anos),,Brasil,Brasil (São José do Rio Preto (SP)),1
 126,José Luiz Plein Filho,,1951-04-25 (74 anos),,Brasil,Brasil (Santa Maria (RS)),1
 127,Dorival Silvestre Júnior,Dorival Junior,1962-04-25 (63 anos),,Brasil,Brasil (Araraquara (SP)),1
 128,Jairo Lopes César Leal,,1952-06-19 (73 anos),,Brasil,,1
@@ -157,7 +157,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 156,Alexandre Torreira da Gama Lima Casado,,1968-01-04 (58 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 157,Hélio César Pinto dos Anjos,,1958-03-07 (68 anos),,Brasil,Brasil (Janaúba (MG)),1
 158,Carlos Renato Frederico,,1957-02-21 (69 anos),,Brasil,Brasil (Morungaba (SP)),1
-159,Cláudio Roberto Pires Duarte,,1951-05-09 (74 anos),,Brasil,Brasil (São Jerônimo (RS)),1
+159,Cláudio Roberto Pires Duarte,Claudio Duarte,1951-05-09 (74 anos),,Brasil,Brasil (São Jerônimo (RS)),1
 160,Sinomar Dias Naves,,1953-07-06 (72 anos),,Brasil,Brasil (Corumbaiba (GO)),1
 161,Milton da Cruz,Milton Cruz,1957-08-01 (68 anos),,Brasil,Brasil (Cubatão (SP)),1
 162,Daniel Alberto Passarella,Daniel Passarella,1953-05-25 (72 anos),,Argentina,Argentina (Chacabuco),1
@@ -198,3 +198,11 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 197,Paulo César Carpegiani,Carpegiani,1949-02-07 (77 anos),,Brasil,Brasil (Erechim (RS)),1
 198,Luís Carlos de Oliveira Preto,Pintado,1965-09-17 (60 anos),,Brasil,Brasil (Bragança Paulista (SP)),1
 199,Flávio Henrique de Paiva Campos,Flavio Campos,1965-08-29 (60 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+200,José Edson Marcelino de Oliveira,Edson Leivinha,1962-09-28 (63 anos),,Brasil,,1
+201,Marcelo Castelo Veiga,Marcelo Veiga,1964-10-07,Falecido - 2020-12-14 (56 anos),Brasil,Brasil (São Paulo (SP)),1
+202,José Roberto Fernandes Barros,Roberto Fernandes,1971-05-05 (54 anos),,Brasil,Brasil (Recife (PE)),1
+203,Roberto de Almeida,Beto Almeida,1955-04-05 (70 anos),,Brasil,Brasil (Porto Alegre (RS)),1
+204,Paulo Ricardo Moroni,Paulo Moroni,1961-08-29 (64 anos),,Brasil,Brasil (Santa Rosa (RS)),1
+205,José Augusto Borges Nascimento,Ze Augusto,1957-03-03 (69 anos),,Brasil,Brasil (Cruz das Almas (BA)),1
+206,Alexandre Pereira Mendes,Alexandre Mendes,1964-06-10 (61 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+207,Hudson José Coutinho,Hudson Coutinho,1972-07-12 (53 anos),,Brasil,Brasil (Florianópolis (SC)),1
