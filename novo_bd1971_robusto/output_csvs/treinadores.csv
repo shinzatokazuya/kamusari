@@ -93,7 +93,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 92,José Cândido Sotto Maior,,1945-01-18 (81 anos),,Brasil,Brasil (Sao Paulo- SP),1
 93,Alfonso Darío Pereyra Bueno,,1956-10-19 (69 anos),,Uruguai,Uruguai (Montevideo),1
 94,Nelson Baptista Júnior,,1950-07-22 (75 anos),,Brasil,Brasil (Campinas),1
-95,Paulo Afonso Bonamigo,,1960-09-23 (65 anos),,Brasil,Brasil (Ijui (RS)),1
+95,Paulo Afonso Bonamigo,Paulo Bonamigo,1960-09-23 (65 anos),,Brasil,Brasil (Ijui (RS)),1
 96,Edson José Valandro,,1955-06-06 (70 anos),,Brasil,Brasil (Caxias do Sul (RS)),1
 97,Renato Portaluppi,Renato Gaucho,1962-09-09 (63 anos),,BrasilItália,Brasil (Guaporé (RS)),1
 98,Emerson Leão,,1949-07-11 (76 anos),,Brasil,Brasil (Ribeirão Preto (SP)),1
@@ -196,3 +196,5 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 195,Wanderley José Ferreira Filho,Wanderley Filho,1964-09-12 (61 anos),,Brasil,Brasil (Mineiros do Tietê (SP)),1
 196,Cleocir Marcos dos Santos,Tico Dos Santos,1960-05-01 (65 anos),,Brasil,Brasil (Ponta Grossa (PR)),1
 197,Paulo César Carpegiani,Carpegiani,1949-02-07 (77 anos),,Brasil,Brasil (Erechim (RS)),1
+198,Luís Carlos de Oliveira Preto,Pintado,1965-09-17 (60 anos),,Brasil,Brasil (Bragança Paulista (SP)),1
+199,Flávio Henrique de Paiva Campos,Flavio Campos,1965-08-29 (60 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
