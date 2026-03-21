@@ -128,7 +128,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 127,Dorival Silvestre Júnior,Dorival Junior,1962-04-25 (63 anos),,Brasil,Brasil (Araraquara (SP)),1
 128,Jairo Lopes César Leal,,1952-06-19 (73 anos),,Brasil,,1
 129,Leovegildo Lins da Gama Júnior,,1954-06-29 (71 anos),,Brasil,Brasil (João Pessoa (PB)),1
-130,Waldemar Lemos de Oliveira,,1954-06-05 (71 anos),,-,-,1
+130,Waldemar Lemos de Oliveira,Waldemar Lemos,1954-06-05 (71 anos),,-,-,1
 131,Alcides Fonseca Júnior,,1958-08-29 (67 anos),,Brasil,Brasil (Olímpia ),1
 132,Procópio Cardoso Neto,,1939-03-21 (86 anos),,Brasil,Brasil (Salinas (MG)),1
 133,Agnaldo Liz Souza,,1968-06-07 (57 anos),,Brasil,Brasil (Florianopolis (SC)),1
@@ -220,3 +220,6 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 219,René Rodrigues Simões,Rene Simoes,1952-12-17 (73 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 220,Enderson Alves Moreira,Enderson Moreira ,1971-09-28 (54 anos),,Brasil,Brasil (Belo Horizonte (MG)),1
 221,Paulo Silas do Prado Pereira,Paulo Silas,1965-08-27 (60 anos),,Brasil,Brasil (Campinas (SP)),1
+222,Carlos Alberto Gomes Parreira,Carlos Alberto Parreira,1943-02-27 (83 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
+223,Ivanilton Sérgio Guedes,Sergio Guedes,1962-11-07 (63 anos),,Brasil,Brasil (Rio Claro (SP)),1
+224,Marcelo Rospide,Marcelo Rospide,1971-03-20 (55 anos),,Brasil,Brasil (Porto Alegre (RS)),1
