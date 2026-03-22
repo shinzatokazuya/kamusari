@@ -83530,3 +83530,25 @@ id,partida_id,jogador_id,clube_id,tipo_evento,tipo_gol,minuto
 83529,5610,5212,14,Cartão Amarelo,,65
 83530,5610,4799,14,Entrou,,50
 83531,5610,4799,14,Substituição,,60
+83532,5611,2602,10,Gol,Normal,69
+83533,5611,4426,10,Gol,Normal,29
+83534,5611,4426,10,Cartão Amarelo,,10
+83535,5611,4988,10,Cartão Amarelo,,34
+83536,5611,2521,10,Substituição,,82
+83537,5611,3492,10,Assistência,,69
+83538,5611,3492,10,Substituição,,73
+83539,5611,3946,10,Substituição,,60
+83540,5611,5062,10,Assistência,,29
+83541,5611,4140,12,Cartão Amarelo,,31
+83542,5611,3372,12,Cartão Amarelo,,36
+83543,5611,4413,12,Cartão Amarelo,,66
+83544,5611,4413,12,Substituição,,87
+83545,5611,4945,12,Assistência,,21
+83546,5611,4945,12,Cartão Amarelo,,15
+83547,5611,5116,12,Gol,Normal,21
+83548,5611,5116,12,Substituição,,72
+83549,5611,4937,10,Entrou,,73
+83550,5611,2863,10,Entrou,,82
+83551,5611,4410,10,Entrou,,60
+83552,5611,5251,12,Entrou,,72
+83553,5611,5252,12,Entrou,,87
