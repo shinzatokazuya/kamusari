@@ -1498,9 +1498,9 @@ class OGolScraperRelacional:
 
 if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
-    min_page = 8
+    min_page = 1
     max_page = 8
-    edicao_id = 39
+    edicao_id = 40
 
     # URL base (sem o parâmetro page)
     url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-2009/5268/calendario?fase_in=18762&equipa=0&estado=1&filtro=&op=calendario&page="
