@@ -43,7 +43,7 @@ id,cidade,uf,estado,regiao,pais
 42,Juiz de Fora,MG,Minas Gerais,Sudeste,Brasil
 43,São José do Rio Preto,SP,São Paulo,Sudeste,Brasil
 44,Pelotas,RS,Rio Grande do Sul,Sul,Brasil
-54,Presidente Prudente,SP,São Paulo,Sudeste,Brasil
+56,Presidente Prudente,SP,São Paulo,Sudeste,Brasil
 46,Erechim,RS,Rio Grande do Sul,Sul,Brasil
 47,Taguatinga,DF,Distrito Federal,Centro-Oeste,Brasil
 48,Maringá,PR,Paraná,Sul,Brasil
@@ -52,7 +52,7 @@ id,cidade,uf,estado,regiao,pais
 52,Barueri,SP,São Paulo,Sudeste,Brasil
 53,Santo André,SP,São Paulo,Sudeste,Brasil
 55,Caruaru,PE,Pernambuco,Nordeste,Brasil
-56,Presidente Prudente,SP,São Paulo,Sudeste,Brasil
 57,Sete Lagoas,MG,Minas Gerais,Sudeste,Brasil
 58,Uberlândia,MG,Minas Gerais,Sudeste,Brasil
 59,Araraquara,SP,São Paulo,Sudeste,Brasil
+60,Macaé,RJ,Rio de Janeiro,Sudeste,Brasil
