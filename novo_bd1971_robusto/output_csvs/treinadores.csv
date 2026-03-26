@@ -89,7 +89,7 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 88,Luiz Carlos Figueiredo Cruz,,1964-02-22 (62 anos),,Brasil,Brasil (Lages (SC)),1
 89,Raimundo Nonato Tavares da Silva,,1962-11-26 (63 anos),,Brasil,Brasil (Senhor do Bonfim),1
 90,Cristóvão Borges dos Santos,Cristovao Borges,1959-06-09 (66 anos),,Brasil,Brasil (Salvador (BA)),1
-91,Oswaldo de Oliveira Filho,,1950-12-05 (75 anos),,Brasil,Brasil (Rio de Janeiro),1
+91,Oswaldo de Oliveira Filho,Oswaldo De Oliveira,1950-12-05 (75 anos),,Brasil,Brasil (Rio de Janeiro),1
 92,José Cândido Sotto Maior,,1945-01-18 (81 anos),,Brasil,Brasil (Sao Paulo- SP),1
 93,Alfonso Darío Pereyra Bueno,,1956-10-19 (69 anos),,Uruguai,Uruguai (Montevideo),1
 94,Nelson Baptista Júnior,Nelsinho Baptista,1950-07-22 (75 anos),,Brasil,Brasil (Campinas),1
@@ -259,3 +259,4 @@ id,nome,apelido,nascimento,falecimento,nacionalidade,naturalidade,aposentado
 258,Eduardo de Souza Barroca,Eduardo Barroca,1982-04-22 (43 anos),,Brasil,Brasil (Rio de Janeiro (RJ)),1
 259,Mário Felipe Perez,Tata,1953-10-03,Falecido,Brasil,Brasil (São Paulo (SP)),1
 260,Flávio de Britto Pereira Tênius,Flavio Tenius,1964-05-08 (61 anos),,Brasil,,1
+261,Argélico Fuchs,Argel Fuchs,1974-09-04 (51 anos),,BrasilItália,Brasil (Santa Rosa (RS)),1
