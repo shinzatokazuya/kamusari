@@ -58,3 +58,7 @@ id,cidade,uf,estado,regiao,pais
 60,Macaé,RJ,Rio de Janeiro,Sudeste,Brasil
 62,Varginha,MG,Minas Gerais,Sudeste,Brasil
 64,Joinville,SC,Santa Catarina,Sul,Brasil
+65,São Lourenço da Mata,PE,Pernambuco,Nordeste,Brasil
+66,Novo Hamburgo,RS,Rio Grande do Sul,Sul,Brasil
+67,Itu,SP,São Paulo,Sudeste,Brasil
+68,Presidente Prudente,SP,São Paulo,Sudeste,Brasil
