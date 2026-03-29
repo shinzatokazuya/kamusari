@@ -1,3 +1,4 @@
+-- 1. Tabelas Base (Sem chaves estrangeiras dependentes)
 CREATE TABLE locais (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     cidade TEXT,
@@ -8,6 +9,63 @@ CREATE TABLE locais (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE campeonatos (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    campeonato TEXT NOT NULL,
+    pais TEXT NOT NULL,
+    entidade TEXT, -- CBF, CONMEBOL, FIFA, etc.
+    tipo TEXT, -- 'nacional', 'estadual', 'internacional'
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE jogadores (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    apelido TEXT,
+    nascimento TEXT,
+    falecimento TEXT,
+    nacionalidade TEXT,
+    naturalidade TEXT,
+    altura INTEGER,
+    peso INTEGER,
+    posicao TEXT,
+    posicao_detalhada TEXT,
+    pe_preferido TEXT,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP
+);
+
+CREATE TABLE treinadores (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    apelido TEXT,
+    nascimento TEXT,
+    falecimento TEXT,
+    nacionalidade TEXT,
+    naturalidade TEXT,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP
+);
+
+CREATE TABLE arbitros (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    apelido TEXT,
+    nascimento TEXT,
+    falecimento TEXT,
+    nacionalidade TEXT,
+    naturalidade TEXT,
+    aposentado BOOLEAN DEFAULT 0,
+    url_foto TEXT,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP
+);
+
+-- 2. Tabelas Intermediárias (Dependem das tabelas base)
 CREATE TABLE estadios (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     estadio TEXT NOT NULL,
@@ -32,13 +90,19 @@ CREATE TABLE clubes (
     FOREIGN KEY (local_id) REFERENCES locais(ID)
 );
 
-CREATE TABLE campeonatos (
+CREATE TABLE transferencias (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    campeonato TEXT NOT NULL,
-    pais TEXT NOT NULL,
-    entidade TEXT, -- CBF, CONMEBOL, FIFA, etc.
-    tipo TEXT, -- 'nacional', 'estadual', 'internacional'
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    jogador_id INTEGER NOT NULL,
+    clube_origem_id INTEGER,
+    clube_destino_id INTEGER NOT NULL,
+    data_transferencia TEXT NOT NULL,
+    valor REAL,
+    tipo TEXT, -- 'Compra', 'Empréstimo', 'Livre', 'Troca'
+    duracao_meses INTEGER,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID),
+    FOREIGN KEY (clube_origem_id) REFERENCES clubes(ID),
+    FOREIGN KEY (clube_destino_id) REFERENCES clubes(ID)
 );
 
 CREATE TABLE edicoes (
@@ -47,7 +111,7 @@ CREATE TABLE edicoes (
     ano TEXT NOT NULL,
     data_inicio TEXT,
     data_fim TEXT,
-    campeao_id INTEGER, -- clube vencedor
+    campeao_id INTEGER,
     vice_id INTEGER,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (campeonato_id) REFERENCES campeonatos(ID),
@@ -55,13 +119,14 @@ CREATE TABLE edicoes (
     FOREIGN KEY (vice_id) REFERENCES clubes(ID)
 );
 
+-- 3. Tabela Central de Partidas
 CREATE TABLE partidas (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     edicao_id INTEGER,
     campeonato_id INTEGER,
     data TEXT,
     hora TEXT,
-    fase TEXT, -- 'Primeira Fase', 'Oitavas', 'Quartas', 'Semi', 'Final', etc.
+    fase TEXT,
     grupo TEXT,
     rodada INTEGER,
     estadio_id INTEGER,
@@ -83,73 +148,26 @@ CREATE TABLE partidas (
     FOREIGN KEY (estadio_id) REFERENCES estadios(ID),
     FOREIGN KEY (mandante_id) REFERENCES clubes(ID),
     FOREIGN KEY (visitante_id) REFERENCES clubes(ID),
-    CHECK (mandante_id != visitante_id) -- Garante que time não joga contra si mesmo
+    CHECK (mandante_id != visitante_id)
 );
 
-CREATE TABLE estatisticas_partida (
-    partida_id INTEGER,
-    clube_id INTEGER,
-    chutes INTEGER,
-    chutes_no_alvo INTEGER,
-    posse_de_bola TEXT,
-    passes INTEGER,
-    precisao_passes TEXT,
-    faltas INTEGER,
-    cartao_amarelo INTEGER,
-    cartao_vermelho INTEGER,
-    impedimentos INTEGER,
-    escanteios INTEGER,
-    PRIMARY KEY (partida_id, clube_id),
-    FOREIGN KEY (partida_id) REFERENCES partidas(ID),
-    FOREIGN KEY (clube_id) REFERENCES clubes(ID)
-);
-
-CREATE TABLE jogadores (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    apelido TEXT,
-    nascimento TEXT,
-    falecimento TEXT, -- Para jogadores históricos já falecidos
-    nacionalidade TEXT,
-    naturalidade TEXT, -- Cidade em que nasceu
-    altura INTEGER, -- em centímetros
-    peso INTEGER, -- em quilogramas
-    posicao TEXT, -- 'Goleiro', 'Zagueiro', 'Lateral', 'Meia', 'Atacante'
-    posicao_detalhada TEXT, -- 'Zagueiro Central', 'Ponta Esquerda', etc.
-    pe_preferido TEXT, -- 'Direito', 'Esquerdo', 'Ambidestro'
-    aposentado BOOLEAN DEFAULT 0,
-    url_foto TEXT,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP
-);
-
+-- 4. Tabelas de Vínculo com a Partida (Atores do Jogo e Eventos)
 CREATE TABLE jogadores_em_partida (
     partida_id INTEGER NOT NULL,
     jogador_id INTEGER NOT NULL,
-    clube_id INTEGER NOT NULL, -- clube pelo qual jogou nesta partida
+    clube_id INTEGER NOT NULL,
     titular BOOLEAN NOT NULL DEFAULT 1,
-    posicao_jogada TEXT, -- Posição específica nesta partida
+    posicao_jogada TEXT,
     numero_camisa INTEGER,
     minutos_jogados INTEGER,
-    minuto_entrada INTEGER, -- Para reservas que entraram
-    minuto_saida INTEGER, -- Para jogadores substituídos
+    minuto_entrada INTEGER,
+    minuto_saida INTEGER,
     gols INTEGER DEFAULT 0,
     assistencias INTEGER DEFAULT 0,
     cartao_amarelo INTEGER DEFAULT 0,
     cartao_vermelho INTEGER DEFAULT 0,
     gol_contra INTEGER DEFAULT 0,
-    penalti_cometido INTEGER DEFAULT 0,
-    penalti_sofrido INTEGER DEFAULT 0,
-    defesas INTEGER DEFAULT 0, -- Para goleiros
-    faltas_cometidas INTEGER DEFAULT 0,
-    faltas_sofridas INTEGER DEFAULT 0,
-    impedimentos INTEGER DEFAULT 0,
-    chutes_gol INTEGER DEFAULT 0,
-    chutes_fora INTEGER DEFAULT 0,
-    passes_completos INTEGER DEFAULT 0,
-    passes_errados INTEGER DEFAULT 0,
-    desarmes INTEGER DEFAULT 0,
-    nota_avaliacao REAL, -- Nota de 0 a 10
+    nota_avaliacao REAL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
     PRIMARY KEY (partida_id, jogador_id),
@@ -158,44 +176,16 @@ CREATE TABLE jogadores_em_partida (
     FOREIGN KEY (clube_id) REFERENCES clubes(ID)
 );
 
-CREATE TABLE treinadores (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    apelido TEXT,
-    nascimento TEXT,
-    falecimento TEXT,
-    nacionalidade TEXT,
-    naturalidade TEXT,
-    aposentado BOOLEAN DEFAULT 0,
-    url_foto TEXT,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP
-);
-
 CREATE TABLE treinadores_em_partida (
     partida_id INTEGER NOT NULL,
     treinador_id INTEGER NOT NULL,
     clube_id INTEGER NOT NULL,
-    tipo TEXT DEFAULT 'Titular', -- 'Titular', 'Assistente', 'Interino'
+    tipo TEXT DEFAULT 'Titular',
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (partida_id, treinador_id, clube_id),
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
     FOREIGN KEY (treinador_id) REFERENCES treinadores(ID) ON DELETE CASCADE,
     FOREIGN KEY (clube_id) REFERENCES clubes(ID)
-);
-
-CREATE TABLE arbitros (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    apelido TEXT,
-    nascimento TEXT,
-    falecimento TEXT,
-    nacionalidade TEXT,
-    naturalidade TEXT,
-    aposentado BOOLEAN DEFAULT 0,
-    url_foto TEXT,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em TIMESTAMP
 );
 
 CREATE TABLE arbitros_em_partida (
@@ -212,8 +202,8 @@ CREATE TABLE eventos_partida (
     partida_id INTEGER NOT NULL,
     jogador_id INTEGER NOT NULL,
     clube_id INTEGER NOT NULL,
-    tipo_evento TEXT NOT NULL, -- 'gol', 'cartao_amarelo', 'cartao_vermelho', 'substituicao', 'penalti'
-    tipo_gol TEXT, -- 'penalti', 'contra', 'normal', 'cabeça'
+    tipo_evento TEXT NOT NULL,
+    tipo_gol TEXT,
     minuto INTEGER,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
@@ -221,17 +211,76 @@ CREATE TABLE eventos_partida (
     FOREIGN KEY (clube_id) REFERENCES clubes(ID)
 );
 
-CREATE TABLE transferencias (
+-- 5. Tabelas de Estatísticas Categorizadas
+CREATE TABLE estatisticas_ataque (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    jogador_id INTEGER NOT NULL,
-    clube_origem_id INTEGER,
-    clube_destino_id INTEGER NOT NULL,
-    data_transferencia TEXT NOT NULL,
-    valor REAL, -- Valor da transferência
-    tipo TEXT, -- 'Compra', 'Empréstimo', 'Livre', 'Troca'
-    duracao_meses INTEGER, -- Para empréstimos
+    partida_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL,
+    jogador_id INTEGER,
+    tentativas_de_gol INTEGER DEFAULT 0,
+    chutes_total INTEGER DEFAULT 0,
+    chutes_a_gol INTEGER DEFAULT 0,
+    chutes_bloqueados INTEGER DEFAULT 0,
+    chutes_dentro_area INTEGER DEFAULT 0,
+    chutes_fora_area INTEGER DEFAULT 0,
+    chutes_fora INTEGER DEFAULT 0,
+    grandes_chances_perdidas INTEGER DEFAULT 0,
+    dribles_conseguidos INTEGER DEFAULT 0,
+    dribles_tentados INTEGER DEFAULT 0,
+    escanteios INTEGER DEFAULT 0,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID),
-    FOREIGN KEY (clube_origem_id) REFERENCES clubes(ID),
-    FOREIGN KEY (clube_destino_id) REFERENCES clubes(ID)
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE estatisticas_passe (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    partida_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL,
+    jogador_id INTEGER,
+    total_passes INTEGER DEFAULT 0,
+    passes_certos INTEGER DEFAULT 0,
+    grandes_chances_criadas INTEGER DEFAULT 0,
+    passes_longos INTEGER DEFAULT 0,
+    passes_longos_certos INTEGER DEFAULT 0,
+    cruzamentos INTEGER DEFAULT 0,
+    cruzamentos_certos INTEGER DEFAULT 0,
+    passes_chave INTEGER DEFAULT 0,
+    lancamentos INTEGER DEFAULT 0,
+    posse_de_bola_percentual REAL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE estatisticas_defesa (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    partida_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL,
+    jogador_id INTEGER,
+    duelos_ganhos INTEGER DEFAULT 0,
+    interceptacoes INTEGER DEFAULT 0,
+    divididas_ganhas INTEGER DEFAULT 0,
+    faltas_cometidas INTEGER DEFAULT 0,
+    impedimentos INTEGER DEFAULT 0,
+    bola_segura INTEGER DEFAULT 0,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE
+);
+
+CREATE TABLE estatisticas_goleiro (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    partida_id INTEGER NOT NULL,
+    clube_id INTEGER NOT NULL,
+    jogador_id INTEGER,
+    defesas INTEGER DEFAULT 0,
+    tiros_de_meta INTEGER DEFAULT 0,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (partida_id) REFERENCES partidas(ID) ON DELETE CASCADE,
+    FOREIGN KEY (clube_id) REFERENCES clubes(ID) ON DELETE CASCADE,
+    FOREIGN KEY (jogador_id) REFERENCES jogadores(ID) ON DELETE CASCADE
 );
