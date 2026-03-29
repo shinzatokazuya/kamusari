@@ -4,7 +4,7 @@ from pathlib import Path
 import requests
 
 
-def baixar_sumula(ano: int, codigo: int, sufixo: str = "se", pasta_destino: Path = Path("sumulas")):
+def baixar_sumula(ano: int, codigo: int, sufixo: str = "se", pasta_destino: Path = Path("sumulas/2013")):
     """
     Baixa uma única súmula dado o ano e o código (ex.: 142376),
     gerando a URL no formato:
