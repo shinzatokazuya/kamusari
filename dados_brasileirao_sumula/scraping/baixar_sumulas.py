@@ -49,9 +49,9 @@ def baixar_intervalo(ano: int, inicio: int, fim: int, sufixo: str = "se"):
 if __name__ == "__main__":
     # >>> AJUSTE AQUI OS PARÂMETROS QUE VOCÊ QUISER <<<
 
-    ANO = 2024
-    INICIO = 14210     # primeiro código que você quer testar
-    FIM = 14230       # último código do intervalo
+    ANO = 2013
+    INICIO = 1421     # primeiro código que você quer testar
+    FIM = 142380       # último código do intervalo
     SUFIXO = "se"        # em Série A está vindo "se" (pode existir "sb" etc., se precisar)
 
     baixar_intervalo(ANO, INICIO, FIM, SUFIXO)
