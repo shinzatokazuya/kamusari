@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
     ANO = 2013
     INICIO = 1421     # primeiro código que você quer testar
-    FIM = 142380       # último código do intervalo
+    FIM = 1422       # último código do intervalo
     SUFIXO = "se"        # em Série A está vindo "se" (pode existir "sb" etc., se precisar)
 
     baixar_intervalo(ANO, INICIO, FIM, SUFIXO)
