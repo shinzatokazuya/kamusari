@@ -4,13 +4,12 @@ from pathlib import Path
 import requests
 
 
-def baixar_sumula(ano: int, codigo: int, sufixo: str = "se"):
+def baixar_sumula(ano: int, codigo: int, sufixo: str = "se", pasta_destino: Path = Path("sumulas/2013")):
     """
     Baixa uma única súmula dado o ano e o código (ex.: 142376),
     gerando a URL no formato:
     https://conteudo.cbf.com.br/sumulas/{ano}/{codigo}{sufixo}.pdf
     """
-    pasta_destino = Path("sumulas/2013")
     pasta_destino.mkdir(parents=True, exist_ok=True)
 
     nome_arquivo = f"{codigo}{sufixo}.pdf"
@@ -40,7 +39,7 @@ def baixar_intervalo(ano: int, inicio: int, fim: int, sufixo: str = "se"):
     Baixa todas as súmulas do intervalo [inicio, fim],
     ex.: inicio=142371, fim=142400.
     """
-    pasta_destino = Path("sumulas")
+    pasta_destino = Path("sumulas/2013")
     pasta_destino.mkdir(exist_ok=True)
 
     for codigo in range(inicio, fim + 1):
@@ -52,7 +51,7 @@ if __name__ == "__main__":
 
     ANO = 2013
     INICIO = 1421     # primeiro código que você quer testar
-    FIM = 1422       # último código do intervalo
+    FIM = 142380       # último código do intervalo
     SUFIXO = "se"        # em Série A está vindo "se" (pode existir "sb" etc., se precisar)
 
     baixar_intervalo(ANO, INICIO, FIM, SUFIXO)
