@@ -10,7 +10,7 @@ def baixar_sumula(ano: int, codigo: int, sufixo: str = "se", pasta_destino: Path
     gerando a URL no formato:
     https://conteudo.cbf.com.br/sumulas/{ano}/{codigo}{sufixo}.pdf
     """
-    pasta_destino.mkdir(exist_ok=True)
+    pasta_destino.mkdir(parents=True, exist_ok=True)
 
     nome_arquivo = f"{codigo}{sufixo}.pdf"
     url = f"https://conteudo.cbf.com.br/sumulas/{ano}/{nome_arquivo}"
