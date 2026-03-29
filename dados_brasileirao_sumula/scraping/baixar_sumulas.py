@@ -4,12 +4,13 @@ from pathlib import Path
 import requests
 
 
-def baixar_sumula(ano: int, codigo: int, sufixo: str = "se", pasta_destino: Path = Path("sumulas/2013")):
+def baixar_sumula(ano: int, codigo: int, sufixo: str = "se"):
     """
     Baixa uma única súmula dado o ano e o código (ex.: 142376),
     gerando a URL no formato:
     https://conteudo.cbf.com.br/sumulas/{ano}/{codigo}{sufixo}.pdf
     """
+    pasta_destino = Path("sumulas/2013")
     pasta_destino.mkdir(parents=True, exist_ok=True)
 
     nome_arquivo = f"{codigo}{sufixo}.pdf"
