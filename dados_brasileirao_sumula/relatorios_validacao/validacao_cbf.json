@@ -10,7 +10,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Santos / SP x Flamengo / RJ em 2013-05-26"
   },
   {
     "arquivo": "1421se.pdf",
@@ -23,7 +23,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Vasco da Gama / RJ x Portuguesa / SP em 2013-05-25"
   },
   {
     "arquivo": "1422se.pdf",
@@ -36,7 +36,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Fluminense / RJ x Atlético / PR em 2013-05-26"
   },
   {
     "arquivo": "1423se.pdf",
@@ -49,7 +49,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Corinthians / SP x Botafogo / RJ em 2013-05-25"
   },
   {
     "arquivo": "1424se.pdf",
@@ -62,7 +62,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Vitória / BA x Internacional / RS em 2013-05-25"
   },
   {
     "arquivo": "1425se.pdf",
@@ -75,7 +75,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Grêmio / RS x Náutico / PE em 2013-05-26"
   },
   {
     "arquivo": "1426se.pdf",
@@ -88,7 +88,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Ponte Preta / SP x São Paulo / SP em 2013-05-26"
   },
   {
     "arquivo": "1427se.pdf",
@@ -101,7 +101,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Criciuma / SC x Bahia / BA em 2013-05-26"
   },
   {
     "arquivo": "1428se.pdf",
@@ -114,7 +114,7 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Cruzeiro / MG x Goiás / GO em 2013-05-26"
   },
   {
     "arquivo": "1429se.pdf",
@@ -127,6 +127,6 @@
     "divergencias_placar": [],
     "divergencias_arbitro": [],
     "divergencias_escalacao": [],
-    "erro": "'mandante_id'"
+    "erro": "Partida não encontrada: Coritiba / PR x Atlético / MG em 2013-05-26"
   }
 ]
