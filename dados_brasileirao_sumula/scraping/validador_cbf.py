@@ -63,13 +63,15 @@ def carregar_csvs() -> dict:
     dados = {}
 
     arquivos = {
-        "partidas":              "partidas.csv",
-        "clubes":                "clubes.csv",
-        "edicoes":               "edicoes.csv",
-        "jogadores":             "jogadores.csv",
-        "jogadores_em_partida":  "jogadores_em_partida.csv",
-        "arbitros":              "arbitros.csv",
-        "arbitros_em_partida":   "arbitros_em_partida.csv",
+        "partidas":                 "partidas.csv",
+        "clubes":                   "clubes.csv",
+        "edicoes":                  "edicoes.csv",
+        "jogadores":                "jogadores.csv",
+        "jogadores_em_partida":     "jogadores_em_partida.csv",
+        "arbitros":                 "arbitros.csv",
+        "arbitros_em_partida":      "arbitros_em_partida.csv",
+        "treinadores":              "treinadores.csv",
+        "treinadores_em_partida":   "treinadores_em_partida.csv",
     }
 
     for chave, nome_arquivo in arquivos.items():
@@ -83,7 +85,7 @@ def carregar_csvs() -> dict:
 
     # Padroniza nome da coluna de ID nas tabelas que usam "ID" maiúsculo
     # (edicoes e algumas outras usam "ID", as demais usam "id")
-    for chave in ["edicoes", "clubes", "jogadores", "arbitros"]:
+    for chave in ["edicoes", "clubes", "jogadores", "arbitros", "treinadores"]:
         df = dados[chave]
         if "ID" in df.columns and "id" not in df.columns:
             dados[chave] = df.rename(columns={"ID": "id"})
