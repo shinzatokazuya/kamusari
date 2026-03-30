@@ -109,6 +109,11 @@ def carregar_csvs() -> dict:
         if not dados["arbitros"].empty else {}
     )
 
+    dados["treinador_por_id"] = (
+        dados["treinadores"].set_index("id")[["nome", "apelido"]].to_dict("index")
+        if not dados["treinadores"].empty else {}
+    )
+
     # Mapa edicao_id -> ano (para filtrar só os anos que têm súmulas)
     if not dados["edicoes"].empty:
         dados["edicao_para_ano"] = (
