@@ -1500,7 +1500,7 @@ if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
     min_page = 1
     max_page = 8
-    edicao_id = 43
+    edicao_id = 44
 
     # URL base (sem o parâmetro page)
     url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-2013/56933/calendario?fase_in=57178&equipa=0&estado=1&filtro=&op=calendario&page="
