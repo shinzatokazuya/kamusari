@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # >>> AJUSTE AQUI OS PARÂMETROS QUE VOCÊ QUISER <<<
 
     ANO = 2013
-    INICIO = 1421     # primeiro código que você quer testar
+    INICIO = 14210     # primeiro código que você quer testar
     FIM = 14210       # último código do intervalo
     SUFIXO = "se"        # em Série A está vindo "se" (pode existir "sb" etc., se precisar)
 
