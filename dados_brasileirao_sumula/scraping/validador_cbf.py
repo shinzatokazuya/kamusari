@@ -41,8 +41,8 @@ import pdfplumber
 # CONFIGURAÇÃO — ajuste os caminhos se necessário
 # ──────────────────────────────────────────────────────────────────
 
-PASTA_SUMULAS = Path("sumulas")
-PASTA_CSV = Path(".")          # pasta onde estão os CSVs
+PASTA_SUMULAS = Path("sumulas/2013")
+PASTA_CSV = Path("../novo_bd1971_robusto/outputs_csvs/")          # pasta onde estão os CSVs
 PASTA_RELATORIO = Path("relatorios_validacao")
 PASTA_RELATORIO.mkdir(exist_ok=True)
 
