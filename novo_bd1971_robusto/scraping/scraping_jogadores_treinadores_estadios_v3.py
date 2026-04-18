@@ -1523,7 +1523,7 @@ if __name__ == "__main__":
     # ========== CONFIGURAÇÕES ==========
     min_page = 1
     max_page = 8
-    edicao_id = 44
+    edicao_id = 45
 
     # URL base (sem o parâmetro page)
     url_base = "https://www.ogol.com.br/edicao/campeonato-brasileiro-2014/67145/calendario?fase_in=67335&equipa=0&estado=1&filtro=&op=calendario&page="
