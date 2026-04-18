@@ -995,7 +995,6 @@ class OGolScraperRelacional:
         rows = game_report.find_all("div", class_="zz-tpl-row game_report")
         if not rows:
             return estadio_id
-            return estadio_id, publico
 
         # TITULARES (primeira linha)
         primeira_linha = rows[0]
@@ -1471,7 +1470,6 @@ class OGolScraperRelacional:
             estadio_id = None
             try:
                 estadio_id = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
-                estadio_id, publico = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
             except Exception as e:
                 print(f"⚠️ Erro ao processar detalhes: {e}")
 
