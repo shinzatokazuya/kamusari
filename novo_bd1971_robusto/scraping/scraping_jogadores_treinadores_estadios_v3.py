@@ -1468,8 +1468,10 @@ class OGolScraperRelacional:
             self.next_partida_id += 1
 
             estadio_id = None
+            publico = None
+
             try:
-                estadio_id = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
+                estadio_id, publico = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
             except Exception as e:
                 print(f"⚠️ Erro ao processar detalhes: {e}")
 
@@ -1488,7 +1490,8 @@ class OGolScraperRelacional:
                 'visitante_placar': visitante_placar,
                 'mandante_penalti': penalti_mandante,
                 'visitante_penalti': penalti_visitante,
-                'prorrogacao': prorrogacao
+                'prorrogacao': prorrogacao,
+                'publico': publico
             })
 
             # Salva a última URL de partida processada com sucesso
