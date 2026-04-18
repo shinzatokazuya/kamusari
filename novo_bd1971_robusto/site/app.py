@@ -3,7 +3,6 @@ from flask import Flask, render_template, jsonify, request, redirect, g, url_for
 from datetime import datetime
 import sqlite3
 import json
-import re
 
 app = Flask(__name__)
 
@@ -100,46 +99,6 @@ def get_formato_campeonato(ano):
         return 'misto'
     else:
         return 'grupos_fases'
-
-# ==================== FUNÇÕES DE LIMPEZA (REPLACE GOOGLE SHEETS) ====================
-
-def limpar_data_scraped(data_str):
-    """
-    Garante o formato DD/MM/YYYY solicitado.
-    Inverte se vier ISO (YYYY-MM-DD) e limpa sujeiras de scraping.
-    """
-    if not data_str: return None
-    data_limpa = re.sub(r'\(.*?\)', '', data_str).strip()
-    try:
-        # Se vier do scraper como YYYY-MM-DD, converte para DD/MM/YYYY
-        if '-' in data_limpa and not '/' in data_limpa:
-            partes = data_limpa.split('-')
-            if len(partes) == 3:
-                return f"{partes[2]}/{partes[1]}/{partes[0]}"
-        return data_limpa
-    except:
-        return data_str
-
-def separar_nome_apelido(texto):
-    """
-    Resolve o problema dos parênteses nos jogadores.
-    Exemplo: 'Ronaldo (Fenômeno)' -> retorna ('Ronaldo', 'Fenômeno')
-    Exemplo: 'Pele' -> retorna ('Pele', None)
-    """
-    if not texto: return None, None
-    # Procura conteúdo dentro de parênteses
-    match = re.search(r'(.*?)\s*\((.*?)\)', texto)
-    if match:
-        return match.group(1).strip(), match.group(2).strip()
-    return texto, None
-
-@app.context_processor
-def utility_processor():
-    """Torna funções úteis disponíveis nos templates HTML"""
-    return {
-        'formata_data': lambda dt: datetime.strptime(dt, '%Y-%m-%d').strftime('%d/%m/%Y') if dt and '-' in dt else dt,
-        'slugify': slugify
-    }
 
 # ==================== BEFORE REQUEST ====================
 
@@ -802,29 +761,8 @@ def jogo(jogo_id):
             ep.impedimentos,
             ep.escanteios
         FROM estatisticas_partida ep
-    # Buscar estatísticas detalhadas (Ataque) - Ajustado para o esquema real
-    estatisticas_ataque = db.execute("""
-        SELECT c.clube, ea.tentativas_de_gol, ea.chutes_total, ea.chutes_a_gol, ea.escanteios
-        FROM estatisticas_ataque ea
-        JOIN clubes c ON ea.clube_id = c.ID
-        WHERE ea.partida_id = ? AND ea.jogador_id IS NULL
-    """, (jogo_id,)).fetchall()
-
-    # Buscar estatísticas de Defesa
-    estatisticas_defesa = db.execute("""
-        SELECT c.clube, ed.interceptacoes, ed.faltas_cometidas, ed.impedimentos
-        FROM estatisticas_defesa ed
-        JOIN clubes c ON ed.clube_id = c.ID
-        WHERE ed.partida_id = ? AND ed.jogador_id IS NULL
-    """, (jogo_id,)).fetchall()
-
-    # Buscar estatísticas de Passe
-    estatisticas_passe = db.execute("""
-        SELECT c.clube, ep.total_passes, ep.passes_certos, ep.posse_de_bola_percentual
-        FROM estatisticas_passe ep
         JOIN clubes c ON ep.clube_id = c.ID
         WHERE ep.partida_id = ?
-        WHERE ep.partida_id = ? AND ep.jogador_id IS NULL
     """, (jogo_id,)).fetchall()
 
     # Buscar árbitros
@@ -861,82 +799,9 @@ def jogo(jogo_id):
         jogadores_mandante=jogadores_mandante,
         jogadores_visitante=jogadores_visitante,
         estatisticas=[dict_from_row(e) for e in estatisticas_jogo],
-        stats_ataque=[dict_from_row(e) for e in estatisticas_ataque],
-        stats_defesa=[dict_from_row(e) for e in estatisticas_defesa],
-        stats_passe=[dict_from_row(e) for e in estatisticas_passe],
         arbitros=[dict_from_row(a) for a in arbitros],
         treinadores=[dict_from_row(t) for t in treinadores]
     )
-
-# ==================== ROTAS DE ADMINISTRAÇÃO (INSERÇÃO E EDIÇÃO) ====================
-
-@app.route("/admin/partida/<int:jogo_id>/editar", methods=['GET', 'POST'])
-def editar_partida(jogo_id):
-    """
-    Interface para corrigir os dados que você hoje faz no Sheets.
-    """
-    db = get_db()
-    if request.method == 'POST':
-        # Pegar dados do formulário
-        nova_data = limpar_data_scraped(request.form.get('data'))
-        m_placar = request.form.get('mandante_placar')
-        v_placar = request.form.get('visitante_placar')
-        publico = request.form.get('publico')
-
-        # Atualizar no banco
-        db.execute("""
-            UPDATE partidas
-            SET data = ?, mandante_placar = ?, visitante_placar = ?, publico = ?, atualizado_em = CURRENT_TIMESTAMP
-            WHERE ID = ?
-        """, (nova_data, m_placar, v_placar, publico, jogo_id))
-        db.commit()
-        return redirect(url_for('jogo', jogo_id=jogo_id))
-
-    partida = db.execute("SELECT * FROM partidas WHERE ID = ?", (jogo_id,)).fetchone()
-    return render_template('admin/editar_partida.html', partida=dict_from_row(partida))
-
-@app.route("/admin/jogador/limpar-nomes", methods=['POST'])
-def admin_limpar_jogadores():
-    """
-    ROTA DE UTILIDADE: Percorre jogadores com parênteses no nome
-    e separa automaticamente em Nome e Apelido.
-    Resolve o seu 'retrabalho' de uma vez só.
-    """
-    db = get_db()
-    # Busca jogadores que tenham '(' no nome
-    sujos = db.execute("SELECT ID, nome FROM jogadores WHERE nome LIKE '%(%'").fetchall()
-
-    atualizados = 0
-    for jogador in sujos:
-        novo_nome, novo_apelido = separar_nome_apelido(jogador['nome'])
-        db.execute("""
-            UPDATE jogadores
-            SET nome = ?, apelido = ?, atualizado_em = CURRENT_TIMESTAMP
-            WHERE ID = ?
-        """, (novo_nome, novo_apelido, jogador['ID']))
-        atualizados += 1
-
-    db.commit()
-    return jsonify({"status": "sucesso", "jogadores_corrigidos": atualizados})
-
-@app.route("/admin/estatisticas/inserir", methods=['POST'])
-def inserir_estatisticas():
-    """
-    Insere estatísticas rapidamente para uma partida.
-    """
-    db = get_db()
-    data = request.json # Recebe JSON do seu scraper ou formulário
-
-    try:
-        # Exemplo para estatísticas de ataque
-        db.execute("""
-            INSERT INTO estatisticas_ataque (partida_id, clube_id, chutes_total, chutes_a_gol)
-            VALUES (?, ?, ?, ?)
-        """, (data['partida_id'], data['clube_id'], data['chutes'], data['chutes_alvo']))
-        db.commit()
-        return jsonify({"status": "sucesso"})
-    except Exception as e:
-        return jsonify({"status": "erro", "mensagem": str(e)}), 400
 
 # ROTAS SIMPLES para páginas individuais
 
