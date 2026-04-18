@@ -940,7 +940,7 @@ class OGolScraperRelacional:
             soup = self._get_soup(url_partida)
         except Exception as e:
             print(f"❌ Falha ao acessar partida: {e}")
-            return None
+            return None, None
 
         estadio_id = None
         arbitro_id = None
@@ -962,9 +962,6 @@ class OGolScraperRelacional:
                             txt_limpo = re.sub(r"[^\d]", "", txt)
                             if txt_limpo:
                                 publico = int(txt_limpo)
-                                self.partidas_lista.append({
-                                    'publico': publico
-                                })
                         break
                 break
 
@@ -993,11 +990,11 @@ class OGolScraperRelacional:
         game_report = soup.find("div", id="game_report")
         if not game_report:
             print("⚠️ Div 'game_report' não encontrada")
-            return estadio_id
+            return estadio_id, publico
 
         rows = game_report.find_all("div", class_="zz-tpl-row game_report")
         if not rows:
-            return estadio_id
+            return estadio_id, publico
 
         # TITULARES (primeira linha)
         primeira_linha = rows[0]
