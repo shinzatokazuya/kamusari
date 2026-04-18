@@ -941,30 +941,9 @@ class OGolScraperRelacional:
         except Exception as e:
             print(f"❌ Falha ao acessar partida: {e}")
             return None
-            return None, None
 
         estadio_id = None
         arbitro_id = None
-        publico = None
-
-        # Processa público (Espectadores) no card de informações
-        card_infos = soup.find_all("div", class_="card-data")
-        for card in card_infos:
-            title = card.find("h2", class_="card-data__title")
-            if title and "Informação do jogo" in title.get_text():
-                rows = card.find_all("div", class_="card-data__row")
-                for row in rows:
-                    label = row.find("span", class_="card-data__label")
-                    if label and ("Espectadores" in label.get_text() or "Público" in label.get_text()):
-                        value_span = row.find("span", class_="card-data__value")
-                        if value_span:
-                            txt = value_span.get_text(strip=True)
-                            # Remove pontos de milhar e caracteres não numéricos
-                            txt_limpo = re.sub(r"[^\d]", "", txt)
-                            if txt_limpo:
-                                publico = int(txt_limpo)
-                        break
-                break
 
         # Processa estádio e árbitro
         estadio_link = soup.find("a", href=lambda x: x and "estadio" in x)
@@ -992,12 +971,10 @@ class OGolScraperRelacional:
         if not game_report:
             print("⚠️ Div 'game_report' não encontrada")
             return estadio_id
-            return estadio_id, publico
 
         rows = game_report.find_all("div", class_="zz-tpl-row game_report")
         if not rows:
             return estadio_id
-            return estadio_id, publico
 
         # TITULARES (primeira linha)
         primeira_linha = rows[0]
@@ -1241,7 +1218,6 @@ class OGolScraperRelacional:
             print(f"   ℹ️ Sem treinador visitante: clube_id={visitante_id}, treinador_id=None")
 
         return estadio_id
-        return estadio_id, publico
 
     # ======================================================
     # Salvar CSVs
@@ -1342,7 +1318,6 @@ class OGolScraperRelacional:
         if self.partidas_lista:
             path = os.path.join(self.output_dir, "partidas.csv")
             campos = ['id','edicao_id','campeonato_id','data','hora','fase','rodada','estadio_id','mandante_id','visitante_id','mandante_placar','visitante_placar','mandante_penalti','visitante_penalti','prorrogacao']
-            campos = ['id','edicao_id','campeonato_id','data','hora','fase','rodada','estadio_id','mandante_id','visitante_id','mandante_placar','visitante_placar','mandante_penalti','visitante_penalti','prorrogacao', 'publico']
             append_rows(path, campos, self.partidas_lista)
             self.partidas_lista.clear()
             print("💾 partidas.csv atualizado")
@@ -1473,10 +1448,8 @@ class OGolScraperRelacional:
             self.next_partida_id += 1
 
             estadio_id = None
-            publico = None
             try:
                 estadio_id = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
-                estadio_id, publico = self.processar_detalhes_partida(link_partida, partida_id, mandante_id, visitante_id)
             except Exception as e:
                 print(f"⚠️ Erro ao processar detalhes: {e}")
 
@@ -1496,8 +1469,6 @@ class OGolScraperRelacional:
                 'mandante_penalti': penalti_mandante,
                 'visitante_penalti': penalti_visitante,
                 'prorrogacao': prorrogacao
-                'prorrogacao': prorrogacao,
-                'publico': publico
             })
 
             # Salva a última URL de partida processada com sucesso
