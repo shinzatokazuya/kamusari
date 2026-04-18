@@ -1237,7 +1237,7 @@ class OGolScraperRelacional:
         else:
             print(f"   ℹ️ Sem treinador visitante: clube_id={visitante_id}, treinador_id=None")
 
-        return estadio_id
+        return estadio_id, publico
 
     # ======================================================
     # Salvar CSVs
