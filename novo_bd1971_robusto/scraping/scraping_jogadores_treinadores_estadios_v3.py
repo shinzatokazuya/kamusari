@@ -962,6 +962,9 @@ class OGolScraperRelacional:
                             txt_limpo = re.sub(r"[^\d]", "", txt)
                             if txt_limpo:
                                 publico = int(txt_limpo)
+                                self.partidas_lista.append({
+                                    'publico': publico
+                                })
                         break
                 break
 
