@@ -1122,4 +1122,3 @@ def api_evolucao_clube(nome):
 @app.template_filter('slugify')
 def slugify_filter(text):
     return slugify(text)
-
