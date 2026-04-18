@@ -617,11 +617,22 @@ class OGolScraperRelacional:
             elif "Pé preferencial" in campo:
                 dados["pe_preferido"] = valor
             elif "Altura" in campo:
+            elif "Altura / Peso" in campo or ("Altura" in campo and "/" in (valor or "")):
+                try:
+                    partes = valor.split("/")
+                    if len(partes) >= 1:
+                        dados["altura"] = int(re.sub(r"[^\d]", "", partes[0]))
+                    if len(partes) >= 2:
+                        dados["peso"] = int(re.sub(r"[^\d]", "", partes[1]))
+                except:
+                    pass
+            elif "Altura" in campo and "altura" not in dados:
                 try:
                     dados["altura"] = int(re.sub(r"[^\d]", "", valor))
                 except:
                     dados["altura"] = None
             elif "Peso" in campo:
+            elif "Peso" in campo and "peso" not in dados:
                 try:
                     dados["peso"] = int(re.sub(r"[^\d]", "", valor))
                 except:
