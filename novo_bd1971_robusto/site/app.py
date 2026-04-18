@@ -104,26 +104,30 @@ def get_formato_campeonato(ano):
 # ==================== FUNÇÕES DE LIMPEZA (REPLACE GOOGLE SHEETS) ====================
 
 def limpar_data_scraped(data_str):
-    """Converte '15/03/2024' ou formatos sujos para '2024-03-15'"""
+    """
+    Garante o formato DD/MM/YYYY solicitado.
+    Inverte se vier ISO (YYYY-MM-DD) e limpa sujeiras de scraping.
+    """
     if not data_str: return None
-    # Remove parênteses e conteúdos extras comuns em scraping
     data_limpa = re.sub(r'\(.*?\)', '', data_str).strip()
     try:
-        # Tenta converter do padrão brasileiro para o ISO do SQLite
-        if '/' in data_limpa:
-            partes = data_limpa.split('/')
+        # Se vier do scraper como YYYY-MM-DD, converte para DD/MM/YYYY
+        if '-' in data_limpa and not '/' in data_limpa:
+            partes = data_limpa.split('-')
             if len(partes) == 3:
-                return f"{partes[2]}-{partes[1].zfill(2)}-{partes[0].zfill(2)}"
+                return f"{partes[2]}/{partes[1]}/{partes[0]}"
         return data_limpa
     except:
         return data_str
 
-def extrair_info_parenteses(texto):
+def separar_nome_apelido(texto):
     """
-    Exemplo: '1-1 (4-3 pen)' -> retorna ('1-1', '4-3')
-    Útil para separar placar de pênaltis que vem na mesma coluna
+    Resolve o problema dos parênteses nos jogadores.
+    Exemplo: 'Ronaldo (Fenômeno)' -> retorna ('Ronaldo', 'Fenômeno')
+    Exemplo: 'Pele' -> retorna ('Pele', None)
     """
-    if not texto: return texto, None
+    if not texto: return None, None
+    # Procura conteúdo dentro de parênteses
     match = re.search(r'(.*?)\s*\((.*?)\)', texto)
     if match:
         return match.group(1).strip(), match.group(2).strip()
@@ -800,7 +804,7 @@ def jogo(jogo_id):
         FROM estatisticas_partida ep
     # Buscar estatísticas detalhadas (Ataque) - Ajustado para o esquema real
     estatisticas_ataque = db.execute("""
-        SELECT c.clube, ea.*
+        SELECT c.clube, ea.tentativas_de_gol, ea.chutes_total, ea.chutes_a_gol, ea.escanteios
         FROM estatisticas_ataque ea
         JOIN clubes c ON ea.clube_id = c.ID
         WHERE ea.partida_id = ? AND ea.jogador_id IS NULL
@@ -808,7 +812,7 @@ def jogo(jogo_id):
 
     # Buscar estatísticas de Defesa
     estatisticas_defesa = db.execute("""
-        SELECT c.clube, ed.*
+        SELECT c.clube, ed.interceptacoes, ed.faltas_cometidas, ed.impedimentos
         FROM estatisticas_defesa ed
         JOIN clubes c ON ed.clube_id = c.ID
         WHERE ed.partida_id = ? AND ed.jogador_id IS NULL
@@ -816,7 +820,7 @@ def jogo(jogo_id):
 
     # Buscar estatísticas de Passe
     estatisticas_passe = db.execute("""
-        SELECT c.clube, ep.*
+        SELECT c.clube, ep.total_passes, ep.passes_certos, ep.posse_de_bola_percentual
         FROM estatisticas_passe ep
         JOIN clubes c ON ep.clube_id = c.ID
         WHERE ep.partida_id = ?
@@ -890,6 +894,30 @@ def editar_partida(jogo_id):
 
     partida = db.execute("SELECT * FROM partidas WHERE ID = ?", (jogo_id,)).fetchone()
     return render_template('admin/editar_partida.html', partida=dict_from_row(partida))
+
+@app.route("/admin/jogador/limpar-nomes", methods=['POST'])
+def admin_limpar_jogadores():
+    """
+    ROTA DE UTILIDADE: Percorre jogadores com parênteses no nome
+    e separa automaticamente em Nome e Apelido.
+    Resolve o seu 'retrabalho' de uma vez só.
+    """
+    db = get_db()
+    # Busca jogadores que tenham '(' no nome
+    sujos = db.execute("SELECT ID, nome FROM jogadores WHERE nome LIKE '%(%'").fetchall()
+
+    atualizados = 0
+    for jogador in sujos:
+        novo_nome, novo_apelido = separar_nome_apelido(jogador['nome'])
+        db.execute("""
+            UPDATE jogadores
+            SET nome = ?, apelido = ?, atualizado_em = CURRENT_TIMESTAMP
+            WHERE ID = ?
+        """, (novo_nome, novo_apelido, jogador['ID']))
+        atualizados += 1
+
+    db.commit()
+    return jsonify({"status": "sucesso", "jogadores_corrigidos": atualizados})
 
 @app.route("/admin/estatisticas/inserir", methods=['POST'])
 def inserir_estatisticas():
@@ -1122,3 +1150,4 @@ def api_evolucao_clube(nome):
 @app.template_filter('slugify')
 def slugify_filter(text):
     return slugify(text)
+
