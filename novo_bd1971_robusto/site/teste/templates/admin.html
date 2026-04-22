@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Admin — Brasileirão Analytics{% endblock %}
+
+{% block content %}
+<div class="mb-6 flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-slate-100">⚙ Painel Admin</h1>
+    <span class="text-xs text-slate-500">Edições refletem imediatamente nas páginas públicas</span>
+</div>
+
+<!-- ── Filtro ────────────────────────────────────────────────────────────── -->
+<form method="GET" action="/admin" class="flex flex-wrap gap-3 mb-6">
+    <select name="entidade" class="bg-pitch-700 border border-brand/40 text-sm text-slate-200
+                 rounded px-3 py-2 focus:outline-none">
+        <option value="jogador" {% if entidade=='jogador' %}selected{% endif %}>Jogadores</option>
+        <option value="partida" {% if entidade=='partida' %}selected{% endif %}>Partidas</option>
+    </select>
+    <input name="q" value="{{ busca }}" placeholder="Buscar por nome, clube ou ID…" class="flex-1 min-w-48 bg-pitch-700 border border-brand/40 text-sm text-slate-200
+                rounded px-3 py-2 focus:outline-none focus:border-brand placeholder:text-slate-600" />
+    <button type="submit" class="px-4 py-2 bg-brand hover:bg-brand-dark text-white text-sm rounded transition">
+        Buscar
+    </button>
+</form>
+
+<!-- ── Resultados: Jogadores ─────────────────────────────────────────────── -->
+{% if entidade == 'jogador' and resultados %}
+<div class="bg-pitch-800 rounded-xl border border-white/10 overflow-hidden">
+    <table class="w-full text-sm">
+        <thead class="text-xs text-slate-400 uppercase bg-pitch-900">
+            <tr>
+                <th class="px-4 py-2 text-left">#</th>
+                <th class="px-4 py-2 text-left">Nome</th>
+                <th class="px-4 py-2 text-left">Apelido</th>
+                <th class="px-4 py-2 text-left">Posição</th>
+                <th class="px-4 py-2 text-left">Nascimento</th>
+                <th class="px-4 py-2 text-left">Nac.</th>
+                <th class="px-4 py-2 text-center">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for j in resultados %}
+            <tr class="border-t border-white/5 hover:bg-pitch-700">
+                <td class="px-4 py-2 text-slate-500 font-mono text-xs">{{ j.id }}</td>
+                <td class="px-4 py-2 text-slate-200">{{ j.nome }}</td>
+                <td class="px-4 py-2 text-slate-400">{{ j.apelido or '–' }}</td>
+                <td class="px-4 py-2 text-slate-400">{{ j.posicao or '–' }}</td>
+                <td class="px-4 py-2 text-slate-400 font-mono text-xs">{{ j.nascimento | data_br }}</td>
+                <td class="px-4 py-2 text-slate-400">{{ j.nacionalidade or '–' }}</td>
+                <td class="px-4 py-2 text-center">
+                    <a href="/admin/jogador/{{ j.id }}"
+                        class="text-xs px-3 py-1 bg-brand/20 hover:bg-brand/40 text-brand-light rounded transition">
+                        Editar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Resultados: Partidas -->
+{% elif entidade == 'partida' and resultados %}
+<div class="bg-pitch-800 rounded-xl border border-white/10 overflow-hidden">
+    <table class="w-full text-sm font-mono">
+        <thead class="text-xs text-slate-400 uppercase bg-pitch-900">
+            <tr>
+                <th class="px-4 py-2 text-left">#</th>
+                <th class="px-4 py-2 text-left">Data</th>
+                <th class="px-4 py-2 text-left">Ano</th>
+                <th class="px-4 py-2 text-right">Mandante</th>
+                <th class="px-4 py-2 text-center">Placar</th>
+                <th class="px-4 py-2 text-left">Visitante</th>
+                <th class="px-4 py-2 text-left">Fase</th>
+                <th class="px-4 py-2 text-center">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in resultados %}
+            <tr class="border-t border-white/5 hover:bg-pitch-700">
+                <td class="px-4 py-2 text-slate-500 text-xs">{{ p.id }}</td>
+                <td class="px-4 py-2 text-slate-400 text-xs">{{ p.data | data_br }}</td>
+                <td class="px-4 py-2 text-brand-light">{{ p.ano }}</td>
+                <td class="px-4 py-2 text-right text-slate-200">{{ p.mandante }}</td>
+                <td class="px-4 py-2 text-center font-bold text-slate-100">
+                    {{ p.mandante_placar }} – {{ p.visitante_placar }}
+                </td>
+                <td class="px-4 py-2 text-slate-200">{{ p.visitante }}</td>
+                <td class="px-4 py-2 text-slate-500 text-xs">{{ p.fase or '–' }}</td>
+                <td class="px-4 py-2 text-center">
+                    <a href="/admin/partida/{{ p.id }}"
+                        class="text-xs px-3 py-1 bg-brand/20 hover:bg-brand/40 text-brand-light rounded transition">
+                        Editar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% elif busca %}
+<p class="text-slate-500 text-sm">Nenhum resultado para "<strong>{{ busca }}</strong>".</p>
+{% else %}
+<p class="text-slate-600 text-sm">Digite algo para buscar.</p>
+{% endif %}
+
+{% endblock %}

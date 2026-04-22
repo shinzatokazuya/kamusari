@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block title %}{{ partida.mandante }} {{ partida.mandante_placar }}–{{ partida.visitante_placar }} {{
+partida.visitante }}{% endblock %}
+
+{% block content %}
+
+<!-- ── Placar principal ──────────────────────────────────────────────────── -->
+<div class="bg-pitch-800 rounded-xl border border-white/10 p-6 mb-6">
+    <div class="text-center mb-2">
+        <span class="text-xs text-slate-500 uppercase tracking-widest">
+            {{ partida.campeonato }} {{ partida.ano }}
+            {% if partida.fase %} · {{ partida.fase }}{% endif %}
+            {% if partida.rodada %} · Rodada {{ partida.rodada }}{% endif %}
+        </span>
+    </div>
+
+    <div class="flex items-center justify-center gap-8">
+        <div class="text-right flex-1">
+            <p class="text-2xl font-bold text-slate-100">{{ partida.mandante }}</p>
+            <p class="text-xs text-slate-500 mt-1">Mandante</p>
+        </div>
+
+        <div class="text-center shrink-0">
+            <div class="text-5xl font-black font-mono text-brand-light tracking-tight">
+                {{ partida.mandante_placar }}–{{ partida.visitante_placar }}
+            </div>
+            {% if partida.prorrogacao %}
+            <span class="text-xs bg-yellow-900/40 text-yellow-400 px-2 py-0.5 rounded">Prorrogação</span>
+            {% endif %}
+            {% if partida.mandante_penalti is not none %}
+            <div class="text-sm text-slate-400 mt-1">
+                ({{ partida.mandante_penalti }} – {{ partida.visitante_penalti }} nos pênaltis)
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="text-left flex-1">
+            <p class="text-2xl font-bold text-slate-100">{{ partida.visitante }}</p>
+            <p class="text-xs text-slate-500 mt-1">Visitante</p>
+        </div>
+    </div>
+
+    <!-- Infos da partida -->
+    <div class="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs text-slate-500">
+        {% if partida.data %}
+        <span>📅 {{ partida.data | data_br }}{% if partida.hora %} às {{ partida.hora | hora_fmt }}{% endif %}</span>
+        {% endif %}
+        {% if partida.estadio %}
+        <span>🏟 {{ partida.estadio }}{% if partida.est_cidade %}, {{ partida.est_cidade }}/{{ partida.est_uf }}{% endif
+            %}</span>
+        {% endif %}
+        {% if partida.publico %}
+        <span>👥 {{ "{:,}".format(partida.publico).replace(",", ".") }} torcedores</span>
+        {% endif %}
+    </div>
+</div>
+
+<!-- ── Grid: Eventos + Escalações ────────────────────────────────────────── -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <!-- Eventos da partida -->
+    <div class="bg-pitch-800 rounded-xl border border-white/10 overflow-hidden">
+        <div class="px-4 py-3 border-b border-white/10">
+            <h2 class="text-sm font-semibold text-slate-200 uppercase tracking-wide">📋 Eventos</h2>
+        </div>
+        <div class="divide-y divide-white/5">
+            {% set evento_icons = {
+            'Gol': '⚽', 'Assistência': '🤝',
+            'Cartão Amarelo': '🟨', 'Segundo Amarelo': '🟨🟥',
+            'Cartão Vermelho': '🟥', 'Entrou': '🔄', 'Substituição': '🔄'
+            } %}
+            {% for e in eventos %}
+            <div class="flex items-center gap-3 px-4 py-2.5
+                  {% if e.clube == partida.mandante %}flex-row{% else %}flex-row-reverse{% endif %}">
+                <!-- Minuto -->
+                <span class="text-xs font-mono text-slate-500 w-8 shrink-0
+                     {% if e.clube == partida.mandante %}text-left{% else %}text-right{% endif %}">
+                    {% if e.minuto %}{{ e.minuto }}'{% endif %}
+                </span>
+
+                <!-- Ícone -->
+                <span class="text-base">{{ evento_icons.get(e.tipo_evento, '•') }}</span>
+
+                <!-- Nome -->
+                <div
+                    class="{% if e.clube == partida.mandante %}text-left{% else %}text-right{% endif %} flex-1 min-w-0">
+                    <a href="/jogador/{{ e.jogador_id }}"
+                        class="text-sm text-slate-200 hover:text-brand-light transition font-medium truncate block">
+                        {{ e.jogador }}
+                    </a>
+                    {% if e.tipo_gol and e.tipo_gol != 'Normal' %}
+                    <span class="text-xs text-slate-500">({{ e.tipo_gol }})</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <p class="px-4 py-8 text-center text-sm text-slate-500">
+                Nenhum evento registrado.
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Painel direito: árbitros + treinadores + escalação -->
+    <div class="space-y-4">
+
+        <!-- Árbitros & Treinadores -->
+        <div class="bg-pitch-800 rounded-xl border border-white/10 p-4 grid grid-cols-2 gap-4 text-sm">
+            <div>
+                <p class="text-xs text-slate-500 uppercase mb-2">🟡 Árbitro(s)</p>
+                {% for a in arbitros %}
+                <p class="text-slate-200">{{ a.nome }}</p>
+                <p class="text-xs text-slate-500">{{ a.naturalidade or '–' }}</p>
+                {% else %}
+                <p class="text-slate-500">–</p>
+                {% endfor %}
+            </div>
+            <div>
+                <p class="text-xs text-slate-500 uppercase mb-2">👔 Treinadores</p>
+                {% for t in treinadores %}
+                <div class="mb-1">
+                    <p class="text-slate-200">
+                        {% if t.treinador %}
+                        <a href="/treinador/{{ t.treinador_id }}" class="hover:text-brand-light transition">
+                            {{ t.treinador }}
+                        </a>
+                        {% else %}
+                        <span class="text-slate-500">–</span>
+                        {% endif %}
+                    </p>
+                    <p class="text-xs text-slate-500">{{ t.clube }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Escalações -->
+        <div class="bg-pitch-800 rounded-xl border border-white/10 overflow-hidden">
+            <div class="px-4 py-3 border-b border-white/10">
+                <h2 class="text-sm font-semibold text-slate-200 uppercase tracking-wide">👥 Escalações</h2>
+            </div>
+            <div class="grid grid-cols-2 divide-x divide-white/10">
+                <!-- Mandante -->
+                <div>
+                    <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase bg-pitch-900">{{ partida.mandante }}
+                    </p>
+                    {% for j in escalacao if j.clube == partida.mandante %}
+                    <a href="/jogador/{{ j.jogador_id }}"
+                        class="flex items-center gap-2 px-3 py-1.5 hover:bg-pitch-700 transition border-t border-white/5">
+                        <span class="text-xs font-mono text-slate-600 w-5 text-right">{{ j.numero_camisa or '' }}</span>
+                        <span
+                            class="text-xs {% if j.titular %}text-slate-200{% else %}text-slate-400{% endif %} truncate">
+                            {{ j.jogador }}
+                        </span>
+                        {% if not j.titular %}
+                        <span class="ml-auto text-xs text-slate-600">res</span>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+                <!-- Visitante -->
+                <div>
+                    <p class="px-3 py-2 text-xs font-bold text-slate-400 uppercase bg-pitch-900">{{ partida.visitante }}
+                    </p>
+                    {% for j in escalacao if j.clube == partida.visitante %}
+                    <a href="/jogador/{{ j.jogador_id }}"
+                        class="flex items-center gap-2 px-3 py-1.5 hover:bg-pitch-700 transition border-t border-white/5">
+                        <span class="text-xs font-mono text-slate-600 w-5 text-right">{{ j.numero_camisa or '' }}</span>
+                        <span
+                            class="text-xs {% if j.titular %}text-slate-200{% else %}text-slate-400{% endif %} truncate">
+                            {{ j.jogador }}
+                        </span>
+                        {% if not j.titular %}
+                        <span class="ml-auto text-xs text-slate-600">res</span>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ── Navegação de volta ────────────────────────────────────────────────── -->
+<div class="mt-6">
+    <a href="/temporada/{{ partida.ano }}" class="text-sm text-brand hover:text-brand-light transition">
+        ← Voltar para {{ partida.ano }}
+    </a>
+</div>
+
+{% endblock %}
