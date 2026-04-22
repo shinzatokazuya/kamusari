@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 
 # ── Configuração ────────────────────────────────────────────────────────────────
-CSV_DIR  = Path(__file__).parent          # pasta onde estão os CSVs
+CSV_DIR  = Path("novo_bd1971_robusto/output_csvs").parent          # pasta onde estão os CSVs
 DB_PATH  = CSV_DIR / "brasileirao.db"     # ajuste se quiser outro local
 # ────────────────────────────────────────────────────────────────────────────────
 
