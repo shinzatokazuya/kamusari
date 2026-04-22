@@ -17,7 +17,7 @@ from pathlib import Path
 
 # ── Configuração ────────────────────────────────────────────────────────────────
 CSV_DIR  = Path(__file__).parent.parent / "output_csvs"            # pasta onde estão os CSVs
-DB_PATH  = CSV_DIR / "brasileirao.db"     # ajuste se quiser outro local
+DB_PATH  = CSV_DIR ".." / "site" / "brasileirao.db"     # ajuste se quiser outro local
 # ────────────────────────────────────────────────────────────────────────────────
 
 
