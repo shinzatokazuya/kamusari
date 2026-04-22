@@ -18,6 +18,11 @@ from pathlib import Path
 # ── Configuração ────────────────────────────────────────────────────────────────
 CSV_DIR  = Path("output_csvs/").parent          # pasta onde estão os CSVs
 DB_PATH  = CSV_DIR / "brasileirao.db"     # ajuste se quiser outro local
+# Detecta automaticamente a pasta raiz do projeto independente de onde você execute o script
+BASE_DIR = Path(__file__).resolve().parent.parent
+CSV_DIR  = BASE_DIR / "output_csvs"               # pasta onde estão os CSVs
+DB_PATH  = BASE_DIR / "bd" / "estruturado_bd_1971.db" # Caminho que o seu app.py espera
+DB_PATH.parent.mkdir(parents=True, exist_ok=True) # Cria a pasta 'bd' se ela não existir
 # ────────────────────────────────────────────────────────────────────────────────
 
 
