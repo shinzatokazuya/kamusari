@@ -14,7 +14,7 @@ import os
 import re
 from pathlib import Path
 
-CSV_DIR = Path(__file__).parent
+CSV_DIR = Path(__file__).parent.parent.parent / "output_csvs"
 DB_PATH = CSV_DIR / "brasileirao.db"
 
 
